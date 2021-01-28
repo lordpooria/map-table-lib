@@ -1,0 +1,31 @@
+{
+  "name": "@hesaba/table",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/index.js",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.hesaba.co/visualization-infrastructure/react-dashboard-infra.git"
+  },
+  "scripts": {
+	"build": "bili --config ../../.bilirc.js",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.0",
+    "react": "^17.0.1"
+  }
+}
