@@ -1,5 +1,5 @@
 {
-  "name": "@hesaba/table",
+  "name": "@visualization-infrastructure/table",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
@@ -21,11 +21,16 @@
     "url": "https://gitlab.hesaba.co/visualization-infrastructure/react-dashboard-infra.git"
   },
   "scripts": {
-	"build": "bili --config ../../.bilirc.js",
+    "start": "tsdx watch",
+    "build": "bili --config ../../.bilirc.js",
+    "watch": "bili --watch --config ../../.bilirc.js",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
     "@types/react": "^17.0.0",
     "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "tsdx": "^0.14.1"
   }
 }

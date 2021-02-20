@@ -7,12 +7,26 @@
   "license": "MIT",
   "scripts": {
     "build": "lerna run build",
-    "watch": "bili --watch --config ../../.bilirc.js"
+    "watch": "lerna run watch",
+    "storybook": "start-storybook -p ${PORT:-6006} -h localhost",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-essentials": "^6.1.15",
+    "@storybook/addon-links": "^6.1.15",
+    "@storybook/react": "^6.1.15",
+    "babel-loader": "^8.2.2",
     "bili": "^5.0.5",
     "lerna": "^3.22.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "rollup-plugin-typescript2": "^0.29.0",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {},
+  "publishConfig":{
+    "@visualization-infrastructure:registry": "https://gitlab.com/api/v4/projects/170/packages/npm/"
   }
 }

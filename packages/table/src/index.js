@@ -1,7 +1,1 @@
-'use strict';
-
-module.exports = table;
-
-function table() {
-    // TODO
-}
+export * from "./Table"
