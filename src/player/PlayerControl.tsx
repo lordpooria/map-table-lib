@@ -58,13 +58,12 @@ const PlayerControl = ({
   leafletMap,
   buffer = 5,
   loop = false,
-  minBufferReady ,
   timeSteps = 1,
   autoPlay = false,
   startedOver = false,
   minSpeed = 0.1,
   maxSpeed = 10,
-  loadingTimeout = 3000,
+  // loadingTimeout = 3000,
 }: PlayerCompleteProps) => {
   const [state, actions] = useLocalStore(() => playerStoreModel);
   const classes = useStyle();
@@ -75,65 +74,31 @@ const PlayerControl = ({
   );
   const previousTime = useTDStoreActions((actions) => actions.previousTime);
   const nextTime = useTDStoreActions((actions) => actions.nextTime);
-  // const [sliderVal, setSliderVal] = useState(0);
+  
   // const leafletMap = useMap();
-  // const timeDimension = leafletMap.timeDimension;
+  
   useEffect(() => {
     if (currentTimeIndex >= 0) {
       actions.setTimeSliderValue(currentTimeIndex);
     }
   }, [currentTimeIndex]);
 
-  // const update = useCallback(() => {
-  //   if (!timeDimension) {
-  //     return;
-  //   }
-
-  //   if (timeDimension.getCurrentTimeIndex() >= 0) {
-  //     // const date = new Date(timeDimension.getCurrentTime());
-  //     // setDisplayDate(getDisplayDateFormat(date, timeZone));
-
-  //     actions.setTimeSliderValue(timeDimension.getCurrentTimeIndex());
-  //   } else {
-  //     // setDisplayDate(getDisplayNoTimeError());
-  //   }
-  // }, [timeDimension]);
-
-  // const onTimeLoading = useCallback((data) => {
-  //   // console.log("poorialogplayer", data);
-  // }, []);
 
   useEffect(() => {
     const max = availableTimes.length - 1;
     if (max > 0) actions.setTimeSliderRange({ min: 0, max });
   }, [availableTimes]);
 
-  // const onTimeLimitsChanged = useCallback(() => {}, [timeDimension]);
+
 
   const setTransitionTime = (transitionTime: number) => {
-    let bufferSize;
-    if (typeof buffer === "function") {
-      bufferSize = buffer(transitionTime, minBufferReady as number, loop);
-    } else {
-      bufferSize = buffer;
-    }
+    actions.setTransitionTime({ bufferSize: buffer, transitionTime });
 
-    actions.setTransitionTime({ bufferSize, transitionTime });
-
-    // if (this._intervalID) {
-    //   this.stop();
-    //   //   this.start(_steps);
-    // }
-    // _onPlayerStateChange();
-    // this.fire("speedchange", {
-    //   transitionTime: transitionTime,
-    //   buffer: _bufferSize.current,
-    // });
   };
   const { start, stop } = usePlayer({
     // timeDimension,
     bufferSize: state.bufferSize,
-    minBufferReady ,
+    // minBufferReady ,
     loop,
     transitionTime: state.transitionTime,
     animationFinished: actions.animationFinished,
@@ -141,7 +106,6 @@ const PlayerControl = ({
     steps: timeSteps,
     startedOver,
     autoPlay,
-    loadingTimeout,
   });
 
   // const { startRecording, stopRecording } = useVideoRecorder({
@@ -149,13 +113,12 @@ const PlayerControl = ({
   // });
 
   useEffect(() => {
-    // const speedSlider = Math.round(10000 / state.transitionTime) / 10;
     actions.setSpeedSliderRange({
       min: minSpeed,
       max: maxSpeed,
     });
   }, [minSpeed, maxSpeed]);
-  // const [_, setRef] = useStopPropagation();
+
   return (
     <div
       onMouseEnter={() => {
@@ -193,26 +156,15 @@ const PlayerControl = ({
         <PlayCircleIcon className={classes.whiteIcon} />
         <PlayerSlider
           style={{}}
-          // onMouseOver={(event) => {
-          //   const index = Number(event.currentTarget.getAttribute("data-index"));
-          //   setOpen(index);
-          // }}
           valueLabelDisplay="auto"
           ThumbComponent={PlayerThumb as any}
           ValueLabelComponent={ValueLabelComponent}
           value={state.timeSlider}
-          // getAriaValueText={valuetext}
-          // aria-labelledby="discrete-slider"
-          // valueLabelDisplay="auto"
           step={timeSteps}
-          // marks
           min={state.timeSliderRange.min}
           max={state.timeSliderRange.max}
           onChange={(_, index) => {
-            // var value = e.target.getValue();
-            setCurrentTimeIndex({ index: index as number, loadingTimeout });
-            // this._sliderTimeValueChanged(value);
-            // this._slidingTimeSlider = false;
+            setCurrentTimeIndex({ index: index as number });
           }}
         />
       </div>
@@ -232,24 +184,17 @@ const PlayerControl = ({
           valueLabelDisplay="auto"
           value={state.speedSlider}
           valueLabelFormat={valuetext}
-          // aria-labelledby="discrete-slider"
-          // valueLabelDisplay="auto"
           step={timeSteps}
-          // marks
           min={state.speedSliderRange.min}
           max={state.speedSliderRange.max}
           onChange={(_, v) => {
-            // var value = e.target.getValue();
-
             setTransitionTime(1000 / +v);
-            // this._sliderTimeValueChanged(value);
-            // this._slidingTimeSlider = false;
           }}
         />
       </div>
       <SmallIconButton
         onClick={() => {
-          previousTime({ numSteps: timeSteps, loadingTimeout, loop });
+          previousTime({ numSteps: timeSteps, loop });
         }}
       >
         <PreviousIcon className={classes.icon} />
@@ -271,7 +216,7 @@ const PlayerControl = ({
       </SmallIconButton>
       <SmallIconButton
         onClick={() => {
-          nextTime({ numSteps: timeSteps, loadingTimeout, loop });
+          nextTime({ numSteps: timeSteps, loop });
         }}
       >
         <NextIcon className={classes.icon} />

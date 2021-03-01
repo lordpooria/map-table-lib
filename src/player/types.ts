@@ -1,8 +1,8 @@
 import { ControlOptions, Map } from "leaflet";
 
-type BufferFunc = (a: number, b: number, c: boolean) => number;
+// type BufferFunc = (a: number, b: number, c: boolean) => number;
 
-type Buffer = number | BufferFunc;
+// type Buffer = number | BufferFunc;
 
 interface PlayerOwnProps {
   leafletMap: Map;
@@ -25,7 +25,7 @@ interface PlayerOwnProps {
   minBufferReady?: number;
   transitionTime?: number;
   loop?: boolean;
-  buffer?: Buffer;
+  buffer?: number;
   loadingTimeout?: number;
 }
 

@@ -43,16 +43,19 @@ export interface TDStoreModel {
 
   setCurrentTimeIndex: Thunk<
     TDStoreModel,
-    { index: number; loadingTimeout: number }
+    { index: number /* loadingTimeout: number */ }
   >;
-  setCurrentTime: Thunk<TDStoreModel, { time: number; loadingTimeout: number }>;
+  setCurrentTime: Thunk<
+    TDStoreModel,
+    { time: number /* loadingTimeout: number */ }
+  >;
   nextTime: Thunk<
     TDStoreModel,
-    { numSteps: number; loop: boolean; loadingTimeout: number }
+    { numSteps: number; loop: boolean /* loadingTimeout: number */ }
   >;
   previousTime: Thunk<
     TDStoreModel,
-    { numSteps: number; loop: boolean; loadingTimeout: number }
+    { numSteps: number; loop: boolean /* loadingTimeout: number */ }
   >;
   prepareAvailableTimes: Thunk<
     TDStoreModel,
@@ -61,7 +64,7 @@ export interface TDStoreModel {
       updateCurrentTime: boolean;
       // updateTimeDimension: boolean;
       updateTimeDimensionMode: Mode;
-      loadingTimeout: number;
+      /* loadingTimeout: number;*/
     }
   >;
 }
@@ -119,13 +122,13 @@ export const tdStoreModel: TDStoreModel = {
     }
   }),
 
-  setCurrentTime: thunk((actions, { time, loadingTimeout }, helper) => {
+  setCurrentTime: thunk((actions, { time }, helper) => {
     const state = helper.getState();
     var index = seekNearestTimeIndex(time, state.availableTimes);
-    actions.setCurrentTimeIndex({ index, loadingTimeout });
+    actions.setCurrentTimeIndex({ index });
   }),
 
-  setCurrentTimeIndex: thunk((actions, { index, loadingTimeout }, helper) => {
+  setCurrentTimeIndex: thunk((actions, { index }, helper) => {
     const state = helper.getState();
     var upperLimit = state.upperLimitIndex || state.availableTimes.length - 1;
     var lowerLimit = state.lowerLimitIndex || 0;
@@ -147,11 +150,11 @@ export const tdStoreModel: TDStoreModel = {
       actions.setNewTimeIndex();
     } else {
       // add timeout of 3 seconds if layers doesn't response
-      setTimeout(actions.setNewTimeIndex, loadingTimeout);
+      setTimeout(actions.setNewTimeIndex, 3000);
     }
   }),
 
-  nextTime: thunk((actions, { numSteps, loop, loadingTimeout }, helper) => {
+  nextTime: thunk((actions, { numSteps, loop }, helper) => {
     const state = helper.getState();
 
     if (!numSteps) {
@@ -179,11 +182,11 @@ export const tdStoreModel: TDStoreModel = {
         newIndex = lowerLimit;
       }
     }
-    actions.setCurrentTimeIndex({ index: newIndex, loadingTimeout });
+    actions.setCurrentTimeIndex({ index: newIndex });
   }),
 
-  previousTime: thunk((actions, { numSteps, loop, loadingTimeout }) => {
-    actions.nextTime({ numSteps: numSteps * -1, loop, loadingTimeout });
+  previousTime: thunk((actions, { numSteps, loop }) => {
+    actions.nextTime({ numSteps: numSteps * -1, loop });
   }),
 
   prepareNextTimes: action((state, { numSteps, howmany, loop }) => {
@@ -281,12 +284,7 @@ export const tdStoreModel: TDStoreModel = {
   prepareAvailableTimes: thunk(
     (
       actions,
-      {
-        _availableTimes,
-        updateCurrentTime,
-        updateTimeDimensionMode,
-        loadingTimeout,
-      },
+      { _availableTimes, updateCurrentTime, updateTimeDimensionMode },
       helper
     ) => {
       const state = helper.getState();
@@ -300,7 +298,7 @@ export const tdStoreModel: TDStoreModel = {
         });
       }
       if (_updateCurrentTime && _availableTimes.length) {
-        actions.setCurrentTime({ time: _availableTimes[0], loadingTimeout });
+        actions.setCurrentTime({ time: _availableTimes[0] });
       }
     }
   ),
