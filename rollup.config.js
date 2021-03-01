@@ -54,5 +54,6 @@ export default [
         include: 'node_modules/**',
       }),
     ],
+    
   },
 ];
