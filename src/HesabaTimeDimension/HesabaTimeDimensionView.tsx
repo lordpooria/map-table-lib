@@ -46,6 +46,7 @@ Props) => {
     },
     {}
   );
+  console.log("hurray2")
   return (
     <>
       <PlayerController leafletMap={map} />

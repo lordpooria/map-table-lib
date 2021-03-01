@@ -59,25 +59,20 @@ export const usePlayer = ({
     return Math.min(availableTimes.length - 1, upperLimitIndex || Infinity);
   }, [availableTimes, upperLimitIndex]);
 
-  const _tick = useCallback(
-    (currentTimeIndex) => {
-      const maxIndex = _getMaxIndex();
-      const maxForward = currentTimeIndex >= maxIndex && steps > 0;
-      const maxBackward = currentTimeIndex == 0 && steps < 0;
-      console.log(currentTimeIndex, maxIndex, steps);
-      if (maxForward || maxBackward) {
-        // we reached the last step
-        if (!loop) {
-          stop();
-          animationFinished();
-          return;
-        }
-      }
+  useEffect(() => {
+    const maxIndex = _getMaxIndex();
+    const maxForward = currentTimeIndex >= maxIndex && steps > 0;
+    const maxBackward = currentTimeIndex == 0 && steps < 0;
 
-      play();
-    },
-    [play, stop, loop, _getMaxIndex]
-  );
+    if (maxForward || maxBackward) {
+      // we reached the last step
+      if (!loop) {
+        stop();
+        animationFinished();
+        return;
+      }
+    }
+  }, [stop, loop, _getMaxIndex, currentTimeIndex]);
 
   const start = useCallback(() => {
     if (intervalID.current) return;
@@ -91,10 +86,10 @@ export const usePlayer = ({
     }
 
     setPlay(true);
-    intervalID.current = window.setInterval(_tick, transitionTime);
-    if (!startOver) _tick(currentTimeIndex);
+    intervalID.current = window.setInterval(play, transitionTime);
+    if (!startOver) play();
   }, [
-    currentTimeIndex,
+    play,
     startedOver,
     setCurrentTimeIndex,
     lowerLimitIndex,

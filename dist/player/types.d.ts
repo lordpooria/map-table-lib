@@ -1,7 +1,5 @@
 /// <reference types="react" />
 import { ControlOptions, Map } from "leaflet";
-declare type BufferFunc = (a: number, b: number, c: boolean) => number;
-declare type Buffer = number | BufferFunc;
 interface PlayerOwnProps {
     leafletMap: Map;
     autoPlay?: boolean;
@@ -23,8 +21,7 @@ interface PlayerOwnProps {
     minBufferReady?: number;
     transitionTime?: number;
     loop?: boolean;
-    buffer?: Buffer;
-    loadingTimeout?: number;
+    buffer?: number;
 }
 export declare type PlayerProps = ControlOptions & PlayerOwnProps;
 export interface PlayerCompleteProps extends PlayerOwnProps {

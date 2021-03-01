@@ -1,4 +1,3 @@
-import { createStyles, makeStyles } from "@material-ui/core";
 import { useLocalStore } from "easy-peasy";
 import React, { useEffect } from "react";
 import NextIcon from "../assets/icons/common/NextIcon";
@@ -21,34 +20,7 @@ import { usePlayer } from "./usePlayer";
 import { PlayerCompleteProps } from "./types";
 import { SmallIconButton } from "./styled-component/StyledButton";
 import { useTDStoreActions, useTDStoreState } from "../store/reducerHooks";
-
-const useStyle = makeStyles(() =>
-  createStyles({
-    playerContainer: {
-      padding: 10,
-      backgroundColor: "rgba(255,255,255,0.2)",
-      zIndex: 1000,
-      position: "absolute",
-      bottom: 20,
-      left: 20,
-
-      width: "50vw",
-      minWidth: 300,
-    },
-    controller: {
-      display: "flex",
-      alignItems: "center",
-    },
-    icon: { width: "0.75em", height: "0.75em" },
-    playIcon: {
-      width: "0.75em",
-      height: "0.75em",
-      borderRadius: "0.5em",
-      border: "solid 2px #000",
-    },
-    whiteIcon: { width: "0.75em", height: "0.75em", margin: "0 4px" },
-  })
-);
+import useStyles from "./PlayerControl.styles";
 
 function valuetext(value: number) {
   return `${value}fps`;
@@ -63,10 +35,10 @@ const PlayerControl = ({
   startedOver = false,
   minSpeed = 0.1,
   maxSpeed = 10,
-  // loadingTimeout = 3000,
-}: PlayerCompleteProps) => {
+}: // loadingTimeout = 3000,
+PlayerCompleteProps) => {
   const [state, actions] = useLocalStore(() => playerStoreModel);
-  const classes = useStyle();
+  const classes = useStyles();
   const availableTimes = useTDStoreState((state) => state.availableTimes);
   const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
   const setCurrentTimeIndex = useTDStoreActions(
@@ -74,26 +46,22 @@ const PlayerControl = ({
   );
   const previousTime = useTDStoreActions((actions) => actions.previousTime);
   const nextTime = useTDStoreActions((actions) => actions.nextTime);
-  
+
   // const leafletMap = useMap();
-  
+
   useEffect(() => {
     if (currentTimeIndex >= 0) {
       actions.setTimeSliderValue(currentTimeIndex);
     }
   }, [currentTimeIndex]);
 
-
   useEffect(() => {
     const max = availableTimes.length - 1;
     if (max > 0) actions.setTimeSliderRange({ min: 0, max });
   }, [availableTimes]);
 
-
-
   const setTransitionTime = (transitionTime: number) => {
     actions.setTransitionTime({ bufferSize: buffer, transitionTime });
-
   };
   const { start, stop } = usePlayer({
     // timeDimension,
@@ -107,10 +75,6 @@ const PlayerControl = ({
     startedOver,
     autoPlay,
   });
-
-  // const { startRecording, stopRecording } = useVideoRecorder({
-  //   setRecording: actions.setRecording,
-  // });
 
   useEffect(() => {
     actions.setSpeedSliderRange({
@@ -129,30 +93,9 @@ const PlayerControl = ({
         leafletMap.dragging.enable();
         leafletMap.doubleClickZoom.enable();
       }}
-      style={{
-        position: "absolute",
-        display: "flex",
-        width: "60%",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 16px",
-        zIndex: 1000,
-        bottom: 20,
-        left: 20,
-        borderRadius: "50em",
-        // border: "solid 2px #444",
-        backgroundColor: "rgba(68,68,68,0.3)",
-      }}
+      className={classes.playerRoot}
     >
-      <div
-        style={{
-          display: "flex",
-          flex: 3,
-          minWidth: 100,
-          marginRight: 8,
-          alignItems: "center",
-        }}
-      >
+      <div className={classes.playerSlider}>
         <PlayCircleIcon className={classes.whiteIcon} />
         <PlayerSlider
           style={{}}
@@ -168,14 +111,7 @@ const PlayerControl = ({
           }}
         />
       </div>
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          margin: "0 8px",
-          alignItems: "center",
-        }}
-      >
+      <div className={classes.speedSlider}>
         <GaugeIcon className={classes.whiteIcon} />
         <PlayerSlider
           ThumbComponent={PlayerThumb as any}

@@ -2625,13 +2625,13 @@ var tdStoreModel = {
         }
     }),
     setCurrentTime: thunk$1(function (actions, _a, helper) {
-        var time = _a.time, loadingTimeout = _a.loadingTimeout;
+        var time = _a.time;
         var state = helper.getState();
         var index = seekNearestTimeIndex(time, state.availableTimes);
-        actions.setCurrentTimeIndex({ index: index, loadingTimeout: loadingTimeout });
+        actions.setCurrentTimeIndex({ index: index });
     }),
     setCurrentTimeIndex: thunk$1(function (actions, _a, helper) {
-        var index = _a.index, loadingTimeout = _a.loadingTimeout;
+        var index = _a.index;
         var state = helper.getState();
         var upperLimit = state.upperLimitIndex || state.availableTimes.length - 1;
         var lowerLimit = state.lowerLimitIndex || 0;
@@ -2648,11 +2648,11 @@ var tdStoreModel = {
         }
         else {
             // add timeout of 3 seconds if layers doesn't response
-            setTimeout(actions.setNewTimeIndex, loadingTimeout);
+            setTimeout(actions.setNewTimeIndex, 3000);
         }
     }),
     nextTime: thunk$1(function (actions, _a, helper) {
-        var numSteps = _a.numSteps, loop = _a.loop, loadingTimeout = _a.loadingTimeout;
+        var numSteps = _a.numSteps, loop = _a.loop;
         var state = helper.getState();
         if (!numSteps) {
             numSteps = 1;
@@ -2681,11 +2681,11 @@ var tdStoreModel = {
                 newIndex = lowerLimit;
             }
         }
-        actions.setCurrentTimeIndex({ index: newIndex, loadingTimeout: loadingTimeout });
+        actions.setCurrentTimeIndex({ index: newIndex });
     }),
     previousTime: thunk$1(function (actions, _a) {
-        var numSteps = _a.numSteps, loop = _a.loop, loadingTimeout = _a.loadingTimeout;
-        actions.nextTime({ numSteps: numSteps * -1, loop: loop, loadingTimeout: loadingTimeout });
+        var numSteps = _a.numSteps, loop = _a.loop;
+        actions.nextTime({ numSteps: numSteps * -1, loop: loop });
     }),
     prepareNextTimes: action(function (state, _a) {
         var numSteps = _a.numSteps, howmany = _a.howmany, loop = _a.loop;
@@ -2781,7 +2781,7 @@ var tdStoreModel = {
         state.numberNextTimesReady = ready;
     }),
     prepareAvailableTimes: thunk$1(function (actions, _a, helper) {
-        var _availableTimes = _a._availableTimes, updateCurrentTime = _a.updateCurrentTime, updateTimeDimensionMode = _a.updateTimeDimensionMode, loadingTimeout = _a.loadingTimeout;
+        var _availableTimes = _a._availableTimes, updateCurrentTime = _a.updateCurrentTime, updateTimeDimensionMode = _a.updateTimeDimensionMode;
         var state = helper.getState();
         var _updateCurrentTime = updateCurrentTime || state.availableTimes.length == 0;
         if (_updateCurrentTime || state.availableTimes.length == 0) {
@@ -2792,7 +2792,7 @@ var tdStoreModel = {
             });
         }
         if (_updateCurrentTime && _availableTimes.length) {
-            actions.setCurrentTime({ time: _availableTimes[0], loadingTimeout: loadingTimeout });
+            actions.setCurrentTime({ time: _availableTimes[0] });
         }
     }),
 };
@@ -17250,7 +17250,6 @@ var useLayer = function (data, leafletMapRef, options, _a, _b) {
             _availableTimes: _availableTimes,
             updateCurrentTime: updateCurrentTime,
             updateTimeDimensionMode: updateTimeDimensionMode,
-            loadingTimeout: 3000,
         });
     }
     function _onReadyBaseLayer() {
@@ -32494,200 +32493,76 @@ function ValueLabelComponent(props) {
     return (React.createElement(Tooltip$1, { open: open, enterTouchDelay: 0, placement: "top", title: value }, children));
 }
 
-/*jshint indent: 4, browser:true*/
 var usePlayer = function (_a) {
-    var 
-    // timeDimension,
-    loadingTimeout = _a.loadingTimeout, bufferSize = _a.bufferSize, minBufferReady = _a.minBufferReady, loop = _a.loop, transitionTime = _a.transitionTime, animationFinished = _a.animationFinished, steps = _a.steps, 
-    // startedOver,
-    _b = _a.autoPlay, 
-    // startedOver,
-    autoPlay = _b === void 0 ? true : _b, setPlay = _a.setPlay;
-    var _c = React.useState(false), paused = _c[0], setPaused = _c[1];
-    var _intervalID = React.useRef();
-    var _waitingForBuffer = React.useRef(false);
-    var prepareNextTimes = useTDStoreActions(function (actions) { return actions.prepareNextTimes; });
+    var loop = _a.loop, transitionTime = _a.transitionTime, animationFinished = _a.animationFinished, steps = _a.steps, startedOver = _a.startedOver, _b = _a.autoPlay, autoPlay = _b === void 0 ? false : _b, setPlay = _a.setPlay;
+    var intervalID = React.useRef(undefined);
     var nextTime = useTDStoreActions(function (actions) { return actions.nextTime; });
-    useTDStoreActions(function (actions) { return actions.setCurrentTimeIndex; });
-    var getNumberNextTimesReady = useTDStoreActions(function (actions) { return actions.getNumberNextTimesReady; });
+    var setCurrentTimeIndex = useTDStoreActions(function (actions) { return actions.setCurrentTimeIndex; });
     var availableTimes = useTDStoreState(function (state) { return state.availableTimes; });
     var upperLimitIndex = useTDStoreState(function (state) { return state.upperLimitIndex; });
     var lowerLimitIndex = useTDStoreState(function (state) { return state.lowerLimitIndex; });
     var currentTimeIndex = useTDStoreState(function (state) { return state.currentTimeIndex; });
-    var numberNextTimesReady = useTDStoreState(function (state) { return state.numberNextTimesReady; });
     var play = React.useCallback(function () {
-        pause();
-        nextTime({ numSteps: steps, loop: loop, loadingTimeout: loadingTimeout });
-        if (bufferSize > 0) {
-            prepareNextTimes({ numSteps: steps, howmany: minBufferReady, loop: loop });
-            // timeDimension.prepareNextTimes(steps, bufferSize, loop);
-        }
-    }, [steps, loop, loadingTimeout]);
+        nextTime({ numSteps: steps, loop: loop });
+    }, [steps, loop]);
     React.useEffect(function () {
-        // If the player was waiting, check if all times are loaded
-        if (_waitingForBuffer.current) {
-            if (numberNextTimesReady < bufferSize) {
-                console.log("Waiting until buffer is loaded. " +
-                    numberNextTimesReady +
-                    " of " +
-                    bufferSize +
-                    " loaded");
-                return;
-            }
-            else {
-                // all times loaded
-                console.log("Buffer is fully loaded!");
-                _onPlayerStateChange();
-                _waitingForBuffer.current = false;
-            }
-        }
-        else {
-            // check if player has to stop to wait and force to full all the buffer
-            if (numberNextTimesReady < minBufferReady) {
-                console.log("Force wait for load buffer. " +
-                    numberNextTimesReady +
-                    " of " +
-                    bufferSize +
-                    " loaded");
-                _waitingForBuffer.current = true;
-                return;
-            }
-            play();
-        }
-    }, [numberNextTimesReady, play]);
-    React.useEffect(function () {
-        prepareNextTimes({ numSteps: steps, howmany: minBufferReady, loop: loop });
-    }, [availableTimes, upperLimitIndex, lowerLimitIndex, currentTimeIndex]);
-    React.useEffect(function () {
-        release(); // free clock
-        _waitingForBuffer.current = false; // reset buffer
-    }, [currentTimeIndex]);
-    React.useEffect(function () {
-        // function timeload(data) {
-        //   release(); // free clock
-        //   _waitingForBuffer.current = false; // reset buffer
-        // }
-        // timeDimension.on("timeload", timeload);
-        // timeDimension.on("limitschanged availabletimeschanged timeload", changed);
-        if (autoPlay) {
+        if (intervalID.current) {
+            stop();
             start();
         }
-        return function () {
-            // timeDimension.off("timeload", timeload);
-            // timeDimension.off(
-            //   "limitschanged availabletimeschanged timeload",
-            //   changed
-            // );
-        };
-    }, [autoPlay]);
-    React.useEffect(function () {
-        if (_intervalID.current) {
-            stop();
-        }
-        _onPlayerStateChange();
     }, [transitionTime]);
-    function _onPlayerStateChange() {
-        // if (this._buttonPlayPause) {
-        if (isPlaying() && steps > 0) ;
-        if (isWaiting() && steps > 0) ;
-        // }
-        // if (this._buttonPlayReversePause) {
-        if (isPlaying() && steps < 0) ;
-        if (isWaiting() && steps < 0) ;
-        // }
-        // if (this._sliderSpeed && !this._draggingSpeed) {
-        //   var speed = getTransitionTime() || 1000; //transitionTime
-        //   speed = Math.round(10000 / speed) / 10; // 1s / transition
-        //   this._sliderSpeed.setValue(speed);
-        // }
-    }
-    function _tick() {
+    var stop = React.useCallback(function () {
+        if (!intervalID.current)
+            return;
+        clearInterval(intervalID.current);
+        setPlay(false);
+        intervalID.current = undefined;
+    }, [setPlay]);
+    var _getMaxIndex = React.useCallback(function () {
+        return Math.min(availableTimes.length - 1, upperLimitIndex || Infinity);
+    }, [availableTimes, upperLimitIndex]);
+    React.useEffect(function () {
         var maxIndex = _getMaxIndex();
         var maxForward = currentTimeIndex >= maxIndex && steps > 0;
         var maxBackward = currentTimeIndex == 0 && steps < 0;
         if (maxForward || maxBackward) {
             // we reached the last step
             if (!loop) {
-                pause();
                 stop();
-                // fire("animationfinished");
                 animationFinished();
                 return;
             }
         }
-        if (paused) {
+    }, [stop, loop, _getMaxIndex, currentTimeIndex]);
+    var start = React.useCallback(function () {
+        if (intervalID.current)
             return;
+        var startOver = false;
+        if (startedOver) {
+            if (currentTimeIndex === _getMaxIndex()) {
+                setCurrentTimeIndex({ index: lowerLimitIndex || 0 });
+                startOver = true;
+            }
         }
-        // var numberNextTimesReady = 0;
-        // buffer = _bufferSize.current;
-        if (minBufferReady > 0) {
-            getNumberNextTimesReady({ numSteps: steps, loop: loop, howmany: bufferSize });
-            return;
-        }
-        play();
-    }
-    function _getMaxIndex() {
-        return Math.min(availableTimes.length - 1, upperLimitIndex || Infinity);
-    }
-    function start() {
-        if (_intervalID.current)
-            return;
-        // setSteps(numSteps || 1);
-        _waitingForBuffer.current = false;
-        release();
         setPlay(true);
-        _intervalID.current = window.setInterval(_tick, transitionTime);
-        _tick();
-        _onPlayerStateChange();
-    }
-    function stop() {
-        if (!_intervalID.current)
-            return;
-        clearInterval(_intervalID.current);
-        setPlay(false);
-        _intervalID.current = undefined;
-        _waitingForBuffer.current = false;
-        _onPlayerStateChange();
-    }
-    //control
-    function pause() {
-        setPaused(true);
-    }
-    //control
-    function release() {
-        setPaused(false);
-    }
-    //control
-    // function getTransitionTime() {
-    //   return this._transitionTime;
-    // }
-    //control
-    function isPlaying() {
-        return _intervalID.current ? true : false;
-    }
-    //control
-    function isWaiting() {
-        return _waitingForBuffer.current;
-    }
-    //control
-    // function isLooped() {
-    //   return loop;
-    // }
-    //control
-    // function setLooped(looped) {
-    //   // this._loop = looped;
-    //   _onPlayerStateChange();
-    // }
-    //control
-    //control
-    // function getSteps() {
-    //   return steps;
-    // }
-    return { start: start, pause: pause, isPlaying: isPlaying, stop: stop };
+        intervalID.current = window.setInterval(play, transitionTime);
+        if (!startOver)
+            play();
+    }, [
+        play,
+        startedOver,
+        setCurrentTimeIndex,
+        lowerLimitIndex,
+        setPlay,
+        transitionTime,
+    ]);
+    React.useEffect(function () {
+        if (autoPlay) {
+            start();
+        }
+    }, [autoPlay, availableTimes]);
+    return { start: start, stop: stop };
 };
-// L.TimeDimension.Player = (L.Layer || L.Class).extend({
-//   includes: L.Evented || L.Mixin.Events,
-// });
 
 var SmallIconButton = withStyles$1(function () { return ({
     root: {
@@ -32725,66 +32600,32 @@ function valuetext(value) {
     return value + "fps";
 }
 var PlayerControl = function (_a) {
-    var leafletMap = _a.leafletMap, _b = _a.buffer, buffer = _b === void 0 ? 5 : _b, _c = _a.loop, loop = _c === void 0 ? false : _c, minBufferReady = _a.minBufferReady, _d = _a.timeSteps, timeSteps = _d === void 0 ? 1 : _d, _e = _a.autoPlay, autoPlay = _e === void 0 ? false : _e, _f = _a.startedOver, startedOver = _f === void 0 ? false : _f, _g = _a.minSpeed, minSpeed = _g === void 0 ? 0.1 : _g, _h = _a.maxSpeed, maxSpeed = _h === void 0 ? 10 : _h, _j = _a.loadingTimeout, loadingTimeout = _j === void 0 ? 3000 : _j;
-    var _k = useLocalStore(function () { return playerStoreModel; }), state = _k[0], actions = _k[1];
+    var leafletMap = _a.leafletMap, _b = _a.buffer, buffer = _b === void 0 ? 5 : _b, _c = _a.loop, loop = _c === void 0 ? false : _c, _d = _a.timeSteps, timeSteps = _d === void 0 ? 1 : _d, _e = _a.autoPlay, autoPlay = _e === void 0 ? false : _e, _f = _a.startedOver, startedOver = _f === void 0 ? false : _f, _g = _a.minSpeed, minSpeed = _g === void 0 ? 0.1 : _g, _h = _a.maxSpeed, maxSpeed = _h === void 0 ? 10 : _h;
+    var _j = useLocalStore(function () { return playerStoreModel; }), state = _j[0], actions = _j[1];
     var classes = useStyle();
     var availableTimes = useTDStoreState(function (state) { return state.availableTimes; });
     var currentTimeIndex = useTDStoreState(function (state) { return state.currentTimeIndex; });
     var setCurrentTimeIndex = useTDStoreActions(function (actions) { return actions.setCurrentTimeIndex; });
     var previousTime = useTDStoreActions(function (actions) { return actions.previousTime; });
     var nextTime = useTDStoreActions(function (actions) { return actions.nextTime; });
-    // const [sliderVal, setSliderVal] = useState(0);
     // const leafletMap = useMap();
-    // const timeDimension = leafletMap.timeDimension;
     React.useEffect(function () {
         if (currentTimeIndex >= 0) {
             actions.setTimeSliderValue(currentTimeIndex);
         }
     }, [currentTimeIndex]);
-    // const update = useCallback(() => {
-    //   if (!timeDimension) {
-    //     return;
-    //   }
-    //   if (timeDimension.getCurrentTimeIndex() >= 0) {
-    //     // const date = new Date(timeDimension.getCurrentTime());
-    //     // setDisplayDate(getDisplayDateFormat(date, timeZone));
-    //     actions.setTimeSliderValue(timeDimension.getCurrentTimeIndex());
-    //   } else {
-    //     // setDisplayDate(getDisplayNoTimeError());
-    //   }
-    // }, [timeDimension]);
-    // const onTimeLoading = useCallback((data) => {
-    //   // console.log("poorialogplayer", data);
-    // }, []);
     React.useEffect(function () {
         var max = availableTimes.length - 1;
         if (max > 0)
             actions.setTimeSliderRange({ min: 0, max: max });
     }, [availableTimes]);
-    // const onTimeLimitsChanged = useCallback(() => {}, [timeDimension]);
     var setTransitionTime = function (transitionTime) {
-        var bufferSize;
-        if (typeof buffer === "function") {
-            bufferSize = buffer(transitionTime, minBufferReady, loop);
-        }
-        else {
-            bufferSize = buffer;
-        }
-        actions.setTransitionTime({ bufferSize: bufferSize, transitionTime: transitionTime });
-        // if (this._intervalID) {
-        //   this.stop();
-        //   //   this.start(_steps);
-        // }
-        // _onPlayerStateChange();
-        // this.fire("speedchange", {
-        //   transitionTime: transitionTime,
-        //   buffer: _bufferSize.current,
-        // });
+        actions.setTransitionTime({ bufferSize: buffer, transitionTime: transitionTime });
     };
-    var _l = usePlayer({
+    var _k = usePlayer({
         // timeDimension,
         bufferSize: state.bufferSize,
-        minBufferReady: minBufferReady,
+        // minBufferReady ,
         loop: loop,
         transitionTime: state.transitionTime,
         animationFinished: actions.animationFinished,
@@ -32792,19 +32633,13 @@ var PlayerControl = function (_a) {
         steps: timeSteps,
         startedOver: startedOver,
         autoPlay: autoPlay,
-        loadingTimeout: loadingTimeout,
-    }), start = _l.start, stop = _l.stop;
-    // const { startRecording, stopRecording } = useVideoRecorder({
-    //   setRecording: actions.setRecording,
-    // });
+    }), start = _k.start, stop = _k.stop;
     React.useEffect(function () {
-        // const speedSlider = Math.round(10000 / state.transitionTime) / 10;
         actions.setSpeedSliderRange({
             min: minSpeed,
             max: maxSpeed,
         });
     }, [minSpeed, maxSpeed]);
-    // const [_, setRef] = useStopPropagation();
     return (React__default['default'].createElement("div", { onMouseEnter: function () {
             leafletMap.dragging.disable();
             leafletMap.doubleClickZoom.disable();
@@ -32833,22 +32668,8 @@ var PlayerControl = function (_a) {
                 alignItems: "center",
             } },
             React__default['default'].createElement(PlayCircleIcon, { className: classes.whiteIcon }),
-            React__default['default'].createElement(PlayerSlider, { style: {}, 
-                // onMouseOver={(event) => {
-                //   const index = Number(event.currentTarget.getAttribute("data-index"));
-                //   setOpen(index);
-                // }}
-                valueLabelDisplay: "auto", ThumbComponent: PlayerThumb, ValueLabelComponent: ValueLabelComponent, value: state.timeSlider, 
-                // getAriaValueText={valuetext}
-                // aria-labelledby="discrete-slider"
-                // valueLabelDisplay="auto"
-                step: timeSteps, 
-                // marks
-                min: state.timeSliderRange.min, max: state.timeSliderRange.max, onChange: function (_, index) {
-                    // var value = e.target.getValue();
-                    setCurrentTimeIndex({ index: index, loadingTimeout: loadingTimeout });
-                    // this._sliderTimeValueChanged(value);
-                    // this._slidingTimeSlider = false;
+            React__default['default'].createElement(PlayerSlider, { style: {}, valueLabelDisplay: "auto", ThumbComponent: PlayerThumb, ValueLabelComponent: ValueLabelComponent, value: state.timeSlider, step: timeSteps, min: state.timeSliderRange.min, max: state.timeSliderRange.max, onChange: function (_, index) {
+                    setCurrentTimeIndex({ index: index });
                 } })),
         React__default['default'].createElement("div", { style: {
                 display: "flex",
@@ -32857,19 +32678,11 @@ var PlayerControl = function (_a) {
                 alignItems: "center",
             } },
             React__default['default'].createElement(GaugeIcon, { className: classes.whiteIcon }),
-            React__default['default'].createElement(PlayerSlider, { ThumbComponent: PlayerThumb, ValueLabelComponent: ValueLabelComponent, style: {}, valueLabelDisplay: "auto", value: state.speedSlider, valueLabelFormat: valuetext, 
-                // aria-labelledby="discrete-slider"
-                // valueLabelDisplay="auto"
-                step: timeSteps, 
-                // marks
-                min: state.speedSliderRange.min, max: state.speedSliderRange.max, onChange: function (_, v) {
-                    // var value = e.target.getValue();
+            React__default['default'].createElement(PlayerSlider, { ThumbComponent: PlayerThumb, ValueLabelComponent: ValueLabelComponent, style: {}, valueLabelDisplay: "auto", value: state.speedSlider, valueLabelFormat: valuetext, step: timeSteps, min: state.speedSliderRange.min, max: state.speedSliderRange.max, onChange: function (_, v) {
                     setTransitionTime(1000 / +v);
-                    // this._sliderTimeValueChanged(value);
-                    // this._slidingTimeSlider = false;
                 } })),
         React__default['default'].createElement(SmallIconButton, { onClick: function () {
-                previousTime({ numSteps: timeSteps, loadingTimeout: loadingTimeout, loop: loop });
+                previousTime({ numSteps: timeSteps, loop: loop });
             } },
             React__default['default'].createElement(PreviousIcon, { className: classes.icon })),
         React__default['default'].createElement(SmallIconButton, { onClick: function () {
@@ -32881,7 +32694,7 @@ var PlayerControl = function (_a) {
                 }
             } }, state.isPlaying ? (React__default['default'].createElement(PauseIcon, { className: classes.icon })) : (React__default['default'].createElement(PlayIcon, { className: classes.icon }))),
         React__default['default'].createElement(SmallIconButton, { onClick: function () {
-                nextTime({ numSteps: timeSteps, loadingTimeout: loadingTimeout, loop: loop });
+                nextTime({ numSteps: timeSteps, loop: loop });
             } },
             React__default['default'].createElement(NextIcon, { className: classes.icon }))));
 };
@@ -46479,10 +46292,46 @@ Clock.displayName = 'Clock';
 
 // exports.default = Clock;
 
+// import { TimeZone } from "../types";
+var useStyles = makeStyles$1(function () {
+    return createStyles$1({
+        root: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            position: "absolute",
+            zIndex: 1000,
+            top: 20,
+            right: 20,
+        },
+        clockWrapper: {
+            position: "relative",
+        },
+        amPm: {
+            fontSize: 12,
+            fontWeight: 800,
+            padding: 4,
+            // backgroundColor: "#555",
+            color: "#555",
+            position: "absolute",
+            bottom: 10,
+            left: "50%",
+            transform: "translate(-50%)",
+        },
+        dateWrapper: {
+            backgroundColor: "rgba(68,68,68,0.3)",
+            marginTop: 8,
+            padding: "0 4px",
+            borderRadius: "99em",
+        },
+    });
+});
 var TimerComponent = function (_a) {
-    var _b = useLocalStore(function () { return timerStoreModel; }), state = _b[0], actions = _b[1];
+    var _b = _a.am, am = _b === void 0 ? "AM" : _b, _c = _a.pm, pm = _c === void 0 ? "PM" : _c;
+    var _d = useLocalStore(function () { return timerStoreModel; }), state = _d[0], actions = _d[1];
     usePerisan();
     var currentTime = useTDStoreState(function (state) { return state.currentTime; });
+    var classes = useStyles();
     React.useEffect(function () {
         update(currentTime);
     }, [currentTime]);
@@ -46506,29 +46355,11 @@ var TimerComponent = function (_a) {
             });
         }
     }, []);
-    return (React__default['default'].createElement("div", { style: {
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "absolute",
-            zIndex: 1000,
-            top: 20,
-            right: 20,
-        } },
-        React__default['default'].createElement("div", { style: { position: "relative" } },
+    return (React__default['default'].createElement("div", { className: classes.root },
+        React__default['default'].createElement("div", { className: classes.clockWrapper },
             React__default['default'].createElement(Clock, { value: state.displayTime, size: 80 }),
-            React__default['default'].createElement(Typography$1, { style: {
-                    fontSize: 12,
-                    fontWeight: 800,
-                    padding: 4,
-                    // backgroundColor: "#555",
-                    color: "#555",
-                    position: "absolute",
-                    bottom: 10,
-                    left: "50%",
-                    transform: "translate(-50%)",
-                } }, state.isAM ? "AM" : "PM")),
-        React__default['default'].createElement("div", { style: { backgroundColor: "rgba(68,68,68,0.3)" } }, state.displayDate)));
+            React__default['default'].createElement(Typography$1, { className: classes.amPm }, state.isAM ? am : pm)),
+        React__default['default'].createElement("div", { className: classes.dateWrapper }, state.displayDate)));
 };
 
 var LegendComponent = function (_a) {
@@ -46582,6 +46413,7 @@ var HesabaTimeDimensionView = function (_a) {
         duration: "PT2M",
         addlastPoint: true,
     }, {});
+    console.log("hurray");
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement(PlayerControl, { leafletMap: map }),
         React__default['default'].createElement(TimerComponent, null),

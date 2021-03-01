@@ -26,7 +26,7 @@ interface PlayerOwnProps {
   transitionTime?: number;
   loop?: boolean;
   buffer?: number;
-  loadingTimeout?: number;
+  // loadingTimeout?: number;
 }
 
 export type PlayerProps = ControlOptions & PlayerOwnProps;

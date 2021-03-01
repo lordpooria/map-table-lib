@@ -1,43 +1,33 @@
 import React from "react";
 import TDProvider from "./Provider";
 import { GeoJsonObject } from "geojson";
-import { TileLayer, MapContainer } from "react-leaflet";
-// import { Map } from "leaflet";
+import { TileLayer, MapContainer, MapContainerProps } from "react-leaflet";
+import { ThemeProvider } from "react-jss";
+import theme from "../styles/theme";
+
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
-const defaultPosition = {
-  lat: 40.72332345541449,
-  lng: -73.99,
-  zoom: 15,
-};
+import useStyles from "./HesabaTimeDimension.styles";
+
 interface Props {
   data: GeoJsonObject;
-  // map: Map;
-  // addLayer: any;
-  // removeLayer: any;
+  MapProps: MapContainerProps & {
+    classes?: { root?: string };
+  };
 }
 
-const HesabaTimeDimension = ({ data }: Props) => {
-  
- 
+const HesabaTimeDimension = ({ data, MapProps }: Props) => {
+  const classes = useStyles();
   return (
     <TDProvider>
-      <MapContainer
-        center={[36.72, -4.43]}
-        zoom={defaultPosition.zoom}
-        zoomControl={false}
-        style={{
-          width: "95vw",
-          height: "95vh",
-          border: " 1px solid black",
-          position: "relative",
-        }}
-      >
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <HesabaTimeDimensionView data={data} />
-      </MapContainer>
+      <ThemeProvider theme={theme}>
+        <MapContainer className={classes.mapRoot} {...MapProps}>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <HesabaTimeDimensionView data={data} />
+        </MapContainer>
+      </ThemeProvider>
     </TDProvider>
   );
 };

@@ -117,7 +117,7 @@ export const useLayer = (
       _availableTimes,
       updateCurrentTime,
       updateTimeDimensionMode,
-      loadingTimeout: 3000,
+      // loadingTimeout: 3000,
       // updateTimeDimension,
     });
   }

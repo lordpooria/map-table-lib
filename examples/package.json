@@ -8,11 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "hesaba-timedimension": "file:..",
     "leaflet": "~0.7.4 || ~1",
-    "next": "10.0.7",
+    "next": "^10.0.7",
     "react-dom": "17.0.1",
-    "react-leaflet": "^3.1.0"
+    "react-leaflet": "^3.1.0",
+    "hesaba-timedimension": "file:.."
   },
   "devDependencies": {
     "typescript": "^4.2.2"

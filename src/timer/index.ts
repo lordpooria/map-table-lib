@@ -1,1 +1,1 @@
-export { default as TimeComponent } from "./TimerComponent";
+export { default as TimeComponent } from "./TimeComponent";

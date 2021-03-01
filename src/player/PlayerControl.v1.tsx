@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useLocalStore } from "easy-peasy";
 import React, { useEffect } from "react";
 import NextIcon from "../assets/icons/common/NextIcon";
@@ -18,27 +18,7 @@ import { usePlayer } from "./usePlayer";
 import { PlayerCompleteProps } from "./types";
 import { SmallIconButton } from "./styled-component/StyledButton";
 import { useTDStoreActions, useTDStoreState } from "../store/reducerHooks";
-
-const useStyle = makeStyles(() =>
-  createStyles({
-    playerContainer: {
-      padding: 10,
-      backgroundColor: "rgba(255,255,255,0.2)",
-      zIndex: 1000,
-      position: "absolute",
-      bottom: 20,
-      left: 20,
-
-      width: "50vw",
-      minWidth: 300,
-    },
-    controller: {
-      display: "flex",
-      alignItems: "center",
-    },
-    icon: { width: "0.75em", height: "0.75em" },
-  })
-);
+import useStyles from "./PlayerControl.styles";
 
 function valuetext(value: number) {
   return `${value}fps`;
@@ -56,7 +36,7 @@ const PlayerControl = ({
 }: // loadingTimeout = 3000,
 PlayerCompleteProps) => {
   const [state, actions] = useLocalStore(() => playerStoreModel);
-  const classes = useStyle();
+  const classes = useStyles();
   const availableTimes = useTDStoreState((state) => state.availableTimes);
   const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
   const setCurrentTimeIndex = useTDStoreActions(

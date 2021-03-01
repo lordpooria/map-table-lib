@@ -2,26 +2,30 @@ import React, { useCallback, useEffect } from "react";
 import { getDisplayNoTimeError } from "../utils/utils";
 import { useLocalStore } from "easy-peasy";
 import moment from "moment-jalaali";
-import { timerStoreModel } from "./timerReducer";
+import { timerStoreModel } from "./timeReducer";
 import {
   formatPersianDateComplete,
   usePerisan,
   findIsAM,
 } from "./dateFormatter";
 import Clock from "react-clock";
-// import "react-clock/dist/Clock.css"
+
 import { Typography } from "@material-ui/core";
 import { useTDStoreState } from "../store/reducerHooks";
+import useStyles from './TimeComponent.styles'
 // import { TimeZone } from "../types";
 
 interface Props {
   // timeZone: TimeZone;
+  am?: string;
+  pm?: string;
 }
 
-const TimerComponent = ({}: /*timeZone*/ Props) => {
+const TimerComponent = ({ am = "AM", pm = "PM" }: /*timeZone*/ Props) => {
   const [state, actions] = useLocalStore(() => timerStoreModel);
   usePerisan();
   const currentTime = useTDStoreState((state) => state.currentTime);
+  const classes = useStyles();
 
   useEffect(() => {
     update(currentTime);
@@ -48,40 +52,12 @@ const TimerComponent = ({}: /*timeZone*/ Props) => {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        position: "absolute",
-        zIndex: 1000,
-        top: 20,
-        right: 20,
-      }}
-    >
-      <div style={{ position: "relative" }}>
-        <Clock value={state.displayTime} size={80}  />
-        <Typography
-          style={{
-            fontSize: 12,
-            fontWeight: 800,
-            padding: 4,
-            // backgroundColor: "#555",
-            color: "#555",
-            position: "absolute",
-            bottom: 10,
-            left: "50%",
-            transform: "translate(-50%)",
-
-            // boxShadow: state.isAM ? "#888 0 2px 3px 1px" : "",
-          }}
-        >
-          {state.isAM ? "AM" : "PM"}
-        </Typography>
+    <div className={classes.root}>
+      <div className={classes.clockWrapper}>
+        <Clock value={state.displayTime} size={80} />
+        <Typography className={classes.amPm}>{state.isAM ? am : pm}</Typography>
       </div>
-      <div style={{ backgroundColor: "rgba(68,68,68,0.3)" }}>
-        {state.displayDate}
-      </div>
+      <div className={classes.dateWrapper}>{state.displayDate}</div>
     </div>
   );
 };
