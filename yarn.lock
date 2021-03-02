@@ -3863,11 +3863,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-clock@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-clock/-/react-clock-3.0.0.tgz#43226ae01da98788f7a30a435b7522aba76eaade"
-  integrity sha512-I6zNSVOmzwcofYgBEtjLZq7T8RFD1QGJg3YPeqDrDUPxmuVTwOzBXU5DaeUN1SgNjQ7uUMeyUqTH/2lnxIkS2Q==
-
 "@types/react-color@^3.0.1":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-color/-/react-color-3.0.4.tgz#c63daf012ad067ac0127bdd86725f079d02082bd"

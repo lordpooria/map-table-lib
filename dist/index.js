@@ -4,33 +4,97 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
 var _objectSpread = require('@babel/runtime/helpers/objectSpread2');
-var _extends$3 = require('@babel/runtime/helpers/esm/extends');
-var _defineProperty$2 = require('@babel/runtime/helpers/esm/defineProperty');
+var _extends$4 = require('@babel/runtime/helpers/esm/extends');
+var _inheritsLoose$2 = require('@babel/runtime/helpers/esm/inheritsLoose');
+var _objectWithoutPropertiesLoose = require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose');
+var _createClass = require('@babel/runtime/helpers/esm/createClass');
+var _assertThisInitialized$2 = require('@babel/runtime/helpers/esm/assertThisInitialized');
+var _toConsumableArray = require('@babel/runtime/helpers/esm/toConsumableArray');
+var _defineProperty$3 = require('@babel/runtime/helpers/esm/defineProperty');
 var _objectWithoutProperties = require('@babel/runtime/helpers/esm/objectWithoutProperties');
 var _typeof$2 = require('@babel/runtime/helpers/esm/typeof');
 var _slicedToArray = require('@babel/runtime/helpers/esm/slicedToArray');
-var _createClass = require('@babel/runtime/helpers/esm/createClass');
-var _inheritsLoose$1 = require('@babel/runtime/helpers/esm/inheritsLoose');
-var _assertThisInitialized$1 = require('@babel/runtime/helpers/esm/assertThisInitialized');
-var _objectWithoutPropertiesLoose = require('@babel/runtime/helpers/esm/objectWithoutPropertiesLoose');
-var _toConsumableArray = require('@babel/runtime/helpers/esm/toConsumableArray');
 var ReactDOM = require('react-dom');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var _objectSpread__default = /*#__PURE__*/_interopDefaultLegacy(_objectSpread);
-var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends$3);
-var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty$2);
+var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends$4);
+var _inheritsLoose__default = /*#__PURE__*/_interopDefaultLegacy(_inheritsLoose$2);
+var _objectWithoutPropertiesLoose__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);
+var _createClass__default = /*#__PURE__*/_interopDefaultLegacy(_createClass);
+var _assertThisInitialized__default = /*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$2);
+var _toConsumableArray__default = /*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);
+var _defineProperty__default = /*#__PURE__*/_interopDefaultLegacy(_defineProperty$3);
 var _objectWithoutProperties__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutProperties);
 var _typeof__default = /*#__PURE__*/_interopDefaultLegacy(_typeof$2);
 var _slicedToArray__default = /*#__PURE__*/_interopDefaultLegacy(_slicedToArray);
-var _createClass__default = /*#__PURE__*/_interopDefaultLegacy(_createClass);
-var _inheritsLoose__default = /*#__PURE__*/_interopDefaultLegacy(_inheritsLoose$1);
-var _assertThisInitialized__default = /*#__PURE__*/_interopDefaultLegacy(_assertThisInitialized$1);
-var _objectWithoutPropertiesLoose__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);
-var _toConsumableArray__default = /*#__PURE__*/_interopDefaultLegacy(_toConsumableArray);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
 
 function symbolObservablePonyfill(root) {
 	var result;
@@ -2115,70 +2179,6 @@ function useLocalStore(modelCreator, dependencies, configCreator) {
   return [currentState, store.getActions(), store];
 }
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function createCommonjsModule(fn) {
@@ -2800,15 +2800,14 @@ var tdStoreModel = {
 var store = createStore$1(tdStoreModel);
 
 var Wrapper = function (_a) {
-    var _b;
+    // const easyPeasyStore = useStore<TDStoreModel>();
+    // const isWrapepdWithReactFlowProvider = easyPeasyStore?.getState()?.tdVersion;
     var children = _a.children;
-    var easyPeasyStore = useStore();
-    var isWrapepdWithReactFlowProvider = (_b = easyPeasyStore === null || easyPeasyStore === void 0 ? void 0 : easyPeasyStore.getState()) === null || _b === void 0 ? void 0 : _b.tdVersion;
-    if (isWrapepdWithReactFlowProvider) {
-        // we need to wrap it with a fragment because t's not allowed for children to be a ReactNode
-        // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18051
-        return React__default['default'].createElement(React__default['default'].Fragment, null, children);
-    }
+    // if (isWrapepdWithReactFlowProvider) {
+    //   // we need to wrap it with a fragment because t's not allowed for children to be a ReactNode
+    //   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18051
+    //   return <>{children}</>;
+    // }
     return React__default['default'].createElement(StoreProvider, { store: store }, children);
 };
 Wrapper.displayName = "TDProvider";
@@ -17081,382 +17080,6 @@ const TileLayer = createTileLayerComponent(function createTileLayer({
   };
 }, updateGridLayer);
 
-function _getFeatureTimes(feature) {
-    if (!feature.featureTimes) {
-        if (!feature.properties) {
-            feature.featureTimes = [];
-        }
-        else if (feature.properties.hasOwnProperty("coordTimes")) {
-            feature.featureTimes = feature.properties.coordTimes;
-        }
-        else if (feature.properties.hasOwnProperty("times")) {
-            feature.featureTimes = feature.properties.times;
-        }
-        else if (feature.properties.hasOwnProperty("linestringTimestamps")) {
-            feature.featureTimes = feature.properties.linestringTimestamps;
-        }
-        else if (feature.properties.hasOwnProperty("time")) {
-            feature.featureTimes = [feature.properties.time];
-        }
-        else {
-            feature.featureTimes = [];
-        }
-        if (!feature.featureTimes)
-            return [];
-        // String dates to ms
-        for (var i = 0, l = feature.featureTimes.length; i < l; i++) {
-            var time = feature.featureTimes[i];
-            if (typeof time === "string") {
-                time = Date.parse(time.trim());
-                feature.featureTimes[i] = time;
-            }
-        }
-    }
-    return feature.featureTimes;
-}
-function _getFeatureBetweenDates(feature, minTime, maxTime) {
-    var featureTimes = _getFeatureTimes(feature);
-    if (featureTimes.length == 0) {
-        return feature;
-    }
-    var index_min = null, index_max = null, l = featureTimes.length;
-    if (featureTimes[0] > maxTime || featureTimes[l - 1] < minTime) {
-        return null;
-    }
-    if (featureTimes[l - 1] > minTime) {
-        for (var i = 0; i < l; i++) {
-            if (index_min === null && featureTimes[i] > minTime) {
-                // set index_min the first time that current time is greater the minTime
-                index_min = i;
-            }
-            if (featureTimes[i] > maxTime) {
-                index_max = i;
-                break;
-            }
-        }
-    }
-    if (index_min === null) {
-        index_min = 0;
-    }
-    if (index_max === null) {
-        index_max = l;
-    }
-    var new_coordinates = [];
-    if (feature.geometry.geometries) ;
-    else {
-        if (typeof feature.geometry.coordinates[0] === "number") {
-            new_coordinates = feature.geometry.coordinates;
-        }
-        else {
-            new_coordinates = feature.geometry.coordinates.slice(index_min, index_max);
-        }
-    }
-    return {
-        type: "Feature",
-        properties: feature.properties,
-        geometry: {
-            type: feature.geometry.type,
-            coordinates: new_coordinates,
-        },
-    };
-}
-
-var typedHooks = createTypedHooks();
-var useTDStoreActions = typedHooks.useStoreActions;
-var useTDStoreDispatch = typedHooks.useStoreDispatch;
-var useTDStoreState = typedHooks.useStoreState;
-var useTDStore = typedHooks.useStore;
-
-/*
- * L.TimeDimension.Layer.GeoJson:
- */
-var useLayer = function (data, leafletMapRef, options, _a, _b) {
-    var 
-    // updateTimeDimension = false,
-    _c = _a.updateTimeDimensionMode, 
-    // updateTimeDimension = false,
-    updateTimeDimensionMode = _c === void 0 ? "extremes" : _c, _d = _a.addlastPoint, addlastPoint = _d === void 0 ? false : _d, _e = _a.waitForReady, waitForReady = _e === void 0 ? false : _e, _f = _a.updateCurrentTime, updateCurrentTime = _f === void 0 ? false : _f, duration = _a.duration;
-    var _g = _b.getFeatureBetweenDates, getFeatureBetweenDates = _g === void 0 ? _getFeatureBetweenDates : _g;
-    // const leafletMapRef = useMap();
-    var currentTime = useTDStoreState(function (state) { return state.currentTime; });
-    var prepareAvailableTimes = useTDStoreActions(function (actions) { return actions.prepareAvailableTimes; });
-    var _loaded = React.useRef(false);
-    var _currentLayer = React.useRef();
-    var layer = React.useRef();
-    function _update(currentTimeIndex) {
-        if (!layer.current)
-            return;
-        if (!_loaded) {
-            return;
-        }
-        var maxTime = currentTimeIndex, minTime = 0;
-        if (duration) {
-            var date = new Date(maxTime);
-            subtractTimeDuration(date, duration, true);
-            minTime = date.getTime();
-        }
-        // new coordinates:
-        var _layer = leafletSrc.geoJSON(undefined, options);
-        var layers = layer.current.getLayers();
-        layers.forEach(function (lay) {
-            var feature = getFeatureBetweenDates(lay.feature, minTime, maxTime);
-            if (feature) {
-                _layer.addData(feature);
-                if (addlastPoint && feature.geometry.type == "LineString") {
-                    if (feature.geometry.coordinates.length > 0) {
-                        var properties = feature.properties;
-                        if (!properties)
-                            return;
-                        properties.last = true;
-                        _layer.addData({
-                            type: "Feature",
-                            properties: properties,
-                            geometry: {
-                                type: "Point",
-                                coordinates: feature.geometry.coordinates[feature.geometry.coordinates.length - 1],
-                            },
-                        });
-                    }
-                }
-            }
-            if (_currentLayer.current) {
-                // removeLayer(_currentLayer.current);
-                leafletMapRef.removeLayer(_currentLayer.current);
-            }
-            if (_layer.getLayers().length) {
-                // addLayer(_layer);
-                _layer.addTo(leafletMapRef);
-                _currentLayer.current = _layer;
-            }
-        });
-    }
-    function _setAvailableTimes() {
-        var times = [];
-        if (!layer.current)
-            return;
-        var _layers = layer.current.getLayers();
-        console.warn(_layers);
-        _layers.forEach(function (lay) {
-            if (lay.feature) {
-                var featureTimes = _getFeatureTimes(lay.feature);
-                for (var j = 0, m = featureTimes.length; j < m; j++) {
-                    times.push(featureTimes[j]);
-                }
-            }
-        });
-        // for (let i = 0, l = _layers.length; i < l; i++) {}
-        var _availableTimes = sort_and_deduplicate(times);
-        prepareAvailableTimes({
-            _availableTimes: _availableTimes,
-            updateCurrentTime: updateCurrentTime,
-            updateTimeDimensionMode: updateTimeDimensionMode,
-        });
-    }
-    function _onReadyBaseLayer() {
-        _loaded.current = true;
-        _setAvailableTimes();
-        // _update();
-    }
-    // function eachLayer(method, context) {
-    //   if (_currentLayer) {
-    //     method.call(context, _currentLayer);
-    //   }
-    //   return method.call(method, context);
-    // }
-    React.useEffect(function () {
-        // console.log(layer);
-        if (!data)
-            return;
-        layer.current = leafletSrc.geoJSON(data, options);
-        _setAvailableTimes();
-        if (layer.current) {
-            if (waitForReady) {
-                layer.current.on("ready", _onReadyBaseLayer);
-            }
-            else {
-                _loaded.current = true;
-            }
-        }
-        else {
-            _loaded.current = true;
-            _setAvailableTimes();
-        }
-        // reload available times if data is added to the base layer
-        layer.current.on("layeradd", function () {
-            if (_loaded.current) {
-                _setAvailableTimes();
-            }
-        });
-    }, [data]);
-    React.useEffect(function () {
-        _update(currentTime);
-    }, [currentTime]);
-    return {};
-};
-
-var common = {
-  black: '#000',
-  white: '#fff'
-};
-
-var red = {
-  50: '#ffebee',
-  100: '#ffcdd2',
-  200: '#ef9a9a',
-  300: '#e57373',
-  400: '#ef5350',
-  500: '#f44336',
-  600: '#e53935',
-  700: '#d32f2f',
-  800: '#c62828',
-  900: '#b71c1c',
-  A100: '#ff8a80',
-  A200: '#ff5252',
-  A400: '#ff1744',
-  A700: '#d50000'
-};
-
-var pink = {
-  50: '#fce4ec',
-  100: '#f8bbd0',
-  200: '#f48fb1',
-  300: '#f06292',
-  400: '#ec407a',
-  500: '#e91e63',
-  600: '#d81b60',
-  700: '#c2185b',
-  800: '#ad1457',
-  900: '#880e4f',
-  A100: '#ff80ab',
-  A200: '#ff4081',
-  A400: '#f50057',
-  A700: '#c51162'
-};
-
-var indigo = {
-  50: '#e8eaf6',
-  100: '#c5cae9',
-  200: '#9fa8da',
-  300: '#7986cb',
-  400: '#5c6bc0',
-  500: '#3f51b5',
-  600: '#3949ab',
-  700: '#303f9f',
-  800: '#283593',
-  900: '#1a237e',
-  A100: '#8c9eff',
-  A200: '#536dfe',
-  A400: '#3d5afe',
-  A700: '#304ffe'
-};
-
-var blue = {
-  50: '#e3f2fd',
-  100: '#bbdefb',
-  200: '#90caf9',
-  300: '#64b5f6',
-  400: '#42a5f5',
-  500: '#2196f3',
-  600: '#1e88e5',
-  700: '#1976d2',
-  800: '#1565c0',
-  900: '#0d47a1',
-  A100: '#82b1ff',
-  A200: '#448aff',
-  A400: '#2979ff',
-  A700: '#2962ff'
-};
-
-var green = {
-  50: '#e8f5e9',
-  100: '#c8e6c9',
-  200: '#a5d6a7',
-  300: '#81c784',
-  400: '#66bb6a',
-  500: '#4caf50',
-  600: '#43a047',
-  700: '#388e3c',
-  800: '#2e7d32',
-  900: '#1b5e20',
-  A100: '#b9f6ca',
-  A200: '#69f0ae',
-  A400: '#00e676',
-  A700: '#00c853'
-};
-
-var orange = {
-  50: '#fff3e0',
-  100: '#ffe0b2',
-  200: '#ffcc80',
-  300: '#ffb74d',
-  400: '#ffa726',
-  500: '#ff9800',
-  600: '#fb8c00',
-  700: '#f57c00',
-  800: '#ef6c00',
-  900: '#e65100',
-  A100: '#ffd180',
-  A200: '#ffab40',
-  A400: '#ff9100',
-  A700: '#ff6d00'
-};
-
-var grey = {
-  50: '#fafafa',
-  100: '#f5f5f5',
-  200: '#eeeeee',
-  300: '#e0e0e0',
-  400: '#bdbdbd',
-  500: '#9e9e9e',
-  600: '#757575',
-  700: '#616161',
-  800: '#424242',
-  900: '#212121',
-  A100: '#d5d5d5',
-  A200: '#aaaaaa',
-  A400: '#303030',
-  A700: '#616161'
-};
-
-function chainPropTypes(propType1, propType2) {
-  if (process.env.NODE_ENV === 'production') {
-    return function () {
-      return null;
-    };
-  }
-
-  return function validate() {
-    return propType1.apply(void 0, arguments) || propType2.apply(void 0, arguments);
-  };
-}
-
-function isPlainObject$2(item) {
-  return item && _typeof__default['default'](item) === 'object' && item.constructor === Object;
-}
-function deepmerge(target, source) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
-    clone: true
-  };
-  var output = options.clone ? _extends__default['default']({}, target) : target;
-
-  if (isPlainObject$2(target) && isPlainObject$2(source)) {
-    Object.keys(source).forEach(function (key) {
-      // Avoid prototype pollution
-      if (key === '__proto__') {
-        return;
-      }
-
-      if (isPlainObject$2(source[key]) && key in target) {
-        output[key] = deepmerge(target[key], source[key], options);
-      } else {
-        output[key] = source[key];
-      }
-    });
-  }
-
-  return output;
-}
-
 /** @license React v16.13.1
  * react-is.production.min.js
  *
@@ -17694,13 +17317,369 @@ if (process.env.NODE_ENV === 'production') {
 }
 });
 
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+
+function getStatics(component) {
+  // React v16.11 and below
+  if (reactIs.isMemo(component)) {
+    return MEMO_STATICS;
+  } // React v16.12 and above
+
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf(sourceComponent);
+
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+
+    var keys = getOwnPropertyNames(sourceComponent);
+
+    if (getOwnPropertySymbols) {
+      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    }
+
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+
+        try {
+          // Avoid failures from read-only properties
+          defineProperty(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+
+  return targetComponent;
+}
+
+var hoistNonReactStatics_cjs = hoistNonReactStatics;
+
+var isProduction = process.env.NODE_ENV === 'production';
+function warning$1(condition, message) {
+  if (!isProduction) {
+    if (condition) {
+      return;
+    }
+
+    var text = "Warning: " + message;
+
+    if (typeof console !== 'undefined') {
+      console.warn(text);
+    }
+
+    try {
+      throw Error(text);
+    } catch (x) {}
+  }
+}
+
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var b$2="function"===typeof Symbol&&Symbol.for,c$2=b$2?Symbol.for("react.element"):60103,d$2=b$2?Symbol.for("react.portal"):60106,e$2=b$2?Symbol.for("react.fragment"):60107,f$2=b$2?Symbol.for("react.strict_mode"):60108,g$2=b$2?Symbol.for("react.profiler"):60114,h$2=b$2?Symbol.for("react.provider"):60109,k$2=b$2?Symbol.for("react.context"):60110,l$2=b$2?Symbol.for("react.async_mode"):60111,m$1=b$2?Symbol.for("react.concurrent_mode"):60111,n$2=b$2?Symbol.for("react.forward_ref"):60112,p$2=b$2?Symbol.for("react.suspense"):60113,q$2=b$2?
+Symbol.for("react.suspense_list"):60120,r$2=b$2?Symbol.for("react.memo"):60115,t$2=b$2?Symbol.for("react.lazy"):60116,v$2=b$2?Symbol.for("react.block"):60121,w$2=b$2?Symbol.for("react.fundamental"):60117,x$2=b$2?Symbol.for("react.responder"):60118,y$2=b$2?Symbol.for("react.scope"):60119;
+function z$2(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c$2:switch(a=a.type,a){case l$2:case m$1:case e$2:case g$2:case f$2:case p$2:return a;default:switch(a=a&&a.$$typeof,a){case k$2:case n$2:case t$2:case r$2:case h$2:return a;default:return u}}case d$2:return u}}}function A$2(a){return z$2(a)===m$1}var AsyncMode$1=l$2;var ConcurrentMode$1=m$1;var ContextConsumer$1=k$2;var ContextProvider$1=h$2;var Element$2=c$2;var ForwardRef$1=n$2;var Fragment$1=e$2;var Lazy$1=t$2;var Memo$1=r$2;var Portal$1=d$2;
+var Profiler$1=g$2;var StrictMode$1=f$2;var Suspense$1=p$2;var isAsyncMode$1=function(a){return A$2(a)||z$2(a)===l$2};var isConcurrentMode$1=A$2;var isContextConsumer$1=function(a){return z$2(a)===k$2};var isContextProvider$1=function(a){return z$2(a)===h$2};var isElement$1=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c$2};var isForwardRef$1=function(a){return z$2(a)===n$2};var isFragment$1=function(a){return z$2(a)===e$2};var isLazy$1=function(a){return z$2(a)===t$2};
+var isMemo$1=function(a){return z$2(a)===r$2};var isPortal$1=function(a){return z$2(a)===d$2};var isProfiler$1=function(a){return z$2(a)===g$2};var isStrictMode$1=function(a){return z$2(a)===f$2};var isSuspense$1=function(a){return z$2(a)===p$2};
+var isValidElementType$1=function(a){return "string"===typeof a||"function"===typeof a||a===e$2||a===m$1||a===g$2||a===f$2||a===p$2||a===q$2||"object"===typeof a&&null!==a&&(a.$$typeof===t$2||a.$$typeof===r$2||a.$$typeof===h$2||a.$$typeof===k$2||a.$$typeof===n$2||a.$$typeof===w$2||a.$$typeof===x$2||a.$$typeof===y$2||a.$$typeof===v$2)};var typeOf$1=z$2;
+
+var reactIs_production_min$1 = {
+	AsyncMode: AsyncMode$1,
+	ConcurrentMode: ConcurrentMode$1,
+	ContextConsumer: ContextConsumer$1,
+	ContextProvider: ContextProvider$1,
+	Element: Element$2,
+	ForwardRef: ForwardRef$1,
+	Fragment: Fragment$1,
+	Lazy: Lazy$1,
+	Memo: Memo$1,
+	Portal: Portal$1,
+	Profiler: Profiler$1,
+	StrictMode: StrictMode$1,
+	Suspense: Suspense$1,
+	isAsyncMode: isAsyncMode$1,
+	isConcurrentMode: isConcurrentMode$1,
+	isContextConsumer: isContextConsumer$1,
+	isContextProvider: isContextProvider$1,
+	isElement: isElement$1,
+	isForwardRef: isForwardRef$1,
+	isFragment: isFragment$1,
+	isLazy: isLazy$1,
+	isMemo: isMemo$1,
+	isPortal: isPortal$1,
+	isProfiler: isProfiler$1,
+	isStrictMode: isStrictMode$1,
+	isSuspense: isSuspense$1,
+	isValidElementType: isValidElementType$1,
+	typeOf: typeOf$1
+};
+
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var reactIs_development$1 = createCommonjsModule(function (module, exports) {
+
+
+
+if (process.env.NODE_ENV !== "production") {
+  (function() {
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+});
+
+var reactIs$1 = createCommonjsModule(function (module) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = reactIs_production_min$1;
+} else {
+  module.exports = reactIs_development$1;
+}
+});
+
 /*
 object-assign
 (c) Sindre Sorhus
 @license MIT
 */
 /* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertySymbols$1 = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -17770,8 +17749,8 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
 			}
 		}
 
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
+		if (getOwnPropertySymbols$1) {
+			symbols = getOwnPropertySymbols$1(from);
 			for (var i = 0; i < symbols.length; i++) {
 				if (propIsEnumerable.call(from, symbols[i])) {
 					to[symbols[i]] = from[symbols[i]];
@@ -18176,7 +18155,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
   function createElementTypeTypeChecker() {
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
-      if (!reactIs.isValidElementType(propValue)) {
+      if (!reactIs$1.isValidElementType(propValue)) {
         var propType = getPropType(propValue);
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
       }
@@ -18555,7 +18534,7 @@ var factoryWithThrowingShims = function() {
 
 var propTypes = createCommonjsModule(function (module) {
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = reactIs;
+  var ReactIs = reactIs$1;
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -18568,1587 +18547,183 @@ if (process.env.NODE_ENV !== 'production') {
 }
 });
 
-function isClassComponent(elementType) {
-  // elementType.prototype?.isReactComponent
-  var _elementType$prototyp = elementType.prototype,
-      prototype = _elementType$prototyp === void 0 ? {} : _elementType$prototyp;
-  return Boolean(prototype.isReactComponent);
-}
-
-function acceptingRef(props, propName, componentName, location, propFullName) {
-  var element = props[propName];
-  var safePropName = propFullName || propName;
-
-  if (element == null) {
-    return null;
-  }
-
-  var warningHint;
-  var elementType = element.type;
-  /**
-   * Blacklisting instead of whitelisting
-   *
-   * Blacklisting will miss some components, such as React.Fragment. Those will at least
-   * trigger a warning in React.
-   * We can't whitelist because there is no safe way to detect React.forwardRef
-   * or class components. "Safe" means there's no public API.
-   *
-   */
-
-  if (typeof elementType === 'function' && !isClassComponent(elementType)) {
-    warningHint = 'Did you accidentally use a plain function component for an element instead?';
-  }
-
-  if (warningHint !== undefined) {
-    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an element that can hold a ref. ".concat(warningHint, " ") + 'For more information see https://material-ui.com/r/caveat-with-refs-guide');
-  }
-
-  return null;
-}
-
-var elementAcceptingRef = chainPropTypes(propTypes.element, acceptingRef);
-elementAcceptingRef.isRequired = chainPropTypes(propTypes.element.isRequired, acceptingRef);
-
-function isClassComponent$1(elementType) {
-  // elementType.prototype?.isReactComponent
-  var _elementType$prototyp = elementType.prototype,
-      prototype = _elementType$prototyp === void 0 ? {} : _elementType$prototyp;
-  return Boolean(prototype.isReactComponent);
-}
-
-function elementTypeAcceptingRef(props, propName, componentName, location, propFullName) {
-  var propValue = props[propName];
-  var safePropName = propFullName || propName;
-
-  if (propValue == null) {
-    return null;
-  }
-
-  var warningHint;
-  /**
-   * Blacklisting instead of whitelisting
-   *
-   * Blacklisting will miss some components, such as React.Fragment. Those will at least
-   * trigger a warning in React.
-   * We can't whitelist because there is no safe way to detect React.forwardRef
-   * or class components. "Safe" means there's no public API.
-   *
-   */
-
-  if (typeof propValue === 'function' && !isClassComponent$1(propValue)) {
-    warningHint = 'Did you accidentally provide a plain function component instead?';
-  }
-
-  if (warningHint !== undefined) {
-    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an element type that can hold a ref. ".concat(warningHint, " ") + 'For more information see https://material-ui.com/r/caveat-with-refs-guide');
-  }
-
-  return null;
-}
-
-var elementTypeAcceptingRef$1 = chainPropTypes(propTypes.elementType, elementTypeAcceptingRef);
-
-// This module is based on https://github.com/airbnb/prop-types-exact repository.
-// However, in order to reduce the number of dependencies and to remove some extra safe checks
-// the module was forked.
-// Only exported for test purposes.
-var specialProperty = "exact-prop: \u200B";
-function exactProp(propTypes) {
-  if (process.env.NODE_ENV === 'production') {
-    return propTypes;
-  }
-
-  return _extends__default['default']({}, propTypes, _defineProperty__default['default']({}, specialProperty, function (props) {
-    var unsupportedProps = Object.keys(props).filter(function (prop) {
-      return !propTypes.hasOwnProperty(prop);
-    });
-
-    if (unsupportedProps.length > 0) {
-      return new Error("The following props are not supported: ".concat(unsupportedProps.map(function (prop) {
-        return "`".concat(prop, "`");
-      }).join(', '), ". Please remove them."));
-    }
-
-    return null;
-  }));
-}
-
-/**
- * WARNING: Don't import this directly.
- * Use `MuiError` from `@material-ui/utils/macros/MuiError.macro` instead.
- * @param {number} code
- */
-function formatMuiErrorMessage(code) {
-  // Apply babel-plugin-transform-template-literals in loose mode
-  // loose mode is safe iff we're concatenating primitives
-  // see https://babeljs.io/docs/en/babel-plugin-transform-template-literals#loose
-
-  /* eslint-disable prefer-template */
-  var url = 'https://material-ui.com/production-error/?code=' + code;
-
-  for (var i = 1; i < arguments.length; i += 1) {
-    // rest params over-transpile for this case
-    // eslint-disable-next-line prefer-rest-params
-    url += '&args[]=' + encodeURIComponent(arguments[i]);
-  }
-
-  return 'Minified Material-UI error #' + code + '; visit ' + url + ' for the full message.';
-  /* eslint-enable prefer-template */
-}
-
-/** @license React v17.0.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var b$2=60103,c$2=60106,d$2=60107,e$2=60108,f$2=60114,g$2=60109,h$2=60110,k$2=60112,l$2=60113,m$1=60120,n$2=60115,p$2=60116,q$2=60121,r$2=60122,u$1=60117,v$2=60129,w$2=60131;
-if("function"===typeof Symbol&&Symbol.for){var x$2=Symbol.for;b$2=x$2("react.element");c$2=x$2("react.portal");d$2=x$2("react.fragment");e$2=x$2("react.strict_mode");f$2=x$2("react.profiler");g$2=x$2("react.provider");h$2=x$2("react.context");k$2=x$2("react.forward_ref");l$2=x$2("react.suspense");m$1=x$2("react.suspense_list");n$2=x$2("react.memo");p$2=x$2("react.lazy");q$2=x$2("react.block");r$2=x$2("react.server.block");u$1=x$2("react.fundamental");v$2=x$2("react.debug_trace_mode");w$2=x$2("react.legacy_hidden");}
-function y$2(a){if("object"===typeof a&&null!==a){var t=a.$$typeof;switch(t){case b$2:switch(a=a.type,a){case d$2:case f$2:case e$2:case l$2:case m$1:return a;default:switch(a=a&&a.$$typeof,a){case h$2:case k$2:case p$2:case n$2:case g$2:return a;default:return t}}case c$2:return t}}}var z$2=g$2,A$2=b$2,B$1=k$2,C=d$2,D$1=p$2,E$1=n$2,F=c$2,G$1=f$2,H$1=e$2,I$1=l$2;var ContextConsumer$1=h$2;var ContextProvider$1=z$2;var Element$2=A$2;var ForwardRef$1=B$1;var Fragment$1=C;var Lazy$1=D$1;var Memo$1=E$1;var Portal$1=F;var Profiler$1=G$1;var StrictMode$1=H$1;
-var Suspense$1=I$1;var isAsyncMode$1=function(){return !1};var isConcurrentMode$1=function(){return !1};var isContextConsumer$1=function(a){return y$2(a)===h$2};var isContextProvider$1=function(a){return y$2(a)===g$2};var isElement$1=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===b$2};var isForwardRef$1=function(a){return y$2(a)===k$2};var isFragment$1=function(a){return y$2(a)===d$2};var isLazy$1=function(a){return y$2(a)===p$2};var isMemo$1=function(a){return y$2(a)===n$2};
-var isPortal$1=function(a){return y$2(a)===c$2};var isProfiler$1=function(a){return y$2(a)===f$2};var isStrictMode$1=function(a){return y$2(a)===e$2};var isSuspense$1=function(a){return y$2(a)===l$2};var isValidElementType$1=function(a){return "string"===typeof a||"function"===typeof a||a===d$2||a===f$2||a===v$2||a===e$2||a===l$2||a===m$1||a===w$2||"object"===typeof a&&null!==a&&(a.$$typeof===p$2||a.$$typeof===n$2||a.$$typeof===g$2||a.$$typeof===h$2||a.$$typeof===k$2||a.$$typeof===u$1||a.$$typeof===q$2||a[0]===r$2)?!0:!1};
-var typeOf$1=y$2;
-
-var reactIs_production_min$1 = {
-	ContextConsumer: ContextConsumer$1,
-	ContextProvider: ContextProvider$1,
-	Element: Element$2,
-	ForwardRef: ForwardRef$1,
-	Fragment: Fragment$1,
-	Lazy: Lazy$1,
-	Memo: Memo$1,
-	Portal: Portal$1,
-	Profiler: Profiler$1,
-	StrictMode: StrictMode$1,
-	Suspense: Suspense$1,
-	isAsyncMode: isAsyncMode$1,
-	isConcurrentMode: isConcurrentMode$1,
-	isContextConsumer: isContextConsumer$1,
-	isContextProvider: isContextProvider$1,
-	isElement: isElement$1,
-	isForwardRef: isForwardRef$1,
-	isFragment: isFragment$1,
-	isLazy: isLazy$1,
-	isMemo: isMemo$1,
-	isPortal: isPortal$1,
-	isProfiler: isProfiler$1,
-	isStrictMode: isStrictMode$1,
-	isSuspense: isSuspense$1,
-	isValidElementType: isValidElementType$1,
-	typeOf: typeOf$1
-};
-
-/** @license React v17.0.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var reactIs_development$1 = createCommonjsModule(function (module, exports) {
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-// ATTENTION
-// When adding new symbols to this file,
-// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var REACT_ELEMENT_TYPE = 0xeac7;
-var REACT_PORTAL_TYPE = 0xeaca;
-var REACT_FRAGMENT_TYPE = 0xeacb;
-var REACT_STRICT_MODE_TYPE = 0xeacc;
-var REACT_PROFILER_TYPE = 0xead2;
-var REACT_PROVIDER_TYPE = 0xeacd;
-var REACT_CONTEXT_TYPE = 0xeace;
-var REACT_FORWARD_REF_TYPE = 0xead0;
-var REACT_SUSPENSE_TYPE = 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = 0xead8;
-var REACT_MEMO_TYPE = 0xead3;
-var REACT_LAZY_TYPE = 0xead4;
-var REACT_BLOCK_TYPE = 0xead9;
-var REACT_SERVER_BLOCK_TYPE = 0xeada;
-var REACT_FUNDAMENTAL_TYPE = 0xead5;
-var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
-var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
-
-if (typeof Symbol === 'function' && Symbol.for) {
-  var symbolFor = Symbol.for;
-  REACT_ELEMENT_TYPE = symbolFor('react.element');
-  REACT_PORTAL_TYPE = symbolFor('react.portal');
-  REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
-  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
-  REACT_PROFILER_TYPE = symbolFor('react.profiler');
-  REACT_PROVIDER_TYPE = symbolFor('react.provider');
-  REACT_CONTEXT_TYPE = symbolFor('react.context');
-  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
-  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
-  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
-  REACT_MEMO_TYPE = symbolFor('react.memo');
-  REACT_LAZY_TYPE = symbolFor('react.lazy');
-  REACT_BLOCK_TYPE = symbolFor('react.block');
-  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
-  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
-  symbolFor('react.scope');
-  symbolFor('react.opaque.id');
-  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
-  symbolFor('react.offscreen');
-  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
-}
-
-// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
-
-var enableScopeAPI = false; // Experimental Create Event Handle API.
-
-function isValidElementType(type) {
-  if (typeof type === 'string' || typeof type === 'function') {
-    return true;
-  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
-
-
-  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
-    return true;
-  }
-
-  if (typeof type === 'object' && type !== null) {
-    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
-
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
-
-        switch (type) {
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-          case REACT_SUSPENSE_TYPE:
-          case REACT_SUSPENSE_LIST_TYPE:
-            return type;
-
-          default:
-            var $$typeofType = type && type.$$typeof;
-
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
-
-              default:
-                return $$typeof;
-            }
-
-        }
-
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
-
-  return undefined;
-}
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Lazy = REACT_LAZY_TYPE;
-var Memo = REACT_MEMO_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false;
-var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
-
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.');
-    }
-  }
-
-  return false;
-}
-function isConcurrentMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
-      hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
-
-      console['warn']('The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.');
-    }
-  }
-
-  return false;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isLazy(object) {
-  return typeOf(object) === REACT_LAZY_TYPE;
-}
-function isMemo(object) {
-  return typeOf(object) === REACT_MEMO_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-function isSuspense(object) {
-  return typeOf(object) === REACT_SUSPENSE_TYPE;
-}
-
-exports.ContextConsumer = ContextConsumer;
-exports.ContextProvider = ContextProvider;
-exports.Element = Element;
-exports.ForwardRef = ForwardRef;
-exports.Fragment = Fragment;
-exports.Lazy = Lazy;
-exports.Memo = Memo;
-exports.Portal = Portal;
-exports.Profiler = Profiler;
-exports.StrictMode = StrictMode;
-exports.Suspense = Suspense;
-exports.isAsyncMode = isAsyncMode;
-exports.isConcurrentMode = isConcurrentMode;
-exports.isContextConsumer = isContextConsumer;
-exports.isContextProvider = isContextProvider;
-exports.isElement = isElement;
-exports.isForwardRef = isForwardRef;
-exports.isFragment = isFragment;
-exports.isLazy = isLazy;
-exports.isMemo = isMemo;
-exports.isPortal = isPortal;
-exports.isProfiler = isProfiler;
-exports.isStrictMode = isStrictMode;
-exports.isSuspense = isSuspense;
-exports.isValidElementType = isValidElementType;
-exports.typeOf = typeOf;
-  })();
-}
-});
-
-var reactIs$1 = createCommonjsModule(function (module) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = reactIs_production_min$1;
-} else {
-  module.exports = reactIs_development$1;
-}
-});
-
-// https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
-
-var fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
-function getFunctionName(fn) {
-  var match = "".concat(fn).match(fnNameMatchRegex);
-  var name = match && match[1];
-  return name || '';
-}
-/**
- * @param {function} Component
- * @param {string} fallback
- * @returns {string | undefined}
- */
-
-function getFunctionComponentName(Component) {
-  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return Component.displayName || Component.name || getFunctionName(Component) || fallback;
-}
-
-function getWrappedName(outerType, innerType, wrapperName) {
-  var functionName = getFunctionComponentName(innerType);
-  return outerType.displayName || (functionName !== '' ? "".concat(wrapperName, "(").concat(functionName, ")") : wrapperName);
-}
-/**
- * cherry-pick from
- * https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/shared/getComponentName.js
- * originally forked from recompose/getDisplayName with added IE 11 support
- *
- * @param {React.ReactType} Component
- * @returns {string | undefined}
- */
-
-
+var _default = getDisplayName;
 function getDisplayName(Component) {
-  if (Component == null) {
-    return undefined;
-  }
-
-  if (typeof Component === 'string') {
-    return Component;
-  }
-
-  if (typeof Component === 'function') {
-    return getFunctionComponentName(Component, 'Component');
-  }
-
-  if (_typeof__default['default'](Component) === 'object') {
-    switch (Component.$$typeof) {
-      case reactIs$1.ForwardRef:
-        return getWrappedName(Component, Component.render, 'ForwardRef');
-
-      case reactIs$1.Memo:
-        return getWrappedName(Component, Component.type, 'memo');
-
-      default:
-        return undefined;
-    }
-  }
-
-  return undefined;
+  return Component.displayName || Component.name || (typeof Component === 'string' && Component.length > 0 ? Component : 'Unknown');
 }
 
-function HTMLElementType(props, propName, componentName, location, propFullName) {
-  if (process.env.NODE_ENV === 'production') {
-    return null;
-  }
-
-  var propValue = props[propName];
-  var safePropName = propFullName || propName;
-
-  if (propValue == null) {
-    return null;
-  }
-
-  if (propValue && propValue.nodeType !== 1) {
-    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an HTMLElement.");
-  }
-
-  return null;
-}
-
-var refType = propTypes.oneOfType([propTypes.func, propTypes.object]);
-
-/* eslint-disable no-use-before-define */
-
-/**
- * Returns a number whose value is limited to the given range.
- *
- * @param {number} value The value to be clamped
- * @param {number} min The lower boundary of the output range
- * @param {number} max The upper boundary of the output range
- * @returns {number} A number in the range [min, max]
- */
-function clamp(value) {
-  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (value < min || value > max) {
-      console.error("Material-UI: The value provided ".concat(value, " is out of range [").concat(min, ", ").concat(max, "]."));
-    }
-  }
-
-  return Math.min(Math.max(min, value), max);
-}
-/**
- * Converts a color from CSS hex format to CSS rgb format.
- *
- * @param {string} color - Hex color, i.e. #nnn or #nnnnnn
- * @returns {string} A CSS rgb color string
- */
-
-
-function hexToRgb(color) {
-  color = color.substr(1);
-  var re = new RegExp(".{1,".concat(color.length >= 6 ? 2 : 1, "}"), 'g');
-  var colors = color.match(re);
-
-  if (colors && colors[0].length === 1) {
-    colors = colors.map(function (n) {
-      return n + n;
+function _defineProperty$1(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
     });
+  } else {
+    obj[key] = value;
   }
 
-  return colors ? "rgb".concat(colors.length === 4 ? 'a' : '', "(").concat(colors.map(function (n, index) {
-    return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1000) / 1000;
-  }).join(', '), ")") : '';
-}
-/**
- * Converts a color from hsl format to rgb format.
- *
- * @param {string} color - HSL color values
- * @returns {string} rgb color values
- */
-
-function hslToRgb(color) {
-  color = decomposeColor(color);
-  var _color = color,
-      values = _color.values;
-  var h = values[0];
-  var s = values[1] / 100;
-  var l = values[2] / 100;
-  var a = s * Math.min(l, 1 - l);
-
-  var f = function f(n) {
-    var k = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (n + h / 30) % 12;
-    return l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-  };
-
-  var type = 'rgb';
-  var rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
-
-  if (color.type === 'hsla') {
-    type += 'a';
-    rgb.push(values[3]);
-  }
-
-  return recomposeColor({
-    type: type,
-    values: rgb
-  });
-}
-/**
- * Returns an object with the type and values of a color.
- *
- * Note: Does not support rgb % values.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {object} - A MUI color object: {type: string, values: number[]}
- */
-
-function decomposeColor(color) {
-  // Idempotent
-  if (color.type) {
-    return color;
-  }
-
-  if (color.charAt(0) === '#') {
-    return decomposeColor(hexToRgb(color));
-  }
-
-  var marker = color.indexOf('(');
-  var type = color.substring(0, marker);
-
-  if (['rgb', 'rgba', 'hsl', 'hsla'].indexOf(type) === -1) {
-    throw new Error(process.env.NODE_ENV !== "production" ? "Material-UI: Unsupported `".concat(color, "` color.\nWe support the following formats: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla().") : formatMuiErrorMessage(3, color));
-  }
-
-  var values = color.substring(marker + 1, color.length - 1).split(',');
-  values = values.map(function (value) {
-    return parseFloat(value);
-  });
-  return {
-    type: type,
-    values: values
-  };
-}
-/**
- * Converts a color object with type and values to a string.
- *
- * @param {object} color - Decomposed color
- * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
- * @param {array} color.values - [n,n,n] or [n,n,n,n]
- * @returns {string} A CSS color string
- */
-
-function recomposeColor(color) {
-  var type = color.type;
-  var values = color.values;
-
-  if (type.indexOf('rgb') !== -1) {
-    // Only convert the first 3 values to int (i.e. not alpha)
-    values = values.map(function (n, i) {
-      return i < 3 ? parseInt(n, 10) : n;
-    });
-  } else if (type.indexOf('hsl') !== -1) {
-    values[1] = "".concat(values[1], "%");
-    values[2] = "".concat(values[2], "%");
-  }
-
-  return "".concat(type, "(").concat(values.join(', '), ")");
-}
-/**
- * Calculates the contrast ratio between two colors.
- *
- * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
- *
- * @param {string} foreground - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {string} background - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {number} A contrast ratio value in the range 0 - 21.
- */
-
-function getContrastRatio(foreground, background) {
-  var lumA = getLuminance(foreground);
-  var lumB = getLuminance(background);
-  return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
-}
-/**
- * The relative brightness of any point in a color space,
- * normalized to 0 for darkest black and 1 for lightest white.
- *
- * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {number} The relative brightness of the color in the range 0 - 1
- */
-
-function getLuminance(color) {
-  color = decomposeColor(color);
-  var rgb = color.type === 'hsl' ? decomposeColor(hslToRgb(color)).values : color.values;
-  rgb = rgb.map(function (val) {
-    val /= 255; // normalized
-
-    return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
-  }); // Truncate at 3 digits
-
-  return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
-}
-/**
- * Set the absolute transparency of a color.
- * Any existing alpha values are overwritten.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} value - value to set the alpha channel to in the range 0 -1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function fade(color, value) {
-  color = decomposeColor(color);
-  value = clamp(value);
-
-  if (color.type === 'rgb' || color.type === 'hsl') {
-    color.type += 'a';
-  }
-
-  color.values[3] = value;
-  return recomposeColor(color);
-}
-/**
- * Darkens a color.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} coefficient - multiplier in the range 0 - 1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function darken(color, coefficient) {
-  color = decomposeColor(color);
-  coefficient = clamp(coefficient);
-
-  if (color.type.indexOf('hsl') !== -1) {
-    color.values[2] *= 1 - coefficient;
-  } else if (color.type.indexOf('rgb') !== -1) {
-    for (var i = 0; i < 3; i += 1) {
-      color.values[i] *= 1 - coefficient;
-    }
-  }
-
-  return recomposeColor(color);
-}
-/**
- * Lightens a color.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} coefficient - multiplier in the range 0 - 1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function lighten(color, coefficient) {
-  color = decomposeColor(color);
-  coefficient = clamp(coefficient);
-
-  if (color.type.indexOf('hsl') !== -1) {
-    color.values[2] += (100 - color.values[2]) * coefficient;
-  } else if (color.type.indexOf('rgb') !== -1) {
-    for (var i = 0; i < 3; i += 1) {
-      color.values[i] += (255 - color.values[i]) * coefficient;
-    }
-  }
-
-  return recomposeColor(color);
-}
-
-// Sorted ASC by size. That's important.
-// It can't be configured as it's used statically for propTypes.
-var keys = ['xs', 'sm', 'md', 'lg', 'xl']; // Keep in mind that @media is inclusive by the CSS specification.
-
-function createBreakpoints(breakpoints) {
-  var _breakpoints$values = breakpoints.values,
-      values = _breakpoints$values === void 0 ? {
-    xs: 0,
-    sm: 600,
-    md: 960,
-    lg: 1280,
-    xl: 1920
-  } : _breakpoints$values,
-      _breakpoints$unit = breakpoints.unit,
-      unit = _breakpoints$unit === void 0 ? 'px' : _breakpoints$unit,
-      _breakpoints$step = breakpoints.step,
-      step = _breakpoints$step === void 0 ? 5 : _breakpoints$step,
-      other = _objectWithoutProperties__default['default'](breakpoints, ["values", "unit", "step"]);
-
-  function up(key) {
-    var value = typeof values[key] === 'number' ? values[key] : key;
-    return "@media (min-width:".concat(value).concat(unit, ")");
-  }
-
-  function down(key) {
-    var endIndex = keys.indexOf(key) + 1;
-    var upperbound = values[keys[endIndex]];
-
-    if (endIndex === keys.length) {
-      // xl down applies to all sizes
-      return up('xs');
-    }
-
-    var value = typeof upperbound === 'number' && endIndex > 0 ? upperbound : key;
-    return "@media (max-width:".concat(value - step / 100).concat(unit, ")");
-  }
-
-  function between(start, end) {
-    var endIndex = keys.indexOf(end);
-
-    if (endIndex === keys.length - 1) {
-      return up(start);
-    }
-
-    return "@media (min-width:".concat(typeof values[start] === 'number' ? values[start] : start).concat(unit, ") and ") + "(max-width:".concat((endIndex !== -1 && typeof values[keys[endIndex + 1]] === 'number' ? values[keys[endIndex + 1]] : end) - step / 100).concat(unit, ")");
-  }
-
-  function only(key) {
-    return between(key, key);
-  }
-
-  function width(key) {
-    return values[key];
-  }
-
-  return _extends__default['default']({
-    keys: keys,
-    values: values,
-    up: up,
-    down: down,
-    between: between,
-    only: only,
-    width: width
-  }, other);
-}
-
-function createMixins(breakpoints, spacing, mixins) {
-  var _toolbar;
-
-  return _extends__default['default']({
-    gutters: function gutters() {
-      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      // To deprecate in v4.1
-      //       warning(
-      //         false,
-      //         [
-      //           'Material-UI: Theme.mixins.gutters() is deprecated.',
-      //           'You can use the source of the mixin directly:',
-      //           `
-      // paddingLeft: theme.spacing(2),
-      // paddingRight: theme.spacing(2),
-      // [theme.breakpoints.up('sm')]: {
-      //   paddingLeft: theme.spacing(3),
-      //   paddingRight: theme.spacing(3),
-      // },
-      // `,
-      //         ].join('\n'),
-      //       );
-      return _extends__default['default']({
-        paddingLeft: spacing(2),
-        paddingRight: spacing(2)
-      }, styles, _defineProperty__default['default']({}, breakpoints.up('sm'), _extends__default['default']({
-        paddingLeft: spacing(3),
-        paddingRight: spacing(3)
-      }, styles[breakpoints.up('sm')])));
-    },
-    toolbar: (_toolbar = {
-      minHeight: 56
-    }, _defineProperty__default['default'](_toolbar, "".concat(breakpoints.up('xs'), " and (orientation: landscape)"), {
-      minHeight: 48
-    }), _defineProperty__default['default'](_toolbar, breakpoints.up('sm'), {
-      minHeight: 64
-    }), _toolbar)
-  }, mixins);
-}
-
-var light = {
-  // The colors used to style the text.
-  text: {
-    // The most important text.
-    primary: 'rgba(0, 0, 0, 0.87)',
-    // Secondary text.
-    secondary: 'rgba(0, 0, 0, 0.54)',
-    // Disabled text have even lower visual prominence.
-    disabled: 'rgba(0, 0, 0, 0.38)',
-    // Text hints.
-    hint: 'rgba(0, 0, 0, 0.38)'
-  },
-  // The color used to divide different elements.
-  divider: 'rgba(0, 0, 0, 0.12)',
-  // The background colors used to style the surfaces.
-  // Consistency between these values is important.
-  background: {
-    paper: common.white,
-    default: grey[50]
-  },
-  // The colors used to style the action elements.
-  action: {
-    // The color of an active action like an icon button.
-    active: 'rgba(0, 0, 0, 0.54)',
-    // The color of an hovered action.
-    hover: 'rgba(0, 0, 0, 0.04)',
-    hoverOpacity: 0.04,
-    // The color of a selected action.
-    selected: 'rgba(0, 0, 0, 0.08)',
-    selectedOpacity: 0.08,
-    // The color of a disabled action.
-    disabled: 'rgba(0, 0, 0, 0.26)',
-    // The background color of a disabled action.
-    disabledBackground: 'rgba(0, 0, 0, 0.12)',
-    disabledOpacity: 0.38,
-    focus: 'rgba(0, 0, 0, 0.12)',
-    focusOpacity: 0.12,
-    activatedOpacity: 0.12
-  }
-};
-var dark = {
-  text: {
-    primary: common.white,
-    secondary: 'rgba(255, 255, 255, 0.7)',
-    disabled: 'rgba(255, 255, 255, 0.5)',
-    hint: 'rgba(255, 255, 255, 0.5)',
-    icon: 'rgba(255, 255, 255, 0.5)'
-  },
-  divider: 'rgba(255, 255, 255, 0.12)',
-  background: {
-    paper: grey[800],
-    default: '#303030'
-  },
-  action: {
-    active: common.white,
-    hover: 'rgba(255, 255, 255, 0.08)',
-    hoverOpacity: 0.08,
-    selected: 'rgba(255, 255, 255, 0.16)',
-    selectedOpacity: 0.16,
-    disabled: 'rgba(255, 255, 255, 0.3)',
-    disabledBackground: 'rgba(255, 255, 255, 0.12)',
-    disabledOpacity: 0.38,
-    focus: 'rgba(255, 255, 255, 0.12)',
-    focusOpacity: 0.12,
-    activatedOpacity: 0.24
-  }
-};
-
-function addLightOrDark(intent, direction, shade, tonalOffset) {
-  var tonalOffsetLight = tonalOffset.light || tonalOffset;
-  var tonalOffsetDark = tonalOffset.dark || tonalOffset * 1.5;
-
-  if (!intent[direction]) {
-    if (intent.hasOwnProperty(shade)) {
-      intent[direction] = intent[shade];
-    } else if (direction === 'light') {
-      intent.light = lighten(intent.main, tonalOffsetLight);
-    } else if (direction === 'dark') {
-      intent.dark = darken(intent.main, tonalOffsetDark);
-    }
-  }
-}
-
-function createPalette(palette) {
-  var _palette$primary = palette.primary,
-      primary = _palette$primary === void 0 ? {
-    light: indigo[300],
-    main: indigo[500],
-    dark: indigo[700]
-  } : _palette$primary,
-      _palette$secondary = palette.secondary,
-      secondary = _palette$secondary === void 0 ? {
-    light: pink.A200,
-    main: pink.A400,
-    dark: pink.A700
-  } : _palette$secondary,
-      _palette$error = palette.error,
-      error = _palette$error === void 0 ? {
-    light: red[300],
-    main: red[500],
-    dark: red[700]
-  } : _palette$error,
-      _palette$warning = palette.warning,
-      warning = _palette$warning === void 0 ? {
-    light: orange[300],
-    main: orange[500],
-    dark: orange[700]
-  } : _palette$warning,
-      _palette$info = palette.info,
-      info = _palette$info === void 0 ? {
-    light: blue[300],
-    main: blue[500],
-    dark: blue[700]
-  } : _palette$info,
-      _palette$success = palette.success,
-      success = _palette$success === void 0 ? {
-    light: green[300],
-    main: green[500],
-    dark: green[700]
-  } : _palette$success,
-      _palette$type = palette.type,
-      type = _palette$type === void 0 ? 'light' : _palette$type,
-      _palette$contrastThre = palette.contrastThreshold,
-      contrastThreshold = _palette$contrastThre === void 0 ? 3 : _palette$contrastThre,
-      _palette$tonalOffset = palette.tonalOffset,
-      tonalOffset = _palette$tonalOffset === void 0 ? 0.2 : _palette$tonalOffset,
-      other = _objectWithoutProperties__default['default'](palette, ["primary", "secondary", "error", "warning", "info", "success", "type", "contrastThreshold", "tonalOffset"]); // Use the same logic as
-  // Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
-  // and material-components-web https://github.com/material-components/material-components-web/blob/ac46b8863c4dab9fc22c4c662dc6bd1b65dd652f/packages/mdc-theme/_functions.scss#L54
-
-
-  function getContrastText(background) {
-    var contrastText = getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark.text.primary : light.text.primary;
-
-    if (process.env.NODE_ENV !== 'production') {
-      var contrast = getContrastRatio(background, contrastText);
-
-      if (contrast < 3) {
-        console.error(["Material-UI: The contrast ratio of ".concat(contrast, ":1 for ").concat(contrastText, " on ").concat(background), 'falls below the WCAG recommended absolute minimum contrast ratio of 3:1.', 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast'].join('\n'));
-      }
-    }
-
-    return contrastText;
-  }
-
-  var augmentColor = function augmentColor(color) {
-    var mainShade = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-    var lightShade = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 300;
-    var darkShade = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 700;
-    color = _extends__default['default']({}, color);
-
-    if (!color.main && color[mainShade]) {
-      color.main = color[mainShade];
-    }
-
-    if (!color.main) {
-      throw new Error(process.env.NODE_ENV !== "production" ? "Material-UI: The color provided to augmentColor(color) is invalid.\nThe color object needs to have a `main` property or a `".concat(mainShade, "` property.") : formatMuiErrorMessage(4, mainShade));
-    }
-
-    if (typeof color.main !== 'string') {
-      throw new Error(process.env.NODE_ENV !== "production" ? "Material-UI: The color provided to augmentColor(color) is invalid.\n`color.main` should be a string, but `".concat(JSON.stringify(color.main), "` was provided instead.\n\nDid you intend to use one of the following approaches?\n\nimport {\xA0green } from \"@material-ui/core/colors\";\n\nconst theme1 = createMuiTheme({ palette: {\n  primary: green,\n} });\n\nconst theme2 = createMuiTheme({ palette: {\n  primary: { main: green[500] },\n} });") : formatMuiErrorMessage(5, JSON.stringify(color.main)));
-    }
-
-    addLightOrDark(color, 'light', lightShade, tonalOffset);
-    addLightOrDark(color, 'dark', darkShade, tonalOffset);
-
-    if (!color.contrastText) {
-      color.contrastText = getContrastText(color.main);
-    }
-
-    return color;
-  };
-
-  var types = {
-    dark: dark,
-    light: light
-  };
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (!types[type]) {
-      console.error("Material-UI: The palette type `".concat(type, "` is not supported."));
-    }
-  }
-
-  var paletteOutput = deepmerge(_extends__default['default']({
-    // A collection of common colors.
-    common: common,
-    // The palette type, can be light or dark.
-    type: type,
-    // The colors used to represent primary interface elements for a user.
-    primary: augmentColor(primary),
-    // The colors used to represent secondary interface elements for a user.
-    secondary: augmentColor(secondary, 'A400', 'A200', 'A700'),
-    // The colors used to represent interface elements that the user should be made aware of.
-    error: augmentColor(error),
-    // The colors used to represent potentially dangerous actions or important messages.
-    warning: augmentColor(warning),
-    // The colors used to present information to the user that is neutral and not necessarily important.
-    info: augmentColor(info),
-    // The colors used to indicate the successful completion of an action that user triggered.
-    success: augmentColor(success),
-    // The grey colors.
-    grey: grey,
-    // Used by `getContrastText()` to maximize the contrast between
-    // the background and the text.
-    contrastThreshold: contrastThreshold,
-    // Takes a background color and returns the text color that maximizes the contrast.
-    getContrastText: getContrastText,
-    // Generate a rich color object.
-    augmentColor: augmentColor,
-    // Used by the functions below to shift a color's luminance by approximately
-    // two indexes within its tonal palette.
-    // E.g., shift from Red 500 to Red 300 or Red 700.
-    tonalOffset: tonalOffset
-  }, types[type]), other);
-  return paletteOutput;
-}
-
-function round(value) {
-  return Math.round(value * 1e5) / 1e5;
-}
-
-var caseAllCaps = {
-  textTransform: 'uppercase'
-};
-var defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
-/**
- * @see @link{https://material.io/design/typography/the-type-system.html}
- * @see @link{https://material.io/design/typography/understanding-typography.html}
- */
-
-function createTypography(palette, typography) {
-  var _ref = typeof typography === 'function' ? typography(palette) : typography,
-      _ref$fontFamily = _ref.fontFamily,
-      fontFamily = _ref$fontFamily === void 0 ? defaultFontFamily : _ref$fontFamily,
-      _ref$fontSize = _ref.fontSize,
-      fontSize = _ref$fontSize === void 0 ? 14 : _ref$fontSize,
-      _ref$fontWeightLight = _ref.fontWeightLight,
-      fontWeightLight = _ref$fontWeightLight === void 0 ? 300 : _ref$fontWeightLight,
-      _ref$fontWeightRegula = _ref.fontWeightRegular,
-      fontWeightRegular = _ref$fontWeightRegula === void 0 ? 400 : _ref$fontWeightRegula,
-      _ref$fontWeightMedium = _ref.fontWeightMedium,
-      fontWeightMedium = _ref$fontWeightMedium === void 0 ? 500 : _ref$fontWeightMedium,
-      _ref$fontWeightBold = _ref.fontWeightBold,
-      fontWeightBold = _ref$fontWeightBold === void 0 ? 700 : _ref$fontWeightBold,
-      _ref$htmlFontSize = _ref.htmlFontSize,
-      htmlFontSize = _ref$htmlFontSize === void 0 ? 16 : _ref$htmlFontSize,
-      allVariants = _ref.allVariants,
-      pxToRem2 = _ref.pxToRem,
-      other = _objectWithoutProperties__default['default'](_ref, ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"]);
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof fontSize !== 'number') {
-      console.error('Material-UI: `fontSize` is required to be a number.');
-    }
-
-    if (typeof htmlFontSize !== 'number') {
-      console.error('Material-UI: `htmlFontSize` is required to be a number.');
-    }
-  }
-
-  var coef = fontSize / 14;
-
-  var pxToRem = pxToRem2 || function (size) {
-    return "".concat(size / htmlFontSize * coef, "rem");
-  };
-
-  var buildVariant = function buildVariant(fontWeight, size, lineHeight, letterSpacing, casing) {
-    return _extends__default['default']({
-      fontFamily: fontFamily,
-      fontWeight: fontWeight,
-      fontSize: pxToRem(size),
-      // Unitless following https://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
-      lineHeight: lineHeight
-    }, fontFamily === defaultFontFamily ? {
-      letterSpacing: "".concat(round(letterSpacing / size), "em")
-    } : {}, casing, allVariants);
-  };
-
-  var variants = {
-    h1: buildVariant(fontWeightLight, 96, 1.167, -1.5),
-    h2: buildVariant(fontWeightLight, 60, 1.2, -0.5),
-    h3: buildVariant(fontWeightRegular, 48, 1.167, 0),
-    h4: buildVariant(fontWeightRegular, 34, 1.235, 0.25),
-    h5: buildVariant(fontWeightRegular, 24, 1.334, 0),
-    h6: buildVariant(fontWeightMedium, 20, 1.6, 0.15),
-    subtitle1: buildVariant(fontWeightRegular, 16, 1.75, 0.15),
-    subtitle2: buildVariant(fontWeightMedium, 14, 1.57, 0.1),
-    body1: buildVariant(fontWeightRegular, 16, 1.5, 0.15),
-    body2: buildVariant(fontWeightRegular, 14, 1.43, 0.15),
-    button: buildVariant(fontWeightMedium, 14, 1.75, 0.4, caseAllCaps),
-    caption: buildVariant(fontWeightRegular, 12, 1.66, 0.4),
-    overline: buildVariant(fontWeightRegular, 12, 2.66, 1, caseAllCaps)
-  };
-  return deepmerge(_extends__default['default']({
-    htmlFontSize: htmlFontSize,
-    pxToRem: pxToRem,
-    round: round,
-    // TODO v5: remove
-    fontFamily: fontFamily,
-    fontSize: fontSize,
-    fontWeightLight: fontWeightLight,
-    fontWeightRegular: fontWeightRegular,
-    fontWeightMedium: fontWeightMedium,
-    fontWeightBold: fontWeightBold
-  }, variants), other, {
-    clone: false // No need to clone deep
-
-  });
-}
-
-var shadowKeyUmbraOpacity = 0.2;
-var shadowKeyPenumbraOpacity = 0.14;
-var shadowAmbientShadowOpacity = 0.12;
-
-function createShadow() {
-  return ["".concat(arguments.length <= 0 ? undefined : arguments[0], "px ").concat(arguments.length <= 1 ? undefined : arguments[1], "px ").concat(arguments.length <= 2 ? undefined : arguments[2], "px ").concat(arguments.length <= 3 ? undefined : arguments[3], "px rgba(0,0,0,").concat(shadowKeyUmbraOpacity, ")"), "".concat(arguments.length <= 4 ? undefined : arguments[4], "px ").concat(arguments.length <= 5 ? undefined : arguments[5], "px ").concat(arguments.length <= 6 ? undefined : arguments[6], "px ").concat(arguments.length <= 7 ? undefined : arguments[7], "px rgba(0,0,0,").concat(shadowKeyPenumbraOpacity, ")"), "".concat(arguments.length <= 8 ? undefined : arguments[8], "px ").concat(arguments.length <= 9 ? undefined : arguments[9], "px ").concat(arguments.length <= 10 ? undefined : arguments[10], "px ").concat(arguments.length <= 11 ? undefined : arguments[11], "px rgba(0,0,0,").concat(shadowAmbientShadowOpacity, ")")].join(',');
-} // Values from https://github.com/material-components/material-components-web/blob/be8747f94574669cb5e7add1a7c54fa41a89cec7/packages/mdc-elevation/_variables.scss
-
-
-var shadows = ['none', createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
-
-var shape = {
-  borderRadius: 4
-};
-
-var responsivePropType = process.env.NODE_ENV !== 'production' ? propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.object, propTypes.array]) : {};
-
-var spacingKeys = ['m', 'mt', 'mr', 'mb', 'ml', 'mx', 'my', 'p', 'pt', 'pr', 'pb', 'pl', 'px', 'py', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'marginX', 'marginY', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'paddingX', 'paddingY'];
-function createUnarySpacing(theme) {
-  var themeSpacing = theme.spacing || 8;
-
-  if (typeof themeSpacing === 'number') {
-    return function (abs) {
-      if (process.env.NODE_ENV !== 'production') {
-        if (typeof abs !== 'number') {
-          console.error("Material-UI: Expected spacing argument to be a number, got ".concat(abs, "."));
-        }
-      }
-
-      return themeSpacing * abs;
-    };
-  }
-
-  if (Array.isArray(themeSpacing)) {
-    return function (abs) {
-      if (process.env.NODE_ENV !== 'production') {
-        if (abs > themeSpacing.length - 1) {
-          console.error(["Material-UI: The value provided (".concat(abs, ") overflows."), "The supported values are: ".concat(JSON.stringify(themeSpacing), "."), "".concat(abs, " > ").concat(themeSpacing.length - 1, ", you need to add the missing values.")].join('\n'));
-        }
-      }
-
-      return themeSpacing[abs];
-    };
-  }
-
-  if (typeof themeSpacing === 'function') {
-    return themeSpacing;
-  }
-
-  if (process.env.NODE_ENV !== 'production') {
-    console.error(["Material-UI: The `theme.spacing` value (".concat(themeSpacing, ") is invalid."), 'It should be a number, an array or a function.'].join('\n'));
-  }
-
-  return function () {
-    return undefined;
-  };
-}
-
-process.env.NODE_ENV !== 'production' ? spacingKeys.reduce(function (obj, key) {
-  obj[key] = responsivePropType;
   return obj;
-}, {}) : {};
-
-var warnOnce;
-function createSpacing() {
-  var spacingInput = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 8;
-
-  // Already transformed.
-  if (spacingInput.mui) {
-    return spacingInput;
-  } // Material Design layouts are visually balanced. Most measurements align to an 8dp grid applied, which aligns both spacing and the overall layout.
-  // Smaller components, such as icons and type, can align to a 4dp grid.
-  // https://material.io/design/layout/understanding-layout.html#usage
-
-
-  var transform = createUnarySpacing({
-    spacing: spacingInput
-  });
-
-  var spacing = function spacing() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (!(args.length <= 4)) {
-        console.error("Material-UI: Too many arguments provided, expected between 0 and 4, got ".concat(args.length));
-      }
-    }
-
-    if (args.length === 0) {
-      return transform(1);
-    }
-
-    if (args.length === 1) {
-      return transform(args[0]);
-    }
-
-    return args.map(function (argument) {
-      if (typeof argument === 'string') {
-        return argument;
-      }
-
-      var output = transform(argument);
-      return typeof output === 'number' ? "".concat(output, "px") : output;
-    }).join(' ');
-  }; // Backward compatibility, to remove in v5.
-
-
-  Object.defineProperty(spacing, 'unit', {
-    get: function get() {
-      if (process.env.NODE_ENV !== 'production') {
-        if (!warnOnce || process.env.NODE_ENV === 'test') {
-          console.error(['Material-UI: theme.spacing.unit usage has been deprecated.', 'It will be removed in v5.', 'You can replace `theme.spacing.unit * y` with `theme.spacing(y)`.', '', 'You can use the `https://github.com/mui-org/material-ui/tree/master/packages/material-ui-codemod/README.md#theme-spacing-api` migration helper to make the process smoother.'].join('\n'));
-        }
-
-        warnOnce = true;
-      }
-
-      return spacingInput;
-    }
-  });
-  spacing.mui = true;
-  return spacing;
 }
 
-// Follow https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
-// to learn the context in which each easing should be used.
-var easing = {
-  // This is the most common easing curve.
-  easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  // Objects enter the screen at full velocity from off-screen and
-  // slowly decelerate to a resting point.
-  easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
-  // Objects leave the screen at full velocity. They do not decelerate when off-screen.
-  easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
-  // The sharp curve is used by objects that may return to the screen at any time.
-  sharp: 'cubic-bezier(0.4, 0, 0.6, 1)'
-}; // Follow https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
-// to learn when use what timing
+function _extends$1() {
+  _extends$1 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-var duration = {
-  shortest: 150,
-  shorter: 200,
-  short: 250,
-  // most basic recommended timing
-  standard: 300,
-  // this is to be used in complex animations
-  complex: 375,
-  // recommended when something is entering screen
-  enteringScreen: 225,
-  // recommended when something is leaving screen
-  leavingScreen: 195
-};
-
-function formatMs(milliseconds) {
-  return "".concat(Math.round(milliseconds), "ms");
-}
-/**
- * @param {string|Array} props
- * @param {object} param
- * @param {string} param.prop
- * @param {number} param.duration
- * @param {string} param.easing
- * @param {number} param.delay
- */
-
-
-var transitions = {
-  easing: easing,
-  duration: duration,
-  create: function create() {
-    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['all'];
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    var _options$duration = options.duration,
-        durationOption = _options$duration === void 0 ? duration.standard : _options$duration,
-        _options$easing = options.easing,
-        easingOption = _options$easing === void 0 ? easing.easeInOut : _options$easing,
-        _options$delay = options.delay,
-        delay = _options$delay === void 0 ? 0 : _options$delay,
-        other = _objectWithoutProperties__default['default'](options, ["duration", "easing", "delay"]);
-
-    if (process.env.NODE_ENV !== 'production') {
-      var isString = function isString(value) {
-        return typeof value === 'string';
-      };
-
-      var isNumber = function isNumber(value) {
-        return !isNaN(parseFloat(value));
-      };
-
-      if (!isString(props) && !Array.isArray(props)) {
-        console.error('Material-UI: Argument "props" must be a string or Array.');
-      }
-
-      if (!isNumber(durationOption) && !isString(durationOption)) {
-        console.error("Material-UI: Argument \"duration\" must be a number or a string but found ".concat(durationOption, "."));
-      }
-
-      if (!isString(easingOption)) {
-        console.error('Material-UI: Argument "easing" must be a string.');
-      }
-
-      if (!isNumber(delay) && !isString(delay)) {
-        console.error('Material-UI: Argument "delay" must be a number or a string.');
-      }
-
-      if (Object.keys(other).length !== 0) {
-        console.error("Material-UI: Unrecognized argument(s) [".concat(Object.keys(other).join(','), "]."));
-      }
-    }
-
-    return (Array.isArray(props) ? props : [props]).map(function (animatedProp) {
-      return "".concat(animatedProp, " ").concat(typeof durationOption === 'string' ? durationOption : formatMs(durationOption), " ").concat(easingOption, " ").concat(typeof delay === 'string' ? delay : formatMs(delay));
-    }).join(',');
-  },
-  getAutoHeightDuration: function getAutoHeightDuration(height) {
-    if (!height) {
-      return 0;
-    }
-
-    var constant = height / 36; // https://www.wolframalpha.com/input/?i=(4+%2B+15+*+(x+%2F+36+)+**+0.25+%2B+(x+%2F+36)+%2F+5)+*+10
-
-    return Math.round((4 + 15 * Math.pow(constant, 0.25) + constant / 5) * 10);
-  }
-};
-
-// We need to centralize the zIndex definitions as they work
-// like global values in the browser.
-var zIndex = {
-  mobileStepper: 1000,
-  speedDial: 1050,
-  appBar: 1100,
-  drawer: 1200,
-  modal: 1300,
-  snackbar: 1400,
-  tooltip: 1500
-};
-
-function createMuiTheme() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var _options$breakpoints = options.breakpoints,
-      breakpointsInput = _options$breakpoints === void 0 ? {} : _options$breakpoints,
-      _options$mixins = options.mixins,
-      mixinsInput = _options$mixins === void 0 ? {} : _options$mixins,
-      _options$palette = options.palette,
-      paletteInput = _options$palette === void 0 ? {} : _options$palette,
-      spacingInput = options.spacing,
-      _options$typography = options.typography,
-      typographyInput = _options$typography === void 0 ? {} : _options$typography,
-      other = _objectWithoutProperties__default['default'](options, ["breakpoints", "mixins", "palette", "spacing", "typography"]);
-
-  var palette = createPalette(paletteInput);
-  var breakpoints = createBreakpoints(breakpointsInput);
-  var spacing = createSpacing(spacingInput);
-  var muiTheme = deepmerge({
-    breakpoints: breakpoints,
-    direction: 'ltr',
-    mixins: createMixins(breakpoints, spacing, mixinsInput),
-    overrides: {},
-    // Inject custom styles
-    palette: palette,
-    props: {},
-    // Provide default props
-    shadows: shadows,
-    typography: createTypography(palette, typographyInput),
-    spacing: spacing,
-    shape: shape,
-    transitions: transitions,
-    zIndex: zIndex
-  }, other);
-
-  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    args[_key - 1] = arguments[_key];
-  }
-
-  muiTheme = args.reduce(function (acc, argument) {
-    return deepmerge(acc, argument);
-  }, muiTheme);
-
-  if (process.env.NODE_ENV !== 'production') {
-    var pseudoClasses = ['checked', 'disabled', 'error', 'focused', 'focusVisible', 'required', 'expanded', 'selected'];
-
-    var traverse = function traverse(node, parentKey) {
-      var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-      var key; // eslint-disable-next-line guard-for-in, no-restricted-syntax
-
-      for (key in node) {
-        var child = node[key];
-
-        if (depth === 1) {
-          if (key.indexOf('Mui') === 0 && child) {
-            traverse(child, key, depth + 1);
-          }
-        } else if (pseudoClasses.indexOf(key) !== -1 && Object.keys(child).length > 0) {
-          if (process.env.NODE_ENV !== 'production') {
-            console.error(["Material-UI: The `".concat(parentKey, "` component increases ") + "the CSS specificity of the `".concat(key, "` internal state."), 'You can not override it like this: ', JSON.stringify(node, null, 2), '', 'Instead, you need to use the $ruleName syntax:', JSON.stringify({
-              root: _defineProperty__default['default']({}, "&$".concat(key), child)
-            }, null, 2), '', 'https://material-ui.com/r/pseudo-classes-guide'].join('\n'));
-          } // Remove the style to prevent global conflicts.
-
-
-          node[key] = {};
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
         }
       }
+    }
+
+    return target;
+  };
+
+  return _extends$1.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function isObject(obj) {
+  return obj !== null && typeof obj === 'object' && !Array.isArray(obj);
+}
+
+function createThemeProvider(context) {
+  var ThemeProvider =
+  /*#__PURE__*/
+  function (_React$Component) {
+    _inheritsLoose(ThemeProvider, _React$Component);
+
+    function ThemeProvider() {
+      var _this;
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+
+      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "cachedTheme", void 0);
+
+      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "lastOuterTheme", void 0);
+
+      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "lastTheme", void 0);
+
+      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "renderProvider", function (outerTheme) {
+        var children = _this.props.children;
+        return React__default['default'].createElement(context.Provider, {
+          value: _this.getTheme(outerTheme)
+        }, children);
+      });
+
+      return _this;
+    }
+
+    var _proto = ThemeProvider.prototype;
+
+    // Get the theme from the props, supporting both (outerTheme) => {} as well as object notation
+    _proto.getTheme = function getTheme(outerTheme) {
+      if (this.props.theme !== this.lastTheme || outerTheme !== this.lastOuterTheme || !this.cachedTheme) {
+        this.lastOuterTheme = outerTheme;
+        this.lastTheme = this.props.theme;
+
+        if (typeof this.lastTheme === 'function') {
+          var theme = this.props.theme;
+          this.cachedTheme = theme(outerTheme);
+          process.env.NODE_ENV !== "production" ? warning$1(isObject(this.cachedTheme), '[ThemeProvider] Please return an object from your theme function') : void 0;
+        } else {
+          var _theme = this.props.theme;
+          process.env.NODE_ENV !== "production" ? warning$1(isObject(_theme), '[ThemeProvider] Please make your theme prop a plain object') : void 0;
+          this.cachedTheme = outerTheme ? _extends$1({}, outerTheme, _theme) : _theme;
+        }
+      }
+
+      return this.cachedTheme;
     };
 
-    traverse(muiTheme.overrides);
+    _proto.render = function render() {
+      var children = this.props.children;
+
+      if (!children) {
+        return null;
+      }
+
+      return React__default['default'].createElement(context.Consumer, null, this.renderProvider);
+    };
+
+    return ThemeProvider;
+  }(React__default['default'].Component);
+
+  if (process.env.NODE_ENV !== 'production') {
+    ThemeProvider.propTypes = {
+      // eslint-disable-next-line react/require-default-props
+      children: propTypes.node,
+      theme: propTypes.oneOfType([propTypes.shape({}), propTypes.func]).isRequired
+    };
   }
 
-  return muiTheme;
+  return ThemeProvider;
 }
 
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var nested = hasSymbol ? Symbol.for('mui.nested') : '__THEME_NESTED__';
-
-/**
- * This is the list of the style rule name we use as drop in replacement for the built-in
- * pseudo classes (:checked, :disabled, :focused, etc.).
- *
- * Why do they exist in the first place?
- * These classes are used at a specificity of 2.
- * It allows them to override previously definied styles as well as
- * being untouched by simple user overrides.
- */
-
-var pseudoClasses = ['checked', 'disabled', 'error', 'focused', 'focusVisible', 'required', 'expanded', 'selected']; // Returns a function which generates unique class names based on counters.
-// When new generator function is created, rule counter is reset.
-// We need to reset the rule counter for SSR for each request.
-//
-// It's inspired by
-// https://github.com/cssinjs/jss/blob/4e6a05dd3f7b6572fdd3ab216861d9e446c20331/src/utils/createGenerateClassName.js
-
-function createGenerateClassName() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var _options$disableGloba = options.disableGlobal,
-      disableGlobal = _options$disableGloba === void 0 ? false : _options$disableGloba,
-      _options$productionPr = options.productionPrefix,
-      productionPrefix = _options$productionPr === void 0 ? 'jss' : _options$productionPr,
-      _options$seed = options.seed,
-      seed = _options$seed === void 0 ? '' : _options$seed;
-  var seedPrefix = seed === '' ? '' : "".concat(seed, "-");
-  var ruleCounter = 0;
-
-  var getNextCounterId = function getNextCounterId() {
-    ruleCounter += 1;
+function createWithTheme(context) {
+  return function hoc(Component) {
+    var withTheme = React__default['default'].forwardRef(function (props, ref) {
+      return React__default['default'].createElement(context.Consumer, null, function (theme) {
+        process.env.NODE_ENV !== "production" ? warning$1(isObject(theme), '[theming] Please use withTheme only with the ThemeProvider') : void 0;
+        return React__default['default'].createElement(Component, _extends$1({
+          theme: theme,
+          ref: ref
+        }, props));
+      });
+    });
 
     if (process.env.NODE_ENV !== 'production') {
-      if (ruleCounter >= 1e10) {
-        console.warn(['Material-UI: You might have a memory leak.', 'The ruleCounter is not supposed to grow that much.'].join(''));
-      }
+      withTheme.displayName = "WithTheme(" + _default(Component) + ")";
     }
 
-    return ruleCounter;
-  };
-
-  return function (rule, styleSheet) {
-    var name = styleSheet.options.name; // Is a global static MUI style?
-
-    if (name && name.indexOf('Mui') === 0 && !styleSheet.options.link && !disableGlobal) {
-      // We can use a shorthand class name, we never use the keys to style the components.
-      if (pseudoClasses.indexOf(rule.key) !== -1) {
-        return "Mui-".concat(rule.key);
-      }
-
-      var prefix = "".concat(seedPrefix).concat(name, "-").concat(rule.key);
-
-      if (!styleSheet.options.theme[nested] || seed !== '') {
-        return prefix;
-      }
-
-      return "".concat(prefix, "-").concat(getNextCounterId());
-    }
-
-    if (process.env.NODE_ENV === 'production') {
-      return "".concat(seedPrefix).concat(productionPrefix).concat(getNextCounterId());
-    }
-
-    var suffix = "".concat(rule.key, "-").concat(getNextCounterId()); // Help with debuggability.
-
-    if (styleSheet.options.classNamePrefix) {
-      return "".concat(seedPrefix).concat(styleSheet.options.classNamePrefix, "-").concat(suffix);
-    }
-
-    return "".concat(seedPrefix).concat(suffix);
+    hoistNonReactStatics_cjs(withTheme, Component);
+    return withTheme;
   };
 }
 
-function createStyles(styles) {
-  return styles;
+function createUseTheme(context) {
+  var useTheme = function useTheme() {
+    var theme = React__default['default'].useContext(context);
+    process.env.NODE_ENV !== "production" ? warning$1(isObject(theme), '[theming] Please use useTheme only with the ThemeProvider') : void 0;
+    return theme;
+  };
+
+  return useTheme;
 }
 
-/* eslint-disable no-restricted-syntax */
-function getThemeProps(params) {
-  var theme = params.theme,
-      name = params.name,
-      props = params.props;
-
-  if (!theme || !theme.props || !theme.props[name]) {
-    return props;
-  } // Resolve default props, code borrow from React source.
-  // https://github.com/facebook/react/blob/15a8f031838a553e41c0b66eb1bcf1da8448104d/packages/react/src/ReactElement.js#L221
-
-
-  var defaultProps = theme.props[name];
-  var propName;
-
-  for (propName in defaultProps) {
-    if (props[propName] === undefined) {
-      props[propName] = defaultProps[propName];
-    }
-  }
-
-  return props;
+function createTheming(context) {
+  return {
+    context: context,
+    withTheme: createWithTheme(context),
+    useTheme: createUseTheme(context),
+    ThemeProvider: createThemeProvider(context)
+  };
 }
 
-var isProduction = process.env.NODE_ENV === 'production';
-function warning$1(condition, message) {
-  if (!isProduction) {
-    if (condition) {
-      return;
-    }
+var ThemeContext = React.createContext();
 
-    var text = "Warning: " + message;
-
-    if (typeof console !== 'undefined') {
-      console.warn(text);
-    }
-
-    try {
-      throw Error(text);
-    } catch (x) {}
-  }
-}
+var _createTheming = createTheming(ThemeContext),
+    ThemeProvider = _createTheming.ThemeProvider;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -22295,6 +20870,73 @@ function getDynamicStyles(styles) {
 }
 
 /**
+ * SheetsManager is like a WeakMap which is designed to count StyleSheet
+ * instances and attach/detach automatically.
+ */
+var SheetsManager =
+/*#__PURE__*/
+function () {
+  function SheetsManager() {
+    this.length = 0;
+    this.sheets = new WeakMap();
+  }
+
+  var _proto = SheetsManager.prototype;
+
+  _proto.get = function get(key) {
+    var entry = this.sheets.get(key);
+    return entry && entry.sheet;
+  };
+
+  _proto.add = function add(key, sheet) {
+    if (this.sheets.has(key)) return;
+    this.length++;
+    this.sheets.set(key, {
+      sheet: sheet,
+      refs: 0
+    });
+  };
+
+  _proto.manage = function manage(key) {
+    var entry = this.sheets.get(key);
+
+    if (entry) {
+      if (entry.refs === 0) {
+        entry.sheet.attach();
+      }
+
+      entry.refs++;
+      return entry.sheet;
+    }
+
+    warning$1(false, "[JSS] SheetsManager: can't find sheet to manage");
+    return undefined;
+  };
+
+  _proto.unmanage = function unmanage(key) {
+    var entry = this.sheets.get(key);
+
+    if (entry) {
+      if (entry.refs > 0) {
+        entry.refs--;
+        if (entry.refs === 0) entry.sheet.detach();
+      }
+    } else {
+      warning$1(false, "SheetsManager: can't find sheet to unmanage");
+    }
+  };
+
+  _createClass__default['default'](SheetsManager, [{
+    key: "size",
+    get: function get() {
+      return this.length;
+    }
+  }]);
+
+  return SheetsManager;
+}();
+
+/**
  * A better abstraction over CSS.
  *
  * @copyright Oleg Isonen (Slobodskoi) / Isonen 2014-present
@@ -22318,7 +20960,7 @@ var create = function create(options) {
  * A global Jss instance.
  */
 
-create();
+var jss = create();
 
 var now = Date.now();
 var fnValuesNs = "fnValues" + now;
@@ -22383,6 +21025,95 @@ var functionPlugin = function functionPlugin() {
     }
   };
 };
+
+var isObservable = function isObservable(value) {
+  return value && value[result] && value === value[result]();
+};
+
+var observablePlugin = function observablePlugin(updateOptions) {
+  return {
+    onCreateRule: function onCreateRule(name, decl, options) {
+      if (!isObservable(decl)) return null; // Cast `decl` to `Observable`, since it passed the type guard.
+
+      var style$ = decl;
+      var rule = createRule(name, {}, options); // TODO
+      // Call `stream.subscribe()` returns a subscription, which should be explicitly
+      // unsubscribed from when we know this sheet is no longer needed.
+
+      style$.subscribe(function (style) {
+        for (var prop in style) {
+          rule.prop(prop, style[prop], updateOptions);
+        }
+      });
+      return rule;
+    },
+    onProcessRule: function onProcessRule(rule) {
+      if (rule && rule.type !== 'style') return;
+      var styleRule = rule;
+      var style = styleRule.style;
+
+      var _loop = function _loop(prop) {
+        var value = style[prop];
+        if (!isObservable(value)) return "continue";
+        delete style[prop];
+        value.subscribe({
+          next: function next(nextValue) {
+            styleRule.prop(prop, nextValue, updateOptions);
+          }
+        });
+      };
+
+      for (var prop in style) {
+        var _ret = _loop(prop);
+
+        if (_ret === "continue") continue;
+      }
+    }
+  };
+};
+
+var semiWithNl = /;\n/;
+
+/**
+ * Naive CSS parser.
+ * - Supports only rule body (no selectors)
+ * - Requires semicolon and new line after the value (except of last line)
+ * - No nested rules support
+ */
+var parse = function parse(cssText) {
+  var style = {};
+  var split = cssText.split(semiWithNl);
+
+  for (var i = 0; i < split.length; i++) {
+    var decl = (split[i] || '').trim();
+    if (!decl) continue;
+    var colonIndex = decl.indexOf(':');
+
+    if (colonIndex === -1) {
+      process.env.NODE_ENV !== "production" ? warning$1(false, "[JSS] Malformed CSS string \"" + decl + "\"") : void 0;
+      continue;
+    }
+
+    var prop = decl.substr(0, colonIndex).trim();
+    var value = decl.substr(colonIndex + 1).trim();
+    style[prop] = value;
+  }
+
+  return style;
+};
+
+var onProcessRule = function onProcessRule(rule) {
+  if (typeof rule.style === 'string') {
+    // $FlowFixMe[prop-missing] We can safely assume that rule has the style property
+    rule.style = parse(rule.style);
+  }
+};
+
+function templatePlugin() {
+  return {
+    onProcessRule: onProcessRule
+  };
+}
 
 var at = '@global';
 var atPrefix = '@global ';
@@ -22565,6 +21296,146 @@ function jssGlobal() {
   };
 }
 
+var isObject$1 = function isObject(obj) {
+  return obj && typeof obj === 'object' && !Array.isArray(obj);
+};
+
+var valueNs = "extendCurrValue" + Date.now();
+
+function mergeExtend(style, rule, sheet, newStyle) {
+  var extendType = typeof style.extend; // Extend using a rule name.
+
+  if (extendType === 'string') {
+    if (!sheet) return;
+    var refRule = sheet.getRule(style.extend);
+    if (!refRule) return;
+
+    if (refRule === rule) {
+      process.env.NODE_ENV !== "production" ? warning$1(false, "[JSS] A rule tries to extend itself \n" + rule.toString()) : void 0;
+      return;
+    }
+
+    var parent = refRule.options.parent;
+
+    if (parent) {
+      var originalStyle = parent.rules.raw[style.extend];
+      extend(originalStyle, rule, sheet, newStyle);
+    }
+
+    return;
+  } // Extend using an array.
+
+
+  if (Array.isArray(style.extend)) {
+    for (var index = 0; index < style.extend.length; index++) {
+      var singleExtend = style.extend[index];
+      var singleStyle = typeof singleExtend === 'string' ? _extends__default['default']({}, style, {
+        extend: singleExtend
+      }) : style.extend[index];
+      extend(singleStyle, rule, sheet, newStyle);
+    }
+
+    return;
+  } // Extend is a style object.
+
+
+  for (var prop in style.extend) {
+    if (prop === 'extend') {
+      extend(style.extend.extend, rule, sheet, newStyle);
+      continue;
+    }
+
+    if (isObject$1(style.extend[prop])) {
+      if (!(prop in newStyle)) newStyle[prop] = {};
+      extend(style.extend[prop], rule, sheet, newStyle[prop]);
+      continue;
+    }
+
+    newStyle[prop] = style.extend[prop];
+  }
+}
+
+function mergeRest(style, rule, sheet, newStyle) {
+  // Copy base style.
+  for (var prop in style) {
+    if (prop === 'extend') continue;
+
+    if (isObject$1(newStyle[prop]) && isObject$1(style[prop])) {
+      extend(style[prop], rule, sheet, newStyle[prop]);
+      continue;
+    }
+
+    if (isObject$1(style[prop])) {
+      newStyle[prop] = extend(style[prop], rule, sheet);
+      continue;
+    }
+
+    newStyle[prop] = style[prop];
+  }
+}
+/**
+ * Recursively extend styles.
+ */
+
+
+function extend(style, rule, sheet, newStyle) {
+  if (newStyle === void 0) {
+    newStyle = {};
+  }
+
+  mergeExtend(style, rule, sheet, newStyle);
+  mergeRest(style, rule, sheet, newStyle);
+  return newStyle;
+}
+/**
+ * Handle `extend` property.
+ *
+ * @param {Rule} rule
+ * @api public
+ */
+
+
+function jssExtend() {
+  function onProcessStyle(style, rule, sheet) {
+    if ('extend' in style) return extend(style, rule, sheet);
+    return style;
+  }
+
+  function onChangeValue(value, prop, rule) {
+    if (prop !== 'extend') return value; // Value is empty, remove properties set previously.
+
+    if (value == null || value === false) {
+      // $FlowFixMe[prop-missing]
+      for (var key in rule[valueNs]) {
+        rule.prop(key, null);
+      } // $FlowFixMe[prop-missing] Flow complains because there is no indexer property in StyleRule
+
+
+      rule[valueNs] = null;
+      return null;
+    }
+
+    if (typeof value === 'object') {
+      // $FlowFixMe[invalid-in-rhs] This will be an object
+      for (var _key in value) {
+        // $FlowFixMe[incompatible-use] This will be an object
+        rule.prop(_key, value[_key]);
+      } // $FlowFixMe[prop-missing] Flow complains because there is no indexer property in StyleRule
+
+
+      rule[valueNs] = value;
+    } // Make sure we don't set the value in the core.
+
+
+    return null;
+  }
+
+  return {
+    onProcessStyle: onProcessStyle,
+    onChangeValue: onChangeValue
+  };
+}
+
 var separatorRegExp$1 = /\s*,\s*/g;
 var parentRegExp = /&/g;
 var refRegExp$1 = /\$([\w-]+)/g;
@@ -22666,6 +21537,76 @@ function jssNested() {
       delete style[prop];
     }
 
+    return style;
+  }
+
+  return {
+    onProcessStyle: onProcessStyle
+  };
+}
+
+/**
+ * Set selector.
+ *
+ * @param {Object} original rule
+ * @param {String} className class string
+ * @return {Boolean} flag, indicating function was successfull or not
+ */
+function registerClass(rule, className) {
+  // Skip falsy values
+  if (!className) return true; // Support array of class names `{composes: ['foo', 'bar']}`
+
+  if (Array.isArray(className)) {
+    for (var index = 0; index < className.length; index++) {
+      var isSetted = registerClass(rule, className[index]);
+      if (!isSetted) return false;
+    }
+
+    return true;
+  } // Support space separated class names `{composes: 'foo bar'}`
+
+
+  if (className.indexOf(' ') > -1) {
+    return registerClass(rule, className.split(' '));
+  }
+
+  var _ref = rule.options,
+      parent = _ref.parent; // It is a ref to a local rule.
+
+  if (className[0] === '$') {
+    var refRule = parent.getRule(className.substr(1));
+
+    if (!refRule) {
+      process.env.NODE_ENV !== "production" ? warning$1(false, "[JSS] Referenced rule is not defined. \n" + rule.toString()) : void 0;
+      return false;
+    }
+
+    if (refRule === rule) {
+      process.env.NODE_ENV !== "production" ? warning$1(false, "[JSS] Cyclic composition detected. \n" + rule.toString()) : void 0;
+      return false;
+    }
+
+    parent.classes[rule.key] += " " + parent.classes[refRule.key];
+    return true;
+  }
+
+  parent.classes[rule.key] += " " + className;
+  return true;
+}
+/**
+ * Convert compose property to additional class, remove property from original styles.
+ *
+ * @param {Rule} rule
+ * @api public
+ */
+
+
+function jssCompose() {
+  function onProcessStyle(style, rule) {
+    if (!('composes' in style)) return style;
+    registerClass(rule, style.composes); // Remove composes property to prevent infinite loop.
+
+    delete style.composes;
     return style;
   }
 
@@ -22998,6 +21939,391 @@ function defaultUnit(options) {
   return {
     onProcessStyle: onProcessStyle,
     onChangeValue: onChangeValue
+  };
+}
+
+/**
+ * A scheme for converting properties from array to regular style.
+ * All properties listed below will be transformed to a string separated by space.
+ */
+var propArray = {
+  'background-size': true,
+  'background-position': true,
+  border: true,
+  'border-bottom': true,
+  'border-left': true,
+  'border-top': true,
+  'border-right': true,
+  'border-radius': true,
+  'border-image': true,
+  'border-width': true,
+  'border-style': true,
+  'border-color': true,
+  'box-shadow': true,
+  flex: true,
+  margin: true,
+  padding: true,
+  outline: true,
+  'transform-origin': true,
+  transform: true,
+  transition: true
+  /**
+   * A scheme for converting arrays to regular styles inside of objects.
+   * For e.g.: "{position: [0, 0]}" => "background-position: 0 0;".
+   */
+
+};
+var propArrayInObj = {
+  position: true,
+  // background-position
+  size: true // background-size
+
+  /**
+   * A scheme for parsing and building correct styles from passed objects.
+   */
+
+};
+var propObj = {
+  padding: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+  margin: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+  background: {
+    attachment: null,
+    color: null,
+    image: null,
+    position: null,
+    repeat: null
+  },
+  border: {
+    width: null,
+    style: null,
+    color: null
+  },
+  'border-top': {
+    width: null,
+    style: null,
+    color: null
+  },
+  'border-right': {
+    width: null,
+    style: null,
+    color: null
+  },
+  'border-bottom': {
+    width: null,
+    style: null,
+    color: null
+  },
+  'border-left': {
+    width: null,
+    style: null,
+    color: null
+  },
+  outline: {
+    width: null,
+    style: null,
+    color: null
+  },
+  'list-style': {
+    type: null,
+    position: null,
+    image: null
+  },
+  transition: {
+    property: null,
+    duration: null,
+    'timing-function': null,
+    timingFunction: null,
+    // Needed for avoiding comilation issues with jss-plugin-camel-case
+    delay: null
+  },
+  animation: {
+    name: null,
+    duration: null,
+    'timing-function': null,
+    timingFunction: null,
+    // Needed to avoid compilation issues with jss-plugin-camel-case
+    delay: null,
+    'iteration-count': null,
+    iterationCount: null,
+    // Needed to avoid compilation issues with jss-plugin-camel-case
+    direction: null,
+    'fill-mode': null,
+    fillMode: null,
+    // Needed to avoid compilation issues with jss-plugin-camel-case
+    'play-state': null,
+    playState: null // Needed to avoid compilation issues with jss-plugin-camel-case
+
+  },
+  'box-shadow': {
+    x: 0,
+    y: 0,
+    blur: 0,
+    spread: 0,
+    color: null,
+    inset: null
+  },
+  'text-shadow': {
+    x: 0,
+    y: 0,
+    blur: null,
+    color: null
+  }
+  /**
+   * A scheme for converting non-standart properties inside object.
+   * For e.g.: include 'border-radius' property inside 'border' object.
+   */
+
+};
+var customPropObj = {
+  border: {
+    radius: 'border-radius',
+    image: 'border-image',
+    width: 'border-width',
+    style: 'border-style',
+    color: 'border-color'
+  },
+  'border-bottom': {
+    width: 'border-bottom-width',
+    style: 'border-bottom-style',
+    color: 'border-bottom-color'
+  },
+  'border-top': {
+    width: 'border-top-width',
+    style: 'border-top-style',
+    color: 'border-top-color'
+  },
+  'border-left': {
+    width: 'border-left-width',
+    style: 'border-left-style',
+    color: 'border-left-color'
+  },
+  'border-right': {
+    width: 'border-right-width',
+    style: 'border-right-style',
+    color: 'border-right-color'
+  },
+  background: {
+    size: 'background-size',
+    image: 'background-image'
+  },
+  font: {
+    style: 'font-style',
+    variant: 'font-variant',
+    weight: 'font-weight',
+    stretch: 'font-stretch',
+    size: 'font-size',
+    family: 'font-family',
+    lineHeight: 'line-height',
+    // Needed to avoid compilation issues with jss-plugin-camel-case
+    'line-height': 'line-height'
+  },
+  flex: {
+    grow: 'flex-grow',
+    basis: 'flex-basis',
+    direction: 'flex-direction',
+    wrap: 'flex-wrap',
+    flow: 'flex-flow',
+    shrink: 'flex-shrink'
+  },
+  align: {
+    self: 'align-self',
+    items: 'align-items',
+    content: 'align-content'
+  },
+  grid: {
+    'template-columns': 'grid-template-columns',
+    templateColumns: 'grid-template-columns',
+    'template-rows': 'grid-template-rows',
+    templateRows: 'grid-template-rows',
+    'template-areas': 'grid-template-areas',
+    templateAreas: 'grid-template-areas',
+    template: 'grid-template',
+    'auto-columns': 'grid-auto-columns',
+    autoColumns: 'grid-auto-columns',
+    'auto-rows': 'grid-auto-rows',
+    autoRows: 'grid-auto-rows',
+    'auto-flow': 'grid-auto-flow',
+    autoFlow: 'grid-auto-flow',
+    row: 'grid-row',
+    column: 'grid-column',
+    'row-start': 'grid-row-start',
+    rowStart: 'grid-row-start',
+    'row-end': 'grid-row-end',
+    rowEnd: 'grid-row-end',
+    'column-start': 'grid-column-start',
+    columnStart: 'grid-column-start',
+    'column-end': 'grid-column-end',
+    columnEnd: 'grid-column-end',
+    area: 'grid-area',
+    gap: 'grid-gap',
+    'row-gap': 'grid-row-gap',
+    rowGap: 'grid-row-gap',
+    'column-gap': 'grid-column-gap',
+    columnGap: 'grid-column-gap'
+  }
+};
+
+/* eslint-disable no-use-before-define */
+
+/**
+ * Map values by given prop.
+ *
+ * @param {Array} array of values
+ * @param {String} original property
+ * @param {String} original rule
+ * @return {String} mapped values
+ */
+function mapValuesByProp(value, prop, rule) {
+  return value.map(function (item) {
+    return objectToArray(item, prop, rule, false, true);
+  });
+}
+/**
+ * Convert array to nested array, if needed
+ */
+
+
+function processArray(value, prop, scheme, rule) {
+  if (scheme[prop] == null) return value;
+  if (value.length === 0) return [];
+  if (Array.isArray(value[0])) return processArray(value[0], prop, scheme, rule);
+
+  if (typeof value[0] === 'object') {
+    return mapValuesByProp(value, prop, rule);
+  }
+
+  return [value];
+}
+/**
+ * Convert object to array.
+ */
+
+
+function objectToArray(value, prop, rule, isFallback, isInArray) {
+  if (!(propObj[prop] || customPropObj[prop])) return [];
+  var result = []; // Check if exists any non-standard property
+
+  if (customPropObj[prop]) {
+    // eslint-disable-next-line no-param-reassign
+    value = customPropsToStyle(value, rule, customPropObj[prop], isFallback);
+  } // Pass throught all standart props
+
+
+  if (Object.keys(value).length) {
+    for (var baseProp in propObj[prop]) {
+      if (value[baseProp]) {
+        if (Array.isArray(value[baseProp])) {
+          result.push(propArrayInObj[baseProp] === null ? value[baseProp] : value[baseProp].join(' '));
+        } else result.push(value[baseProp]);
+
+        continue;
+      } // Add default value from props config.
+
+
+      if (propObj[prop][baseProp] != null) {
+        result.push(propObj[prop][baseProp]);
+      }
+    }
+  }
+
+  if (!result.length || isInArray) return result;
+  return [result];
+}
+/**
+ * Convert custom properties values to styles adding them to rule directly
+ */
+
+
+function customPropsToStyle(value, rule, customProps, isFallback) {
+  for (var prop in customProps) {
+    var propName = customProps[prop]; // If current property doesn't exist already in rule - add new one
+
+    if (typeof value[prop] !== 'undefined' && (isFallback || !rule.prop(propName))) {
+      var _styleDetector;
+
+      var appendedValue = styleDetector((_styleDetector = {}, _styleDetector[propName] = value[prop], _styleDetector), rule)[propName]; // Add style directly in rule
+
+      if (isFallback) rule.style.fallbacks[propName] = appendedValue;else rule.style[propName] = appendedValue;
+    } // Delete converted property to avoid double converting
+
+
+    delete value[prop];
+  }
+
+  return value;
+}
+/**
+ * Detect if a style needs to be converted.
+ */
+
+
+function styleDetector(style, rule, isFallback) {
+  for (var prop in style) {
+    var value = style[prop];
+
+    if (Array.isArray(value)) {
+      // Check double arrays to avoid recursion.
+      if (!Array.isArray(value[0])) {
+        if (prop === 'fallbacks') {
+          for (var index = 0; index < style.fallbacks.length; index++) {
+            style.fallbacks[index] = styleDetector(style.fallbacks[index], rule, true);
+          }
+
+          continue;
+        }
+
+        style[prop] = processArray(value, prop, propArray, rule); // Avoid creating properties with empty values
+
+        if (!style[prop].length) delete style[prop];
+      }
+    } else if (typeof value === 'object') {
+      if (prop === 'fallbacks') {
+        style.fallbacks = styleDetector(style.fallbacks, rule, true);
+        continue;
+      }
+
+      style[prop] = objectToArray(value, prop, rule, isFallback); // Avoid creating properties with empty values
+
+      if (!style[prop].length) delete style[prop];
+    } // Maybe a computed value resulting in an empty string
+    else if (style[prop] === '') delete style[prop];
+  }
+
+  return style;
+}
+/**
+ * Adds possibility to write expanded styles.
+ */
+
+
+function jssExpand() {
+  function onProcessStyle(style, rule) {
+    if (!style || rule.type !== 'style') return style;
+
+    if (Array.isArray(style)) {
+      // Pass rules one by one and reformat them
+      for (var index = 0; index < style.length; index++) {
+        style[index] = styleDetector(style[index], rule);
+      }
+
+      return style;
+    }
+
+    return styleDetector(style, rule);
+  }
+
+  return {
+    onProcessStyle: onProcessStyle
   };
 }
 
@@ -23652,6 +22978,2399 @@ function jssPropsSort() {
   };
 }
 
+var create$1 = function create(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  return {
+    plugins: [functionPlugin(), observablePlugin(options.observable), templatePlugin(), jssGlobal(), jssExtend(), jssNested(), jssCompose(), camelCase(), defaultUnit(options.defaultUnit), jssExpand(), jssVendorPrefixer(), jssPropsSort()]
+  };
+};
+
+create(create$1());
+
+var JssContext = React.createContext({
+  classNamePrefix: '',
+  disableStylesGeneration: false
+});
+
+/**
+ * Global index counter to preserve source order.
+ * As we create the style sheet during componentWillMount lifecycle,
+ * children are handled after the parents, so the order of style elements would
+ * be parent->child. It is a problem though when a parent passes a className
+ * which needs to override any childs styles. StyleSheet of the child has a higher
+ * specificity, because of the source order.
+ * So our solution is to render sheets them in the reverse order child->sheet, so
+ * that parent has a higher specificity.
+ *
+ * We start at [Number.MIN_SAFE_INTEGER] to always insert sheets from react-jss first before any
+ * sheet which might be inserted manually by the user.
+ */
+var index = Number.MIN_SAFE_INTEGER || -1e9;
+
+var getSheetIndex = function getSheetIndex() {
+  return index++;
+};
+
+var defaultManagers = new Map();
+var getManager = function getManager(context, managerId) {
+  // If `managers` map is present in the context, we use it in order to
+  // let JssProvider reset them when new response has to render server-side.
+  if (context.managers) {
+    if (!context.managers[managerId]) {
+      context.managers[managerId] = new SheetsManager();
+    }
+
+    return context.managers[managerId];
+  }
+
+  var manager = defaultManagers.get(managerId);
+
+  if (!manager) {
+    manager = new SheetsManager();
+    defaultManagers.set(managerId, manager);
+  }
+
+  return manager;
+};
+var manageSheet = function manageSheet(options) {
+  var sheet = options.sheet,
+      context = options.context,
+      index = options.index,
+      theme = options.theme;
+
+  if (!sheet) {
+    return;
+  }
+
+  var manager = getManager(context, index);
+  manager.manage(theme);
+
+  if (context.registry) {
+    context.registry.add(sheet);
+  }
+};
+var unmanageSheet = function unmanageSheet(options) {
+  if (!options.sheet) {
+    return;
+  }
+
+  var manager = getManager(options.context, options.index);
+  manager.unmanage(options.theme);
+};
+
+var jss$1 = create(create$1());
+
+var sheetsMeta = new WeakMap();
+var getMeta = function getMeta(sheet) {
+  return sheetsMeta.get(sheet);
+};
+var addMeta = function addMeta(sheet, meta) {
+  sheetsMeta.set(sheet, meta);
+};
+
+// eslint-disable-next-line no-unused-vars
+var getStyles = function getStyles(options) {
+  var styles = options.styles;
+
+  if (typeof styles !== 'function') {
+    return styles;
+  }
+
+  process.env.NODE_ENV !== "production" ? warning$1(styles.length !== 0, "[JSS] <" + (options.name || 'Hook') + " />'s styles function doesn't rely on the \"theme\" argument. We recommend declaring styles as an object instead.") : void 0;
+  return styles(options.theme);
+};
+
+function getSheetOptions(options, link) {
+  var minify;
+
+  if (options.context.id && options.context.id.minify != null) {
+    minify = options.context.id.minify;
+  }
+
+  var classNamePrefix = options.context.classNamePrefix || '';
+
+  if (options.name && !minify) {
+    classNamePrefix += options.name.replace(/\s/g, '-') + "-";
+  }
+
+  var meta = '';
+  if (options.name) meta = options.name + ", ";
+  meta += typeof options.styles === 'function' ? 'Themed' : 'Unthemed';
+  return _extends__default['default']({}, options.sheetOptions, {
+    index: options.index,
+    meta: meta,
+    classNamePrefix: classNamePrefix,
+    link: link,
+    generateId: options.sheetOptions.generateId || options.context.generateId
+  });
+}
+
+// eslint-disable-next-line no-unused-vars
+var createStyleSheet = function createStyleSheet(options) {
+  if (options.context.disableStylesGeneration) {
+    return undefined;
+  }
+
+  var manager = getManager(options.context, options.index);
+  var existingSheet = manager.get(options.theme);
+
+  if (existingSheet) {
+    return existingSheet;
+  }
+
+  var jss$1$1 = options.context.jss || jss$1;
+  var styles = getStyles(options);
+  var dynamicStyles = getDynamicStyles(styles);
+  var sheet = jss$1$1.createStyleSheet(styles, getSheetOptions(options, dynamicStyles !== null));
+  addMeta(sheet, {
+    dynamicStyles: dynamicStyles,
+    styles: styles
+  });
+  manager.add(options.theme, sheet);
+  return sheet;
+};
+var removeDynamicRules = function removeDynamicRules(sheet, rules) {
+  // Loop over each dynamic rule and remove the dynamic rule
+  // We can't just remove the whole sheet as this has all of the rules for every component instance
+  for (var key in rules) {
+    sheet.deleteRule(rules[key]);
+  }
+};
+var updateDynamicRules = function updateDynamicRules(data, sheet, rules) {
+  // Loop over each dynamic rule and update it
+  // We can't just update the whole sheet as this has all of the rules for every component instance
+  for (var key in rules) {
+    sheet.updateOne(rules[key], data);
+  }
+};
+var addDynamicRules = function addDynamicRules(sheet, data) {
+  var meta = getMeta(sheet);
+
+  if (!meta) {
+    return undefined;
+  }
+
+  var rules = {}; // Loop over each dynamic rule and add it to the stylesheet
+
+  for (var key in meta.dynamicStyles) {
+    var initialRuleCount = sheet.rules.index.length;
+    var originalRule = sheet.addRule(key, meta.dynamicStyles[key]); // Loop through all created rules, fixes updating dynamic rules
+
+    for (var i = initialRuleCount; i < sheet.rules.index.length; i++) {
+      var rule = sheet.rules.index[i];
+      sheet.updateOne(rule, data); // If it's the original rule, we need to add it by the correct key so the hook and hoc
+      // can correctly concat the dynamic class with the static one
+
+      rules[originalRule === rule ? key : rule.key] = rule;
+    }
+  }
+
+  return rules;
+};
+
+var getSheetClasses = function getSheetClasses(sheet, dynamicRules) {
+  if (!dynamicRules) {
+    return sheet.classes;
+  }
+
+  var classes = {};
+  var meta = getMeta(sheet);
+
+  if (!meta) {
+    return sheet.classes;
+  }
+
+  for (var key in meta.styles) {
+    classes[key] = sheet.classes[key];
+
+    if (key in dynamicRules) {
+      classes[key] += " " + sheet.classes[dynamicRules[key].key];
+    }
+  }
+
+  return classes;
+};
+
+var useEffectOrLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;
+var noTheme$1 = {};
+
+var createUseStyles = function createUseStyles(styles, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var _options = options,
+      _options$index = _options.index,
+      index = _options$index === void 0 ? getSheetIndex() : _options$index,
+      theming = _options.theming,
+      name = _options.name,
+      sheetOptions = _objectWithoutPropertiesLoose__default['default'](_options, ["index", "theming", "name"]);
+
+  var ThemeContext$1 = theming && theming.context || ThemeContext;
+  var useTheme = typeof styles === 'function' ? // $FlowFixMe[incompatible-return]
+  function () {
+    return React.useContext(ThemeContext$1) || noTheme$1;
+  } : // $FlowFixMe[incompatible-return]
+  function () {
+    return noTheme$1;
+  };
+  return function useStyles(data) {
+    var isFirstMount = React.useRef(true);
+    var context = React.useContext(JssContext);
+    var theme = useTheme();
+
+    var _React$useMemo = React.useMemo(function () {
+      var newSheet = createStyleSheet({
+        context: context,
+        styles: styles,
+        name: name,
+        theme: theme,
+        index: index,
+        sheetOptions: sheetOptions
+      });
+      var newDynamicRules = newSheet ? addDynamicRules(newSheet, data) : null;
+
+      if (newSheet) {
+        manageSheet({
+          index: index,
+          context: context,
+          sheet: newSheet,
+          theme: theme
+        });
+      }
+
+      return [newSheet, newDynamicRules];
+    }, [context, theme]),
+        sheet = _React$useMemo[0],
+        dynamicRules = _React$useMemo[1];
+
+    useEffectOrLayoutEffect(function () {
+      // We only need to update the rules on a subsequent update and not in the first mount
+      if (sheet && dynamicRules && !isFirstMount.current) {
+        updateDynamicRules(data, sheet, dynamicRules);
+      }
+    }, [data]);
+    useEffectOrLayoutEffect(function () {
+      return (// cleanup only
+        function () {
+          if (sheet) {
+            unmanageSheet({
+              index: index,
+              context: context,
+              sheet: sheet,
+              theme: theme
+            });
+          }
+
+          if (sheet && dynamicRules) {
+            removeDynamicRules(sheet, dynamicRules);
+          }
+        }
+      );
+    }, [sheet]);
+    var classes = sheet && dynamicRules ? getSheetClasses(sheet, dynamicRules) : {};
+    React.useDebugValue(classes);
+    React.useDebugValue(theme === noTheme$1 ? 'No theme' : theme);
+    React.useEffect(function () {
+      isFirstMount.current = false;
+    });
+    return classes;
+  };
+};
+
+({
+  registry: propTypes.instanceOf(SheetsRegistry),
+  jss: propTypes.instanceOf(jss.constructor),
+  generateId: propTypes.func,
+  classNamePrefix: propTypes.string,
+  disableStylesGeneration: propTypes.bool,
+  children: propTypes.node.isRequired,
+  media: propTypes.string,
+  id: propTypes.shape({
+    minify: propTypes.bool
+  })
+});
+
+var theme = {
+    pallete: {
+        primary: {},
+        backgrounds: {
+            common: "rgba(68,68,68,0.3)",
+        },
+    },
+};
+
+function _getFeatureTimes(feature) {
+    if (!feature.featureTimes) {
+        if (!feature.properties) {
+            feature.featureTimes = [];
+        }
+        else if (feature.properties.hasOwnProperty("coordTimes")) {
+            feature.featureTimes = feature.properties.coordTimes;
+        }
+        else if (feature.properties.hasOwnProperty("times")) {
+            feature.featureTimes = feature.properties.times;
+        }
+        else if (feature.properties.hasOwnProperty("linestringTimestamps")) {
+            feature.featureTimes = feature.properties.linestringTimestamps;
+        }
+        else if (feature.properties.hasOwnProperty("time")) {
+            feature.featureTimes = [feature.properties.time];
+        }
+        else {
+            feature.featureTimes = [];
+        }
+        if (!feature.featureTimes)
+            return [];
+        // String dates to ms
+        for (var i = 0, l = feature.featureTimes.length; i < l; i++) {
+            var time = feature.featureTimes[i];
+            if (typeof time === "string") {
+                time = Date.parse(time.trim());
+                feature.featureTimes[i] = time;
+            }
+        }
+    }
+    return feature.featureTimes;
+}
+function _getFeatureBetweenDates(feature, minTime, maxTime) {
+    var featureTimes = _getFeatureTimes(feature);
+    if (featureTimes.length == 0) {
+        return feature;
+    }
+    var index_min = null, index_max = null, l = featureTimes.length;
+    if (featureTimes[0] > maxTime || featureTimes[l - 1] < minTime) {
+        return null;
+    }
+    if (featureTimes[l - 1] > minTime) {
+        for (var i = 0; i < l; i++) {
+            if (index_min === null && featureTimes[i] > minTime) {
+                // set index_min the first time that current time is greater the minTime
+                index_min = i;
+            }
+            if (featureTimes[i] > maxTime) {
+                index_max = i;
+                break;
+            }
+        }
+    }
+    if (index_min === null) {
+        index_min = 0;
+    }
+    if (index_max === null) {
+        index_max = l;
+    }
+    var new_coordinates = [];
+    if (feature.geometry.geometries) ;
+    else {
+        if (typeof feature.geometry.coordinates[0] === "number") {
+            new_coordinates = feature.geometry.coordinates;
+        }
+        else {
+            new_coordinates = feature.geometry.coordinates.slice(index_min, index_max);
+        }
+    }
+    return {
+        type: "Feature",
+        properties: feature.properties,
+        geometry: {
+            type: feature.geometry.type,
+            coordinates: new_coordinates,
+        },
+    };
+}
+
+var typedHooks = createTypedHooks();
+var useTDStoreActions = typedHooks.useStoreActions;
+var useTDStoreDispatch = typedHooks.useStoreDispatch;
+var useTDStoreState = typedHooks.useStoreState;
+var useTDStore = typedHooks.useStore;
+
+/*
+ * L.TimeDimension.Layer.GeoJson:
+ */
+var useLayer = function (data, leafletMapRef, options, _a, _b) {
+    var 
+    // updateTimeDimension = false,
+    _c = _a.updateTimeDimensionMode, 
+    // updateTimeDimension = false,
+    updateTimeDimensionMode = _c === void 0 ? "extremes" : _c, _d = _a.addlastPoint, addlastPoint = _d === void 0 ? false : _d, _e = _a.waitForReady, waitForReady = _e === void 0 ? false : _e, _f = _a.updateCurrentTime, updateCurrentTime = _f === void 0 ? false : _f, duration = _a.duration;
+    var _g = _b.getFeatureBetweenDates, getFeatureBetweenDates = _g === void 0 ? _getFeatureBetweenDates : _g;
+    // const leafletMapRef = useMap();
+    var currentTime = useTDStoreState(function (state) { return state.currentTime; });
+    var prepareAvailableTimes = useTDStoreActions(function (actions) { return actions.prepareAvailableTimes; });
+    var _loaded = React.useRef(false);
+    var _currentLayer = React.useRef();
+    var layer = React.useRef();
+    function _update(currentTimeIndex) {
+        if (!layer.current)
+            return;
+        if (!_loaded) {
+            return;
+        }
+        var maxTime = currentTimeIndex, minTime = 0;
+        if (duration) {
+            var date = new Date(maxTime);
+            subtractTimeDuration(date, duration, true);
+            minTime = date.getTime();
+        }
+        // new coordinates:
+        var _layer = leafletSrc.geoJSON(undefined, options);
+        var layers = layer.current.getLayers();
+        layers.forEach(function (lay) {
+            var feature = getFeatureBetweenDates(lay.feature, minTime, maxTime);
+            if (feature) {
+                _layer.addData(feature);
+                if (addlastPoint && feature.geometry.type == "LineString") {
+                    if (feature.geometry.coordinates.length > 0) {
+                        var properties = feature.properties;
+                        if (!properties)
+                            return;
+                        properties.last = true;
+                        _layer.addData({
+                            type: "Feature",
+                            properties: properties,
+                            geometry: {
+                                type: "Point",
+                                coordinates: feature.geometry.coordinates[feature.geometry.coordinates.length - 1],
+                            },
+                        });
+                    }
+                }
+            }
+            if (_currentLayer.current) {
+                // removeLayer(_currentLayer.current);
+                leafletMapRef.removeLayer(_currentLayer.current);
+            }
+            if (_layer.getLayers().length) {
+                // addLayer(_layer);
+                _layer.addTo(leafletMapRef);
+                _currentLayer.current = _layer;
+            }
+        });
+    }
+    function _setAvailableTimes() {
+        var times = [];
+        if (!layer.current)
+            return;
+        var _layers = layer.current.getLayers();
+        console.warn(_layers);
+        _layers.forEach(function (lay) {
+            if (lay.feature) {
+                var featureTimes = _getFeatureTimes(lay.feature);
+                for (var j = 0, m = featureTimes.length; j < m; j++) {
+                    times.push(featureTimes[j]);
+                }
+            }
+        });
+        // for (let i = 0, l = _layers.length; i < l; i++) {}
+        var _availableTimes = sort_and_deduplicate(times);
+        prepareAvailableTimes({
+            _availableTimes: _availableTimes,
+            updateCurrentTime: updateCurrentTime,
+            updateTimeDimensionMode: updateTimeDimensionMode,
+        });
+    }
+    function _onReadyBaseLayer() {
+        _loaded.current = true;
+        _setAvailableTimes();
+        // _update();
+    }
+    // function eachLayer(method, context) {
+    //   if (_currentLayer) {
+    //     method.call(context, _currentLayer);
+    //   }
+    //   return method.call(method, context);
+    // }
+    React.useEffect(function () {
+        // console.log(layer);
+        if (!data)
+            return;
+        layer.current = leafletSrc.geoJSON(data, options);
+        _setAvailableTimes();
+        if (layer.current) {
+            if (waitForReady) {
+                layer.current.on("ready", _onReadyBaseLayer);
+            }
+            else {
+                _loaded.current = true;
+            }
+        }
+        else {
+            _loaded.current = true;
+            _setAvailableTimes();
+        }
+        // reload available times if data is added to the base layer
+        layer.current.on("layeradd", function () {
+            if (_loaded.current) {
+                _setAvailableTimes();
+            }
+        });
+    }, [data]);
+    React.useEffect(function () {
+        _update(currentTime);
+    }, [currentTime]);
+    return {};
+};
+
+function toVal(mix) {
+	var k, y, str='';
+
+	if (typeof mix === 'string' || typeof mix === 'number') {
+		str += mix;
+	} else if (typeof mix === 'object') {
+		if (Array.isArray(mix)) {
+			for (k=0; k < mix.length; k++) {
+				if (mix[k]) {
+					if (y = toVal(mix[k])) {
+						str && (str += ' ');
+						str += y;
+					}
+				}
+			}
+		} else {
+			for (k in mix) {
+				if (mix[k]) {
+					str && (str += ' ');
+					str += k;
+				}
+			}
+		}
+	}
+
+	return str;
+}
+
+function clsx () {
+	var i=0, tmp, x, str='';
+	while (i < arguments.length) {
+		if (tmp = arguments[i++]) {
+			if (x = toVal(tmp)) {
+				str && (str += ' ');
+				str += x;
+			}
+		}
+	}
+	return str;
+}
+
+var style$1 = createUseStyles(function () { return ({
+    root: {
+        userSelect: "none",
+        width: "1em",
+        height: "1em",
+        display: "inline-block",
+        fill: "inherit",
+        flexShrink: 0,
+        fontSize: 24,
+    },
+}); });
+
+var SvgIcon = React.memo(function (_a) {
+    var className = _a.className, id = _a.id, children = _a.children;
+    var classes = style$1();
+    return (React__default['default'].createElement("svg", { className: clsx(classes.root, className), id: id, width: "24", height: "24", viewBox: "0 0 24 24" }, children));
+});
+
+var NextIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-skip-next" },
+        React__default['default'].createElement("path", { d: "M16,18H18V6H16M6,18L14.5,12L6,6V18Z" })));
+};
+
+var PauseIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-pause" },
+        React__default['default'].createElement("path", { d: "M14,19H18V5H14M6,19H10V5H6V19Z" })));
+};
+
+var PlayIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-play" },
+        React__default['default'].createElement("path", { d: "M8,5.14V19.14L19,12.14L8,5.14Z" })));
+};
+
+var GaugeIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-gauge" },
+        React__default['default'].createElement("path", { d: "M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12C20,14.4 19,16.5 17.3,18C15.9,16.7 14,16 12,16C10,16 8.2,16.7 6.7,18C5,16.5 4,14.4 4,12A8,8 0 0,1 12,4M14,5.89C13.62,5.9 13.26,6.15 13.1,6.54L11.81,9.77L11.71,10C11,10.13 10.41,10.6 10.14,11.26C9.73,12.29 10.23,13.45 11.26,13.86C12.29,14.27 13.45,13.77 13.86,12.74C14.12,12.08 14,11.32 13.57,10.76L13.67,10.5L14.96,7.29L14.97,7.26C15.17,6.75 14.92,6.17 14.41,5.96C14.28,5.91 14.15,5.89 14,5.89M10,6A1,1 0 0,0 9,7A1,1 0 0,0 10,8A1,1 0 0,0 11,7A1,1 0 0,0 10,6M7,9A1,1 0 0,0 6,10A1,1 0 0,0 7,11A1,1 0 0,0 8,10A1,1 0 0,0 7,9M17,9A1,1 0 0,0 16,10A1,1 0 0,0 17,11A1,1 0 0,0 18,10A1,1 0 0,0 17,9Z" })));
+};
+
+var PlayCircleIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-play-outline" },
+        React__default['default'].createElement("path", { d: "M 12 0 C 5.371094 0 0 5.371094 0 12 C 0 18.628906 5.371094 24 12 24 C 18.628906 24 24 18.628906 24 12 C 24 5.371094 18.628906 0 12 0 Z M 12 22 C 6.476562 22 2 17.523438 2 12 C 2 6.476562 6.476562 2 12 2 C 17.523438 2 22 6.476562 22 12 C 22 17.523438 17.523438 22 12 22 Z M 12 22 " }),
+        React__default['default'].createElement("path", { d: "M 17.601562 11.199219 L 9.601562 5.199219 C 8.941406 4.707031 8 5.175781 8 6 L 8 18 C 8 18.824219 8.941406 19.292969 9.601562 18.800781 L 17.601562 12.800781 C 18.132812 12.398438 18.132812 11.601562 17.601562 11.199219 Z M 10 16 L 10 8 L 15.332031 12 Z M 10 16 " })));
+};
+
+var PreviousIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-skip-previous" },
+        React__default['default'].createElement("path", { d: "M6,18V6H8V18H6M9.5,12L18,6V18L9.5,12Z" })));
+};
+
+var DEFAULT_TRANSITION = 1000;
+var playerStoreModel = {
+    isPlaying: false,
+    isRecording: false,
+    transitionTime: DEFAULT_TRANSITION,
+    bufferSize: 5,
+    timeSliderRange: { min: 0, max: 0 },
+    speedSliderRange: { min: 0, max: 0 },
+    timeSlider: 0,
+    speedSlider: Math.round(10000 / DEFAULT_TRANSITION) / 10,
+    setPlay: action(function (state, isPlaying) {
+        state.isPlaying = isPlaying;
+    }),
+    setRecording: action(function (state, isRecording) {
+        state.isRecording = isRecording;
+    }),
+    setTimeSliderRange: action(function (state, timeSlider) {
+        state.timeSliderRange = timeSlider;
+    }),
+    setTimeSliderValue: action(function (state, timeSlider) {
+        state.timeSlider = timeSlider;
+    }),
+    setSpeedSliderRange: action(function (state, speedSlider) {
+        state.speedSliderRange = speedSlider;
+    }),
+    setSpeedSliderValue: action(function (state, speedSlider) {
+        state.speedSlider = speedSlider;
+    }),
+    setTransitionTime: action(function (state, _a) {
+        var transitionTime = _a.transitionTime, bufferSize = _a.bufferSize;
+        state.bufferSize = bufferSize;
+        state.transitionTime = transitionTime;
+        state.speedSlider = Math.round(10000 / transitionTime) / 10;
+    }),
+    animationFinished: action(function () { }),
+};
+
+var common = {
+  black: '#000',
+  white: '#fff'
+};
+
+var red = {
+  50: '#ffebee',
+  100: '#ffcdd2',
+  200: '#ef9a9a',
+  300: '#e57373',
+  400: '#ef5350',
+  500: '#f44336',
+  600: '#e53935',
+  700: '#d32f2f',
+  800: '#c62828',
+  900: '#b71c1c',
+  A100: '#ff8a80',
+  A200: '#ff5252',
+  A400: '#ff1744',
+  A700: '#d50000'
+};
+
+var pink = {
+  50: '#fce4ec',
+  100: '#f8bbd0',
+  200: '#f48fb1',
+  300: '#f06292',
+  400: '#ec407a',
+  500: '#e91e63',
+  600: '#d81b60',
+  700: '#c2185b',
+  800: '#ad1457',
+  900: '#880e4f',
+  A100: '#ff80ab',
+  A200: '#ff4081',
+  A400: '#f50057',
+  A700: '#c51162'
+};
+
+var indigo = {
+  50: '#e8eaf6',
+  100: '#c5cae9',
+  200: '#9fa8da',
+  300: '#7986cb',
+  400: '#5c6bc0',
+  500: '#3f51b5',
+  600: '#3949ab',
+  700: '#303f9f',
+  800: '#283593',
+  900: '#1a237e',
+  A100: '#8c9eff',
+  A200: '#536dfe',
+  A400: '#3d5afe',
+  A700: '#304ffe'
+};
+
+var blue = {
+  50: '#e3f2fd',
+  100: '#bbdefb',
+  200: '#90caf9',
+  300: '#64b5f6',
+  400: '#42a5f5',
+  500: '#2196f3',
+  600: '#1e88e5',
+  700: '#1976d2',
+  800: '#1565c0',
+  900: '#0d47a1',
+  A100: '#82b1ff',
+  A200: '#448aff',
+  A400: '#2979ff',
+  A700: '#2962ff'
+};
+
+var green = {
+  50: '#e8f5e9',
+  100: '#c8e6c9',
+  200: '#a5d6a7',
+  300: '#81c784',
+  400: '#66bb6a',
+  500: '#4caf50',
+  600: '#43a047',
+  700: '#388e3c',
+  800: '#2e7d32',
+  900: '#1b5e20',
+  A100: '#b9f6ca',
+  A200: '#69f0ae',
+  A400: '#00e676',
+  A700: '#00c853'
+};
+
+var orange = {
+  50: '#fff3e0',
+  100: '#ffe0b2',
+  200: '#ffcc80',
+  300: '#ffb74d',
+  400: '#ffa726',
+  500: '#ff9800',
+  600: '#fb8c00',
+  700: '#f57c00',
+  800: '#ef6c00',
+  900: '#e65100',
+  A100: '#ffd180',
+  A200: '#ffab40',
+  A400: '#ff9100',
+  A700: '#ff6d00'
+};
+
+var grey = {
+  50: '#fafafa',
+  100: '#f5f5f5',
+  200: '#eeeeee',
+  300: '#e0e0e0',
+  400: '#bdbdbd',
+  500: '#9e9e9e',
+  600: '#757575',
+  700: '#616161',
+  800: '#424242',
+  900: '#212121',
+  A100: '#d5d5d5',
+  A200: '#aaaaaa',
+  A400: '#303030',
+  A700: '#616161'
+};
+
+function chainPropTypes(propType1, propType2) {
+  if (process.env.NODE_ENV === 'production') {
+    return function () {
+      return null;
+    };
+  }
+
+  return function validate() {
+    return propType1.apply(void 0, arguments) || propType2.apply(void 0, arguments);
+  };
+}
+
+function isPlainObject$2(item) {
+  return item && _typeof__default['default'](item) === 'object' && item.constructor === Object;
+}
+function deepmerge(target, source) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+    clone: true
+  };
+  var output = options.clone ? _extends__default['default']({}, target) : target;
+
+  if (isPlainObject$2(target) && isPlainObject$2(source)) {
+    Object.keys(source).forEach(function (key) {
+      // Avoid prototype pollution
+      if (key === '__proto__') {
+        return;
+      }
+
+      if (isPlainObject$2(source[key]) && key in target) {
+        output[key] = deepmerge(target[key], source[key], options);
+      } else {
+        output[key] = source[key];
+      }
+    });
+  }
+
+  return output;
+}
+
+function isClassComponent(elementType) {
+  // elementType.prototype?.isReactComponent
+  var _elementType$prototyp = elementType.prototype,
+      prototype = _elementType$prototyp === void 0 ? {} : _elementType$prototyp;
+  return Boolean(prototype.isReactComponent);
+}
+
+function acceptingRef(props, propName, componentName, location, propFullName) {
+  var element = props[propName];
+  var safePropName = propFullName || propName;
+
+  if (element == null) {
+    return null;
+  }
+
+  var warningHint;
+  var elementType = element.type;
+  /**
+   * Blacklisting instead of whitelisting
+   *
+   * Blacklisting will miss some components, such as React.Fragment. Those will at least
+   * trigger a warning in React.
+   * We can't whitelist because there is no safe way to detect React.forwardRef
+   * or class components. "Safe" means there's no public API.
+   *
+   */
+
+  if (typeof elementType === 'function' && !isClassComponent(elementType)) {
+    warningHint = 'Did you accidentally use a plain function component for an element instead?';
+  }
+
+  if (warningHint !== undefined) {
+    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an element that can hold a ref. ".concat(warningHint, " ") + 'For more information see https://material-ui.com/r/caveat-with-refs-guide');
+  }
+
+  return null;
+}
+
+var elementAcceptingRef = chainPropTypes(propTypes.element, acceptingRef);
+elementAcceptingRef.isRequired = chainPropTypes(propTypes.element.isRequired, acceptingRef);
+
+function isClassComponent$1(elementType) {
+  // elementType.prototype?.isReactComponent
+  var _elementType$prototyp = elementType.prototype,
+      prototype = _elementType$prototyp === void 0 ? {} : _elementType$prototyp;
+  return Boolean(prototype.isReactComponent);
+}
+
+function elementTypeAcceptingRef(props, propName, componentName, location, propFullName) {
+  var propValue = props[propName];
+  var safePropName = propFullName || propName;
+
+  if (propValue == null) {
+    return null;
+  }
+
+  var warningHint;
+  /**
+   * Blacklisting instead of whitelisting
+   *
+   * Blacklisting will miss some components, such as React.Fragment. Those will at least
+   * trigger a warning in React.
+   * We can't whitelist because there is no safe way to detect React.forwardRef
+   * or class components. "Safe" means there's no public API.
+   *
+   */
+
+  if (typeof propValue === 'function' && !isClassComponent$1(propValue)) {
+    warningHint = 'Did you accidentally provide a plain function component instead?';
+  }
+
+  if (warningHint !== undefined) {
+    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an element type that can hold a ref. ".concat(warningHint, " ") + 'For more information see https://material-ui.com/r/caveat-with-refs-guide');
+  }
+
+  return null;
+}
+
+var elementTypeAcceptingRef$1 = chainPropTypes(propTypes.elementType, elementTypeAcceptingRef);
+
+// This module is based on https://github.com/airbnb/prop-types-exact repository.
+// However, in order to reduce the number of dependencies and to remove some extra safe checks
+// the module was forked.
+// Only exported for test purposes.
+var specialProperty = "exact-prop: \u200B";
+function exactProp(propTypes) {
+  if (process.env.NODE_ENV === 'production') {
+    return propTypes;
+  }
+
+  return _extends__default['default']({}, propTypes, _defineProperty__default['default']({}, specialProperty, function (props) {
+    var unsupportedProps = Object.keys(props).filter(function (prop) {
+      return !propTypes.hasOwnProperty(prop);
+    });
+
+    if (unsupportedProps.length > 0) {
+      return new Error("The following props are not supported: ".concat(unsupportedProps.map(function (prop) {
+        return "`".concat(prop, "`");
+      }).join(', '), ". Please remove them."));
+    }
+
+    return null;
+  }));
+}
+
+/**
+ * WARNING: Don't import this directly.
+ * Use `MuiError` from `@material-ui/utils/macros/MuiError.macro` instead.
+ * @param {number} code
+ */
+function formatMuiErrorMessage(code) {
+  // Apply babel-plugin-transform-template-literals in loose mode
+  // loose mode is safe iff we're concatenating primitives
+  // see https://babeljs.io/docs/en/babel-plugin-transform-template-literals#loose
+
+  /* eslint-disable prefer-template */
+  var url = 'https://material-ui.com/production-error/?code=' + code;
+
+  for (var i = 1; i < arguments.length; i += 1) {
+    // rest params over-transpile for this case
+    // eslint-disable-next-line prefer-rest-params
+    url += '&args[]=' + encodeURIComponent(arguments[i]);
+  }
+
+  return 'Minified Material-UI error #' + code + '; visit ' + url + ' for the full message.';
+  /* eslint-enable prefer-template */
+}
+
+/** @license React v17.0.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var b$3=60103,c$3=60106,d$3=60107,e$3=60108,f$3=60114,g$3=60109,h$3=60110,k$3=60112,l$3=60113,m$2=60120,n$3=60115,p$3=60116,q$3=60121,r$3=60122,u$1=60117,v$3=60129,w$3=60131;
+if("function"===typeof Symbol&&Symbol.for){var x$3=Symbol.for;b$3=x$3("react.element");c$3=x$3("react.portal");d$3=x$3("react.fragment");e$3=x$3("react.strict_mode");f$3=x$3("react.profiler");g$3=x$3("react.provider");h$3=x$3("react.context");k$3=x$3("react.forward_ref");l$3=x$3("react.suspense");m$2=x$3("react.suspense_list");n$3=x$3("react.memo");p$3=x$3("react.lazy");q$3=x$3("react.block");r$3=x$3("react.server.block");u$1=x$3("react.fundamental");v$3=x$3("react.debug_trace_mode");w$3=x$3("react.legacy_hidden");}
+function y$3(a){if("object"===typeof a&&null!==a){var t=a.$$typeof;switch(t){case b$3:switch(a=a.type,a){case d$3:case f$3:case e$3:case l$3:case m$2:return a;default:switch(a=a&&a.$$typeof,a){case h$3:case k$3:case p$3:case n$3:case g$3:return a;default:return t}}case c$3:return t}}}var z$3=g$3,A$3=b$3,B$1=k$3,C=d$3,D$1=p$3,E$1=n$3,F=c$3,G$1=f$3,H$1=e$3,I$1=l$3;var ContextConsumer$2=h$3;var ContextProvider$2=z$3;var Element$3=A$3;var ForwardRef$2=B$1;var Fragment$2=C;var Lazy$2=D$1;var Memo$2=E$1;var Portal$2=F;var Profiler$2=G$1;var StrictMode$2=H$1;
+var Suspense$2=I$1;var isAsyncMode$2=function(){return !1};var isConcurrentMode$2=function(){return !1};var isContextConsumer$2=function(a){return y$3(a)===h$3};var isContextProvider$2=function(a){return y$3(a)===g$3};var isElement$2=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===b$3};var isForwardRef$2=function(a){return y$3(a)===k$3};var isFragment$2=function(a){return y$3(a)===d$3};var isLazy$2=function(a){return y$3(a)===p$3};var isMemo$2=function(a){return y$3(a)===n$3};
+var isPortal$2=function(a){return y$3(a)===c$3};var isProfiler$2=function(a){return y$3(a)===f$3};var isStrictMode$2=function(a){return y$3(a)===e$3};var isSuspense$2=function(a){return y$3(a)===l$3};var isValidElementType$2=function(a){return "string"===typeof a||"function"===typeof a||a===d$3||a===f$3||a===v$3||a===e$3||a===l$3||a===m$2||a===w$3||"object"===typeof a&&null!==a&&(a.$$typeof===p$3||a.$$typeof===n$3||a.$$typeof===g$3||a.$$typeof===h$3||a.$$typeof===k$3||a.$$typeof===u$1||a.$$typeof===q$3||a[0]===r$3)?!0:!1};
+var typeOf$2=y$3;
+
+var reactIs_production_min$2 = {
+	ContextConsumer: ContextConsumer$2,
+	ContextProvider: ContextProvider$2,
+	Element: Element$3,
+	ForwardRef: ForwardRef$2,
+	Fragment: Fragment$2,
+	Lazy: Lazy$2,
+	Memo: Memo$2,
+	Portal: Portal$2,
+	Profiler: Profiler$2,
+	StrictMode: StrictMode$2,
+	Suspense: Suspense$2,
+	isAsyncMode: isAsyncMode$2,
+	isConcurrentMode: isConcurrentMode$2,
+	isContextConsumer: isContextConsumer$2,
+	isContextProvider: isContextProvider$2,
+	isElement: isElement$2,
+	isForwardRef: isForwardRef$2,
+	isFragment: isFragment$2,
+	isLazy: isLazy$2,
+	isMemo: isMemo$2,
+	isPortal: isPortal$2,
+	isProfiler: isProfiler$2,
+	isStrictMode: isStrictMode$2,
+	isSuspense: isSuspense$2,
+	isValidElementType: isValidElementType$2,
+	typeOf: typeOf$2
+};
+
+/** @license React v17.0.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var reactIs_development$2 = createCommonjsModule(function (module, exports) {
+
+if (process.env.NODE_ENV !== "production") {
+  (function() {
+
+// ATTENTION
+// When adding new symbols to this file,
+// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var REACT_ELEMENT_TYPE = 0xeac7;
+var REACT_PORTAL_TYPE = 0xeaca;
+var REACT_FRAGMENT_TYPE = 0xeacb;
+var REACT_STRICT_MODE_TYPE = 0xeacc;
+var REACT_PROFILER_TYPE = 0xead2;
+var REACT_PROVIDER_TYPE = 0xeacd;
+var REACT_CONTEXT_TYPE = 0xeace;
+var REACT_FORWARD_REF_TYPE = 0xead0;
+var REACT_SUSPENSE_TYPE = 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+var REACT_MEMO_TYPE = 0xead3;
+var REACT_LAZY_TYPE = 0xead4;
+var REACT_BLOCK_TYPE = 0xead9;
+var REACT_SERVER_BLOCK_TYPE = 0xeada;
+var REACT_FUNDAMENTAL_TYPE = 0xead5;
+var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+if (typeof Symbol === 'function' && Symbol.for) {
+  var symbolFor = Symbol.for;
+  REACT_ELEMENT_TYPE = symbolFor('react.element');
+  REACT_PORTAL_TYPE = symbolFor('react.portal');
+  REACT_FRAGMENT_TYPE = symbolFor('react.fragment');
+  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+  REACT_PROFILER_TYPE = symbolFor('react.profiler');
+  REACT_PROVIDER_TYPE = symbolFor('react.provider');
+  REACT_CONTEXT_TYPE = symbolFor('react.context');
+  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+  REACT_MEMO_TYPE = symbolFor('react.memo');
+  REACT_LAZY_TYPE = symbolFor('react.lazy');
+  REACT_BLOCK_TYPE = symbolFor('react.block');
+  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+  symbolFor('react.scope');
+  symbolFor('react.opaque.id');
+  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+  symbolFor('react.offscreen');
+  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+}
+
+// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+function isValidElementType(type) {
+  if (typeof type === 'string' || typeof type === 'function') {
+    return true;
+  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+
+  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
+    return true;
+  }
+
+  if (typeof type === 'object' && type !== null) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+          case REACT_SUSPENSE_LIST_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+}
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false;
+var hasWarnedAboutDeprecatedIsConcurrentMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 18+.');
+    }
+  }
+
+  return false;
+}
+function isConcurrentMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsConcurrentMode) {
+      hasWarnedAboutDeprecatedIsConcurrentMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isConcurrentMode() alias has been deprecated, ' + 'and will be removed in React 18+.');
+    }
+  }
+
+  return false;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+});
+
+var reactIs$2 = createCommonjsModule(function (module) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = reactIs_production_min$2;
+} else {
+  module.exports = reactIs_development$2;
+}
+});
+
+// https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
+
+var fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
+function getFunctionName(fn) {
+  var match = "".concat(fn).match(fnNameMatchRegex);
+  var name = match && match[1];
+  return name || '';
+}
+/**
+ * @param {function} Component
+ * @param {string} fallback
+ * @returns {string | undefined}
+ */
+
+function getFunctionComponentName(Component) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return Component.displayName || Component.name || getFunctionName(Component) || fallback;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var functionName = getFunctionComponentName(innerType);
+  return outerType.displayName || (functionName !== '' ? "".concat(wrapperName, "(").concat(functionName, ")") : wrapperName);
+}
+/**
+ * cherry-pick from
+ * https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/shared/getComponentName.js
+ * originally forked from recompose/getDisplayName with added IE 11 support
+ *
+ * @param {React.ReactType} Component
+ * @returns {string | undefined}
+ */
+
+
+function getDisplayName$1(Component) {
+  if (Component == null) {
+    return undefined;
+  }
+
+  if (typeof Component === 'string') {
+    return Component;
+  }
+
+  if (typeof Component === 'function') {
+    return getFunctionComponentName(Component, 'Component');
+  }
+
+  if (_typeof__default['default'](Component) === 'object') {
+    switch (Component.$$typeof) {
+      case reactIs$2.ForwardRef:
+        return getWrappedName(Component, Component.render, 'ForwardRef');
+
+      case reactIs$2.Memo:
+        return getWrappedName(Component, Component.type, 'memo');
+
+      default:
+        return undefined;
+    }
+  }
+
+  return undefined;
+}
+
+function HTMLElementType(props, propName, componentName, location, propFullName) {
+  if (process.env.NODE_ENV === 'production') {
+    return null;
+  }
+
+  var propValue = props[propName];
+  var safePropName = propFullName || propName;
+
+  if (propValue == null) {
+    return null;
+  }
+
+  if (propValue && propValue.nodeType !== 1) {
+    return new Error("Invalid ".concat(location, " `").concat(safePropName, "` supplied to `").concat(componentName, "`. ") + "Expected an HTMLElement.");
+  }
+
+  return null;
+}
+
+var refType = propTypes.oneOfType([propTypes.func, propTypes.object]);
+
+/* eslint-disable no-use-before-define */
+
+/**
+ * Returns a number whose value is limited to the given range.
+ *
+ * @param {number} value The value to be clamped
+ * @param {number} min The lower boundary of the output range
+ * @param {number} max The upper boundary of the output range
+ * @returns {number} A number in the range [min, max]
+ */
+function clamp(value) {
+  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (value < min || value > max) {
+      console.error("Material-UI: The value provided ".concat(value, " is out of range [").concat(min, ", ").concat(max, "]."));
+    }
+  }
+
+  return Math.min(Math.max(min, value), max);
+}
+/**
+ * Converts a color from CSS hex format to CSS rgb format.
+ *
+ * @param {string} color - Hex color, i.e. #nnn or #nnnnnn
+ * @returns {string} A CSS rgb color string
+ */
+
+
+function hexToRgb(color) {
+  color = color.substr(1);
+  var re = new RegExp(".{1,".concat(color.length >= 6 ? 2 : 1, "}"), 'g');
+  var colors = color.match(re);
+
+  if (colors && colors[0].length === 1) {
+    colors = colors.map(function (n) {
+      return n + n;
+    });
+  }
+
+  return colors ? "rgb".concat(colors.length === 4 ? 'a' : '', "(").concat(colors.map(function (n, index) {
+    return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1000) / 1000;
+  }).join(', '), ")") : '';
+}
+/**
+ * Converts a color from hsl format to rgb format.
+ *
+ * @param {string} color - HSL color values
+ * @returns {string} rgb color values
+ */
+
+function hslToRgb(color) {
+  color = decomposeColor(color);
+  var _color = color,
+      values = _color.values;
+  var h = values[0];
+  var s = values[1] / 100;
+  var l = values[2] / 100;
+  var a = s * Math.min(l, 1 - l);
+
+  var f = function f(n) {
+    var k = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (n + h / 30) % 12;
+    return l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+  };
+
+  var type = 'rgb';
+  var rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+
+  if (color.type === 'hsla') {
+    type += 'a';
+    rgb.push(values[3]);
+  }
+
+  return recomposeColor({
+    type: type,
+    values: rgb
+  });
+}
+/**
+ * Returns an object with the type and values of a color.
+ *
+ * Note: Does not support rgb % values.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {object} - A MUI color object: {type: string, values: number[]}
+ */
+
+function decomposeColor(color) {
+  // Idempotent
+  if (color.type) {
+    return color;
+  }
+
+  if (color.charAt(0) === '#') {
+    return decomposeColor(hexToRgb(color));
+  }
+
+  var marker = color.indexOf('(');
+  var type = color.substring(0, marker);
+
+  if (['rgb', 'rgba', 'hsl', 'hsla'].indexOf(type) === -1) {
+    throw new Error(process.env.NODE_ENV !== "production" ? "Material-UI: Unsupported `".concat(color, "` color.\nWe support the following formats: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla().") : formatMuiErrorMessage(3, color));
+  }
+
+  var values = color.substring(marker + 1, color.length - 1).split(',');
+  values = values.map(function (value) {
+    return parseFloat(value);
+  });
+  return {
+    type: type,
+    values: values
+  };
+}
+/**
+ * Converts a color object with type and values to a string.
+ *
+ * @param {object} color - Decomposed color
+ * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
+ * @param {array} color.values - [n,n,n] or [n,n,n,n]
+ * @returns {string} A CSS color string
+ */
+
+function recomposeColor(color) {
+  var type = color.type;
+  var values = color.values;
+
+  if (type.indexOf('rgb') !== -1) {
+    // Only convert the first 3 values to int (i.e. not alpha)
+    values = values.map(function (n, i) {
+      return i < 3 ? parseInt(n, 10) : n;
+    });
+  } else if (type.indexOf('hsl') !== -1) {
+    values[1] = "".concat(values[1], "%");
+    values[2] = "".concat(values[2], "%");
+  }
+
+  return "".concat(type, "(").concat(values.join(', '), ")");
+}
+/**
+ * Calculates the contrast ratio between two colors.
+ *
+ * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ *
+ * @param {string} foreground - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {string} background - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} A contrast ratio value in the range 0 - 21.
+ */
+
+function getContrastRatio(foreground, background) {
+  var lumA = getLuminance(foreground);
+  var lumB = getLuminance(background);
+  return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
+}
+/**
+ * The relative brightness of any point in a color space,
+ * normalized to 0 for darkest black and 1 for lightest white.
+ *
+ * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} The relative brightness of the color in the range 0 - 1
+ */
+
+function getLuminance(color) {
+  color = decomposeColor(color);
+  var rgb = color.type === 'hsl' ? decomposeColor(hslToRgb(color)).values : color.values;
+  rgb = rgb.map(function (val) {
+    val /= 255; // normalized
+
+    return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
+  }); // Truncate at 3 digits
+
+  return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
+}
+/**
+ * Set the absolute transparency of a color.
+ * Any existing alpha values are overwritten.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} value - value to set the alpha channel to in the range 0 -1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function fade(color, value) {
+  color = decomposeColor(color);
+  value = clamp(value);
+
+  if (color.type === 'rgb' || color.type === 'hsl') {
+    color.type += 'a';
+  }
+
+  color.values[3] = value;
+  return recomposeColor(color);
+}
+/**
+ * Darkens a color.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function darken(color, coefficient) {
+  color = decomposeColor(color);
+  coefficient = clamp(coefficient);
+
+  if (color.type.indexOf('hsl') !== -1) {
+    color.values[2] *= 1 - coefficient;
+  } else if (color.type.indexOf('rgb') !== -1) {
+    for (var i = 0; i < 3; i += 1) {
+      color.values[i] *= 1 - coefficient;
+    }
+  }
+
+  return recomposeColor(color);
+}
+/**
+ * Lightens a color.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function lighten(color, coefficient) {
+  color = decomposeColor(color);
+  coefficient = clamp(coefficient);
+
+  if (color.type.indexOf('hsl') !== -1) {
+    color.values[2] += (100 - color.values[2]) * coefficient;
+  } else if (color.type.indexOf('rgb') !== -1) {
+    for (var i = 0; i < 3; i += 1) {
+      color.values[i] += (255 - color.values[i]) * coefficient;
+    }
+  }
+
+  return recomposeColor(color);
+}
+
+// Sorted ASC by size. That's important.
+// It can't be configured as it's used statically for propTypes.
+var keys = ['xs', 'sm', 'md', 'lg', 'xl']; // Keep in mind that @media is inclusive by the CSS specification.
+
+function createBreakpoints(breakpoints) {
+  var _breakpoints$values = breakpoints.values,
+      values = _breakpoints$values === void 0 ? {
+    xs: 0,
+    sm: 600,
+    md: 960,
+    lg: 1280,
+    xl: 1920
+  } : _breakpoints$values,
+      _breakpoints$unit = breakpoints.unit,
+      unit = _breakpoints$unit === void 0 ? 'px' : _breakpoints$unit,
+      _breakpoints$step = breakpoints.step,
+      step = _breakpoints$step === void 0 ? 5 : _breakpoints$step,
+      other = _objectWithoutProperties__default['default'](breakpoints, ["values", "unit", "step"]);
+
+  function up(key) {
+    var value = typeof values[key] === 'number' ? values[key] : key;
+    return "@media (min-width:".concat(value).concat(unit, ")");
+  }
+
+  function down(key) {
+    var endIndex = keys.indexOf(key) + 1;
+    var upperbound = values[keys[endIndex]];
+
+    if (endIndex === keys.length) {
+      // xl down applies to all sizes
+      return up('xs');
+    }
+
+    var value = typeof upperbound === 'number' && endIndex > 0 ? upperbound : key;
+    return "@media (max-width:".concat(value - step / 100).concat(unit, ")");
+  }
+
+  function between(start, end) {
+    var endIndex = keys.indexOf(end);
+
+    if (endIndex === keys.length - 1) {
+      return up(start);
+    }
+
+    return "@media (min-width:".concat(typeof values[start] === 'number' ? values[start] : start).concat(unit, ") and ") + "(max-width:".concat((endIndex !== -1 && typeof values[keys[endIndex + 1]] === 'number' ? values[keys[endIndex + 1]] : end) - step / 100).concat(unit, ")");
+  }
+
+  function only(key) {
+    return between(key, key);
+  }
+
+  function width(key) {
+    return values[key];
+  }
+
+  return _extends__default['default']({
+    keys: keys,
+    values: values,
+    up: up,
+    down: down,
+    between: between,
+    only: only,
+    width: width
+  }, other);
+}
+
+function createMixins(breakpoints, spacing, mixins) {
+  var _toolbar;
+
+  return _extends__default['default']({
+    gutters: function gutters() {
+      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      // To deprecate in v4.1
+      //       warning(
+      //         false,
+      //         [
+      //           'Material-UI: Theme.mixins.gutters() is deprecated.',
+      //           'You can use the source of the mixin directly:',
+      //           `
+      // paddingLeft: theme.spacing(2),
+      // paddingRight: theme.spacing(2),
+      // [theme.breakpoints.up('sm')]: {
+      //   paddingLeft: theme.spacing(3),
+      //   paddingRight: theme.spacing(3),
+      // },
+      // `,
+      //         ].join('\n'),
+      //       );
+      return _extends__default['default']({
+        paddingLeft: spacing(2),
+        paddingRight: spacing(2)
+      }, styles, _defineProperty__default['default']({}, breakpoints.up('sm'), _extends__default['default']({
+        paddingLeft: spacing(3),
+        paddingRight: spacing(3)
+      }, styles[breakpoints.up('sm')])));
+    },
+    toolbar: (_toolbar = {
+      minHeight: 56
+    }, _defineProperty__default['default'](_toolbar, "".concat(breakpoints.up('xs'), " and (orientation: landscape)"), {
+      minHeight: 48
+    }), _defineProperty__default['default'](_toolbar, breakpoints.up('sm'), {
+      minHeight: 64
+    }), _toolbar)
+  }, mixins);
+}
+
+var light = {
+  // The colors used to style the text.
+  text: {
+    // The most important text.
+    primary: 'rgba(0, 0, 0, 0.87)',
+    // Secondary text.
+    secondary: 'rgba(0, 0, 0, 0.54)',
+    // Disabled text have even lower visual prominence.
+    disabled: 'rgba(0, 0, 0, 0.38)',
+    // Text hints.
+    hint: 'rgba(0, 0, 0, 0.38)'
+  },
+  // The color used to divide different elements.
+  divider: 'rgba(0, 0, 0, 0.12)',
+  // The background colors used to style the surfaces.
+  // Consistency between these values is important.
+  background: {
+    paper: common.white,
+    default: grey[50]
+  },
+  // The colors used to style the action elements.
+  action: {
+    // The color of an active action like an icon button.
+    active: 'rgba(0, 0, 0, 0.54)',
+    // The color of an hovered action.
+    hover: 'rgba(0, 0, 0, 0.04)',
+    hoverOpacity: 0.04,
+    // The color of a selected action.
+    selected: 'rgba(0, 0, 0, 0.08)',
+    selectedOpacity: 0.08,
+    // The color of a disabled action.
+    disabled: 'rgba(0, 0, 0, 0.26)',
+    // The background color of a disabled action.
+    disabledBackground: 'rgba(0, 0, 0, 0.12)',
+    disabledOpacity: 0.38,
+    focus: 'rgba(0, 0, 0, 0.12)',
+    focusOpacity: 0.12,
+    activatedOpacity: 0.12
+  }
+};
+var dark = {
+  text: {
+    primary: common.white,
+    secondary: 'rgba(255, 255, 255, 0.7)',
+    disabled: 'rgba(255, 255, 255, 0.5)',
+    hint: 'rgba(255, 255, 255, 0.5)',
+    icon: 'rgba(255, 255, 255, 0.5)'
+  },
+  divider: 'rgba(255, 255, 255, 0.12)',
+  background: {
+    paper: grey[800],
+    default: '#303030'
+  },
+  action: {
+    active: common.white,
+    hover: 'rgba(255, 255, 255, 0.08)',
+    hoverOpacity: 0.08,
+    selected: 'rgba(255, 255, 255, 0.16)',
+    selectedOpacity: 0.16,
+    disabled: 'rgba(255, 255, 255, 0.3)',
+    disabledBackground: 'rgba(255, 255, 255, 0.12)',
+    disabledOpacity: 0.38,
+    focus: 'rgba(255, 255, 255, 0.12)',
+    focusOpacity: 0.12,
+    activatedOpacity: 0.24
+  }
+};
+
+function addLightOrDark(intent, direction, shade, tonalOffset) {
+  var tonalOffsetLight = tonalOffset.light || tonalOffset;
+  var tonalOffsetDark = tonalOffset.dark || tonalOffset * 1.5;
+
+  if (!intent[direction]) {
+    if (intent.hasOwnProperty(shade)) {
+      intent[direction] = intent[shade];
+    } else if (direction === 'light') {
+      intent.light = lighten(intent.main, tonalOffsetLight);
+    } else if (direction === 'dark') {
+      intent.dark = darken(intent.main, tonalOffsetDark);
+    }
+  }
+}
+
+function createPalette(palette) {
+  var _palette$primary = palette.primary,
+      primary = _palette$primary === void 0 ? {
+    light: indigo[300],
+    main: indigo[500],
+    dark: indigo[700]
+  } : _palette$primary,
+      _palette$secondary = palette.secondary,
+      secondary = _palette$secondary === void 0 ? {
+    light: pink.A200,
+    main: pink.A400,
+    dark: pink.A700
+  } : _palette$secondary,
+      _palette$error = palette.error,
+      error = _palette$error === void 0 ? {
+    light: red[300],
+    main: red[500],
+    dark: red[700]
+  } : _palette$error,
+      _palette$warning = palette.warning,
+      warning = _palette$warning === void 0 ? {
+    light: orange[300],
+    main: orange[500],
+    dark: orange[700]
+  } : _palette$warning,
+      _palette$info = palette.info,
+      info = _palette$info === void 0 ? {
+    light: blue[300],
+    main: blue[500],
+    dark: blue[700]
+  } : _palette$info,
+      _palette$success = palette.success,
+      success = _palette$success === void 0 ? {
+    light: green[300],
+    main: green[500],
+    dark: green[700]
+  } : _palette$success,
+      _palette$type = palette.type,
+      type = _palette$type === void 0 ? 'light' : _palette$type,
+      _palette$contrastThre = palette.contrastThreshold,
+      contrastThreshold = _palette$contrastThre === void 0 ? 3 : _palette$contrastThre,
+      _palette$tonalOffset = palette.tonalOffset,
+      tonalOffset = _palette$tonalOffset === void 0 ? 0.2 : _palette$tonalOffset,
+      other = _objectWithoutProperties__default['default'](palette, ["primary", "secondary", "error", "warning", "info", "success", "type", "contrastThreshold", "tonalOffset"]); // Use the same logic as
+  // Bootstrap: https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59
+  // and material-components-web https://github.com/material-components/material-components-web/blob/ac46b8863c4dab9fc22c4c662dc6bd1b65dd652f/packages/mdc-theme/_functions.scss#L54
+
+
+  function getContrastText(background) {
+    var contrastText = getContrastRatio(background, dark.text.primary) >= contrastThreshold ? dark.text.primary : light.text.primary;
+
+    if (process.env.NODE_ENV !== 'production') {
+      var contrast = getContrastRatio(background, contrastText);
+
+      if (contrast < 3) {
+        console.error(["Material-UI: The contrast ratio of ".concat(contrast, ":1 for ").concat(contrastText, " on ").concat(background), 'falls below the WCAG recommended absolute minimum contrast ratio of 3:1.', 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast'].join('\n'));
+      }
+    }
+
+    return contrastText;
+  }
+
+  var augmentColor = function augmentColor(color) {
+    var mainShade = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+    var lightShade = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 300;
+    var darkShade = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 700;
+    color = _extends__default['default']({}, color);
+
+    if (!color.main && color[mainShade]) {
+      color.main = color[mainShade];
+    }
+
+    if (!color.main) {
+      throw new Error(process.env.NODE_ENV !== "production" ? "Material-UI: The color provided to augmentColor(color) is invalid.\nThe color object needs to have a `main` property or a `".concat(mainShade, "` property.") : formatMuiErrorMessage(4, mainShade));
+    }
+
+    if (typeof color.main !== 'string') {
+      throw new Error(process.env.NODE_ENV !== "production" ? "Material-UI: The color provided to augmentColor(color) is invalid.\n`color.main` should be a string, but `".concat(JSON.stringify(color.main), "` was provided instead.\n\nDid you intend to use one of the following approaches?\n\nimport {\xA0green } from \"@material-ui/core/colors\";\n\nconst theme1 = createMuiTheme({ palette: {\n  primary: green,\n} });\n\nconst theme2 = createMuiTheme({ palette: {\n  primary: { main: green[500] },\n} });") : formatMuiErrorMessage(5, JSON.stringify(color.main)));
+    }
+
+    addLightOrDark(color, 'light', lightShade, tonalOffset);
+    addLightOrDark(color, 'dark', darkShade, tonalOffset);
+
+    if (!color.contrastText) {
+      color.contrastText = getContrastText(color.main);
+    }
+
+    return color;
+  };
+
+  var types = {
+    dark: dark,
+    light: light
+  };
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (!types[type]) {
+      console.error("Material-UI: The palette type `".concat(type, "` is not supported."));
+    }
+  }
+
+  var paletteOutput = deepmerge(_extends__default['default']({
+    // A collection of common colors.
+    common: common,
+    // The palette type, can be light or dark.
+    type: type,
+    // The colors used to represent primary interface elements for a user.
+    primary: augmentColor(primary),
+    // The colors used to represent secondary interface elements for a user.
+    secondary: augmentColor(secondary, 'A400', 'A200', 'A700'),
+    // The colors used to represent interface elements that the user should be made aware of.
+    error: augmentColor(error),
+    // The colors used to represent potentially dangerous actions or important messages.
+    warning: augmentColor(warning),
+    // The colors used to present information to the user that is neutral and not necessarily important.
+    info: augmentColor(info),
+    // The colors used to indicate the successful completion of an action that user triggered.
+    success: augmentColor(success),
+    // The grey colors.
+    grey: grey,
+    // Used by `getContrastText()` to maximize the contrast between
+    // the background and the text.
+    contrastThreshold: contrastThreshold,
+    // Takes a background color and returns the text color that maximizes the contrast.
+    getContrastText: getContrastText,
+    // Generate a rich color object.
+    augmentColor: augmentColor,
+    // Used by the functions below to shift a color's luminance by approximately
+    // two indexes within its tonal palette.
+    // E.g., shift from Red 500 to Red 300 or Red 700.
+    tonalOffset: tonalOffset
+  }, types[type]), other);
+  return paletteOutput;
+}
+
+function round(value) {
+  return Math.round(value * 1e5) / 1e5;
+}
+
+var caseAllCaps = {
+  textTransform: 'uppercase'
+};
+var defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
+/**
+ * @see @link{https://material.io/design/typography/the-type-system.html}
+ * @see @link{https://material.io/design/typography/understanding-typography.html}
+ */
+
+function createTypography(palette, typography) {
+  var _ref = typeof typography === 'function' ? typography(palette) : typography,
+      _ref$fontFamily = _ref.fontFamily,
+      fontFamily = _ref$fontFamily === void 0 ? defaultFontFamily : _ref$fontFamily,
+      _ref$fontSize = _ref.fontSize,
+      fontSize = _ref$fontSize === void 0 ? 14 : _ref$fontSize,
+      _ref$fontWeightLight = _ref.fontWeightLight,
+      fontWeightLight = _ref$fontWeightLight === void 0 ? 300 : _ref$fontWeightLight,
+      _ref$fontWeightRegula = _ref.fontWeightRegular,
+      fontWeightRegular = _ref$fontWeightRegula === void 0 ? 400 : _ref$fontWeightRegula,
+      _ref$fontWeightMedium = _ref.fontWeightMedium,
+      fontWeightMedium = _ref$fontWeightMedium === void 0 ? 500 : _ref$fontWeightMedium,
+      _ref$fontWeightBold = _ref.fontWeightBold,
+      fontWeightBold = _ref$fontWeightBold === void 0 ? 700 : _ref$fontWeightBold,
+      _ref$htmlFontSize = _ref.htmlFontSize,
+      htmlFontSize = _ref$htmlFontSize === void 0 ? 16 : _ref$htmlFontSize,
+      allVariants = _ref.allVariants,
+      pxToRem2 = _ref.pxToRem,
+      other = _objectWithoutProperties__default['default'](_ref, ["fontFamily", "fontSize", "fontWeightLight", "fontWeightRegular", "fontWeightMedium", "fontWeightBold", "htmlFontSize", "allVariants", "pxToRem"]);
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof fontSize !== 'number') {
+      console.error('Material-UI: `fontSize` is required to be a number.');
+    }
+
+    if (typeof htmlFontSize !== 'number') {
+      console.error('Material-UI: `htmlFontSize` is required to be a number.');
+    }
+  }
+
+  var coef = fontSize / 14;
+
+  var pxToRem = pxToRem2 || function (size) {
+    return "".concat(size / htmlFontSize * coef, "rem");
+  };
+
+  var buildVariant = function buildVariant(fontWeight, size, lineHeight, letterSpacing, casing) {
+    return _extends__default['default']({
+      fontFamily: fontFamily,
+      fontWeight: fontWeight,
+      fontSize: pxToRem(size),
+      // Unitless following https://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
+      lineHeight: lineHeight
+    }, fontFamily === defaultFontFamily ? {
+      letterSpacing: "".concat(round(letterSpacing / size), "em")
+    } : {}, casing, allVariants);
+  };
+
+  var variants = {
+    h1: buildVariant(fontWeightLight, 96, 1.167, -1.5),
+    h2: buildVariant(fontWeightLight, 60, 1.2, -0.5),
+    h3: buildVariant(fontWeightRegular, 48, 1.167, 0),
+    h4: buildVariant(fontWeightRegular, 34, 1.235, 0.25),
+    h5: buildVariant(fontWeightRegular, 24, 1.334, 0),
+    h6: buildVariant(fontWeightMedium, 20, 1.6, 0.15),
+    subtitle1: buildVariant(fontWeightRegular, 16, 1.75, 0.15),
+    subtitle2: buildVariant(fontWeightMedium, 14, 1.57, 0.1),
+    body1: buildVariant(fontWeightRegular, 16, 1.5, 0.15),
+    body2: buildVariant(fontWeightRegular, 14, 1.43, 0.15),
+    button: buildVariant(fontWeightMedium, 14, 1.75, 0.4, caseAllCaps),
+    caption: buildVariant(fontWeightRegular, 12, 1.66, 0.4),
+    overline: buildVariant(fontWeightRegular, 12, 2.66, 1, caseAllCaps)
+  };
+  return deepmerge(_extends__default['default']({
+    htmlFontSize: htmlFontSize,
+    pxToRem: pxToRem,
+    round: round,
+    // TODO v5: remove
+    fontFamily: fontFamily,
+    fontSize: fontSize,
+    fontWeightLight: fontWeightLight,
+    fontWeightRegular: fontWeightRegular,
+    fontWeightMedium: fontWeightMedium,
+    fontWeightBold: fontWeightBold
+  }, variants), other, {
+    clone: false // No need to clone deep
+
+  });
+}
+
+var shadowKeyUmbraOpacity = 0.2;
+var shadowKeyPenumbraOpacity = 0.14;
+var shadowAmbientShadowOpacity = 0.12;
+
+function createShadow() {
+  return ["".concat(arguments.length <= 0 ? undefined : arguments[0], "px ").concat(arguments.length <= 1 ? undefined : arguments[1], "px ").concat(arguments.length <= 2 ? undefined : arguments[2], "px ").concat(arguments.length <= 3 ? undefined : arguments[3], "px rgba(0,0,0,").concat(shadowKeyUmbraOpacity, ")"), "".concat(arguments.length <= 4 ? undefined : arguments[4], "px ").concat(arguments.length <= 5 ? undefined : arguments[5], "px ").concat(arguments.length <= 6 ? undefined : arguments[6], "px ").concat(arguments.length <= 7 ? undefined : arguments[7], "px rgba(0,0,0,").concat(shadowKeyPenumbraOpacity, ")"), "".concat(arguments.length <= 8 ? undefined : arguments[8], "px ").concat(arguments.length <= 9 ? undefined : arguments[9], "px ").concat(arguments.length <= 10 ? undefined : arguments[10], "px ").concat(arguments.length <= 11 ? undefined : arguments[11], "px rgba(0,0,0,").concat(shadowAmbientShadowOpacity, ")")].join(',');
+} // Values from https://github.com/material-components/material-components-web/blob/be8747f94574669cb5e7add1a7c54fa41a89cec7/packages/mdc-elevation/_variables.scss
+
+
+var shadows = ['none', createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
+
+var shape = {
+  borderRadius: 4
+};
+
+var responsivePropType = process.env.NODE_ENV !== 'production' ? propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.object, propTypes.array]) : {};
+
+var spacingKeys = ['m', 'mt', 'mr', 'mb', 'ml', 'mx', 'my', 'p', 'pt', 'pr', 'pb', 'pl', 'px', 'py', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'marginX', 'marginY', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'paddingX', 'paddingY'];
+function createUnarySpacing(theme) {
+  var themeSpacing = theme.spacing || 8;
+
+  if (typeof themeSpacing === 'number') {
+    return function (abs) {
+      if (process.env.NODE_ENV !== 'production') {
+        if (typeof abs !== 'number') {
+          console.error("Material-UI: Expected spacing argument to be a number, got ".concat(abs, "."));
+        }
+      }
+
+      return themeSpacing * abs;
+    };
+  }
+
+  if (Array.isArray(themeSpacing)) {
+    return function (abs) {
+      if (process.env.NODE_ENV !== 'production') {
+        if (abs > themeSpacing.length - 1) {
+          console.error(["Material-UI: The value provided (".concat(abs, ") overflows."), "The supported values are: ".concat(JSON.stringify(themeSpacing), "."), "".concat(abs, " > ").concat(themeSpacing.length - 1, ", you need to add the missing values.")].join('\n'));
+        }
+      }
+
+      return themeSpacing[abs];
+    };
+  }
+
+  if (typeof themeSpacing === 'function') {
+    return themeSpacing;
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    console.error(["Material-UI: The `theme.spacing` value (".concat(themeSpacing, ") is invalid."), 'It should be a number, an array or a function.'].join('\n'));
+  }
+
+  return function () {
+    return undefined;
+  };
+}
+
+process.env.NODE_ENV !== 'production' ? spacingKeys.reduce(function (obj, key) {
+  obj[key] = responsivePropType;
+  return obj;
+}, {}) : {};
+
+var warnOnce;
+function createSpacing() {
+  var spacingInput = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 8;
+
+  // Already transformed.
+  if (spacingInput.mui) {
+    return spacingInput;
+  } // Material Design layouts are visually balanced. Most measurements align to an 8dp grid applied, which aligns both spacing and the overall layout.
+  // Smaller components, such as icons and type, can align to a 4dp grid.
+  // https://material.io/design/layout/understanding-layout.html#usage
+
+
+  var transform = createUnarySpacing({
+    spacing: spacingInput
+  });
+
+  var spacing = function spacing() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (!(args.length <= 4)) {
+        console.error("Material-UI: Too many arguments provided, expected between 0 and 4, got ".concat(args.length));
+      }
+    }
+
+    if (args.length === 0) {
+      return transform(1);
+    }
+
+    if (args.length === 1) {
+      return transform(args[0]);
+    }
+
+    return args.map(function (argument) {
+      if (typeof argument === 'string') {
+        return argument;
+      }
+
+      var output = transform(argument);
+      return typeof output === 'number' ? "".concat(output, "px") : output;
+    }).join(' ');
+  }; // Backward compatibility, to remove in v5.
+
+
+  Object.defineProperty(spacing, 'unit', {
+    get: function get() {
+      if (process.env.NODE_ENV !== 'production') {
+        if (!warnOnce || process.env.NODE_ENV === 'test') {
+          console.error(['Material-UI: theme.spacing.unit usage has been deprecated.', 'It will be removed in v5.', 'You can replace `theme.spacing.unit * y` with `theme.spacing(y)`.', '', 'You can use the `https://github.com/mui-org/material-ui/tree/master/packages/material-ui-codemod/README.md#theme-spacing-api` migration helper to make the process smoother.'].join('\n'));
+        }
+
+        warnOnce = true;
+      }
+
+      return spacingInput;
+    }
+  });
+  spacing.mui = true;
+  return spacing;
+}
+
+// Follow https://material.google.com/motion/duration-easing.html#duration-easing-natural-easing-curves
+// to learn the context in which each easing should be used.
+var easing = {
+  // This is the most common easing curve.
+  easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  // Objects enter the screen at full velocity from off-screen and
+  // slowly decelerate to a resting point.
+  easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
+  // Objects leave the screen at full velocity. They do not decelerate when off-screen.
+  easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
+  // The sharp curve is used by objects that may return to the screen at any time.
+  sharp: 'cubic-bezier(0.4, 0, 0.6, 1)'
+}; // Follow https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+// to learn when use what timing
+
+var duration = {
+  shortest: 150,
+  shorter: 200,
+  short: 250,
+  // most basic recommended timing
+  standard: 300,
+  // this is to be used in complex animations
+  complex: 375,
+  // recommended when something is entering screen
+  enteringScreen: 225,
+  // recommended when something is leaving screen
+  leavingScreen: 195
+};
+
+function formatMs(milliseconds) {
+  return "".concat(Math.round(milliseconds), "ms");
+}
+/**
+ * @param {string|Array} props
+ * @param {object} param
+ * @param {string} param.prop
+ * @param {number} param.duration
+ * @param {string} param.easing
+ * @param {number} param.delay
+ */
+
+
+var transitions = {
+  easing: easing,
+  duration: duration,
+  create: function create() {
+    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['all'];
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var _options$duration = options.duration,
+        durationOption = _options$duration === void 0 ? duration.standard : _options$duration,
+        _options$easing = options.easing,
+        easingOption = _options$easing === void 0 ? easing.easeInOut : _options$easing,
+        _options$delay = options.delay,
+        delay = _options$delay === void 0 ? 0 : _options$delay,
+        other = _objectWithoutProperties__default['default'](options, ["duration", "easing", "delay"]);
+
+    if (process.env.NODE_ENV !== 'production') {
+      var isString = function isString(value) {
+        return typeof value === 'string';
+      };
+
+      var isNumber = function isNumber(value) {
+        return !isNaN(parseFloat(value));
+      };
+
+      if (!isString(props) && !Array.isArray(props)) {
+        console.error('Material-UI: Argument "props" must be a string or Array.');
+      }
+
+      if (!isNumber(durationOption) && !isString(durationOption)) {
+        console.error("Material-UI: Argument \"duration\" must be a number or a string but found ".concat(durationOption, "."));
+      }
+
+      if (!isString(easingOption)) {
+        console.error('Material-UI: Argument "easing" must be a string.');
+      }
+
+      if (!isNumber(delay) && !isString(delay)) {
+        console.error('Material-UI: Argument "delay" must be a number or a string.');
+      }
+
+      if (Object.keys(other).length !== 0) {
+        console.error("Material-UI: Unrecognized argument(s) [".concat(Object.keys(other).join(','), "]."));
+      }
+    }
+
+    return (Array.isArray(props) ? props : [props]).map(function (animatedProp) {
+      return "".concat(animatedProp, " ").concat(typeof durationOption === 'string' ? durationOption : formatMs(durationOption), " ").concat(easingOption, " ").concat(typeof delay === 'string' ? delay : formatMs(delay));
+    }).join(',');
+  },
+  getAutoHeightDuration: function getAutoHeightDuration(height) {
+    if (!height) {
+      return 0;
+    }
+
+    var constant = height / 36; // https://www.wolframalpha.com/input/?i=(4+%2B+15+*+(x+%2F+36+)+**+0.25+%2B+(x+%2F+36)+%2F+5)+*+10
+
+    return Math.round((4 + 15 * Math.pow(constant, 0.25) + constant / 5) * 10);
+  }
+};
+
+// We need to centralize the zIndex definitions as they work
+// like global values in the browser.
+var zIndex = {
+  mobileStepper: 1000,
+  speedDial: 1050,
+  appBar: 1100,
+  drawer: 1200,
+  modal: 1300,
+  snackbar: 1400,
+  tooltip: 1500
+};
+
+function createMuiTheme() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var _options$breakpoints = options.breakpoints,
+      breakpointsInput = _options$breakpoints === void 0 ? {} : _options$breakpoints,
+      _options$mixins = options.mixins,
+      mixinsInput = _options$mixins === void 0 ? {} : _options$mixins,
+      _options$palette = options.palette,
+      paletteInput = _options$palette === void 0 ? {} : _options$palette,
+      spacingInput = options.spacing,
+      _options$typography = options.typography,
+      typographyInput = _options$typography === void 0 ? {} : _options$typography,
+      other = _objectWithoutProperties__default['default'](options, ["breakpoints", "mixins", "palette", "spacing", "typography"]);
+
+  var palette = createPalette(paletteInput);
+  var breakpoints = createBreakpoints(breakpointsInput);
+  var spacing = createSpacing(spacingInput);
+  var muiTheme = deepmerge({
+    breakpoints: breakpoints,
+    direction: 'ltr',
+    mixins: createMixins(breakpoints, spacing, mixinsInput),
+    overrides: {},
+    // Inject custom styles
+    palette: palette,
+    props: {},
+    // Provide default props
+    shadows: shadows,
+    typography: createTypography(palette, typographyInput),
+    spacing: spacing,
+    shape: shape,
+    transitions: transitions,
+    zIndex: zIndex
+  }, other);
+
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  muiTheme = args.reduce(function (acc, argument) {
+    return deepmerge(acc, argument);
+  }, muiTheme);
+
+  if (process.env.NODE_ENV !== 'production') {
+    var pseudoClasses = ['checked', 'disabled', 'error', 'focused', 'focusVisible', 'required', 'expanded', 'selected'];
+
+    var traverse = function traverse(node, parentKey) {
+      var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+      var key; // eslint-disable-next-line guard-for-in, no-restricted-syntax
+
+      for (key in node) {
+        var child = node[key];
+
+        if (depth === 1) {
+          if (key.indexOf('Mui') === 0 && child) {
+            traverse(child, key, depth + 1);
+          }
+        } else if (pseudoClasses.indexOf(key) !== -1 && Object.keys(child).length > 0) {
+          if (process.env.NODE_ENV !== 'production') {
+            console.error(["Material-UI: The `".concat(parentKey, "` component increases ") + "the CSS specificity of the `".concat(key, "` internal state."), 'You can not override it like this: ', JSON.stringify(node, null, 2), '', 'Instead, you need to use the $ruleName syntax:', JSON.stringify({
+              root: _defineProperty__default['default']({}, "&$".concat(key), child)
+            }, null, 2), '', 'https://material-ui.com/r/pseudo-classes-guide'].join('\n'));
+          } // Remove the style to prevent global conflicts.
+
+
+          node[key] = {};
+        }
+      }
+    };
+
+    traverse(muiTheme.overrides);
+  }
+
+  return muiTheme;
+}
+
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var nested = hasSymbol ? Symbol.for('mui.nested') : '__THEME_NESTED__';
+
+/**
+ * This is the list of the style rule name we use as drop in replacement for the built-in
+ * pseudo classes (:checked, :disabled, :focused, etc.).
+ *
+ * Why do they exist in the first place?
+ * These classes are used at a specificity of 2.
+ * It allows them to override previously definied styles as well as
+ * being untouched by simple user overrides.
+ */
+
+var pseudoClasses = ['checked', 'disabled', 'error', 'focused', 'focusVisible', 'required', 'expanded', 'selected']; // Returns a function which generates unique class names based on counters.
+// When new generator function is created, rule counter is reset.
+// We need to reset the rule counter for SSR for each request.
+//
+// It's inspired by
+// https://github.com/cssinjs/jss/blob/4e6a05dd3f7b6572fdd3ab216861d9e446c20331/src/utils/createGenerateClassName.js
+
+function createGenerateClassName() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _options$disableGloba = options.disableGlobal,
+      disableGlobal = _options$disableGloba === void 0 ? false : _options$disableGloba,
+      _options$productionPr = options.productionPrefix,
+      productionPrefix = _options$productionPr === void 0 ? 'jss' : _options$productionPr,
+      _options$seed = options.seed,
+      seed = _options$seed === void 0 ? '' : _options$seed;
+  var seedPrefix = seed === '' ? '' : "".concat(seed, "-");
+  var ruleCounter = 0;
+
+  var getNextCounterId = function getNextCounterId() {
+    ruleCounter += 1;
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (ruleCounter >= 1e10) {
+        console.warn(['Material-UI: You might have a memory leak.', 'The ruleCounter is not supposed to grow that much.'].join(''));
+      }
+    }
+
+    return ruleCounter;
+  };
+
+  return function (rule, styleSheet) {
+    var name = styleSheet.options.name; // Is a global static MUI style?
+
+    if (name && name.indexOf('Mui') === 0 && !styleSheet.options.link && !disableGlobal) {
+      // We can use a shorthand class name, we never use the keys to style the components.
+      if (pseudoClasses.indexOf(rule.key) !== -1) {
+        return "Mui-".concat(rule.key);
+      }
+
+      var prefix = "".concat(seedPrefix).concat(name, "-").concat(rule.key);
+
+      if (!styleSheet.options.theme[nested] || seed !== '') {
+        return prefix;
+      }
+
+      return "".concat(prefix, "-").concat(getNextCounterId());
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+      return "".concat(seedPrefix).concat(productionPrefix).concat(getNextCounterId());
+    }
+
+    var suffix = "".concat(rule.key, "-").concat(getNextCounterId()); // Help with debuggability.
+
+    if (styleSheet.options.classNamePrefix) {
+      return "".concat(seedPrefix).concat(styleSheet.options.classNamePrefix, "-").concat(suffix);
+    }
+
+    return "".concat(seedPrefix).concat(suffix);
+  };
+}
+
+/* eslint-disable no-restricted-syntax */
+function getThemeProps(params) {
+  var theme = params.theme,
+      name = params.name,
+      props = params.props;
+
+  if (!theme || !theme.props || !theme.props[name]) {
+    return props;
+  } // Resolve default props, code borrow from React source.
+  // https://github.com/facebook/react/blob/15a8f031838a553e41c0b66eb1bcf1da8448104d/packages/react/src/ReactElement.js#L221
+
+
+  var defaultProps = theme.props[name];
+  var propName;
+
+  for (propName in defaultProps) {
+    if (props[propName] === undefined) {
+      props[propName] = defaultProps[propName];
+    }
+  }
+
+  return props;
+}
+
 function jssPreset() {
   return {
     plugins: [functionPlugin(), jssGlobal(), jssNested(), camelCase(), defaultUnit(), // Disable the vendor prefixer server-side, it does nothing.
@@ -23675,7 +25394,7 @@ function mergeClasses() {
 
   if (process.env.NODE_ENV !== 'production') {
     if (typeof newClasses === 'string') {
-      console.error(["Material-UI: The value `".concat(newClasses, "` ") + "provided to the classes prop of ".concat(getDisplayName(Component), " is incorrect."), 'You might want to use the className prop instead.'].join('\n'));
+      console.error(["Material-UI: The value `".concat(newClasses, "` ") + "provided to the classes prop of ".concat(getDisplayName$1(Component), " is incorrect."), 'You might want to use the className prop instead.'].join('\n'));
       return baseClasses;
     }
   }
@@ -23683,11 +25402,11 @@ function mergeClasses() {
   Object.keys(newClasses).forEach(function (key) {
     if (process.env.NODE_ENV !== 'production') {
       if (!baseClasses[key] && newClasses[key]) {
-        console.error(["Material-UI: The key `".concat(key, "` ") + "provided to the classes prop is not implemented in ".concat(getDisplayName(Component), "."), "You can only override one of the following: ".concat(Object.keys(baseClasses).join(','), ".")].join('\n'));
+        console.error(["Material-UI: The key `".concat(key, "` ") + "provided to the classes prop is not implemented in ".concat(getDisplayName$1(Component), "."), "You can only override one of the following: ".concat(Object.keys(baseClasses).join(','), ".")].join('\n'));
       }
 
       if (newClasses[key] && typeof newClasses[key] !== 'string') {
-        console.error(["Material-UI: The key `".concat(key, "` ") + "provided to the classes prop is not valid for ".concat(getDisplayName(Component), "."), "You need to provide a non empty string instead of: ".concat(newClasses[key], ".")].join('\n'));
+        console.error(["Material-UI: The key `".concat(key, "` ") + "provided to the classes prop is not valid for ".concat(getDisplayName$1(Component), "."), "You need to provide a non empty string instead of: ".concat(newClasses[key], ".")].join('\n'));
       }
     }
 
@@ -23720,14 +25439,14 @@ var multiKeyStore = {
   }
 };
 
-var ThemeContext = React__default['default'].createContext(null);
+var ThemeContext$1 = React__default['default'].createContext(null);
 
 if (process.env.NODE_ENV !== 'production') {
-  ThemeContext.displayName = 'ThemeContext';
+  ThemeContext$1.displayName = 'ThemeContext';
 }
 
 function useTheme() {
-  var theme = React__default['default'].useContext(ThemeContext);
+  var theme = React__default['default'].useContext(ThemeContext$1);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -23737,7 +25456,7 @@ function useTheme() {
   return theme;
 }
 
-var jss = create(jssPreset()); // Use a singleton or the provided one by the context.
+var jss$2 = create(jssPreset()); // Use a singleton or the provided one by the context.
 //
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
@@ -23748,7 +25467,7 @@ var sheetsManager = new Map();
 var defaultOptions = {
   disableGeneration: false,
   generateClassName: generateClassName,
-  jss: jss,
+  jss: jss$2,
   sheetsCache: null,
   sheetsManager: sheetsManager,
   sheetsRegistry: null
@@ -24200,384 +25919,6 @@ function makeStyles(stylesOrCreator) {
   return useStyles;
 }
 
-function toVal(mix) {
-	var k, y, str='';
-
-	if (typeof mix === 'string' || typeof mix === 'number') {
-		str += mix;
-	} else if (typeof mix === 'object') {
-		if (Array.isArray(mix)) {
-			for (k=0; k < mix.length; k++) {
-				if (mix[k]) {
-					if (y = toVal(mix[k])) {
-						str && (str += ' ');
-						str += y;
-					}
-				}
-			}
-		} else {
-			for (k in mix) {
-				if (mix[k]) {
-					str && (str += ' ');
-					str += k;
-				}
-			}
-		}
-	}
-
-	return str;
-}
-
-function clsx () {
-	var i=0, tmp, x, str='';
-	while (i < arguments.length) {
-		if (tmp = arguments[i++]) {
-			if (x = toVal(tmp)) {
-				str && (str += ' ');
-				str += x;
-			}
-		}
-	}
-	return str;
-}
-
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var b$3="function"===typeof Symbol&&Symbol.for,c$3=b$3?Symbol.for("react.element"):60103,d$3=b$3?Symbol.for("react.portal"):60106,e$3=b$3?Symbol.for("react.fragment"):60107,f$3=b$3?Symbol.for("react.strict_mode"):60108,g$3=b$3?Symbol.for("react.profiler"):60114,h$3=b$3?Symbol.for("react.provider"):60109,k$3=b$3?Symbol.for("react.context"):60110,l$3=b$3?Symbol.for("react.async_mode"):60111,m$2=b$3?Symbol.for("react.concurrent_mode"):60111,n$3=b$3?Symbol.for("react.forward_ref"):60112,p$3=b$3?Symbol.for("react.suspense"):60113,q$3=b$3?
-Symbol.for("react.suspense_list"):60120,r$3=b$3?Symbol.for("react.memo"):60115,t$2=b$3?Symbol.for("react.lazy"):60116,v$3=b$3?Symbol.for("react.block"):60121,w$3=b$3?Symbol.for("react.fundamental"):60117,x$3=b$3?Symbol.for("react.responder"):60118,y$3=b$3?Symbol.for("react.scope"):60119;
-function z$3(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c$3:switch(a=a.type,a){case l$3:case m$2:case e$3:case g$3:case f$3:case p$3:return a;default:switch(a=a&&a.$$typeof,a){case k$3:case n$3:case t$2:case r$3:case h$3:return a;default:return u}}case d$3:return u}}}function A$3(a){return z$3(a)===m$2}var AsyncMode$1=l$3;var ConcurrentMode$1=m$2;var ContextConsumer$2=k$3;var ContextProvider$2=h$3;var Element$3=c$3;var ForwardRef$2=n$3;var Fragment$2=e$3;var Lazy$2=t$2;var Memo$2=r$3;var Portal$2=d$3;
-var Profiler$2=g$3;var StrictMode$2=f$3;var Suspense$2=p$3;var isAsyncMode$2=function(a){return A$3(a)||z$3(a)===l$3};var isConcurrentMode$2=A$3;var isContextConsumer$2=function(a){return z$3(a)===k$3};var isContextProvider$2=function(a){return z$3(a)===h$3};var isElement$2=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c$3};var isForwardRef$2=function(a){return z$3(a)===n$3};var isFragment$2=function(a){return z$3(a)===e$3};var isLazy$2=function(a){return z$3(a)===t$2};
-var isMemo$2=function(a){return z$3(a)===r$3};var isPortal$2=function(a){return z$3(a)===d$3};var isProfiler$2=function(a){return z$3(a)===g$3};var isStrictMode$2=function(a){return z$3(a)===f$3};var isSuspense$2=function(a){return z$3(a)===p$3};
-var isValidElementType$2=function(a){return "string"===typeof a||"function"===typeof a||a===e$3||a===m$2||a===g$3||a===f$3||a===p$3||a===q$3||"object"===typeof a&&null!==a&&(a.$$typeof===t$2||a.$$typeof===r$3||a.$$typeof===h$3||a.$$typeof===k$3||a.$$typeof===n$3||a.$$typeof===w$3||a.$$typeof===x$3||a.$$typeof===y$3||a.$$typeof===v$3)};var typeOf$2=z$3;
-
-var reactIs_production_min$2 = {
-	AsyncMode: AsyncMode$1,
-	ConcurrentMode: ConcurrentMode$1,
-	ContextConsumer: ContextConsumer$2,
-	ContextProvider: ContextProvider$2,
-	Element: Element$3,
-	ForwardRef: ForwardRef$2,
-	Fragment: Fragment$2,
-	Lazy: Lazy$2,
-	Memo: Memo$2,
-	Portal: Portal$2,
-	Profiler: Profiler$2,
-	StrictMode: StrictMode$2,
-	Suspense: Suspense$2,
-	isAsyncMode: isAsyncMode$2,
-	isConcurrentMode: isConcurrentMode$2,
-	isContextConsumer: isContextConsumer$2,
-	isContextProvider: isContextProvider$2,
-	isElement: isElement$2,
-	isForwardRef: isForwardRef$2,
-	isFragment: isFragment$2,
-	isLazy: isLazy$2,
-	isMemo: isMemo$2,
-	isPortal: isPortal$2,
-	isProfiler: isProfiler$2,
-	isStrictMode: isStrictMode$2,
-	isSuspense: isSuspense$2,
-	isValidElementType: isValidElementType$2,
-	typeOf: typeOf$2
-};
-
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var reactIs_development$2 = createCommonjsModule(function (module, exports) {
-
-
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-// (unstable) APIs that have been removed. Can we remove the symbols?
-
-var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
-}
-
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
-
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
-
-        switch (type) {
-          case REACT_ASYNC_MODE_TYPE:
-          case REACT_CONCURRENT_MODE_TYPE:
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-          case REACT_SUSPENSE_TYPE:
-            return type;
-
-          default:
-            var $$typeofType = type && type.$$typeof;
-
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
-
-              default:
-                return $$typeof;
-            }
-
-        }
-
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
-
-  return undefined;
-} // AsyncMode is deprecated along with isAsyncMode
-
-var AsyncMode = REACT_ASYNC_MODE_TYPE;
-var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Lazy = REACT_LAZY_TYPE;
-var Memo = REACT_MEMO_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-    }
-  }
-
-  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-}
-function isConcurrentMode(object) {
-  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isLazy(object) {
-  return typeOf(object) === REACT_LAZY_TYPE;
-}
-function isMemo(object) {
-  return typeOf(object) === REACT_MEMO_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-function isSuspense(object) {
-  return typeOf(object) === REACT_SUSPENSE_TYPE;
-}
-
-exports.AsyncMode = AsyncMode;
-exports.ConcurrentMode = ConcurrentMode;
-exports.ContextConsumer = ContextConsumer;
-exports.ContextProvider = ContextProvider;
-exports.Element = Element;
-exports.ForwardRef = ForwardRef;
-exports.Fragment = Fragment;
-exports.Lazy = Lazy;
-exports.Memo = Memo;
-exports.Portal = Portal;
-exports.Profiler = Profiler;
-exports.StrictMode = StrictMode;
-exports.Suspense = Suspense;
-exports.isAsyncMode = isAsyncMode;
-exports.isConcurrentMode = isConcurrentMode;
-exports.isContextConsumer = isContextConsumer;
-exports.isContextProvider = isContextProvider;
-exports.isElement = isElement;
-exports.isForwardRef = isForwardRef;
-exports.isFragment = isFragment;
-exports.isLazy = isLazy;
-exports.isMemo = isMemo;
-exports.isPortal = isPortal;
-exports.isProfiler = isProfiler;
-exports.isStrictMode = isStrictMode;
-exports.isSuspense = isSuspense;
-exports.isValidElementType = isValidElementType;
-exports.typeOf = typeOf;
-  })();
-}
-});
-
-var reactIs$2 = createCommonjsModule(function (module) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = reactIs_production_min$2;
-} else {
-  module.exports = reactIs_development$2;
-}
-});
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs$2.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs$2.Memo] = MEMO_STATICS;
-
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs$2.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
-
-
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-}
-
-var defineProperty = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols$1 = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf(sourceComponent);
-
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
-    }
-
-    var keys = getOwnPropertyNames(sourceComponent);
-
-    if (getOwnPropertySymbols$1) {
-      keys = keys.concat(getOwnPropertySymbols$1(sourceComponent));
-    }
-
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-
-        try {
-          // Avoid failures from read-only properties
-          defineProperty(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-
-  return targetComponent;
-}
-
-var hoistNonReactStatics_cjs = hoistNonReactStatics;
-
 // It does not modify the component passed to it;
 // instead, it returns a new component, with a `classes` property.
 
@@ -24601,7 +25942,7 @@ var withStyles = function withStyles(stylesOrCreator) {
     if (process.env.NODE_ENV !== 'production') {
       if (!name) {
         // Provide a better DX outside production.
-        var displayName = getDisplayName(Component);
+        var displayName = getDisplayName$1(Component);
 
         if (displayName !== undefined) {
           classNamePrefix = displayName;
@@ -24675,7 +26016,7 @@ var withStyles = function withStyles(stylesOrCreator) {
     } : void 0;
 
     if (process.env.NODE_ENV !== 'production') {
-      WithStyles.displayName = "WithStyles(".concat(getDisplayName(Component), ")");
+      WithStyles.displayName = "WithStyles(".concat(getDisplayName$1(Component), ")");
     }
 
     hoistNonReactStatics_cjs(WithStyles, Component);
@@ -24691,28 +26032,7 @@ var withStyles = function withStyles(stylesOrCreator) {
   };
 };
 
-// To remove in v5
-
-function createStyles$1(styles) {
-  // warning(
-  //   warnOnce,
-  //   [
-  //     'Material-UI: createStyles from @material-ui/core/styles is deprecated.',
-  //     'Please use @material-ui/styles/createStyles',
-  //   ].join('\n'),
-  // );
-  // warnOnce = true;
-  return createStyles(styles);
-}
-
 var defaultTheme = createMuiTheme();
-
-function makeStyles$1(stylesOrCreator) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return makeStyles(stylesOrCreator, _extends__default['default']({
-    defaultTheme: defaultTheme
-  }, options));
-}
 
 function useTheme$1() {
   var theme = useTheme() || defaultTheme;
@@ -28071,7 +29391,7 @@ var defineProperty$1 = function (obj, key, value) {
   return obj;
 };
 
-var _extends$1 = Object.assign || function (target) {
+var _extends$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -28093,7 +29413,7 @@ var _extends$1 = Object.assign || function (target) {
  * @returns {Object} ClientRect like output
  */
 function getClientRect(offsets) {
-  return _extends$1({}, offsets, {
+  return _extends$2({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
   });
@@ -28381,7 +29701,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
   };
 
   var sortedAreas = Object.keys(rects).map(function (key) {
-    return _extends$1({
+    return _extends$2({
       key: key
     }, rects[key], {
       area: getArea(rects[key])
@@ -29023,9 +30343,9 @@ function computeStyle(data, options) {
   };
 
   // Update `data` attributes, styles and arrowStyles
-  data.attributes = _extends$1({}, attributes, data.attributes);
-  data.styles = _extends$1({}, styles, data.styles);
-  data.arrowStyles = _extends$1({}, data.offsets.arrow, data.arrowStyles);
+  data.attributes = _extends$2({}, attributes, data.attributes);
+  data.styles = _extends$2({}, styles, data.styles);
+  data.arrowStyles = _extends$2({}, data.offsets.arrow, data.arrowStyles);
 
   return data;
 }
@@ -29305,7 +30625,7 @@ function flip(data, options) {
 
       // this object contains `position`, we want to preserve it along with
       // any additional property we may add in the future
-      data.offsets.popper = _extends$1({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+      data.offsets.popper = _extends$2({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
       data = runModifiers(data.instance.modifiers, data, 'flip');
     }
@@ -29579,7 +30899,7 @@ function preventOverflow(data, options) {
 
   order.forEach(function (placement) {
     var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-    popper = _extends$1({}, popper, check[side](placement));
+    popper = _extends$2({}, popper, check[side](placement));
   });
 
   data.offsets.popper = popper;
@@ -29614,7 +30934,7 @@ function shift(data) {
       end: defineProperty$1({}, side, reference[side] + reference[measurement] - popper[measurement])
     };
 
-    data.offsets.popper = _extends$1({}, popper, shiftOffsets[shiftvariation]);
+    data.offsets.popper = _extends$2({}, popper, shiftOffsets[shiftvariation]);
   }
 
   return data;
@@ -30146,7 +31466,7 @@ var Popper = function () {
     this.update = debounce(this.update.bind(this));
 
     // with {} we create a new object with the options inside it
-    this.options = _extends$1({}, Popper.Defaults, options);
+    this.options = _extends$2({}, Popper.Defaults, options);
 
     // init state
     this.state = {
@@ -30161,13 +31481,13 @@ var Popper = function () {
 
     // Deep merge modifiers options
     this.options.modifiers = {};
-    Object.keys(_extends$1({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-      _this.options.modifiers[name] = _extends$1({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+    Object.keys(_extends$2({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+      _this.options.modifiers[name] = _extends$2({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
     });
 
     // Refactoring modifiers' list (Object => Array)
     this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-      return _extends$1({
+      return _extends$2({
         name: name
       }, _this.options.modifiers[name]);
     })
@@ -32344,103 +33664,6 @@ var Tooltip$1 = withStyles$1(styles$7, {
   flip: false
 })(Tooltip);
 
-var style$1 = makeStyles$1(function (theme) {
-    return createStyles$1({
-        root: {
-            userSelect: "none",
-            width: "1em",
-            height: "1em",
-            display: "inline-block",
-            fill: "inherit",
-            flexShrink: 0,
-            fontSize: 24,
-            transition: theme.transitions.create("fill", {
-                duration: theme.transitions.duration.shorter,
-            }),
-        },
-    });
-});
-
-var SvgIcon = React.memo(function (_a) {
-    var className = _a.className, id = _a.id, children = _a.children;
-    var classes = style$1();
-    return (React__default['default'].createElement("svg", { className: clsx(classes.root, className), id: id, width: "24", height: "24", viewBox: "0 0 24 24" }, children));
-});
-
-var NextIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-skip-next" },
-        React__default['default'].createElement("path", { d: "M16,18H18V6H16M6,18L14.5,12L6,6V18Z" })));
-};
-
-var PauseIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-pause" },
-        React__default['default'].createElement("path", { d: "M14,19H18V5H14M6,19H10V5H6V19Z" })));
-};
-
-var PlayIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-play" },
-        React__default['default'].createElement("path", { d: "M8,5.14V19.14L19,12.14L8,5.14Z" })));
-};
-
-var GaugeIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-gauge" },
-        React__default['default'].createElement("path", { d: "M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12C20,14.4 19,16.5 17.3,18C15.9,16.7 14,16 12,16C10,16 8.2,16.7 6.7,18C5,16.5 4,14.4 4,12A8,8 0 0,1 12,4M14,5.89C13.62,5.9 13.26,6.15 13.1,6.54L11.81,9.77L11.71,10C11,10.13 10.41,10.6 10.14,11.26C9.73,12.29 10.23,13.45 11.26,13.86C12.29,14.27 13.45,13.77 13.86,12.74C14.12,12.08 14,11.32 13.57,10.76L13.67,10.5L14.96,7.29L14.97,7.26C15.17,6.75 14.92,6.17 14.41,5.96C14.28,5.91 14.15,5.89 14,5.89M10,6A1,1 0 0,0 9,7A1,1 0 0,0 10,8A1,1 0 0,0 11,7A1,1 0 0,0 10,6M7,9A1,1 0 0,0 6,10A1,1 0 0,0 7,11A1,1 0 0,0 8,10A1,1 0 0,0 7,9M17,9A1,1 0 0,0 16,10A1,1 0 0,0 17,11A1,1 0 0,0 18,10A1,1 0 0,0 17,9Z" })));
-};
-
-var PlayCircleIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-play-outline" },
-        React__default['default'].createElement("path", { d: "M 12 0 C 5.371094 0 0 5.371094 0 12 C 0 18.628906 5.371094 24 12 24 C 18.628906 24 24 18.628906 24 12 C 24 5.371094 18.628906 0 12 0 Z M 12 22 C 6.476562 22 2 17.523438 2 12 C 2 6.476562 6.476562 2 12 2 C 17.523438 2 22 6.476562 22 12 C 22 17.523438 17.523438 22 12 22 Z M 12 22 " }),
-        React__default['default'].createElement("path", { d: "M 17.601562 11.199219 L 9.601562 5.199219 C 8.941406 4.707031 8 5.175781 8 6 L 8 18 C 8 18.824219 8.941406 19.292969 9.601562 18.800781 L 17.601562 12.800781 C 18.132812 12.398438 18.132812 11.601562 17.601562 11.199219 Z M 10 16 L 10 8 L 15.332031 12 Z M 10 16 " })));
-};
-
-var PreviousIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon, { className: className, id: "mdi-skip-previous" },
-        React__default['default'].createElement("path", { d: "M6,18V6H8V18H6M9.5,12L18,6V18L9.5,12Z" })));
-};
-
-var DEFAULT_TRANSITION = 1000;
-var playerStoreModel = {
-    isPlaying: false,
-    isRecording: false,
-    transitionTime: DEFAULT_TRANSITION,
-    bufferSize: 5,
-    timeSliderRange: { min: 0, max: 0 },
-    speedSliderRange: { min: 0, max: 0 },
-    timeSlider: 0,
-    speedSlider: Math.round(10000 / DEFAULT_TRANSITION) / 10,
-    setPlay: action(function (state, isPlaying) {
-        state.isPlaying = isPlaying;
-    }),
-    setRecording: action(function (state, isRecording) {
-        state.isRecording = isRecording;
-    }),
-    setTimeSliderRange: action(function (state, timeSlider) {
-        state.timeSliderRange = timeSlider;
-    }),
-    setTimeSliderValue: action(function (state, timeSlider) {
-        state.timeSlider = timeSlider;
-    }),
-    setSpeedSliderRange: action(function (state, speedSlider) {
-        state.speedSliderRange = speedSlider;
-    }),
-    setSpeedSliderValue: action(function (state, speedSlider) {
-        state.speedSlider = speedSlider;
-    }),
-    setTransitionTime: action(function (state, _a) {
-        var transitionTime = _a.transitionTime, bufferSize = _a.bufferSize;
-        state.bufferSize = bufferSize;
-        state.transitionTime = transitionTime;
-        state.speedSlider = Math.round(10000 / transitionTime) / 10;
-    }),
-    animationFinished: action(function () { }),
-};
-
 var PlayerSlider = withStyles$1({
     root: {
         color: "#1f6a6d",
@@ -32570,39 +33793,54 @@ var SmallIconButton = withStyles$1(function () { return ({
     },
 }); })(IconButton$1);
 
-var useStyle = makeStyles$1(function () {
-    return createStyles$1({
-        playerContainer: {
-            padding: 10,
-            backgroundColor: "rgba(255,255,255,0.2)",
-            zIndex: 1000,
-            position: "absolute",
-            bottom: 20,
-            left: 20,
-            width: "50vw",
-            minWidth: 300,
-        },
-        controller: {
-            display: "flex",
-            alignItems: "center",
-        },
-        icon: { width: "0.75em", height: "0.75em" },
-        playIcon: {
-            width: "0.75em",
-            height: "0.75em",
-            borderRadius: "0.5em",
-            border: "solid 2px #000",
-        },
-        whiteIcon: { width: "0.75em", height: "0.75em", margin: "0 4px" },
-    });
-});
+var useStyles = createUseStyles(function (theme) { return ({
+    playerRoot: {
+        position: "absolute",
+        display: "flex",
+        width: "60%",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 16px",
+        zIndex: 1000,
+        bottom: 20,
+        left: 20,
+        borderRadius: "50em",
+        backgroundColor: theme.pallete.backgrounds.common,
+    },
+    playerSlider: {
+        display: "flex",
+        flex: 3,
+        minWidth: 100,
+        marginRight: 8,
+        alignItems: "center",
+    },
+    speedSlider: {
+        display: "flex",
+        flex: 1,
+        margin: "0 8px",
+        alignItems: "center",
+    },
+    controller: {
+        display: "flex",
+        alignItems: "center",
+    },
+    icon: { width: "0.75em", height: "0.75em" },
+    playIcon: {
+        width: "0.75em",
+        height: "0.75em",
+        borderRadius: "0.5em",
+        border: "solid 2px #000",
+    },
+    whiteIcon: { width: "0.75em", height: "0.75em", margin: "0 4px" },
+}); });
+
 function valuetext(value) {
     return value + "fps";
 }
 var PlayerControl = function (_a) {
     var leafletMap = _a.leafletMap, _b = _a.buffer, buffer = _b === void 0 ? 5 : _b, _c = _a.loop, loop = _c === void 0 ? false : _c, _d = _a.timeSteps, timeSteps = _d === void 0 ? 1 : _d, _e = _a.autoPlay, autoPlay = _e === void 0 ? false : _e, _f = _a.startedOver, startedOver = _f === void 0 ? false : _f, _g = _a.minSpeed, minSpeed = _g === void 0 ? 0.1 : _g, _h = _a.maxSpeed, maxSpeed = _h === void 0 ? 10 : _h;
     var _j = useLocalStore(function () { return playerStoreModel; }), state = _j[0], actions = _j[1];
-    var classes = useStyle();
+    var classes = useStyles();
     var availableTimes = useTDStoreState(function (state) { return state.availableTimes; });
     var currentTimeIndex = useTDStoreState(function (state) { return state.currentTimeIndex; });
     var setCurrentTimeIndex = useTDStoreActions(function (actions) { return actions.setCurrentTimeIndex; });
@@ -32646,37 +33884,13 @@ var PlayerControl = function (_a) {
         }, onMouseLeave: function () {
             leafletMap.dragging.enable();
             leafletMap.doubleClickZoom.enable();
-        }, style: {
-            position: "absolute",
-            display: "flex",
-            width: "60%",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 16px",
-            zIndex: 1000,
-            bottom: 20,
-            left: 20,
-            borderRadius: "50em",
-            // border: "solid 2px #444",
-            backgroundColor: "rgba(68,68,68,0.3)",
-        } },
-        React__default['default'].createElement("div", { style: {
-                display: "flex",
-                flex: 3,
-                minWidth: 100,
-                marginRight: 8,
-                alignItems: "center",
-            } },
+        }, className: classes.playerRoot },
+        React__default['default'].createElement("div", { className: classes.playerSlider },
             React__default['default'].createElement(PlayCircleIcon, { className: classes.whiteIcon }),
             React__default['default'].createElement(PlayerSlider, { style: {}, valueLabelDisplay: "auto", ThumbComponent: PlayerThumb, ValueLabelComponent: ValueLabelComponent, value: state.timeSlider, step: timeSteps, min: state.timeSliderRange.min, max: state.timeSliderRange.max, onChange: function (_, index) {
                     setCurrentTimeIndex({ index: index });
                 } })),
-        React__default['default'].createElement("div", { style: {
-                display: "flex",
-                flex: 1,
-                margin: "0 8px",
-                alignItems: "center",
-            } },
+        React__default['default'].createElement("div", { className: classes.speedSlider },
             React__default['default'].createElement(GaugeIcon, { className: classes.whiteIcon }),
             React__default['default'].createElement(PlayerSlider, { ThumbComponent: PlayerThumb, ValueLabelComponent: ValueLabelComponent, style: {}, valueLabelDisplay: "auto", value: state.speedSlider, valueLabelFormat: valuetext, step: timeSteps, min: state.speedSliderRange.min, max: state.speedSliderRange.max, onChange: function (_, v) {
                     setTransitionTime(1000 / +v);
@@ -38788,7 +40002,7 @@ function ordinalizeToken(func, period) {
     Helpers
 ************************************/
 
-function extend(a, b) {
+function extend$1(a, b) {
   var key;
   for (key in b)
     if (b.hasOwnProperty(key))
@@ -38860,7 +40074,7 @@ function getPrototypeOf$1(object) {
 /************************************
     Languages
 ************************************/
-extend(getPrototypeOf$1(moment.localeData()),
+extend$1(getPrototypeOf$1(moment.localeData()),
   { _jMonths: [ 'Farvardin'
               , 'Ordibehesht'
               , 'Khordaad'
@@ -39219,7 +40433,7 @@ function makeMoment(input, format, lang, strict, utc) {
     m._isValid = false;
   m._jDiff = config._jDiff || 0;
   jm = objectCreate(jMoment.fn);
-  extend(jm, m);
+  extend$1(jm, m);
   if (strict && format && jm.isValid()) {
     jm._isValid = jm.format(origFormat) === origInput;
   }
@@ -39233,7 +40447,7 @@ function jMoment(input, format, lang, strict) {
   return makeMoment(input, format, lang, strict, false)
 }
 
-extend(jMoment, moment);
+extend$1(jMoment, moment);
 jMoment.fn = objectCreate(moment.fn);
 
 jMoment.utc = function (input, format, lang, strict) {
@@ -41320,12 +42534,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 });
 
-var _default = getDisplayName$1;
-function getDisplayName$1(Component) {
+var _default$1 = getDisplayName$2;
+function getDisplayName$2(Component) {
   return Component.displayName || Component.name || (typeof Component === 'string' && Component.length > 0 ? Component : 'Unknown');
 }
 
-function _defineProperty$1(obj, key, value) {
+function _defineProperty$2(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -41340,8 +42554,8 @@ function _defineProperty$1(obj, key, value) {
   return obj;
 }
 
-function _extends$2() {
-  _extends$2 = Object.assign || function (target) {
+function _extends$3() {
+  _extends$3 = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -41355,16 +42569,16 @@ function _extends$2() {
     return target;
   };
 
-  return _extends$2.apply(this, arguments);
+  return _extends$3.apply(this, arguments);
 }
 
-function _inheritsLoose(subClass, superClass) {
+function _inheritsLoose$1(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
   subClass.__proto__ = superClass;
 }
 
-function _assertThisInitialized(self) {
+function _assertThisInitialized$1(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
@@ -41372,15 +42586,15 @@ function _assertThisInitialized(self) {
   return self;
 }
 
-function isObject$1(obj) {
+function isObject$1$1(obj) {
   return obj !== null && typeof obj === 'object' && !Array.isArray(obj);
 }
 
-function createThemeProvider(context) {
+function createThemeProvider$1(context) {
   var ThemeProvider =
   /*#__PURE__*/
   function (_React$Component) {
-    _inheritsLoose(ThemeProvider, _React$Component);
+    _inheritsLoose$1(ThemeProvider, _React$Component);
 
     function ThemeProvider() {
       var _this;
@@ -41391,13 +42605,13 @@ function createThemeProvider(context) {
 
       _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
 
-      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "cachedTheme", void 0);
+      _defineProperty$2(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "cachedTheme", void 0);
 
-      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "lastOuterTheme", void 0);
+      _defineProperty$2(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "lastOuterTheme", void 0);
 
-      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "lastTheme", void 0);
+      _defineProperty$2(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "lastTheme", void 0);
 
-      _defineProperty$1(_assertThisInitialized(_assertThisInitialized(_this)), "renderProvider", function (outerTheme) {
+      _defineProperty$2(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "renderProvider", function (outerTheme) {
         var children = _this.props.children;
         return React__default['default'].createElement(context.Provider, {
           value: _this.getTheme(outerTheme)
@@ -41418,11 +42632,11 @@ function createThemeProvider(context) {
         if (typeof this.lastTheme === 'function') {
           var theme = this.props.theme;
           this.cachedTheme = theme(outerTheme);
-          process.env.NODE_ENV !== "production" ? warning$2(isObject$1(this.cachedTheme), '[ThemeProvider] Please return an object from your theme function') : void 0;
+          process.env.NODE_ENV !== "production" ? warning$2(isObject$1$1(this.cachedTheme), '[ThemeProvider] Please return an object from your theme function') : void 0;
         } else {
           var _theme = this.props.theme;
-          process.env.NODE_ENV !== "production" ? warning$2(isObject$1(_theme), '[ThemeProvider] Please make your theme prop a plain object') : void 0;
-          this.cachedTheme = outerTheme ? _extends$2({}, outerTheme, _theme) : _theme;
+          process.env.NODE_ENV !== "production" ? warning$2(isObject$1$1(_theme), '[ThemeProvider] Please make your theme prop a plain object') : void 0;
+          this.cachedTheme = outerTheme ? _extends$3({}, outerTheme, _theme) : _theme;
         }
       }
 
@@ -41453,12 +42667,12 @@ function createThemeProvider(context) {
   return ThemeProvider;
 }
 
-function createWithTheme(context) {
+function createWithTheme$1(context) {
   return function hoc(Component) {
     var withTheme = React__default['default'].forwardRef(function (props, ref) {
       return React__default['default'].createElement(context.Consumer, null, function (theme) {
-        process.env.NODE_ENV !== "production" ? warning$2(isObject$1(theme), '[theming] Please use withTheme only with the ThemeProvider') : void 0;
-        return React__default['default'].createElement(Component, _extends$2({
+        process.env.NODE_ENV !== "production" ? warning$2(isObject$1$1(theme), '[theming] Please use withTheme only with the ThemeProvider') : void 0;
+        return React__default['default'].createElement(Component, _extends$3({
           theme: theme,
           ref: ref
         }, props));
@@ -41466,7 +42680,7 @@ function createWithTheme(context) {
     });
 
     if (process.env.NODE_ENV !== 'production') {
-      withTheme.displayName = "WithTheme(" + _default(Component) + ")";
+      withTheme.displayName = "WithTheme(" + _default$1(Component) + ")";
     }
 
     hoistNonReactStatics_cjs$1(withTheme, Component);
@@ -41474,28 +42688,28 @@ function createWithTheme(context) {
   };
 }
 
-function createUseTheme(context) {
+function createUseTheme$1(context) {
   var useTheme = function useTheme() {
     var theme = React__default['default'].useContext(context);
-    process.env.NODE_ENV !== "production" ? warning$2(isObject$1(theme), '[theming] Please use useTheme only with the ThemeProvider') : void 0;
+    process.env.NODE_ENV !== "production" ? warning$2(isObject$1$1(theme), '[theming] Please use useTheme only with the ThemeProvider') : void 0;
     return theme;
   };
 
   return useTheme;
 }
 
-function createTheming(context) {
+function createTheming$1(context) {
   return {
     context: context,
-    withTheme: createWithTheme(context),
-    useTheme: createUseTheme(context),
-    ThemeProvider: createThemeProvider(context)
+    withTheme: createWithTheme$1(context),
+    useTheme: createUseTheme$1(context),
+    ThemeProvider: createThemeProvider$1(context)
   };
 }
 
-var ThemeContext$1 = React.createContext();
+var ThemeContext$2 = React.createContext();
 
-createTheming(ThemeContext$1);
+createTheming$1(ThemeContext$2);
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -43645,7 +44859,7 @@ function getDynamicStyles$1(styles) {
  * SheetsManager is like a WeakMap which is designed to count StyleSheet
  * instances and attach/detach automatically.
  */
-var SheetsManager =
+var SheetsManager$1 =
 /*#__PURE__*/
 function () {
   function SheetsManager() {
@@ -43725,14 +44939,14 @@ var hasCSSTOMSupport$1 = typeof CSS === 'object' && CSS != null && 'number' in C
  * Creates a new instance of Jss.
  */
 
-var create$1 = function create(options) {
+var create$1$1 = function create(options) {
   return new Jss$1(options);
 };
 /**
  * A global Jss instance.
  */
 
-var jss$1 = create$1();
+var jss$1$1 = create$1$1();
 
 var now$1 = Date.now();
 var fnValuesNs$1 = "fnValues" + now$1;
@@ -43834,14 +45048,14 @@ if (typeof self !== 'undefined') {
 
 var result$1 = symbolObservablePonyfill$1(root$1);
 
-var isObservable = function isObservable(value) {
+var isObservable$1 = function isObservable(value) {
   return value && value[result$1] && value === value[result$1]();
 };
 
-var observablePlugin = function observablePlugin(updateOptions) {
+var observablePlugin$1 = function observablePlugin(updateOptions) {
   return {
     onCreateRule: function onCreateRule(name, decl, options) {
-      if (!isObservable(decl)) return null; // Cast `decl` to `Observable`, since it passed the type guard.
+      if (!isObservable$1(decl)) return null; // Cast `decl` to `Observable`, since it passed the type guard.
 
       var style$ = decl;
       var rule = createRule$1(name, {}, options); // TODO
@@ -43862,7 +45076,7 @@ var observablePlugin = function observablePlugin(updateOptions) {
 
       var _loop = function _loop(prop) {
         var value = style[prop];
-        if (!isObservable(value)) return "continue";
+        if (!isObservable$1(value)) return "continue";
         delete style[prop];
         value.subscribe({
           next: function next(nextValue) {
@@ -43880,7 +45094,7 @@ var observablePlugin = function observablePlugin(updateOptions) {
   };
 };
 
-var semiWithNl = /;\n/;
+var semiWithNl$1 = /;\n/;
 
 /**
  * Naive CSS parser.
@@ -43888,9 +45102,9 @@ var semiWithNl = /;\n/;
  * - Requires semicolon and new line after the value (except of last line)
  * - No nested rules support
  */
-var parse = function parse(cssText) {
+var parse$1 = function parse(cssText) {
   var style = {};
-  var split = cssText.split(semiWithNl);
+  var split = cssText.split(semiWithNl$1);
 
   for (var i = 0; i < split.length; i++) {
     var decl = (split[i] || '').trim();
@@ -43910,16 +45124,16 @@ var parse = function parse(cssText) {
   return style;
 };
 
-var onProcessRule = function onProcessRule(rule) {
+var onProcessRule$1 = function onProcessRule(rule) {
   if (typeof rule.style === 'string') {
     // $FlowFixMe[prop-missing] We can safely assume that rule has the style property
-    rule.style = parse(rule.style);
+    rule.style = parse$1(rule.style);
   }
 };
 
-function templatePlugin() {
+function templatePlugin$1() {
   return {
-    onProcessRule: onProcessRule
+    onProcessRule: onProcessRule$1
   };
 }
 
@@ -44104,13 +45318,13 @@ function jssGlobal$1() {
   };
 }
 
-var isObject = function isObject(obj) {
+var isObject$2 = function isObject(obj) {
   return obj && typeof obj === 'object' && !Array.isArray(obj);
 };
 
-var valueNs = "extendCurrValue" + Date.now();
+var valueNs$1 = "extendCurrValue" + Date.now();
 
-function mergeExtend(style, rule, sheet, newStyle) {
+function mergeExtend$1(style, rule, sheet, newStyle) {
   var extendType = typeof style.extend; // Extend using a rule name.
 
   if (extendType === 'string') {
@@ -44127,7 +45341,7 @@ function mergeExtend(style, rule, sheet, newStyle) {
 
     if (parent) {
       var originalStyle = parent.rules.raw[style.extend];
-      extend$1(originalStyle, rule, sheet, newStyle);
+      extend$2(originalStyle, rule, sheet, newStyle);
     }
 
     return;
@@ -44140,7 +45354,7 @@ function mergeExtend(style, rule, sheet, newStyle) {
       var singleStyle = typeof singleExtend === 'string' ? _extends__default['default']({}, style, {
         extend: singleExtend
       }) : style.extend[index];
-      extend$1(singleStyle, rule, sheet, newStyle);
+      extend$2(singleStyle, rule, sheet, newStyle);
     }
 
     return;
@@ -44149,13 +45363,13 @@ function mergeExtend(style, rule, sheet, newStyle) {
 
   for (var prop in style.extend) {
     if (prop === 'extend') {
-      extend$1(style.extend.extend, rule, sheet, newStyle);
+      extend$2(style.extend.extend, rule, sheet, newStyle);
       continue;
     }
 
-    if (isObject(style.extend[prop])) {
+    if (isObject$2(style.extend[prop])) {
       if (!(prop in newStyle)) newStyle[prop] = {};
-      extend$1(style.extend[prop], rule, sheet, newStyle[prop]);
+      extend$2(style.extend[prop], rule, sheet, newStyle[prop]);
       continue;
     }
 
@@ -44163,18 +45377,18 @@ function mergeExtend(style, rule, sheet, newStyle) {
   }
 }
 
-function mergeRest(style, rule, sheet, newStyle) {
+function mergeRest$1(style, rule, sheet, newStyle) {
   // Copy base style.
   for (var prop in style) {
     if (prop === 'extend') continue;
 
-    if (isObject(newStyle[prop]) && isObject(style[prop])) {
-      extend$1(style[prop], rule, sheet, newStyle[prop]);
+    if (isObject$2(newStyle[prop]) && isObject$2(style[prop])) {
+      extend$2(style[prop], rule, sheet, newStyle[prop]);
       continue;
     }
 
-    if (isObject(style[prop])) {
-      newStyle[prop] = extend$1(style[prop], rule, sheet);
+    if (isObject$2(style[prop])) {
+      newStyle[prop] = extend$2(style[prop], rule, sheet);
       continue;
     }
 
@@ -44186,13 +45400,13 @@ function mergeRest(style, rule, sheet, newStyle) {
  */
 
 
-function extend$1(style, rule, sheet, newStyle) {
+function extend$2(style, rule, sheet, newStyle) {
   if (newStyle === void 0) {
     newStyle = {};
   }
 
-  mergeExtend(style, rule, sheet, newStyle);
-  mergeRest(style, rule, sheet, newStyle);
+  mergeExtend$1(style, rule, sheet, newStyle);
+  mergeRest$1(style, rule, sheet, newStyle);
   return newStyle;
 }
 /**
@@ -44203,9 +45417,9 @@ function extend$1(style, rule, sheet, newStyle) {
  */
 
 
-function jssExtend() {
+function jssExtend$1() {
   function onProcessStyle(style, rule, sheet) {
-    if ('extend' in style) return extend$1(style, rule, sheet);
+    if ('extend' in style) return extend$2(style, rule, sheet);
     return style;
   }
 
@@ -44214,12 +45428,12 @@ function jssExtend() {
 
     if (value == null || value === false) {
       // $FlowFixMe[prop-missing]
-      for (var key in rule[valueNs]) {
+      for (var key in rule[valueNs$1]) {
         rule.prop(key, null);
       } // $FlowFixMe[prop-missing] Flow complains because there is no indexer property in StyleRule
 
 
-      rule[valueNs] = null;
+      rule[valueNs$1] = null;
       return null;
     }
 
@@ -44231,7 +45445,7 @@ function jssExtend() {
       } // $FlowFixMe[prop-missing] Flow complains because there is no indexer property in StyleRule
 
 
-      rule[valueNs] = value;
+      rule[valueNs$1] = value;
     } // Make sure we don't set the value in the core.
 
 
@@ -44360,13 +45574,13 @@ function jssNested$1() {
  * @param {String} className class string
  * @return {Boolean} flag, indicating function was successfull or not
  */
-function registerClass(rule, className) {
+function registerClass$1(rule, className) {
   // Skip falsy values
   if (!className) return true; // Support array of class names `{composes: ['foo', 'bar']}`
 
   if (Array.isArray(className)) {
     for (var index = 0; index < className.length; index++) {
-      var isSetted = registerClass(rule, className[index]);
+      var isSetted = registerClass$1(rule, className[index]);
       if (!isSetted) return false;
     }
 
@@ -44375,7 +45589,7 @@ function registerClass(rule, className) {
 
 
   if (className.indexOf(' ') > -1) {
-    return registerClass(rule, className.split(' '));
+    return registerClass$1(rule, className.split(' '));
   }
 
   var _ref = rule.options,
@@ -44409,10 +45623,10 @@ function registerClass(rule, className) {
  */
 
 
-function jssCompose() {
+function jssCompose$1() {
   function onProcessStyle(style, rule) {
     if (!('composes' in style)) return style;
-    registerClass(rule, style.composes); // Remove composes property to prevent infinite loop.
+    registerClass$1(rule, style.composes); // Remove composes property to prevent infinite loop.
 
     delete style.composes;
     return style;
@@ -44754,7 +45968,7 @@ function defaultUnit$1(options) {
  * A scheme for converting properties from array to regular style.
  * All properties listed below will be transformed to a string separated by space.
  */
-var propArray = {
+var propArray$1 = {
   'background-size': true,
   'background-position': true,
   border: true,
@@ -44781,7 +45995,7 @@ var propArray = {
    */
 
 };
-var propArrayInObj = {
+var propArrayInObj$1 = {
   position: true,
   // background-position
   size: true // background-size
@@ -44791,7 +46005,7 @@ var propArrayInObj = {
    */
 
 };
-var propObj = {
+var propObj$1 = {
   padding: {
     top: 0,
     right: 0,
@@ -44892,7 +46106,7 @@ var propObj = {
    */
 
 };
-var customPropObj = {
+var customPropObj$1 = {
   border: {
     radius: 'border-radius',
     image: 'border-image',
@@ -44991,9 +46205,9 @@ var customPropObj = {
  * @param {String} original rule
  * @return {String} mapped values
  */
-function mapValuesByProp(value, prop, rule) {
+function mapValuesByProp$1(value, prop, rule) {
   return value.map(function (item) {
-    return objectToArray(item, prop, rule, false, true);
+    return objectToArray$1(item, prop, rule, false, true);
   });
 }
 /**
@@ -45001,13 +46215,13 @@ function mapValuesByProp(value, prop, rule) {
  */
 
 
-function processArray(value, prop, scheme, rule) {
+function processArray$1(value, prop, scheme, rule) {
   if (scheme[prop] == null) return value;
   if (value.length === 0) return [];
-  if (Array.isArray(value[0])) return processArray(value[0], prop, scheme, rule);
+  if (Array.isArray(value[0])) return processArray$1(value[0], prop, scheme, rule);
 
   if (typeof value[0] === 'object') {
-    return mapValuesByProp(value, prop, rule);
+    return mapValuesByProp$1(value, prop, rule);
   }
 
   return [value];
@@ -45017,29 +46231,29 @@ function processArray(value, prop, scheme, rule) {
  */
 
 
-function objectToArray(value, prop, rule, isFallback, isInArray) {
-  if (!(propObj[prop] || customPropObj[prop])) return [];
+function objectToArray$1(value, prop, rule, isFallback, isInArray) {
+  if (!(propObj$1[prop] || customPropObj$1[prop])) return [];
   var result = []; // Check if exists any non-standard property
 
-  if (customPropObj[prop]) {
+  if (customPropObj$1[prop]) {
     // eslint-disable-next-line no-param-reassign
-    value = customPropsToStyle(value, rule, customPropObj[prop], isFallback);
+    value = customPropsToStyle$1(value, rule, customPropObj$1[prop], isFallback);
   } // Pass throught all standart props
 
 
   if (Object.keys(value).length) {
-    for (var baseProp in propObj[prop]) {
+    for (var baseProp in propObj$1[prop]) {
       if (value[baseProp]) {
         if (Array.isArray(value[baseProp])) {
-          result.push(propArrayInObj[baseProp] === null ? value[baseProp] : value[baseProp].join(' '));
+          result.push(propArrayInObj$1[baseProp] === null ? value[baseProp] : value[baseProp].join(' '));
         } else result.push(value[baseProp]);
 
         continue;
       } // Add default value from props config.
 
 
-      if (propObj[prop][baseProp] != null) {
-        result.push(propObj[prop][baseProp]);
+      if (propObj$1[prop][baseProp] != null) {
+        result.push(propObj$1[prop][baseProp]);
       }
     }
   }
@@ -45052,14 +46266,14 @@ function objectToArray(value, prop, rule, isFallback, isInArray) {
  */
 
 
-function customPropsToStyle(value, rule, customProps, isFallback) {
+function customPropsToStyle$1(value, rule, customProps, isFallback) {
   for (var prop in customProps) {
     var propName = customProps[prop]; // If current property doesn't exist already in rule - add new one
 
     if (typeof value[prop] !== 'undefined' && (isFallback || !rule.prop(propName))) {
       var _styleDetector;
 
-      var appendedValue = styleDetector((_styleDetector = {}, _styleDetector[propName] = value[prop], _styleDetector), rule)[propName]; // Add style directly in rule
+      var appendedValue = styleDetector$1((_styleDetector = {}, _styleDetector[propName] = value[prop], _styleDetector), rule)[propName]; // Add style directly in rule
 
       if (isFallback) rule.style.fallbacks[propName] = appendedValue;else rule.style[propName] = appendedValue;
     } // Delete converted property to avoid double converting
@@ -45075,7 +46289,7 @@ function customPropsToStyle(value, rule, customProps, isFallback) {
  */
 
 
-function styleDetector(style, rule, isFallback) {
+function styleDetector$1(style, rule, isFallback) {
   for (var prop in style) {
     var value = style[prop];
 
@@ -45084,23 +46298,23 @@ function styleDetector(style, rule, isFallback) {
       if (!Array.isArray(value[0])) {
         if (prop === 'fallbacks') {
           for (var index = 0; index < style.fallbacks.length; index++) {
-            style.fallbacks[index] = styleDetector(style.fallbacks[index], rule, true);
+            style.fallbacks[index] = styleDetector$1(style.fallbacks[index], rule, true);
           }
 
           continue;
         }
 
-        style[prop] = processArray(value, prop, propArray, rule); // Avoid creating properties with empty values
+        style[prop] = processArray$1(value, prop, propArray$1, rule); // Avoid creating properties with empty values
 
         if (!style[prop].length) delete style[prop];
       }
     } else if (typeof value === 'object') {
       if (prop === 'fallbacks') {
-        style.fallbacks = styleDetector(style.fallbacks, rule, true);
+        style.fallbacks = styleDetector$1(style.fallbacks, rule, true);
         continue;
       }
 
-      style[prop] = objectToArray(value, prop, rule, isFallback); // Avoid creating properties with empty values
+      style[prop] = objectToArray$1(value, prop, rule, isFallback); // Avoid creating properties with empty values
 
       if (!style[prop].length) delete style[prop];
     } // Maybe a computed value resulting in an empty string
@@ -45114,20 +46328,20 @@ function styleDetector(style, rule, isFallback) {
  */
 
 
-function jssExpand() {
+function jssExpand$1() {
   function onProcessStyle(style, rule) {
     if (!style || rule.type !== 'style') return style;
 
     if (Array.isArray(style)) {
       // Pass rules one by one and reformat them
       for (var index = 0; index < style.length; index++) {
-        style[index] = styleDetector(style[index], rule);
+        style[index] = styleDetector$1(style[index], rule);
       }
 
       return style;
     }
 
-    return styleDetector(style, rule);
+    return styleDetector$1(style, rule);
   }
 
   return {
@@ -45792,13 +47006,13 @@ var create$2 = function create(options) {
   }
 
   return {
-    plugins: [functionPlugin$1(), observablePlugin(options.observable), templatePlugin(), jssGlobal$1(), jssExtend(), jssNested$1(), jssCompose(), camelCase$1(), defaultUnit$1(options.defaultUnit), jssExpand(), jssVendorPrefixer$1(), jssPropsSort$1()]
+    plugins: [functionPlugin$1(), observablePlugin$1(options.observable), templatePlugin$1(), jssGlobal$1(), jssExtend$1(), jssNested$1(), jssCompose$1(), camelCase$1(), defaultUnit$1(options.defaultUnit), jssExpand$1(), jssVendorPrefixer$1(), jssPropsSort$1()]
   };
 };
 
-create$1(create$2());
+create$1$1(create$2());
 
-var JssContext = React.createContext({
+var JssContext$1 = React.createContext({
   classNamePrefix: '',
   disableStylesGeneration: false
 });
@@ -45816,34 +47030,34 @@ var JssContext = React.createContext({
  * We start at [Number.MIN_SAFE_INTEGER] to always insert sheets from react-jss first before any
  * sheet which might be inserted manually by the user.
  */
-var index = Number.MIN_SAFE_INTEGER || -1e9;
+var index$1 = Number.MIN_SAFE_INTEGER || -1e9;
 
-var getSheetIndex = function getSheetIndex() {
-  return index++;
+var getSheetIndex$1 = function getSheetIndex() {
+  return index$1++;
 };
 
-var defaultManagers = new Map();
-var getManager = function getManager(context, managerId) {
+var defaultManagers$1 = new Map();
+var getManager$1 = function getManager(context, managerId) {
   // If `managers` map is present in the context, we use it in order to
   // let JssProvider reset them when new response has to render server-side.
   if (context.managers) {
     if (!context.managers[managerId]) {
-      context.managers[managerId] = new SheetsManager();
+      context.managers[managerId] = new SheetsManager$1();
     }
 
     return context.managers[managerId];
   }
 
-  var manager = defaultManagers.get(managerId);
+  var manager = defaultManagers$1.get(managerId);
 
   if (!manager) {
-    manager = new SheetsManager();
-    defaultManagers.set(managerId, manager);
+    manager = new SheetsManager$1();
+    defaultManagers$1.set(managerId, manager);
   }
 
   return manager;
 };
-var manageSheet = function manageSheet(options) {
+var manageSheet$1 = function manageSheet(options) {
   var sheet = options.sheet,
       context = options.context,
       index = options.index,
@@ -45853,34 +47067,34 @@ var manageSheet = function manageSheet(options) {
     return;
   }
 
-  var manager = getManager(context, index);
+  var manager = getManager$1(context, index);
   manager.manage(theme);
 
   if (context.registry) {
     context.registry.add(sheet);
   }
 };
-var unmanageSheet = function unmanageSheet(options) {
+var unmanageSheet$1 = function unmanageSheet(options) {
   if (!options.sheet) {
     return;
   }
 
-  var manager = getManager(options.context, options.index);
+  var manager = getManager$1(options.context, options.index);
   manager.unmanage(options.theme);
 };
 
-var jss$2 = create$1(create$2());
+var jss$3 = create$1$1(create$2());
 
-var sheetsMeta = new WeakMap();
-var getMeta = function getMeta(sheet) {
-  return sheetsMeta.get(sheet);
+var sheetsMeta$1 = new WeakMap();
+var getMeta$1 = function getMeta(sheet) {
+  return sheetsMeta$1.get(sheet);
 };
-var addMeta = function addMeta(sheet, meta) {
-  sheetsMeta.set(sheet, meta);
+var addMeta$1 = function addMeta(sheet, meta) {
+  sheetsMeta$1.set(sheet, meta);
 };
 
 // eslint-disable-next-line no-unused-vars
-var getStyles = function getStyles(options) {
+var getStyles$1 = function getStyles(options) {
   var styles = options.styles;
 
   if (typeof styles !== 'function') {
@@ -45891,7 +47105,7 @@ var getStyles = function getStyles(options) {
   return styles(options.theme);
 };
 
-function getSheetOptions(options, link) {
+function getSheetOptions$1(options, link) {
   var minify;
 
   if (options.context.id && options.context.id.minify != null) {
@@ -45917,45 +47131,45 @@ function getSheetOptions(options, link) {
 }
 
 // eslint-disable-next-line no-unused-vars
-var createStyleSheet = function createStyleSheet(options) {
+var createStyleSheet$1 = function createStyleSheet(options) {
   if (options.context.disableStylesGeneration) {
     return undefined;
   }
 
-  var manager = getManager(options.context, options.index);
+  var manager = getManager$1(options.context, options.index);
   var existingSheet = manager.get(options.theme);
 
   if (existingSheet) {
     return existingSheet;
   }
 
-  var jss$1 = options.context.jss || jss$2;
-  var styles = getStyles(options);
+  var jss$1 = options.context.jss || jss$3;
+  var styles = getStyles$1(options);
   var dynamicStyles = getDynamicStyles$1(styles);
-  var sheet = jss$1.createStyleSheet(styles, getSheetOptions(options, dynamicStyles !== null));
-  addMeta(sheet, {
+  var sheet = jss$1.createStyleSheet(styles, getSheetOptions$1(options, dynamicStyles !== null));
+  addMeta$1(sheet, {
     dynamicStyles: dynamicStyles,
     styles: styles
   });
   manager.add(options.theme, sheet);
   return sheet;
 };
-var removeDynamicRules = function removeDynamicRules(sheet, rules) {
+var removeDynamicRules$1 = function removeDynamicRules(sheet, rules) {
   // Loop over each dynamic rule and remove the dynamic rule
   // We can't just remove the whole sheet as this has all of the rules for every component instance
   for (var key in rules) {
     sheet.deleteRule(rules[key]);
   }
 };
-var updateDynamicRules = function updateDynamicRules(data, sheet, rules) {
+var updateDynamicRules$1 = function updateDynamicRules(data, sheet, rules) {
   // Loop over each dynamic rule and update it
   // We can't just update the whole sheet as this has all of the rules for every component instance
   for (var key in rules) {
     sheet.updateOne(rules[key], data);
   }
 };
-var addDynamicRules = function addDynamicRules(sheet, data) {
-  var meta = getMeta(sheet);
+var addDynamicRules$1 = function addDynamicRules(sheet, data) {
+  var meta = getMeta$1(sheet);
 
   if (!meta) {
     return undefined;
@@ -45979,13 +47193,13 @@ var addDynamicRules = function addDynamicRules(sheet, data) {
   return rules;
 };
 
-var getSheetClasses = function getSheetClasses(sheet, dynamicRules) {
+var getSheetClasses$1 = function getSheetClasses(sheet, dynamicRules) {
   if (!dynamicRules) {
     return sheet.classes;
   }
 
   var classes = {};
-  var meta = getMeta(sheet);
+  var meta = getMeta$1(sheet);
 
   if (!meta) {
     return sheet.classes;
@@ -46002,36 +47216,36 @@ var getSheetClasses = function getSheetClasses(sheet, dynamicRules) {
   return classes;
 };
 
-var useEffectOrLayoutEffect = isBrowser$2 ? React.useLayoutEffect : React.useEffect;
-var noTheme$1 = {};
+var useEffectOrLayoutEffect$1 = isBrowser$2 ? React.useLayoutEffect : React.useEffect;
+var noTheme$1$1 = {};
 
-var createUseStyles = function createUseStyles(styles, options) {
+var createUseStyles$1 = function createUseStyles(styles, options) {
   if (options === void 0) {
     options = {};
   }
 
   var _options = options,
       _options$index = _options.index,
-      index = _options$index === void 0 ? getSheetIndex() : _options$index,
+      index = _options$index === void 0 ? getSheetIndex$1() : _options$index,
       theming = _options.theming,
       name = _options.name,
       sheetOptions = _objectWithoutPropertiesLoose__default['default'](_options, ["index", "theming", "name"]);
 
-  var ThemeContext$1$1 = theming && theming.context || ThemeContext$1;
+  var ThemeContext$1 = theming && theming.context || ThemeContext$2;
   var useTheme = typeof styles === 'function' ? // $FlowFixMe[incompatible-return]
   function () {
-    return React.useContext(ThemeContext$1$1) || noTheme$1;
+    return React.useContext(ThemeContext$1) || noTheme$1$1;
   } : // $FlowFixMe[incompatible-return]
   function () {
-    return noTheme$1;
+    return noTheme$1$1;
   };
   return function useStyles(data) {
     var isFirstMount = React.useRef(true);
-    var context = React.useContext(JssContext);
+    var context = React.useContext(JssContext$1);
     var theme = useTheme();
 
     var _React$useMemo = React.useMemo(function () {
-      var newSheet = createStyleSheet({
+      var newSheet = createStyleSheet$1({
         context: context,
         styles: styles,
         name: name,
@@ -46039,10 +47253,10 @@ var createUseStyles = function createUseStyles(styles, options) {
         index: index,
         sheetOptions: sheetOptions
       });
-      var newDynamicRules = newSheet ? addDynamicRules(newSheet, data) : null;
+      var newDynamicRules = newSheet ? addDynamicRules$1(newSheet, data) : null;
 
       if (newSheet) {
-        manageSheet({
+        manageSheet$1({
           index: index,
           context: context,
           sheet: newSheet,
@@ -46055,17 +47269,17 @@ var createUseStyles = function createUseStyles(styles, options) {
         sheet = _React$useMemo[0],
         dynamicRules = _React$useMemo[1];
 
-    useEffectOrLayoutEffect(function () {
+    useEffectOrLayoutEffect$1(function () {
       // We only need to update the rules on a subsequent update and not in the first mount
       if (sheet && dynamicRules && !isFirstMount.current) {
-        updateDynamicRules(data, sheet, dynamicRules);
+        updateDynamicRules$1(data, sheet, dynamicRules);
       }
     }, [data]);
-    useEffectOrLayoutEffect(function () {
+    useEffectOrLayoutEffect$1(function () {
       return (// cleanup only
         function () {
           if (sheet) {
-            unmanageSheet({
+            unmanageSheet$1({
               index: index,
               context: context,
               sheet: sheet,
@@ -46074,14 +47288,14 @@ var createUseStyles = function createUseStyles(styles, options) {
           }
 
           if (sheet && dynamicRules) {
-            removeDynamicRules(sheet, dynamicRules);
+            removeDynamicRules$1(sheet, dynamicRules);
           }
         }
       );
     }, [sheet]);
-    var classes = sheet && dynamicRules ? getSheetClasses(sheet, dynamicRules) : {};
+    var classes = sheet && dynamicRules ? getSheetClasses$1(sheet, dynamicRules) : {};
     React.useDebugValue(classes);
-    React.useDebugValue(theme === noTheme$1 ? 'No theme' : theme);
+    React.useDebugValue(theme === noTheme$1$1 ? 'No theme' : theme);
     React.useEffect(function () {
       isFirstMount.current = false;
     });
@@ -46091,7 +47305,7 @@ var createUseStyles = function createUseStyles(styles, options) {
 
 ({
   registry: propTypes$1.instanceOf(SheetsRegistry$1),
-  jss: propTypes$1.instanceOf(jss$1.constructor),
+  jss: propTypes$1.instanceOf(jss$1$1.constructor),
   generateId: propTypes$1.func,
   classNamePrefix: propTypes$1.string,
   disableStylesGeneration: propTypes$1.bool,
@@ -46102,7 +47316,7 @@ var createUseStyles = function createUseStyles(styles, options) {
   })
 });
 
-var useStyle$2 = createUseStyles({
+var useStyle$2 = createUseStyles$1({
     hand: {
         position: "absolute",
         top: 0,
@@ -46133,7 +47347,7 @@ function Hand(_a) {
             } })));
 }
 
-var useStyle$1 = createUseStyles({
+var useStyle$1 = createUseStyles$1({
     mark: {
         position: "absolute",
         top: 0,
@@ -46174,7 +47388,7 @@ function Mark(_a) {
             } }, number))));
 }
 
-var useStyle$3 = createUseStyles({
+var useStyle = createUseStyles$1({
     clockRoot: {
         display: "block",
         position: "relative",
@@ -46195,7 +47409,7 @@ var useStyle$3 = createUseStyles({
 });
 function Clock(_a) {
     var className = _a.className, _b = _a.hourHandLength, hourHandLength = _b === void 0 ? 50 : _b, hourHandOppositeLength = _a.hourHandOppositeLength, _c = _a.hourHandWidth, hourHandWidth = _c === void 0 ? 4 : _c, _d = _a.hourMarksLength, hourMarksLength = _d === void 0 ? 10 : _d, _e = _a.hourMarksWidth, hourMarksWidth = _e === void 0 ? 3 : _e, _f = _a.minuteHandLength, minuteHandLength = _f === void 0 ? 70 : _f, minuteHandOppositeLength = _a.minuteHandOppositeLength, _g = _a.minuteHandWidth, minuteHandWidth = _g === void 0 ? 2 : _g, _h = _a.minuteMarksLength, minuteMarksLength = _h === void 0 ? 6 : _h, _j = _a.minuteMarksWidth, minuteMarksWidth = _j === void 0 ? 1 : _j, _k = _a.renderHourMarks, renderHourMarks = _k === void 0 ? true : _k, _l = _a.renderMinuteHand, renderMinuteHand = _l === void 0 ? true : _l, _m = _a.renderMinuteMarks, renderMinuteMarks = _m === void 0 ? true : _m, renderNumbers = _a.renderNumbers, _o = _a.renderSecondHand, renderSecondHand = _o === void 0 ? true : _o, _p = _a.secondHandLength, secondHandLength = _p === void 0 ? 90 : _p, secondHandOppositeLength = _a.secondHandOppositeLength, _q = _a.secondHandWidth, secondHandWidth = _q === void 0 ? 1 : _q, _r = _a.size, size = _r === void 0 ? 150 : _r, value = _a.value;
-    var classes = useStyle$3();
+    var classes = useStyle();
     function renderMinuteMarksFn() {
         if (!renderMinuteMarks) {
             return null;
@@ -46292,46 +47506,45 @@ Clock.displayName = 'Clock';
 
 // exports.default = Clock;
 
+var useStyles$1 = createUseStyles(function (theme) { return ({
+    root: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        position: "absolute",
+        zIndex: 1000,
+        top: 20,
+        right: 20,
+    },
+    clockWrapper: {
+        position: "relative",
+    },
+    amPm: {
+        fontSize: 12,
+        fontWeight: 800,
+        padding: 4,
+        // backgroundColor: "#555",
+        color: "#555",
+        position: "absolute",
+        bottom: 10,
+        left: "50%",
+        transform: "translate(-50%)",
+    },
+    dateWrapper: {
+        backgroundColor: theme.pallete.backgrounds.common,
+        marginTop: 8,
+        padding: "0 4px",
+        borderRadius: "99em",
+    },
+}); });
+
 // import { TimeZone } from "../types";
-var useStyles = makeStyles$1(function () {
-    return createStyles$1({
-        root: {
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "absolute",
-            zIndex: 1000,
-            top: 20,
-            right: 20,
-        },
-        clockWrapper: {
-            position: "relative",
-        },
-        amPm: {
-            fontSize: 12,
-            fontWeight: 800,
-            padding: 4,
-            // backgroundColor: "#555",
-            color: "#555",
-            position: "absolute",
-            bottom: 10,
-            left: "50%",
-            transform: "translate(-50%)",
-        },
-        dateWrapper: {
-            backgroundColor: "rgba(68,68,68,0.3)",
-            marginTop: 8,
-            padding: "0 4px",
-            borderRadius: "99em",
-        },
-    });
-});
 var TimerComponent = function (_a) {
     var _b = _a.am, am = _b === void 0 ? "AM" : _b, _c = _a.pm, pm = _c === void 0 ? "PM" : _c;
     var _d = useLocalStore(function () { return timerStoreModel; }), state = _d[0], actions = _d[1];
     usePerisan();
     var currentTime = useTDStoreState(function (state) { return state.currentTime; });
-    var classes = useStyles();
+    var classes = useStyles$1();
     React.useEffect(function () {
         update(currentTime);
     }, [currentTime]);
@@ -46390,52 +47603,31 @@ var LegendComponent = function (_a) {
         React__default['default'].createElement("br", null))); })));
 };
 
-var icon = leafletSrc.icon({
-    iconUrl: "img/bus.png",
-    iconSize: [22, 22],
-    iconAnchor: [11, 11],
-});
 var HesabaTimeDimensionView = function (_a) {
-    var data = _a.data;
+    var data = _a.data, playerProps = _a.playerProps, timeProps = _a.timeProps, layerProps = _a.layerProps, geojsonProps = _a.geojsonProps, _b = _a.extralLayerProps, extralLayerProps = _b === void 0 ? {} : _b;
     var map = useMap();
-    useLayer(data, map, {
-        pointToLayer: function (feature, latLng) {
-            if (feature.properties.hasOwnProperty("last")) {
-                return new leafletSrc.Marker(latLng, {
-                    icon: icon,
-                });
-            }
-            return leafletSrc.circleMarker(latLng);
-        },
-    }, {
-        updateTimeDimension: true,
-        updateTimeDimensionMode: "replace",
-        duration: "PT2M",
-        addlastPoint: true,
-    }, {});
-    console.log("hurray");
+    useLayer(data, map, geojsonProps, layerProps, extralLayerProps);
+    console.log("hurray2");
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement(PlayerControl, { leafletMap: map }),
-        React__default['default'].createElement(TimerComponent, null),
+        React__default['default'].createElement(PlayerControl, __assign({ leafletMap: map }, playerProps)),
+        React__default['default'].createElement(TimerComponent, __assign({}, timeProps)),
         React__default['default'].createElement(LegendComponent, { legends: [0, 1, 2, 3, 4] })));
 };
 
-var defaultPosition = {
-    lat: 40.72332345541449,
-    lng: -73.99,
-    zoom: 15,
-};
 var HesabaTimeDimension = function (_a) {
-    var data = _a.data;
-    return (React__default['default'].createElement(Wrapper, null,
-        React__default['default'].createElement(MapContainer, { center: [36.72, -4.43], zoom: defaultPosition.zoom, zoomControl: false, style: {
-                width: "95vw",
-                height: "95vh",
-                border: " 1px solid black",
-                position: "relative",
-            } },
-            React__default['default'].createElement(TileLayer, { attribution: '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors', url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" }),
-            React__default['default'].createElement(HesabaTimeDimensionView, { data: data }))));
+    var _b;
+    var data = _a.data, mapProps = _a.mapProps, children = _a.children, _c = _a.playerProps, playerProps = _c === void 0 ? {} : _c, _d = _a.timeProps, timeProps = _d === void 0 ? {} : _d, geojsonProps = _a.geojsonProps, layerProps = _a.layerProps, extralLayerProps = _a.extralLayerProps;
+    // const classes = useStyles();
+    return (React__default['default'].createElement(ThemeProvider, { theme: theme },
+        React__default['default'].createElement(Wrapper, null,
+            React__default['default'].createElement(MapContainer, __assign({ style: {
+                    width: "95vw",
+                    height: "95vh",
+                    border: " 1px solid black",
+                    position: "relative",
+                }, className: clsx((_b = mapProps.classes) === null || _b === void 0 ? void 0 : _b.root) }, mapProps),
+                children ? (children) : (React__default['default'].createElement(TileLayer, { attribution: '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors', url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" })),
+                React__default['default'].createElement(HesabaTimeDimensionView, { data: data, playerProps: playerProps, timeProps: timeProps, geojsonProps: geojsonProps, layerProps: layerProps, extralLayerProps: extralLayerProps })))));
 };
 
 var download = createCommonjsModule(function (module, exports) {

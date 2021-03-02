@@ -12,16 +12,11 @@ import Clock from "react-clock";
 
 import { Typography } from "@material-ui/core";
 import { useTDStoreState } from "../store/reducerHooks";
-import useStyles from './TimeComponent.styles'
+import useStyles from "./TimeComponent.styles";
+import { TimeProps } from "./TimeComponent.types";
 // import { TimeZone } from "../types";
 
-interface Props {
-  // timeZone: TimeZone;
-  am?: string;
-  pm?: string;
-}
-
-const TimerComponent = ({ am = "AM", pm = "PM" }: /*timeZone*/ Props) => {
+const TimerComponent = ({ am = "AM", pm = "PM" }: /*timeZone*/ TimeProps) => {
   const [state, actions] = useLocalStore(() => timerStoreModel);
   usePerisan();
   const currentTime = useTDStoreState((state) => state.currentTime);

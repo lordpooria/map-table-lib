@@ -1,2 +1,2 @@
-declare const style: (props?: any) => Record<"root", string>;
+declare const style: (data?: unknown) => Record<"root", string>;
 export default style;

@@ -6,6 +6,11 @@ import { ControlOptions, Map } from "leaflet";
 
 interface PlayerOwnProps {
   leafletMap: Map;
+
+  // loadingTimeout?: number;
+}
+
+export type PlayerProps = {
   autoPlay?: boolean;
   minSpeed?: number;
   maxSpeed?: number;
@@ -26,9 +31,10 @@ interface PlayerOwnProps {
   transitionTime?: number;
   loop?: boolean;
   buffer?: number;
-  // loadingTimeout?: number;
-}
+};
 
-export type PlayerProps = ControlOptions & PlayerOwnProps;
+export type PlayerCombinedProps = ControlOptions &
+  PlayerOwnProps &
+  PlayerProps;
 
-export interface PlayerCompleteProps extends PlayerOwnProps {}
+export interface PlayerCompleteProps extends PlayerCombinedProps {}

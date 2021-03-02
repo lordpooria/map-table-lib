@@ -15,7 +15,7 @@ import {
 import { usePlayer } from "./usePlayer";
 // import { useMap } from "react-leaflet";
 
-import { PlayerCompleteProps } from "./types";
+import { PlayerCompleteProps } from "./PlayerControl.types";
 import { SmallIconButton } from "./styled-component/StyledButton";
 import { useTDStoreActions, useTDStoreState } from "../store/reducerHooks";
 import useStyles from "./PlayerControl.styles";

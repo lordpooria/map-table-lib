@@ -1,56 +1,42 @@
 import React from "react";
 import { useLayer } from "../layer";
 import { GeoJsonObject } from "geojson";
-import L from "leaflet";
+import  { GeoJSONOptions } from "leaflet";
 import { PlayerController } from "../player";
 import { TimeComponent } from "../timer";
 import LegendComponent from "../legend/LegendComponent";
 import { useMap } from "react-leaflet";
+import { PlayerProps } from "../player/PlayerControl.types";
+import { TimeProps } from "../timer/TimeComponent.types";
+import { TDLayerOptions } from "../layer/layer.type";
 
 interface Props {
   data: GeoJsonObject;
-  // addLayer: any;
-  // removeLayer: any;
-  // map: Map;
+  playerProps: PlayerProps;
+  timeProps: TimeProps;
+  geojsonProps: GeoJSONOptions;
+  layerProps: TDLayerOptions;
+  extralLayerProps: any;
 }
-var icon = L.icon({
-  iconUrl: "img/bus.png",
-  iconSize: [22, 22],
-  iconAnchor: [11, 11],
-});
+
 const HesabaTimeDimensionView = ({
   data,
+  playerProps,
+  timeProps,
+  layerProps,
+  geojsonProps,
+  extralLayerProps = {},
 }: // addLayer,
 // removeLayer,
 // map,
 Props) => {
   const map = useMap();
-  useLayer(
-    data as any,
-    map,
-    {
-      pointToLayer: function (feature, latLng) {
-        if (feature.properties.hasOwnProperty("last")) {
-          return new L.Marker(latLng, {
-            icon: icon,
-          });
-        }
-        return L.circleMarker(latLng);
-      },
-    },
-    {
-      updateTimeDimension: true,
-      updateTimeDimensionMode: "replace",
-      duration: "PT2M",
-      addlastPoint: true,
-    },
-    {}
-  );
-  console.log("hurray2")
+  useLayer(data as any, map, geojsonProps, layerProps, extralLayerProps);
+  console.log("hurray2");
   return (
     <>
-      <PlayerController leafletMap={map} />
-      <TimeComponent />
+      <PlayerController leafletMap={map} {...playerProps} />
+      <TimeComponent {...timeProps} />
       <LegendComponent legends={[0, 1, 2, 3, 4]} />
     </>
   );
