@@ -32,7 +32,7 @@ const HesabaTimeDimensionView = ({
 Props) => {
   const map = useMap();
   useLayer(data as any, map, geojsonProps, layerProps, extralLayerProps);
-  console.log("hurray2");
+ 
   return (
     <>
       <PlayerController leafletMap={map} {...playerProps} />

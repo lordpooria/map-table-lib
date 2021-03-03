@@ -22,9 +22,10 @@ export const usePlayer = ({
 
   steps,
   startedOver,
-  autoPlay = false,
+  autoPlay,
   setPlay,
 }: Props) => {
+  
   const intervalID = useRef<number | undefined>(undefined);
 
   const nextTime = useTDStoreActions((actions) => actions.nextTime);
@@ -78,6 +79,7 @@ export const usePlayer = ({
     if (intervalID.current) return;
 
     var startOver = false;
+    
     if (startedOver) {
       if (currentTimeIndex === _getMaxIndex()) {
         setCurrentTimeIndex({ index: lowerLimitIndex || 0 });
@@ -91,6 +93,8 @@ export const usePlayer = ({
   }, [
     play,
     startedOver,
+    _getMaxIndex,
+    currentTimeIndex,
     setCurrentTimeIndex,
     lowerLimitIndex,
     setPlay,

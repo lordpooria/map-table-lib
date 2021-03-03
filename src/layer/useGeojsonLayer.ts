@@ -27,6 +27,7 @@ export const useLayer = (
   }: TDLayerOptions,
   { getFeatureBetweenDates = _getFeatureBetweenDates }
 ) => {
+  
   // const leafletMapRef = useMap();
   const currentTime = useTDStoreState((state) => state.currentTime);
   const prepareAvailableTimes = useTDStoreActions(
@@ -101,7 +102,7 @@ export const useLayer = (
     const times: Array<any> = [];
     if (!layer.current) return;
     const _layers = layer.current.getLayers() as Array<any>;
-    console.warn(_layers);
+    
     _layers.forEach((lay) => {
       if (lay.feature) {
         var featureTimes = _getFeatureTimes(lay.feature);
@@ -136,7 +137,7 @@ export const useLayer = (
   // }
 
   useEffect(() => {
-    // console.log(layer);
+    
     if (!data) return;
 
     layer.current = geoJSON(data, options);

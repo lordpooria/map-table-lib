@@ -6,7 +6,7 @@ import { ThemeProvider } from "react-jss";
 import theme from "../styles/theme";
 
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
-// import useStyles from "./HesabaTimeDimension.styles";
+import useStyles from "./HesabaTimeDimension.styles";
 import clsx from "clsx";
 import { PlayerProps } from "../player/PlayerControl.types";
 import { TimeProps } from "../timer/TimeComponent.types";
@@ -21,54 +21,55 @@ interface Props {
   children?: React.ReactNode;
   playerProps?: PlayerProps;
   timeProps?: TimeProps;
-  geojsonProps: GeoJSONOptions;
+  geojsonProps?: GeoJSONOptions;
   layerProps: TDLayerOptions;
   extralLayerProps?: any;
 }
 
-const HesabaTimeDimension = ({
+const HesabaTimeDimension = (props: Props) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <TDProvider>
+        <CommonMap {...props} />
+      </TDProvider>
+    </ThemeProvider>
+  );
+};
+
+const CommonMap = ({
   data,
   mapProps,
   children,
   playerProps = {},
   timeProps = {},
-  geojsonProps,
+  geojsonProps = {},
   layerProps,
   extralLayerProps,
 }: Props) => {
-  // const classes = useStyles();
+  const classes = useStyles();
+  console.log(data)
   return (
-    <ThemeProvider theme={theme}>
-      <TDProvider>
-        <MapContainer
-          style={{
-            width: "95vw",
-            height: "95vh",
-            border: " 1px solid black",
-            position: "relative",
-          }}
-          className={clsx(mapProps.classes?.root)}
-          {...mapProps}
-        >
-          {children ? (
-            children
-          ) : (
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-          )}
-          <HesabaTimeDimensionView
-            data={data}
-            playerProps={playerProps}
-            timeProps={timeProps}
-            geojsonProps={geojsonProps}
-            layerProps={layerProps}
-            extralLayerProps={extralLayerProps}
-          />
-        </MapContainer>
-      </TDProvider>
-    </ThemeProvider>
+    <MapContainer
+      className={clsx(classes.mapRoot, mapProps.classes?.root)}
+      {...mapProps}
+    >
+      {children ? (
+        children
+      ) : (
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      )}
+      <HesabaTimeDimensionView
+        data={data}
+        playerProps={playerProps}
+        timeProps={timeProps}
+        geojsonProps={geojsonProps}
+        layerProps={layerProps}
+        extralLayerProps={extralLayerProps}
+      />
+    </MapContainer>
   );
 };
 
