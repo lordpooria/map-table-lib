@@ -1,0 +1,20 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 6007",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@visualization-infrastructure/react-dashboard-infra": "link:..",
+    "leaflet": "~0.7.4 || ~1",
+    "next": "10.0.7",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.2"
+  }
+}
