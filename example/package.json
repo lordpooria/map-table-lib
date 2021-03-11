@@ -8,13 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
-    "@visualization-infrastructure/react-dashboard-infra": "link:..",
+    "@hesaba/map": "link:../packages/map",
+    "@hesaba/table": "link:../packages/table",
     "leaflet": "~0.7.4 || ~1",
     "next": "10.0.7",
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom"
+    "react": "link:../packages/map/node_modules/react",
+    "react-dom": "link:../packages/map/node_modules/react-dom"
   },
   "devDependencies": {
+    "@types/node": "^14.14.32",
     "typescript": "^4.2.2"
   }
 }

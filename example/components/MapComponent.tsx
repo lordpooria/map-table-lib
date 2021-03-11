@@ -1,7 +1,7 @@
 // We want to always get from source
 import data from "../data/track_bus699.json";
 import "leaflet/dist/leaflet.css";
-import HesabaTimeDimension from "@visualization-infrastructure/react-dashboard-infra";
+import HesabaTimeDimension from "@hesaba/map";
 import L from "leaflet";
 // import MyMapContainer from "./Player";
 const defaultPosition = {
