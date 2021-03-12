@@ -12,7 +12,7 @@ import HesabaTimeDimenstion, {
   _getFeatureTimes,
   PlayerController,
   TimeComponent,
-} from "hesaba-timedimension";
+} from "@hesaba/map";
 import data from "../data/track_bus699.json";
 
 interface Props {}

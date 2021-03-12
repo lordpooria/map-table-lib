@@ -1,0 +1,52 @@
+import {
+  createContext,
+  useContext,
+  Dispatch,
+  ReactNode,
+  useReducer,
+} from "react";
+import {
+  virtualizeTableReducer,
+  initialState,
+  VirtualizeStateType,
+} from "./virtualizeTableReducer";
+
+const VirtualTableDispatch = createContext<Dispatch<any>>({} as Dispatch<any>);
+
+const VirtualTableState = createContext<VirtualizeStateType>(
+  {} as VirtualizeStateType
+);
+
+export const VirtualTableProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(virtualizeTableReducer, initialState);
+
+  return (
+    <VirtualTableDispatch.Provider value={dispatch}>
+      <VirtualTableState.Provider value={state}>
+        {children}
+      </VirtualTableState.Provider>
+    </VirtualTableDispatch.Provider>
+  );
+};
+
+export const useVirtualTableDispatch = () => {
+  const dispatch = useContext(VirtualTableDispatch);
+
+  if (!dispatch) {
+    throw new Error(
+      "useVirtualTableDispatch Should be use inside VirtualTableProvider"
+    );
+  }
+  return dispatch;
+};
+
+export const useVirtualTableState = () => {
+  const state = useContext(VirtualTableState);
+
+  if (!state) {
+    throw new Error(
+      "useVirtualTableState Should be use inside VirtualTableProvider"
+    );
+  }
+  return state;
+};
