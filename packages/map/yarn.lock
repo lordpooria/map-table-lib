@@ -11549,8 +11549,8 @@ raw-loader@^4.0.1:
     schema-utils "^3.0.0"
 
 "react-clock@git+https://github.com/lordpooria/react-clock":
-  version "3.0.0"
-  resolved "git+https://github.com/lordpooria/react-clock#5cb8a749c2fe9c1fd915039d22c7d36cc00d459c"
+  version "3.1.0"
+  resolved "git+https://github.com/lordpooria/react-clock#e927874688c30d134c4f0e085a3508fe711faa2a"
   dependencies:
     "@wojtekmaj/date-utils" "^1.0.0"
     clsx "^1.1.1"

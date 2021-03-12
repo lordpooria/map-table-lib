@@ -1,3 +1,5 @@
+import { SliderClassKey } from "@material-ui/core";
+import { ClassNameMap } from "@material-ui/styles";
 import { ControlOptions, Map } from "leaflet";
 
 // type BufferFunc = (a: number, b: number, c: boolean) => number;
@@ -31,10 +33,19 @@ export type PlayerProps = {
   transitionTime?: number;
   loop?: boolean;
   buffer?: number;
+  classes?: PlayerClasses;
 };
 
-export type PlayerCombinedProps = ControlOptions &
-  PlayerOwnProps &
-  PlayerProps;
+export type PlayerCombinedProps = ControlOptions & PlayerOwnProps & PlayerProps;
+
+export type PlayerClasses = {
+  speedSlider?:  Partial<ClassNameMap<SliderClassKey>>;
+  speedSliderWrapper?: string;
+  playerSlider?:  Partial<ClassNameMap<SliderClassKey>>;
+  playerSliderWrapper?: string;
+  icons?: string;
+  iconButton?: string;
+  root?: string;
+};
 
 export interface PlayerCompleteProps extends PlayerCombinedProps {}

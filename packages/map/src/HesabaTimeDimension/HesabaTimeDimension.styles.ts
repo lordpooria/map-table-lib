@@ -1,12 +1,14 @@
-import { createUseStyles } from "react-jss";
+import { createStyles, makeStyles } from "@material-ui/core";
 
-const useStyles = createUseStyles(() => ({
-  mapRoot: {
-    width: "95vw",
-    height: "95vh",
-    border: " 1px solid black",
-    position: "relative",
-  },
-}));
+const useStyles = makeStyles(() =>
+  createStyles({
+    mapRoot: {
+      width: "95vw",
+      height: "95vh",
+      border: " 1px solid black",
+      position: "relative",
+    },
+  })
+);
 
 export default useStyles;

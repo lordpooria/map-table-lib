@@ -6,31 +6,32 @@ import {
   withStyles,
 } from "@material-ui/core";
 
-export const PlayerSlider = withStyles({
+export const PlayerSlider = withStyles((theme) => ({
   root: {
-    color: "#f1a83a",
+    color: `${theme.palette.secondary.main}`,
     height: 3,
     padding: "13px 0",
   },
   thumb: {
-    height: 12,
-    width: 4,
-    borderRadius: 3,
-    backgroundColor: "#f1a83a",
+    height: 15,
+    width: 15,
+    borderRadius: 7.5,
+    backgroundColor: `${theme.palette.secondary.main}`,
     border: "1px solid currentColor",
     marginTop: -6,
     marginLeft: -3,
     // boxShadow: "#ebebeb 0 2px 2px",
     "&:focus, &:hover, &$active": {
       boxShadow: "#888 0 2px 3px 1px",
-      height: 21,
-      width: 7,
-      marginTop: -10,
+      height: 18,
+      width: 18,
+      borderRadius: 9,
+      marginTop: -9,
       marginLeft: -3.5,
     },
     "& .bar": {
       // display: inline-block !important;
-      height: 7.5,
+      height: 9,
       width: 1,
       backgroundColor: "#FFF",
       marginLeft: 1,
@@ -39,14 +40,15 @@ export const PlayerSlider = withStyles({
   },
   active: {},
   track: {
-    height: 3,
+    height: 6,
+    bottom: 11,
   },
   rail: {
-    color: "#f1a83a",
+    color: `${theme.palette.secondary.main}`,
     opacity: 1,
-    height: 0.5,
+    height: 2,
   },
-})(Slider);
+}))(Slider);
 
 export const PlayerThumb = React.forwardRef((props: any, ref) => {
   return (
@@ -68,4 +70,3 @@ export function ValueLabelComponent(props: ValueLabelProps) {
     </Tooltip>
   );
 }
-

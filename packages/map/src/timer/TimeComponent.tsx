@@ -14,13 +14,20 @@ import { Typography } from "@material-ui/core";
 import { useTDStoreState } from "../store/reducerHooks";
 import useStyles from "./TimeComponent.styles";
 import { TimeProps } from "./TimeComponent.types";
+import clsx from "clsx";
 // import { TimeZone } from "../types";
 
-const TimerComponent = ({ am = "AM", pm = "PM" }: /*timeZone*/ TimeProps) => {
+const TimerComponent = ({
+  am = "AM",
+  pm = "PM",
+  clockProps,
+  dateClasses,
+  amPmClasses,
+}: /*timeZone*/ TimeProps) => {
   const [state, actions] = useLocalStore(() => timerStoreModel);
   usePerisan();
   const currentTime = useTDStoreState((state) => state.currentTime);
-  const classes = useStyles();
+  const timeClasses = useStyles();
 
   useEffect(() => {
     update(currentTime);
@@ -47,12 +54,16 @@ const TimerComponent = ({ am = "AM", pm = "PM" }: /*timeZone*/ TimeProps) => {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <div className={classes.clockWrapper}>
-        <Clock value={state.displayTime} size={80} />
-        <Typography className={classes.amPm}>{state.isAM ? am : pm}</Typography>
+    <div className={timeClasses.root}>
+      <div className={timeClasses.clockWrapper}>
+        <Clock value={state.displayTime} size={80} {...clockProps} />
+        <Typography className={clsx(timeClasses.amPm, amPmClasses)}>
+          {state.isAM ? am : pm}
+        </Typography>
       </div>
-      <div className={classes.dateWrapper}>{state.displayDate}</div>
+      <div className={clsx(timeClasses.dateWrapper, dateClasses)}>
+        {state.displayDate}
+      </div>
     </div>
   );
 };

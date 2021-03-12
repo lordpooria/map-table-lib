@@ -4,7 +4,6 @@ import NextIcon from "../assets/icons/common/NextIcon";
 import PauseIcon from "../assets/icons/common/PauseIcon";
 import PlayIcon from "../assets/icons/common/PlayIcon";
 import GaugeIcon from "../assets/icons/common/GaugeIcon";
-import PlayCircleIcon from "../assets/icons/common/PlayCircleIcon";
 import PreviousIcon from "../assets/icons/common/PreviousIcon";
 
 import { playerStoreModel } from "./playerReducer";
@@ -21,6 +20,18 @@ import { PlayerCompleteProps } from "./PlayerControl.types";
 import { SmallIconButton } from "./styled-component/StyledButton";
 import { useTDStoreActions, useTDStoreState } from "../store/reducerHooks";
 import useStyles from "./PlayerControl.styles";
+import { withStyles } from "@material-ui/core";
+import clsx from "clsx";
+
+const BorderIconButton = withStyles((theme) => ({
+  root: {
+    border: `1px solid ${theme.palette.primary.main} `,
+    margin: 4,
+    "&:hover": {
+      backgroundColor: `${theme.palette.primary.main}55`,
+    },
+  },
+}))(SmallIconButton);
 
 function valuetext(value: number) {
   return `${value}fps`;
@@ -35,10 +46,11 @@ const PlayerControl = ({
   startedOver = true,
   minSpeed = 0.1,
   maxSpeed = 10,
+  classes,
 }: // loadingTimeout = 3000,
 PlayerCompleteProps) => {
   const [state, actions] = useLocalStore(() => playerStoreModel);
-  const classes = useStyles();
+  const playerClasses = useStyles();
   const availableTimes = useTDStoreState((state) => state.availableTimes);
   const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
   const setCurrentTimeIndex = useTDStoreActions(
@@ -93,18 +105,19 @@ PlayerCompleteProps) => {
         leafletMap.dragging.enable();
         leafletMap.doubleClickZoom.enable();
       }}
-      className={classes.playerRoot}
+      className={clsx(playerClasses.playerRoot, classes?.root)}
     >
-      <div className={classes.playerSlider}>
-        {/* <PlayCircleIcon className={classes.whiteIcon} /> */}
-        <SmallIconButton
+      <div style={{ marginRight: 4 }}>
+        <BorderIconButton
+          className={classes?.iconButton}
           onClick={() => {
             previousTime({ numSteps: timeSteps, loop });
           }}
         >
-          <PreviousIcon className={classes.icon} />
-        </SmallIconButton>
-        <SmallIconButton
+          <PreviousIcon className={clsx(playerClasses.icon, classes?.icons)} />
+        </BorderIconButton>
+        <BorderIconButton
+          className={classes?.iconButton}
           onClick={() => {
             if (state.isPlaying) {
               stop();
@@ -114,19 +127,30 @@ PlayerCompleteProps) => {
           }}
         >
           {state.isPlaying ? (
-            <PauseIcon className={classes.icon} />
+            <PauseIcon className={clsx(playerClasses.icon, classes?.icons)} />
           ) : (
-            <PlayIcon className={classes.icon} />
+            <PlayIcon className={clsx(playerClasses.icon, classes?.icons)} />
           )}
-        </SmallIconButton>
-        <SmallIconButton
+        </BorderIconButton>
+        <BorderIconButton
+          className={classes?.iconButton}
           onClick={() => {
             nextTime({ numSteps: timeSteps, loop });
           }}
         >
-          <NextIcon className={classes.icon} />
-        </SmallIconButton>
+          <NextIcon className={clsx(playerClasses.icon, classes?.icons)} />
+        </BorderIconButton>
+      </div>
+      <div
+        className={clsx(
+          playerClasses.playerSlider,
+          classes?.playerSliderWrapper
+        )}
+      >
+        {/* <PlayCircleIcon className={classes.whiteIcon} /> */}
+
         <PlayerSlider
+          classes={classes?.playerSlider}
           style={{}}
           valueLabelDisplay="auto"
           ThumbComponent={PlayerThumb as any}
@@ -140,9 +164,12 @@ PlayerCompleteProps) => {
           }}
         />
       </div>
-      <div className={classes.speedSlider}>
-        <GaugeIcon className={classes.whiteIcon} />
+      <div
+        className={clsx(playerClasses.speedSlider, classes?.speedSliderWrapper)}
+      >
+        <GaugeIcon className={clsx(playerClasses.whiteIcon, classes?.icons)} />
         <PlayerSlider
+          classes={classes?.speedSlider}
           ThumbComponent={PlayerThumb as any}
           ValueLabelComponent={ValueLabelComponent}
           style={{}}

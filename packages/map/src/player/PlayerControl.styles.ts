@@ -1,46 +1,59 @@
-import { createUseStyles } from "react-jss";
+import { createStyles, makeStyles } from "@material-ui/core";
 
-const useStyles = createUseStyles((theme: AppTheme) => ({
-  playerRoot: {
-    position: "absolute",
-    display: "flex",
-    width: "60%",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 16px",
-    zIndex: 1000,
-    bottom: 20,
-    left: 20,
-    borderRadius: "50em",
-    backgroundColor: "#fff",
-    border:"solid 1px #999"
-  },
+const ICON_SIZE = 0.75;
 
-  playerSlider: {
-    display: "flex",
-    flex: 3,
-    minWidth: 100,
-    marginRight: 8,
-    alignItems: "center",
-  },
-  speedSlider: {
-    display: "flex",
-    flex: 1,
-    margin: "0 8px",
-    alignItems: "center",
-  },
-  controller: {
-    display: "flex",
-    alignItems: "center",
-  },
-  icon: { width: "0.75em", height: "0.75em",fill:"#1f6a6d" },
-  playIcon: {
-    width: "0.75em",
-    height: "0.75em",
-    borderRadius: "0.5em",
-    border: "solid 2px #1f6a6d",
-  },
-  whiteIcon: { width: "0.75em", height: "0.75em", margin: "0 4px",fill:"#1f6a6d" },
-}));
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    playerRoot: {
+      position: "absolute",
+      display: "flex",
+      width: "60%",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "4px 16px",
+      zIndex: 1000,
+      bottom: 20,
+      left: 20,
+      borderRadius: "50em",
+      backgroundColor: "#fff",
+      border: "solid 1px #999",
+    },
+
+    playerSlider: {
+      display: "flex",
+      flex: 3,
+      minWidth: 100,
+      marginRight: 8,
+      alignItems: "center",
+    },
+    speedSlider: {
+      display: "flex",
+      flex: 1,
+      margin: "0 8px",
+      alignItems: "center",
+    },
+    controller: {
+      display: "flex",
+      alignItems: "center",
+    },
+    icon: {
+      width: `${ICON_SIZE}em`,
+      height: `${ICON_SIZE}em`,
+      fill: `${theme.palette.primary.main}`,
+    },
+    playIcon: {
+      width: `${ICON_SIZE}em`,
+      height: `${ICON_SIZE}em`,
+      borderRadius: "0.5em",
+      border: `solid 2px ${theme.palette.primary.main}`,
+    },
+    whiteIcon: {
+      width: `${ICON_SIZE}em`,
+      height: `${ICON_SIZE}em`,
+      margin: "0 4px",
+      fill: `${theme.palette.primary.main}`,
+    },
+  })
+);
 
 export default useStyles;

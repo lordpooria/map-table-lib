@@ -2,8 +2,8 @@ import React from "react";
 import TDProvider from "./Provider";
 import { GeoJsonObject } from "geojson";
 import { TileLayer, MapContainer, MapContainerProps } from "react-leaflet";
-import { ThemeProvider } from "react-jss";
-import theme from "../styles/theme";
+import { createMuiTheme, responsiveFontSizes, ThemeOptions, ThemeProvider } from "@material-ui/core/styles";
+import rawThemeObj from "../styles/theme";
 
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
 import useStyles from "./HesabaTimeDimension.styles";
@@ -12,7 +12,7 @@ import { PlayerProps } from "../player/PlayerControl.types";
 import { TimeProps } from "../timer/TimeComponent.types";
 import { GeoJSONOptions } from "leaflet";
 import { TDLayerOptions } from "../layer/layer.type";
-import TDTable from "../table/TDTable";
+// import TDTable from "../table/TDTable";
 
 interface Props {
   data: GeoJsonObject;
@@ -28,6 +28,8 @@ interface Props {
 }
 
 const HesabaTimeDimension = (props: Props) => {
+  let theme = createMuiTheme(rawThemeObj as ThemeOptions);
+  theme = responsiveFontSizes(theme);
   return (
     <ThemeProvider theme={theme}>
       <div style={{display:'flex'}}>
