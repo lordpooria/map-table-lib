@@ -56,7 +56,9 @@ const TimerComponent = ({
   return (
     <div className={timeClasses.root}>
       <div className={timeClasses.clockWrapper}>
-        <Clock value={state.displayTime} size={80} {...clockProps} />
+        <Clock value={state.displayTime} size={80} 
+        renderNumbers={true}
+        {...clockProps} />
         <Typography className={clsx(timeClasses.amPm, amPmClasses)}>
           {state.isAM ? am : pm}
         </Typography>

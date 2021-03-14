@@ -6,45 +6,25 @@ import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension"
 import data from "./track_bus699.json";
 // export default { title: "Basic Map" };
 import { storiesOf } from "@storybook/react";
-
-var icon = L.icon({
-  iconUrl: "https://img.icons8.com/cotton/2x/bus--v2.png",
-  iconSize: [22, 22],
-  iconAnchor: [11, 11],
-});
+import { baseLayerProps, baseMapProps, commonGeojsonProps } from "./constants";
 
 storiesOf("Basic Map", module)
   .add("Simple Map", () => (
     <HesabaTimeDimension
       data={data as any}
-      mapProps={{ center: [36.72, -4.43], zoom: 15, }}
-      layerProps={{
-        updateTimeDimensionMode: "replace",
-        duration: "PT2M",
-        updateTimeDimension: true,
-      }}
+      mapProps={baseMapProps}
+      layerProps={baseLayerProps}
     />
   ))
-  .add("Geojson Props", () => (
+  .add("Geojson & tile layer Props", () => (
     <HesabaTimeDimension
       data={data as any}
-      mapProps={{ center: [36.72, -4.43], zoom: 15 }}
+      mapProps={baseMapProps}
       layerProps={{
-        updateTimeDimensionMode: "replace",
-        addlastPoint: true,
-        duration: "PT2M",
+        ...baseLayerProps,
         updateTimeDimension: true,
       }}
-      geojsonProps={{
-        pointToLayer: function (feature, latLng) {
-          if (feature.properties.hasOwnProperty("last")) {
-            return new L.Marker(latLng, {
-              icon: icon,
-            });
-          }
-          return L.circleMarker(latLng);
-        },
-      }}
+      geojsonProps={commonGeojsonProps}
     >
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

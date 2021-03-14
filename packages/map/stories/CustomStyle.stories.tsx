@@ -10,44 +10,29 @@ import {
   useSliderStyles,
   useOtherClasses,
   useClockStyles,
-} from "./custom.styles";
-
-var icon = L.icon({
-  iconUrl: "https://img.icons8.com/cotton/2x/bus--v2.png",
-  iconSize: [22, 22],
-  iconAnchor: [11, 11],
-});
+} from "./custom.styles/custom.styles";
+import {
+  useSliderStyles as useSliderStyles2,
+  useOtherClasses as useOtherClasses2,
+  useClockStyles as useClockStyles2,
+} from "./custom.styles/custom.styles2";
+import { commonGeojsonProps, baseMapProps, baseLayerProps } from "./constants";
 
 storiesOf("Custom Styles", module)
-  .add("Player Styles", () => {
-    return (
-      <HesabaTimeDimension
-        data={data as any}
-        mapProps={{ center: [36.72, -4.43], zoom: 15, zoomControl: false }}
-        layerProps={{
-          updateTimeDimensionMode: "replace",
-          duration: "PT2M",
-          updateTimeDimension: true,
-        }}
-      />
-    );
-  })
-  .add("Clock Styles", () => {
+  .add("Version 1", () => {
     const clockClasses = useClockStyles();
     const playerClasses = useSliderStyles();
     const otherClasses = useOtherClasses();
     return (
       <HesabaTimeDimension
         data={data as any}
-        mapProps={{ center: [36.72, -4.43], zoom: 15 }}
+        mapProps={baseMapProps}
         layerProps={{
-          updateTimeDimensionMode: "replace",
+          ...baseLayerProps,
           addlastPoint: true,
-          duration: "PT2M",
-          updateTimeDimension: true,
         }}
         timeProps={{
-          clockProps: { classes: clockClasses, renderNumbers:true },
+          clockProps: { classes: clockClasses, renderNumbers: true },
           dateClasses: otherClasses.dateClasses,
           amPmClasses: otherClasses.amPmClasses,
         }}
@@ -60,16 +45,39 @@ storiesOf("Custom Styles", module)
             root: otherClasses.root,
           },
         }}
-        geojsonProps={{
-          pointToLayer: function (feature, latLng) {
-            if (feature.properties.hasOwnProperty("last")) {
-              return new L.Marker(latLng, {
-                icon: icon,
-              });
-            }
-            return L.circleMarker(latLng);
+        geojsonProps={commonGeojsonProps}
+      >
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      </HesabaTimeDimension>
+    );
+  })
+  .add("Version 2", () => {
+    const clockClasses = useClockStyles2();
+    const playerClasses = useSliderStyles2();
+    const otherClasses = useOtherClasses2();
+    return (
+      <HesabaTimeDimension
+        data={data as any}
+        mapProps={baseMapProps}
+        layerProps={{ ...baseLayerProps, addlastPoint: true }}
+        timeProps={{
+          clockProps: { classes: clockClasses, renderNumbers: true },
+          dateClasses: otherClasses.dateClasses,
+          amPmClasses: otherClasses.amPmClasses,
+        }}
+        playerProps={{
+          classes: {
+            playerSlider: playerClasses,
+            speedSlider: playerClasses,
+            icons: otherClasses.icons,
+            iconButton: otherClasses.iconButton,
+            root: otherClasses.root,
           },
         }}
+        geojsonProps={commonGeojsonProps}
       >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
