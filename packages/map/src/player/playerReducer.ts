@@ -6,6 +6,7 @@ const DEFAULT_TRANSITION = 1000;
 
 export interface PlayerStoreModel {
   isPlaying: boolean;
+  isReversePlaying: boolean;
   isRecording: boolean;
   transitionTime: number;
   bufferSize: number;
@@ -14,6 +15,7 @@ export interface PlayerStoreModel {
   speedSliderRange: SliderValue;
   speedSlider: number;
   setPlay: Action<PlayerStoreModel, boolean>;
+  setReversePlay: Action<PlayerStoreModel, boolean>;
   setRecording: Action<PlayerStoreModel, boolean>;
 
   setTimeSliderRange: Action<PlayerStoreModel, SliderValue>;
@@ -31,6 +33,7 @@ export interface PlayerStoreModel {
 
 export const playerStoreModel: PlayerStoreModel = {
   isPlaying: false,
+  isReversePlaying: false,
   isRecording: false,
   transitionTime: DEFAULT_TRANSITION,
   bufferSize: 5,
@@ -41,6 +44,9 @@ export const playerStoreModel: PlayerStoreModel = {
 
   setPlay: action((state, isPlaying) => {
     state.isPlaying = isPlaying;
+  }),
+  setReversePlay: action((state, isPlaying) => {
+    state.isReversePlaying = isPlaying;
   }),
   setRecording: action((state, isRecording) => {
     state.isRecording = isRecording;

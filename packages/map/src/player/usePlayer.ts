@@ -12,7 +12,9 @@ interface Props {
   // loadingTimeout: number;
   startedOver: boolean;
   autoPlay: boolean;
+  isReversePlaying: boolean;
   setPlay: (_: boolean) => void;
+  setReversePlay: (_: boolean) => void;
 }
 
 export const usePlayer = ({
@@ -24,11 +26,13 @@ export const usePlayer = ({
   startedOver,
   autoPlay,
   setPlay,
+  setReversePlay,
+  isReversePlaying,
 }: Props) => {
-  
   const intervalID = useRef<number | undefined>(undefined);
 
   const nextTime = useTDStoreActions((actions) => actions.nextTime);
+  const previousTime = useTDStoreActions((actions) => actions.previousTime);
   const setCurrentTimeIndex = useTDStoreActions(
     (actions) => actions.setCurrentTimeIndex
   );
@@ -36,25 +40,36 @@ export const usePlayer = ({
   const availableTimes = useTDStoreState((state) => state.availableTimes);
   const upperLimitIndex = useTDStoreState((state) => state.upperLimitIndex);
   const lowerLimitIndex = useTDStoreState((state) => state.lowerLimitIndex);
+
   const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
 
   const play = useCallback(() => {
     nextTime({ numSteps: steps, loop });
   }, [steps, loop]);
 
+  const playReverse = useCallback(() => {
+    previousTime({ numSteps: steps, loop });
+  }, [steps, loop]);
+
   useEffect(() => {
     if (intervalID.current) {
-      stop();
-      start();
+      if (isReversePlaying) {
+        stop();
+        startReverse();
+      } else {
+        stop();
+        start();
+      }
     }
-  }, [transitionTime]);
+  }, [transitionTime, isReversePlaying]);
 
   const stop = useCallback(() => {
     if (!intervalID.current) return;
     clearInterval(intervalID.current);
     setPlay(false);
+    setReversePlay(false);
     intervalID.current = undefined;
-  }, [setPlay]);
+  }, [setPlay,setReversePlay]);
 
   const _getMaxIndex = useCallback(() => {
     return Math.min(availableTimes.length - 1, upperLimitIndex || Infinity);
@@ -79,7 +94,7 @@ export const usePlayer = ({
     if (intervalID.current) return;
 
     var startOver = false;
-    
+
     if (startedOver) {
       if (currentTimeIndex === _getMaxIndex()) {
         setCurrentTimeIndex({ index: lowerLimitIndex || 0 });
@@ -101,11 +116,37 @@ export const usePlayer = ({
     transitionTime,
   ]);
 
+  const startReverse = useCallback(() => {
+    if (intervalID.current) return;
+
+    var startOver = false;
+
+    if (startedOver) {
+      if (currentTimeIndex === 0) {
+        setCurrentTimeIndex({ index: upperLimitIndex || _getMaxIndex() });
+        startOver = true;
+      }
+    }
+
+    setReversePlay(true);
+    intervalID.current = window.setInterval(playReverse, transitionTime);
+    if (!startOver) playReverse();
+  }, [
+    play,
+    startedOver,
+    currentTimeIndex,
+    _getMaxIndex,
+    setCurrentTimeIndex,
+    upperLimitIndex,
+    setReversePlay,
+    transitionTime,
+  ]);
+
   useEffect(() => {
     if (autoPlay) {
       start();
     }
   }, [autoPlay, availableTimes]);
 
-  return { start, stop };
+  return { start, stop, startReverse };
 };
