@@ -1,5 +1,9 @@
-import React, { memo } from "react";
-import { VariableSizeList as List } from "react-window";
+import React, { memo, useCallback, useRef } from "react";
+import {
+  ListOnScrollProps,
+  VariableSizeList as List,
+  VariableSizeList,
+} from "react-window";
 
 import { commonSidebar } from "../utils/themeConstants";
 
@@ -11,7 +15,7 @@ import { useTStoreState } from "../store/reducerHooks";
 import TableToolbar from "@/toolbar/TableToolbar";
 import { VirtualTableProps } from "../types/tableTypes";
 import TableFilter from "../filter/VirtualTableFilter";
-import VirtualTableContainer from "./container/VirtualTableContainer";
+import VirtualTableContainer from "./container-virtual/VirtualTableContainer";
 import CommonTablePagination from "@/pagination/CommonTablePagination";
 import useStyles from "./resizableStyles";
 import Overlay from "./overlay";
@@ -41,9 +45,30 @@ const VirtualizaTable = memo(
       width,
       direction
     );
+    const {
+      setTableRef: setTableRef2,
+      currentWidths: currentWidths2,
+      totalWidth: totalWidth2,
+    } = useTableResizer(width, direction);
+
+    const staticGrid = useRef<VariableSizeList | null>();
+
+    const onScroll = useCallback(
+      ({
+        // scrollDirection,
+        scrollOffset,
+        scrollUpdateWasRequested,
+      }: ListOnScrollProps) => {
+        if (!scrollUpdateWasRequested && staticGrid.current) {
+          staticGrid.current.scrollTo(scrollOffset);
+        }
+      },
+      []
+    );
 
     const visibleRows = useTStoreState((state) => state.visibleRows);
     const enhancedColumns = useTStoreState((state) => state.enhancedColumns);
+    const stickyColumns = useTStoreState((state) => state.stickyColumns);
     const visibleColumns = useTStoreState((state) => state.visibleColumns);
     const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
 
@@ -78,6 +103,28 @@ const VirtualizaTable = memo(
         {children}
       </div>
     );
+    const innerElementType2 = ({
+      children,
+      style,
+      ...rest
+    }: {
+      children: React.ReactNode;
+      style: any;
+    }) => (
+      <div {...rest} style={{ ...style }}>
+        <VirtualTableHeader
+          selectable={selectable}
+          sortable={sortable}
+          currentWidths={currentWidths2.current}
+          columns={stickyColumns}
+          resizable={resizable}
+          isSelected={numRowsSelected !== 0}
+          totalWidth={totalWidth2.current}
+          classes={classes?.header}
+        />
+        {children}
+      </div>
+    );
 
     return (
       <VirtualTableContainer
@@ -104,11 +151,45 @@ const VirtualizaTable = memo(
             resizable={resizable}
             isSelected={numRowsSelected !== 0}
           /> */}
-        <div role="table" className={classes?.table?.container}>
+        <div
+          role="table"
+          className={classes?.table?.container}
+          style={{ display: "flex" }}
+        >
           <List
             direction={direction}
             height={height}
             itemCount={rows.length}
+            ref={(refs) => (staticGrid.current = refs)}
+            style={{ overflowY: "hidden" }}
+            // columnCount={1}
+            itemSize={itemSize}
+            // columnWidth={()=>100}
+            itemKey={(index) => rows[index].name}
+            width={width}
+            itemData={rows}
+            outerRef={setTableRef2}
+            innerElementType={innerElementType2}
+            className={clsx(tableClasses.root, classes?.table?.root)}
+          >
+            {({ index, ...rest }) => (
+              <VirtualTableRow
+                rowIndex={index}
+                selectable={selectable}
+                totalWidth={totalWidth2.current}
+                currentWidths={currentWidths2.current}
+                columns={stickyColumns}
+                rows={visibleRows}
+                classes={classes?.row}
+                {...rest}
+              />
+            )}
+          </List>
+          <List
+            direction={direction}
+            height={height}
+            itemCount={rows.length}
+            onScroll={onScroll}
             // columnCount={1}
             itemSize={itemSize}
             // columnWidth={()=>100}
@@ -121,8 +202,8 @@ const VirtualizaTable = memo(
           >
             {({ index, ...rest }) => (
               <VirtualTableRow
-              rowIndex={index}
-                selectable={selectable}
+                rowIndex={index}
+                // selectable={selectable}
                 totalWidth={totalWidth.current}
                 currentWidths={currentWidths.current}
                 columns={visibleColumns}

@@ -1,13 +1,10 @@
-import { createStyles, makeStyles } from "@material-ui/styles";
-import VirtualizaTable from "../src/virtualize-table/VirtualizaTable";
+import { AutoResizer } from "../../src/virtualize-table/container";
+import HesabaVirtualTable from "../../src/HesabaVirtualTable";
+import { PercentCell, QualityCell } from "../table-test/CellComponent";
+import Operations from "../table-test/Operations";
+import { RawTableColumns } from "../../src/types";
 
-import { RawTableColumns } from "../src/types";
-import Operations from "./Operations";
-import { PercentCell, QualityCell } from "./table-test/CellComponent";
-import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container/AutoResizer";
-import { storiesOf } from "@storybook/react";
-const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
+const rows = [...Array.from({ length: 4000 }, (_, i) => i)].map((item) => {
   const random = Math.random();
   return {
     name: `name${item}`,
@@ -24,64 +21,35 @@ const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
   };
 });
 
-type keys = typeof rows[number];
-
-export const schemaColumns: RawTableColumns<keys> = [
+export const schemaColumns: RawTableColumns<any> = [
   {
     label: "name",
     key: "name",
+
   },
   {
     label: "type",
     key: "type",
     type: "string",
   },
-  // {
-  //   label: "percent",
-  //   key: "percent",
-  //   type: "date",
-  //   CellComponent: PercentCell,
-  // },
+  {
+    label: "percent",
+    key: "percent",
+    type: "date",
+    CellComponent: PercentCell,
+  },
 
-  // {
-  //   label: "vaildated",
-  //   key: "vaildated",
-  //   type: "number",
-  //   CellComponent: QualityCell,
-  // },
+  {
+    label: "vaildated",
+    key: "vaildated",
+    type: "number",
+    CellComponent: QualityCell,
+  },
 ];
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    toolbar: {
-      backgroundColor: "#D0c",
-    },
+interface Props {}
 
-    footer: {
-      backgroundColor: "8D0",
-    },
-    cell: {
-      backgroundColor: "88c",
-      color: "#F0F",
-    },
-    row: {
-      backgroundColor: "888",
-      color: "#F0F",
-    },
-
-    header: {
-      backgroundColor: "666",
-      color: "#F8F",
-    },
-    root: {
-      backgroundColor: "ff0",
-      color: "#444",
-    },
-  })
-);
-
-storiesOf("Virtual Table", module).add("Simple", () => {
-  const classes = useStyles();
+const Table = ({}: Props) => {
   return (
     <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
       <AutoResizer>
@@ -115,4 +83,6 @@ storiesOf("Virtual Table", module).add("Simple", () => {
       </AutoResizer>
     </div>
   );
-});
+};
+
+export default Table;

@@ -8,6 +8,8 @@ import { Fragment } from "react";
 import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import { CommonTableRowType } from "@/types/tableElements";
+import useCommonStyles from "../../styles/commonStyles";
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) =>
 
 const VirtualTableRow = ({
   style,
-   rowIndex,
+  rowIndex,
   totalWidth,
   selectable,
   columns,
@@ -42,9 +44,11 @@ const VirtualTableRow = ({
   ...rest
 }: CommonTableRowType) => {
   const rowClasses = useStyles();
-  // const commonClasses = useCommonStyles();
+  const commonClasses = useCommonStyles();
 
-  const toggleSingleRow = useTStoreActions((actions) => actions.toggleSingleRow);
+  const toggleSingleRow = useTStoreActions(
+    (actions) => actions.toggleSingleRow
+  );
 
   return (
     <div
@@ -66,7 +70,6 @@ const VirtualTableRow = ({
         // { [classes.evenRow]: index % 2 === 0 },
         // { [classes.oddRow]: index % 2 !== 0 }
       )}
-      {...rest}
     >
       {selectable && (
         <Checkbox
@@ -76,7 +79,7 @@ const VirtualTableRow = ({
           }}
           // name={name}
           color="primary"
-          // style={{ position: "sticky", left: 0 }}
+          classes={{root:commonClasses.checkbox,}}
         />
       )}
 

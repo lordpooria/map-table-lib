@@ -1,4 +1,4 @@
-import { TableClasses } from "../../types/styleType";
+import { TableClasses } from "../../types/styles";
 
 export interface VirtualTableContainerType extends VirtualTableContainerProps {
   children: React.ReactNode;

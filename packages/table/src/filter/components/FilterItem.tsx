@@ -3,8 +3,8 @@ import { createStyles, makeStyles, IconButton } from "@material-ui/core";
 import {} from "./utilsFilter";
 import { FilterColumn, FilterOperations, FilterValues } from "./FilterFields";
 
-import { TableFilterType } from "../VirtualTableFilterType";
-import { TableColumns } from "../../types";
+import { TableFilterType } from "../../types/VirtualTableFilter";
+import { TableColumns } from "../../types/main";
 import { useTStoreActions } from "../../store/reducerHooks";
 import TrashIcon from "../../assets/icons/common/TrashIcon";
 

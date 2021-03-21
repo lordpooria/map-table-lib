@@ -9,6 +9,7 @@ import { useTStoreActions } from "../../store/reducerHooks";
 import HeadCell from "../../cell/HeadCell";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import clsx from "clsx";
+import useCommonStyles from "../../styles/commonStyles";
 
 import { CommonHeaderProps } from "@/types/tableElements";
 
@@ -53,6 +54,7 @@ const VirtualTableHeader = ({
 }: CommonHeaderProps) => {
   const tableClasses = useStyles();
   // const commonClasses = useCommonStyles();
+  const commonClasses = useCommonStyles();
 
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
 
@@ -67,13 +69,15 @@ const VirtualTableHeader = ({
     >
       {selectable && (
         <Checkbox
-          className="HESABA_TABLE_HEADER_CLASS"
+          className={clsx("HESABA_TABLE_HEADER_CLASS")}
           checked={isSelected}
           onChange={() => {
             toggleAllRows({ isSelected });
           }}
           // name={name}
           color="primary"
+          style={{position:"sticky",left:0}}
+          classes={{ root: commonClasses.checkbox }}
         />
       )}
       {columns.map((props, index) => (

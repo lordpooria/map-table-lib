@@ -38,6 +38,7 @@
     "babel-loader": "^8.2.2",
     "bili": "^5.0.5",
     "lerna": "^3.22.1",
+    "popper.js": "^1.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rollup": "^2.39.0",

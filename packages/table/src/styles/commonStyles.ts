@@ -18,6 +18,10 @@ const style = makeStyles(() =>
       },
       // textAlign: "center",
     },
+    checkbox: {
+      position: "sticky",
+      left: 0,
+    },
   })
 );
 
