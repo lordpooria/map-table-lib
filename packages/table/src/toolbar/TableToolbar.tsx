@@ -73,6 +73,7 @@ const VirtualToolbar = ({
             <Component key={index} />
           ))}
         <Menu
+          disableScrollLock={true}
           id="long-menu"
           anchorEl={anchorEl}
           keepMounted

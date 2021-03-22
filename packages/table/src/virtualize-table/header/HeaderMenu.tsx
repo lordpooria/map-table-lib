@@ -90,6 +90,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
         <MoreVert className={classes.icons} />
       </HeaderIconButton>
       <Menu
+        disableScrollLock={true}
         id="long-menu"
         anchorEl={anchorEl}
         keepMounted

@@ -9,7 +9,6 @@ import {
 } from "../utils/constants";
 import { RESIZE_HANDLE_WIDTH } from "../utils/themeConstants";
 import HeaderMenu from "../virtualize-table/header/HeaderMenu";
-import DividerIcon from "../assets/icons/common/DividerIcon";
 import useCommonStyles from "../styles/commonStyles";
 import { HeaderCellProps } from "@/types/tableElements";
 
@@ -29,12 +28,15 @@ const useHeadStyles = makeStyles((theme) =>
       flex: 1,
     },
     dividerIcon: {
-      pointerEvents: "none",
-      width: RESIZE_HANDLE_WIDTH,
-      height: RESIZE_HANDLE_WIDTH,
+    display:"inline-block",
+    width: 1,
+    height: "100%",
+    backgroundColor:"#444"
     },
     dividerIconWrapper: {
       cursor: "col-resize",
+      width: RESIZE_HANDLE_WIDTH,
+      height: RESIZE_HANDLE_WIDTH,
       opacity: 0.4,
       "&:hover": {
         opacity: 1,
@@ -55,7 +57,8 @@ const HeadCell = ({
   resizable,
   colIndex,
   currentWidths,
-  classes,sticky,
+  classes,
+  sticky,
   ...rest
 }: HeaderCellProps) => {
   const cellClasses = useHeadStyles();
@@ -95,9 +98,10 @@ const HeadCell = ({
 
       {resizable && (
         <div className={clsx(DRAG_CLASS, cellClasses.dividerIconWrapper)}>
-          <DividerIcon
+          <span className={clsx(cellClasses.dividerIcon, classes?.divider)} />
+          {/* <DividerIcon
             className={clsx(cellClasses.dividerIcon, classes?.divider)}
-          />
+          /> */}
         </div>
       )}
     </>
