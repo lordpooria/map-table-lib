@@ -1454,13 +1454,19 @@ var vtStore = {
         state.showFilter = showFilter;
     }),
     setTableData: easyPeasy.action(function (state, payload) {
+        var _a;
         var columns = payload.columns, rows = payload.rows;
         state.enhancedColumns = columns.map(function (c) {
             var _a;
             var _b;
             return (__assign(__assign({}, c), (_a = {}, _a[DATA_FIELD] = HESABA_DATA_FIELD + "-" + c.key, _a.visible = true, _a.sticky = false, _a.sorted = undefined, _a.type = (_b = c === null || c === void 0 ? void 0 : c.type) !== null && _b !== void 0 ? _b : "string", _a)));
         });
-        state.visibleRows = rows.map(function (r) { return (__assign(__assign({}, r), { selected: false })); });
+        if (!((_a = rows[0]) === null || _a === void 0 ? void 0 : _a.id)) {
+            state.visibleRows = rows.map(function (r, index) { return (__assign(__assign({}, r), { selected: false, id: index })); });
+        }
+        else {
+            state.visibleRows = rows.map(function (r) { return (__assign(__assign({}, r), { selected: false })); });
+        }
     }),
     toggleVisibleColumns: easyPeasy.action(function (state, _a) {
         var index = _a.index;
@@ -29100,7 +29106,7 @@ var VirtualToolbar = function (_a) {
             operationOnRows &&
                 numRowsSelected > 0 &&
                 operationOnRows.map(function (Component, index) { return (React__default['default'].createElement(Component, { key: index })); }),
-            React__default['default'].createElement(Menu$1, { id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, PaperProps: {
+            React__default['default'].createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, PaperProps: {
                     style: {
                     //   maxHeight: ITEM_HEIGHT * 4.5,
                     // width: "20ch",
@@ -49964,7 +49970,7 @@ var HeaderMenu = function (_a) {
             React__default['default'].createElement(ArrowDown, { className: classes.icons }))),
         React__default['default'].createElement(HeaderIconButton, { onClick: handleClick },
             React__default['default'].createElement(MoreVert, { className: classes.icons })),
-        React__default['default'].createElement(Menu$1, { id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, PaperProps: {
+        React__default['default'].createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, PaperProps: {
                 style: {
                 //   maxHeight: ITEM_HEIGHT * 4.5,
                 // width: "20ch",
@@ -49976,12 +49982,6 @@ var HeaderMenu = function (_a) {
             React__default['default'].createElement(MenuItem, { onClick: function () {
                     filterAdd({ columnKey: columnKey });
                 } }, OPTIONS.filter))));
-};
-
-var DividerIcon = function (_a) {
-    var className = _a.className;
-    return (React__default['default'].createElement(SvgIcon$1, { className: className, id: "mdi-dots-vertical" },
-        React__default['default'].createElement("path", { d: "M11 19V5h2v14z" })));
 };
 
 var useHeadStyles = makeStyles$1(function (theme) {
@@ -50000,12 +50000,15 @@ var useHeadStyles = makeStyles$1(function (theme) {
             flex: 1,
         },
         dividerIcon: {
-            pointerEvents: "none",
-            width: RESIZE_HANDLE_WIDTH,
-            height: RESIZE_HANDLE_WIDTH,
+            display: "inline-block",
+            width: 1,
+            height: "100%",
+            backgroundColor: "#444"
         },
         dividerIconWrapper: {
             cursor: "col-resize",
+            width: RESIZE_HANDLE_WIDTH,
+            height: RESIZE_HANDLE_WIDTH,
             opacity: 0.4,
             "&:hover": {
                 opacity: 1,
@@ -50028,12 +50031,12 @@ var HeadCell = function (_a) {
                 React__default['default'].createElement(Typography, { align: "left", className: clsx(cellClasses.titleText, classes === null || classes === void 0 ? void 0 : classes.title) }, label),
                 React__default['default'].createElement(HeaderMenu, { index: colIndex, sortable: sortable, columnKey: colKey, sorted: sorted }))),
         resizable && (React__default['default'].createElement("div", { className: clsx(DRAG_CLASS, cellClasses.dividerIconWrapper) },
-            React__default['default'].createElement(DividerIcon, { className: clsx(cellClasses.dividerIcon, classes === null || classes === void 0 ? void 0 : classes.divider) })))));
+            React__default['default'].createElement("span", { className: clsx(cellClasses.dividerIcon, classes === null || classes === void 0 ? void 0 : classes.divider) })))));
 };
 
 var useStyles$f = makeStyles$1(function (theme) {
     return createStyles$1({
-        columnContainer: {
+        headerContainer: {
             display: "flex",
             // flexDirection: theme.direction === "rtl" ? "row-reverse" : "row",
             top: 0,
@@ -50042,6 +50045,7 @@ var useStyles$f = makeStyles$1(function (theme) {
             zIndex: 2,
             backgroundColor: "rgba(255,255,255,0.8)",
             alignItems: "center",
+            justifyContent: "center",
             borderBottom: "solid " + theme.palette.grey[300] + " 1px",
         },
         titleText: {
@@ -50070,7 +50074,7 @@ var VirtualTableHeader = function (_a) {
     return (React__default['default'].createElement("div", { style: {
             height: commonSidebar.itemHeight,
             width: calcRowWidth(totalWidth, columns),
-        }, className: clsx(HESABA_TABLE_ROW_CLASS, tableClasses.columnContainer, classes === null || classes === void 0 ? void 0 : classes.root) },
+        }, className: clsx(HESABA_TABLE_ROW_CLASS, tableClasses.headerContainer, classes === null || classes === void 0 ? void 0 : classes.root) },
         selectable && (React__default['default'].createElement(Checkbox, { className: clsx("HESABA_TABLE_HEADER_CLASS"), checked: isSelected, onChange: function () {
                 toggleAllRows({ isSelected: isSelected });
             }, 
@@ -50090,7 +50094,11 @@ var VirtualList = React.memo(React.forwardRef(function (_a, ref) {
             React__default['default'].createElement(VirtualTableHeader, { selectable: selectable, sortable: sortable, currentWidths: currentWidths, columns: columns, resizable: resizable, isSelected: numRowsSelected !== 0, totalWidth: totalWidth, classes: classes === null || classes === void 0 ? void 0 : classes.header }),
             children));
     };
-    return (React__default['default'].createElement(VariableSizeList, { style: __assign({ position: "absolute" }, extraStyle), ref: ref, direction: direction, height: height, itemCount: rows.length, onScroll: onScroll, itemSize: itemSize, itemKey: function (index) { return rows[index].name; }, width: width, itemData: rows, outerRef: setTableRef, innerElementType: innerElementType, className: clsx(tableClasses.root, (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.root) }, function (_a) {
+    return (React__default['default'].createElement(VariableSizeList
+    // style={{ position: "absolute", ...extraStyle }}
+    , { 
+        // style={{ position: "absolute", ...extraStyle }}
+        ref: ref, direction: direction, height: height, itemCount: rows.length, onScroll: onScroll, itemSize: itemSize, itemKey: function (index) { return rows[index].id; }, width: width, itemData: rows, outerRef: setTableRef, innerElementType: innerElementType, className: clsx(tableClasses.root, (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.root) }, function (_a) {
         var index = _a.index, rest = __rest(_a, ["index"]);
         return (React__default['default'].createElement(VirtualTableRow, __assign({ rowIndex: index, selectable: selectable, totalWidth: totalWidth, currentWidths: currentWidths, columns: columns, rows: rows, classes: classes === null || classes === void 0 ? void 0 : classes.row }, rest)));
     }));
@@ -50126,7 +50134,6 @@ var VirtualizaTable = React.memo(function (_a) {
         React__default['default'].createElement("div", { role: "table", className: (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.container, style: { display: "flex", height: height } },
             React__default['default'].createElement(Overlay, null),
             React__default['default'].createElement(VirtualList, { direction: direction, height: height, width: width, rows: visibleRows, columns: visibleColumns, onScroll: onScroll, itemSize: itemSize, selectable: selectable, sortable: sortable, resizable: resizable, numRowsSelected: numRowsSelected, totalWidth: totalWidth.current, currentWidths: currentWidths.current, classes: classes, setTableRef: setTableRef, tableClasses: tableClasses }),
-            "`",
             React__default['default'].createElement(Overlay, null)),
         hasFilter && React__default['default'].createElement(TableFilter, null),
         pagination && (React__default['default'].createElement(Pagination, __assign({}, pagination, { classes: classes === null || classes === void 0 ? void 0 : classes.footer, numRowsSelected: numRowsSelected, width: width })))));
