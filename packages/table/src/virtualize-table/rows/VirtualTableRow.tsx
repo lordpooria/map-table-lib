@@ -9,7 +9,7 @@ import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import { CommonTableRowType } from "@/types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
-
+import { calcRowWidth } from "@/utils/helper";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -49,12 +49,12 @@ const VirtualTableRow = ({
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
-
+  
   return (
     <div
       style={{
         ...style,
-        width: totalWidth ? totalWidth : "100%",
+        width: calcRowWidth(totalWidth, columns),
         overflow: "hidden",
         // alignItems: "stretch",
         // width: "100%",
@@ -79,7 +79,7 @@ const VirtualTableRow = ({
           }}
           // name={name}
           color="primary"
-          classes={{root:commonClasses.checkbox,}}
+          classes={{ root: commonClasses.checkbox }}
         />
       )}
 

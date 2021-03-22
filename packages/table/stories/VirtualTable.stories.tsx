@@ -5,8 +5,9 @@ import { RawTableColumns } from "../src/types";
 import Operations from "./Operations";
 import { PercentCell, QualityCell } from "./table-test/CellComponent";
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container/AutoResizer";
+import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
 import { storiesOf } from "@storybook/react";
+import { useCallback, useEffect, useState } from "react";
 const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
   const random = Math.random();
   return {
@@ -80,39 +81,116 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-storiesOf("Virtual Table", module).add("Simple", () => {
-  const classes = useStyles();
-  return (
-    <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
-      <AutoResizer>
-        {({ width, height }) => (
-          <HesabaVirtualTable
-            height={height}
-            width={width}
-            columns={schemaColumns}
-            rows={rows}
-            selectable
-            resizable
-            sortable
-            pagination={{
-              rowsPerPage: 10,
-              count: 20,
-              page: 1,
-              onPageChange: () => {},
-            }}
-            // classes={{
-            //   table: { container: classes.root },
-            //   row: { root: classes.row, cell: { root: classes.cell } },
-            //   footer: { root: classes.footer },
-            //   toolbar: { root: classes.toolbar },
-            //   header: { root: classes.header, cell: { root: classes.cell } },
-            // }}
-            // title="Simple Table"
-            operationOnRows={[Operations]}
-            direction="ltr"
-          />
-        )}
-      </AutoResizer>
-    </div>
-  );
-});
+export const useTableData = () => {
+  const [table, setTable] = useState({ schemaColumns: [], rows: [] });
+
+  const getData = useCallback(async () => {
+    const res: any = await fetch(`http://0.0.0.0:5000/api/get-schema/employees`);
+    const jsonRes = await res.json();
+
+    const schemaColumns = jsonRes?.schema.map((s) => ({
+      label: s.name,
+      key: s.name,
+      type: s.type,
+    }));
+    setTable((prevState) => ({
+      ...prevState,
+      rows: jsonRes?.tableData,
+      schemaColumns,
+    }));
+  }, []);
+  useEffect(() => {
+    getData();
+    //   if (!error && data?.data?.schema) {
+    //     const formattedSchema = setTableSchema(data?.data?.schema);
+    //     const schemaColumns = formattedSchema.map((s) => ({
+    //       label: s.name,
+    //       key: s.name,
+    //       type: s.type,
+    //     }));
+    //     setTable((prevState) => ({
+    //       ...prevState,
+    //       rows: data?.data?.tableData,
+    //       schemaColumns,
+    //     }));
+    //   }
+  }, [getData]);
+
+  return table;
+};
+
+storiesOf("Virtual Table", module)
+  .add("Simple", () => {
+    const classes = useStyles();
+    return (
+      <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
+        <AutoResizer>
+          {({ width, height }) => (
+            <HesabaVirtualTable
+              height={height}
+              width={width}
+              columns={schemaColumns}
+              rows={rows}
+              selectable
+              resizable
+              sortable
+              pagination={{
+                rowsPerPage: 10,
+                count: 20,
+                page: 1,
+                onPageChange: () => {},
+              }}
+              // classes={{
+              //   table: { container: classes.root },
+              //   row: { root: classes.row, cell: { root: classes.cell } },
+              //   footer: { root: classes.footer },
+              //   toolbar: { root: classes.toolbar },
+              //   header: { root: classes.header, cell: { root: classes.cell } },
+              // }}
+              // title="Simple Table"
+              operationOnRows={[Operations]}
+              direction="ltr"
+            />
+          )}
+        </AutoResizer>
+      </div>
+    );
+  })
+  .add("Get data from server Simple", () => {
+    const table = useTableData();
+    console.log(table)
+    const classes = useStyles();
+    return (
+      <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
+        <AutoResizer>
+          {({ width, height }) => (
+            <HesabaVirtualTable
+              height={height}
+              width={width}
+              columns={table.schemaColumns as any}
+              rows={table.rows}
+              selectable
+              resizable
+              sortable
+              pagination={{
+                rowsPerPage: 10,
+                count: 20,
+                page: 1,
+                onPageChange: () => {},
+              }}
+              // classes={{
+              //   table: { container: classes.root },
+              //   row: { root: classes.row, cell: { root: classes.cell } },
+              //   footer: { root: classes.footer },
+              //   toolbar: { root: classes.toolbar },
+              //   header: { root: classes.header, cell: { root: classes.cell } },
+              // }}
+              // title="Simple Table"
+              operationOnRows={[Operations]}
+              direction="ltr"
+            />
+          )}
+        </AutoResizer>
+      </div>
+    );
+  });

@@ -12,7 +12,7 @@ import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
 import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
 import { SmallIconButton } from "../../styled-component/StyledButton";
 import { SortType } from "../../types/main";
-import PinIcon from "@/assets/icons/common/PinIcon";
+// import PinIcon from "@/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },
@@ -49,9 +49,9 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
   };
   const sortTable = useTStoreActions((actions) => actions.sortTable);
   const filterAdd = useTStoreActions((actions) => actions.filterAdd);
-  const setStickyColumn = useTStoreActions(
-    (actions) => actions.setStickyColumn
-  );
+  // const setStickyColumn = useTStoreActions(
+  //   (actions) => actions.setStickyColumn
+  // );
 
   const toggleVisibleColumns = useTStoreActions(
     (actions) => actions.toggleVisibleColumns
@@ -67,7 +67,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
   const sortAsc = () =>
     sortTable({ index, sortType: "ASC", columnKey: columnKey });
 
-  const stickColumn = () => setStickyColumn({ index });
+  // const stickColumn = () => setStickyColumn({ index });
 
   return (
     <>
@@ -81,11 +81,11 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
           <ArrowDown className={classes.icons} />
         </HeaderIconButton>
       )}
-      {sortable && sorted === "ASC" && (
+      {/* {sortable && sorted === "ASC" && (
         <HeaderIconButton onClick={stickColumn}>
           <PinIcon className={classes.icons} />
         </HeaderIconButton>
-      )}
+      )} */}
       <HeaderIconButton onClick={handleClick}>
         <MoreVert className={classes.icons} />
       </HeaderIconButton>
@@ -114,7 +114,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
         >
           {OPTIONS.filter}
         </MenuItem>
-        <MenuItem onClick={stickColumn}>{OPTIONS.stick}</MenuItem>
+        {/* <MenuItem onClick={stickColumn}>{OPTIONS.stick}</MenuItem> */}
       </Menu>
     </>
   );

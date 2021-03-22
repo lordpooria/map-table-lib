@@ -1,6 +1,6 @@
 import React from "react";
-import { ColumnType, TableColumnData, TableColumns } from "../../types";
-import { FilterOperationsType, FilterValueType } from "../VirtualTableFilterType";
+import { ColumnType, TableColumnData, TableColumns } from "../../types/main";
+import { FilterOperationsType, FilterValueType } from "../../types/VirtualTableFilter";
 interface ColumnProps {
     filterIndex: number;
     columnIndex: number;

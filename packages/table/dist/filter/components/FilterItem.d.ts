@@ -1,5 +1,5 @@
-import { TableFilterType } from "../VirtualTableFilterType";
-import { TableColumns } from "../../types";
+import { TableFilterType } from "../../types/VirtualTableFilter";
+import { TableColumns } from "../../types/main";
 interface Props {
     filter: TableFilterType;
     index: number;

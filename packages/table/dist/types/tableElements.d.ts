@@ -1,7 +1,7 @@
 import { TablePaginationProps } from "@material-ui/core";
-import { TableColumn, TableColumns, TableRows } from ".";
-import { CellClasses, HeaderClasses } from "./styleType";
-import { CurrentWidths } from "./useTableResizerType";
+import { TableColumn, TableColumns, TableRows } from "./main";
+import { CellClasses, HeaderClasses } from "./styles";
+import { CurrentWidths } from "./useTableResizer";
 export interface CommonHeaderProps {
     selectable?: boolean;
     resizable?: boolean;

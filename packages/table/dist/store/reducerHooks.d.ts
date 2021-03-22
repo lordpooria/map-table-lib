@@ -3,16 +3,16 @@ export declare const useTStoreActions: <Result>(mapActions: (actions: import("ea
 export declare const useStoreDispatch: () => import("easy-peasy").Dispatch<VTStoreModel, import("redux").AnyAction>;
 export declare const useTStoreState: <Result>(mapState: (state: import("easy-peasy").StateMapper<{
     settings: {
-        direction: import("../types").PageDir;
+        direction: import("..").PageDir;
         lang: string;
     };
-    visibleRows: import("../types").TableRows;
-    enhancedColumns: import("../types").TableColumns<any>;
+    visibleRows: import("..").TableRows;
+    enhancedColumns: import("..").TableColumns<any>;
     showFilter: boolean;
-    filters: import("../filter/VirtualTableFilterType").TableFilterType[];
+    filters: import("../types/VirtualTableFilter").TableFilterType[];
     numRowsSelected: import("easy-peasy").Computed<VTStoreModel, number, {}>;
     selectedRows: import("easy-peasy").Computed<VTStoreModel, number[], {}>;
-    visibleColumns: import("easy-peasy").Computed<VTStoreModel, import("../types").TableColumns<any>, {}>;
-    stickyColumns: import("easy-peasy").Computed<VTStoreModel, import("../types").TableColumns<any>, {}>;
+    visibleColumns: import("easy-peasy").Computed<VTStoreModel, import("..").TableColumns<any>, {}>;
+    stickyColumns: import("easy-peasy").Computed<VTStoreModel, import("..").TableColumns<any>, {}>;
 }>) => Result, equalityFn?: ((prev: Result, next: Result) => boolean) | undefined) => Result;
 export declare const useStore: () => import("easy-peasy").Store<VTStoreModel, import("easy-peasy").EasyPeasyConfig<undefined, {}>>;

@@ -12,6 +12,7 @@ import clsx from "clsx";
 import useCommonStyles from "../../styles/commonStyles";
 
 import { CommonHeaderProps } from "@/types/tableElements";
+import { calcRowWidth } from "@/utils/helper";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -50,6 +51,7 @@ const VirtualTableHeader = ({
   isSelected,
   totalWidth,
   classes,
+
   ...rest
 }: CommonHeaderProps) => {
   const tableClasses = useStyles();
@@ -60,7 +62,10 @@ const VirtualTableHeader = ({
 
   return (
     <div
-      style={{ height: commonSidebar.itemHeight, width: totalWidth || "100%" }}
+      style={{
+        height: commonSidebar.itemHeight,
+        width: calcRowWidth(totalWidth, columns),
+      }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
         tableClasses.columnContainer,
@@ -76,10 +81,10 @@ const VirtualTableHeader = ({
           }}
           // name={name}
           color="primary"
-          style={{position:"sticky",left:0}}
           classes={{ root: commonClasses.checkbox }}
         />
       )}
+
       {columns.map((props, index) => (
         <Fragment key={props.key}>
           <HeadCell
