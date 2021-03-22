@@ -10,7 +10,7 @@ import {
   CurrentWidths,
   QuerySelectType,
   TotalWidth,
-} from "../types/useTableResizerType";
+} from "../types/useTableResizer";
 // import { useStoreState } from "../store/reducerHooks";
 
 export const useTableResizer = (

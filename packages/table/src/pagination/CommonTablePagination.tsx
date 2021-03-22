@@ -29,7 +29,9 @@ const Pagination = ({
   return (
     <>
       <TablePagination
+      
         {...rest}
+        component="div"
         style={{ width }}
         className={clsx(paginationClasses.paginationRoot, classes?.root)}
       />

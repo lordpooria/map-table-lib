@@ -1,9 +1,9 @@
 import { TablePaginationProps } from "@material-ui/core";
-import { RawTableColumns, RawTableRows } from ".";
-import { VirtualTableContainerProps } from "../virtualize-table/container/VirtualTableContainerType";
-import { TableToolbarProps } from "@/toolbar/TableToolbarType";
+import { RawTableColumns, RawTableRows } from "./main";
+import { VirtualTableContainerProps } from "../virtualize-table/types-virtual/VirtualTableContainer";
+import { TableToolbarProps } from "@/types/TableToolbar";
 
-import { StyleTypes } from "./styleType";
+import { StyleTypes } from "./styles";
 
 interface CommonTableProps extends StyleTypes {
   height: number;

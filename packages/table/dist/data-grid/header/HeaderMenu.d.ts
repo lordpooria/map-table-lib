@@ -1,4 +1,4 @@
-import { SortType } from "../../types";
+import { SortType } from "../../types/main";
 interface Props {
     index: number;
     sortable?: boolean;

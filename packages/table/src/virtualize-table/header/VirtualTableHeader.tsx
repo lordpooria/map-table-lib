@@ -9,8 +9,10 @@ import { useTStoreActions } from "../../store/reducerHooks";
 import HeadCell from "../../cell/HeadCell";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import clsx from "clsx";
+import useCommonStyles from "../../styles/commonStyles";
 
 import { CommonHeaderProps } from "@/types/tableElements";
+import { calcRowWidth } from "@/utils/helper";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -49,16 +51,21 @@ const VirtualTableHeader = ({
   isSelected,
   totalWidth,
   classes,
+
   ...rest
 }: CommonHeaderProps) => {
   const tableClasses = useStyles();
   // const commonClasses = useCommonStyles();
+  const commonClasses = useCommonStyles();
 
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
 
   return (
     <div
-      style={{ height: commonSidebar.itemHeight, width: totalWidth || "100%" }}
+      style={{
+        height: commonSidebar.itemHeight,
+        width: calcRowWidth(totalWidth, columns),
+      }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
         tableClasses.columnContainer,
@@ -67,15 +74,17 @@ const VirtualTableHeader = ({
     >
       {selectable && (
         <Checkbox
-          className="HESABA_TABLE_HEADER_CLASS"
+          className={clsx("HESABA_TABLE_HEADER_CLASS")}
           checked={isSelected}
           onChange={() => {
             toggleAllRows({ isSelected });
           }}
           // name={name}
           color="primary"
+          classes={{ root: commonClasses.checkbox }}
         />
       )}
+
       {columns.map((props, index) => (
         <Fragment key={props.key}>
           <HeadCell

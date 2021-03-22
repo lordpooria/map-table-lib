@@ -3,12 +3,9 @@ import VirtualizaTable from "../src/virtualize-table/VirtualizaTable";
 
 import { RawTableColumns } from "../src/types";
 import Operations from "./Operations";
-import {
-  PercentCell,
-  QualityCell,
-} from "../example/components/table-test/CellComponent";
+import { PercentCell, QualityCell } from "./table-test/CellComponent";
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container/AutoResizer";
+import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
 import { storiesOf } from "@storybook/react";
 import DataGrid from "../src/data-grid/DataGrid/DataGrid";
 

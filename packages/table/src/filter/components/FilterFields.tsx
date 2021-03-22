@@ -6,13 +6,13 @@ import { operations } from "./utilsFilter";
 import { SimpleNumericInput, SimpleStringInput } from "./FilterValues";
 import DateInput from "./FilterValueDate";
 // import { FilterMaps } from "./FilterValueMap";
-import { ColumnType, TableColumnData, TableColumns } from "../../types";
+import { ColumnType, TableColumnData, TableColumns } from "../../types/main";
 import { useTStoreActions } from "../../store/reducerHooks";
 import clsx from "clsx";
 import {
   FilterOperationsType,
   FilterValueType,
-} from "../VirtualTableFilterType";
+} from "../../types/VirtualTableFilter";
 
 const useStyles = makeStyles(() =>
   createStyles({ input: { borderColor: "transparent" } })

@@ -1,12 +1,12 @@
 import { createStyles, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
 
-import { TableComponentProps, TableColumn } from "../types";
+import { TableComponentProps, TableColumn } from "../types/main";
 import clsx from "clsx";
 import { DATA_FIELD } from "../utils/constants";
-import { RESIZE_HANDLE_WIDTH } from "../utils/themeConstants";
-import { CurrentWidths } from "../types/useTableResizerType";
-import { CellClasses } from "../types/styleType";
+import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
+import { CurrentWidths } from "../types/useTableResizer";
+import { CellClasses } from "../types/styles";
 
 const SimpleTableCell = ({ value }: TableComponentProps) => {
   return <Typography>{value}</Typography>;
@@ -26,11 +26,12 @@ interface Props extends TableColumn {
   columnsLength: number;
   colKey: string;
   classes?: CellClasses;
+  isScrolling?: any;
 }
 
 const Cell = ({
   label,
-  minWidth = 100,
+  minWidth = ROW_MIN_WIDTH,
   colKey,
   CellComponent = SimpleTableCell,
   HeaderComponent,
@@ -42,22 +43,26 @@ const Cell = ({
   columnsLength,
   currentWidths,
   classes,
+  sticky,
+  custom,
+  isScrolling,
   ...rest
 }: Props) => {
   const cellClasses = useCellStyles();
 
-  const handleW = colIndex === columnsLength - 1 ? 0 : RESIZE_HANDLE_WIDTH;
+  // const handleW = colIndex === columnsLength - 1 ? 0 : RESIZE_HANDLE_WIDTH;
+
   const calcMinWidth = currentWidths[rest[DATA_FIELD]]
-    ? currentWidths[rest[DATA_FIELD]] + handleW
-    : minWidth + handleW;
+    ? currentWidths[rest[DATA_FIELD]] + RESIZE_HANDLE_WIDTH
+    : minWidth + RESIZE_HANDLE_WIDTH;
 
   return (
     <div
       {...rest}
       key={colKey}
       style={{
-        minWidth: 100,
-        width: calcMinWidth || 100,
+        minWidth: calcMinWidth || minWidth,
+        width: calcMinWidth || minWidth,
         overflow: "hidden",
         textOverflow: "ellipsis",
         whiteSpace: "normal",

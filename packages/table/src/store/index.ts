@@ -4,9 +4,9 @@ import {
   SetFilterColPayload,
   SetFilterOpPayload,
   SetFilterValPayload,
-} from "./storeTypes";
-import { TableFilterType } from "../filter/VirtualTableFilterType";
-import { TableColumns, TableRows, SortType, PageDir } from "../types";
+} from "../types/store";
+import { TableFilterType } from "../types/VirtualTableFilter";
+import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
 import { DATA_FIELD, HESABA_DATA_FIELD } from "../utils/constants";
 import { reorderValues } from "../filter/components/utilsFilter";
 

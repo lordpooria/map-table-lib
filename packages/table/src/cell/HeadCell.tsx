@@ -55,7 +55,7 @@ const HeadCell = ({
   resizable,
   colIndex,
   currentWidths,
-  classes,
+  classes,sticky,
   ...rest
 }: HeaderCellProps) => {
   const cellClasses = useHeadStyles();

@@ -1,5 +1,5 @@
-import { TableColumns } from "../types";
-import { ToolbarClasses } from "../types/styleType";
+import { TableColumns } from "./main";
+import { ToolbarClasses } from "./styles";
 
 export interface TableToolbarCompleteProps extends TableToolbarProps {
   numRowsSelected: number;

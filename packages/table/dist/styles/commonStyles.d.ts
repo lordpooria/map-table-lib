@@ -1,2 +1,2 @@
-declare const style: (props?: any) => Record<"tableCell", string>;
+declare const style: (props?: any) => Record<"checkbox" | "tableCell", string>;
 export default style;

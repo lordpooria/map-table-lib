@@ -6,8 +6,8 @@
 // } from "@/models/graph";
 // import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 
-import { ColumnType } from "../../types";
-import { FilterOperationsType } from "../VirtualTableFilterType";
+import { ColumnType } from "../../types/main";
+import { FilterOperationsType } from "../../types/VirtualTableFilter";
 
 // type FilterTypes = "common" | ColumnTypes;
 export type FilterMethod = "AND" | "OR" | "CUSTOM";

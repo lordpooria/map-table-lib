@@ -1,5 +1,5 @@
-import { FilterOperationsType } from "../filter/VirtualTableFilterType";
-import { RawTableColumns, RawTableRows, TableColumnData } from "../types";
+import { FilterOperationsType } from "./VirtualTableFilter";
+import { RawTableColumns, RawTableRows, TableColumnData } from "./main";
 
 export type OnSetTableDataPayload = {
   columns: RawTableColumns;

@@ -12,7 +12,7 @@ import MoreVert from "@/assets/icons/common/MoreVertIcon";
 
 import { useTStoreActions } from "@/store/reducerHooks";
 
-import { TableToolbarCompleteProps } from "./TableToolbarType";
+import { TableToolbarCompleteProps } from "../types/TableToolbar";
 import clsx from "clsx";
 import { SmallIconButton } from "@/styled-component/StyledButton";
 

@@ -1,5 +1,5 @@
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
-import { ColumnType, TableColumnData } from "../types";
+import { ColumnType, TableColumnData } from "./main";
 type FilterTypes = "common" | ColumnType;
 
 // export type TableFilter = {

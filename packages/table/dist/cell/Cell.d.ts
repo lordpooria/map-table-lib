@@ -1,6 +1,6 @@
-import { TableColumn } from "../types";
-import { CurrentWidths } from "../types/useTableResizerType";
-import { CellClasses } from "../types/styleType";
+import { TableColumn } from "../types/main";
+import { CurrentWidths } from "../types/useTableResizer";
+import { CellClasses } from "../types/styles";
 interface Props extends TableColumn {
     row: any;
     rowIndex: number;
@@ -9,6 +9,7 @@ interface Props extends TableColumn {
     columnsLength: number;
     colKey: string;
     classes?: CellClasses;
+    isScrolling?: any;
 }
-declare const Cell: ({ label, minWidth, colKey, CellComponent, HeaderComponent, visible, sorted, row, rowIndex, colIndex, columnsLength, currentWidths, classes, ...rest }: Props) => JSX.Element;
+declare const Cell: ({ label, minWidth, colKey, CellComponent, HeaderComponent, visible, sorted, row, rowIndex, colIndex, columnsLength, currentWidths, classes, sticky, custom, isScrolling, ...rest }: Props) => JSX.Element;
 export default Cell;

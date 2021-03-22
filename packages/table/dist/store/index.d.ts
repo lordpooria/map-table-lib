@@ -1,7 +1,7 @@
 import { Action, Computed } from "easy-peasy";
-import { OnSetTableDataPayload, SetFilterColPayload, SetFilterOpPayload, SetFilterValPayload } from "./storeTypes";
-import { TableFilterType } from "../filter/VirtualTableFilterType";
-import { TableColumns, TableRows, SortType, PageDir } from "../types";
+import { OnSetTableDataPayload, SetFilterColPayload, SetFilterOpPayload, SetFilterValPayload } from "../types/store";
+import { TableFilterType } from "../types/VirtualTableFilter";
+import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
 export interface VTStoreModel {
     settings: {
         direction: PageDir;

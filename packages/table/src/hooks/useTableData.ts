@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { RawTableColumns, RawTableRows } from "../types";
+import { RawTableColumns, RawTableRows } from "../types/main";
 
 import { useTStoreActions } from "../store/reducerHooks";
 

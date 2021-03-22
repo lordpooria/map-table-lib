@@ -1,7 +1,7 @@
 import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
-import { VirtualTableContainerType } from "./VirtualTableContainerType";
+import { VirtualTableContainerType } from "../types-virtual/VirtualTableContainer";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
