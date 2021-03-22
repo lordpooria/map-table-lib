@@ -8,6 +8,7 @@ import HesabaVirtualTable from "../src/HesabaVirtualTable";
 import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
 import { storiesOf } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
+import { AppBar, IconButton } from "@material-ui/core";
 const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
   const random = Math.random();
   return {
@@ -162,6 +163,9 @@ storiesOf("Virtual Table", module)
     const classes = useStyles();
     return (
       <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
+        <AppBar style={{width:'100%',padding:16,height:20}}>
+          <IconButton style={{width:48,height:48}}>click</IconButton>
+        </AppBar>
         <AutoResizer>
           {({ width, height }) => (
             <HesabaVirtualTable

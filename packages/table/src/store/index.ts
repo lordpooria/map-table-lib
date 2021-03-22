@@ -86,7 +86,15 @@ export const vtStore: VTStoreModel = {
       sorted: undefined,
       type: c?.type ?? "string",
     }));
-    state.visibleRows = rows.map((r) => ({ ...r, selected: false }));
+    if (!rows[0]?.id) {
+      state.visibleRows = rows.map((r, index) => ({
+        ...r,
+        selected: false,
+        id: index,
+      }));
+    } else {
+      state.visibleRows = rows.map((r) => ({ ...r, selected: false }));
+    }
   }),
 
   toggleVisibleColumns: action((state, { index }) => {

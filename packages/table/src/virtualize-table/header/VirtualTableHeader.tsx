@@ -16,7 +16,7 @@ import { calcRowWidth } from "@/utils/helper";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    columnContainer: {
+    headerContainer: {
       display: "flex",
       // flexDirection: theme.direction === "rtl" ? "row-reverse" : "row",
       top: 0,
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) =>
       zIndex: 2,
       backgroundColor: "rgba(255,255,255,0.8)",
       alignItems: "center",
+      justifyContent: "center",
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
     },
     titleText: {
@@ -68,7 +69,7 @@ const VirtualTableHeader = ({
       }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
-        tableClasses.columnContainer,
+        tableClasses.headerContainer,
         classes?.root
       )}
     >

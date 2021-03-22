@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef,  memo } from "react";
 import { VariableSizeList as List } from "react-window";
 
 import VirtualTableRow from "../rows/VirtualTableRow";
@@ -28,7 +28,7 @@ const VirtualList = memo(
         classes,
         setTableRef,
         tableClasses,
-        extraStyle
+        extraStyle,
       }: any,
       ref
     ) => {
@@ -54,22 +54,21 @@ const VirtualList = memo(
             // placeholderTotalWidth={placeholderTotalWidth}
             // placeholderCurrentWidths={placeholderCurrentWidths}
           />
+
           {children}
         </div>
       );
 
       return (
         <List
-          style={{ position: "absolute", ...extraStyle }}
+          // style={{ position: "absolute", ...extraStyle }}
           ref={ref as any}
           direction={direction}
           height={height}
           itemCount={rows.length}
           onScroll={onScroll}
-          
           itemSize={itemSize}
-          
-          itemKey={(index) => rows[index].name}
+          itemKey={(index) => rows[index].id}
           width={width}
           itemData={rows}
           outerRef={setTableRef}
@@ -77,19 +76,20 @@ const VirtualList = memo(
           className={clsx(tableClasses.root, classes?.table?.root)}
         >
           {({ index, ...rest }) => (
-            <VirtualTableRow
-              rowIndex={index}
-              selectable={selectable}
-              totalWidth={totalWidth}
-              currentWidths={currentWidths}
-              columns={columns}
-              rows={rows}
-              classes={classes?.row}
-              {...rest}
-              // placeholderColumns={placeholderColumns}
-              // placeholderTotalWidth={placeholderTotalWidth}
-              // placeholderCurrentWidths={placeholderCurrentWidths}
-            />
+           
+              <VirtualTableRow
+                rowIndex={index}
+                selectable={selectable}
+                totalWidth={totalWidth}
+                currentWidths={currentWidths}
+                columns={columns}
+                rows={rows}
+                classes={classes?.row}
+                {...rest}
+                // placeholderColumns={placeholderColumns}
+                // placeholderTotalWidth={placeholderTotalWidth}
+                // placeholderCurrentWidths={placeholderCurrentWidths}
+              />
           )}
         </List>
       );

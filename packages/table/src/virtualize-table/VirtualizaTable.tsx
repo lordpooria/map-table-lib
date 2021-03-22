@@ -125,7 +125,7 @@ const VirtualizaTable = memo(
             setTableRef={setTableRef}
             tableClasses={tableClasses}
           />
-          `{/* <List
+          {/* <List
             direction={direction}
             height={height}
             itemCount={rows.length}
