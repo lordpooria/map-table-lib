@@ -1,42 +1,34 @@
 import React from "react";
 import TDProvider from "./Provider";
-import { GeoJsonObject } from "geojson";
-import { TileLayer, MapContainer, MapContainerProps } from "react-leaflet";
-import { createMuiTheme, responsiveFontSizes, ThemeOptions, ThemeProvider } from "@material-ui/core/styles";
+import { TileLayer, MapContainer } from "react-leaflet";
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+  ThemeOptions,
+  ThemeProvider,
+} from "@material-ui/core/styles";
 import rawThemeObj from "../styles/theme";
 
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
 import useStyles from "./HesabaTimeDimension.styles";
 import clsx from "clsx";
-import { PlayerProps } from "../player/PlayerControl.types";
-import { TimeProps } from "../timer/TimeComponent.types";
-import { GeoJSONOptions } from "leaflet";
-import { TDLayerOptions } from "../layer/layer.type";
-// import TDTable from "../table/TDTable";
 
-interface Props {
-  data: GeoJsonObject;
-  mapProps: MapContainerProps & {
-    classes?: { root?: string };
-  };
-  children?: React.ReactNode;
-  playerProps?: PlayerProps;
-  timeProps?: TimeProps;
-  geojsonProps?: GeoJSONOptions;
-  layerProps: TDLayerOptions;
-  extralLayerProps?: any;
-}
+import TDTable from "../table/TDTable";
+import { HesabaTimeDimensionProps } from "../types/HesabaTimeDimension";
 
-const HesabaTimeDimension = (props: Props) => {
+const HesabaTimeDimension = ({
+  withTable = false,
+  ...props
+}: HesabaTimeDimensionProps) => {
   let theme = createMuiTheme(rawThemeObj as ThemeOptions);
   theme = responsiveFontSizes(theme);
   return (
     <ThemeProvider theme={theme}>
-      <div style={{display:'flex'}}>
-      <TDProvider>
-        <CommonMap {...props} />
-      </TDProvider>
-      {/* <TDTable /> */}
+      <div style={{ display: "flex" }}>
+        <TDProvider>
+          <CommonMap {...props} />
+        </TDProvider>
+        {withTable && <TDTable data={props.data} />}
       </div>
     </ThemeProvider>
   );
@@ -51,7 +43,7 @@ const CommonMap = ({
   geojsonProps = {},
   layerProps,
   extralLayerProps,
-}: Props) => {
+}: HesabaTimeDimensionProps) => {
   const classes = useStyles();
   console.log(data);
   return (

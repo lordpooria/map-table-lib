@@ -1,5 +1,5 @@
 import { action, Action, createStore, thunk, Thunk } from "easy-peasy";
-import { AvailableTimes, Mode, Period, SyncedLayer } from "../types";
+import { AvailableTimes, Mode, Period, SyncedLayer } from "../types/common";
 
 import {
   seekNearestTimeIndex,

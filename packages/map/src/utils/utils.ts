@@ -4,7 +4,7 @@ import {
   Period,
   TimeZone,
   UTCType,
-} from "../types";
+} from "../types/common";
 import { parse, Duration } from "iso8601-duration";
 
 export function getDisplayDateFormat(date: Date, timeZone: TimeZone) {
@@ -276,3 +276,4 @@ export function sort_and_deduplicate(arr: AvailableTimes) {
   }
   return result;
 }
+

@@ -1,4 +1,4 @@
-import { DurationType, Mode } from "../types";
+import { DurationType, Mode } from "./common";
 
 export type TDLayerOptions = {
   updateTimeDimension?: boolean;

@@ -14,6 +14,7 @@ import {
 import rawThemeObj from "../utils/theme";
 import fontSelector from "../utils/fontSelector";
 import { useTStoreState } from "../store/reducerHooks";
+import { WrapperProps } from "@/virtualize-table/container-virtual";
 //create material-ui themes
 /* const rawRTLThemeObj = { ...rawThemeObj, direction: 'rtl' }
 const theme = createMuiTheme(rawThemeObj);
@@ -36,13 +37,16 @@ const generateClassName = createGenerateClassName({
 const ThemeMaker = ({
   children,
   direction,
-}: {
-  children: React.ReactNode;
-  direction: AppDirection;
-}) => {
-  
+  theme: externalTheme,
+}: WrapperProps) => {
+  console.log(externalTheme)
   const lang = useTStoreState((state) => state.settings.lang);
-  let localRawThemeObj = { ...rawThemeObj,direction };
+  let localRawThemeObj;
+  if (externalTheme) {
+    localRawThemeObj = { ...externalTheme, direction };
+  } else {
+    localRawThemeObj = { ...rawThemeObj, direction };
+  }
   // if (direction === "rtl") {
   //   localRawThemeObj = { ...rawThemeObj, direction: "rtl" } as any;
   // }

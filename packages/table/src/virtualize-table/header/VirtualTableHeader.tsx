@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) =>
       zIndex: 2,
       backgroundColor: "rgba(255,255,255,0.8)",
       alignItems: "center",
-      justifyContent: "center",
+      // justifyContent: "center",
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
     },
     titleText: {

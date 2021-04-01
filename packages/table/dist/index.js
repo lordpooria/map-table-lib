@@ -15474,9 +15474,16 @@ var generateClassName$1 = createGenerateClassName({
     productionPrefix: "Hesaba",
 });
 var ThemeMaker = function (_a) {
-    var children = _a.children, direction = _a.direction;
+    var children = _a.children, direction = _a.direction, externalTheme = _a.theme;
+    console.log(externalTheme);
     var lang = useTStoreState(function (state) { return state.settings.lang; });
-    var localRawThemeObj = __assign(__assign({}, rawThemeObj), { direction: direction });
+    var localRawThemeObj;
+    if (externalTheme) {
+        localRawThemeObj = __assign(__assign({}, externalTheme), { direction: direction });
+    }
+    else {
+        localRawThemeObj = __assign(__assign({}, rawThemeObj), { direction: direction });
+    }
     // if (direction === "rtl") {
     //   localRawThemeObj = { ...rawThemeObj, direction: "rtl" } as any;
     // }
@@ -15501,11 +15508,9 @@ var DataGridProvider = function (_a) {
     return React__default['default'].createElement(easyPeasy.StoreProvider, { store: store }, children);
 };
 var Provider = function (_a) {
-    var children = _a.children, direction = _a.direction;
+    var children = _a.children, direction = _a.direction, theme = _a.theme;
     return (React__default['default'].createElement(DataGridProvider, null,
-        React__default['default'].createElement(ThemeMaker, { direction: direction },
-            children,
-            " ")));
+        React__default['default'].createElement(ThemeMaker, { direction: direction, theme: theme }, children)));
 };
 Provider.displayName = "DataGridProvider";
 
@@ -49984,6 +49989,12 @@ var HeaderMenu = function (_a) {
                 } }, OPTIONS.filter))));
 };
 
+var DividerIcon = function (_a) {
+    var className = _a.className;
+    return (React__default['default'].createElement(SvgIcon$1, { className: className, id: "mdi-dots-vertical" },
+        React__default['default'].createElement("path", { d: "M11 24V5h2v24z" })));
+};
+
 var useHeadStyles = makeStyles$1(function (theme) {
     return createStyles$1({
         columnContainer: {
@@ -50000,15 +50011,16 @@ var useHeadStyles = makeStyles$1(function (theme) {
             flex: 1,
         },
         dividerIcon: {
+            pointerEvents: "none",
             display: "inline-block",
-            width: 1,
-            height: "100%",
-            backgroundColor: "#444"
+            // width: 1.5,
+            // height: "100%",
+            // backgroundColor: "#444",
+            width: RESIZE_HANDLE_WIDTH,
+            height: RESIZE_HANDLE_WIDTH,
         },
         dividerIconWrapper: {
             cursor: "col-resize",
-            width: RESIZE_HANDLE_WIDTH,
-            height: RESIZE_HANDLE_WIDTH,
             opacity: 0.4,
             "&:hover": {
                 opacity: 1,
@@ -50017,21 +50029,23 @@ var useHeadStyles = makeStyles$1(function (theme) {
     });
 });
 var HeadCell = function (_a) {
-    var _b = _a.minWidth, minWidth = _b === void 0 ? 100 : _b, label = _a.label, colKey = _a.colKey; _a.CellComponent; _a.HeaderComponent; _a.visible; var sorted = _a.sorted, sortable = _a.sortable, resizable = _a.resizable, colIndex = _a.colIndex, currentWidths = _a.currentWidths, classes = _a.classes; _a.sticky; var rest = __rest(_a, ["minWidth", "label", "colKey", "CellComponent", "HeaderComponent", "visible", "sorted", "sortable", "resizable", "colIndex", "currentWidths", "classes", "sticky"]);
+    var _b = _a.minWidth, minWidth = _b === void 0 ? ROW_MIN_WIDTH : _b, label = _a.label, colKey = _a.colKey; _a.CellComponent; _a.HeaderComponent; _a.visible; var sorted = _a.sorted, sortable = _a.sortable, resizable = _a.resizable, colIndex = _a.colIndex, currentWidths = _a.currentWidths, classes = _a.classes; _a.sticky; var rest = __rest(_a, ["minWidth", "label", "colKey", "CellComponent", "HeaderComponent", "visible", "sorted", "sortable", "resizable", "colIndex", "currentWidths", "classes", "sticky"]);
     var cellClasses = useHeadStyles();
     var commonClasses = style$5();
     // const setStickyColumn = useStoreActions((actions) => actions.setStickyColumn);
+    var calcMinWidth = currentWidths[rest[DATA_FIELD]]
+        ? currentWidths[rest[DATA_FIELD]]
+        : minWidth;
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement("div", __assign({ className: clsx(commonClasses.tableCell, HESABA_TABLE_HEADER_CLASS, classes === null || classes === void 0 ? void 0 : classes.root), style: {
-                minWidth: currentWidths[rest[DATA_FIELD]]
-                    ? currentWidths[rest[DATA_FIELD]]
-                    : minWidth,
+                minWidth: calcMinWidth || minWidth,
+                width: calcMinWidth || minWidth,
             } }, rest),
             React__default['default'].createElement(React__default['default'].Fragment, null,
                 React__default['default'].createElement(Typography, { align: "left", className: clsx(cellClasses.titleText, classes === null || classes === void 0 ? void 0 : classes.title) }, label),
                 React__default['default'].createElement(HeaderMenu, { index: colIndex, sortable: sortable, columnKey: colKey, sorted: sorted }))),
         resizable && (React__default['default'].createElement("div", { className: clsx(DRAG_CLASS, cellClasses.dividerIconWrapper) },
-            React__default['default'].createElement("span", { className: clsx(cellClasses.dividerIcon, classes === null || classes === void 0 ? void 0 : classes.divider) })))));
+            React__default['default'].createElement(DividerIcon, { className: clsx(cellClasses.dividerIcon, classes === null || classes === void 0 ? void 0 : classes.divider) })))));
 };
 
 var useStyles$f = makeStyles$1(function (theme) {
@@ -50045,7 +50059,7 @@ var useStyles$f = makeStyles$1(function (theme) {
             zIndex: 2,
             backgroundColor: "rgba(255,255,255,0.8)",
             alignItems: "center",
-            justifyContent: "center",
+            // justifyContent: "center",
             borderBottom: "solid " + theme.palette.grey[300] + " 1px",
         },
         titleText: {
@@ -50140,8 +50154,8 @@ var VirtualizaTable = React.memo(function (_a) {
 });
 
 var HesabaVirtualTable = function (_a) {
-    var _b = _a.direction, direction = _b === void 0 ? "ltr" : _b, props = __rest(_a, ["direction"]);
-    return (React__default['default'].createElement(Provider, { direction: direction },
+    var _b = _a.direction, direction = _b === void 0 ? "ltr" : _b, theme = _a.theme, props = __rest(_a, ["direction", "theme"]);
+    return (React__default['default'].createElement(Provider, { direction: direction, theme: theme },
         React__default['default'].createElement(VirtualizaTable, __assign({}, props, { direction: direction }))));
 };
 

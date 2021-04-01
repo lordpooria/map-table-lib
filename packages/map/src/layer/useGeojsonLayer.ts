@@ -2,16 +2,17 @@
  * L.TimeDimension.Layer.GeoJson:
  */
 
-import { geoJSON, GeoJSON, GeoJSONOptions,Map } from "leaflet";
+import { geoJSON, GeoJSONOptions, Map } from "leaflet";
 import { GeoJsonObject } from "geojson";
 import { useEffect, useRef } from "react";
 // import { useMap } from "react-leaflet";
 import { sort_and_deduplicate, subtractTimeDuration } from "../utils/utils";
 
-import { _getFeatureBetweenDates, _getFeatureTimes } from "./layer.util";
+import { _getFeatureBetweenDates, _getFeatureTimes } from "../utils/layer.util";
 import { useTDStoreActions, useTDStoreState } from "../store/reducerHooks";
-import { Mode } from "../types/index";
-import { TDLayerOptions } from "./layer.type";
+import { Mode } from "../types/common";
+import { TDLayerOptions } from "../types/layer";
+import { extractAvailableTimes } from "../utils/geojson";
 
 export const useLayer = (
   data: GeoJsonObject,
@@ -27,16 +28,16 @@ export const useLayer = (
   }: TDLayerOptions,
   { getFeatureBetweenDates = _getFeatureBetweenDates }
 ) => {
-  
   // const leafletMapRef = useMap();
   const currentTime = useTDStoreState((state) => state.currentTime);
   const prepareAvailableTimes = useTDStoreActions(
     (actions) => actions.prepareAvailableTimes
   );
+  console.log("here")
 
   const _loaded = useRef(false);
-  const _currentLayer = useRef<GeoJSON<any>>();
-  const layer = useRef<GeoJSON<any>>();
+  const _currentLayer = useRef<AppGeoJSONLayer>();
+  const layer = useRef<AppGeoJSONLayer>();
 
   function _update(currentTimeIndex: number) {
     if (!layer.current) return;
@@ -99,20 +100,7 @@ export const useLayer = (
   }
 
   function _setAvailableTimes() {
-    const times: Array<any> = [];
-    if (!layer.current) return;
-    const _layers = layer.current.getLayers() as Array<any>;
-    
-    _layers.forEach((lay) => {
-      if (lay.feature) {
-        var featureTimes = _getFeatureTimes(lay.feature);
-        for (var j = 0, m = featureTimes.length; j < m; j++) {
-          times.push(featureTimes[j]);
-        }
-      }
-    });
-    // for (let i = 0, l = _layers.length; i < l; i++) {}
-
+    const times = extractAvailableTimes(layer.current);
     const _availableTimes = sort_and_deduplicate(times);
     prepareAvailableTimes({
       _availableTimes,
@@ -163,7 +151,7 @@ export const useLayer = (
   }, [data]);
 
   useEffect(() => {
-    _update(currentTime);
+    // _update(currentTime);
   }, [currentTime]);
 
   return {};

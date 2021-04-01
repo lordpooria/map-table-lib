@@ -1,4 +1,4 @@
-import { TDFeature, TDTimes, TDCoordinates } from "../types";
+import { TDFeature, TDTimes, TDCoordinates } from "../types/common";
 
 export function _getFeatureTimes(feature: TDFeature): TDTimes {
   if (!feature.featureTimes) {

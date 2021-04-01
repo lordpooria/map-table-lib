@@ -1,9 +1,6 @@
-import React from "react";
+import { WrapperProps } from "@/virtualize-table/container-virtual";
 declare const Provider: {
-    ({ children, direction, }: {
-        direction: AppDirection;
-        children: React.ReactNode;
-    }): JSX.Element;
+    ({ children, direction, theme }: WrapperProps): JSX.Element;
     displayName: string;
 };
 export default Provider;

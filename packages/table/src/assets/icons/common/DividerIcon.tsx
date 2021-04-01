@@ -8,7 +8,7 @@ interface Props {
 const DividerIcon = ({ className }: Props) => {
   return (
     <SvgIcon className={className} id="mdi-dots-vertical">
-      <path d="M11 19V5h2v14z" />
+      <path d="M11 24V5h2v24z" />
     </SvgIcon>
   );
 };

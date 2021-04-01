@@ -8,7 +8,9 @@ import HesabaVirtualTable from "../src/HesabaVirtualTable";
 import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
 import { storiesOf } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
-import { AppBar, IconButton } from "@material-ui/core";
+import theme from './table-test/theme'
+
+
 const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
   const random = Math.random();
   return {
@@ -52,6 +54,8 @@ export const schemaColumns: RawTableColumns<keys> = [
   //   CellComponent: QualityCell,
   // },
 ];
+
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -122,78 +126,40 @@ export const useTableData = () => {
   return table;
 };
 
-storiesOf("Virtual Table", module)
-  .add("Simple", () => {
-    const classes = useStyles();
-    return (
-      <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
-        <AutoResizer>
-          {({ width, height }) => (
-            <HesabaVirtualTable
-              height={height}
-              width={width}
-              columns={schemaColumns}
-              rows={rows}
-              selectable
-              resizable
-              sortable
-              pagination={{
-                rowsPerPage: 10,
-                count: 20,
-                page: 1,
-                onPageChange: () => {},
-              }}
-              // classes={{
-              //   table: { container: classes.root },
-              //   row: { root: classes.row, cell: { root: classes.cell } },
-              //   footer: { root: classes.footer },
-              //   toolbar: { root: classes.toolbar },
-              //   header: { root: classes.header, cell: { root: classes.cell } },
-              // }}
-              // title="Simple Table"
-              operationOnRows={[Operations]}
-              direction="ltr"
-            />
-          )}
-        </AutoResizer>
-      </div>
-    );
-  })
-  .add("Get data from server Simple", () => {
-    const table = useTableData();
-    console.log(table);
-    const classes = useStyles();
-    return (
-      <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
-        <AutoResizer>
-          {({ width, height }) => (
-            <HesabaVirtualTable
-              height={height}
-              width={width}
-              columns={table.schemaColumns as any}
-              rows={table.rows}
-              selectable
-              resizable
-              sortable
-              pagination={{
-                rowsPerPage: 10,
-                count: 20,
-                page: 1,
-                onPageChange: () => {},
-              }}
-              // classes={{
-              //   table: { container: classes.root },
-              //   row: { root: classes.row, cell: { root: classes.cell } },
-              //   footer: { root: classes.footer },
-              //   toolbar: { root: classes.toolbar },
-              //   header: { root: classes.header, cell: { root: classes.cell } },
-              // }}
-              // title="Simple Table"
-              operationOnRows={[Operations]}
-              direction="ltr"
-            />
-          )}
-        </AutoResizer>
-      </div>
-    );
-  });
+storiesOf("Virtual Table Styles", module).add("Theme Styles", () => {
+  const classes = useStyles();
+  return (
+    <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
+      <AutoResizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={schemaColumns}
+            rows={rows}
+            selectable
+            resizable
+            sortable
+            pagination={{
+              rowsPerPage: 10,
+              count: 20,
+              page: 1,
+              onPageChange: () => {},
+            }}
+            theme={theme as any}
+            // classes={{
+            //   table: { container: classes.root },
+            //   row: { root: classes.row, cell: { root: classes.cell } },
+            //   footer: { root: classes.footer },
+            //   toolbar: { root: classes.toolbar },
+            //   header: { root: classes.header, cell: { root: classes.cell } },
+            // }}
+            // title="Simple Table"
+            operationOnRows={[Operations]}
+            direction="ltr"
+          />
+        )}
+      </AutoResizer>
+    </div>
+  );
+});

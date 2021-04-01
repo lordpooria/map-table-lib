@@ -150,3 +150,7 @@ export const usePlayer = ({
 
   return { start, stop, startReverse };
 };
+
+export function usePlayerFinished(){
+  
+}

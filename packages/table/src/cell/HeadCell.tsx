@@ -7,10 +7,11 @@ import {
   DRAG_CLASS,
   HESABA_TABLE_HEADER_CLASS,
 } from "../utils/constants";
-import { RESIZE_HANDLE_WIDTH } from "../utils/themeConstants";
+import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
 import HeaderMenu from "../virtualize-table/header/HeaderMenu";
 import useCommonStyles from "../styles/commonStyles";
 import { HeaderCellProps } from "@/types/tableElements";
+import DividerIcon from "@/assets/icons/common/DividerIcon";
 
 const useHeadStyles = makeStyles((theme) =>
   createStyles({
@@ -28,15 +29,17 @@ const useHeadStyles = makeStyles((theme) =>
       flex: 1,
     },
     dividerIcon: {
-    display:"inline-block",
-    width: 1,
-    height: "100%",
-    backgroundColor:"#444"
+      pointerEvents: "none",
+      display: "inline-block",
+      // width: 1.5,
+      // height: "100%",
+      // backgroundColor: "#444",
+      width: RESIZE_HANDLE_WIDTH,
+      height: RESIZE_HANDLE_WIDTH,
     },
     dividerIconWrapper: {
       cursor: "col-resize",
-      width: RESIZE_HANDLE_WIDTH,
-      height: RESIZE_HANDLE_WIDTH,
+
       opacity: 0.4,
       "&:hover": {
         opacity: 1,
@@ -46,7 +49,7 @@ const useHeadStyles = makeStyles((theme) =>
 );
 
 const HeadCell = ({
-  minWidth = 100,
+  minWidth = ROW_MIN_WIDTH,
   label,
   colKey,
   CellComponent,
@@ -64,6 +67,9 @@ const HeadCell = ({
   const cellClasses = useHeadStyles();
   const commonClasses = useCommonStyles();
   // const setStickyColumn = useStoreActions((actions) => actions.setStickyColumn);
+  const calcMinWidth = currentWidths[rest[DATA_FIELD]]
+    ? currentWidths[rest[DATA_FIELD]]
+    : minWidth;
 
   return (
     <>
@@ -74,9 +80,8 @@ const HeadCell = ({
           classes?.root
         )}
         style={{
-          minWidth: currentWidths[rest[DATA_FIELD]]
-            ? currentWidths[rest[DATA_FIELD]]
-            : minWidth,
+          minWidth: calcMinWidth || minWidth,
+          width: calcMinWidth || minWidth,
         }}
         {...rest}
       >
@@ -98,10 +103,10 @@ const HeadCell = ({
 
       {resizable && (
         <div className={clsx(DRAG_CLASS, cellClasses.dividerIconWrapper)}>
-          <span className={clsx(cellClasses.dividerIcon, classes?.divider)} />
-          {/* <DividerIcon
+          {/* <span className={clsx(cellClasses.dividerIcon, classes?.divider)} /> */}
+          <DividerIcon
             className={clsx(cellClasses.dividerIcon, classes?.divider)}
-          /> */}
+          />
         </div>
       )}
     </>

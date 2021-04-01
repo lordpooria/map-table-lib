@@ -5,10 +5,11 @@ import VirtualizaTable from "./virtualize-table/VirtualizaTable";
 
 const HesabaVirtualTable = ({
   direction = "ltr",
+  theme ,
   ...props
-}: VirtualTableProps) => {
+}: VirtualTableProps ) => {
   return (
-    <Provider direction={direction}>
+    <Provider direction={direction} theme={theme}>
       <VirtualizaTable {...props} direction={direction} />
     </Provider>
   );

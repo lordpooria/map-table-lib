@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { LegendsProps } from "./types";
+import { LegendsProps } from "../types/legend";
 
 const LegendComponent = ({ legends }: LegendsProps) => {
   const getColor = (d: number) => {

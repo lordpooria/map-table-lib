@@ -1,32 +1,15 @@
 import React from "react";
 import { AutoResizer, HesabaVirtualTable } from "@hesaba/table";
-import { RawTableColumns } from "@hesaba/table/dist/types";
+import  { GeoJsonObject } from "geojson";
+import { useMapData } from "./useMapData";
 
-interface Props {}
+interface Props {
+  data: GeoJsonObject
+}
 
-const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
-  const random = Math.random();
-  return {
-    name: `name${item}`,
-    type: `type${item}`,
-  };
-});
-
-type keys = typeof rows[number];
-
-export const schemaColumns: RawTableColumns<keys> = [
-  {
-    label: "name",
-    key: "name",
-  },
-  {
-    label: "type",
-    key: "type",
-    type: "string",
-  },
-];
-
-const TDTable = ({}: Props) => {
+const TDTable = ({data}: Props) => {
+  
+  const { rows, schemaColumns } = useMapData(data);
   return (
     <div style={{ width: " calc(50vw + 220px)", height: "95vh" }}>
       <AutoResizer>

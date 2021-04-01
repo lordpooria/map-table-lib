@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { StoreProvider, useStore } from "easy-peasy";
 import store, { VTStoreModel } from "../store";
 import ThemeMaker from "./ThemeProvider";
+import { WrapperProps } from "@/virtualize-table/container-virtual";
 
 const DataGridProvider: FC = ({ children }) => {
   const easyPeasyStore = useStore<VTStoreModel>();
@@ -16,15 +17,11 @@ const DataGridProvider: FC = ({ children }) => {
   return <StoreProvider store={store}>{children}</StoreProvider>;
 };
 
-const Provider = ({
-  children,
-  direction,
-}: {
-  direction: AppDirection;
-  children: React.ReactNode;
-}) => (
+const Provider = ({ children, direction, theme }: WrapperProps) => (
   <DataGridProvider>
-    <ThemeMaker direction={direction}>{children} </ThemeMaker>
+    <ThemeMaker direction={direction} theme={theme}>
+      {children}
+    </ThemeMaker>
   </DataGridProvider>
 );
 

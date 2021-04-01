@@ -1,4 +1,4 @@
-import { AvailableTimes, Mode, Period, SyncedLayer } from "../types";
+import { AvailableTimes, Mode, Period, SyncedLayer } from "../types/common";
 import {
   explodeTimeRange,
   intersect_arrays,

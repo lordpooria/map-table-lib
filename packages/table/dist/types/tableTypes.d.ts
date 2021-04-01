@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { TablePaginationProps } from "@material-ui/core";
 import { RawTableColumns, RawTableRows } from "./main";
-import { VirtualTableContainerProps } from "../virtualize-table/types-virtual/VirtualTableContainer";
+import { VirtualTableContainerProps, WrapperProps } from "../virtualize-table/types-virtual/VirtualTableContainer";
 import { TableToolbarProps } from "@/types/TableToolbar";
 import { StyleTypes } from "./styles";
 interface CommonTableProps extends StyleTypes {
@@ -47,6 +47,10 @@ interface CommonTableProps extends StyleTypes {
      * for a pagination you need at least page,rowsPerPage, count of data
      */
     pagination?: TablePaginationProps;
+    /**
+     *
+     */
+    theme?: WrapperProps["theme"];
 }
 export interface VirtualTableProps extends CommonTableProps {
     VirtualTableContainerProps?: VirtualTableContainerProps;
