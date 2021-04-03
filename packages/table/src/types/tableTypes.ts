@@ -1,5 +1,5 @@
 import { TablePaginationProps } from "@material-ui/core";
-import { RawTableColumns, RawTableRows } from "./main";
+import { RawTableColumns, RawTableRows, TableDataParser } from "./main";
 import {
   VirtualTableContainerProps,
   WrapperProps,
@@ -55,6 +55,10 @@ interface CommonTableProps extends StyleTypes {
    *
    */
   theme?: WrapperProps["theme"];
+  /**
+   *If you have complex type of data type you could parse it your own and pass it to table store
+   */
+  tableDataParser?: TableDataParser;
 }
 
 export interface VirtualTableProps extends CommonTableProps {

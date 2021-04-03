@@ -7,7 +7,6 @@ import {
 } from "../types/store";
 import { TableFilterType } from "../types/VirtualTableFilter";
 import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
-import { DATA_FIELD, HESABA_DATA_FIELD } from "../utils/constants";
 import { reorderValues } from "../filter/components/utilsFilter";
 
 export interface VTStoreModel {
@@ -24,6 +23,7 @@ export interface VTStoreModel {
   toggleShowFilter: Action<VTStoreModel, boolean>;
 
   setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
+  fakeAppendTableData: Action<VTStoreModel, any>;
   setStickyColumn: Action<VTStoreModel, { index: number }>;
 
   filterSetColumn: Action<VTStoreModel, SetFilterColPayload>;
@@ -77,24 +77,18 @@ export const vtStore: VTStoreModel = {
   }),
 
   setTableData: action((state, payload) => {
-    const { columns, rows } = payload;
-    state.enhancedColumns = columns.map((c) => ({
-      ...c,
-      [DATA_FIELD]: `${HESABA_DATA_FIELD}-${c.key as string}`,
-      visible: true,
-      sticky: false,
-      sorted: undefined,
-      type: c?.type ?? "string",
-    }));
-    if (!rows[0]?.id) {
-      state.visibleRows = rows.map((r, index) => ({
-        ...r,
-        selected: false,
-        id: index,
-      }));
-    } else {
-      state.visibleRows = rows.map((r) => ({ ...r, selected: false }));
-    }
+    const { enhancedColumns, visibleRows } = payload;
+    state.visibleRows = visibleRows;
+    state.enhancedColumns = enhancedColumns;
+  }),
+
+  fakeAppendTableData: action((state, { rows, index }) => {
+    console.log(index, rows);
+    state.visibleRows = [
+      ...state.visibleRows.slice(0, index + 1),
+      ...rows,
+      ...state.visibleRows.slice(index + 1),
+    ];
   }),
 
   toggleVisibleColumns: action((state, { index }) => {
@@ -186,7 +180,6 @@ export const vtStore: VTStoreModel = {
   }),
 
   filterAdd: action((state, { columnKey }) => {
-    console.log(columnKey);
     state.showFilter = true;
     const col = state.enhancedColumns.filter((ec) => ec.key === columnKey);
     if (!col || col.length === 0) {

@@ -11,6 +11,7 @@ import {
   QuerySelectType,
   TotalWidth,
 } from "../types/useTableResizer";
+import { useTableSizeAction } from "@/container/TableSizeProvider";
 // import { useStoreState } from "../store/reducerHooks";
 
 export const useTableResizer = (
@@ -23,9 +24,9 @@ export const useTableResizer = (
   const widthRef = useRef<number | string>(tableWidth);
   const dirRef = useRef(direction);
   const currentWidths = useRef<CurrentWidths>({});
-  const currentField = useRef<string>();
   const totalWidth = useRef<TotalWidth>(0);
-  
+  const currentField = useRef<string>();
+  const actions = useTableSizeAction();
   const tableRef = useRef<HTMLDivElement | null | undefined>();
 
   // const dir = useStoreState((state) => state.settings.direction);
@@ -90,12 +91,6 @@ export const useTableResizer = (
       } else {
         totalWidth.current = headerWidth;
       }
-      // if (tableRef.current) {
-      //   tableRef.current.style.width = `${headerWidth}px`
-      //   tableRef.current.style.minWidth = `${headerWidth}px`
-      //   tableRef.current.style.maxWidth = `${headerWidth}px`
-
-      // };
 
       columnElements.current.forEach((el, index) => {
         if (index === 0) {
@@ -109,9 +104,9 @@ export const useTableResizer = (
         }
       });
       rowRef.current.forEach((el) => {
-        el.style.width = `${totalWidth.current}px`;
-        el.style.minWidth = `${totalWidth.current}px`;
-        el.style.maxWidth = `${totalWidth.current}px`;
+        el.style.width = `${headerWidth}px`;
+        el.style.minWidth = `${headerWidth}px`;
+        el.style.maxWidth = `${headerWidth}px`;
       });
     };
 
@@ -128,10 +123,13 @@ export const useTableResizer = (
       if (dirRef.current === "rtl") {
         currentWidths.current[currentField.current] =
           -e.clientX + columnElements.current[0].getBoundingClientRect().right;
+        actions.setCurrentWidth({ currentWidths: currentWidths.current });
       } else {
         currentWidths.current[currentField.current] =
           e.clientX - columnElements.current[0].getBoundingClientRect().left;
+        actions.setCurrentWidth({ currentWidths: currentWidths.current });
       }
+      actions.setTotalWidth({ totalWidth: totalWidth.current });
     };
 
     const removeMouseDown = (table: HTMLDivElement) => {
@@ -160,12 +158,7 @@ export const useTableResizer = (
   useEffect(() => {
     widthRef.current = tableWidth;
     dirRef.current = direction;
-  }, [tableWidth,direction]);
+  }, [tableWidth, direction]);
 
-  return {
-    currentWidths,
-    totalWidth,
-    setTableRef,
-    tableRef,
-  };
+  return { setTableRef, tableRef };
 };

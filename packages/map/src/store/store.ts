@@ -1,5 +1,13 @@
 import { action, Action, createStore, thunk, Thunk } from "easy-peasy";
-import { AvailableTimes, Mode, Period, SyncedLayer } from "../types/common";
+import {
+  AvailableTimes,
+  FormattedData,
+  CurrentData,
+  Mode,
+  Period,
+  SyncedLayer,
+  Users,
+} from "../types/common";
 
 import {
   seekNearestTimeIndex,
@@ -16,6 +24,9 @@ export interface TDStoreModel {
   loadingTimeIndex: number;
   currentTimeIndex: number;
   currentTime: number;
+  currentData: CurrentData | null;
+  users: Users | null;
+  formattedData: FormattedData;
   numberNextTimesReady: number;
   availableTimes: AvailableTimes;
   syncedLayers: SyncedLayer;
@@ -40,6 +51,8 @@ export interface TDStoreModel {
       period: Period;
     }
   >;
+
+  setData: Action<TDStoreModel, { formattedData: FormattedData; users: Users }>;
 
   setCurrentTimeIndex: Thunk<
     TDStoreModel,
@@ -77,7 +90,10 @@ export const tdStoreModel: TDStoreModel = {
   loadingTimeIndex: -1,
   currentTimeIndex: -1,
   currentTime: -1,
+  currentData: null,
+  users: null,
   numberNextTimesReady: 0,
+  formattedData: [],
   availableTimes: [],
   syncedLayers: [],
   setTimeloadingIndex: action((state, { newTimeIndex }) => {
@@ -88,13 +104,18 @@ export const tdStoreModel: TDStoreModel = {
     if (state.loadingTimeIndex === -1) {
       return;
     }
-    state.currentTime = state.availableTimes[state.loadingTimeIndex];
+    state.currentData = state.formattedData[state.loadingTimeIndex];
+    state.currentTime = state.formattedData[state.loadingTimeIndex].time;
     state.currentTimeIndex = state.loadingTimeIndex;
     // console.log("END -- Current time: " + new Date(time).toISOString());
 
     state.loadingTimeIndex = -1;
   }),
 
+  setData: action((state, { formattedData, users }) => {
+    state.formattedData = formattedData;
+    state.users = users;
+  }),
   setAvailableTime: action((state, { times, mode, period }) => {
     const _availableTimes = setAvailableTime(
       mode,
@@ -124,13 +145,14 @@ export const tdStoreModel: TDStoreModel = {
 
   setCurrentTime: thunk((actions, { time }, helper) => {
     const state = helper.getState();
-    var index = seekNearestTimeIndex(time, state.availableTimes);
+    var index = seekNearestTimeIndex(time, state.formattedData);
+
     actions.setCurrentTimeIndex({ index });
   }),
 
   setCurrentTimeIndex: thunk((actions, { index }, helper) => {
     const state = helper.getState();
-    var upperLimit = state.upperLimitIndex || state.availableTimes.length - 1;
+    var upperLimit = state.upperLimitIndex || state.formattedData.length - 1;
     var lowerLimit = state.lowerLimitIndex || 0;
     //clamp the value
     const newTimeIndex = Math.min(Math.max(lowerLimit, index), upperLimit);
@@ -141,17 +163,17 @@ export const tdStoreModel: TDStoreModel = {
     actions.setTimeloadingIndex({ newTimeIndex });
     // const newTime = state.availableTimes[newTimeIndex];
     // console.log("INIT -- Current time: " + new Date(newTime).toISOString());
-    if (
-      checkSyncedLayersReady(
-        state.availableTimes[state.loadingTimeIndex],
-        state.syncedLayers
-      )
-    ) {
-      actions.setNewTimeIndex();
-    } else {
-      // add timeout of 3 seconds if layers doesn't response
-      setTimeout(actions.setNewTimeIndex, 3000);
-    }
+    // if (
+    //   checkSyncedLayersReady(
+    //     state.availableTimes[state.loadingTimeIndex],
+    //     state.syncedLayers
+    //   )
+    // ) {
+    actions.setNewTimeIndex();
+    // } else {
+    //   // add timeout of 3 seconds if layers doesn't response
+    //   setTimeout(actions.setNewTimeIndex, 3000);
+    // }
   }),
 
   nextTime: thunk((actions, { numSteps, loop }, helper) => {
@@ -161,7 +183,7 @@ export const tdStoreModel: TDStoreModel = {
       numSteps = 1;
     }
     let newIndex = state.currentTimeIndex;
-    var upperLimit = state.upperLimitIndex || state.availableTimes.length - 1;
+    var upperLimit = state.upperLimitIndex || state.formattedData.length - 1;
     var lowerLimit = state.lowerLimitIndex || 0;
     if (state.loadingTimeIndex > -1) {
       newIndex = state.loadingTimeIndex;
@@ -207,7 +229,7 @@ export const tdStoreModel: TDStoreModel = {
     }
     var count = howmany;
     const upperLimit: number =
-      state.upperLimitIndex || state.availableTimes.length - 1;
+      state.upperLimitIndex || state.formattedData.length - 1;
     const lowerLimit: number = state.lowerLimitIndex || 0;
     while (count > 0) {
       newIndex = newIndex + numSteps;

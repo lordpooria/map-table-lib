@@ -31,16 +31,14 @@ const VirtualizaTable = memo(
     classes,
     direction,
     pagination,
+    tableDataParser,
     ...rest
   }: VirtualTableProps) => {
     const tableClasses = useStyles();
-    useTableData(columns, rows);
-    const { setTableRef, currentWidths, totalWidth } = useTableResizer(
-      width,
-      direction
-    );
-
-    const staticGrid = useRef<VariableSizeList | null>();
+    useTableData(columns, rows,tableDataParser);
+    const { setTableRef } = useTableResizer(width, direction);
+    const staticGrid = useRef<VariableSizeList | null | undefined>();
+    const mainList = useRef<VariableSizeList | null | undefined>();
 
     const onScroll = useCallback(({ // scrollDirection,
       scrollOffset, scrollUpdateWasRequested }: ListOnScrollProps) => {
@@ -54,7 +52,6 @@ const VirtualizaTable = memo(
     // const stickyColumns = useTStoreState((state) => state.stickyColumns);
     const visibleColumns = useTStoreState((state) => state.visibleColumns);
     const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
-
     if (
       !visibleRows ||
       visibleRows.length === 0 ||
@@ -79,7 +76,7 @@ const VirtualizaTable = memo(
           classes={classes?.toolbar}
           {...rest.VirtualToolbarProps}
         />
-        
+
         <div
           role="table"
           className={classes?.table?.container}
@@ -108,6 +105,7 @@ const VirtualizaTable = memo(
           /> */}
 
           <VirtualList
+            ref={mainList}
             direction={direction}
             height={height}
             width={width}
@@ -119,8 +117,7 @@ const VirtualizaTable = memo(
             sortable={sortable}
             resizable={resizable}
             numRowsSelected={numRowsSelected}
-            totalWidth={totalWidth.current}
-            currentWidths={currentWidths.current}
+          
             classes={classes}
             setTableRef={setTableRef}
             tableClasses={tableClasses}

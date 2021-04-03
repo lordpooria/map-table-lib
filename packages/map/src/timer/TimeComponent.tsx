@@ -8,13 +8,13 @@ import {
   usePerisan,
   findIsAM,
 } from "./dateFormatter";
-import Clock from "react-clock";
 
 import { Typography } from "@material-ui/core";
 import { useTDStoreState } from "../store/reducerHooks";
 import useStyles from "./TimeComponent.styles";
 import { TimeProps } from "./TimeComponent.types";
 import clsx from "clsx";
+import ClockComponent from "./ClockComponent";
 // import { TimeZone } from "../types";
 
 const TimerComponent = ({
@@ -28,6 +28,7 @@ const TimerComponent = ({
   usePerisan();
   const currentTime = useTDStoreState((state) => state.currentTime);
   const timeClasses = useStyles();
+  
 
   useEffect(() => {
     update(currentTime);
@@ -56,9 +57,10 @@ const TimerComponent = ({
   return (
     <div className={timeClasses.root}>
       <div className={timeClasses.clockWrapper}>
-        <Clock value={state.displayTime} size={80} 
-        renderNumbers={true}
-        {...clockProps} />
+        <ClockComponent
+          displayTime={state.displayTime}
+          clockProps={clockProps}
+        />
         <Typography className={clsx(timeClasses.amPm, amPmClasses)}>
           {state.isAM ? am : pm}
         </Typography>

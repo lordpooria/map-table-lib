@@ -1,12 +1,12 @@
-import { GeoJsonObject } from "geojson";
 import { MapContainerProps } from "react-leaflet";
 import { PlayerProps } from "../player/PlayerControl.types";
 import { TimeProps } from "../timer/TimeComponent.types";
 import { GeoJSONOptions } from "leaflet";
 import { TDLayerOptions } from "./layer";
+import { GeoJSONData } from "./common";
 
 export interface HesabaTimeDimensionProps {
-  data: GeoJsonObject;
+  data: GeoJSONData;
   mapProps: MapContainerProps & {
     classes?: { root?: string };
   };
@@ -20,7 +20,7 @@ export interface HesabaTimeDimensionProps {
 }
 
 export interface TimeDimensionViewProps {
-    data: GeoJsonObject;
+    data: GeoJSONData;
     playerProps: PlayerProps;
     timeProps: TimeProps;
     geojsonProps: GeoJSONOptions;

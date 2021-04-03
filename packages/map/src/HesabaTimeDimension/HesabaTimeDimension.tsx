@@ -1,5 +1,4 @@
 import React from "react";
-import TDProvider from "./Provider";
 import { TileLayer, MapContainer } from "react-leaflet";
 import {
   createMuiTheme,
@@ -7,14 +6,16 @@ import {
   ThemeOptions,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import clsx from "clsx";
+import TDProvider from "./Provider";
 import rawThemeObj from "../styles/theme";
 
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
 import useStyles from "./HesabaTimeDimension.styles";
-import clsx from "clsx";
 
 import TDTable from "../table/TDTable";
 import { HesabaTimeDimensionProps } from "../types/HesabaTimeDimension";
+import { useParseData } from "../hooks/useParseData";
 
 const HesabaTimeDimension = ({
   withTable = false,
@@ -45,7 +46,7 @@ const CommonMap = ({
   extralLayerProps,
 }: HesabaTimeDimensionProps) => {
   const classes = useStyles();
-  console.log(data);
+  useParseData(data);
   return (
     <MapContainer
       className={clsx(classes.mapRoot, mapProps.classes?.root)}

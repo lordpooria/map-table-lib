@@ -12,6 +12,7 @@ import HeaderMenu from "../virtualize-table/header/HeaderMenu";
 import useCommonStyles from "../styles/commonStyles";
 import { HeaderCellProps } from "@/types/tableElements";
 import DividerIcon from "@/assets/icons/common/DividerIcon";
+import { useTableSizeState } from "@/container/TableSizeProvider";
 
 const useHeadStyles = makeStyles((theme) =>
   createStyles({
@@ -59,13 +60,14 @@ const HeadCell = ({
   sortable,
   resizable,
   colIndex,
-  currentWidths,
+  // currentWidths,
   classes,
   sticky,
   ...rest
 }: HeaderCellProps) => {
   const cellClasses = useHeadStyles();
   const commonClasses = useCommonStyles();
+  const { currentWidths } = useTableSizeState();
   // const setStickyColumn = useStoreActions((actions) => actions.setStickyColumn);
   const calcMinWidth = currentWidths[rest[DATA_FIELD]]
     ? currentWidths[rest[DATA_FIELD]]

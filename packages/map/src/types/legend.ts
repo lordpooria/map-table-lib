@@ -1,7 +1,8 @@
 import { ControlOptions } from "leaflet";
+import { Users } from "./common";
 
 interface LegendsOwnProps {
-  legends: Array<any>;
+  users: Users | null;
 }
 
 export type LegendsProps = ControlOptions & LegendsOwnProps;

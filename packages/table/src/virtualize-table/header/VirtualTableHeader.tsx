@@ -13,6 +13,7 @@ import useCommonStyles from "../../styles/commonStyles";
 
 import { CommonHeaderProps } from "@/types/tableElements";
 import { calcRowWidth } from "@/utils/helper";
+import { useTableSizeState } from "@/container/TableSizeProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -50,7 +51,7 @@ const VirtualTableHeader = ({
   selectable,
   columns,
   isSelected,
-  totalWidth,
+  // totalWidth,
   classes,
 
   ...rest
@@ -58,6 +59,7 @@ const VirtualTableHeader = ({
   const tableClasses = useStyles();
   // const commonClasses = useCommonStyles();
   const commonClasses = useCommonStyles();
+  const { totalWidth } = useTableSizeState();
 
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
 

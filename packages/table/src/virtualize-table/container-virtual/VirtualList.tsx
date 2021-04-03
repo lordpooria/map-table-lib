@@ -1,4 +1,4 @@
-import React, { forwardRef,  memo } from "react";
+import React, { forwardRef, memo, useRef, useState } from "react";
 import { VariableSizeList as List } from "react-window";
 
 import VirtualTableRow from "../rows/VirtualTableRow";
@@ -23,8 +23,8 @@ const VirtualList = memo(
         sortable,
         resizable,
         numRowsSelected,
-        totalWidth,
-        currentWidths,
+        // totalWidth,
+        // currentWidths,
         classes,
         setTableRef,
         tableClasses,
@@ -32,6 +32,27 @@ const VirtualList = memo(
       }: any,
       ref
     ) => {
+      const [rowSizes, setRowSizes] = useState(
+        new Array(rows.length).fill(true).reduce((acc, item, i) => {
+          acc[i] = 50;
+          return acc;
+        }, {})
+      );
+
+      function toggleSize(i: number) {
+        if (ref) {
+          (ref as any).resetAfterIndex(i);
+        }
+        setRowSizes((prevState) => ({
+          ...prevState.rowSizes,
+          [i]: prevState.rowSizes[i] === 50 ? 75 : 50,
+        }));
+      }
+
+      function getSize(i: number) {
+        return rowSizes[i];
+      }
+
       const innerElementType = ({
         children,
         style,
@@ -44,11 +65,9 @@ const VirtualList = memo(
           <VirtualTableHeader
             selectable={selectable}
             sortable={sortable}
-            currentWidths={currentWidths}
             columns={columns}
             resizable={resizable}
             isSelected={numRowsSelected !== 0}
-            totalWidth={totalWidth}
             classes={classes?.header}
             // placeholderColumns={placeholderColumns}
             // placeholderTotalWidth={placeholderTotalWidth}
@@ -67,7 +86,7 @@ const VirtualList = memo(
           height={height}
           itemCount={rows.length}
           onScroll={onScroll}
-          itemSize={itemSize}
+          itemSize={getSize}
           itemKey={(index) => rows[index].id}
           width={width}
           itemData={rows}
@@ -76,20 +95,19 @@ const VirtualList = memo(
           className={clsx(tableClasses.root, classes?.table?.root)}
         >
           {({ index, ...rest }) => (
-           
-              <VirtualTableRow
-                rowIndex={index}
-                selectable={selectable}
-                totalWidth={totalWidth}
-                currentWidths={currentWidths}
-                columns={columns}
-                rows={rows}
-                classes={classes?.row}
-                {...rest}
-                // placeholderColumns={placeholderColumns}
-                // placeholderTotalWidth={placeholderTotalWidth}
-                // placeholderCurrentWidths={placeholderCurrentWidths}
-              />
+            <VirtualTableRow
+              rowIndex={index}
+              selectable={selectable}
+              // totalWidth={totalWidth}
+              // currentWidths={currentWidths}
+              columns={columns}
+              rows={rows}
+              classes={classes?.row}
+              {...rest}
+              // placeholderColumns={placeholderColumns}
+              // placeholderTotalWidth={placeholderTotalWidth}
+              // placeholderCurrentWidths={placeholderCurrentWidths}
+            />
           )}
         </List>
       );

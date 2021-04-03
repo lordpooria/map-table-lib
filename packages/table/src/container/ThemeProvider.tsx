@@ -39,7 +39,6 @@ const ThemeMaker = ({
   direction,
   theme: externalTheme,
 }: WrapperProps) => {
-  console.log(externalTheme)
   const lang = useTStoreState((state) => state.settings.lang);
   let localRawThemeObj;
   if (externalTheme) {

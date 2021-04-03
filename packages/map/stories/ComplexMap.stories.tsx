@@ -1,14 +1,16 @@
-import data from "./me.json";
+import data from "./small_data.json";
 import { TileLayer } from "react-leaflet";
 import L from "leaflet";
 
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import { storiesOf } from "@storybook/react";
 import { _getFeatureTimes } from "../src/utils/layer.util";
+import { baseMapProps, commonGeojsonProps } from "./constants";
 export default { title: "Different Data Map" };
 
 function getFeatureBetweenDates(feature, minTime, maxTime) {
   let featureStringTimes = _getFeatureTimes(feature);
+  console.log(featureStringTimes)
   if (featureStringTimes.length === 0) {
     return feature;
   }
@@ -33,33 +35,14 @@ export const ParseDifferentDataType = Template.bind({});
 
 ParseDifferentDataType.args = {
   data,
-  mapProps: {
-    center: [35.76498031616211, 51.33673858642578],
-    zoom: 15,
-    zoomControl: false,
-  },
+  mapProps: baseMapProps,
   layerProps: {
     updateTimeDimensionMode: "replace",
     addlastPoint: true,
     duration: "PT2M",
     updateTimeDimension: true,
   },
-  geojsonProps: {
-    style: function (feature) {
-      return { color: feature.properties.color };
-    },
-
-    pointToLayer: function (feature, latLng) {
-      return L.circleMarker(latLng, {
-        radius: 7,
-        color: feature.properties.color,
-        fillColor: feature.properties.color,
-        weight: 2,
-        opacity: 0.7,
-        fillOpacity: 0.1,
-      });
-    },
-  },
+  geojsonProps: commonGeojsonProps,
   extralLayerProps: { getFeatureBetweenDates },
   children: (
     <TileLayer

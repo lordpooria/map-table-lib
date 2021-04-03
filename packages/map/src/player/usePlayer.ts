@@ -37,7 +37,7 @@ export const usePlayer = ({
     (actions) => actions.setCurrentTimeIndex
   );
 
-  const availableTimes = useTDStoreState((state) => state.availableTimes);
+  const formattedData = useTDStoreState((state) => state.formattedData);
   const upperLimitIndex = useTDStoreState((state) => state.upperLimitIndex);
   const lowerLimitIndex = useTDStoreState((state) => state.lowerLimitIndex);
 
@@ -72,8 +72,8 @@ export const usePlayer = ({
   }, [setPlay,setReversePlay]);
 
   const _getMaxIndex = useCallback(() => {
-    return Math.min(availableTimes.length - 1, upperLimitIndex || Infinity);
-  }, [availableTimes, upperLimitIndex]);
+    return Math.min(formattedData.length - 1, upperLimitIndex || Infinity);
+  }, [formattedData, upperLimitIndex]);
 
   useEffect(() => {
     const maxIndex = _getMaxIndex();
@@ -146,11 +146,7 @@ export const usePlayer = ({
     if (autoPlay) {
       start();
     }
-  }, [autoPlay, availableTimes]);
+  }, [autoPlay, formattedData]);
 
   return { start, stop, startReverse };
 };
-
-export function usePlayerFinished(){
-  
-}

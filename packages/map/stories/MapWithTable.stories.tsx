@@ -2,7 +2,7 @@ import React from "react";
 import "leaflet/dist/leaflet.css";
 
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
-import data from "./track_bus699.json";
+import data from "./small_data.json";
 // export default { title: "Basic Map" };
 import { storiesOf } from "@storybook/react";
 import { baseLayerProps, baseMapProps, commonGeojsonProps } from "./constants";

@@ -1,16 +1,15 @@
 import { TablePaginationProps } from "@material-ui/core";
 import { TableColumn, TableColumns, TableRows } from "./main";
 import { CellClasses, HeaderClasses } from "./styles";
-import { CurrentWidths } from "./useTableResizer";
 
 export interface CommonHeaderProps {
   selectable?: boolean;
   resizable?: boolean;
   sortable?: boolean;
   isSelected: boolean;
-  currentWidths: CurrentWidths;
+  // currentWidths: CurrentWidths;
+  // totalWidth: number;
   columns: TableColumns;
-  totalWidth: number;
   classes?: HeaderClasses;
   stickyColumns?: TableColumns;
 }
@@ -18,21 +17,21 @@ export interface CommonHeaderProps {
 export interface HeaderCellProps extends TableColumn {
   colIndex: number;
   colKey: string;
-  currentWidths: CurrentWidths;
+  // currentWidths: CurrentWidths;
   sortable?: boolean;
   resizable?: boolean;
   classes?: CellClasses;
 }
 
-export interface CommonTableRowType {
+export interface CommonTableRowProps {
   style: any;
   rowIndex: number;
-  totalWidth: number;
-  currentWidths: CurrentWidths;
+  // totalWidth: number;
+  // currentWidths: CurrentWidths;
   columns: TableColumns;
   rows: TableRows;
   selectable?: boolean;
-  classes?: { root?: string };
+  classes?: { root?: string; evenRow?: string; oddRow?: string };
   stickyColumns?: TableColumns;
 }
 

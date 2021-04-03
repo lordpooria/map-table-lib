@@ -1,10 +1,10 @@
 import React from "react";
 import { AutoResizer, HesabaVirtualTable } from "@hesaba/table";
-import  { GeoJsonObject } from "geojson";
 import { useMapData } from "./useMapData";
+import { GeoJSONData } from "../types";
 
 interface Props {
-  data: GeoJsonObject
+  data: GeoJSONData
 }
 
 const TDTable = ({data}: Props) => {

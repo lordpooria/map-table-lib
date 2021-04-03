@@ -3,6 +3,7 @@ import { StoreProvider, useStore } from "easy-peasy";
 import store, { VTStoreModel } from "../store";
 import ThemeMaker from "./ThemeProvider";
 import { WrapperProps } from "@/virtualize-table/container-virtual";
+import { TableSizeProvider } from "./TableSizeProvider";
 
 const DataGridProvider: FC = ({ children }) => {
   const easyPeasyStore = useStore<VTStoreModel>();
@@ -19,9 +20,11 @@ const DataGridProvider: FC = ({ children }) => {
 
 const Provider = ({ children, direction, theme }: WrapperProps) => (
   <DataGridProvider>
-    <ThemeMaker direction={direction} theme={theme}>
-      {children}
-    </ThemeMaker>
+    <TableSizeProvider>
+      <ThemeMaker direction={direction} theme={theme}>
+        {children}
+      </ThemeMaker>
+    </TableSizeProvider>
   </DataGridProvider>
 );
 

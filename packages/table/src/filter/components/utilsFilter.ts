@@ -152,8 +152,7 @@ export const reorderValues = (
   op: FilterOperationsType,
   // val: FilterValuesType
 ) => {
-  console.log(type, op);
-  return !op.valSize
+ return !op.valSize
     ? []
     : // : op.valSize < val.length
       // ? val.slice(0, op.valSize)

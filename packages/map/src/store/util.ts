@@ -1,4 +1,10 @@
-import { AvailableTimes, Mode, Period, SyncedLayer } from "../types/common";
+import {
+  AvailableTimes,
+  FormattedData,
+  Mode,
+  Period,
+  SyncedLayer,
+} from "../types/common";
 import {
   explodeTimeRange,
   intersect_arrays,
@@ -8,15 +14,17 @@ import {
 
 export function seekNearestTimeIndex(
   time: number,
-  availableTimes: AvailableTimes
+  formattedData: FormattedData
 ) {
-  var newIndex = 0;
-  var len = availableTimes.length;
-  for (; newIndex < len; newIndex++) {
-    if (time < availableTimes[newIndex]) {
+  let newIndex = 0;
+  console.log(newIndex);
+  for (; newIndex < formattedData.length; newIndex++) {
+    console.log(formattedData[newIndex][0].properties.time);
+    if (time < formattedData[newIndex][0].properties.time) {
       break;
     }
   }
+  console.log(newIndex)
   // We've found the first index greater than the time. Return the previous
   if (newIndex > 0) {
     newIndex--;
@@ -65,7 +73,7 @@ export function setAvailableTime(
   times: AvailableTimes | undefined,
   period: Period,
   availableTimes: AvailableTimes
-):AvailableTimes {
+): AvailableTimes {
   if (mode == "extremes" && times) {
     return explodeTimeRange(
       new Date(times[0]),

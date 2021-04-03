@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { Fragment } from "react";
 import { commonSidebar } from "@/utils/themeConstants";
 import Cell from "@/cell/Cell";
-import { CommonTableRowType } from "@/types/tableElements";
+import { CommonTableRowProps } from "@/types/tableElements";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -39,7 +39,7 @@ const DataGridRow = ({
   rows,
   classes,
   stickyColumns,
-}: CommonTableRowType) => {
+}: CommonTableRowProps) => {
   const rowClasses = useStyles();
 
   const toggleSingleRow = useTStoreActions(

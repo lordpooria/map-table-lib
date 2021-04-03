@@ -1,61 +1,12 @@
 import { createStyles, makeStyles } from "@material-ui/styles";
-import VirtualizaTable from "../src/virtualize-table/VirtualizaTable";
-
-import { RawTableColumns } from "../src/types";
 import Operations from "./Operations";
-import { PercentCell, QualityCell } from "./table-test/CellComponent";
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
 import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
 import { storiesOf } from "@storybook/react";
-import { useCallback, useEffect, useState } from "react";
-import theme from './table-test/theme'
 
-
-const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
-  const random = Math.random();
-  return {
-    name: `name${item}`,
-    type: `type${item}`,
-    percent: Math.random() * 100,
-    vaildated:
-      random < 0.25
-        ? "Poor"
-        : random < 0.5
-        ? "Bad"
-        : random < 0.75
-        ? "Medium"
-        : "Good",
-  };
-});
-
-type keys = typeof rows[number];
-
-export const schemaColumns: RawTableColumns<keys> = [
-  {
-    label: "name",
-    key: "name",
-  },
-  {
-    label: "type",
-    key: "type",
-    type: "string",
-  },
-  // {
-  //   label: "percent",
-  //   key: "percent",
-  //   type: "date",
-  //   CellComponent: PercentCell,
-  // },
-
-  // {
-  //   label: "vaildated",
-  //   key: "vaildated",
-  //   type: "number",
-  //   CellComponent: QualityCell,
-  // },
-];
-
-
+import theme from "./table-test/theme";
+import { simpleRows, simpleSchemaColumns } from "./table-test/fakeData";
+import { CommonVirtualTableContainer } from "./table-test/container";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -86,80 +37,69 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export const useTableData = () => {
-  const [table, setTable] = useState({ schemaColumns: [], rows: [] });
-
-  const getData = useCallback(async () => {
-    const res: any = await fetch(
-      `http://0.0.0.0:5000/api/get-schema/employees`
+storiesOf("Virtual Table Styles", module)
+  .add("Customizable Theme Styles", () => {
+    return (
+      <CommonVirtualTableContainer>
+        <AutoResizer>
+          {({ width, height }) => (
+            <HesabaVirtualTable
+              height={height}
+              width={width}
+              columns={simpleSchemaColumns}
+              rows={simpleRows}
+              selectable
+              resizable
+              sortable
+              pagination={{
+                rowsPerPage: 10,
+                count: 20,
+                page: 1,
+                onPageChange: () => {},
+              }}
+              theme={theme as any}
+              title="Simple Table"
+              operationOnRows={[Operations]}
+              direction="ltr"
+            />
+          )}
+        </AutoResizer>
+      </CommonVirtualTableContainer>
     );
-    const jsonRes = await res.json();
-
-    const schemaColumns = jsonRes?.schema.map((s) => ({
-      label: s.name,
-      key: s.name,
-      type: s.type,
-    }));
-    setTable((prevState) => ({
-      ...prevState,
-      rows: jsonRes?.tableData,
-      schemaColumns,
-    }));
-  }, []);
-  useEffect(() => {
-    getData();
-    //   if (!error && data?.data?.schema) {
-    //     const formattedSchema = setTableSchema(data?.data?.schema);
-    //     const schemaColumns = formattedSchema.map((s) => ({
-    //       label: s.name,
-    //       key: s.name,
-    //       type: s.type,
-    //     }));
-    //     setTable((prevState) => ({
-    //       ...prevState,
-    //       rows: data?.data?.tableData,
-    //       schemaColumns,
-    //     }));
-    //   }
-  }, [getData]);
-
-  return table;
-};
-
-storiesOf("Virtual Table Styles", module).add("Theme Styles", () => {
-  const classes = useStyles();
-  return (
-    <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
-      <AutoResizer>
-        {({ width, height }) => (
-          <HesabaVirtualTable
-            height={height}
-            width={width}
-            columns={schemaColumns}
-            rows={rows}
-            selectable
-            resizable
-            sortable
-            pagination={{
-              rowsPerPage: 10,
-              count: 20,
-              page: 1,
-              onPageChange: () => {},
-            }}
-            theme={theme as any}
-            // classes={{
-            //   table: { container: classes.root },
-            //   row: { root: classes.row, cell: { root: classes.cell } },
-            //   footer: { root: classes.footer },
-            //   toolbar: { root: classes.toolbar },
-            //   header: { root: classes.header, cell: { root: classes.cell } },
-            // }}
-            // title="Simple Table"
-            operationOnRows={[Operations]}
-            direction="ltr"
-          />
-        )}
-      </AutoResizer>
-    </div>
-  );
-});
+  })
+  .add("Customizable Custom Component Styles With css styles", () => {
+    const classes = useStyles();
+    return (
+      <CommonVirtualTableContainer>
+        <AutoResizer>
+          {({ width, height }) => (
+            <HesabaVirtualTable
+              height={height}
+              width={width}
+              columns={simpleSchemaColumns}
+              rows={simpleRows}
+              selectable
+              resizable
+              sortable
+              pagination={{
+                rowsPerPage: 10,
+                count: 20,
+                page: 1,
+                onPageChange: () => {},
+              }}
+              classes={{
+                table: { container: classes.root },
+                row: { root: classes.row, cell: { root: classes.cell } },
+                footer: { root: classes.footer },
+                toolbar: { root: classes.toolbar },
+                header: { root: classes.header, cell: { root: classes.cell } },
+              }}
+              title="Simple Table"
+              operationOnRows={[Operations]}
+              direction="ltr"
+            />
+          )}
+        </AutoResizer>
+      </CommonVirtualTableContainer>
+    );
+  });

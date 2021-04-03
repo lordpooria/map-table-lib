@@ -1,15 +1,16 @@
 import React from "react";
-import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
+import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
 
 import { useTStoreActions } from "../../store/reducerHooks";
 import Cell from "../../cell/Cell";
 import { Fragment } from "react";
 import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
-import { CommonTableRowType } from "@/types/tableElements";
+import { CommonTableRowProps } from "@/types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
 import { calcRowWidth } from "@/utils/helper";
+import { useTableSizeState } from "@/container/TableSizeProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -20,7 +21,6 @@ const useStyles = makeStyles((theme) =>
     tableRow: {
       display: "flex",
       alignItems: "center",
-      // flexDirection: theme.direction === "rtl" ? "row-reverse" : "row",
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
       "&:hover": {
         backgroundColor: "rgba(0,0,0,0.1)",
@@ -33,42 +33,54 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const VirtualTableRow = ({
+export function VirtualTableRow(props: CommonTableRowProps) {
+  return (
+    <>
+      <SingleVirtualTableRow {...props} />
+    </>
+  );
+}
+
+const SingleVirtualTableRow = ({
   style,
   rowIndex,
-  totalWidth,
+  // totalWidth,
   selectable,
   columns,
   rows,
   classes,
   ...rest
-}: CommonTableRowType) => {
+}: CommonTableRowProps) => {
   const rowClasses = useStyles();
   const commonClasses = useCommonStyles();
 
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
-  
+
+  const { totalWidth } = useTableSizeState();
+
   return (
     <div
       style={{
         ...style,
         width: calcRowWidth(totalWidth, columns),
         overflow: "hidden",
-        // alignItems: "stretch",
-        // width: "100%",
-
         marginTop: commonSidebar.itemHeight,
       }}
-      key={rows[rowIndex].name}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
         rowClasses.tableRow,
         classes?.root,
-        { [rowClasses.selected]: rows[rowIndex].selected }
-        // { [classes.evenRow]: index % 2 === 0 },
-        // { [classes.oddRow]: index % 2 !== 0 }
+        { [rowClasses.selected]: rows[rowIndex].selected },
+        {
+          [classes?.evenRow || "tempEvenRow"]:
+            classes?.evenRow && rowIndex % 2 === 0,
+        },
+        {
+          [classes?.oddRow || "tempOddRow"]:
+            classes?.oddRow && rowIndex % 2 !== 0,
+        }
       )}
     >
       {selectable && (
