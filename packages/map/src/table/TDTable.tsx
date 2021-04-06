@@ -1,15 +1,15 @@
 import React from "react";
 import { AutoResizer, HesabaVirtualTable } from "@hesaba/table";
 import { useMapData } from "./useMapData";
-import { GeoJSONData } from "../types";
+// import { GeoJSONData } from "../types";
 
-interface Props {
-  data: GeoJSONData
-}
+// interface Props {
+//   data: GeoJSONData
+// }
 
-const TDTable = ({data}: Props) => {
+const TDTable = () => {
   
-  const { rows, schemaColumns } = useMapData(data);
+  const { rows, schemaColumns } = useMapData();
   return (
     <div style={{ width: " calc(50vw + 220px)", height: "95vh" }}>
       <AutoResizer>

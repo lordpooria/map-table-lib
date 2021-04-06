@@ -1,11 +1,11 @@
-import data from "./small_data.json";
+import data from "./utils/data/small_data.json";
 import { TileLayer } from "react-leaflet";
 import L from "leaflet";
 
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import { storiesOf } from "@storybook/react";
 import { _getFeatureTimes } from "../src/utils/layer.util";
-import { baseMapProps, commonGeojsonProps } from "./constants";
+import { baseMapProps, commonGeojsonProps } from "./utils/constants";
 export default { title: "Different Data Map" };
 
 function getFeatureBetweenDates(feature, minTime, maxTime) {

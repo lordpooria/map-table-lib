@@ -4,28 +4,29 @@ import { useLayer } from "../layer";
 import { PlayerController } from "../player";
 import { TimeComponent } from "../timer";
 import LegendComponent from "../legend/LegendComponent";
-import { useMap } from "react-leaflet";
+
 import { TimeDimensionViewProps } from "../types/HesabaTimeDimension";
 
 const HesabaTimeDimensionView = ({
-  data,
+  // data,
   playerProps,
   timeProps,
-  layerProps,
+  // layerProps,
   geojsonProps,
-  extralLayerProps = {},
-}: // addLayer,
+  map,
+}: // extralLayerProps = {},
+// addLayer,
 // removeLayer,
 // map,
 TimeDimensionViewProps) => {
-  const map = useMap();
-  useLayer(data as any, map, geojsonProps, layerProps, extralLayerProps);
+  // const map = useMap();
+  useLayer(map, geojsonProps);
 
   return (
     <>
       <PlayerController leafletMap={map} {...playerProps} />
       <TimeComponent {...timeProps} />
-      <LegendComponent legends={[0, 1, 2, 3, 4]} />
+      <LegendComponent />
     </>
   );
 };

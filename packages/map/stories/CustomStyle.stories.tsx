@@ -1,9 +1,12 @@
 import React from "react";
 import "leaflet/dist/leaflet.css";
-import { TileLayer } from "react-leaflet";
+import { TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
-import data from "./small_data.json";
+import data from "./utils/data/small_data.json";
+import MapProvider from "./utils/MapProvider";
+import CustomStyleTransparentMD from "./docs/CustomStyleTransparent.md";
+import CustomStyleMDPlayerThumb from "./docs/CustomStylePlayerThumb.md";
 // export default { title: "Basic Map" };
 import { storiesOf } from "@storybook/react";
 import {
@@ -16,73 +19,108 @@ import {
   useOtherClasses as useOtherClasses2,
   useClockStyles as useClockStyles2,
 } from "./custom.styles/custom.styles2";
-import { commonGeojsonProps, baseMapProps, baseLayerProps } from "./constants";
+import {
+  commonGeojsonProps,
+  baseMapProps,
+  baseLayerProps,
+} from "./utils/constants";
+
+const TranparentBackground = () => {
+  const clockClasses = useClockStyles();
+  const playerClasses = useSliderStyles();
+  const otherClasses = useOtherClasses();
+  const map = useMap();
+  return (
+    <HesabaTimeDimension
+      data={data as any}
+      map={map}
+      // layerProps={{
+      //   addlastPoint: true,
+      // }}
+      timeProps={{
+        clockProps: { classes: clockClasses, renderNumbers: true },
+        dateClasses: otherClasses.dateClasses,
+        amPmClasses: otherClasses.amPmClasses,
+      }}
+      playerProps={{
+        classes: {
+          playerSlider: playerClasses,
+          speedSlider: playerClasses,
+          icons: otherClasses.icons,
+          iconButton: otherClasses.iconButton,
+          root: otherClasses.root,
+        },
+      }}
+      geojsonProps={commonGeojsonProps}
+    />
+  );
+};
+
+const DifferentPlayerThumb = () => {
+  const clockClasses = useClockStyles2();
+  const playerClasses = useSliderStyles2();
+  const otherClasses = useOtherClasses2();
+  const map = useMap();
+  return (
+    <HesabaTimeDimension
+      data={data as any}
+      map={map}
+      // layerProps={{  addlastPoint: true }}
+      timeProps={{
+        clockProps: { classes: clockClasses, renderNumbers: true },
+        dateClasses: otherClasses.dateClasses,
+        amPmClasses: otherClasses.amPmClasses,
+      }}
+      playerProps={{
+        classes: {
+          playerSlider: playerClasses,
+          speedSlider: playerClasses,
+          icons: otherClasses.icons,
+          iconButton: otherClasses.iconButton,
+          root: otherClasses.root,
+        },
+      }}
+      geojsonProps={commonGeojsonProps}
+    />
+  );
+};
 
 storiesOf("Custom Styles", module)
-  .add("Version 1", () => {
-    const clockClasses = useClockStyles();
-    const playerClasses = useSliderStyles();
-    const otherClasses = useOtherClasses();
-    return (
-      <HesabaTimeDimension
-        data={data as any}
-        mapProps={baseMapProps}
-        layerProps={{
-          ...baseLayerProps,
-          addlastPoint: true,
-        }}
-        timeProps={{
-          clockProps: { classes: clockClasses, renderNumbers: true },
-          dateClasses: otherClasses.dateClasses,
-          amPmClasses: otherClasses.amPmClasses,
-        }}
-        playerProps={{
-          classes: {
-            playerSlider: playerClasses,
-            speedSlider: playerClasses,
-            icons: otherClasses.icons,
-            iconButton: otherClasses.iconButton,
-            root: otherClasses.root,
-          },
-        }}
-        geojsonProps={commonGeojsonProps}
-      >
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </HesabaTimeDimension>
-    );
-  })
-  .add("Version 2", () => {
-    const clockClasses = useClockStyles2();
-    const playerClasses = useSliderStyles2();
-    const otherClasses = useOtherClasses2();
-    return (
-      <HesabaTimeDimension
-        data={data as any}
-        mapProps={baseMapProps}
-        layerProps={{ ...baseLayerProps, addlastPoint: true }}
-        timeProps={{
-          clockProps: { classes: clockClasses, renderNumbers: true },
-          dateClasses: otherClasses.dateClasses,
-          amPmClasses: otherClasses.amPmClasses,
-        }}
-        playerProps={{
-          classes: {
-            playerSlider: playerClasses,
-            speedSlider: playerClasses,
-            icons: otherClasses.icons,
-            iconButton: otherClasses.iconButton,
-            root: otherClasses.root,
-          },
-        }}
-        geojsonProps={commonGeojsonProps}
-      >
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </HesabaTimeDimension>
-    );
-  });
+  .add(
+    "Transparent background time dimension",
+    () => {
+      return (
+        <MapProvider>
+          <TranparentBackground />
+        </MapProvider>
+      );
+    },
+    {
+      readme: {
+        content: CustomStyleTransparentMD,
+        sidebar: "Please Read me2",
+        // This is not necessary in normal situation. The reason for
+        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
+        // specified in `excludePropTables` at `config.js`
+      },
+    }
+  )
+  .add(
+    "With Different Player Thumb",
+    () => {
+      return (
+        <MapProvider>
+          <DifferentPlayerThumb />
+        </MapProvider>
+      );
+    },
+    {
+      readme: {
+        content: CustomStyleMDPlayerThumb,
+        sidebar: "Please Read me2",
+        // This is not necessary in normal situation. The reason for
+        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
+        // specified in `excludePropTables` at `config.js`
+      },
+    }
+  );

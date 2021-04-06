@@ -1,5 +1,5 @@
 import { Action, Thunk } from "easy-peasy";
-import { AvailableTimes, Mode, Period, SyncedLayer } from "../types";
+import { AvailableTimes, FormattedData, CurrentData, Mode, Period, SyncedLayer, Users } from "../types/common";
 export interface TDStoreModel {
     tdVersion: string;
     lowerLimitIndex: number;
@@ -7,6 +7,9 @@ export interface TDStoreModel {
     loadingTimeIndex: number;
     currentTimeIndex: number;
     currentTime: number;
+    currentData: CurrentData | null;
+    users: Users | null;
+    formattedData: FormattedData;
     numberNextTimesReady: number;
     availableTimes: AvailableTimes;
     syncedLayers: SyncedLayer;
@@ -28,6 +31,10 @@ export interface TDStoreModel {
         times?: AvailableTimes;
         mode: Mode;
         period: Period;
+    }>;
+    setData: Action<TDStoreModel, {
+        formattedData: FormattedData;
+        users: Users;
     }>;
     setCurrentTimeIndex: Thunk<TDStoreModel, {
         index: number;

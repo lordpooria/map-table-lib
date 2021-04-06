@@ -1,5 +1,5 @@
 import L, { LatLngExpression } from "leaflet";
-import { Mode } from "../src/types/common";
+import { Mode } from "../../src/types/common";
 
 var icon = L.icon({
   iconUrl: "https://img.icons8.com/cotton/2x/bus--v2.png",

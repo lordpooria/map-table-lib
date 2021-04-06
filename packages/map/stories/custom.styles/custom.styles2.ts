@@ -24,7 +24,6 @@ export const useSliderStyles = makeStyles((theme) =>
       border: "1px solid currentColor",
       marginTop: -THUMB_HEIGHT / 2,
       marginLeft: -THUMB_HEIGHT / 4,
-      // boxShadow: "#ebebeb 0 2px 2px",
       "&:focus, &:hover, &$active": {
         boxShadow: "#888 0 2px 3px 1px",
         height: FOCUS_THUMB_HEIGHT,
@@ -33,7 +32,6 @@ export const useSliderStyles = makeStyles((theme) =>
         marginLeft: -FOCUS_THUMB_HEIGHT / 4,
       },
       "& .bar": {
-        // display: inline-block !important;
         height: TRACK_HEIGHT,
         width: 1,
         backgroundColor: "#FFF",

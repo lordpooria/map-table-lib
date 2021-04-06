@@ -19,10 +19,10 @@ export function seekNearestTimeIndex(
   let newIndex = 0;
   console.log(newIndex);
   for (; newIndex < formattedData.length; newIndex++) {
-    console.log(formattedData[newIndex][0].properties.time);
-    if (time < formattedData[newIndex][0].properties.time) {
-      break;
-    }
+   console.log(time)
+    // if (time < formattedData[newIndex][0].properties.time) {
+    //   break;
+    // }
   }
   console.log(newIndex)
   // We've found the first index greater than the time. Return the previous
@@ -37,8 +37,9 @@ export function getLowerLimit(
   upperLimit: number,
   availableTimes: AvailableTimes
 ) {
-  var index = seekNearestTimeIndex(time, availableTimes);
-  return getLowerLimitIndex(index, upperLimit, availableTimes);
+  console.log(time)
+  // var index = seekNearestTimeIndex(time, availableTimes);
+  return getLowerLimitIndex(0, upperLimit, availableTimes);
 }
 
 export function getLowerLimitIndex(
@@ -57,8 +58,9 @@ export function getUpperLimit(
   lowerLimit: number,
   availableTimes: AvailableTimes
 ) {
-  var index = seekNearestTimeIndex(time, availableTimes);
-  return getUpperLimitIndex(index, lowerLimit, availableTimes);
+  // var index = seekNearestTimeIndex(time, availableTimes);
+  console.log(time)
+  return getUpperLimitIndex(0, lowerLimit, availableTimes);
 }
 
 export function getUpperLimitIndex(

@@ -2,10 +2,10 @@ import React from "react";
 import "leaflet/dist/leaflet.css";
 
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
-import data from "./small_data.json";
+import data from "./utils/data/small_data.json";
 // export default { title: "Basic Map" };
 import { storiesOf } from "@storybook/react";
-import { baseLayerProps, baseMapProps, commonGeojsonProps } from "./constants";
+import { baseLayerProps, baseMapProps, commonGeojsonProps } from "./utils/constants";
 
 storiesOf("Map With Table", module).add("Simple Map", () => (
   <HesabaTimeDimension

@@ -1,7 +1,7 @@
 import { RawTableColumns } from "@hesaba/table";
-import { GeoJSONData } from "../types";
 
-export const useMapData = (data: GeoJSONData) => {
+
+export const useMapData = () => {
   
   const rows = [...Array.from({ length: 40 }, (_, i) => i)].map((item) => {
     return {

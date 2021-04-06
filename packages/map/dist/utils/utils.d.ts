@@ -1,4 +1,4 @@
-import { AvailableTimes, DurationType, Period, TimeZone, UTCType } from "../types";
+import { AvailableTimes, DurationType, Period, TimeZone, UTCType } from "../types/common";
 import { Duration } from "iso8601-duration";
 export declare function getDisplayDateFormat(date: Date, timeZone: TimeZone): string;
 export declare function getDisplayNoTimeError(): string;

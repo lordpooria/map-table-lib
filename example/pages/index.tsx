@@ -2,7 +2,6 @@
 import { MapContainer } from "react-leaflet";
 import dynamic from "next/dynamic";
 
-import "leaflet/dist/leaflet.css";
 
 
 // import MyMapContainer from "../components/Player";

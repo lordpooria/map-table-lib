@@ -1,140 +1,132 @@
-/*
- * L.TimeDimension.Layer.GeoJson:
- */
-
 import { geoJSON, GeoJSONOptions, Map } from "leaflet";
-import { GeoJSON } from "geojson";
+import { Feature, Geometry } from "geojson";
 import { useEffect, useRef } from "react";
-// import { useMap } from "react-leaflet";
-import { sort_and_deduplicate, subtractTimeDuration } from "../utils/utils";
+import L from "leaflet";
 
 import { _getFeatureBetweenDates, _getFeatureTimes } from "../utils/layer.util";
-import { useTDStoreActions, useTDStoreState } from "../store/reducerHooks";
-import { CurrentData, Mode } from "../types/common";
-import { TDLayerOptions } from "../types/layer";
-import { extractAvailableTimes } from "../utils/geojson";
-import { useParseLayer } from "./useParseLayer";
+import { useTDStoreState } from "../store/reducerHooks";
+import { CurrentData } from "../types/common";
+// import { TDLayerOptions } from "../types";
+
+const commonOption = {
+  style: function (feature: Feature<Geometry, any> | undefined) {
+    return { color: feature?.properties.color };
+  },
+  pointToLayer: function (
+    feature: Feature<Geometry, any> | undefined,
+    latLng: L.LatLng
+  ) {
+    return L.circleMarker(latLng, {
+      radius: 7,
+      color: feature?.properties.color,
+      fillColor: feature?.properties.color,
+      weight: 2,
+      opacity: 0.7,
+      fillOpacity: 0.1,
+    });
+  },
+};
 
 export const useLayer = (
-  data: GeoJSON,
+  // data: GeoJSON,
   leafletMapRef: Map,
   options: GeoJSONOptions,
+  // layerOptions?: TDLayerOptions
+) =>
+  // { getFeatureBetweenDates = _getFeatureBetweenDates }
   {
-    // updateTimeDimension = false,
-    updateTimeDimensionMode = "extremes" as Mode,
-    addlastPoint = false,
-    waitForReady = false,
-    updateCurrentTime = false,
-    duration,
-  }: TDLayerOptions,
-  { getFeatureBetweenDates = _getFeatureBetweenDates }
-) => {
-  // const leafletMapRef = useMap();
-  // const currentTime = useTDStoreState((state) => state.currentTime);
-  // const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
-  const currentData = useTDStoreState((state) => state.currentData);
-  const prepareAvailableTimes = useTDStoreActions(
-    (actions) => actions.prepareAvailableTimes
-  );
-  const layers = useParseLayer(data);
-  const _loaded = useRef(false);
-  const _currentLayer = useRef<AppGeoJSONLayer>();
-  const layer = useRef<AppGeoJSONLayer>();
+    // const leafletMapRef = useMap();
+    // const currentTime = useTDStoreState((state) => state.currentTime);
+    // const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
+    const currentData = useTDStoreState((state) => state.currentData);
+    // const prepareAvailableTimes = useTDStoreActions(
+    //   (actions) => actions.prepareAvailableTimes
+    // );
+    // const layers = useParseLayer(data);
+    const _loaded = useRef(false);
+    const _currentLayer = useRef<AppGeoJSONLayer>();
+    // const layer = useRef<AppGeoJSONLayer>();
 
-  function _update(currentData: CurrentData) {
-    // let maxTime = currentTimeIndex,
-    //   minTime = 0;
+    function _update(currentData: CurrentData) {
+      // let maxTime = currentTimeIndex,
+      //   minTime = 0;
 
-    // if (duration) {
-    //   const date = new Date(maxTime);
-    //   subtractTimeDuration(date, duration, true);
-    //   minTime = date.getTime();
-    // }
+      // if (duration) {
+      //   const date = new Date(maxTime);
+      //   subtractTimeDuration(date, duration, true);
+      //   minTime = date.getTime();
+      // }
 
-    // new coordinates:
+      // new coordinates:
 
-    const _layer = geoJSON(undefined, options);
-    // const layers = layer.current.getLayers() as Array<any>;
-    if (_currentLayer.current) {
-      leafletMapRef.removeLayer(_currentLayer.current);
-    }
+      const _layer = geoJSON(undefined, { ...commonOption, ...options });
 
-    currentData.features.forEach((d) => {
-      _layer.addData(d).bindTooltip(function () {
-        return d.properties?.id ;
-      });
-    });
-
-    if (_layer.getLayers().length) {
-      _layer.addTo(leafletMapRef);
-
-      _currentLayer.current = _layer;
-    }
-
-    /*  layers.forEach((lay) => {
-      const feature = getFeatureBetweenDates(lay.feature, minTime, maxTime);
-
-      if (feature) {
-        _layer.addData(feature as GeoJSON);
-
-        if (addlastPoint && feature.geometry.type == "LineString") {
-          if (feature.geometry.coordinates.length > 0) {
-            const properties = feature.properties;
-            if (!properties) return;
-            properties.last = true;
-            _layer.addData({
-              type: "Feature",
-              properties,
-              geometry: {
-                type: "Point",
-                coordinates:
-                  feature.geometry.coordinates[
-                    feature.geometry.coordinates.length - 1
-                  ],
-              },
-            } as GeoJSON);
-          }
-        }
-      }
-
+      // const layers = layer.current.getLayers() as Array<any>;
       if (_currentLayer.current) {
         leafletMapRef.removeLayer(_currentLayer.current);
       }
+
+      currentData.features.forEach((feature) => {
+        _layer.addData(feature).bindTooltip(function () {
+          return feature.properties?.id;
+        });
+        //   if (
+        //     layerOptions?.addlastPoint &&
+        //     (feature?.geometry as any)?.geometries?.length > 0
+        //   ) {
+        //     (feature?.geometry as any)?.geometries?.forEach((f: any) => {
+
+        //       const properties = f.properties;
+        //       if (!properties) return;
+        //       properties.last = true;
+        //       _layer.addData({
+        //         type: "Feature",
+        //         properties,
+        //         geometry: {
+        //           type: "Point",
+        //           coordinates: (feature?.geometry as any).coordinates[
+        //             (feature?.geometry as any).coordinates.length - 1
+        //           ],
+        //         },
+        //       } as GeoJSON);
+        //     });
+        //   }
+      });
 
       if (_layer.getLayers().length) {
         _layer.addTo(leafletMapRef);
 
         _currentLayer.current = _layer;
       }
-    });*/
-  }
+    }
 
-  function _setAvailableTimes() {
-    const times = extractAvailableTimes(layer.current);
-    const _availableTimes = sort_and_deduplicate(times);
-    prepareAvailableTimes({
-      _availableTimes,
-      updateCurrentTime,
-      updateTimeDimensionMode,
-      // loadingTimeout: 3000,
-      // updateTimeDimension,
-    });
-  }
+    // function _setAvailableTimes() {
+    //   const times = extractAvailableTimes(layer.current);
+    //   const _availableTimes = sort_and_deduplicate(times);
+    //   prepareAvailableTimes({
+    //     _availableTimes,
+    //     updateCurrentTime,
+    //     updateTimeDimensionMode,
+    //     // loadingTimeout: 3000,
+    //     // updateTimeDimension,
+    //   });
+    // }
 
-  // function _onReadyBaseLayer() {
-  //   _loaded.current = true;
-  //   _setAvailableTimes();
-  //   // _update();
-  // }
-  // function eachLayer(method, context) {
-  //   if (_currentLayer) {
-  //     method.call(context, _currentLayer);
-  //   }
-  //   return method.call(method, context);
+    // function _onReadyBaseLayer() {
+    //   _loaded.current = true;
+    //   _setAvailableTimes();
+    //   // _update();
+    // }
+    // function eachLayer(method, context) {
+    //   if (_currentLayer) {
+    //     method.call(context, _currentLayer);
+    //   }
+    //   return method.call(method, context);
 
-  // }
+    // }
 
-  useEffect(() => {
+    // useEffect(() => {
+    // getFeatureBetweenDates && getFeatureBetweenDates({} as any,{} as any,{} as any)
     // if (!data) return;
     // layer.current = geoJSON(data, {});
     // _setAvailableTimes();
@@ -154,12 +146,12 @@ export const useLayer = (
     //     _setAvailableTimes();
     //   }
     // });
-  }, [data]);
+    // }, [data]);
 
-  useEffect(() => {
-    if (!currentData || !_loaded) return;
-    _update(currentData);
-  }, [currentData]);
+    useEffect(() => {
+      if (!currentData || !_loaded) return;
+      _update(currentData);
+    }, [currentData]);
 
-  return {};
-};
+    return {};
+  };
