@@ -13,8 +13,14 @@ const BasicMap = () => {
 
 export default function MapComponent() {
   return (
-    <Provider>
-      <BasicMap />
-    </Provider>
+    <HesabaTimeDimension
+      mapProps={{
+        center: [35.76498031616211, 51.33673858642578],
+        zoom: 13,
+        zoomControl: false,
+        style: { width: "95vw", height: "95vh", border: " 1px solid black" },
+      }}
+      data={data as any}
+    />
   );
 }

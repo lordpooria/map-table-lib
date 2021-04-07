@@ -5,8 +5,7 @@ import L from "leaflet";
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import data from "./utils/data/small_data.json";
 import MapProvider from "./utils/MapProvider";
-import CustomStyleTransparentMD from "./docs/CustomStyleTransparent.md";
-import CustomStyleMDPlayerThumb from "./docs/CustomStylePlayerThumb.md";
+
 // export default { title: "Basic Map" };
 import { storiesOf } from "@storybook/react";
 import {
@@ -25,6 +24,8 @@ import {
   baseLayerProps,
 } from "./utils/constants";
 
+import CustomStyleTransparentMD from "./docs/CustomStyleTransparent.md";
+import CustomStyleMDPlayerThumb from "./docs/CustomStylePlayerThumb.md";
 const TranparentBackground = () => {
   const clockClasses = useClockStyles();
   const playerClasses = useSliderStyles();

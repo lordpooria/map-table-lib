@@ -1,1 +1,1 @@
-export * from './useGeojsonLayer'
+export { default as TDGeojsonLayer } from "./TDGeojsonLayer";

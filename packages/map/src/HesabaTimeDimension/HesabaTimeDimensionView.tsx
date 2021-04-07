@@ -1,32 +1,27 @@
 import React from "react";
-import { useLayer } from "../layer";
 
 import { PlayerController } from "../player";
 import { TimeComponent } from "../timer";
-import LegendComponent from "../legend/LegendComponent";
+import LegendContainer from "../legend/LegendComponent";
 
 import { TimeDimensionViewProps } from "../types/HesabaTimeDimension";
+import GeoJSONLayer from "../layer/TDGeojsonLayer";
+import { useMap } from "react-leaflet";
 
 const HesabaTimeDimensionView = ({
-  // data,
   playerProps,
   timeProps,
-  // layerProps,
-  geojsonProps,
-  map,
-}: // extralLayerProps = {},
-// addLayer,
-// removeLayer,
-// map,
-TimeDimensionViewProps) => {
-  // const map = useMap();
-  useLayer(map, geojsonProps);
+  LegendComponent,
+  layerProps,
+}: TimeDimensionViewProps) => {
+  const map = useMap();
 
   return (
     <>
       <PlayerController leafletMap={map} {...playerProps} />
       <TimeComponent {...timeProps} />
-      <LegendComponent />
+      <LegendContainer LegendComponent={LegendComponent} />
+      <GeoJSONLayer {...layerProps} />
     </>
   );
 };

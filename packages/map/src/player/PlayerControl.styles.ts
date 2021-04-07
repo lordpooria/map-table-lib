@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) =>
       left: 20,
       borderRadius: "50em",
       backgroundColor: "#fff",
-      border: `solid 1px ${theme.palette.grey["300"]}`,
+      // border: `solid 1px ${theme.palette.grey["300"]}`,
     },
 
     playerSlider: {

@@ -12,10 +12,11 @@
     "@hesaba/table": "link:../packages/table",
     "@material-ui/core": "^4.11.3",
     "leaflet": "link:../packages/map/node_modules/leaflet",
-    "react-leaflet": "link:../packages/map/node_modules/react-leaflet",
     "next": "10.0.7",
     "react": "link:../packages/map/node_modules/react",
-    "react-dom": "link:../packages/map/node_modules/react-dom"
+    "react-dom": "link:../packages/map/node_modules/react-dom",
+    "react-leaflet": "link:../packages/map/node_modules/react-leaflet",
+    "react-number-format": "^4.5.3"
   },
   "devDependencies": {
     "@types/node": "^14.14.32",

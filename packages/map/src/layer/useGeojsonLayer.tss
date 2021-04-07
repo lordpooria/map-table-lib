@@ -1,4 +1,4 @@
-import { geoJSON, GeoJSONOptions, Map } from "leaflet";
+import { geoJSON, Map } from "leaflet";
 import { Feature, Geometry } from "geojson";
 import { useEffect, useRef } from "react";
 import L from "leaflet";
@@ -29,42 +29,33 @@ const commonOption = {
 
 export const useLayer = (
   // data: GeoJSON,
-  leafletMapRef: Map,
-  options: GeoJSONOptions,
+  leafletMapRef: Map
+  // options: GeoJSONOptions
   // layerOptions?: TDLayerOptions
 ) =>
   // { getFeatureBetweenDates = _getFeatureBetweenDates }
   {
-    // const leafletMapRef = useMap();
-    // const currentTime = useTDStoreState((state) => state.currentTime);
-    // const currentTimeIndex = useTDStoreState((state) => state.currentTimeIndex);
     const currentData = useTDStoreState((state) => state.currentData);
-    // const prepareAvailableTimes = useTDStoreActions(
-    //   (actions) => actions.prepareAvailableTimes
-    // );
-    // const layers = useParseLayer(data);
+
     const _loaded = useRef(false);
     const _currentLayer = useRef<AppGeoJSONLayer>();
-    // const layer = useRef<AppGeoJSONLayer>();
 
+   
     function _update(currentData: CurrentData) {
-      // let maxTime = currentTimeIndex,
-      //   minTime = 0;
+      if (!currentData) return;
 
-      // if (duration) {
-      //   const date = new Date(maxTime);
-      //   subtractTimeDuration(date, duration, true);
-      //   minTime = date.getTime();
-      // }
-
-      // new coordinates:
-
-      const _layer = geoJSON(undefined, { ...commonOption, ...options });
-
-      // const layers = layer.current.getLayers() as Array<any>;
       if (_currentLayer.current) {
         leafletMapRef.removeLayer(_currentLayer.current);
       }
+      const _layer = geoJSON(undefined, commonOption);
+      
+
+      _layer.addTo(leafletMapRef);
+
+  
+      
+
+      // const layers = layer.current.getLayers() as Array<any>;
 
       currentData.features.forEach((feature) => {
         _layer.addData(feature).bindTooltip(function () {
@@ -92,38 +83,9 @@ export const useLayer = (
         //     });
         //   }
       });
-
-      if (_layer.getLayers().length) {
-        _layer.addTo(leafletMapRef);
-
-        _currentLayer.current = _layer;
-      }
+      leafletMapRef.addLayer(_layer)
+      _currentLayer.current = _layer;
     }
-
-    // function _setAvailableTimes() {
-    //   const times = extractAvailableTimes(layer.current);
-    //   const _availableTimes = sort_and_deduplicate(times);
-    //   prepareAvailableTimes({
-    //     _availableTimes,
-    //     updateCurrentTime,
-    //     updateTimeDimensionMode,
-    //     // loadingTimeout: 3000,
-    //     // updateTimeDimension,
-    //   });
-    // }
-
-    // function _onReadyBaseLayer() {
-    //   _loaded.current = true;
-    //   _setAvailableTimes();
-    //   // _update();
-    // }
-    // function eachLayer(method, context) {
-    //   if (_currentLayer) {
-    //     method.call(context, _currentLayer);
-    //   }
-    //   return method.call(method, context);
-
-    // }
 
     // useEffect(() => {
     // getFeatureBetweenDates && getFeatureBetweenDates({} as any,{} as any,{} as any)
@@ -147,7 +109,7 @@ export const useLayer = (
     //   }
     // });
     // }, [data]);
-
+console.log(currentData)
     useEffect(() => {
       if (!currentData || !_loaded) return;
       _update(currentData);

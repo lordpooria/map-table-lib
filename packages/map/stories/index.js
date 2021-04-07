@@ -30,4 +30,5 @@ import './CustomStyle.stories';
 // import './MapWithTable.stories';
 import './MultiUserMap.stories';
 import './PlayerProp.stories';
+import './Legend.stories';
 

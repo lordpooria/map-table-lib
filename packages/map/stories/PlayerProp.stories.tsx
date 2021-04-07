@@ -3,7 +3,8 @@ import "leaflet/dist/leaflet.css";
 import { TileLayer, useMap } from "react-leaflet";
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import data from "./utils/data/small_data.json";
-// export default { title: "Basic Map" };
+import multiData from "./utils/data/data2.json";
+
 import { storiesOf } from "@storybook/react";
 import {
   baseLayerProps,

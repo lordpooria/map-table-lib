@@ -44,4 +44,5 @@ export const baseMapProps = {
   center: [35.76498031616211, 51.33673858642578] as LatLngExpression,
   zoom: 13,
   zoomControl: false,
+  style: { width: "95vw", height: "95vh", border: " 1px solid black" },
 };

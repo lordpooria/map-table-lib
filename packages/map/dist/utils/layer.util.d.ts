@@ -4,7 +4,7 @@ export declare function _getFeatureBetweenDates(feature: TDFeature, minTime: num
     type: string;
     properties: import("geojson").GeoJsonProperties;
     geometry: {
-        type: "MultiPolygon" | "Point" | "MultiPoint" | "LineString" | "MultiLineString" | "Polygon" | "GeometryCollection";
+        type: "Point" | "MultiPoint" | "LineString" | "MultiLineString" | "Polygon" | "MultiPolygon" | "GeometryCollection";
         coordinates: TDCoordinates;
     };
 } | null;

@@ -1,14 +1,20 @@
 // import {  Mode } from "./common";
 
-export type TDLayerOptions = {
+import { PathOptions } from "leaflet";
+
+export type TDLayerOptions = CommonLayerComponentProps & {
   // updateTimeDimension?: boolean;
   // updateTimeDimensionMode?: Mode;
-  addlastPoint?: boolean;
+  // addlastPoint?: boolean;
   // waitForReady?: boolean;
   // updateCurrentTime?: boolean;
   // duration: DurationType;
   /*
-  * Draw how many data at a time default is 1 means proceed data one at a time
-  */
-  stackFrame?: number;
+   * Draw how many data at a time default is 1 means proceed data one at a time
+   */
+  // stackFrame?: number;
 };
+
+export interface CommonLayerComponentProps {
+  pathOptions?: PathOptions;
+}

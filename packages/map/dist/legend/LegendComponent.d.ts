@@ -1,3 +1,4 @@
 /// <reference types="react" />
-declare const LegendComponent: () => JSX.Element;
-export default LegendComponent;
+import { LegendsContainerProps } from "../types/legend";
+declare const LegendContainer: ({ LegendComponent }: LegendsContainerProps) => JSX.Element;
+export default LegendContainer;

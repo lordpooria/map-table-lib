@@ -10,10 +10,12 @@ import TDProvider from "./Provider";
 import rawThemeObj from "../styles/theme";
 
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
+import "leaflet/dist/leaflet.css";
 
 // import TDTable from "../table/TDTable";
 import { HesabaTimeDimensionProps } from "../types/HesabaTimeDimension";
 import { useParseData } from "../hooks/useParseData";
+import { MapContainer } from "react-leaflet";
 
 const HesabaTimeDimension = ({
   withTable = false,
@@ -21,15 +23,18 @@ const HesabaTimeDimension = ({
 }: HesabaTimeDimensionProps) => {
   let theme = createMuiTheme(rawThemeObj as ThemeOptions);
   theme = responsiveFontSizes(theme);
+
   return (
-    <ThemeProvider theme={theme}>
-      <div style={{ display: "flex" }}>
-        <TDProvider>
-          <CommonMap {...props} />
-        </TDProvider>
-        {/* {withTable && <TDTable />} */}
-      </div>
-    </ThemeProvider>
+    <MapContainer {...props.mapProps}>
+      <ThemeProvider theme={theme}>
+        <div style={{ display: "flex" }}>
+          <TDProvider>
+            <CommonMap {...props} />
+          </TDProvider>
+          {/* {withTable && <TDTable />} */}
+        </div>
+      </ThemeProvider>
+    </MapContainer>
   );
 };
 
@@ -39,11 +44,13 @@ const CommonMap = ({
   playerProps = {},
   timeProps = {},
   geojsonProps = {},
-  layerProps={},
+  layerProps = {},
   extralLayerProps,
-  map,
+
+  LegendComponent,
 }: HesabaTimeDimensionProps) => {
   useParseData(data);
+
   return (
     <HesabaTimeDimensionView
       data={data}
@@ -52,7 +59,7 @@ const CommonMap = ({
       geojsonProps={geojsonProps}
       layerProps={layerProps}
       extralLayerProps={extralLayerProps}
-      map={map}
+      LegendComponent={LegendComponent}
     />
   );
 };

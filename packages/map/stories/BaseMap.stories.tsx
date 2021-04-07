@@ -1,37 +1,23 @@
 // import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
-import L from "leaflet";
+
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import PlayerControl from "../src/player/PlayerControl";
-import withReadme from "storybook-readme/with-readme";
 import data from "./utils/data/small_data.json";
 // export default { title: "Basic Map" };
 import { storiesOf } from "@storybook/react";
-import {
-  baseLayerProps,
-  baseMapProps,
-  commonGeojsonProps,
-} from "./utils/constants";
-import BaseMapMD from "./docs/BaseMap.md";
+import { baseMapProps, commonGeojsonProps } from "./utils/constants";
 import Provider from "./utils/MapProvider";
 
-const BasicMap = () => {
-  const map = useMap();
-  return (
-    <HesabaTimeDimension
-      data={data as any}
-      geojsonProps={commonGeojsonProps}
-      map={map}
-    />
-  );
-};
+import BaseMapMD from "./docs/BaseMap.md";
 
 storiesOf("Basic Map", module).add(
   "Simple Map",
   () => (
-    <Provider>
-      <BasicMap />
-    </Provider>
+    <HesabaTimeDimension
+      mapProps={baseMapProps}
+      data={data as any}
+      geojsonProps={commonGeojsonProps}
+    />
   ),
   {
     readme: {

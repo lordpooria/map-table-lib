@@ -1,7 +1,7 @@
 import { createStyles, makeStyles } from "@material-ui/core";
 import React, { memo } from "react";
 import { useTDStoreState } from "../store";
-import { LegendsProps } from "../types/legend";
+import { LegendsContainerProps, LegendsProps } from "../types/legend";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -12,7 +12,14 @@ const useStyles = makeStyles((theme) =>
       zIndex: 999,
       backgroundColor: "#FFF",
       borderRadius: 5,
-      border: `solid 1px ${theme.palette.grey["300"]}`,
+      
+      // border: `solid 1px ${theme.palette.grey["300"]}`,
+    },
+    itemContainer: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+     
     },
     indicatorBox: {
       border: `solid 2px ${theme.palette.grey["300"]}`,
@@ -21,23 +28,33 @@ const useStyles = makeStyles((theme) =>
       borderRadius: 1,
       margin: "0 4px",
     },
-    itemContainer: { display: "flex", margin: 4 },
     text: {
       color: theme.palette.grey["400"],
-      fontSize:11
+      fontSize: 11,
     },
   })
 );
-const LegendComponent = () => {
+const LegendContainer = ({ LegendComponent }: LegendsContainerProps) => {
+  const classes = useStyles();
   const users = useTDStoreState((state) => state.users);
-
-  return <LegendStateLess users={users} />;
+  const currentData = useTDStoreState((state) => state.currentData);
+  return (
+    <div className={classes.root}>
+      {LegendComponent ? (
+        <LegendComponent
+          properties={currentData?.features?.map((d) => d.properties)}
+        />
+      ) : (
+        <LegendStateLess users={users} />
+      )}
+    </div>
+  );
 };
 
 const LegendStateLess = memo(({ users }: LegendsProps) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <>
       {users &&
         Object.keys(users).map((k) => (
           <div key={k} className={classes.itemContainer}>
@@ -48,8 +65,8 @@ const LegendStateLess = memo(({ users }: LegendsProps) => {
             />
           </div>
         ))}
-    </div>
+    </>
   );
 });
 
-export default LegendComponent;
+export default LegendContainer;
