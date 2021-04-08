@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import { FC } from "react";
 import { TimeDimensionViewProps } from "../types/HesabaTimeDimension";
-declare const HesabaTimeDimensionView: ({ playerProps, timeProps, LegendComponent, }: TimeDimensionViewProps) => JSX.Element;
+declare const HesabaTimeDimensionView: FC<TimeDimensionViewProps>;
 export default HesabaTimeDimensionView;

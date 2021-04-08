@@ -1,10 +1,5 @@
 ## Custom Style Map Tranparent Background
 
-### leaflet and react-lealfet peer depencencies to this library you should install them
-
-This MapProvider is required to use this library so you should add this as wrapper of hesaba-time-dimension if you wanna this component see Basic Map example
-
-
 This is main component of hesaba-time-dimension with custom style added to it's component
 
 ```tsx
@@ -13,10 +8,8 @@ import React from "react";
 import HesabaTimeDimension from "@hesaba/map";
 
 import data from "../data/data.json";
-import MapProvider from "./container/MapProvider"
 
-
-const TranparentBackground = () => {
+export default function TranparentBackground() {
   const clockClasses = useClockStyles();
   const playerClasses = useSliderStyles();
   const otherClasses = useOtherClasses();
@@ -45,19 +38,11 @@ const TranparentBackground = () => {
       geojsonProps={commonGeojsonProps}
     />
   );
-};
-
-export default function BaseMapScreen() {
- return(
-   <MapProvider>
-      <TranparentBackground />
-    </MapProvider>
- )
 }
-
 ```
 
 If you use material ui library on your project you could add styles like this:
+
 ```tsx
 import { createStyles, makeStyles, SliderClassKey } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
@@ -162,5 +147,4 @@ export const useClockStyles = makeStyles((theme) =>
     },
   })
 );
-
 ```

@@ -1,31 +1,49 @@
-import { CommonLayerComponentProps } from "../types/layer";
+import {
+  CommonLayerComponentProps,
+  CircleLayerProps,
+  PolylineLayerProps,
+} from "../types/layer";
 import React from "react";
 import { CircleMarker, Polyline } from "react-leaflet";
 
 type LatLng = [number, number];
 
-interface CircleProps extends CommonLayerComponentProps {
-  coordinates: LatLng | Array<LatLng>;
-}
+type CircleProps = CommonLayerComponentProps &
+  CircleLayerProps & {
+    coordinates: LatLng | Array<LatLng>;
+  };
 
-export function TDCircleMarker({ coordinates, pathOptions }: CircleProps) {
+export function TDCircleMarker({
+  coordinates,
+  pathOptions,
+  circleProps,
+}: CircleProps) {
   return (
-    <CircleMarker
-      center={coordinates as any}
-      pathOptions={pathOptions}
-      radius={2}
-    />
+    <>
+      <CircleMarker
+        center={[coordinates[1], coordinates[0]] as any}
+        pathOptions={pathOptions}
+        radius={6}
+        {...circleProps}
+      />
+    </>
   );
 }
 
-interface PolylineProps extends CommonLayerComponentProps {
-  coordinates: Array<LatLng>;
-}
-export function TDPolyline({ coordinates, pathOptions }: PolylineProps) {
+type PolylineProps = CommonLayerComponentProps &
+  PolylineLayerProps & {
+    coordinates: Array<LatLng>;
+  };
+export function TDPolyline({
+  coordinates,
+  pathOptions,
+  polylineProps,
+}: PolylineProps) {
   return (
     <Polyline
       pathOptions={pathOptions}
       positions={coordinates.map((c) => [c[1], c[0]])}
+      {...polylineProps}
     />
   );
 }

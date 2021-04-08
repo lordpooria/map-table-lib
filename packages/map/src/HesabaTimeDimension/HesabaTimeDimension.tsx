@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   createMuiTheme,
   responsiveFontSizes,
@@ -8,59 +8,68 @@ import {
 
 import TDProvider from "./Provider";
 import rawThemeObj from "../styles/theme";
-
+import useStyles from "./HesabaTimeDimension.styles";
 import HesabaTimeDimensionView from "./HesabaTimeDimensionView";
 import "leaflet/dist/leaflet.css";
 
 // import TDTable from "../table/TDTable";
 import { HesabaTimeDimensionProps } from "../types/HesabaTimeDimension";
 import { useParseData } from "../hooks/useParseData";
-import { MapContainer } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
+import clsx from "clsx";
+// import TDTable from "../table/TDTable";
 
-const HesabaTimeDimension = ({
-  withTable = false,
-  ...props
-}: HesabaTimeDimensionProps) => {
+const HesabaTimeDimension: FC<HesabaTimeDimensionProps> = (
+  props: HesabaTimeDimensionProps
+) => {
   let theme = createMuiTheme(rawThemeObj as ThemeOptions);
   theme = responsiveFontSizes(theme);
 
   return (
-    <MapContainer {...props.mapProps}>
+    <TDProvider>
       <ThemeProvider theme={theme}>
-        <div style={{ display: "flex" }}>
-          <TDProvider>
-            <CommonMap {...props} />
-          </TDProvider>
-          {/* {withTable && <TDTable />} */}
-        </div>
+        <CommonMap {...props} />
       </ThemeProvider>
-    </MapContainer>
+    </TDProvider>
   );
 };
 
-const CommonMap = ({
+const CommonMap: FC<HesabaTimeDimensionProps> = ({
   data,
-
+  children,
   playerProps = {},
   timeProps = {},
   geojsonProps = {},
   layerProps = {},
   extralLayerProps,
-
+  mapProps: { className, ...mapProps },
   LegendComponent,
-}: HesabaTimeDimensionProps) => {
+}: // withTable,
+HesabaTimeDimensionProps) => {
   useParseData(data);
-
+  const classes = useStyles();
   return (
-    <HesabaTimeDimensionView
-      data={data}
-      playerProps={playerProps}
-      timeProps={timeProps}
-      geojsonProps={geojsonProps}
-      layerProps={layerProps}
-      extralLayerProps={extralLayerProps}
-      LegendComponent={LegendComponent}
-    />
+    <MapContainer className={clsx(classes.mapRoot, className)} {...mapProps}>
+      {children ? (
+        children
+      ) : (
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      )}
+
+      <HesabaTimeDimensionView
+        data={data}
+        playerProps={playerProps}
+        timeProps={timeProps}
+        geojsonProps={geojsonProps}
+        layerProps={layerProps}
+        extralLayerProps={extralLayerProps}
+        LegendComponent={LegendComponent}
+      />
+      {/* {withTable && <TDTable />} */}
+    </MapContainer>
   );
 };
 

@@ -5,7 +5,11 @@ import { useTDStoreState } from "../store/reducerHooks";
 import { TDCircleMarker, TDPolyline } from "./LayerComponents";
 import { TDLayerOptions } from "../types/layer";
 
-export default function TDGeojsonLayer({ pathOptions }: TDLayerOptions) {
+export default function TDGeojsonLayer({
+  pathOptions,
+  circleProps,
+  polylineProps,
+}: TDLayerOptions) {
   const currentData = useTDStoreState((state) => state.currentData);
 
   return (
@@ -16,11 +20,13 @@ export default function TDGeojsonLayer({ pathOptions }: TDLayerOptions) {
             <TDCircleMarker
               coordinates={g.coordinates}
               pathOptions={{ color: f?.properties?.color, ...pathOptions }}
+              circleProps={circleProps}
             />
           ) : (
             <TDPolyline
               coordinates={g.coordinates}
               pathOptions={{ color: f?.properties?.color, ...pathOptions }}
+              polylineProps={polylineProps}
             />
           )
         )

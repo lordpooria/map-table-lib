@@ -69,7 +69,7 @@ export const usePlayer = ({
     setPlay(false);
     setReversePlay(false);
     intervalID.current = undefined;
-  }, [setPlay,setReversePlay]);
+  }, [setPlay, setReversePlay]);
 
   const _getMaxIndex = useCallback(() => {
     return Math.min(formattedData.length - 1, upperLimitIndex || Infinity);
@@ -148,5 +148,10 @@ export const usePlayer = ({
     }
   }, [autoPlay, formattedData]);
 
+  useEffect(() => {
+    return () => {
+      intervalID.current && clearInterval(intervalID.current);
+    };
+  }, []);
   return { start, stop, startReverse };
 };

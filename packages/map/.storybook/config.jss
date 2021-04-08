@@ -2,11 +2,10 @@ import { addParameters, addDecorator, configure } from "@storybook/react";
 import { addReadme } from "storybook-readme";
 import { themes, create } from "@storybook/theming";
 
+addDecorator(withPropsTable);
+
 const basicTheme = create({
   base: "light",
-  brandTitle: "README addon",
-  brandUrl: "https://github.com/tuchk4/storybook-readme",
-  brandImage: null,
 });
 
 addParameters({

@@ -1,11 +1,11 @@
-/// <reference types="react" />
+import { CommonLayerComponentProps, CircleLayerProps, PolylineLayerProps } from "../types/layer";
 declare type LatLng = [number, number];
-interface CircleProps {
+declare type CircleProps = CommonLayerComponentProps & CircleLayerProps & {
     coordinates: LatLng | Array<LatLng>;
-}
-export declare function TDCircleMarker({ coordinates }: CircleProps): JSX.Element;
-interface PolylineProps {
+};
+export declare function TDCircleMarker({ coordinates, pathOptions, circleProps, }: CircleProps): JSX.Element;
+declare type PolylineProps = CommonLayerComponentProps & PolylineLayerProps & {
     coordinates: Array<LatLng>;
-}
-export declare function TDPolyline({ coordinates }: PolylineProps): JSX.Element;
+};
+export declare function TDPolyline({ coordinates, pathOptions, polylineProps, }: PolylineProps): JSX.Element;
 export {};

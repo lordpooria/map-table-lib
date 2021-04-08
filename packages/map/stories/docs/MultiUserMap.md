@@ -1,9 +1,5 @@
 ## Multi User Map
 
-### leaflet and react-lealfet peer depencencies to this library you should install them
-
-This MapProvider is required to use this library so you should add this as wrapper of hesaba-time-dimension if you wanna this component see Basic Map example
-
 This is main component of hesaba-time-dimension with custom style added to it's component
 
 This Component isn't difference from Basic Map but this example shows how data you provide change ui. Basic data has structure like this:

@@ -1,9 +1,4 @@
-## Custom Style Map Different Player Thumb 
-
-### leaflet and react-lealfet peer depencencies to this library you should install them
-
-This MapProvider is required to use this library so you should add this as wrapper of hesaba-time-dimension if you wanna this component see Basic Map example
-
+## Custom Style Map Different Player Thumb
 
 This is main component of hesaba-time-dimension with custom style added to it's component
 
@@ -13,10 +8,8 @@ import React from "react";
 import HesabaTimeDimension from "@hesaba/map";
 
 import data from "../data/data.json";
-import MapProvider from "./container/MapProvider"
 
-
-const DifferentPlayerThumb = () => {
+export default function DifferentPlayerThumb() {
   const clockClasses = useClockStyles2();
   const playerClasses = useSliderStyles2();
   const otherClasses = useOtherClasses2();
@@ -43,19 +36,11 @@ const DifferentPlayerThumb = () => {
       geojsonProps={commonGeojsonProps}
     />
   );
-};
-
-export default function BaseMapScreen() {
- return(
-   <MapProvider>
-      <DifferentPlayerThumb />
-    </MapProvider>
- )
 }
-
 ```
 
 If you use material ui library on your project you could add styles like this:
+
 ```tsx
 import { createStyles, makeStyles, SliderClassKey } from "@material-ui/core";
 
@@ -154,6 +139,4 @@ export const useClockStyles = makeStyles((theme) =>
     },
   })
 );
-
-
 ```

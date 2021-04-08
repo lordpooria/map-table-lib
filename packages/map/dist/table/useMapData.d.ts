@@ -1,7 +1,11 @@
+import { RawTableColumns } from "@hesaba/table";
 export declare const useMapData: () => {
     rows: {
         name: string;
         type: string;
     }[];
-    schemaColumns: any;
+    schemaColumns: RawTableColumns<{
+        name: string;
+        type: string;
+    }>;
 };

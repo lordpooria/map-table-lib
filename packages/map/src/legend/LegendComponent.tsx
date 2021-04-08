@@ -12,14 +12,14 @@ const useStyles = makeStyles((theme) =>
       zIndex: 999,
       backgroundColor: "#FFF",
       borderRadius: 5,
-      
+
       // border: `solid 1px ${theme.palette.grey["300"]}`,
     },
     itemContainer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-     
+      margin: 4,
     },
     indicatorBox: {
       border: `solid 2px ${theme.palette.grey["300"]}`,
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) =>
     text: {
       color: theme.palette.grey["400"],
       fontSize: 11,
+      margin: "4px 0",
     },
   })
 );

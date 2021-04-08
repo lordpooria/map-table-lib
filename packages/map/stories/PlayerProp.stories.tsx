@@ -1,22 +1,18 @@
 import React from "react";
-import "leaflet/dist/leaflet.css";
-import { TileLayer, useMap } from "react-leaflet";
+
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import data from "./utils/data/small_data.json";
-import multiData from "./utils/data/data2.json";
 
-import { storiesOf } from "@storybook/react";
-import {
-  baseLayerProps,
-  baseMapProps,
-  commonGeojsonProps,
-} from "./utils/constants";
+import { baseMapProps, commonGeojsonProps } from "./utils/constants";
 import { useTDStoreActions } from "../src/store/reducerHooks";
-import MapProvider from "./utils/MapProvider";
+
 import PlayerPropAutoPlayAndReload from "./docs/PlayerPropAutoPlayAndReload.md";
 import PlayerPropSlidersProps from "./docs/PlayerPropSlidersProps.md";
 import PlayerPropCustomComponent from "./docs/PlayerPropCustomComponent.md";
 import PlayerPropRemoveComponent from "./docs/PlayerPropRemoveComponent.md";
+import { DocsProvider } from "./docs/DocsProvider";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const INITIAL_SPEED = 20;
 
@@ -30,148 +26,105 @@ const BackwardButton = () => {
   );
 };
 
-const AutoPlayAndReload = () => {
-  const map = useMap();
-  return (
-    <HesabaTimeDimension
-      data={data as any}
-      map={map}
-      playerProps={{ loop: true, autoPlay: true }}
-    />
+export const AutoPlayAndReload = () => {
+  const props = JSON.parse(
+    JSON.stringify({
+      data: data as any,
+      mapProps: baseMapProps,
+      playerProps: { loop: true, autoPlay: true },
+    })
   );
+  return <HesabaTimeDimension {...props} />;
 };
 
-const SlidersProps = () => {
-  const map = useMap();
-  return (
-    <HesabaTimeDimension
-      data={data as any}
-      map={map}
-      geojsonProps={commonGeojsonProps}
-      playerProps={{
+AutoPlayAndReload.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropSlidersProps}>
+          <AutoPlayAndReload />
+        </DocsProvider>
+      );
+    },
+  },
+};
+
+export const SliderAndSpeedsProps = () => {
+  const props = JSON.parse(
+    JSON.stringify({
+      data: data as any,
+      mapProps: baseMapProps,
+      geojsonProps: commonGeojsonProps,
+      playerProps: {
         timeSteps: 2,
         speedStep: 5,
         minSpeed: 1,
         maxSpeed: 100,
         transitionTime: 1000 / INITIAL_SPEED,
-      }}
-    />
+      },
+    })
   );
+  return <HesabaTimeDimension {...props} />;
 };
 
-const CustomButtonComponent = () => {
-  const map = useMap();
-
-  return (
-    <HesabaTimeDimension
-      data={data as any}
-      map={map}
-      playerProps={{
-        backwardButton: BackwardButton,
-      }}
-    />
-  );
+SliderAndSpeedsProps.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropAutoPlayAndReload}>
+          <SliderAndSpeedsProps />
+        </DocsProvider>
+      );
+    },
+  },
 };
 
-const PlayerRemoveComponents = () => {
-  const map = useMap();
+export const PlayerCustomButtonComponents = () => (
+  <HesabaTimeDimension
+    data={data as any}
+    mapProps={baseMapProps}
+    playerProps={{
+      backwardButton: BackwardButton,
+    }}
+  />
+);
 
-  return (
-    <HesabaTimeDimension
-      data={data as any}
-      map={map}
-      playerProps={{
-        speedIcon: false,
-        forwardButton: false,
-        speedSlider: false,
-        playReverseButton: true,
-      }}
-    />
-  );
+PlayerCustomButtonComponents.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropCustomComponent}>
+          <PlayerCustomButtonComponents />
+        </DocsProvider>
+      );
+    },
+  },
 };
 
-const PlayerExtraButtons = () => {
-  const map = useMap();
+export const PlayerAddRemoveComponents = () => (
+  <HesabaTimeDimension
+    data={data as any}
+    mapProps={baseMapProps}
+    playerProps={{
+      speedIcon: false,
+      forwardButton: false,
+      speedSlider: false,
+      playReverseButton: true,
+    }}
+  />
+);
 
-  return (
-    <HesabaTimeDimension
-      data={data as any}
-      map={map}
-      playerProps={{
-        speedIcon: false,
-        forwardButton: false,
-        speedSlider: false,
-      }}
-    />
-  );
+PlayerAddRemoveComponents.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropRemoveComponent}>
+          <PlayerAddRemoveComponents />
+        </DocsProvider>
+      );
+    },
+  },
 };
-
-storiesOf("Player props", module)
-  .add(
-    "auto play & reload",
-    () => (
-      <MapProvider>
-        <AutoPlayAndReload />
-      </MapProvider>
-    ),
-    {
-      readme: {
-        content: PlayerPropSlidersProps,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  )
-  .add(
-    "slider and speeds props",
-    () => (
-      <MapProvider>
-        <SlidersProps />
-      </MapProvider>
-    ),
-    {
-      readme: {
-        content: PlayerPropAutoPlayAndReload,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  )
-  .add(
-    "player custom button components",
-    () => (
-      <MapProvider>
-        <CustomButtonComponent />
-      </MapProvider>
-    ),
-    {
-      readme: {
-        content: PlayerPropCustomComponent,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  )
-  .add(
-    "player remove components",
-    () => (
-      <MapProvider>
-        <PlayerRemoveComponents />
-      </MapProvider>
-    ),
-    {
-      readme: {
-        content: PlayerPropRemoveComponent,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  );
+export default {
+  title: "Player props",
+};

@@ -1,11 +1,6 @@
 ## Player Props Remove Component
 
-### leaflet and react-lealfet peer depencencies to this library you should install them
-
-This MapProvider is required to use this library so you should add this as wrapper of hesaba-time-dimension if you wanna this component see Basic Map example
-
-
-You could remove player component or icons 
+You could remove player component or icons
 
 ```tsx
 import React from "react";
@@ -13,10 +8,8 @@ import React from "react";
 import HesabaTimeDimension from "@hesaba/map";
 
 import data from "../data/data.json";
-import MapProvider from "./container/MapProvider";
 
-
-const PlayerRemoveComponents = () => {
+export default function PlayerRemoveComponents() {
   const map = useMap();
 
   return (
@@ -30,15 +23,5 @@ const PlayerRemoveComponents = () => {
       }}
     />
   );
-};
-
-export default function BaseMapScreen() {
- return(
-   <MapProvider>
-      <PlayerRemoveComponents />
-    </MapProvider>
- )
 }
-
 ```
-

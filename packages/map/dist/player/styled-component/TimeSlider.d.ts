@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { PlayerCompleteProps } from "../PlayerControl.types";
 interface Props {
     timeSteps: PlayerCompleteProps["timeSteps"];

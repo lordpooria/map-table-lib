@@ -1,13 +1,9 @@
 import React from "react";
-import "leaflet/dist/leaflet.css";
-import { TileLayer, useMap } from "react-leaflet";
-import L from "leaflet";
+
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import data from "./utils/data/small_data.json";
-import MapProvider from "./utils/MapProvider";
 
 // export default { title: "Basic Map" };
-import { storiesOf } from "@storybook/react";
 import {
   useSliderStyles,
   useOtherClasses,
@@ -18,26 +14,20 @@ import {
   useOtherClasses as useOtherClasses2,
   useClockStyles as useClockStyles2,
 } from "./custom.styles/custom.styles2";
-import {
-  commonGeojsonProps,
-  baseMapProps,
-  baseLayerProps,
-} from "./utils/constants";
+import { commonGeojsonProps, baseMapProps } from "./utils/constants";
 
 import CustomStyleTransparentMD from "./docs/CustomStyleTransparent.md";
 import CustomStyleMDPlayerThumb from "./docs/CustomStylePlayerThumb.md";
-const TranparentBackground = () => {
+import { DocsProvider } from "./docs/DocsProvider";
+
+export const TransparentBackgroundTimeDimension = () => {
   const clockClasses = useClockStyles();
   const playerClasses = useSliderStyles();
   const otherClasses = useOtherClasses();
-  const map = useMap();
   return (
     <HesabaTimeDimension
       data={data as any}
-      map={map}
-      // layerProps={{
-      //   addlastPoint: true,
-      // }}
+      mapProps={baseMapProps}
       timeProps={{
         clockProps: { classes: clockClasses, renderNumbers: true },
         dateClasses: otherClasses.dateClasses,
@@ -57,16 +47,27 @@ const TranparentBackground = () => {
   );
 };
 
-const DifferentPlayerThumb = () => {
+TransparentBackgroundTimeDimension.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={CustomStyleTransparentMD}>
+          <TransparentBackgroundTimeDimension />
+        </DocsProvider>
+      );
+    },
+  },
+};
+
+export const WithDifferentPlayerThumb = () => {
   const clockClasses = useClockStyles2();
   const playerClasses = useSliderStyles2();
   const otherClasses = useOtherClasses2();
-  const map = useMap();
+
   return (
     <HesabaTimeDimension
       data={data as any}
-      map={map}
-      // layerProps={{  addlastPoint: true }}
+      mapProps={baseMapProps}
       timeProps={{
         clockProps: { classes: clockClasses, renderNumbers: true },
         dateClasses: otherClasses.dateClasses,
@@ -86,42 +87,18 @@ const DifferentPlayerThumb = () => {
   );
 };
 
-storiesOf("Custom Styles", module)
-  .add(
-    "Transparent background time dimension",
-    () => {
+WithDifferentPlayerThumb.parameters = {
+  docs: {
+    page: () => {
       return (
-        <MapProvider>
-          <TranparentBackground />
-        </MapProvider>
+        <DocsProvider MDFile={CustomStyleMDPlayerThumb}>
+          <WithDifferentPlayerThumb />
+        </DocsProvider>
       );
     },
-    {
-      readme: {
-        content: CustomStyleTransparentMD,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  )
-  .add(
-    "With Different Player Thumb",
-    () => {
-      return (
-        <MapProvider>
-          <DifferentPlayerThumb />
-        </MapProvider>
-      );
-    },
-    {
-      readme: {
-        content: CustomStyleMDPlayerThumb,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  );
+  },
+};
+
+export default {
+  title: "Custom Styles",
+};

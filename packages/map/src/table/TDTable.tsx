@@ -8,7 +8,6 @@ import { useMapData } from "./useMapData";
 // }
 
 const TDTable = () => {
-  
   const { rows, schemaColumns } = useMapData();
   return (
     <div style={{ width: " calc(50vw + 220px)", height: "95vh" }}>

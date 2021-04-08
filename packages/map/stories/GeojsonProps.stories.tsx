@@ -3,20 +3,28 @@ import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension"
 import data from "./utils/data/small_data.json";
 import { storiesOf } from "@storybook/react";
 import { baseMapProps } from "./utils/constants";
-import BaseMapMD from "./docs/BaseMap.md";
+import BaseMapMD from "./docs/GeoJsonCustom.md";
 import React, { useState } from "react";
 import { DocsProvider } from "./docs/DocsProvider";
 
-export const SimpleMap = () => (
-  <HesabaTimeDimension mapProps={baseMapProps} data={data as any} />
+export const CustomGeoJSONProps = () => (
+  <HesabaTimeDimension
+    mapProps={baseMapProps}
+    data={data as any}
+    layerProps={{
+      circleProps: { radius: 10 },
+      pathOptions: { fillColor: "#0FF", color: "#F0F" },
+      polylineProps: {opacity:0.4},
+    }}
+  />
 );
 
-SimpleMap.parameters = {
+CustomGeoJSONProps.parameters = {
   docs: {
     page: () => {
       return (
         <DocsProvider MDFile={BaseMapMD}>
-          <SimpleMap />
+          <CustomGeoJSONProps />
         </DocsProvider>
       );
     },
@@ -24,5 +32,5 @@ SimpleMap.parameters = {
 };
 
 export default {
-  title: "Base Map",
+  title: "GeoJson Props",
 };

@@ -12,7 +12,6 @@ import React from "react";
 import HesabaTimeDimension, { useTDStoreActions } from "@hesaba/map";
 
 import data from "../data/data.json";
-import MapProvider from "./container/MapProvider";
 
 const BackwardButton = () => {
   const previousTime = useTDStoreActions((actions) => actions.previousTime);
@@ -24,7 +23,7 @@ const BackwardButton = () => {
   );
 };
 
-const CustomButtonComponent = () => {
+export default function CustomButtonComponent() {
   const map = useMap();
 
   return (
@@ -35,14 +34,6 @@ const CustomButtonComponent = () => {
         backwardButton: BackwardButton,
       }}
     />
-  );
-};
-
-export default function BaseMapScreen() {
-  return (
-    <MapProvider>
-      <CustomButtonComponent />
-    </MapProvider>
   );
 }
 ```

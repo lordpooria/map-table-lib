@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { PlayerProps } from "../player/PlayerControl.types";
 import { TimeProps } from "../timer/TimeComponent.types";
 import { GeoJSONOptions } from "leaflet";
@@ -12,6 +13,7 @@ export interface HesabaTimeDimensionProps {
             root?: string;
         };
     };
+    children?: React.ReactNode;
     playerProps?: PlayerProps;
     timeProps?: TimeProps;
     geojsonProps?: GeoJSONOptions;
@@ -25,7 +27,7 @@ export interface TimeDimensionViewProps {
     playerProps: PlayerProps;
     timeProps: TimeProps;
     geojsonProps: GeoJSONOptions;
-    layerProps?: TDLayerOptions;
+    layerProps: TDLayerOptions;
     extralLayerProps: any;
     LegendComponent?: LegendsContainerProps["LegendComponent"];
 }

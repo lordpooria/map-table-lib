@@ -1,20 +1,16 @@
 import React from "react";
-import "leaflet/dist/leaflet.css";
-import { TileLayer, useMap } from "react-leaflet";
+
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import data from "./utils/data/small_data.json";
 import multiUserData from "./utils/data/multiUserData.json";
 
-// export default { title: "Basic Map" };
-import { storiesOf } from "@storybook/react";
-
-import MapProvider from "./utils/MapProvider";
 import { ExternalLegendsComponent } from "../src/types";
 import NumberFormat from "react-number-format";
 import LegendCustomProps from "./docs/LegendCustomProps.md";
+import { baseMapProps } from "./utils/constants";
+import { DocsProvider } from "./docs/DocsProvider";
 
 const CustomLegendComponent = ({ properties }: ExternalLegendsComponent) => {
-  
   if (!properties) return null;
 
   return (
@@ -36,59 +32,45 @@ const CustomLegendComponent = ({ properties }: ExternalLegendsComponent) => {
   );
 };
 
-const CustomLegend = () => {
-  const map = useMap();
-  return (
-    <HesabaTimeDimension
-      map={map}
-      data={data as any}
-      LegendComponent={CustomLegendComponent}
-    />
-  );
+export const BaseLegendComponent = () => (
+  <HesabaTimeDimension
+    mapProps={baseMapProps}
+    data={data as any}
+    LegendComponent={CustomLegendComponent}
+  />
+);
+
+BaseLegendComponent.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={LegendCustomProps}>
+          <BaseLegendComponent />
+        </DocsProvider>
+      );
+    },
+  },
 };
-const MultiUserCustomLegend = () => {
-  const map = useMap();
-  return (
-    <HesabaTimeDimension
-      map={map}
-      data={multiUserData as any}
-      LegendComponent={CustomLegendComponent}
-    />
-  );
+export const MutiuserWithCustomLegendComponent = () => (
+  <HesabaTimeDimension
+    mapProps={baseMapProps}
+    data={multiUserData as any}
+    LegendComponent={CustomLegendComponent}
+  />
+);
+
+MutiuserWithCustomLegendComponent.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={LegendCustomProps}>
+          <MutiuserWithCustomLegendComponent />
+        </DocsProvider>
+      );
+    },
+  },
 };
 
-storiesOf("Custom Legend", module)
-  .add(
-    "Base legend component",
-    () => (
-      <MapProvider>
-        <CustomLegend />
-      </MapProvider>
-    ),
-    {
-      readme: {
-        content: LegendCustomProps,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  )
-  .add(
-    "Mutiuser with custom legend component",
-    () => (
-      <MapProvider>
-        <MultiUserCustomLegend />
-      </MapProvider>
-    ),
-    {
-      readme: {
-        content: LegendCustomProps,
-        sidebar: "Please Read me2",
-        // This is not necessary in normal situation. The reason for
-        // `includePropTables` is needed here is because `ButtonWithPropTypes` is
-        // specified in `excludePropTables` at `config.js`
-      },
-    }
-  );
+export default {
+  title: "Custom Legend",
+};

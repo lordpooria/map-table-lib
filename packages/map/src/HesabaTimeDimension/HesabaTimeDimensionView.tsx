@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { PlayerController } from "../player";
 import { TimeComponent } from "../timer";
@@ -8,7 +8,7 @@ import { TimeDimensionViewProps } from "../types/HesabaTimeDimension";
 import GeoJSONLayer from "../layer/TDGeojsonLayer";
 import { useMap } from "react-leaflet";
 
-const HesabaTimeDimensionView = ({
+const HesabaTimeDimensionView: FC<TimeDimensionViewProps> = ({
   playerProps,
   timeProps,
   LegendComponent,

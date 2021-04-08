@@ -166,42 +166,42 @@ function commonjsRequire (target) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var b$4="function"===typeof Symbol&&Symbol.for,c$4=b$4?Symbol.for("react.element"):60103,d$4=b$4?Symbol.for("react.portal"):60106,e$4=b$4?Symbol.for("react.fragment"):60107,f$4=b$4?Symbol.for("react.strict_mode"):60108,g$4=b$4?Symbol.for("react.profiler"):60114,h$4=b$4?Symbol.for("react.provider"):60109,k$4=b$4?Symbol.for("react.context"):60110,l$4=b$4?Symbol.for("react.async_mode"):60111,m$3=b$4?Symbol.for("react.concurrent_mode"):60111,n$4=b$4?Symbol.for("react.forward_ref"):60112,p$4=b$4?Symbol.for("react.suspense"):60113,q$4=b$4?
-Symbol.for("react.suspense_list"):60120,r$4=b$4?Symbol.for("react.memo"):60115,t$3=b$4?Symbol.for("react.lazy"):60116,v$4=b$4?Symbol.for("react.block"):60121,w$4=b$4?Symbol.for("react.fundamental"):60117,x$4=b$4?Symbol.for("react.responder"):60118,y$4=b$4?Symbol.for("react.scope"):60119;
-function z$4(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c$4:switch(a=a.type,a){case l$4:case m$3:case e$4:case g$4:case f$4:case p$4:return a;default:switch(a=a&&a.$$typeof,a){case k$4:case n$4:case t$3:case r$4:case h$4:return a;default:return u}}case d$4:return u}}}function A$4(a){return z$4(a)===m$3}var AsyncMode$2=l$4;var ConcurrentMode$2=m$3;var ContextConsumer$3=k$4;var ContextProvider$3=h$4;var Element$4=c$4;var ForwardRef$3=n$4;var Fragment$3=e$4;var Lazy$3=t$3;var Memo$3=r$4;var Portal$4=d$4;
-var Profiler$3=g$4;var StrictMode$3=f$4;var Suspense$3=p$4;var isAsyncMode$3=function(a){return A$4(a)||z$4(a)===l$4};var isConcurrentMode$3=A$4;var isContextConsumer$3=function(a){return z$4(a)===k$4};var isContextProvider$3=function(a){return z$4(a)===h$4};var isElement$3=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c$4};var isForwardRef$3=function(a){return z$4(a)===n$4};var isFragment$3=function(a){return z$4(a)===e$4};var isLazy$3=function(a){return z$4(a)===t$3};
-var isMemo$3=function(a){return z$4(a)===r$4};var isPortal$3=function(a){return z$4(a)===d$4};var isProfiler$3=function(a){return z$4(a)===g$4};var isStrictMode$3=function(a){return z$4(a)===f$4};var isSuspense$3=function(a){return z$4(a)===p$4};
-var isValidElementType$3=function(a){return "string"===typeof a||"function"===typeof a||a===e$4||a===m$3||a===g$4||a===f$4||a===p$4||a===q$4||"object"===typeof a&&null!==a&&(a.$$typeof===t$3||a.$$typeof===r$4||a.$$typeof===h$4||a.$$typeof===k$4||a.$$typeof===n$4||a.$$typeof===w$4||a.$$typeof===x$4||a.$$typeof===y$4||a.$$typeof===v$4)};var typeOf$3=z$4;
+var b$3="function"===typeof Symbol&&Symbol.for,c$3=b$3?Symbol.for("react.element"):60103,d$3=b$3?Symbol.for("react.portal"):60106,e$3=b$3?Symbol.for("react.fragment"):60107,f$3=b$3?Symbol.for("react.strict_mode"):60108,g$3=b$3?Symbol.for("react.profiler"):60114,h$3=b$3?Symbol.for("react.provider"):60109,k$3=b$3?Symbol.for("react.context"):60110,l$3=b$3?Symbol.for("react.async_mode"):60111,m$2=b$3?Symbol.for("react.concurrent_mode"):60111,n$3=b$3?Symbol.for("react.forward_ref"):60112,p$3=b$3?Symbol.for("react.suspense"):60113,q$3=b$3?
+Symbol.for("react.suspense_list"):60120,r$3=b$3?Symbol.for("react.memo"):60115,t$2=b$3?Symbol.for("react.lazy"):60116,v$3=b$3?Symbol.for("react.block"):60121,w$3=b$3?Symbol.for("react.fundamental"):60117,x$3=b$3?Symbol.for("react.responder"):60118,y$3=b$3?Symbol.for("react.scope"):60119;
+function z$3(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c$3:switch(a=a.type,a){case l$3:case m$2:case e$3:case g$3:case f$3:case p$3:return a;default:switch(a=a&&a.$$typeof,a){case k$3:case n$3:case t$2:case r$3:case h$3:return a;default:return u}}case d$3:return u}}}function A$3(a){return z$3(a)===m$2}var AsyncMode$1=l$3;var ConcurrentMode$1=m$2;var ContextConsumer$2=k$3;var ContextProvider$2=h$3;var Element$3=c$3;var ForwardRef$2=n$3;var Fragment$2=e$3;var Lazy$2=t$2;var Memo$2=r$3;var Portal$3=d$3;
+var Profiler$2=g$3;var StrictMode$2=f$3;var Suspense$2=p$3;var isAsyncMode$2=function(a){return A$3(a)||z$3(a)===l$3};var isConcurrentMode$2=A$3;var isContextConsumer$2=function(a){return z$3(a)===k$3};var isContextProvider$2=function(a){return z$3(a)===h$3};var isElement$2=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c$3};var isForwardRef$2=function(a){return z$3(a)===n$3};var isFragment$2=function(a){return z$3(a)===e$3};var isLazy$2=function(a){return z$3(a)===t$2};
+var isMemo$2=function(a){return z$3(a)===r$3};var isPortal$2=function(a){return z$3(a)===d$3};var isProfiler$2=function(a){return z$3(a)===g$3};var isStrictMode$2=function(a){return z$3(a)===f$3};var isSuspense$2=function(a){return z$3(a)===p$3};
+var isValidElementType$2=function(a){return "string"===typeof a||"function"===typeof a||a===e$3||a===m$2||a===g$3||a===f$3||a===p$3||a===q$3||"object"===typeof a&&null!==a&&(a.$$typeof===t$2||a.$$typeof===r$3||a.$$typeof===h$3||a.$$typeof===k$3||a.$$typeof===n$3||a.$$typeof===w$3||a.$$typeof===x$3||a.$$typeof===y$3||a.$$typeof===v$3)};var typeOf$2=z$3;
 
-var reactIs_production_min$3 = {
-	AsyncMode: AsyncMode$2,
-	ConcurrentMode: ConcurrentMode$2,
-	ContextConsumer: ContextConsumer$3,
-	ContextProvider: ContextProvider$3,
-	Element: Element$4,
-	ForwardRef: ForwardRef$3,
-	Fragment: Fragment$3,
-	Lazy: Lazy$3,
-	Memo: Memo$3,
-	Portal: Portal$4,
-	Profiler: Profiler$3,
-	StrictMode: StrictMode$3,
-	Suspense: Suspense$3,
-	isAsyncMode: isAsyncMode$3,
-	isConcurrentMode: isConcurrentMode$3,
-	isContextConsumer: isContextConsumer$3,
-	isContextProvider: isContextProvider$3,
-	isElement: isElement$3,
-	isForwardRef: isForwardRef$3,
-	isFragment: isFragment$3,
-	isLazy: isLazy$3,
-	isMemo: isMemo$3,
-	isPortal: isPortal$3,
-	isProfiler: isProfiler$3,
-	isStrictMode: isStrictMode$3,
-	isSuspense: isSuspense$3,
-	isValidElementType: isValidElementType$3,
-	typeOf: typeOf$3
+var reactIs_production_min$2 = {
+	AsyncMode: AsyncMode$1,
+	ConcurrentMode: ConcurrentMode$1,
+	ContextConsumer: ContextConsumer$2,
+	ContextProvider: ContextProvider$2,
+	Element: Element$3,
+	ForwardRef: ForwardRef$2,
+	Fragment: Fragment$2,
+	Lazy: Lazy$2,
+	Memo: Memo$2,
+	Portal: Portal$3,
+	Profiler: Profiler$2,
+	StrictMode: StrictMode$2,
+	Suspense: Suspense$2,
+	isAsyncMode: isAsyncMode$2,
+	isConcurrentMode: isConcurrentMode$2,
+	isContextConsumer: isContextConsumer$2,
+	isContextProvider: isContextProvider$2,
+	isElement: isElement$2,
+	isForwardRef: isForwardRef$2,
+	isFragment: isFragment$2,
+	isLazy: isLazy$2,
+	isMemo: isMemo$2,
+	isPortal: isPortal$2,
+	isProfiler: isProfiler$2,
+	isStrictMode: isStrictMode$2,
+	isSuspense: isSuspense$2,
+	isValidElementType: isValidElementType$2,
+	typeOf: typeOf$2
 };
 
 /** @license React v16.13.1
@@ -213,7 +213,7 @@ var reactIs_production_min$3 = {
  * LICENSE file in the root directory of this source tree.
  */
 
-var reactIs_development$3 = createCommonjsModule$1(function (module, exports) {
+var reactIs_development$2 = createCommonjsModule$1(function (module, exports) {
 
 
 
@@ -386,12 +386,12 @@ exports.typeOf = typeOf;
 }
 });
 
-var reactIs$3 = createCommonjsModule$1(function (module) {
+var reactIs$2 = createCommonjsModule$1(function (module) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = reactIs_production_min$3;
+  module.exports = reactIs_production_min$2;
 } else {
-  module.exports = reactIs_development$3;
+  module.exports = reactIs_development$2;
 }
 });
 
@@ -877,7 +877,7 @@ var factoryWithTypeCheckers$1 = function(isValidElement, throwOnDirectAccess) {
   function createElementTypeTypeChecker() {
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
-      if (!reactIs$3.isValidElementType(propValue)) {
+      if (!reactIs$2.isValidElementType(propValue)) {
         var propType = getPropType(propValue);
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
       }
@@ -1256,7 +1256,7 @@ var factoryWithThrowingShims$1 = function() {
 
 var propTypes$1 = createCommonjsModule$1(function (module) {
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = reactIs$3;
+  var ReactIs = reactIs$2;
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -1405,40 +1405,40 @@ function formatMuiErrorMessage(code) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var b$3=60103,c$3=60106,d$3=60107,e$3=60108,f$3=60114,g$3=60109,h$3=60110,k$3=60112,l$3=60113,m$2=60120,n$3=60115,p$3=60116,q$3=60121,r$3=60122,u$1=60117,v$3=60129,w$3=60131;
-if("function"===typeof Symbol&&Symbol.for){var x$3=Symbol.for;b$3=x$3("react.element");c$3=x$3("react.portal");d$3=x$3("react.fragment");e$3=x$3("react.strict_mode");f$3=x$3("react.profiler");g$3=x$3("react.provider");h$3=x$3("react.context");k$3=x$3("react.forward_ref");l$3=x$3("react.suspense");m$2=x$3("react.suspense_list");n$3=x$3("react.memo");p$3=x$3("react.lazy");q$3=x$3("react.block");r$3=x$3("react.server.block");u$1=x$3("react.fundamental");v$3=x$3("react.debug_trace_mode");w$3=x$3("react.legacy_hidden");}
-function y$3(a){if("object"===typeof a&&null!==a){var t=a.$$typeof;switch(t){case b$3:switch(a=a.type,a){case d$3:case f$3:case e$3:case l$3:case m$2:return a;default:switch(a=a&&a.$$typeof,a){case h$3:case k$3:case p$3:case n$3:case g$3:return a;default:return t}}case c$3:return t}}}var z$3=g$3,A$3=b$3,B$1=k$3,C=d$3,D$1=p$3,E$1=n$3,F=c$3,G$1=f$3,H$1=e$3,I$1=l$3;var ContextConsumer$2=h$3;var ContextProvider$2=z$3;var Element$3=A$3;var ForwardRef$2=B$1;var Fragment$2=C;var Lazy$2=D$1;var Memo$2=E$1;var Portal$3=F;var Profiler$2=G$1;var StrictMode$2=H$1;
-var Suspense$2=I$1;var isAsyncMode$2=function(){return !1};var isConcurrentMode$2=function(){return !1};var isContextConsumer$2=function(a){return y$3(a)===h$3};var isContextProvider$2=function(a){return y$3(a)===g$3};var isElement$2=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===b$3};var isForwardRef$2=function(a){return y$3(a)===k$3};var isFragment$2=function(a){return y$3(a)===d$3};var isLazy$2=function(a){return y$3(a)===p$3};var isMemo$2=function(a){return y$3(a)===n$3};
-var isPortal$2=function(a){return y$3(a)===c$3};var isProfiler$2=function(a){return y$3(a)===f$3};var isStrictMode$2=function(a){return y$3(a)===e$3};var isSuspense$2=function(a){return y$3(a)===l$3};var isValidElementType$2=function(a){return "string"===typeof a||"function"===typeof a||a===d$3||a===f$3||a===v$3||a===e$3||a===l$3||a===m$2||a===w$3||"object"===typeof a&&null!==a&&(a.$$typeof===p$3||a.$$typeof===n$3||a.$$typeof===g$3||a.$$typeof===h$3||a.$$typeof===k$3||a.$$typeof===u$1||a.$$typeof===q$3||a[0]===r$3)?!0:!1};
-var typeOf$2=y$3;
+var b$2=60103,c$2=60106,d$2=60107,e$2=60108,f$2=60114,g$2=60109,h$2=60110,k$2=60112,l$2=60113,m$1=60120,n$2=60115,p$2=60116,q$2=60121,r$2=60122,u$1=60117,v$2=60129,w$2=60131;
+if("function"===typeof Symbol&&Symbol.for){var x$2=Symbol.for;b$2=x$2("react.element");c$2=x$2("react.portal");d$2=x$2("react.fragment");e$2=x$2("react.strict_mode");f$2=x$2("react.profiler");g$2=x$2("react.provider");h$2=x$2("react.context");k$2=x$2("react.forward_ref");l$2=x$2("react.suspense");m$1=x$2("react.suspense_list");n$2=x$2("react.memo");p$2=x$2("react.lazy");q$2=x$2("react.block");r$2=x$2("react.server.block");u$1=x$2("react.fundamental");v$2=x$2("react.debug_trace_mode");w$2=x$2("react.legacy_hidden");}
+function y$2(a){if("object"===typeof a&&null!==a){var t=a.$$typeof;switch(t){case b$2:switch(a=a.type,a){case d$2:case f$2:case e$2:case l$2:case m$1:return a;default:switch(a=a&&a.$$typeof,a){case h$2:case k$2:case p$2:case n$2:case g$2:return a;default:return t}}case c$2:return t}}}var z$2=g$2,A$2=b$2,B$1=k$2,C=d$2,D$1=p$2,E$1=n$2,F=c$2,G$1=f$2,H$1=e$2,I$1=l$2;var ContextConsumer$1=h$2;var ContextProvider$1=z$2;var Element$2=A$2;var ForwardRef$1=B$1;var Fragment$1=C;var Lazy$1=D$1;var Memo$1=E$1;var Portal$2=F;var Profiler$1=G$1;var StrictMode$1=H$1;
+var Suspense$1=I$1;var isAsyncMode$1=function(){return !1};var isConcurrentMode$1=function(){return !1};var isContextConsumer$1=function(a){return y$2(a)===h$2};var isContextProvider$1=function(a){return y$2(a)===g$2};var isElement$1=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===b$2};var isForwardRef$1=function(a){return y$2(a)===k$2};var isFragment$1=function(a){return y$2(a)===d$2};var isLazy$1=function(a){return y$2(a)===p$2};var isMemo$1=function(a){return y$2(a)===n$2};
+var isPortal$1=function(a){return y$2(a)===c$2};var isProfiler$1=function(a){return y$2(a)===f$2};var isStrictMode$1=function(a){return y$2(a)===e$2};var isSuspense$1=function(a){return y$2(a)===l$2};var isValidElementType$1=function(a){return "string"===typeof a||"function"===typeof a||a===d$2||a===f$2||a===v$2||a===e$2||a===l$2||a===m$1||a===w$2||"object"===typeof a&&null!==a&&(a.$$typeof===p$2||a.$$typeof===n$2||a.$$typeof===g$2||a.$$typeof===h$2||a.$$typeof===k$2||a.$$typeof===u$1||a.$$typeof===q$2||a[0]===r$2)?!0:!1};
+var typeOf$1=y$2;
 
-var reactIs_production_min$2 = {
-	ContextConsumer: ContextConsumer$2,
-	ContextProvider: ContextProvider$2,
-	Element: Element$3,
-	ForwardRef: ForwardRef$2,
-	Fragment: Fragment$2,
-	Lazy: Lazy$2,
-	Memo: Memo$2,
-	Portal: Portal$3,
-	Profiler: Profiler$2,
-	StrictMode: StrictMode$2,
-	Suspense: Suspense$2,
-	isAsyncMode: isAsyncMode$2,
-	isConcurrentMode: isConcurrentMode$2,
-	isContextConsumer: isContextConsumer$2,
-	isContextProvider: isContextProvider$2,
-	isElement: isElement$2,
-	isForwardRef: isForwardRef$2,
-	isFragment: isFragment$2,
-	isLazy: isLazy$2,
-	isMemo: isMemo$2,
-	isPortal: isPortal$2,
-	isProfiler: isProfiler$2,
-	isStrictMode: isStrictMode$2,
-	isSuspense: isSuspense$2,
-	isValidElementType: isValidElementType$2,
-	typeOf: typeOf$2
+var reactIs_production_min$1 = {
+	ContextConsumer: ContextConsumer$1,
+	ContextProvider: ContextProvider$1,
+	Element: Element$2,
+	ForwardRef: ForwardRef$1,
+	Fragment: Fragment$1,
+	Lazy: Lazy$1,
+	Memo: Memo$1,
+	Portal: Portal$2,
+	Profiler: Profiler$1,
+	StrictMode: StrictMode$1,
+	Suspense: Suspense$1,
+	isAsyncMode: isAsyncMode$1,
+	isConcurrentMode: isConcurrentMode$1,
+	isContextConsumer: isContextConsumer$1,
+	isContextProvider: isContextProvider$1,
+	isElement: isElement$1,
+	isForwardRef: isForwardRef$1,
+	isFragment: isFragment$1,
+	isLazy: isLazy$1,
+	isMemo: isMemo$1,
+	isPortal: isPortal$1,
+	isProfiler: isProfiler$1,
+	isStrictMode: isStrictMode$1,
+	isSuspense: isSuspense$1,
+	isValidElementType: isValidElementType$1,
+	typeOf: typeOf$1
 };
 
 /** @license React v17.0.1
@@ -1450,7 +1450,7 @@ var reactIs_production_min$2 = {
  * LICENSE file in the root directory of this source tree.
  */
 
-var reactIs_development$2 = createCommonjsModule$1(function (module, exports) {
+var reactIs_development$1 = createCommonjsModule$1(function (module, exports) {
 
 if (process.env.NODE_ENV !== "production") {
   (function() {
@@ -1665,12 +1665,12 @@ exports.typeOf = typeOf;
 }
 });
 
-var reactIs$2 = createCommonjsModule$1(function (module) {
+var reactIs$1 = createCommonjsModule$1(function (module) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = reactIs_production_min$2;
+  module.exports = reactIs_production_min$1;
 } else {
-  module.exports = reactIs_development$2;
+  module.exports = reactIs_development$1;
 }
 });
 
@@ -1722,10 +1722,10 @@ function getDisplayName$1(Component) {
 
   if (_typeof__default['default'](Component) === 'object') {
     switch (Component.$$typeof) {
-      case reactIs$2.ForwardRef:
+      case reactIs$1.ForwardRef:
         return getWrappedName(Component, Component.render, 'ForwardRef');
 
-      case reactIs$2.Memo:
+      case reactIs$1.Memo:
         return getWrappedName(Component, Component.type, 'memo');
 
       default:
@@ -2979,9865 +2979,6 @@ var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symb
 
 var isBrowser$2 = (typeof window === "undefined" ? "undefined" : _typeof$1(window)) === "object" && (typeof document === "undefined" ? "undefined" : _typeof$1(document)) === 'object' && document.nodeType === 9;
 
-var plainObjectConstrurctor$5 = {}.constructor;
-function cloneStyle$5(style) {
-  if (style == null || typeof style !== 'object') return style;
-  if (Array.isArray(style)) return style.map(cloneStyle$5);
-  if (style.constructor !== plainObjectConstrurctor$5) return style;
-  var newStyle = {};
-
-  for (var name in style) {
-    newStyle[name] = cloneStyle$5(style[name]);
-  }
-
-  return newStyle;
-}
-
-/**
- * Create a rule instance.
- */
-
-function createRule$5(name, decl, options) {
-  if (name === void 0) {
-    name = 'unnamed';
-  }
-
-  var jss = options.jss;
-  var declCopy = cloneStyle$5(decl);
-  var rule = jss.plugins.onCreateRule(name, declCopy, options);
-  if (rule) return rule; // It is an at-rule and it has no instance.
-
-  if (name[0] === '@') {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown rule " + name) : void 0;
-  }
-
-  return null;
-}
-
-var join$5 = function join(value, by) {
-  var result = '';
-
-  for (var i = 0; i < value.length; i++) {
-    // Remove !important from the value, it will be readded later.
-    if (value[i] === '!important') break;
-    if (result) result += by;
-    result += value[i];
-  }
-
-  return result;
-};
-
-/**
- * Converts array values to string.
- *
- * `margin: [['5px', '10px']]` > `margin: 5px 10px;`
- * `border: ['1px', '2px']` > `border: 1px, 2px;`
- * `margin: [['5px', '10px'], '!important']` > `margin: 5px 10px !important;`
- * `color: ['red', !important]` > `color: red !important;`
- */
-var toCssValue$5 = function toCssValue(value, ignoreImportant) {
-  if (ignoreImportant === void 0) {
-    ignoreImportant = false;
-  }
-
-  if (!Array.isArray(value)) return value;
-  var cssValue = ''; // Support space separated values via `[['5px', '10px']]`.
-
-  if (Array.isArray(value[0])) {
-    for (var i = 0; i < value.length; i++) {
-      if (value[i] === '!important') break;
-      if (cssValue) cssValue += ', ';
-      cssValue += join$5(value[i], ' ');
-    }
-  } else cssValue = join$5(value, ', '); // Add !important, because it was ignored.
-
-
-  if (!ignoreImportant && value[value.length - 1] === '!important') {
-    cssValue += ' !important';
-  }
-
-  return cssValue;
-};
-
-/**
- * Indent a string.
- * http://jsperf.com/array-join-vs-for
- */
-function indentStr$5(str, indent) {
-  var result = '';
-
-  for (var index = 0; index < indent; index++) {
-    result += '  ';
-  }
-
-  return result + str;
-}
-/**
- * Converts a Rule to CSS string.
- */
-
-
-function toCss$5(selector, style, options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var result = '';
-  if (!style) return result;
-  var _options = options,
-      _options$indent = _options.indent,
-      indent = _options$indent === void 0 ? 0 : _options$indent;
-  var fallbacks = style.fallbacks;
-  if (selector) indent++; // Apply fallbacks first.
-
-  if (fallbacks) {
-    // Array syntax {fallbacks: [{prop: value}]}
-    if (Array.isArray(fallbacks)) {
-      for (var index = 0; index < fallbacks.length; index++) {
-        var fallback = fallbacks[index];
-
-        for (var prop in fallback) {
-          var value = fallback[prop];
-
-          if (value != null) {
-            if (result) result += '\n';
-            result += "" + indentStr$5(prop + ": " + toCssValue$5(value) + ";", indent);
-          }
-        }
-      }
-    } else {
-      // Object syntax {fallbacks: {prop: value}}
-      for (var _prop in fallbacks) {
-        var _value = fallbacks[_prop];
-
-        if (_value != null) {
-          if (result) result += '\n';
-          result += "" + indentStr$5(_prop + ": " + toCssValue$5(_value) + ";", indent);
-        }
-      }
-    }
-  }
-
-  for (var _prop2 in style) {
-    var _value2 = style[_prop2];
-
-    if (_value2 != null && _prop2 !== 'fallbacks') {
-      if (result) result += '\n';
-      result += "" + indentStr$5(_prop2 + ": " + toCssValue$5(_value2) + ";", indent);
-    }
-  } // Allow empty style in this case, because properties will be added dynamically.
-
-
-  if (!result && !options.allowEmpty) return result; // When rule is being stringified before selector was defined.
-
-  if (!selector) return result;
-  indent--;
-  if (result) result = "\n" + result + "\n";
-  return indentStr$5(selector + " {" + result, indent) + indentStr$5('}', indent);
-}
-
-var escapeRegex$5 = /([[\].#*$><+~=|^:(),"'`\s])/g;
-var nativeEscape$5 = typeof CSS !== 'undefined' && CSS.escape;
-var escape$5 = (function (str) {
-  return nativeEscape$5 ? nativeEscape$5(str) : str.replace(escapeRegex$5, '\\$1');
-});
-
-var BaseStyleRule$5 =
-/*#__PURE__*/
-function () {
-  function BaseStyleRule(key, style, options) {
-    this.type = 'style';
-    this.key = void 0;
-    this.isProcessed = false;
-    this.style = void 0;
-    this.renderer = void 0;
-    this.renderable = void 0;
-    this.options = void 0;
-    var sheet = options.sheet,
-        Renderer = options.Renderer;
-    this.key = key;
-    this.options = options;
-    this.style = style;
-    if (sheet) this.renderer = sheet.renderer;else if (Renderer) this.renderer = new Renderer();
-  }
-  /**
-   * Get or set a style property.
-   */
-
-
-  var _proto = BaseStyleRule.prototype;
-
-  _proto.prop = function prop(name, value, options) {
-    // It's a getter.
-    if (value === undefined) return this.style[name]; // Don't do anything if the value has not changed.
-
-    var force = options ? options.force : false;
-    if (!force && this.style[name] === value) return this;
-    var newValue = value;
-
-    if (!options || options.process !== false) {
-      newValue = this.options.jss.plugins.onChangeValue(value, name, this);
-    }
-
-    var isEmpty = newValue == null || newValue === false;
-    var isDefined = name in this.style; // Value is empty and wasn't defined before.
-
-    if (isEmpty && !isDefined && !force) return this; // We are going to remove this value.
-
-    var remove = isEmpty && isDefined;
-    if (remove) delete this.style[name];else this.style[name] = newValue; // Renderable is defined if StyleSheet option `link` is true.
-
-    if (this.renderable && this.renderer) {
-      if (remove) this.renderer.removeProperty(this.renderable, name);else this.renderer.setProperty(this.renderable, name, newValue);
-      return this;
-    }
-
-    var sheet = this.options.sheet;
-
-    if (sheet && sheet.attached) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Rule is not linked. Missing sheet option "link: true".') : void 0;
-    }
-
-    return this;
-  };
-
-  return BaseStyleRule;
-}();
-var StyleRule$5 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](StyleRule, _BaseStyleRule);
-
-  function StyleRule(key, style, options) {
-    var _this;
-
-    _this = _BaseStyleRule.call(this, key, style, options) || this;
-    _this.selectorText = void 0;
-    _this.id = void 0;
-    _this.renderable = void 0;
-    var selector = options.selector,
-        scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-
-    if (selector) {
-      _this.selectorText = selector;
-    } else if (scoped !== false) {
-      _this.id = generateId(_assertThisInitialized__default['default'](_assertThisInitialized__default['default'](_this)), sheet);
-      _this.selectorText = "." + escape$5(_this.id);
-    }
-
-    return _this;
-  }
-  /**
-   * Set selector string.
-   * Attention: use this with caution. Most browsers didn't implement
-   * selectorText setter, so this may result in rerendering of entire Style Sheet.
-   */
-
-
-  var _proto2 = StyleRule.prototype;
-
-  /**
-   * Apply rule to an element inline.
-   */
-  _proto2.applyTo = function applyTo(renderable) {
-    var renderer = this.renderer;
-
-    if (renderer) {
-      var json = this.toJSON();
-
-      for (var prop in json) {
-        renderer.setProperty(renderable, prop, json[prop]);
-      }
-    }
-
-    return this;
-  }
-  /**
-   * Returns JSON representation of the rule.
-   * Fallbacks are not supported.
-   * Useful for inline styles.
-   */
-  ;
-
-  _proto2.toJSON = function toJSON() {
-    var json = {};
-
-    for (var prop in this.style) {
-      var value = this.style[prop];
-      if (typeof value !== 'object') json[prop] = value;else if (Array.isArray(value)) json[prop] = toCssValue$5(value);
-    }
-
-    return json;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto2.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$5(this.selectorText, this.style, opts);
-  };
-
-  _createClass__default['default'](StyleRule, [{
-    key: "selector",
-    set: function set(selector) {
-      if (selector === this.selectorText) return;
-      this.selectorText = selector;
-      var renderer = this.renderer,
-          renderable = this.renderable;
-      if (!renderable || !renderer) return;
-      var hasChanged = renderer.setSelector(renderable, selector); // If selector setter is not implemented, rerender the rule.
-
-      if (!hasChanged) {
-        renderer.replaceRule(renderable, this);
-      }
-    }
-    /**
-     * Get selector string.
-     */
-    ,
-    get: function get() {
-      return this.selectorText;
-    }
-  }]);
-
-  return StyleRule;
-}(BaseStyleRule$5);
-var pluginStyleRule$5 = {
-  onCreateRule: function onCreateRule(name, style, options) {
-    if (name[0] === '@' || options.parent && options.parent.type === 'keyframes') {
-      return null;
-    }
-
-    return new StyleRule$5(name, style, options);
-  }
-};
-
-var defaultToStringOptions$6 = {
-  indent: 1,
-  children: true
-};
-var atRegExp$5 = /@([\w-]+)/;
-/**
- * Conditional rule for @media, @supports
- */
-
-var ConditionalRule$5 =
-/*#__PURE__*/
-function () {
-  function ConditionalRule(key, styles, options) {
-    this.type = 'conditional';
-    this.at = void 0;
-    this.key = void 0;
-    this.query = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    var atMatch = key.match(atRegExp$5);
-    this.at = atMatch ? atMatch[1] : 'unknown'; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
-
-    this.query = options.name || "@" + this.at;
-    this.options = options;
-    this.rules = new RuleList$5(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Get a rule.
-   */
-
-
-  var _proto = ConditionalRule.prototype;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Create and register rule, run plugins.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, style, options) {
-    var rule = this.rules.add(name, style, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$6;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$6.indent;
-    if (options.children == null) options.children = defaultToStringOptions$6.children;
-
-    if (options.children === false) {
-      return this.query + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    return children ? this.query + " {\n" + children + "\n}" : '';
-  };
-
-  return ConditionalRule;
-}();
-var keyRegExp$7 = /@media|@supports\s+/;
-var pluginConditionalRule$5 = {
-  onCreateRule: function onCreateRule(key, styles, options) {
-    return keyRegExp$7.test(key) ? new ConditionalRule$5(key, styles, options) : null;
-  }
-};
-
-var defaultToStringOptions$1$5 = {
-  indent: 1,
-  children: true
-};
-var nameRegExp$5 = /@keyframes\s+([\w-]+)/;
-/**
- * Rule for @keyframes
- */
-
-var KeyframesRule$5 =
-/*#__PURE__*/
-function () {
-  function KeyframesRule(key, frames, options) {
-    this.type = 'keyframes';
-    this.at = '@keyframes';
-    this.key = void 0;
-    this.name = void 0;
-    this.id = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    var nameMatch = key.match(nameRegExp$5);
-
-    if (nameMatch && nameMatch[1]) {
-      this.name = nameMatch[1];
-    } else {
-      this.name = 'noname';
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Bad keyframes name " + key) : void 0;
-    }
-
-    this.key = this.type + "-" + this.name;
-    this.options = options;
-    var scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-    this.id = scoped === false ? this.name : escape$5(generateId(this, sheet));
-    this.rules = new RuleList$5(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in frames) {
-      this.rules.add(name, frames[name], _extends__default['default']({}, options, {
-        parent: this
-      }));
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = KeyframesRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$1$5;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$1$5.indent;
-    if (options.children == null) options.children = defaultToStringOptions$1$5.children;
-
-    if (options.children === false) {
-      return this.at + " " + this.id + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    if (children) children = "\n" + children + "\n";
-    return this.at + " " + this.id + " {" + children + "}";
-  };
-
-  return KeyframesRule;
-}();
-var keyRegExp$1$5 = /@keyframes\s+/;
-var refRegExp$7 = /\$([\w-]+)/g;
-
-var findReferencedKeyframe$5 = function findReferencedKeyframe(val, keyframes) {
-  if (typeof val === 'string') {
-    return val.replace(refRegExp$7, function (match, name) {
-      if (name in keyframes) {
-        return keyframes[name];
-      }
-
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Referenced keyframes rule \"" + name + "\" is not defined.") : void 0;
-      return match;
-    });
-  }
-
-  return val;
-};
-/**
- * Replace the reference for a animation name.
- */
-
-
-var replaceRef$5 = function replaceRef(style, prop, keyframes) {
-  var value = style[prop];
-  var refKeyframe = findReferencedKeyframe$5(value, keyframes);
-
-  if (refKeyframe !== value) {
-    style[prop] = refKeyframe;
-  }
-};
-
-var plugin$5 = {
-  onCreateRule: function onCreateRule(key, frames, options) {
-    return typeof key === 'string' && keyRegExp$1$5.test(key) ? new KeyframesRule$5(key, frames, options) : null;
-  },
-  // Animation name ref replacer.
-  onProcessStyle: function onProcessStyle(style, rule, sheet) {
-    if (rule.type !== 'style' || !sheet) return style;
-    if ('animation-name' in style) replaceRef$5(style, 'animation-name', sheet.keyframes);
-    if ('animation' in style) replaceRef$5(style, 'animation', sheet.keyframes);
-    return style;
-  },
-  onChangeValue: function onChangeValue(val, prop, rule) {
-    var sheet = rule.options.sheet;
-
-    if (!sheet) {
-      return val;
-    }
-
-    switch (prop) {
-      case 'animation':
-        return findReferencedKeyframe$5(val, sheet.keyframes);
-
-      case 'animation-name':
-        return findReferencedKeyframe$5(val, sheet.keyframes);
-
-      default:
-        return val;
-    }
-  }
-};
-
-var KeyframeRule$5 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](KeyframeRule, _BaseStyleRule);
-
-  function KeyframeRule() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _BaseStyleRule.call.apply(_BaseStyleRule, [this].concat(args)) || this;
-    _this.renderable = void 0;
-    return _this;
-  }
-
-  var _proto = KeyframeRule.prototype;
-
-  /**
-   * Generates a CSS string.
-   */
-  _proto.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$5(this.key, this.style, opts);
-  };
-
-  return KeyframeRule;
-}(BaseStyleRule$5);
-var pluginKeyframeRule$5 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    if (options.parent && options.parent.type === 'keyframes') {
-      return new KeyframeRule$5(key, style, options);
-    }
-
-    return null;
-  }
-};
-
-var FontFaceRule$5 =
-/*#__PURE__*/
-function () {
-  function FontFaceRule(key, style, options) {
-    this.type = 'font-face';
-    this.at = '@font-face';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = FontFaceRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.style)) {
-      var str = '';
-
-      for (var index = 0; index < this.style.length; index++) {
-        str += toCss$5(this.at, this.style[index]);
-        if (this.style[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return toCss$5(this.at, this.style, options);
-  };
-
-  return FontFaceRule;
-}();
-var keyRegExp$2$5 = /@font-face/;
-var pluginFontFaceRule$5 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return keyRegExp$2$5.test(key) ? new FontFaceRule$5(key, style, options) : null;
-  }
-};
-
-var ViewportRule$5 =
-/*#__PURE__*/
-function () {
-  function ViewportRule(key, style, options) {
-    this.type = 'viewport';
-    this.at = '@viewport';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = ViewportRule.prototype;
-
-  _proto.toString = function toString(options) {
-    return toCss$5(this.key, this.style, options);
-  };
-
-  return ViewportRule;
-}();
-var pluginViewportRule$5 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return key === '@viewport' || key === '@-ms-viewport' ? new ViewportRule$5(key, style, options) : null;
-  }
-};
-
-var SimpleRule$5 =
-/*#__PURE__*/
-function () {
-  function SimpleRule(key, value, options) {
-    this.type = 'simple';
-    this.key = void 0;
-    this.value = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.value = value;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  // eslint-disable-next-line no-unused-vars
-
-
-  var _proto = SimpleRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.value)) {
-      var str = '';
-
-      for (var index = 0; index < this.value.length; index++) {
-        str += this.key + " " + this.value[index] + ";";
-        if (this.value[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return this.key + " " + this.value + ";";
-  };
-
-  return SimpleRule;
-}();
-var keysMap$5 = {
-  '@charset': true,
-  '@import': true,
-  '@namespace': true
-};
-var pluginSimpleRule$5 = {
-  onCreateRule: function onCreateRule(key, value, options) {
-    return key in keysMap$5 ? new SimpleRule$5(key, value, options) : null;
-  }
-};
-
-var plugins$7 = [pluginStyleRule$5, pluginConditionalRule$5, plugin$5, pluginKeyframeRule$5, pluginFontFaceRule$5, pluginViewportRule$5, pluginSimpleRule$5];
-
-var defaultUpdateOptions$5 = {
-  process: true
-};
-var forceUpdateOptions$5 = {
-  force: true,
-  process: true
-  /**
-   * Contains rules objects and allows adding/removing etc.
-   * Is used for e.g. by `StyleSheet` or `ConditionalRule`.
-   */
-
-};
-
-var RuleList$5 =
-/*#__PURE__*/
-function () {
-  // Rules registry for access by .get() method.
-  // It contains the same rule registered by name and by selector.
-  // Original styles object.
-  // Used to ensure correct rules order.
-  function RuleList(options) {
-    this.map = {};
-    this.raw = {};
-    this.index = [];
-    this.counter = 0;
-    this.options = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.options = options;
-    this.classes = options.classes;
-    this.keyframes = options.keyframes;
-  }
-  /**
-   * Create and register rule.
-   *
-   * Will not render after Style Sheet was rendered the first time.
-   */
-
-
-  var _proto = RuleList.prototype;
-
-  _proto.add = function add(name, decl, ruleOptions) {
-    var _this$options = this.options,
-        parent = _this$options.parent,
-        sheet = _this$options.sheet,
-        jss = _this$options.jss,
-        Renderer = _this$options.Renderer,
-        generateId = _this$options.generateId,
-        scoped = _this$options.scoped;
-
-    var options = _extends__default['default']({
-      classes: this.classes,
-      parent: parent,
-      sheet: sheet,
-      jss: jss,
-      Renderer: Renderer,
-      generateId: generateId,
-      scoped: scoped,
-      name: name,
-      keyframes: this.keyframes,
-      selector: undefined
-    }, ruleOptions); // When user uses .createStyleSheet(), duplicate names are not possible, but
-    // `sheet.addRule()` opens the door for any duplicate rule name. When this happens
-    // we need to make the key unique within this RuleList instance scope.
-
-
-    var key = name;
-
-    if (name in this.raw) {
-      key = name + "-d" + this.counter++;
-    } // We need to save the original decl before creating the rule
-    // because cache plugin needs to use it as a key to return a cached rule.
-
-
-    this.raw[key] = decl;
-
-    if (key in this.classes) {
-      // E.g. rules inside of @media container
-      options.selector = "." + escape$5(this.classes[key]);
-    }
-
-    var rule = createRule$5(key, decl, options);
-    if (!rule) return null;
-    this.register(rule);
-    var index = options.index === undefined ? this.index.length : options.index;
-    this.index.splice(index, 0, rule);
-    return rule;
-  }
-  /**
-   * Get a rule.
-   */
-  ;
-
-  _proto.get = function get(name) {
-    return this.map[name];
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.remove = function remove(rule) {
-    this.unregister(rule);
-    delete this.raw[rule.key];
-    this.index.splice(this.index.indexOf(rule), 1);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.index.indexOf(rule);
-  }
-  /**
-   * Run `onProcessRule()` plugins on every rule.
-   */
-  ;
-
-  _proto.process = function process() {
-    var plugins = this.options.jss.plugins; // We need to clone array because if we modify the index somewhere else during a loop
-    // we end up with very hard-to-track-down side effects.
-
-    this.index.slice(0).forEach(plugins.onProcessRule, plugins);
-  }
-  /**
-   * Register a rule in `.map`, `.classes` and `.keyframes` maps.
-   */
-  ;
-
-  _proto.register = function register(rule) {
-    this.map[rule.key] = rule;
-
-    if (rule instanceof StyleRule$5) {
-      this.map[rule.selector] = rule;
-      if (rule.id) this.classes[rule.key] = rule.id;
-    } else if (rule instanceof KeyframesRule$5 && this.keyframes) {
-      this.keyframes[rule.name] = rule.id;
-    }
-  }
-  /**
-   * Unregister a rule.
-   */
-  ;
-
-  _proto.unregister = function unregister(rule) {
-    delete this.map[rule.key];
-
-    if (rule instanceof StyleRule$5) {
-      delete this.map[rule.selector];
-      delete this.classes[rule.key];
-    } else if (rule instanceof KeyframesRule$5) {
-      delete this.keyframes[rule.name];
-    }
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var name;
-    var data;
-    var options;
-
-    if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
-      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 2 ? undefined : arguments[2];
-    } else {
-      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 1 ? undefined : arguments[1];
-      name = null;
-    }
-
-    if (name) {
-      this.updateOne(this.map[name], data, options);
-    } else {
-      for (var index = 0; index < this.index.length; index++) {
-        this.updateOne(this.index[index], data, options);
-      }
-    }
-  }
-  /**
-   * Execute plugins, update rule props.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    if (options === void 0) {
-      options = defaultUpdateOptions$5;
-    }
-
-    var _this$options2 = this.options,
-        plugins = _this$options2.jss.plugins,
-        sheet = _this$options2.sheet; // It is a rules container like for e.g. ConditionalRule.
-
-    if (rule.rules instanceof RuleList) {
-      rule.rules.update(data, options);
-      return;
-    }
-
-    var styleRule = rule;
-    var style = styleRule.style;
-    plugins.onUpdate(data, rule, sheet, options); // We rely on a new `style` ref in case it was mutated during onUpdate hook.
-
-    if (options.process && style && style !== styleRule.style) {
-      // We need to run the plugins in case new `style` relies on syntax plugins.
-      plugins.onProcessStyle(styleRule.style, styleRule, sheet); // Update and add props.
-
-      for (var prop in styleRule.style) {
-        var nextValue = styleRule.style[prop];
-        var prevValue = style[prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (nextValue !== prevValue) {
-          styleRule.prop(prop, nextValue, forceUpdateOptions$5);
-        }
-      } // Remove props.
-
-
-      for (var _prop in style) {
-        var _nextValue = styleRule.style[_prop];
-        var _prevValue = style[_prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (_nextValue == null && _nextValue !== _prevValue) {
-          styleRule.prop(_prop, null, forceUpdateOptions$5);
-        }
-      }
-    }
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    var str = '';
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-
-    for (var index = 0; index < this.index.length; index++) {
-      var rule = this.index[index];
-      var css = rule.toString(options); // No need to render an empty rule.
-
-      if (!css && !link) continue;
-      if (str) str += '\n';
-      str += css;
-    }
-
-    return str;
-  };
-
-  return RuleList;
-}();
-
-var StyleSheet$5 =
-/*#__PURE__*/
-function () {
-  function StyleSheet(styles, options) {
-    this.options = void 0;
-    this.deployed = void 0;
-    this.attached = void 0;
-    this.rules = void 0;
-    this.renderer = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.queue = void 0;
-    this.attached = false;
-    this.deployed = false;
-    this.classes = {};
-    this.keyframes = {};
-    this.options = _extends__default['default']({}, options, {
-      sheet: this,
-      parent: this,
-      classes: this.classes,
-      keyframes: this.keyframes
-    });
-
-    if (options.Renderer) {
-      this.renderer = new options.Renderer(this);
-    }
-
-    this.rules = new RuleList$5(this.options);
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Attach renderable to the render tree.
-   */
-
-
-  var _proto = StyleSheet.prototype;
-
-  _proto.attach = function attach() {
-    if (this.attached) return this;
-    if (this.renderer) this.renderer.attach();
-    this.attached = true; // Order is important, because we can't use insertRule API if style element is not attached.
-
-    if (!this.deployed) this.deploy();
-    return this;
-  }
-  /**
-   * Remove renderable from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.attached) return this;
-    if (this.renderer) this.renderer.detach();
-    this.attached = false;
-    return this;
-  }
-  /**
-   * Add a rule to the current stylesheet.
-   * Will insert a rule also after the stylesheet has been rendered first time.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, decl, options) {
-    var queue = this.queue; // Plugins can create rules.
-    // In order to preserve the right order, we need to queue all `.addRule` calls,
-    // which happen after the first `rules.add()` call.
-
-    if (this.attached && !queue) this.queue = [];
-    var rule = this.rules.add(name, decl, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-
-    if (this.attached) {
-      if (!this.deployed) return rule; // Don't insert rule directly if there is no stringified version yet.
-      // It will be inserted all together when .attach is called.
-
-      if (queue) queue.push(rule);else {
-        this.insertRule(rule);
-
-        if (this.queue) {
-          this.queue.forEach(this.insertRule, this);
-          this.queue = undefined;
-        }
-      }
-      return rule;
-    } // We can't add rules to a detached style node.
-    // We will redeploy the sheet once user will attach it.
-
-
-    this.deployed = false;
-    return rule;
-  }
-  /**
-   * Insert rule into the StyleSheet
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule) {
-    if (this.renderer) {
-      this.renderer.insertRule(rule);
-    }
-  }
-  /**
-   * Create and add rules.
-   * Will render also after Style Sheet was rendered the first time.
-   */
-  ;
-
-  _proto.addRules = function addRules(styles, options) {
-    var added = [];
-
-    for (var name in styles) {
-      var rule = this.addRule(name, styles[name], options);
-      if (rule) added.push(rule);
-    }
-
-    return added;
-  }
-  /**
-   * Get a rule by name.
-   */
-  ;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Delete a rule by name.
-   * Returns `true`: if rule has been deleted from the DOM.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(name) {
-    var rule = typeof name === 'object' ? name : this.rules.get(name);
-
-    if (!rule || // Style sheet was created without link: true and attached, in this case we
-    // won't be able to remove the CSS rule from the DOM.
-    this.attached && !rule.renderable) {
-      return false;
-    }
-
-    this.rules.remove(rule);
-
-    if (this.attached && rule.renderable && this.renderer) {
-      return this.renderer.deleteRule(rule.renderable);
-    }
-
-    return true;
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Deploy pure CSS string to a renderable.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    if (this.renderer) this.renderer.deploy();
-    this.deployed = true;
-    return this;
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var _this$rules;
-
-    (_this$rules = this.rules).update.apply(_this$rules, arguments);
-
-    return this;
-  }
-  /**
-   * Updates a single rule.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    this.rules.updateOne(rule, data, options);
-    return this;
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    return this.rules.toString(options);
-  };
-
-  return StyleSheet;
-}();
-
-var PluginsRegistry$5 =
-/*#__PURE__*/
-function () {
-  function PluginsRegistry() {
-    this.plugins = {
-      internal: [],
-      external: []
-    };
-    this.registry = void 0;
-  }
-
-  var _proto = PluginsRegistry.prototype;
-
-  /**
-   * Call `onCreateRule` hooks and return an object if returned by a hook.
-   */
-  _proto.onCreateRule = function onCreateRule(name, decl, options) {
-    for (var i = 0; i < this.registry.onCreateRule.length; i++) {
-      var rule = this.registry.onCreateRule[i](name, decl, options);
-      if (rule) return rule;
-    }
-
-    return null;
-  }
-  /**
-   * Call `onProcessRule` hooks.
-   */
-  ;
-
-  _proto.onProcessRule = function onProcessRule(rule) {
-    if (rule.isProcessed) return;
-    var sheet = rule.options.sheet;
-
-    for (var i = 0; i < this.registry.onProcessRule.length; i++) {
-      this.registry.onProcessRule[i](rule, sheet);
-    }
-
-    if (rule.style) this.onProcessStyle(rule.style, rule, sheet);
-    rule.isProcessed = true;
-  }
-  /**
-   * Call `onProcessStyle` hooks.
-   */
-  ;
-
-  _proto.onProcessStyle = function onProcessStyle(style, rule, sheet) {
-    for (var i = 0; i < this.registry.onProcessStyle.length; i++) {
-      // $FlowFixMe[prop-missing]
-      rule.style = this.registry.onProcessStyle[i](rule.style, rule, sheet);
-    }
-  }
-  /**
-   * Call `onProcessSheet` hooks.
-   */
-  ;
-
-  _proto.onProcessSheet = function onProcessSheet(sheet) {
-    for (var i = 0; i < this.registry.onProcessSheet.length; i++) {
-      this.registry.onProcessSheet[i](sheet);
-    }
-  }
-  /**
-   * Call `onUpdate` hooks.
-   */
-  ;
-
-  _proto.onUpdate = function onUpdate(data, rule, sheet, options) {
-    for (var i = 0; i < this.registry.onUpdate.length; i++) {
-      this.registry.onUpdate[i](data, rule, sheet, options);
-    }
-  }
-  /**
-   * Call `onChangeValue` hooks.
-   */
-  ;
-
-  _proto.onChangeValue = function onChangeValue(value, prop, rule) {
-    var processedValue = value;
-
-    for (var i = 0; i < this.registry.onChangeValue.length; i++) {
-      processedValue = this.registry.onChangeValue[i](processedValue, prop, rule);
-    }
-
-    return processedValue;
-  }
-  /**
-   * Register a plugin.
-   */
-  ;
-
-  _proto.use = function use(newPlugin, options) {
-    if (options === void 0) {
-      options = {
-        queue: 'external'
-      };
-    }
-
-    var plugins = this.plugins[options.queue]; // Avoids applying same plugin twice, at least based on ref.
-
-    if (plugins.indexOf(newPlugin) !== -1) {
-      return;
-    }
-
-    plugins.push(newPlugin);
-    this.registry = [].concat(this.plugins.external, this.plugins.internal).reduce(function (registry, plugin) {
-      for (var name in plugin) {
-        if (name in registry) {
-          registry[name].push(plugin[name]);
-        } else {
-          process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown hook \"" + name + "\".") : void 0;
-        }
-      }
-
-      return registry;
-    }, {
-      onCreateRule: [],
-      onProcessRule: [],
-      onProcessStyle: [],
-      onProcessSheet: [],
-      onChangeValue: [],
-      onUpdate: []
-    });
-  };
-
-  return PluginsRegistry;
-}();
-
-/**
- * Sheets registry to access them all at one place.
- */
-var SheetsRegistry$5 =
-/*#__PURE__*/
-function () {
-  function SheetsRegistry() {
-    this.registry = [];
-  }
-
-  var _proto = SheetsRegistry.prototype;
-
-  /**
-   * Register a Style Sheet.
-   */
-  _proto.add = function add(sheet) {
-    var registry = this.registry;
-    var index = sheet.options.index;
-    if (registry.indexOf(sheet) !== -1) return;
-
-    if (registry.length === 0 || index >= this.index) {
-      registry.push(sheet);
-      return;
-    } // Find a position.
-
-
-    for (var i = 0; i < registry.length; i++) {
-      if (registry[i].options.index > index) {
-        registry.splice(i, 0, sheet);
-        return;
-      }
-    }
-  }
-  /**
-   * Reset the registry.
-   */
-  ;
-
-  _proto.reset = function reset() {
-    this.registry = [];
-  }
-  /**
-   * Remove a Style Sheet.
-   */
-  ;
-
-  _proto.remove = function remove(sheet) {
-    var index = this.registry.indexOf(sheet);
-    this.registry.splice(index, 1);
-  }
-  /**
-   * Convert all attached sheets to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        attached = _ref.attached,
-        options = _objectWithoutPropertiesLoose__default['default'](_ref, ["attached"]);
-
-    var css = '';
-
-    for (var i = 0; i < this.registry.length; i++) {
-      var sheet = this.registry[i];
-
-      if (attached != null && sheet.attached !== attached) {
-        continue;
-      }
-
-      if (css) css += '\n';
-      css += sheet.toString(options);
-    }
-
-    return css;
-  };
-
-  _createClass__default['default'](SheetsRegistry, [{
-    key: "index",
-
-    /**
-     * Current highest index number.
-     */
-    get: function get() {
-      return this.registry.length === 0 ? 0 : this.registry[this.registry.length - 1].options.index;
-    }
-  }]);
-
-  return SheetsRegistry;
-}();
-
-/**
- * This is a global sheets registry. Only DomRenderer will add sheets to it.
- * On the server one should use an own SheetsRegistry instance and add the
- * sheets to it, because you need to make sure to create a new registry for
- * each request in order to not leak sheets across requests.
- */
-
-var registry$5 = new SheetsRegistry$5();
-
-/* eslint-disable */
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var globalThis$6 = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-
-var ns$5 = '2f1acc6c3a606b082e5eef5e54414ffb';
-if (globalThis$6[ns$5] == null) globalThis$6[ns$5] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
-// the current version with just one short number and use it for classes generation
-// we use a counter. Also it is more accurate, because user can manually reevaluate
-// the module.
-
-var moduleId$5 = globalThis$6[ns$5]++;
-
-var maxRules$5 = 1e10;
-
-/**
- * Returns a function which generates unique class names based on counters.
- * When new generator function is created, rule counter is reseted.
- * We need to reset the rule counter for SSR for each request.
- */
-var createGenerateId$5 = function createGenerateId(options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var ruleCounter = 0;
-  return function (rule, sheet) {
-    ruleCounter += 1;
-
-    if (ruleCounter > maxRules$5) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] You might have a memory leak. Rule counter is at " + ruleCounter + ".") : void 0;
-    }
-
-    var jssId = '';
-    var prefix = '';
-
-    if (sheet) {
-      if (sheet.options.classNamePrefix) {
-        prefix = sheet.options.classNamePrefix;
-      }
-
-      if (sheet.options.jss.id != null) {
-        jssId = String(sheet.options.jss.id);
-      }
-    }
-
-    if (options.minify) {
-      // Using "c" because a number can't be the first char in a class name.
-      return "" + (prefix || 'c') + moduleId$5 + jssId + ruleCounter;
-    }
-
-    return prefix + rule.key + "-" + moduleId$5 + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
-  };
-};
-
-/**
- * Cache the value from the first time a function is called.
- */
-var memoize$5 = function memoize(fn) {
-  var value;
-  return function () {
-    if (!value) value = fn();
-    return value;
-  };
-};
-
-/**
- * Get a style property value.
- */
-var getPropertyValue$5 = function getPropertyValue(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      return cssRule.attributeStyleMap.get(prop);
-    }
-
-    return cssRule.style.getPropertyValue(prop);
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return '';
-  }
-};
-
-/**
- * Set a style property.
- */
-var setProperty$5 = function setProperty(cssRule, prop, value) {
-  try {
-    var cssValue = value;
-
-    if (Array.isArray(value)) {
-      cssValue = toCssValue$5(value, true);
-
-      if (value[value.length - 1] === '!important') {
-        cssRule.style.setProperty(prop, cssValue, 'important');
-        return true;
-      }
-    } // Support CSSTOM.
-
-
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.set(prop, cssValue);
-    } else {
-      cssRule.style.setProperty(prop, cssValue);
-    }
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return false;
-  }
-
-  return true;
-};
-
-/**
- * Remove a style property.
- */
-var removeProperty$5 = function removeProperty(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.delete(prop);
-    } else {
-      cssRule.style.removeProperty(prop);
-    }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] DOMException \"" + err.message + "\" was thrown. Tried to remove property \"" + prop + "\".") : void 0;
-  }
-};
-
-/**
- * Set the selector.
- */
-var setSelector$5 = function setSelector(cssRule, selectorText) {
-  cssRule.selectorText = selectorText; // Return false if setter was not successful.
-  // Currently works in chrome only.
-
-  return cssRule.selectorText === selectorText;
-};
-/**
- * Gets the `head` element upon the first call and caches it.
- * We assume it can't be null.
- */
-
-
-var getHead$5 = memoize$5(function () {
-  return document.querySelector('head');
-});
-/**
- * Find attached sheet with an index higher than the passed one.
- */
-
-function findHigherSheet$5(registry, options) {
-  for (var i = 0; i < registry.length; i++) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.index > options.index && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find attached sheet with the highest index.
- */
-
-
-function findHighestSheet$5(registry, options) {
-  for (var i = registry.length - 1; i >= 0; i--) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find a comment with "jss" inside.
- */
-
-
-function findCommentNode$5(text) {
-  var head = getHead$5();
-
-  for (var i = 0; i < head.childNodes.length; i++) {
-    var node = head.childNodes[i];
-
-    if (node.nodeType === 8 && node.nodeValue.trim() === text) {
-      return node;
-    }
-  }
-
-  return null;
-}
-
-/**
- * Find a node before which we can insert the sheet.
- */
-function findPrevNode$5(options) {
-  var registry$1 = registry$5.registry;
-
-  if (registry$1.length > 0) {
-    // Try to insert before the next higher sheet.
-    var sheet = findHigherSheet$5(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element
-      };
-    } // Otherwise insert after the last attached.
-
-
-    sheet = findHighestSheet$5(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element.nextSibling
-      };
-    }
-  } // Try to find a comment placeholder if registry is empty.
-
-
-  var insertionPoint = options.insertionPoint;
-
-  if (insertionPoint && typeof insertionPoint === 'string') {
-    var comment = findCommentNode$5(insertionPoint);
-
-    if (comment) {
-      return {
-        parent: comment.parentNode,
-        node: comment.nextSibling
-      };
-    } // If user specifies an insertion point and it can't be found in the document -
-    // bad specificity issues may appear.
-
-
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Insertion point \"" + insertionPoint + "\" not found.") : void 0;
-  }
-
-  return false;
-}
-/**
- * Insert style element into the DOM.
- */
-
-
-function insertStyle$5(style, options) {
-  var insertionPoint = options.insertionPoint;
-  var nextNode = findPrevNode$5(options);
-
-  if (nextNode !== false && nextNode.parent) {
-    nextNode.parent.insertBefore(style, nextNode.node);
-    return;
-  } // Works with iframes and any node types.
-
-
-  if (insertionPoint && typeof insertionPoint.nodeType === 'number') {
-    // https://stackoverflow.com/questions/41328728/force-casting-in-flow
-    var insertionPointElement = insertionPoint;
-    var parentNode = insertionPointElement.parentNode;
-    if (parentNode) parentNode.insertBefore(style, insertionPointElement.nextSibling);else process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Insertion point is not in the DOM.') : void 0;
-    return;
-  }
-
-  getHead$5().appendChild(style);
-}
-/**
- * Read jss nonce setting from the page if the user has set it.
- */
-
-
-var getNonce$5 = memoize$5(function () {
-  var node = document.querySelector('meta[property="csp-nonce"]');
-  return node ? node.getAttribute('content') : null;
-});
-
-var _insertRule$5 = function insertRule(container, rule, index) {
-  try {
-    if ('insertRule' in container) {
-      var c = container;
-      c.insertRule(rule, index);
-    } // Keyframes rule.
-    else if ('appendRule' in container) {
-        var _c = container;
-
-        _c.appendRule(rule);
-      }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] " + err.message) : void 0;
-    return false;
-  }
-
-  return container.cssRules[index];
-};
-
-var getValidRuleInsertionIndex$5 = function getValidRuleInsertionIndex(container, index) {
-  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
-
-  if (index === undefined || index > maxIndex) {
-    // eslint-disable-next-line no-param-reassign
-    return maxIndex;
-  }
-
-  return index;
-};
-
-var createStyle$5 = function createStyle() {
-  var el = document.createElement('style'); // Without it, IE will have a broken source order specificity if we
-  // insert rules after we insert the style tag.
-  // It seems to kick-off the source order specificity algorithm.
-
-  el.textContent = '\n';
-  return el;
-};
-
-var DomRenderer$5 =
-/*#__PURE__*/
-function () {
-  // HTMLStyleElement needs fixing https://github.com/facebook/flow/issues/2696
-  // Will be empty if link: true option is not set, because
-  // it is only for use together with insertRule API.
-  function DomRenderer(sheet) {
-    this.getPropertyValue = getPropertyValue$5;
-    this.setProperty = setProperty$5;
-    this.removeProperty = removeProperty$5;
-    this.setSelector = setSelector$5;
-    this.element = void 0;
-    this.sheet = void 0;
-    this.hasInsertedRules = false;
-    this.cssRules = [];
-    // There is no sheet when the renderer is used from a standalone StyleRule.
-    if (sheet) registry$5.add(sheet);
-    this.sheet = sheet;
-
-    var _ref = this.sheet ? this.sheet.options : {},
-        media = _ref.media,
-        meta = _ref.meta,
-        element = _ref.element;
-
-    this.element = element || createStyle$5();
-    this.element.setAttribute('data-jss', '');
-    if (media) this.element.setAttribute('media', media);
-    if (meta) this.element.setAttribute('data-meta', meta);
-    var nonce = getNonce$5();
-    if (nonce) this.element.setAttribute('nonce', nonce);
-  }
-  /**
-   * Insert style element into render tree.
-   */
-
-
-  var _proto = DomRenderer.prototype;
-
-  _proto.attach = function attach() {
-    // In the case the element node is external and it is already in the DOM.
-    if (this.element.parentNode || !this.sheet) return;
-    insertStyle$5(this.element, this.sheet.options); // When rules are inserted using `insertRule` API, after `sheet.detach().attach()`
-    // most browsers create a new CSSStyleSheet, except of all IEs.
-
-    var deployed = Boolean(this.sheet && this.sheet.deployed);
-
-    if (this.hasInsertedRules && deployed) {
-      this.hasInsertedRules = false;
-      this.deploy();
-    }
-  }
-  /**
-   * Remove style element from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.sheet) return;
-    var parentNode = this.element.parentNode;
-    if (parentNode) parentNode.removeChild(this.element); // In the most browsers, rules inserted using insertRule() API will be lost when style element is removed.
-    // Though IE will keep them and we need a consistent behavior.
-
-    if (this.sheet.options.link) {
-      this.cssRules = [];
-      this.element.textContent = '\n';
-    }
-  }
-  /**
-   * Inject CSS string into element.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    var sheet = this.sheet;
-    if (!sheet) return;
-
-    if (sheet.options.link) {
-      this.insertRules(sheet.rules);
-      return;
-    }
-
-    this.element.textContent = "\n" + sheet.toString() + "\n";
-  }
-  /**
-   * Insert RuleList into an element.
-   */
-  ;
-
-  _proto.insertRules = function insertRules(rules, nativeParent) {
-    for (var i = 0; i < rules.index.length; i++) {
-      this.insertRule(rules.index[i], i, nativeParent);
-    }
-  }
-  /**
-   * Insert a rule into element.
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule, index, nativeParent) {
-    if (nativeParent === void 0) {
-      nativeParent = this.element.sheet;
-    }
-
-    if (rule.rules) {
-      var parent = rule;
-      var latestNativeParent = nativeParent;
-
-      if (rule.type === 'conditional' || rule.type === 'keyframes') {
-        var _insertionIndex = getValidRuleInsertionIndex$5(nativeParent, index); // We need to render the container without children first.
-
-
-        latestNativeParent = _insertRule$5(nativeParent, parent.toString({
-          children: false
-        }), _insertionIndex);
-
-        if (latestNativeParent === false) {
-          return false;
-        }
-
-        this.refCssRule(rule, _insertionIndex, latestNativeParent);
-      }
-
-      this.insertRules(parent.rules, latestNativeParent);
-      return latestNativeParent;
-    }
-
-    var ruleStr = rule.toString();
-    if (!ruleStr) return false;
-    var insertionIndex = getValidRuleInsertionIndex$5(nativeParent, index);
-
-    var nativeRule = _insertRule$5(nativeParent, ruleStr, insertionIndex);
-
-    if (nativeRule === false) {
-      return false;
-    }
-
-    this.hasInsertedRules = true;
-    this.refCssRule(rule, insertionIndex, nativeRule);
-    return nativeRule;
-  };
-
-  _proto.refCssRule = function refCssRule(rule, index, cssRule) {
-    rule.renderable = cssRule; // We only want to reference the top level rules, deleteRule API doesn't support removing nested rules
-    // like rules inside media queries or keyframes
-
-    if (rule.options.parent instanceof StyleSheet$5) {
-      this.cssRules[index] = cssRule;
-    }
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(cssRule) {
-    var sheet = this.element.sheet;
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return true;
-  }
-  /**
-   * Get index of a CSS Rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(cssRule) {
-    return this.cssRules.indexOf(cssRule);
-  }
-  /**
-   * Generate a new CSS rule and replace the existing one.
-   *
-   * Only used for some old browsers because they can't set a selector.
-   */
-  ;
-
-  _proto.replaceRule = function replaceRule(cssRule, rule) {
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    this.element.sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return this.insertRule(rule, index);
-  }
-  /**
-   * Get all rules elements.
-   */
-  ;
-
-  _proto.getRules = function getRules() {
-    return this.element.sheet.cssRules;
-  };
-
-  return DomRenderer;
-}();
-
-var instanceCounter$5 = 0;
-
-var Jss$5 =
-/*#__PURE__*/
-function () {
-  function Jss(options) {
-    this.id = instanceCounter$5++;
-    this.version = "10.5.1";
-    this.plugins = new PluginsRegistry$5();
-    this.options = {
-      id: {
-        minify: false
-      },
-      createGenerateId: createGenerateId$5,
-      Renderer: isBrowser$2 ? DomRenderer$5 : null,
-      plugins: []
-    };
-    this.generateId = createGenerateId$5({
-      minify: false
-    });
-
-    for (var i = 0; i < plugins$7.length; i++) {
-      this.plugins.use(plugins$7[i], {
-        queue: 'internal'
-      });
-    }
-
-    this.setup(options);
-  }
-  /**
-   * Prepares various options, applies plugins.
-   * Should not be used twice on the same instance, because there is no plugins
-   * deduplication logic.
-   */
-
-
-  var _proto = Jss.prototype;
-
-  _proto.setup = function setup(options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    if (options.createGenerateId) {
-      this.options.createGenerateId = options.createGenerateId;
-    }
-
-    if (options.id) {
-      this.options.id = _extends__default['default']({}, this.options.id, options.id);
-    }
-
-    if (options.createGenerateId || options.id) {
-      this.generateId = this.options.createGenerateId(this.options.id);
-    }
-
-    if (options.insertionPoint != null) this.options.insertionPoint = options.insertionPoint;
-
-    if ('Renderer' in options) {
-      this.options.Renderer = options.Renderer;
-    } // eslint-disable-next-line prefer-spread
-
-
-    if (options.plugins) this.use.apply(this, options.plugins);
-    return this;
-  }
-  /**
-   * Create a Style Sheet.
-   */
-  ;
-
-  _proto.createStyleSheet = function createStyleSheet(styles, options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    var _options = options,
-        index = _options.index;
-
-    if (typeof index !== 'number') {
-      index = registry$5.index === 0 ? 0 : registry$5.index + 1;
-    }
-
-    var sheet = new StyleSheet$5(styles, _extends__default['default']({}, options, {
-      jss: this,
-      generateId: options.generateId || this.generateId,
-      insertionPoint: this.options.insertionPoint,
-      Renderer: this.options.Renderer,
-      index: index
-    }));
-    this.plugins.onProcessSheet(sheet);
-    return sheet;
-  }
-  /**
-   * Detach the Style Sheet and remove it from the registry.
-   */
-  ;
-
-  _proto.removeStyleSheet = function removeStyleSheet(sheet) {
-    sheet.detach();
-    registry$5.remove(sheet);
-    return this;
-  }
-  /**
-   * Create a rule without a Style Sheet.
-   * [Deprecated] will be removed in the next major version.
-   */
-  ;
-
-  _proto.createRule = function createRule$1(name, style, options) {
-    if (style === void 0) {
-      style = {};
-    }
-
-    if (options === void 0) {
-      options = {};
-    }
-
-    // Enable rule without name for inline styles.
-    if (typeof name === 'object') {
-      // $FlowFixMe[incompatible-call]
-      return this.createRule(undefined, name, style);
-    } // $FlowFixMe[incompatible-type]
-
-
-    var ruleOptions = _extends__default['default']({}, options, {
-      name: name,
-      jss: this,
-      Renderer: this.options.Renderer
-    });
-
-    if (!ruleOptions.generateId) ruleOptions.generateId = this.generateId;
-    if (!ruleOptions.classes) ruleOptions.classes = {};
-    if (!ruleOptions.keyframes) ruleOptions.keyframes = {};
-
-    var rule = createRule$5(name, style, ruleOptions);
-
-    if (rule) this.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Register plugin. Passed function will be invoked with a rule instance.
-   */
-  ;
-
-  _proto.use = function use() {
-    var _this = this;
-
-    for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
-      plugins[_key] = arguments[_key];
-    }
-
-    plugins.forEach(function (plugin) {
-      _this.plugins.use(plugin);
-    });
-    return this;
-  };
-
-  return Jss;
-}();
-/**
- * Creates a new instance of Jss.
- */
-
-var create$6 = function create(options) {
-  return new Jss$5(options);
-};
-/**
- * A global Jss instance.
- */
-
-create$6();
-
-var now$1 = Date.now();
-var fnValuesNs$1 = "fnValues" + now$1;
-var fnRuleNs$1 = "fnStyle" + ++now$1;
-
-var functionPlugin$1 = function functionPlugin() {
-  return {
-    onCreateRule: function onCreateRule(name, decl, options) {
-      if (typeof decl !== 'function') return null;
-      var rule = createRule$5(name, {}, options);
-      rule[fnRuleNs$1] = decl;
-      return rule;
-    },
-    onProcessStyle: function onProcessStyle(style, rule) {
-      // We need to extract function values from the declaration, so that we can keep core unaware of them.
-      // We need to do that only once.
-      // We don't need to extract functions on each style update, since this can happen only once.
-      // We don't support function values inside of function rules.
-      if (fnValuesNs$1 in rule || fnRuleNs$1 in rule) return style;
-      var fnValues = {};
-
-      for (var prop in style) {
-        var value = style[prop];
-        if (typeof value !== 'function') continue;
-        delete style[prop];
-        fnValues[prop] = value;
-      } // $FlowFixMe[prop-missing]
-
-
-      rule[fnValuesNs$1] = fnValues;
-      return style;
-    },
-    onUpdate: function onUpdate(data, rule, sheet, options) {
-      var styleRule = rule; // $FlowFixMe[prop-missing]
-
-      var fnRule = styleRule[fnRuleNs$1]; // If we have a style function, the entire rule is dynamic and style object
-      // will be returned from that function.
-
-      if (fnRule) {
-        // Empty object will remove all currently defined props
-        // in case function rule returns a falsy value.
-        styleRule.style = fnRule(data) || {};
-
-        if (process.env.NODE_ENV === 'development') {
-          for (var prop in styleRule.style) {
-            if (typeof styleRule.style[prop] === 'function') {
-              process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Function values inside function rules are not supported.') : void 0;
-              break;
-            }
-          }
-        }
-      } // $FlowFixMe[prop-missing]
-
-
-      var fnValues = styleRule[fnValuesNs$1]; // If we have a fn values map, it is a rule with function values.
-
-      if (fnValues) {
-        for (var _prop in fnValues) {
-          styleRule.prop(_prop, fnValues[_prop](data), options);
-        }
-      }
-    }
-  };
-};
-
-var plainObjectConstrurctor$4 = {}.constructor;
-function cloneStyle$4(style) {
-  if (style == null || typeof style !== 'object') return style;
-  if (Array.isArray(style)) return style.map(cloneStyle$4);
-  if (style.constructor !== plainObjectConstrurctor$4) return style;
-  var newStyle = {};
-
-  for (var name in style) {
-    newStyle[name] = cloneStyle$4(style[name]);
-  }
-
-  return newStyle;
-}
-
-/**
- * Create a rule instance.
- */
-
-function createRule$4(name, decl, options) {
-  if (name === void 0) {
-    name = 'unnamed';
-  }
-
-  var jss = options.jss;
-  var declCopy = cloneStyle$4(decl);
-  var rule = jss.plugins.onCreateRule(name, declCopy, options);
-  if (rule) return rule; // It is an at-rule and it has no instance.
-
-  if (name[0] === '@') {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown rule " + name) : void 0;
-  }
-
-  return null;
-}
-
-var join$4 = function join(value, by) {
-  var result = '';
-
-  for (var i = 0; i < value.length; i++) {
-    // Remove !important from the value, it will be readded later.
-    if (value[i] === '!important') break;
-    if (result) result += by;
-    result += value[i];
-  }
-
-  return result;
-};
-
-/**
- * Converts array values to string.
- *
- * `margin: [['5px', '10px']]` > `margin: 5px 10px;`
- * `border: ['1px', '2px']` > `border: 1px, 2px;`
- * `margin: [['5px', '10px'], '!important']` > `margin: 5px 10px !important;`
- * `color: ['red', !important]` > `color: red !important;`
- */
-var toCssValue$4 = function toCssValue(value, ignoreImportant) {
-  if (ignoreImportant === void 0) {
-    ignoreImportant = false;
-  }
-
-  if (!Array.isArray(value)) return value;
-  var cssValue = ''; // Support space separated values via `[['5px', '10px']]`.
-
-  if (Array.isArray(value[0])) {
-    for (var i = 0; i < value.length; i++) {
-      if (value[i] === '!important') break;
-      if (cssValue) cssValue += ', ';
-      cssValue += join$4(value[i], ' ');
-    }
-  } else cssValue = join$4(value, ', '); // Add !important, because it was ignored.
-
-
-  if (!ignoreImportant && value[value.length - 1] === '!important') {
-    cssValue += ' !important';
-  }
-
-  return cssValue;
-};
-
-/**
- * Indent a string.
- * http://jsperf.com/array-join-vs-for
- */
-function indentStr$4(str, indent) {
-  var result = '';
-
-  for (var index = 0; index < indent; index++) {
-    result += '  ';
-  }
-
-  return result + str;
-}
-/**
- * Converts a Rule to CSS string.
- */
-
-
-function toCss$4(selector, style, options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var result = '';
-  if (!style) return result;
-  var _options = options,
-      _options$indent = _options.indent,
-      indent = _options$indent === void 0 ? 0 : _options$indent;
-  var fallbacks = style.fallbacks;
-  if (selector) indent++; // Apply fallbacks first.
-
-  if (fallbacks) {
-    // Array syntax {fallbacks: [{prop: value}]}
-    if (Array.isArray(fallbacks)) {
-      for (var index = 0; index < fallbacks.length; index++) {
-        var fallback = fallbacks[index];
-
-        for (var prop in fallback) {
-          var value = fallback[prop];
-
-          if (value != null) {
-            if (result) result += '\n';
-            result += "" + indentStr$4(prop + ": " + toCssValue$4(value) + ";", indent);
-          }
-        }
-      }
-    } else {
-      // Object syntax {fallbacks: {prop: value}}
-      for (var _prop in fallbacks) {
-        var _value = fallbacks[_prop];
-
-        if (_value != null) {
-          if (result) result += '\n';
-          result += "" + indentStr$4(_prop + ": " + toCssValue$4(_value) + ";", indent);
-        }
-      }
-    }
-  }
-
-  for (var _prop2 in style) {
-    var _value2 = style[_prop2];
-
-    if (_value2 != null && _prop2 !== 'fallbacks') {
-      if (result) result += '\n';
-      result += "" + indentStr$4(_prop2 + ": " + toCssValue$4(_value2) + ";", indent);
-    }
-  } // Allow empty style in this case, because properties will be added dynamically.
-
-
-  if (!result && !options.allowEmpty) return result; // When rule is being stringified before selector was defined.
-
-  if (!selector) return result;
-  indent--;
-  if (result) result = "\n" + result + "\n";
-  return indentStr$4(selector + " {" + result, indent) + indentStr$4('}', indent);
-}
-
-var escapeRegex$4 = /([[\].#*$><+~=|^:(),"'`\s])/g;
-var nativeEscape$4 = typeof CSS !== 'undefined' && CSS.escape;
-var escape$4 = (function (str) {
-  return nativeEscape$4 ? nativeEscape$4(str) : str.replace(escapeRegex$4, '\\$1');
-});
-
-var BaseStyleRule$4 =
-/*#__PURE__*/
-function () {
-  function BaseStyleRule(key, style, options) {
-    this.type = 'style';
-    this.key = void 0;
-    this.isProcessed = false;
-    this.style = void 0;
-    this.renderer = void 0;
-    this.renderable = void 0;
-    this.options = void 0;
-    var sheet = options.sheet,
-        Renderer = options.Renderer;
-    this.key = key;
-    this.options = options;
-    this.style = style;
-    if (sheet) this.renderer = sheet.renderer;else if (Renderer) this.renderer = new Renderer();
-  }
-  /**
-   * Get or set a style property.
-   */
-
-
-  var _proto = BaseStyleRule.prototype;
-
-  _proto.prop = function prop(name, value, options) {
-    // It's a getter.
-    if (value === undefined) return this.style[name]; // Don't do anything if the value has not changed.
-
-    var force = options ? options.force : false;
-    if (!force && this.style[name] === value) return this;
-    var newValue = value;
-
-    if (!options || options.process !== false) {
-      newValue = this.options.jss.plugins.onChangeValue(value, name, this);
-    }
-
-    var isEmpty = newValue == null || newValue === false;
-    var isDefined = name in this.style; // Value is empty and wasn't defined before.
-
-    if (isEmpty && !isDefined && !force) return this; // We are going to remove this value.
-
-    var remove = isEmpty && isDefined;
-    if (remove) delete this.style[name];else this.style[name] = newValue; // Renderable is defined if StyleSheet option `link` is true.
-
-    if (this.renderable && this.renderer) {
-      if (remove) this.renderer.removeProperty(this.renderable, name);else this.renderer.setProperty(this.renderable, name, newValue);
-      return this;
-    }
-
-    var sheet = this.options.sheet;
-
-    if (sheet && sheet.attached) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Rule is not linked. Missing sheet option "link: true".') : void 0;
-    }
-
-    return this;
-  };
-
-  return BaseStyleRule;
-}();
-var StyleRule$4 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](StyleRule, _BaseStyleRule);
-
-  function StyleRule(key, style, options) {
-    var _this;
-
-    _this = _BaseStyleRule.call(this, key, style, options) || this;
-    _this.selectorText = void 0;
-    _this.id = void 0;
-    _this.renderable = void 0;
-    var selector = options.selector,
-        scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-
-    if (selector) {
-      _this.selectorText = selector;
-    } else if (scoped !== false) {
-      _this.id = generateId(_assertThisInitialized__default['default'](_assertThisInitialized__default['default'](_this)), sheet);
-      _this.selectorText = "." + escape$4(_this.id);
-    }
-
-    return _this;
-  }
-  /**
-   * Set selector string.
-   * Attention: use this with caution. Most browsers didn't implement
-   * selectorText setter, so this may result in rerendering of entire Style Sheet.
-   */
-
-
-  var _proto2 = StyleRule.prototype;
-
-  /**
-   * Apply rule to an element inline.
-   */
-  _proto2.applyTo = function applyTo(renderable) {
-    var renderer = this.renderer;
-
-    if (renderer) {
-      var json = this.toJSON();
-
-      for (var prop in json) {
-        renderer.setProperty(renderable, prop, json[prop]);
-      }
-    }
-
-    return this;
-  }
-  /**
-   * Returns JSON representation of the rule.
-   * Fallbacks are not supported.
-   * Useful for inline styles.
-   */
-  ;
-
-  _proto2.toJSON = function toJSON() {
-    var json = {};
-
-    for (var prop in this.style) {
-      var value = this.style[prop];
-      if (typeof value !== 'object') json[prop] = value;else if (Array.isArray(value)) json[prop] = toCssValue$4(value);
-    }
-
-    return json;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto2.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$4(this.selectorText, this.style, opts);
-  };
-
-  _createClass__default['default'](StyleRule, [{
-    key: "selector",
-    set: function set(selector) {
-      if (selector === this.selectorText) return;
-      this.selectorText = selector;
-      var renderer = this.renderer,
-          renderable = this.renderable;
-      if (!renderable || !renderer) return;
-      var hasChanged = renderer.setSelector(renderable, selector); // If selector setter is not implemented, rerender the rule.
-
-      if (!hasChanged) {
-        renderer.replaceRule(renderable, this);
-      }
-    }
-    /**
-     * Get selector string.
-     */
-    ,
-    get: function get() {
-      return this.selectorText;
-    }
-  }]);
-
-  return StyleRule;
-}(BaseStyleRule$4);
-var pluginStyleRule$4 = {
-  onCreateRule: function onCreateRule(name, style, options) {
-    if (name[0] === '@' || options.parent && options.parent.type === 'keyframes') {
-      return null;
-    }
-
-    return new StyleRule$4(name, style, options);
-  }
-};
-
-var defaultToStringOptions$5 = {
-  indent: 1,
-  children: true
-};
-var atRegExp$4 = /@([\w-]+)/;
-/**
- * Conditional rule for @media, @supports
- */
-
-var ConditionalRule$4 =
-/*#__PURE__*/
-function () {
-  function ConditionalRule(key, styles, options) {
-    this.type = 'conditional';
-    this.at = void 0;
-    this.key = void 0;
-    this.query = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    var atMatch = key.match(atRegExp$4);
-    this.at = atMatch ? atMatch[1] : 'unknown'; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
-
-    this.query = options.name || "@" + this.at;
-    this.options = options;
-    this.rules = new RuleList$4(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Get a rule.
-   */
-
-
-  var _proto = ConditionalRule.prototype;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Create and register rule, run plugins.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, style, options) {
-    var rule = this.rules.add(name, style, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$5;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$5.indent;
-    if (options.children == null) options.children = defaultToStringOptions$5.children;
-
-    if (options.children === false) {
-      return this.query + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    return children ? this.query + " {\n" + children + "\n}" : '';
-  };
-
-  return ConditionalRule;
-}();
-var keyRegExp$6 = /@media|@supports\s+/;
-var pluginConditionalRule$4 = {
-  onCreateRule: function onCreateRule(key, styles, options) {
-    return keyRegExp$6.test(key) ? new ConditionalRule$4(key, styles, options) : null;
-  }
-};
-
-var defaultToStringOptions$1$4 = {
-  indent: 1,
-  children: true
-};
-var nameRegExp$4 = /@keyframes\s+([\w-]+)/;
-/**
- * Rule for @keyframes
- */
-
-var KeyframesRule$4 =
-/*#__PURE__*/
-function () {
-  function KeyframesRule(key, frames, options) {
-    this.type = 'keyframes';
-    this.at = '@keyframes';
-    this.key = void 0;
-    this.name = void 0;
-    this.id = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    var nameMatch = key.match(nameRegExp$4);
-
-    if (nameMatch && nameMatch[1]) {
-      this.name = nameMatch[1];
-    } else {
-      this.name = 'noname';
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Bad keyframes name " + key) : void 0;
-    }
-
-    this.key = this.type + "-" + this.name;
-    this.options = options;
-    var scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-    this.id = scoped === false ? this.name : escape$4(generateId(this, sheet));
-    this.rules = new RuleList$4(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in frames) {
-      this.rules.add(name, frames[name], _extends__default['default']({}, options, {
-        parent: this
-      }));
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = KeyframesRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$1$4;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$1$4.indent;
-    if (options.children == null) options.children = defaultToStringOptions$1$4.children;
-
-    if (options.children === false) {
-      return this.at + " " + this.id + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    if (children) children = "\n" + children + "\n";
-    return this.at + " " + this.id + " {" + children + "}";
-  };
-
-  return KeyframesRule;
-}();
-var keyRegExp$1$4 = /@keyframes\s+/;
-var refRegExp$6 = /\$([\w-]+)/g;
-
-var findReferencedKeyframe$4 = function findReferencedKeyframe(val, keyframes) {
-  if (typeof val === 'string') {
-    return val.replace(refRegExp$6, function (match, name) {
-      if (name in keyframes) {
-        return keyframes[name];
-      }
-
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Referenced keyframes rule \"" + name + "\" is not defined.") : void 0;
-      return match;
-    });
-  }
-
-  return val;
-};
-/**
- * Replace the reference for a animation name.
- */
-
-
-var replaceRef$4 = function replaceRef(style, prop, keyframes) {
-  var value = style[prop];
-  var refKeyframe = findReferencedKeyframe$4(value, keyframes);
-
-  if (refKeyframe !== value) {
-    style[prop] = refKeyframe;
-  }
-};
-
-var plugin$4 = {
-  onCreateRule: function onCreateRule(key, frames, options) {
-    return typeof key === 'string' && keyRegExp$1$4.test(key) ? new KeyframesRule$4(key, frames, options) : null;
-  },
-  // Animation name ref replacer.
-  onProcessStyle: function onProcessStyle(style, rule, sheet) {
-    if (rule.type !== 'style' || !sheet) return style;
-    if ('animation-name' in style) replaceRef$4(style, 'animation-name', sheet.keyframes);
-    if ('animation' in style) replaceRef$4(style, 'animation', sheet.keyframes);
-    return style;
-  },
-  onChangeValue: function onChangeValue(val, prop, rule) {
-    var sheet = rule.options.sheet;
-
-    if (!sheet) {
-      return val;
-    }
-
-    switch (prop) {
-      case 'animation':
-        return findReferencedKeyframe$4(val, sheet.keyframes);
-
-      case 'animation-name':
-        return findReferencedKeyframe$4(val, sheet.keyframes);
-
-      default:
-        return val;
-    }
-  }
-};
-
-var KeyframeRule$4 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](KeyframeRule, _BaseStyleRule);
-
-  function KeyframeRule() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _BaseStyleRule.call.apply(_BaseStyleRule, [this].concat(args)) || this;
-    _this.renderable = void 0;
-    return _this;
-  }
-
-  var _proto = KeyframeRule.prototype;
-
-  /**
-   * Generates a CSS string.
-   */
-  _proto.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$4(this.key, this.style, opts);
-  };
-
-  return KeyframeRule;
-}(BaseStyleRule$4);
-var pluginKeyframeRule$4 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    if (options.parent && options.parent.type === 'keyframes') {
-      return new KeyframeRule$4(key, style, options);
-    }
-
-    return null;
-  }
-};
-
-var FontFaceRule$4 =
-/*#__PURE__*/
-function () {
-  function FontFaceRule(key, style, options) {
-    this.type = 'font-face';
-    this.at = '@font-face';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = FontFaceRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.style)) {
-      var str = '';
-
-      for (var index = 0; index < this.style.length; index++) {
-        str += toCss$4(this.at, this.style[index]);
-        if (this.style[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return toCss$4(this.at, this.style, options);
-  };
-
-  return FontFaceRule;
-}();
-var keyRegExp$2$4 = /@font-face/;
-var pluginFontFaceRule$4 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return keyRegExp$2$4.test(key) ? new FontFaceRule$4(key, style, options) : null;
-  }
-};
-
-var ViewportRule$4 =
-/*#__PURE__*/
-function () {
-  function ViewportRule(key, style, options) {
-    this.type = 'viewport';
-    this.at = '@viewport';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = ViewportRule.prototype;
-
-  _proto.toString = function toString(options) {
-    return toCss$4(this.key, this.style, options);
-  };
-
-  return ViewportRule;
-}();
-var pluginViewportRule$4 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return key === '@viewport' || key === '@-ms-viewport' ? new ViewportRule$4(key, style, options) : null;
-  }
-};
-
-var SimpleRule$4 =
-/*#__PURE__*/
-function () {
-  function SimpleRule(key, value, options) {
-    this.type = 'simple';
-    this.key = void 0;
-    this.value = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.value = value;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  // eslint-disable-next-line no-unused-vars
-
-
-  var _proto = SimpleRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.value)) {
-      var str = '';
-
-      for (var index = 0; index < this.value.length; index++) {
-        str += this.key + " " + this.value[index] + ";";
-        if (this.value[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return this.key + " " + this.value + ";";
-  };
-
-  return SimpleRule;
-}();
-var keysMap$4 = {
-  '@charset': true,
-  '@import': true,
-  '@namespace': true
-};
-var pluginSimpleRule$4 = {
-  onCreateRule: function onCreateRule(key, value, options) {
-    return key in keysMap$4 ? new SimpleRule$4(key, value, options) : null;
-  }
-};
-
-var plugins$6 = [pluginStyleRule$4, pluginConditionalRule$4, plugin$4, pluginKeyframeRule$4, pluginFontFaceRule$4, pluginViewportRule$4, pluginSimpleRule$4];
-
-var defaultUpdateOptions$4 = {
-  process: true
-};
-var forceUpdateOptions$4 = {
-  force: true,
-  process: true
-  /**
-   * Contains rules objects and allows adding/removing etc.
-   * Is used for e.g. by `StyleSheet` or `ConditionalRule`.
-   */
-
-};
-
-var RuleList$4 =
-/*#__PURE__*/
-function () {
-  // Rules registry for access by .get() method.
-  // It contains the same rule registered by name and by selector.
-  // Original styles object.
-  // Used to ensure correct rules order.
-  function RuleList(options) {
-    this.map = {};
-    this.raw = {};
-    this.index = [];
-    this.counter = 0;
-    this.options = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.options = options;
-    this.classes = options.classes;
-    this.keyframes = options.keyframes;
-  }
-  /**
-   * Create and register rule.
-   *
-   * Will not render after Style Sheet was rendered the first time.
-   */
-
-
-  var _proto = RuleList.prototype;
-
-  _proto.add = function add(name, decl, ruleOptions) {
-    var _this$options = this.options,
-        parent = _this$options.parent,
-        sheet = _this$options.sheet,
-        jss = _this$options.jss,
-        Renderer = _this$options.Renderer,
-        generateId = _this$options.generateId,
-        scoped = _this$options.scoped;
-
-    var options = _extends__default['default']({
-      classes: this.classes,
-      parent: parent,
-      sheet: sheet,
-      jss: jss,
-      Renderer: Renderer,
-      generateId: generateId,
-      scoped: scoped,
-      name: name,
-      keyframes: this.keyframes,
-      selector: undefined
-    }, ruleOptions); // When user uses .createStyleSheet(), duplicate names are not possible, but
-    // `sheet.addRule()` opens the door for any duplicate rule name. When this happens
-    // we need to make the key unique within this RuleList instance scope.
-
-
-    var key = name;
-
-    if (name in this.raw) {
-      key = name + "-d" + this.counter++;
-    } // We need to save the original decl before creating the rule
-    // because cache plugin needs to use it as a key to return a cached rule.
-
-
-    this.raw[key] = decl;
-
-    if (key in this.classes) {
-      // E.g. rules inside of @media container
-      options.selector = "." + escape$4(this.classes[key]);
-    }
-
-    var rule = createRule$4(key, decl, options);
-    if (!rule) return null;
-    this.register(rule);
-    var index = options.index === undefined ? this.index.length : options.index;
-    this.index.splice(index, 0, rule);
-    return rule;
-  }
-  /**
-   * Get a rule.
-   */
-  ;
-
-  _proto.get = function get(name) {
-    return this.map[name];
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.remove = function remove(rule) {
-    this.unregister(rule);
-    delete this.raw[rule.key];
-    this.index.splice(this.index.indexOf(rule), 1);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.index.indexOf(rule);
-  }
-  /**
-   * Run `onProcessRule()` plugins on every rule.
-   */
-  ;
-
-  _proto.process = function process() {
-    var plugins = this.options.jss.plugins; // We need to clone array because if we modify the index somewhere else during a loop
-    // we end up with very hard-to-track-down side effects.
-
-    this.index.slice(0).forEach(plugins.onProcessRule, plugins);
-  }
-  /**
-   * Register a rule in `.map`, `.classes` and `.keyframes` maps.
-   */
-  ;
-
-  _proto.register = function register(rule) {
-    this.map[rule.key] = rule;
-
-    if (rule instanceof StyleRule$4) {
-      this.map[rule.selector] = rule;
-      if (rule.id) this.classes[rule.key] = rule.id;
-    } else if (rule instanceof KeyframesRule$4 && this.keyframes) {
-      this.keyframes[rule.name] = rule.id;
-    }
-  }
-  /**
-   * Unregister a rule.
-   */
-  ;
-
-  _proto.unregister = function unregister(rule) {
-    delete this.map[rule.key];
-
-    if (rule instanceof StyleRule$4) {
-      delete this.map[rule.selector];
-      delete this.classes[rule.key];
-    } else if (rule instanceof KeyframesRule$4) {
-      delete this.keyframes[rule.name];
-    }
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var name;
-    var data;
-    var options;
-
-    if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
-      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 2 ? undefined : arguments[2];
-    } else {
-      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 1 ? undefined : arguments[1];
-      name = null;
-    }
-
-    if (name) {
-      this.updateOne(this.map[name], data, options);
-    } else {
-      for (var index = 0; index < this.index.length; index++) {
-        this.updateOne(this.index[index], data, options);
-      }
-    }
-  }
-  /**
-   * Execute plugins, update rule props.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    if (options === void 0) {
-      options = defaultUpdateOptions$4;
-    }
-
-    var _this$options2 = this.options,
-        plugins = _this$options2.jss.plugins,
-        sheet = _this$options2.sheet; // It is a rules container like for e.g. ConditionalRule.
-
-    if (rule.rules instanceof RuleList) {
-      rule.rules.update(data, options);
-      return;
-    }
-
-    var styleRule = rule;
-    var style = styleRule.style;
-    plugins.onUpdate(data, rule, sheet, options); // We rely on a new `style` ref in case it was mutated during onUpdate hook.
-
-    if (options.process && style && style !== styleRule.style) {
-      // We need to run the plugins in case new `style` relies on syntax plugins.
-      plugins.onProcessStyle(styleRule.style, styleRule, sheet); // Update and add props.
-
-      for (var prop in styleRule.style) {
-        var nextValue = styleRule.style[prop];
-        var prevValue = style[prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (nextValue !== prevValue) {
-          styleRule.prop(prop, nextValue, forceUpdateOptions$4);
-        }
-      } // Remove props.
-
-
-      for (var _prop in style) {
-        var _nextValue = styleRule.style[_prop];
-        var _prevValue = style[_prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (_nextValue == null && _nextValue !== _prevValue) {
-          styleRule.prop(_prop, null, forceUpdateOptions$4);
-        }
-      }
-    }
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    var str = '';
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-
-    for (var index = 0; index < this.index.length; index++) {
-      var rule = this.index[index];
-      var css = rule.toString(options); // No need to render an empty rule.
-
-      if (!css && !link) continue;
-      if (str) str += '\n';
-      str += css;
-    }
-
-    return str;
-  };
-
-  return RuleList;
-}();
-
-var StyleSheet$4 =
-/*#__PURE__*/
-function () {
-  function StyleSheet(styles, options) {
-    this.options = void 0;
-    this.deployed = void 0;
-    this.attached = void 0;
-    this.rules = void 0;
-    this.renderer = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.queue = void 0;
-    this.attached = false;
-    this.deployed = false;
-    this.classes = {};
-    this.keyframes = {};
-    this.options = _extends__default['default']({}, options, {
-      sheet: this,
-      parent: this,
-      classes: this.classes,
-      keyframes: this.keyframes
-    });
-
-    if (options.Renderer) {
-      this.renderer = new options.Renderer(this);
-    }
-
-    this.rules = new RuleList$4(this.options);
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Attach renderable to the render tree.
-   */
-
-
-  var _proto = StyleSheet.prototype;
-
-  _proto.attach = function attach() {
-    if (this.attached) return this;
-    if (this.renderer) this.renderer.attach();
-    this.attached = true; // Order is important, because we can't use insertRule API if style element is not attached.
-
-    if (!this.deployed) this.deploy();
-    return this;
-  }
-  /**
-   * Remove renderable from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.attached) return this;
-    if (this.renderer) this.renderer.detach();
-    this.attached = false;
-    return this;
-  }
-  /**
-   * Add a rule to the current stylesheet.
-   * Will insert a rule also after the stylesheet has been rendered first time.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, decl, options) {
-    var queue = this.queue; // Plugins can create rules.
-    // In order to preserve the right order, we need to queue all `.addRule` calls,
-    // which happen after the first `rules.add()` call.
-
-    if (this.attached && !queue) this.queue = [];
-    var rule = this.rules.add(name, decl, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-
-    if (this.attached) {
-      if (!this.deployed) return rule; // Don't insert rule directly if there is no stringified version yet.
-      // It will be inserted all together when .attach is called.
-
-      if (queue) queue.push(rule);else {
-        this.insertRule(rule);
-
-        if (this.queue) {
-          this.queue.forEach(this.insertRule, this);
-          this.queue = undefined;
-        }
-      }
-      return rule;
-    } // We can't add rules to a detached style node.
-    // We will redeploy the sheet once user will attach it.
-
-
-    this.deployed = false;
-    return rule;
-  }
-  /**
-   * Insert rule into the StyleSheet
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule) {
-    if (this.renderer) {
-      this.renderer.insertRule(rule);
-    }
-  }
-  /**
-   * Create and add rules.
-   * Will render also after Style Sheet was rendered the first time.
-   */
-  ;
-
-  _proto.addRules = function addRules(styles, options) {
-    var added = [];
-
-    for (var name in styles) {
-      var rule = this.addRule(name, styles[name], options);
-      if (rule) added.push(rule);
-    }
-
-    return added;
-  }
-  /**
-   * Get a rule by name.
-   */
-  ;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Delete a rule by name.
-   * Returns `true`: if rule has been deleted from the DOM.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(name) {
-    var rule = typeof name === 'object' ? name : this.rules.get(name);
-
-    if (!rule || // Style sheet was created without link: true and attached, in this case we
-    // won't be able to remove the CSS rule from the DOM.
-    this.attached && !rule.renderable) {
-      return false;
-    }
-
-    this.rules.remove(rule);
-
-    if (this.attached && rule.renderable && this.renderer) {
-      return this.renderer.deleteRule(rule.renderable);
-    }
-
-    return true;
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Deploy pure CSS string to a renderable.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    if (this.renderer) this.renderer.deploy();
-    this.deployed = true;
-    return this;
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var _this$rules;
-
-    (_this$rules = this.rules).update.apply(_this$rules, arguments);
-
-    return this;
-  }
-  /**
-   * Updates a single rule.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    this.rules.updateOne(rule, data, options);
-    return this;
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    return this.rules.toString(options);
-  };
-
-  return StyleSheet;
-}();
-
-var PluginsRegistry$4 =
-/*#__PURE__*/
-function () {
-  function PluginsRegistry() {
-    this.plugins = {
-      internal: [],
-      external: []
-    };
-    this.registry = void 0;
-  }
-
-  var _proto = PluginsRegistry.prototype;
-
-  /**
-   * Call `onCreateRule` hooks and return an object if returned by a hook.
-   */
-  _proto.onCreateRule = function onCreateRule(name, decl, options) {
-    for (var i = 0; i < this.registry.onCreateRule.length; i++) {
-      var rule = this.registry.onCreateRule[i](name, decl, options);
-      if (rule) return rule;
-    }
-
-    return null;
-  }
-  /**
-   * Call `onProcessRule` hooks.
-   */
-  ;
-
-  _proto.onProcessRule = function onProcessRule(rule) {
-    if (rule.isProcessed) return;
-    var sheet = rule.options.sheet;
-
-    for (var i = 0; i < this.registry.onProcessRule.length; i++) {
-      this.registry.onProcessRule[i](rule, sheet);
-    }
-
-    if (rule.style) this.onProcessStyle(rule.style, rule, sheet);
-    rule.isProcessed = true;
-  }
-  /**
-   * Call `onProcessStyle` hooks.
-   */
-  ;
-
-  _proto.onProcessStyle = function onProcessStyle(style, rule, sheet) {
-    for (var i = 0; i < this.registry.onProcessStyle.length; i++) {
-      // $FlowFixMe[prop-missing]
-      rule.style = this.registry.onProcessStyle[i](rule.style, rule, sheet);
-    }
-  }
-  /**
-   * Call `onProcessSheet` hooks.
-   */
-  ;
-
-  _proto.onProcessSheet = function onProcessSheet(sheet) {
-    for (var i = 0; i < this.registry.onProcessSheet.length; i++) {
-      this.registry.onProcessSheet[i](sheet);
-    }
-  }
-  /**
-   * Call `onUpdate` hooks.
-   */
-  ;
-
-  _proto.onUpdate = function onUpdate(data, rule, sheet, options) {
-    for (var i = 0; i < this.registry.onUpdate.length; i++) {
-      this.registry.onUpdate[i](data, rule, sheet, options);
-    }
-  }
-  /**
-   * Call `onChangeValue` hooks.
-   */
-  ;
-
-  _proto.onChangeValue = function onChangeValue(value, prop, rule) {
-    var processedValue = value;
-
-    for (var i = 0; i < this.registry.onChangeValue.length; i++) {
-      processedValue = this.registry.onChangeValue[i](processedValue, prop, rule);
-    }
-
-    return processedValue;
-  }
-  /**
-   * Register a plugin.
-   */
-  ;
-
-  _proto.use = function use(newPlugin, options) {
-    if (options === void 0) {
-      options = {
-        queue: 'external'
-      };
-    }
-
-    var plugins = this.plugins[options.queue]; // Avoids applying same plugin twice, at least based on ref.
-
-    if (plugins.indexOf(newPlugin) !== -1) {
-      return;
-    }
-
-    plugins.push(newPlugin);
-    this.registry = [].concat(this.plugins.external, this.plugins.internal).reduce(function (registry, plugin) {
-      for (var name in plugin) {
-        if (name in registry) {
-          registry[name].push(plugin[name]);
-        } else {
-          process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown hook \"" + name + "\".") : void 0;
-        }
-      }
-
-      return registry;
-    }, {
-      onCreateRule: [],
-      onProcessRule: [],
-      onProcessStyle: [],
-      onProcessSheet: [],
-      onChangeValue: [],
-      onUpdate: []
-    });
-  };
-
-  return PluginsRegistry;
-}();
-
-/**
- * Sheets registry to access them all at one place.
- */
-var SheetsRegistry$4 =
-/*#__PURE__*/
-function () {
-  function SheetsRegistry() {
-    this.registry = [];
-  }
-
-  var _proto = SheetsRegistry.prototype;
-
-  /**
-   * Register a Style Sheet.
-   */
-  _proto.add = function add(sheet) {
-    var registry = this.registry;
-    var index = sheet.options.index;
-    if (registry.indexOf(sheet) !== -1) return;
-
-    if (registry.length === 0 || index >= this.index) {
-      registry.push(sheet);
-      return;
-    } // Find a position.
-
-
-    for (var i = 0; i < registry.length; i++) {
-      if (registry[i].options.index > index) {
-        registry.splice(i, 0, sheet);
-        return;
-      }
-    }
-  }
-  /**
-   * Reset the registry.
-   */
-  ;
-
-  _proto.reset = function reset() {
-    this.registry = [];
-  }
-  /**
-   * Remove a Style Sheet.
-   */
-  ;
-
-  _proto.remove = function remove(sheet) {
-    var index = this.registry.indexOf(sheet);
-    this.registry.splice(index, 1);
-  }
-  /**
-   * Convert all attached sheets to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        attached = _ref.attached,
-        options = _objectWithoutPropertiesLoose__default['default'](_ref, ["attached"]);
-
-    var css = '';
-
-    for (var i = 0; i < this.registry.length; i++) {
-      var sheet = this.registry[i];
-
-      if (attached != null && sheet.attached !== attached) {
-        continue;
-      }
-
-      if (css) css += '\n';
-      css += sheet.toString(options);
-    }
-
-    return css;
-  };
-
-  _createClass__default['default'](SheetsRegistry, [{
-    key: "index",
-
-    /**
-     * Current highest index number.
-     */
-    get: function get() {
-      return this.registry.length === 0 ? 0 : this.registry[this.registry.length - 1].options.index;
-    }
-  }]);
-
-  return SheetsRegistry;
-}();
-
-/**
- * This is a global sheets registry. Only DomRenderer will add sheets to it.
- * On the server one should use an own SheetsRegistry instance and add the
- * sheets to it, because you need to make sure to create a new registry for
- * each request in order to not leak sheets across requests.
- */
-
-var registry$4 = new SheetsRegistry$4();
-
-/* eslint-disable */
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var globalThis$5 = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-
-var ns$4 = '2f1acc6c3a606b082e5eef5e54414ffb';
-if (globalThis$5[ns$4] == null) globalThis$5[ns$4] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
-// the current version with just one short number and use it for classes generation
-// we use a counter. Also it is more accurate, because user can manually reevaluate
-// the module.
-
-var moduleId$4 = globalThis$5[ns$4]++;
-
-var maxRules$4 = 1e10;
-
-/**
- * Returns a function which generates unique class names based on counters.
- * When new generator function is created, rule counter is reseted.
- * We need to reset the rule counter for SSR for each request.
- */
-var createGenerateId$4 = function createGenerateId(options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var ruleCounter = 0;
-  return function (rule, sheet) {
-    ruleCounter += 1;
-
-    if (ruleCounter > maxRules$4) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] You might have a memory leak. Rule counter is at " + ruleCounter + ".") : void 0;
-    }
-
-    var jssId = '';
-    var prefix = '';
-
-    if (sheet) {
-      if (sheet.options.classNamePrefix) {
-        prefix = sheet.options.classNamePrefix;
-      }
-
-      if (sheet.options.jss.id != null) {
-        jssId = String(sheet.options.jss.id);
-      }
-    }
-
-    if (options.minify) {
-      // Using "c" because a number can't be the first char in a class name.
-      return "" + (prefix || 'c') + moduleId$4 + jssId + ruleCounter;
-    }
-
-    return prefix + rule.key + "-" + moduleId$4 + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
-  };
-};
-
-/**
- * Cache the value from the first time a function is called.
- */
-var memoize$4 = function memoize(fn) {
-  var value;
-  return function () {
-    if (!value) value = fn();
-    return value;
-  };
-};
-
-/**
- * Get a style property value.
- */
-var getPropertyValue$4 = function getPropertyValue(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      return cssRule.attributeStyleMap.get(prop);
-    }
-
-    return cssRule.style.getPropertyValue(prop);
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return '';
-  }
-};
-
-/**
- * Set a style property.
- */
-var setProperty$4 = function setProperty(cssRule, prop, value) {
-  try {
-    var cssValue = value;
-
-    if (Array.isArray(value)) {
-      cssValue = toCssValue$4(value, true);
-
-      if (value[value.length - 1] === '!important') {
-        cssRule.style.setProperty(prop, cssValue, 'important');
-        return true;
-      }
-    } // Support CSSTOM.
-
-
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.set(prop, cssValue);
-    } else {
-      cssRule.style.setProperty(prop, cssValue);
-    }
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return false;
-  }
-
-  return true;
-};
-
-/**
- * Remove a style property.
- */
-var removeProperty$4 = function removeProperty(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.delete(prop);
-    } else {
-      cssRule.style.removeProperty(prop);
-    }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] DOMException \"" + err.message + "\" was thrown. Tried to remove property \"" + prop + "\".") : void 0;
-  }
-};
-
-/**
- * Set the selector.
- */
-var setSelector$4 = function setSelector(cssRule, selectorText) {
-  cssRule.selectorText = selectorText; // Return false if setter was not successful.
-  // Currently works in chrome only.
-
-  return cssRule.selectorText === selectorText;
-};
-/**
- * Gets the `head` element upon the first call and caches it.
- * We assume it can't be null.
- */
-
-
-var getHead$4 = memoize$4(function () {
-  return document.querySelector('head');
-});
-/**
- * Find attached sheet with an index higher than the passed one.
- */
-
-function findHigherSheet$4(registry, options) {
-  for (var i = 0; i < registry.length; i++) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.index > options.index && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find attached sheet with the highest index.
- */
-
-
-function findHighestSheet$4(registry, options) {
-  for (var i = registry.length - 1; i >= 0; i--) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find a comment with "jss" inside.
- */
-
-
-function findCommentNode$4(text) {
-  var head = getHead$4();
-
-  for (var i = 0; i < head.childNodes.length; i++) {
-    var node = head.childNodes[i];
-
-    if (node.nodeType === 8 && node.nodeValue.trim() === text) {
-      return node;
-    }
-  }
-
-  return null;
-}
-
-/**
- * Find a node before which we can insert the sheet.
- */
-function findPrevNode$4(options) {
-  var registry$1 = registry$4.registry;
-
-  if (registry$1.length > 0) {
-    // Try to insert before the next higher sheet.
-    var sheet = findHigherSheet$4(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element
-      };
-    } // Otherwise insert after the last attached.
-
-
-    sheet = findHighestSheet$4(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element.nextSibling
-      };
-    }
-  } // Try to find a comment placeholder if registry is empty.
-
-
-  var insertionPoint = options.insertionPoint;
-
-  if (insertionPoint && typeof insertionPoint === 'string') {
-    var comment = findCommentNode$4(insertionPoint);
-
-    if (comment) {
-      return {
-        parent: comment.parentNode,
-        node: comment.nextSibling
-      };
-    } // If user specifies an insertion point and it can't be found in the document -
-    // bad specificity issues may appear.
-
-
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Insertion point \"" + insertionPoint + "\" not found.") : void 0;
-  }
-
-  return false;
-}
-/**
- * Insert style element into the DOM.
- */
-
-
-function insertStyle$4(style, options) {
-  var insertionPoint = options.insertionPoint;
-  var nextNode = findPrevNode$4(options);
-
-  if (nextNode !== false && nextNode.parent) {
-    nextNode.parent.insertBefore(style, nextNode.node);
-    return;
-  } // Works with iframes and any node types.
-
-
-  if (insertionPoint && typeof insertionPoint.nodeType === 'number') {
-    // https://stackoverflow.com/questions/41328728/force-casting-in-flow
-    var insertionPointElement = insertionPoint;
-    var parentNode = insertionPointElement.parentNode;
-    if (parentNode) parentNode.insertBefore(style, insertionPointElement.nextSibling);else process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Insertion point is not in the DOM.') : void 0;
-    return;
-  }
-
-  getHead$4().appendChild(style);
-}
-/**
- * Read jss nonce setting from the page if the user has set it.
- */
-
-
-var getNonce$4 = memoize$4(function () {
-  var node = document.querySelector('meta[property="csp-nonce"]');
-  return node ? node.getAttribute('content') : null;
-});
-
-var _insertRule$4 = function insertRule(container, rule, index) {
-  try {
-    if ('insertRule' in container) {
-      var c = container;
-      c.insertRule(rule, index);
-    } // Keyframes rule.
-    else if ('appendRule' in container) {
-        var _c = container;
-
-        _c.appendRule(rule);
-      }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] " + err.message) : void 0;
-    return false;
-  }
-
-  return container.cssRules[index];
-};
-
-var getValidRuleInsertionIndex$4 = function getValidRuleInsertionIndex(container, index) {
-  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
-
-  if (index === undefined || index > maxIndex) {
-    // eslint-disable-next-line no-param-reassign
-    return maxIndex;
-  }
-
-  return index;
-};
-
-var createStyle$4 = function createStyle() {
-  var el = document.createElement('style'); // Without it, IE will have a broken source order specificity if we
-  // insert rules after we insert the style tag.
-  // It seems to kick-off the source order specificity algorithm.
-
-  el.textContent = '\n';
-  return el;
-};
-
-var DomRenderer$4 =
-/*#__PURE__*/
-function () {
-  // HTMLStyleElement needs fixing https://github.com/facebook/flow/issues/2696
-  // Will be empty if link: true option is not set, because
-  // it is only for use together with insertRule API.
-  function DomRenderer(sheet) {
-    this.getPropertyValue = getPropertyValue$4;
-    this.setProperty = setProperty$4;
-    this.removeProperty = removeProperty$4;
-    this.setSelector = setSelector$4;
-    this.element = void 0;
-    this.sheet = void 0;
-    this.hasInsertedRules = false;
-    this.cssRules = [];
-    // There is no sheet when the renderer is used from a standalone StyleRule.
-    if (sheet) registry$4.add(sheet);
-    this.sheet = sheet;
-
-    var _ref = this.sheet ? this.sheet.options : {},
-        media = _ref.media,
-        meta = _ref.meta,
-        element = _ref.element;
-
-    this.element = element || createStyle$4();
-    this.element.setAttribute('data-jss', '');
-    if (media) this.element.setAttribute('media', media);
-    if (meta) this.element.setAttribute('data-meta', meta);
-    var nonce = getNonce$4();
-    if (nonce) this.element.setAttribute('nonce', nonce);
-  }
-  /**
-   * Insert style element into render tree.
-   */
-
-
-  var _proto = DomRenderer.prototype;
-
-  _proto.attach = function attach() {
-    // In the case the element node is external and it is already in the DOM.
-    if (this.element.parentNode || !this.sheet) return;
-    insertStyle$4(this.element, this.sheet.options); // When rules are inserted using `insertRule` API, after `sheet.detach().attach()`
-    // most browsers create a new CSSStyleSheet, except of all IEs.
-
-    var deployed = Boolean(this.sheet && this.sheet.deployed);
-
-    if (this.hasInsertedRules && deployed) {
-      this.hasInsertedRules = false;
-      this.deploy();
-    }
-  }
-  /**
-   * Remove style element from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.sheet) return;
-    var parentNode = this.element.parentNode;
-    if (parentNode) parentNode.removeChild(this.element); // In the most browsers, rules inserted using insertRule() API will be lost when style element is removed.
-    // Though IE will keep them and we need a consistent behavior.
-
-    if (this.sheet.options.link) {
-      this.cssRules = [];
-      this.element.textContent = '\n';
-    }
-  }
-  /**
-   * Inject CSS string into element.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    var sheet = this.sheet;
-    if (!sheet) return;
-
-    if (sheet.options.link) {
-      this.insertRules(sheet.rules);
-      return;
-    }
-
-    this.element.textContent = "\n" + sheet.toString() + "\n";
-  }
-  /**
-   * Insert RuleList into an element.
-   */
-  ;
-
-  _proto.insertRules = function insertRules(rules, nativeParent) {
-    for (var i = 0; i < rules.index.length; i++) {
-      this.insertRule(rules.index[i], i, nativeParent);
-    }
-  }
-  /**
-   * Insert a rule into element.
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule, index, nativeParent) {
-    if (nativeParent === void 0) {
-      nativeParent = this.element.sheet;
-    }
-
-    if (rule.rules) {
-      var parent = rule;
-      var latestNativeParent = nativeParent;
-
-      if (rule.type === 'conditional' || rule.type === 'keyframes') {
-        var _insertionIndex = getValidRuleInsertionIndex$4(nativeParent, index); // We need to render the container without children first.
-
-
-        latestNativeParent = _insertRule$4(nativeParent, parent.toString({
-          children: false
-        }), _insertionIndex);
-
-        if (latestNativeParent === false) {
-          return false;
-        }
-
-        this.refCssRule(rule, _insertionIndex, latestNativeParent);
-      }
-
-      this.insertRules(parent.rules, latestNativeParent);
-      return latestNativeParent;
-    }
-
-    var ruleStr = rule.toString();
-    if (!ruleStr) return false;
-    var insertionIndex = getValidRuleInsertionIndex$4(nativeParent, index);
-
-    var nativeRule = _insertRule$4(nativeParent, ruleStr, insertionIndex);
-
-    if (nativeRule === false) {
-      return false;
-    }
-
-    this.hasInsertedRules = true;
-    this.refCssRule(rule, insertionIndex, nativeRule);
-    return nativeRule;
-  };
-
-  _proto.refCssRule = function refCssRule(rule, index, cssRule) {
-    rule.renderable = cssRule; // We only want to reference the top level rules, deleteRule API doesn't support removing nested rules
-    // like rules inside media queries or keyframes
-
-    if (rule.options.parent instanceof StyleSheet$4) {
-      this.cssRules[index] = cssRule;
-    }
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(cssRule) {
-    var sheet = this.element.sheet;
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return true;
-  }
-  /**
-   * Get index of a CSS Rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(cssRule) {
-    return this.cssRules.indexOf(cssRule);
-  }
-  /**
-   * Generate a new CSS rule and replace the existing one.
-   *
-   * Only used for some old browsers because they can't set a selector.
-   */
-  ;
-
-  _proto.replaceRule = function replaceRule(cssRule, rule) {
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    this.element.sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return this.insertRule(rule, index);
-  }
-  /**
-   * Get all rules elements.
-   */
-  ;
-
-  _proto.getRules = function getRules() {
-    return this.element.sheet.cssRules;
-  };
-
-  return DomRenderer;
-}();
-
-var instanceCounter$4 = 0;
-
-var Jss$4 =
-/*#__PURE__*/
-function () {
-  function Jss(options) {
-    this.id = instanceCounter$4++;
-    this.version = "10.5.1";
-    this.plugins = new PluginsRegistry$4();
-    this.options = {
-      id: {
-        minify: false
-      },
-      createGenerateId: createGenerateId$4,
-      Renderer: isBrowser$2 ? DomRenderer$4 : null,
-      plugins: []
-    };
-    this.generateId = createGenerateId$4({
-      minify: false
-    });
-
-    for (var i = 0; i < plugins$6.length; i++) {
-      this.plugins.use(plugins$6[i], {
-        queue: 'internal'
-      });
-    }
-
-    this.setup(options);
-  }
-  /**
-   * Prepares various options, applies plugins.
-   * Should not be used twice on the same instance, because there is no plugins
-   * deduplication logic.
-   */
-
-
-  var _proto = Jss.prototype;
-
-  _proto.setup = function setup(options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    if (options.createGenerateId) {
-      this.options.createGenerateId = options.createGenerateId;
-    }
-
-    if (options.id) {
-      this.options.id = _extends__default['default']({}, this.options.id, options.id);
-    }
-
-    if (options.createGenerateId || options.id) {
-      this.generateId = this.options.createGenerateId(this.options.id);
-    }
-
-    if (options.insertionPoint != null) this.options.insertionPoint = options.insertionPoint;
-
-    if ('Renderer' in options) {
-      this.options.Renderer = options.Renderer;
-    } // eslint-disable-next-line prefer-spread
-
-
-    if (options.plugins) this.use.apply(this, options.plugins);
-    return this;
-  }
-  /**
-   * Create a Style Sheet.
-   */
-  ;
-
-  _proto.createStyleSheet = function createStyleSheet(styles, options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    var _options = options,
-        index = _options.index;
-
-    if (typeof index !== 'number') {
-      index = registry$4.index === 0 ? 0 : registry$4.index + 1;
-    }
-
-    var sheet = new StyleSheet$4(styles, _extends__default['default']({}, options, {
-      jss: this,
-      generateId: options.generateId || this.generateId,
-      insertionPoint: this.options.insertionPoint,
-      Renderer: this.options.Renderer,
-      index: index
-    }));
-    this.plugins.onProcessSheet(sheet);
-    return sheet;
-  }
-  /**
-   * Detach the Style Sheet and remove it from the registry.
-   */
-  ;
-
-  _proto.removeStyleSheet = function removeStyleSheet(sheet) {
-    sheet.detach();
-    registry$4.remove(sheet);
-    return this;
-  }
-  /**
-   * Create a rule without a Style Sheet.
-   * [Deprecated] will be removed in the next major version.
-   */
-  ;
-
-  _proto.createRule = function createRule$1(name, style, options) {
-    if (style === void 0) {
-      style = {};
-    }
-
-    if (options === void 0) {
-      options = {};
-    }
-
-    // Enable rule without name for inline styles.
-    if (typeof name === 'object') {
-      // $FlowFixMe[incompatible-call]
-      return this.createRule(undefined, name, style);
-    } // $FlowFixMe[incompatible-type]
-
-
-    var ruleOptions = _extends__default['default']({}, options, {
-      name: name,
-      jss: this,
-      Renderer: this.options.Renderer
-    });
-
-    if (!ruleOptions.generateId) ruleOptions.generateId = this.generateId;
-    if (!ruleOptions.classes) ruleOptions.classes = {};
-    if (!ruleOptions.keyframes) ruleOptions.keyframes = {};
-
-    var rule = createRule$4(name, style, ruleOptions);
-
-    if (rule) this.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Register plugin. Passed function will be invoked with a rule instance.
-   */
-  ;
-
-  _proto.use = function use() {
-    var _this = this;
-
-    for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
-      plugins[_key] = arguments[_key];
-    }
-
-    plugins.forEach(function (plugin) {
-      _this.plugins.use(plugin);
-    });
-    return this;
-  };
-
-  return Jss;
-}();
-/**
- * Creates a new instance of Jss.
- */
-
-var create$5 = function create(options) {
-  return new Jss$4(options);
-};
-/**
- * A global Jss instance.
- */
-
-create$5();
-
-var at$1 = '@global';
-var atPrefix$1 = '@global ';
-
-var GlobalContainerRule$1 =
-/*#__PURE__*/
-function () {
-  function GlobalContainerRule(key, styles, options) {
-    this.type = 'global';
-    this.at = at$1;
-    this.rules = void 0;
-    this.options = void 0;
-    this.key = void 0;
-    this.isProcessed = false;
-    this.key = key;
-    this.options = options;
-    this.rules = new RuleList$4(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var selector in styles) {
-      this.rules.add(selector, styles[selector]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Get a rule.
-   */
-
-
-  var _proto = GlobalContainerRule.prototype;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Create and register rule, run plugins.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, style, options) {
-    var rule = this.rules.add(name, style, options);
-    if (rule) this.options.jss.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString() {
-    return this.rules.toString();
-  };
-
-  return GlobalContainerRule;
-}();
-
-var GlobalPrefixedRule$1 =
-/*#__PURE__*/
-function () {
-  function GlobalPrefixedRule(key, style, options) {
-    this.type = 'global';
-    this.at = at$1;
-    this.options = void 0;
-    this.rule = void 0;
-    this.isProcessed = false;
-    this.key = void 0;
-    this.key = key;
-    this.options = options;
-    var selector = key.substr(atPrefix$1.length);
-    this.rule = options.jss.createRule(selector, style, _extends__default['default']({}, options, {
-      parent: this
-    }));
-  }
-
-  var _proto2 = GlobalPrefixedRule.prototype;
-
-  _proto2.toString = function toString(options) {
-    return this.rule ? this.rule.toString(options) : '';
-  };
-
-  return GlobalPrefixedRule;
-}();
-
-var separatorRegExp$3 = /\s*,\s*/g;
-
-function addScope$1(selector, scope) {
-  var parts = selector.split(separatorRegExp$3);
-  var scoped = '';
-
-  for (var i = 0; i < parts.length; i++) {
-    scoped += scope + " " + parts[i].trim();
-    if (parts[i + 1]) scoped += ', ';
-  }
-
-  return scoped;
-}
-
-function handleNestedGlobalContainerRule$1(rule, sheet) {
-  var options = rule.options,
-      style = rule.style;
-  var rules = style ? style[at$1] : null;
-  if (!rules) return;
-
-  for (var name in rules) {
-    sheet.addRule(name, rules[name], _extends__default['default']({}, options, {
-      selector: addScope$1(name, rule.selector)
-    }));
-  }
-
-  delete style[at$1];
-}
-
-function handlePrefixedGlobalRule$1(rule, sheet) {
-  var options = rule.options,
-      style = rule.style;
-
-  for (var prop in style) {
-    if (prop[0] !== '@' || prop.substr(0, at$1.length) !== at$1) continue;
-    var selector = addScope$1(prop.substr(at$1.length), rule.selector);
-    sheet.addRule(selector, style[prop], _extends__default['default']({}, options, {
-      selector: selector
-    }));
-    delete style[prop];
-  }
-}
-/**
- * Convert nested rules to separate, remove them from original styles.
- *
- * @param {Rule} rule
- * @api public
- */
-
-
-function jssGlobal$1() {
-  function onCreateRule(name, styles, options) {
-    if (!name) return null;
-
-    if (name === at$1) {
-      return new GlobalContainerRule$1(name, styles, options);
-    }
-
-    if (name[0] === '@' && name.substr(0, atPrefix$1.length) === atPrefix$1) {
-      return new GlobalPrefixedRule$1(name, styles, options);
-    }
-
-    var parent = options.parent;
-
-    if (parent) {
-      if (parent.type === 'global' || parent.options.parent && parent.options.parent.type === 'global') {
-        options.scoped = false;
-      }
-    }
-
-    if (options.scoped === false) {
-      options.selector = name;
-    }
-
-    return null;
-  }
-
-  function onProcessRule(rule, sheet) {
-    if (rule.type !== 'style' || !sheet) return;
-    handleNestedGlobalContainerRule$1(rule, sheet);
-    handlePrefixedGlobalRule$1(rule, sheet);
-  }
-
-  return {
-    onCreateRule: onCreateRule,
-    onProcessRule: onProcessRule
-  };
-}
-
-var separatorRegExp$2 = /\s*,\s*/g;
-var parentRegExp$1 = /&/g;
-var refRegExp$5 = /\$([\w-]+)/g;
-/**
- * Convert nested rules to separate, remove them from original styles.
- *
- * @param {Rule} rule
- * @api public
- */
-
-function jssNested$1() {
-  // Get a function to be used for $ref replacement.
-  function getReplaceRef(container, sheet) {
-    return function (match, key) {
-      var rule = container.getRule(key) || sheet && sheet.getRule(key);
-
-      if (rule) {
-        rule = rule;
-        return rule.selector;
-      }
-
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Could not find the referenced rule \"" + key + "\" in \"" + (container.options.meta || container.toString()) + "\".") : void 0;
-      return key;
-    };
-  }
-
-  function replaceParentRefs(nestedProp, parentProp) {
-    var parentSelectors = parentProp.split(separatorRegExp$2);
-    var nestedSelectors = nestedProp.split(separatorRegExp$2);
-    var result = '';
-
-    for (var i = 0; i < parentSelectors.length; i++) {
-      var parent = parentSelectors[i];
-
-      for (var j = 0; j < nestedSelectors.length; j++) {
-        var nested = nestedSelectors[j];
-        if (result) result += ', '; // Replace all & by the parent or prefix & with the parent.
-
-        result += nested.indexOf('&') !== -1 ? nested.replace(parentRegExp$1, parent) : parent + " " + nested;
-      }
-    }
-
-    return result;
-  }
-
-  function getOptions(rule, container, prevOptions) {
-    // Options has been already created, now we only increase index.
-    if (prevOptions) return _extends__default['default']({}, prevOptions, {
-      index: prevOptions.index + 1 // $FlowFixMe[prop-missing]
-
-    });
-    var nestingLevel = rule.options.nestingLevel;
-    nestingLevel = nestingLevel === undefined ? 1 : nestingLevel + 1;
-
-    var options = _extends__default['default']({}, rule.options, {
-      nestingLevel: nestingLevel,
-      index: container.indexOf(rule) + 1 // We don't need the parent name to be set options for chlid.
-
-    });
-
-    delete options.name;
-    return options;
-  }
-
-  function onProcessStyle(style, rule, sheet) {
-    if (rule.type !== 'style') return style;
-    var styleRule = rule;
-    var container = styleRule.options.parent;
-    var options;
-    var replaceRef;
-
-    for (var prop in style) {
-      var isNested = prop.indexOf('&') !== -1;
-      var isNestedConditional = prop[0] === '@';
-      if (!isNested && !isNestedConditional) continue;
-      options = getOptions(styleRule, container, options);
-
-      if (isNested) {
-        var selector = replaceParentRefs(prop, styleRule.selector); // Lazily create the ref replacer function just once for
-        // all nested rules within the sheet.
-
-        if (!replaceRef) replaceRef = getReplaceRef(container, sheet); // Replace all $refs.
-
-        selector = selector.replace(refRegExp$5, replaceRef);
-        container.addRule(selector, style[prop], _extends__default['default']({}, options, {
-          selector: selector
-        }));
-      } else if (isNestedConditional) {
-        // Place conditional right after the parent rule to ensure right ordering.
-        container.addRule(prop, {}, options) // Flow expects more options but they aren't required
-        // And flow doesn't know this will always be a StyleRule which has the addRule method
-        // $FlowFixMe[incompatible-use]
-        // $FlowFixMe[prop-missing]
-        .addRule(styleRule.key, style[prop], {
-          selector: styleRule.selector
-        });
-      }
-
-      delete style[prop];
-    }
-
-    return style;
-  }
-
-  return {
-    onProcessStyle: onProcessStyle
-  };
-}
-
-/* eslint-disable no-var, prefer-template */
-var uppercasePattern$1 = /[A-Z]/g;
-var msPattern$1 = /^ms-/;
-var cache$4 = {};
-
-function toHyphenLower$1(match) {
-  return '-' + match.toLowerCase()
-}
-
-function hyphenateStyleName$1(name) {
-  if (cache$4.hasOwnProperty(name)) {
-    return cache$4[name]
-  }
-
-  var hName = name.replace(uppercasePattern$1, toHyphenLower$1);
-  return (cache$4[name] = msPattern$1.test(hName) ? '-' + hName : hName)
-}
-
-/**
- * Convert camel cased property names to dash separated.
- *
- * @param {Object} style
- * @return {Object}
- */
-
-function convertCase$1(style) {
-  var converted = {};
-
-  for (var prop in style) {
-    var key = prop.indexOf('--') === 0 ? prop : hyphenateStyleName$1(prop);
-    converted[key] = style[prop];
-  }
-
-  if (style.fallbacks) {
-    if (Array.isArray(style.fallbacks)) converted.fallbacks = style.fallbacks.map(convertCase$1);else converted.fallbacks = convertCase$1(style.fallbacks);
-  }
-
-  return converted;
-}
-/**
- * Allow camel cased property names by converting them back to dasherized.
- *
- * @param {Rule} rule
- */
-
-
-function camelCase$1() {
-  function onProcessStyle(style) {
-    if (Array.isArray(style)) {
-      // Handle rules like @font-face, which can have multiple styles in an array
-      for (var index = 0; index < style.length; index++) {
-        style[index] = convertCase$1(style[index]);
-      }
-
-      return style;
-    }
-
-    return convertCase$1(style);
-  }
-
-  function onChangeValue(value, prop, rule) {
-    if (prop.indexOf('--') === 0) {
-      return value;
-    }
-
-    var hyphenatedProp = hyphenateStyleName$1(prop); // There was no camel case in place
-
-    if (prop === hyphenatedProp) return value;
-    rule.prop(hyphenatedProp, value); // Core will ignore that property value we set the proper one above.
-
-    return null;
-  }
-
-  return {
-    onProcessStyle: onProcessStyle,
-    onChangeValue: onChangeValue
-  };
-}
-
-var plainObjectConstrurctor$3 = {}.constructor;
-function cloneStyle$3(style) {
-  if (style == null || typeof style !== 'object') return style;
-  if (Array.isArray(style)) return style.map(cloneStyle$3);
-  if (style.constructor !== plainObjectConstrurctor$3) return style;
-  var newStyle = {};
-
-  for (var name in style) {
-    newStyle[name] = cloneStyle$3(style[name]);
-  }
-
-  return newStyle;
-}
-
-/**
- * Create a rule instance.
- */
-
-function createRule$3(name, decl, options) {
-  if (name === void 0) {
-    name = 'unnamed';
-  }
-
-  var jss = options.jss;
-  var declCopy = cloneStyle$3(decl);
-  var rule = jss.plugins.onCreateRule(name, declCopy, options);
-  if (rule) return rule; // It is an at-rule and it has no instance.
-
-  if (name[0] === '@') {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown rule " + name) : void 0;
-  }
-
-  return null;
-}
-
-var join$3 = function join(value, by) {
-  var result = '';
-
-  for (var i = 0; i < value.length; i++) {
-    // Remove !important from the value, it will be readded later.
-    if (value[i] === '!important') break;
-    if (result) result += by;
-    result += value[i];
-  }
-
-  return result;
-};
-
-/**
- * Converts array values to string.
- *
- * `margin: [['5px', '10px']]` > `margin: 5px 10px;`
- * `border: ['1px', '2px']` > `border: 1px, 2px;`
- * `margin: [['5px', '10px'], '!important']` > `margin: 5px 10px !important;`
- * `color: ['red', !important]` > `color: red !important;`
- */
-var toCssValue$3 = function toCssValue(value, ignoreImportant) {
-  if (ignoreImportant === void 0) {
-    ignoreImportant = false;
-  }
-
-  if (!Array.isArray(value)) return value;
-  var cssValue = ''; // Support space separated values via `[['5px', '10px']]`.
-
-  if (Array.isArray(value[0])) {
-    for (var i = 0; i < value.length; i++) {
-      if (value[i] === '!important') break;
-      if (cssValue) cssValue += ', ';
-      cssValue += join$3(value[i], ' ');
-    }
-  } else cssValue = join$3(value, ', '); // Add !important, because it was ignored.
-
-
-  if (!ignoreImportant && value[value.length - 1] === '!important') {
-    cssValue += ' !important';
-  }
-
-  return cssValue;
-};
-
-/**
- * Indent a string.
- * http://jsperf.com/array-join-vs-for
- */
-function indentStr$3(str, indent) {
-  var result = '';
-
-  for (var index = 0; index < indent; index++) {
-    result += '  ';
-  }
-
-  return result + str;
-}
-/**
- * Converts a Rule to CSS string.
- */
-
-
-function toCss$3(selector, style, options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var result = '';
-  if (!style) return result;
-  var _options = options,
-      _options$indent = _options.indent,
-      indent = _options$indent === void 0 ? 0 : _options$indent;
-  var fallbacks = style.fallbacks;
-  if (selector) indent++; // Apply fallbacks first.
-
-  if (fallbacks) {
-    // Array syntax {fallbacks: [{prop: value}]}
-    if (Array.isArray(fallbacks)) {
-      for (var index = 0; index < fallbacks.length; index++) {
-        var fallback = fallbacks[index];
-
-        for (var prop in fallback) {
-          var value = fallback[prop];
-
-          if (value != null) {
-            if (result) result += '\n';
-            result += "" + indentStr$3(prop + ": " + toCssValue$3(value) + ";", indent);
-          }
-        }
-      }
-    } else {
-      // Object syntax {fallbacks: {prop: value}}
-      for (var _prop in fallbacks) {
-        var _value = fallbacks[_prop];
-
-        if (_value != null) {
-          if (result) result += '\n';
-          result += "" + indentStr$3(_prop + ": " + toCssValue$3(_value) + ";", indent);
-        }
-      }
-    }
-  }
-
-  for (var _prop2 in style) {
-    var _value2 = style[_prop2];
-
-    if (_value2 != null && _prop2 !== 'fallbacks') {
-      if (result) result += '\n';
-      result += "" + indentStr$3(_prop2 + ": " + toCssValue$3(_value2) + ";", indent);
-    }
-  } // Allow empty style in this case, because properties will be added dynamically.
-
-
-  if (!result && !options.allowEmpty) return result; // When rule is being stringified before selector was defined.
-
-  if (!selector) return result;
-  indent--;
-  if (result) result = "\n" + result + "\n";
-  return indentStr$3(selector + " {" + result, indent) + indentStr$3('}', indent);
-}
-
-var escapeRegex$3 = /([[\].#*$><+~=|^:(),"'`\s])/g;
-var nativeEscape$3 = typeof CSS !== 'undefined' && CSS.escape;
-var escape$3 = (function (str) {
-  return nativeEscape$3 ? nativeEscape$3(str) : str.replace(escapeRegex$3, '\\$1');
-});
-
-var BaseStyleRule$3 =
-/*#__PURE__*/
-function () {
-  function BaseStyleRule(key, style, options) {
-    this.type = 'style';
-    this.key = void 0;
-    this.isProcessed = false;
-    this.style = void 0;
-    this.renderer = void 0;
-    this.renderable = void 0;
-    this.options = void 0;
-    var sheet = options.sheet,
-        Renderer = options.Renderer;
-    this.key = key;
-    this.options = options;
-    this.style = style;
-    if (sheet) this.renderer = sheet.renderer;else if (Renderer) this.renderer = new Renderer();
-  }
-  /**
-   * Get or set a style property.
-   */
-
-
-  var _proto = BaseStyleRule.prototype;
-
-  _proto.prop = function prop(name, value, options) {
-    // It's a getter.
-    if (value === undefined) return this.style[name]; // Don't do anything if the value has not changed.
-
-    var force = options ? options.force : false;
-    if (!force && this.style[name] === value) return this;
-    var newValue = value;
-
-    if (!options || options.process !== false) {
-      newValue = this.options.jss.plugins.onChangeValue(value, name, this);
-    }
-
-    var isEmpty = newValue == null || newValue === false;
-    var isDefined = name in this.style; // Value is empty and wasn't defined before.
-
-    if (isEmpty && !isDefined && !force) return this; // We are going to remove this value.
-
-    var remove = isEmpty && isDefined;
-    if (remove) delete this.style[name];else this.style[name] = newValue; // Renderable is defined if StyleSheet option `link` is true.
-
-    if (this.renderable && this.renderer) {
-      if (remove) this.renderer.removeProperty(this.renderable, name);else this.renderer.setProperty(this.renderable, name, newValue);
-      return this;
-    }
-
-    var sheet = this.options.sheet;
-
-    if (sheet && sheet.attached) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Rule is not linked. Missing sheet option "link: true".') : void 0;
-    }
-
-    return this;
-  };
-
-  return BaseStyleRule;
-}();
-var StyleRule$3 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](StyleRule, _BaseStyleRule);
-
-  function StyleRule(key, style, options) {
-    var _this;
-
-    _this = _BaseStyleRule.call(this, key, style, options) || this;
-    _this.selectorText = void 0;
-    _this.id = void 0;
-    _this.renderable = void 0;
-    var selector = options.selector,
-        scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-
-    if (selector) {
-      _this.selectorText = selector;
-    } else if (scoped !== false) {
-      _this.id = generateId(_assertThisInitialized__default['default'](_assertThisInitialized__default['default'](_this)), sheet);
-      _this.selectorText = "." + escape$3(_this.id);
-    }
-
-    return _this;
-  }
-  /**
-   * Set selector string.
-   * Attention: use this with caution. Most browsers didn't implement
-   * selectorText setter, so this may result in rerendering of entire Style Sheet.
-   */
-
-
-  var _proto2 = StyleRule.prototype;
-
-  /**
-   * Apply rule to an element inline.
-   */
-  _proto2.applyTo = function applyTo(renderable) {
-    var renderer = this.renderer;
-
-    if (renderer) {
-      var json = this.toJSON();
-
-      for (var prop in json) {
-        renderer.setProperty(renderable, prop, json[prop]);
-      }
-    }
-
-    return this;
-  }
-  /**
-   * Returns JSON representation of the rule.
-   * Fallbacks are not supported.
-   * Useful for inline styles.
-   */
-  ;
-
-  _proto2.toJSON = function toJSON() {
-    var json = {};
-
-    for (var prop in this.style) {
-      var value = this.style[prop];
-      if (typeof value !== 'object') json[prop] = value;else if (Array.isArray(value)) json[prop] = toCssValue$3(value);
-    }
-
-    return json;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto2.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$3(this.selectorText, this.style, opts);
-  };
-
-  _createClass__default['default'](StyleRule, [{
-    key: "selector",
-    set: function set(selector) {
-      if (selector === this.selectorText) return;
-      this.selectorText = selector;
-      var renderer = this.renderer,
-          renderable = this.renderable;
-      if (!renderable || !renderer) return;
-      var hasChanged = renderer.setSelector(renderable, selector); // If selector setter is not implemented, rerender the rule.
-
-      if (!hasChanged) {
-        renderer.replaceRule(renderable, this);
-      }
-    }
-    /**
-     * Get selector string.
-     */
-    ,
-    get: function get() {
-      return this.selectorText;
-    }
-  }]);
-
-  return StyleRule;
-}(BaseStyleRule$3);
-var pluginStyleRule$3 = {
-  onCreateRule: function onCreateRule(name, style, options) {
-    if (name[0] === '@' || options.parent && options.parent.type === 'keyframes') {
-      return null;
-    }
-
-    return new StyleRule$3(name, style, options);
-  }
-};
-
-var defaultToStringOptions$4 = {
-  indent: 1,
-  children: true
-};
-var atRegExp$3 = /@([\w-]+)/;
-/**
- * Conditional rule for @media, @supports
- */
-
-var ConditionalRule$3 =
-/*#__PURE__*/
-function () {
-  function ConditionalRule(key, styles, options) {
-    this.type = 'conditional';
-    this.at = void 0;
-    this.key = void 0;
-    this.query = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    var atMatch = key.match(atRegExp$3);
-    this.at = atMatch ? atMatch[1] : 'unknown'; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
-
-    this.query = options.name || "@" + this.at;
-    this.options = options;
-    this.rules = new RuleList$3(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Get a rule.
-   */
-
-
-  var _proto = ConditionalRule.prototype;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Create and register rule, run plugins.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, style, options) {
-    var rule = this.rules.add(name, style, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$4;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$4.indent;
-    if (options.children == null) options.children = defaultToStringOptions$4.children;
-
-    if (options.children === false) {
-      return this.query + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    return children ? this.query + " {\n" + children + "\n}" : '';
-  };
-
-  return ConditionalRule;
-}();
-var keyRegExp$5 = /@media|@supports\s+/;
-var pluginConditionalRule$3 = {
-  onCreateRule: function onCreateRule(key, styles, options) {
-    return keyRegExp$5.test(key) ? new ConditionalRule$3(key, styles, options) : null;
-  }
-};
-
-var defaultToStringOptions$1$3 = {
-  indent: 1,
-  children: true
-};
-var nameRegExp$3 = /@keyframes\s+([\w-]+)/;
-/**
- * Rule for @keyframes
- */
-
-var KeyframesRule$3 =
-/*#__PURE__*/
-function () {
-  function KeyframesRule(key, frames, options) {
-    this.type = 'keyframes';
-    this.at = '@keyframes';
-    this.key = void 0;
-    this.name = void 0;
-    this.id = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    var nameMatch = key.match(nameRegExp$3);
-
-    if (nameMatch && nameMatch[1]) {
-      this.name = nameMatch[1];
-    } else {
-      this.name = 'noname';
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Bad keyframes name " + key) : void 0;
-    }
-
-    this.key = this.type + "-" + this.name;
-    this.options = options;
-    var scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-    this.id = scoped === false ? this.name : escape$3(generateId(this, sheet));
-    this.rules = new RuleList$3(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in frames) {
-      this.rules.add(name, frames[name], _extends__default['default']({}, options, {
-        parent: this
-      }));
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = KeyframesRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$1$3;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$1$3.indent;
-    if (options.children == null) options.children = defaultToStringOptions$1$3.children;
-
-    if (options.children === false) {
-      return this.at + " " + this.id + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    if (children) children = "\n" + children + "\n";
-    return this.at + " " + this.id + " {" + children + "}";
-  };
-
-  return KeyframesRule;
-}();
-var keyRegExp$1$3 = /@keyframes\s+/;
-var refRegExp$4 = /\$([\w-]+)/g;
-
-var findReferencedKeyframe$3 = function findReferencedKeyframe(val, keyframes) {
-  if (typeof val === 'string') {
-    return val.replace(refRegExp$4, function (match, name) {
-      if (name in keyframes) {
-        return keyframes[name];
-      }
-
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Referenced keyframes rule \"" + name + "\" is not defined.") : void 0;
-      return match;
-    });
-  }
-
-  return val;
-};
-/**
- * Replace the reference for a animation name.
- */
-
-
-var replaceRef$3 = function replaceRef(style, prop, keyframes) {
-  var value = style[prop];
-  var refKeyframe = findReferencedKeyframe$3(value, keyframes);
-
-  if (refKeyframe !== value) {
-    style[prop] = refKeyframe;
-  }
-};
-
-var plugin$3 = {
-  onCreateRule: function onCreateRule(key, frames, options) {
-    return typeof key === 'string' && keyRegExp$1$3.test(key) ? new KeyframesRule$3(key, frames, options) : null;
-  },
-  // Animation name ref replacer.
-  onProcessStyle: function onProcessStyle(style, rule, sheet) {
-    if (rule.type !== 'style' || !sheet) return style;
-    if ('animation-name' in style) replaceRef$3(style, 'animation-name', sheet.keyframes);
-    if ('animation' in style) replaceRef$3(style, 'animation', sheet.keyframes);
-    return style;
-  },
-  onChangeValue: function onChangeValue(val, prop, rule) {
-    var sheet = rule.options.sheet;
-
-    if (!sheet) {
-      return val;
-    }
-
-    switch (prop) {
-      case 'animation':
-        return findReferencedKeyframe$3(val, sheet.keyframes);
-
-      case 'animation-name':
-        return findReferencedKeyframe$3(val, sheet.keyframes);
-
-      default:
-        return val;
-    }
-  }
-};
-
-var KeyframeRule$3 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](KeyframeRule, _BaseStyleRule);
-
-  function KeyframeRule() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _BaseStyleRule.call.apply(_BaseStyleRule, [this].concat(args)) || this;
-    _this.renderable = void 0;
-    return _this;
-  }
-
-  var _proto = KeyframeRule.prototype;
-
-  /**
-   * Generates a CSS string.
-   */
-  _proto.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$3(this.key, this.style, opts);
-  };
-
-  return KeyframeRule;
-}(BaseStyleRule$3);
-var pluginKeyframeRule$3 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    if (options.parent && options.parent.type === 'keyframes') {
-      return new KeyframeRule$3(key, style, options);
-    }
-
-    return null;
-  }
-};
-
-var FontFaceRule$3 =
-/*#__PURE__*/
-function () {
-  function FontFaceRule(key, style, options) {
-    this.type = 'font-face';
-    this.at = '@font-face';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = FontFaceRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.style)) {
-      var str = '';
-
-      for (var index = 0; index < this.style.length; index++) {
-        str += toCss$3(this.at, this.style[index]);
-        if (this.style[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return toCss$3(this.at, this.style, options);
-  };
-
-  return FontFaceRule;
-}();
-var keyRegExp$2$3 = /@font-face/;
-var pluginFontFaceRule$3 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return keyRegExp$2$3.test(key) ? new FontFaceRule$3(key, style, options) : null;
-  }
-};
-
-var ViewportRule$3 =
-/*#__PURE__*/
-function () {
-  function ViewportRule(key, style, options) {
-    this.type = 'viewport';
-    this.at = '@viewport';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = ViewportRule.prototype;
-
-  _proto.toString = function toString(options) {
-    return toCss$3(this.key, this.style, options);
-  };
-
-  return ViewportRule;
-}();
-var pluginViewportRule$3 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return key === '@viewport' || key === '@-ms-viewport' ? new ViewportRule$3(key, style, options) : null;
-  }
-};
-
-var SimpleRule$3 =
-/*#__PURE__*/
-function () {
-  function SimpleRule(key, value, options) {
-    this.type = 'simple';
-    this.key = void 0;
-    this.value = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.value = value;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  // eslint-disable-next-line no-unused-vars
-
-
-  var _proto = SimpleRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.value)) {
-      var str = '';
-
-      for (var index = 0; index < this.value.length; index++) {
-        str += this.key + " " + this.value[index] + ";";
-        if (this.value[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return this.key + " " + this.value + ";";
-  };
-
-  return SimpleRule;
-}();
-var keysMap$3 = {
-  '@charset': true,
-  '@import': true,
-  '@namespace': true
-};
-var pluginSimpleRule$3 = {
-  onCreateRule: function onCreateRule(key, value, options) {
-    return key in keysMap$3 ? new SimpleRule$3(key, value, options) : null;
-  }
-};
-
-var plugins$5 = [pluginStyleRule$3, pluginConditionalRule$3, plugin$3, pluginKeyframeRule$3, pluginFontFaceRule$3, pluginViewportRule$3, pluginSimpleRule$3];
-
-var defaultUpdateOptions$3 = {
-  process: true
-};
-var forceUpdateOptions$3 = {
-  force: true,
-  process: true
-  /**
-   * Contains rules objects and allows adding/removing etc.
-   * Is used for e.g. by `StyleSheet` or `ConditionalRule`.
-   */
-
-};
-
-var RuleList$3 =
-/*#__PURE__*/
-function () {
-  // Rules registry for access by .get() method.
-  // It contains the same rule registered by name and by selector.
-  // Original styles object.
-  // Used to ensure correct rules order.
-  function RuleList(options) {
-    this.map = {};
-    this.raw = {};
-    this.index = [];
-    this.counter = 0;
-    this.options = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.options = options;
-    this.classes = options.classes;
-    this.keyframes = options.keyframes;
-  }
-  /**
-   * Create and register rule.
-   *
-   * Will not render after Style Sheet was rendered the first time.
-   */
-
-
-  var _proto = RuleList.prototype;
-
-  _proto.add = function add(name, decl, ruleOptions) {
-    var _this$options = this.options,
-        parent = _this$options.parent,
-        sheet = _this$options.sheet,
-        jss = _this$options.jss,
-        Renderer = _this$options.Renderer,
-        generateId = _this$options.generateId,
-        scoped = _this$options.scoped;
-
-    var options = _extends__default['default']({
-      classes: this.classes,
-      parent: parent,
-      sheet: sheet,
-      jss: jss,
-      Renderer: Renderer,
-      generateId: generateId,
-      scoped: scoped,
-      name: name,
-      keyframes: this.keyframes,
-      selector: undefined
-    }, ruleOptions); // When user uses .createStyleSheet(), duplicate names are not possible, but
-    // `sheet.addRule()` opens the door for any duplicate rule name. When this happens
-    // we need to make the key unique within this RuleList instance scope.
-
-
-    var key = name;
-
-    if (name in this.raw) {
-      key = name + "-d" + this.counter++;
-    } // We need to save the original decl before creating the rule
-    // because cache plugin needs to use it as a key to return a cached rule.
-
-
-    this.raw[key] = decl;
-
-    if (key in this.classes) {
-      // E.g. rules inside of @media container
-      options.selector = "." + escape$3(this.classes[key]);
-    }
-
-    var rule = createRule$3(key, decl, options);
-    if (!rule) return null;
-    this.register(rule);
-    var index = options.index === undefined ? this.index.length : options.index;
-    this.index.splice(index, 0, rule);
-    return rule;
-  }
-  /**
-   * Get a rule.
-   */
-  ;
-
-  _proto.get = function get(name) {
-    return this.map[name];
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.remove = function remove(rule) {
-    this.unregister(rule);
-    delete this.raw[rule.key];
-    this.index.splice(this.index.indexOf(rule), 1);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.index.indexOf(rule);
-  }
-  /**
-   * Run `onProcessRule()` plugins on every rule.
-   */
-  ;
-
-  _proto.process = function process() {
-    var plugins = this.options.jss.plugins; // We need to clone array because if we modify the index somewhere else during a loop
-    // we end up with very hard-to-track-down side effects.
-
-    this.index.slice(0).forEach(plugins.onProcessRule, plugins);
-  }
-  /**
-   * Register a rule in `.map`, `.classes` and `.keyframes` maps.
-   */
-  ;
-
-  _proto.register = function register(rule) {
-    this.map[rule.key] = rule;
-
-    if (rule instanceof StyleRule$3) {
-      this.map[rule.selector] = rule;
-      if (rule.id) this.classes[rule.key] = rule.id;
-    } else if (rule instanceof KeyframesRule$3 && this.keyframes) {
-      this.keyframes[rule.name] = rule.id;
-    }
-  }
-  /**
-   * Unregister a rule.
-   */
-  ;
-
-  _proto.unregister = function unregister(rule) {
-    delete this.map[rule.key];
-
-    if (rule instanceof StyleRule$3) {
-      delete this.map[rule.selector];
-      delete this.classes[rule.key];
-    } else if (rule instanceof KeyframesRule$3) {
-      delete this.keyframes[rule.name];
-    }
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var name;
-    var data;
-    var options;
-
-    if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
-      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 2 ? undefined : arguments[2];
-    } else {
-      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 1 ? undefined : arguments[1];
-      name = null;
-    }
-
-    if (name) {
-      this.updateOne(this.map[name], data, options);
-    } else {
-      for (var index = 0; index < this.index.length; index++) {
-        this.updateOne(this.index[index], data, options);
-      }
-    }
-  }
-  /**
-   * Execute plugins, update rule props.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    if (options === void 0) {
-      options = defaultUpdateOptions$3;
-    }
-
-    var _this$options2 = this.options,
-        plugins = _this$options2.jss.plugins,
-        sheet = _this$options2.sheet; // It is a rules container like for e.g. ConditionalRule.
-
-    if (rule.rules instanceof RuleList) {
-      rule.rules.update(data, options);
-      return;
-    }
-
-    var styleRule = rule;
-    var style = styleRule.style;
-    plugins.onUpdate(data, rule, sheet, options); // We rely on a new `style` ref in case it was mutated during onUpdate hook.
-
-    if (options.process && style && style !== styleRule.style) {
-      // We need to run the plugins in case new `style` relies on syntax plugins.
-      plugins.onProcessStyle(styleRule.style, styleRule, sheet); // Update and add props.
-
-      for (var prop in styleRule.style) {
-        var nextValue = styleRule.style[prop];
-        var prevValue = style[prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (nextValue !== prevValue) {
-          styleRule.prop(prop, nextValue, forceUpdateOptions$3);
-        }
-      } // Remove props.
-
-
-      for (var _prop in style) {
-        var _nextValue = styleRule.style[_prop];
-        var _prevValue = style[_prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (_nextValue == null && _nextValue !== _prevValue) {
-          styleRule.prop(_prop, null, forceUpdateOptions$3);
-        }
-      }
-    }
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    var str = '';
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-
-    for (var index = 0; index < this.index.length; index++) {
-      var rule = this.index[index];
-      var css = rule.toString(options); // No need to render an empty rule.
-
-      if (!css && !link) continue;
-      if (str) str += '\n';
-      str += css;
-    }
-
-    return str;
-  };
-
-  return RuleList;
-}();
-
-var StyleSheet$3 =
-/*#__PURE__*/
-function () {
-  function StyleSheet(styles, options) {
-    this.options = void 0;
-    this.deployed = void 0;
-    this.attached = void 0;
-    this.rules = void 0;
-    this.renderer = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.queue = void 0;
-    this.attached = false;
-    this.deployed = false;
-    this.classes = {};
-    this.keyframes = {};
-    this.options = _extends__default['default']({}, options, {
-      sheet: this,
-      parent: this,
-      classes: this.classes,
-      keyframes: this.keyframes
-    });
-
-    if (options.Renderer) {
-      this.renderer = new options.Renderer(this);
-    }
-
-    this.rules = new RuleList$3(this.options);
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Attach renderable to the render tree.
-   */
-
-
-  var _proto = StyleSheet.prototype;
-
-  _proto.attach = function attach() {
-    if (this.attached) return this;
-    if (this.renderer) this.renderer.attach();
-    this.attached = true; // Order is important, because we can't use insertRule API if style element is not attached.
-
-    if (!this.deployed) this.deploy();
-    return this;
-  }
-  /**
-   * Remove renderable from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.attached) return this;
-    if (this.renderer) this.renderer.detach();
-    this.attached = false;
-    return this;
-  }
-  /**
-   * Add a rule to the current stylesheet.
-   * Will insert a rule also after the stylesheet has been rendered first time.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, decl, options) {
-    var queue = this.queue; // Plugins can create rules.
-    // In order to preserve the right order, we need to queue all `.addRule` calls,
-    // which happen after the first `rules.add()` call.
-
-    if (this.attached && !queue) this.queue = [];
-    var rule = this.rules.add(name, decl, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-
-    if (this.attached) {
-      if (!this.deployed) return rule; // Don't insert rule directly if there is no stringified version yet.
-      // It will be inserted all together when .attach is called.
-
-      if (queue) queue.push(rule);else {
-        this.insertRule(rule);
-
-        if (this.queue) {
-          this.queue.forEach(this.insertRule, this);
-          this.queue = undefined;
-        }
-      }
-      return rule;
-    } // We can't add rules to a detached style node.
-    // We will redeploy the sheet once user will attach it.
-
-
-    this.deployed = false;
-    return rule;
-  }
-  /**
-   * Insert rule into the StyleSheet
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule) {
-    if (this.renderer) {
-      this.renderer.insertRule(rule);
-    }
-  }
-  /**
-   * Create and add rules.
-   * Will render also after Style Sheet was rendered the first time.
-   */
-  ;
-
-  _proto.addRules = function addRules(styles, options) {
-    var added = [];
-
-    for (var name in styles) {
-      var rule = this.addRule(name, styles[name], options);
-      if (rule) added.push(rule);
-    }
-
-    return added;
-  }
-  /**
-   * Get a rule by name.
-   */
-  ;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Delete a rule by name.
-   * Returns `true`: if rule has been deleted from the DOM.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(name) {
-    var rule = typeof name === 'object' ? name : this.rules.get(name);
-
-    if (!rule || // Style sheet was created without link: true and attached, in this case we
-    // won't be able to remove the CSS rule from the DOM.
-    this.attached && !rule.renderable) {
-      return false;
-    }
-
-    this.rules.remove(rule);
-
-    if (this.attached && rule.renderable && this.renderer) {
-      return this.renderer.deleteRule(rule.renderable);
-    }
-
-    return true;
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Deploy pure CSS string to a renderable.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    if (this.renderer) this.renderer.deploy();
-    this.deployed = true;
-    return this;
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var _this$rules;
-
-    (_this$rules = this.rules).update.apply(_this$rules, arguments);
-
-    return this;
-  }
-  /**
-   * Updates a single rule.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    this.rules.updateOne(rule, data, options);
-    return this;
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    return this.rules.toString(options);
-  };
-
-  return StyleSheet;
-}();
-
-var PluginsRegistry$3 =
-/*#__PURE__*/
-function () {
-  function PluginsRegistry() {
-    this.plugins = {
-      internal: [],
-      external: []
-    };
-    this.registry = void 0;
-  }
-
-  var _proto = PluginsRegistry.prototype;
-
-  /**
-   * Call `onCreateRule` hooks and return an object if returned by a hook.
-   */
-  _proto.onCreateRule = function onCreateRule(name, decl, options) {
-    for (var i = 0; i < this.registry.onCreateRule.length; i++) {
-      var rule = this.registry.onCreateRule[i](name, decl, options);
-      if (rule) return rule;
-    }
-
-    return null;
-  }
-  /**
-   * Call `onProcessRule` hooks.
-   */
-  ;
-
-  _proto.onProcessRule = function onProcessRule(rule) {
-    if (rule.isProcessed) return;
-    var sheet = rule.options.sheet;
-
-    for (var i = 0; i < this.registry.onProcessRule.length; i++) {
-      this.registry.onProcessRule[i](rule, sheet);
-    }
-
-    if (rule.style) this.onProcessStyle(rule.style, rule, sheet);
-    rule.isProcessed = true;
-  }
-  /**
-   * Call `onProcessStyle` hooks.
-   */
-  ;
-
-  _proto.onProcessStyle = function onProcessStyle(style, rule, sheet) {
-    for (var i = 0; i < this.registry.onProcessStyle.length; i++) {
-      // $FlowFixMe[prop-missing]
-      rule.style = this.registry.onProcessStyle[i](rule.style, rule, sheet);
-    }
-  }
-  /**
-   * Call `onProcessSheet` hooks.
-   */
-  ;
-
-  _proto.onProcessSheet = function onProcessSheet(sheet) {
-    for (var i = 0; i < this.registry.onProcessSheet.length; i++) {
-      this.registry.onProcessSheet[i](sheet);
-    }
-  }
-  /**
-   * Call `onUpdate` hooks.
-   */
-  ;
-
-  _proto.onUpdate = function onUpdate(data, rule, sheet, options) {
-    for (var i = 0; i < this.registry.onUpdate.length; i++) {
-      this.registry.onUpdate[i](data, rule, sheet, options);
-    }
-  }
-  /**
-   * Call `onChangeValue` hooks.
-   */
-  ;
-
-  _proto.onChangeValue = function onChangeValue(value, prop, rule) {
-    var processedValue = value;
-
-    for (var i = 0; i < this.registry.onChangeValue.length; i++) {
-      processedValue = this.registry.onChangeValue[i](processedValue, prop, rule);
-    }
-
-    return processedValue;
-  }
-  /**
-   * Register a plugin.
-   */
-  ;
-
-  _proto.use = function use(newPlugin, options) {
-    if (options === void 0) {
-      options = {
-        queue: 'external'
-      };
-    }
-
-    var plugins = this.plugins[options.queue]; // Avoids applying same plugin twice, at least based on ref.
-
-    if (plugins.indexOf(newPlugin) !== -1) {
-      return;
-    }
-
-    plugins.push(newPlugin);
-    this.registry = [].concat(this.plugins.external, this.plugins.internal).reduce(function (registry, plugin) {
-      for (var name in plugin) {
-        if (name in registry) {
-          registry[name].push(plugin[name]);
-        } else {
-          process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown hook \"" + name + "\".") : void 0;
-        }
-      }
-
-      return registry;
-    }, {
-      onCreateRule: [],
-      onProcessRule: [],
-      onProcessStyle: [],
-      onProcessSheet: [],
-      onChangeValue: [],
-      onUpdate: []
-    });
-  };
-
-  return PluginsRegistry;
-}();
-
-/**
- * Sheets registry to access them all at one place.
- */
-var SheetsRegistry$3 =
-/*#__PURE__*/
-function () {
-  function SheetsRegistry() {
-    this.registry = [];
-  }
-
-  var _proto = SheetsRegistry.prototype;
-
-  /**
-   * Register a Style Sheet.
-   */
-  _proto.add = function add(sheet) {
-    var registry = this.registry;
-    var index = sheet.options.index;
-    if (registry.indexOf(sheet) !== -1) return;
-
-    if (registry.length === 0 || index >= this.index) {
-      registry.push(sheet);
-      return;
-    } // Find a position.
-
-
-    for (var i = 0; i < registry.length; i++) {
-      if (registry[i].options.index > index) {
-        registry.splice(i, 0, sheet);
-        return;
-      }
-    }
-  }
-  /**
-   * Reset the registry.
-   */
-  ;
-
-  _proto.reset = function reset() {
-    this.registry = [];
-  }
-  /**
-   * Remove a Style Sheet.
-   */
-  ;
-
-  _proto.remove = function remove(sheet) {
-    var index = this.registry.indexOf(sheet);
-    this.registry.splice(index, 1);
-  }
-  /**
-   * Convert all attached sheets to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        attached = _ref.attached,
-        options = _objectWithoutPropertiesLoose__default['default'](_ref, ["attached"]);
-
-    var css = '';
-
-    for (var i = 0; i < this.registry.length; i++) {
-      var sheet = this.registry[i];
-
-      if (attached != null && sheet.attached !== attached) {
-        continue;
-      }
-
-      if (css) css += '\n';
-      css += sheet.toString(options);
-    }
-
-    return css;
-  };
-
-  _createClass__default['default'](SheetsRegistry, [{
-    key: "index",
-
-    /**
-     * Current highest index number.
-     */
-    get: function get() {
-      return this.registry.length === 0 ? 0 : this.registry[this.registry.length - 1].options.index;
-    }
-  }]);
-
-  return SheetsRegistry;
-}();
-
-/**
- * This is a global sheets registry. Only DomRenderer will add sheets to it.
- * On the server one should use an own SheetsRegistry instance and add the
- * sheets to it, because you need to make sure to create a new registry for
- * each request in order to not leak sheets across requests.
- */
-
-var registry$3 = new SheetsRegistry$3();
-
-/* eslint-disable */
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var globalThis$4 = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-
-var ns$3 = '2f1acc6c3a606b082e5eef5e54414ffb';
-if (globalThis$4[ns$3] == null) globalThis$4[ns$3] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
-// the current version with just one short number and use it for classes generation
-// we use a counter. Also it is more accurate, because user can manually reevaluate
-// the module.
-
-var moduleId$3 = globalThis$4[ns$3]++;
-
-var maxRules$3 = 1e10;
-
-/**
- * Returns a function which generates unique class names based on counters.
- * When new generator function is created, rule counter is reseted.
- * We need to reset the rule counter for SSR for each request.
- */
-var createGenerateId$3 = function createGenerateId(options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var ruleCounter = 0;
-  return function (rule, sheet) {
-    ruleCounter += 1;
-
-    if (ruleCounter > maxRules$3) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] You might have a memory leak. Rule counter is at " + ruleCounter + ".") : void 0;
-    }
-
-    var jssId = '';
-    var prefix = '';
-
-    if (sheet) {
-      if (sheet.options.classNamePrefix) {
-        prefix = sheet.options.classNamePrefix;
-      }
-
-      if (sheet.options.jss.id != null) {
-        jssId = String(sheet.options.jss.id);
-      }
-    }
-
-    if (options.minify) {
-      // Using "c" because a number can't be the first char in a class name.
-      return "" + (prefix || 'c') + moduleId$3 + jssId + ruleCounter;
-    }
-
-    return prefix + rule.key + "-" + moduleId$3 + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
-  };
-};
-
-/**
- * Cache the value from the first time a function is called.
- */
-var memoize$3 = function memoize(fn) {
-  var value;
-  return function () {
-    if (!value) value = fn();
-    return value;
-  };
-};
-
-/**
- * Get a style property value.
- */
-var getPropertyValue$3 = function getPropertyValue(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      return cssRule.attributeStyleMap.get(prop);
-    }
-
-    return cssRule.style.getPropertyValue(prop);
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return '';
-  }
-};
-
-/**
- * Set a style property.
- */
-var setProperty$3 = function setProperty(cssRule, prop, value) {
-  try {
-    var cssValue = value;
-
-    if (Array.isArray(value)) {
-      cssValue = toCssValue$3(value, true);
-
-      if (value[value.length - 1] === '!important') {
-        cssRule.style.setProperty(prop, cssValue, 'important');
-        return true;
-      }
-    } // Support CSSTOM.
-
-
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.set(prop, cssValue);
-    } else {
-      cssRule.style.setProperty(prop, cssValue);
-    }
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return false;
-  }
-
-  return true;
-};
-
-/**
- * Remove a style property.
- */
-var removeProperty$3 = function removeProperty(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.delete(prop);
-    } else {
-      cssRule.style.removeProperty(prop);
-    }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] DOMException \"" + err.message + "\" was thrown. Tried to remove property \"" + prop + "\".") : void 0;
-  }
-};
-
-/**
- * Set the selector.
- */
-var setSelector$3 = function setSelector(cssRule, selectorText) {
-  cssRule.selectorText = selectorText; // Return false if setter was not successful.
-  // Currently works in chrome only.
-
-  return cssRule.selectorText === selectorText;
-};
-/**
- * Gets the `head` element upon the first call and caches it.
- * We assume it can't be null.
- */
-
-
-var getHead$3 = memoize$3(function () {
-  return document.querySelector('head');
-});
-/**
- * Find attached sheet with an index higher than the passed one.
- */
-
-function findHigherSheet$3(registry, options) {
-  for (var i = 0; i < registry.length; i++) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.index > options.index && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find attached sheet with the highest index.
- */
-
-
-function findHighestSheet$3(registry, options) {
-  for (var i = registry.length - 1; i >= 0; i--) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find a comment with "jss" inside.
- */
-
-
-function findCommentNode$3(text) {
-  var head = getHead$3();
-
-  for (var i = 0; i < head.childNodes.length; i++) {
-    var node = head.childNodes[i];
-
-    if (node.nodeType === 8 && node.nodeValue.trim() === text) {
-      return node;
-    }
-  }
-
-  return null;
-}
-
-/**
- * Find a node before which we can insert the sheet.
- */
-function findPrevNode$3(options) {
-  var registry$1 = registry$3.registry;
-
-  if (registry$1.length > 0) {
-    // Try to insert before the next higher sheet.
-    var sheet = findHigherSheet$3(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element
-      };
-    } // Otherwise insert after the last attached.
-
-
-    sheet = findHighestSheet$3(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element.nextSibling
-      };
-    }
-  } // Try to find a comment placeholder if registry is empty.
-
-
-  var insertionPoint = options.insertionPoint;
-
-  if (insertionPoint && typeof insertionPoint === 'string') {
-    var comment = findCommentNode$3(insertionPoint);
-
-    if (comment) {
-      return {
-        parent: comment.parentNode,
-        node: comment.nextSibling
-      };
-    } // If user specifies an insertion point and it can't be found in the document -
-    // bad specificity issues may appear.
-
-
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Insertion point \"" + insertionPoint + "\" not found.") : void 0;
-  }
-
-  return false;
-}
-/**
- * Insert style element into the DOM.
- */
-
-
-function insertStyle$3(style, options) {
-  var insertionPoint = options.insertionPoint;
-  var nextNode = findPrevNode$3(options);
-
-  if (nextNode !== false && nextNode.parent) {
-    nextNode.parent.insertBefore(style, nextNode.node);
-    return;
-  } // Works with iframes and any node types.
-
-
-  if (insertionPoint && typeof insertionPoint.nodeType === 'number') {
-    // https://stackoverflow.com/questions/41328728/force-casting-in-flow
-    var insertionPointElement = insertionPoint;
-    var parentNode = insertionPointElement.parentNode;
-    if (parentNode) parentNode.insertBefore(style, insertionPointElement.nextSibling);else process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Insertion point is not in the DOM.') : void 0;
-    return;
-  }
-
-  getHead$3().appendChild(style);
-}
-/**
- * Read jss nonce setting from the page if the user has set it.
- */
-
-
-var getNonce$3 = memoize$3(function () {
-  var node = document.querySelector('meta[property="csp-nonce"]');
-  return node ? node.getAttribute('content') : null;
-});
-
-var _insertRule$3 = function insertRule(container, rule, index) {
-  try {
-    if ('insertRule' in container) {
-      var c = container;
-      c.insertRule(rule, index);
-    } // Keyframes rule.
-    else if ('appendRule' in container) {
-        var _c = container;
-
-        _c.appendRule(rule);
-      }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] " + err.message) : void 0;
-    return false;
-  }
-
-  return container.cssRules[index];
-};
-
-var getValidRuleInsertionIndex$3 = function getValidRuleInsertionIndex(container, index) {
-  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
-
-  if (index === undefined || index > maxIndex) {
-    // eslint-disable-next-line no-param-reassign
-    return maxIndex;
-  }
-
-  return index;
-};
-
-var createStyle$3 = function createStyle() {
-  var el = document.createElement('style'); // Without it, IE will have a broken source order specificity if we
-  // insert rules after we insert the style tag.
-  // It seems to kick-off the source order specificity algorithm.
-
-  el.textContent = '\n';
-  return el;
-};
-
-var DomRenderer$3 =
-/*#__PURE__*/
-function () {
-  // HTMLStyleElement needs fixing https://github.com/facebook/flow/issues/2696
-  // Will be empty if link: true option is not set, because
-  // it is only for use together with insertRule API.
-  function DomRenderer(sheet) {
-    this.getPropertyValue = getPropertyValue$3;
-    this.setProperty = setProperty$3;
-    this.removeProperty = removeProperty$3;
-    this.setSelector = setSelector$3;
-    this.element = void 0;
-    this.sheet = void 0;
-    this.hasInsertedRules = false;
-    this.cssRules = [];
-    // There is no sheet when the renderer is used from a standalone StyleRule.
-    if (sheet) registry$3.add(sheet);
-    this.sheet = sheet;
-
-    var _ref = this.sheet ? this.sheet.options : {},
-        media = _ref.media,
-        meta = _ref.meta,
-        element = _ref.element;
-
-    this.element = element || createStyle$3();
-    this.element.setAttribute('data-jss', '');
-    if (media) this.element.setAttribute('media', media);
-    if (meta) this.element.setAttribute('data-meta', meta);
-    var nonce = getNonce$3();
-    if (nonce) this.element.setAttribute('nonce', nonce);
-  }
-  /**
-   * Insert style element into render tree.
-   */
-
-
-  var _proto = DomRenderer.prototype;
-
-  _proto.attach = function attach() {
-    // In the case the element node is external and it is already in the DOM.
-    if (this.element.parentNode || !this.sheet) return;
-    insertStyle$3(this.element, this.sheet.options); // When rules are inserted using `insertRule` API, after `sheet.detach().attach()`
-    // most browsers create a new CSSStyleSheet, except of all IEs.
-
-    var deployed = Boolean(this.sheet && this.sheet.deployed);
-
-    if (this.hasInsertedRules && deployed) {
-      this.hasInsertedRules = false;
-      this.deploy();
-    }
-  }
-  /**
-   * Remove style element from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.sheet) return;
-    var parentNode = this.element.parentNode;
-    if (parentNode) parentNode.removeChild(this.element); // In the most browsers, rules inserted using insertRule() API will be lost when style element is removed.
-    // Though IE will keep them and we need a consistent behavior.
-
-    if (this.sheet.options.link) {
-      this.cssRules = [];
-      this.element.textContent = '\n';
-    }
-  }
-  /**
-   * Inject CSS string into element.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    var sheet = this.sheet;
-    if (!sheet) return;
-
-    if (sheet.options.link) {
-      this.insertRules(sheet.rules);
-      return;
-    }
-
-    this.element.textContent = "\n" + sheet.toString() + "\n";
-  }
-  /**
-   * Insert RuleList into an element.
-   */
-  ;
-
-  _proto.insertRules = function insertRules(rules, nativeParent) {
-    for (var i = 0; i < rules.index.length; i++) {
-      this.insertRule(rules.index[i], i, nativeParent);
-    }
-  }
-  /**
-   * Insert a rule into element.
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule, index, nativeParent) {
-    if (nativeParent === void 0) {
-      nativeParent = this.element.sheet;
-    }
-
-    if (rule.rules) {
-      var parent = rule;
-      var latestNativeParent = nativeParent;
-
-      if (rule.type === 'conditional' || rule.type === 'keyframes') {
-        var _insertionIndex = getValidRuleInsertionIndex$3(nativeParent, index); // We need to render the container without children first.
-
-
-        latestNativeParent = _insertRule$3(nativeParent, parent.toString({
-          children: false
-        }), _insertionIndex);
-
-        if (latestNativeParent === false) {
-          return false;
-        }
-
-        this.refCssRule(rule, _insertionIndex, latestNativeParent);
-      }
-
-      this.insertRules(parent.rules, latestNativeParent);
-      return latestNativeParent;
-    }
-
-    var ruleStr = rule.toString();
-    if (!ruleStr) return false;
-    var insertionIndex = getValidRuleInsertionIndex$3(nativeParent, index);
-
-    var nativeRule = _insertRule$3(nativeParent, ruleStr, insertionIndex);
-
-    if (nativeRule === false) {
-      return false;
-    }
-
-    this.hasInsertedRules = true;
-    this.refCssRule(rule, insertionIndex, nativeRule);
-    return nativeRule;
-  };
-
-  _proto.refCssRule = function refCssRule(rule, index, cssRule) {
-    rule.renderable = cssRule; // We only want to reference the top level rules, deleteRule API doesn't support removing nested rules
-    // like rules inside media queries or keyframes
-
-    if (rule.options.parent instanceof StyleSheet$3) {
-      this.cssRules[index] = cssRule;
-    }
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(cssRule) {
-    var sheet = this.element.sheet;
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return true;
-  }
-  /**
-   * Get index of a CSS Rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(cssRule) {
-    return this.cssRules.indexOf(cssRule);
-  }
-  /**
-   * Generate a new CSS rule and replace the existing one.
-   *
-   * Only used for some old browsers because they can't set a selector.
-   */
-  ;
-
-  _proto.replaceRule = function replaceRule(cssRule, rule) {
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    this.element.sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return this.insertRule(rule, index);
-  }
-  /**
-   * Get all rules elements.
-   */
-  ;
-
-  _proto.getRules = function getRules() {
-    return this.element.sheet.cssRules;
-  };
-
-  return DomRenderer;
-}();
-
-var instanceCounter$3 = 0;
-
-var Jss$3 =
-/*#__PURE__*/
-function () {
-  function Jss(options) {
-    this.id = instanceCounter$3++;
-    this.version = "10.5.1";
-    this.plugins = new PluginsRegistry$3();
-    this.options = {
-      id: {
-        minify: false
-      },
-      createGenerateId: createGenerateId$3,
-      Renderer: isBrowser$2 ? DomRenderer$3 : null,
-      plugins: []
-    };
-    this.generateId = createGenerateId$3({
-      minify: false
-    });
-
-    for (var i = 0; i < plugins$5.length; i++) {
-      this.plugins.use(plugins$5[i], {
-        queue: 'internal'
-      });
-    }
-
-    this.setup(options);
-  }
-  /**
-   * Prepares various options, applies plugins.
-   * Should not be used twice on the same instance, because there is no plugins
-   * deduplication logic.
-   */
-
-
-  var _proto = Jss.prototype;
-
-  _proto.setup = function setup(options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    if (options.createGenerateId) {
-      this.options.createGenerateId = options.createGenerateId;
-    }
-
-    if (options.id) {
-      this.options.id = _extends__default['default']({}, this.options.id, options.id);
-    }
-
-    if (options.createGenerateId || options.id) {
-      this.generateId = this.options.createGenerateId(this.options.id);
-    }
-
-    if (options.insertionPoint != null) this.options.insertionPoint = options.insertionPoint;
-
-    if ('Renderer' in options) {
-      this.options.Renderer = options.Renderer;
-    } // eslint-disable-next-line prefer-spread
-
-
-    if (options.plugins) this.use.apply(this, options.plugins);
-    return this;
-  }
-  /**
-   * Create a Style Sheet.
-   */
-  ;
-
-  _proto.createStyleSheet = function createStyleSheet(styles, options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    var _options = options,
-        index = _options.index;
-
-    if (typeof index !== 'number') {
-      index = registry$3.index === 0 ? 0 : registry$3.index + 1;
-    }
-
-    var sheet = new StyleSheet$3(styles, _extends__default['default']({}, options, {
-      jss: this,
-      generateId: options.generateId || this.generateId,
-      insertionPoint: this.options.insertionPoint,
-      Renderer: this.options.Renderer,
-      index: index
-    }));
-    this.plugins.onProcessSheet(sheet);
-    return sheet;
-  }
-  /**
-   * Detach the Style Sheet and remove it from the registry.
-   */
-  ;
-
-  _proto.removeStyleSheet = function removeStyleSheet(sheet) {
-    sheet.detach();
-    registry$3.remove(sheet);
-    return this;
-  }
-  /**
-   * Create a rule without a Style Sheet.
-   * [Deprecated] will be removed in the next major version.
-   */
-  ;
-
-  _proto.createRule = function createRule$1(name, style, options) {
-    if (style === void 0) {
-      style = {};
-    }
-
-    if (options === void 0) {
-      options = {};
-    }
-
-    // Enable rule without name for inline styles.
-    if (typeof name === 'object') {
-      // $FlowFixMe[incompatible-call]
-      return this.createRule(undefined, name, style);
-    } // $FlowFixMe[incompatible-type]
-
-
-    var ruleOptions = _extends__default['default']({}, options, {
-      name: name,
-      jss: this,
-      Renderer: this.options.Renderer
-    });
-
-    if (!ruleOptions.generateId) ruleOptions.generateId = this.generateId;
-    if (!ruleOptions.classes) ruleOptions.classes = {};
-    if (!ruleOptions.keyframes) ruleOptions.keyframes = {};
-
-    var rule = createRule$3(name, style, ruleOptions);
-
-    if (rule) this.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Register plugin. Passed function will be invoked with a rule instance.
-   */
-  ;
-
-  _proto.use = function use() {
-    var _this = this;
-
-    for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
-      plugins[_key] = arguments[_key];
-    }
-
-    plugins.forEach(function (plugin) {
-      _this.plugins.use(plugin);
-    });
-    return this;
-  };
-
-  return Jss;
-}();
-
-/**
- * A better abstraction over CSS.
- *
- * @copyright Oleg Isonen (Slobodskoi) / Isonen 2014-present
- * @website https://github.com/cssinjs/jss
- * @license MIT
- */
-
-/**
- * Export a constant indicating if this browser has CSSTOM support.
- * https://developers.google.com/web/updates/2018/03/cssom
- */
-var hasCSSTOMSupport$1 = typeof CSS === 'object' && CSS != null && 'number' in CSS;
-/**
- * Creates a new instance of Jss.
- */
-
-var create$4 = function create(options) {
-  return new Jss$3(options);
-};
-/**
- * A global Jss instance.
- */
-
-create$4();
-
-var px$1 = hasCSSTOMSupport$1 && CSS ? CSS.px : 'px';
-var ms$1 = hasCSSTOMSupport$1 && CSS ? CSS.ms : 'ms';
-var percent$1 = hasCSSTOMSupport$1 && CSS ? CSS.percent : '%';
-/**
- * Generated jss-plugin-default-unit CSS property units
- *
- * @type object
- */
-
-var defaultUnits$1 = {
-  // Animation properties
-  'animation-delay': ms$1,
-  'animation-duration': ms$1,
-  // Background properties
-  'background-position': px$1,
-  'background-position-x': px$1,
-  'background-position-y': px$1,
-  'background-size': px$1,
-  // Border Properties
-  border: px$1,
-  'border-bottom': px$1,
-  'border-bottom-left-radius': px$1,
-  'border-bottom-right-radius': px$1,
-  'border-bottom-width': px$1,
-  'border-left': px$1,
-  'border-left-width': px$1,
-  'border-radius': px$1,
-  'border-right': px$1,
-  'border-right-width': px$1,
-  'border-top': px$1,
-  'border-top-left-radius': px$1,
-  'border-top-right-radius': px$1,
-  'border-top-width': px$1,
-  'border-width': px$1,
-  'border-block': px$1,
-  'border-block-end': px$1,
-  'border-block-end-width': px$1,
-  'border-block-start': px$1,
-  'border-block-start-width': px$1,
-  'border-block-width': px$1,
-  'border-inline': px$1,
-  'border-inline-end': px$1,
-  'border-inline-end-width': px$1,
-  'border-inline-start': px$1,
-  'border-inline-start-width': px$1,
-  'border-inline-width': px$1,
-  'border-start-start-radius': px$1,
-  'border-start-end-radius': px$1,
-  'border-end-start-radius': px$1,
-  'border-end-end-radius': px$1,
-  // Margin properties
-  margin: px$1,
-  'margin-bottom': px$1,
-  'margin-left': px$1,
-  'margin-right': px$1,
-  'margin-top': px$1,
-  'margin-block': px$1,
-  'margin-block-end': px$1,
-  'margin-block-start': px$1,
-  'margin-inline': px$1,
-  'margin-inline-end': px$1,
-  'margin-inline-start': px$1,
-  // Padding properties
-  padding: px$1,
-  'padding-bottom': px$1,
-  'padding-left': px$1,
-  'padding-right': px$1,
-  'padding-top': px$1,
-  'padding-block': px$1,
-  'padding-block-end': px$1,
-  'padding-block-start': px$1,
-  'padding-inline': px$1,
-  'padding-inline-end': px$1,
-  'padding-inline-start': px$1,
-  // Mask properties
-  'mask-position-x': px$1,
-  'mask-position-y': px$1,
-  'mask-size': px$1,
-  // Width and height properties
-  height: px$1,
-  width: px$1,
-  'min-height': px$1,
-  'max-height': px$1,
-  'min-width': px$1,
-  'max-width': px$1,
-  // Position properties
-  bottom: px$1,
-  left: px$1,
-  top: px$1,
-  right: px$1,
-  inset: px$1,
-  'inset-block': px$1,
-  'inset-block-end': px$1,
-  'inset-block-start': px$1,
-  'inset-inline': px$1,
-  'inset-inline-end': px$1,
-  'inset-inline-start': px$1,
-  // Shadow properties
-  'box-shadow': px$1,
-  'text-shadow': px$1,
-  // Column properties
-  'column-gap': px$1,
-  'column-rule': px$1,
-  'column-rule-width': px$1,
-  'column-width': px$1,
-  // Font and text properties
-  'font-size': px$1,
-  'font-size-delta': px$1,
-  'letter-spacing': px$1,
-  'text-decoration-thickness': px$1,
-  'text-indent': px$1,
-  'text-stroke': px$1,
-  'text-stroke-width': px$1,
-  'word-spacing': px$1,
-  // Motion properties
-  motion: px$1,
-  'motion-offset': px$1,
-  // Outline properties
-  outline: px$1,
-  'outline-offset': px$1,
-  'outline-width': px$1,
-  // Perspective properties
-  perspective: px$1,
-  'perspective-origin-x': percent$1,
-  'perspective-origin-y': percent$1,
-  // Transform properties
-  'transform-origin': percent$1,
-  'transform-origin-x': percent$1,
-  'transform-origin-y': percent$1,
-  'transform-origin-z': percent$1,
-  // Transition properties
-  'transition-delay': ms$1,
-  'transition-duration': ms$1,
-  // Alignment properties
-  'vertical-align': px$1,
-  'flex-basis': px$1,
-  // Some random properties
-  'shape-margin': px$1,
-  size: px$1,
-  gap: px$1,
-  // Grid properties
-  grid: px$1,
-  'grid-gap': px$1,
-  'row-gap': px$1,
-  'grid-row-gap': px$1,
-  'grid-column-gap': px$1,
-  'grid-template-rows': px$1,
-  'grid-template-columns': px$1,
-  'grid-auto-rows': px$1,
-  'grid-auto-columns': px$1,
-  // Not existing properties.
-  // Used to avoid issues with jss-plugin-expand integration.
-  'box-shadow-x': px$1,
-  'box-shadow-y': px$1,
-  'box-shadow-blur': px$1,
-  'box-shadow-spread': px$1,
-  'font-line-height': px$1,
-  'text-shadow-x': px$1,
-  'text-shadow-y': px$1,
-  'text-shadow-blur': px$1
-};
-
-/**
- * Clones the object and adds a camel cased property version.
- */
-function addCamelCasedVersion$1(obj) {
-  var regExp = /(-[a-z])/g;
-
-  var replace = function replace(str) {
-    return str[1].toUpperCase();
-  };
-
-  var newObj = {};
-
-  for (var _key in obj) {
-    newObj[_key] = obj[_key];
-    newObj[_key.replace(regExp, replace)] = obj[_key];
-  }
-
-  return newObj;
-}
-
-var units$1 = addCamelCasedVersion$1(defaultUnits$1);
-/**
- * Recursive deep style passing function
- */
-
-function iterate$1(prop, value, options) {
-  if (value == null) return value;
-
-  if (Array.isArray(value)) {
-    for (var i = 0; i < value.length; i++) {
-      value[i] = iterate$1(prop, value[i], options);
-    }
-  } else if (typeof value === 'object') {
-    if (prop === 'fallbacks') {
-      for (var innerProp in value) {
-        value[innerProp] = iterate$1(innerProp, value[innerProp], options);
-      }
-    } else {
-      for (var _innerProp in value) {
-        value[_innerProp] = iterate$1(prop + "-" + _innerProp, value[_innerProp], options);
-      }
-    }
-  } else if (typeof value === 'number' && !Number.isNaN(value)) {
-    var unit = options[prop] || units$1[prop]; // Add the unit if available, except for the special case of 0px.
-
-    if (unit && !(value === 0 && unit === px$1)) {
-      return typeof unit === 'function' ? unit(value).toString() : "" + value + unit;
-    }
-
-    return value.toString();
-  }
-
-  return value;
-}
-/**
- * Add unit to numeric values.
- */
-
-
-function defaultUnit$1(options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var camelCasedOptions = addCamelCasedVersion$1(options);
-
-  function onProcessStyle(style, rule) {
-    if (rule.type !== 'style') return style;
-
-    for (var prop in style) {
-      style[prop] = iterate$1(prop, style[prop], camelCasedOptions);
-    }
-
-    return style;
-  }
-
-  function onChangeValue(value, prop) {
-    return iterate$1(prop, value, camelCasedOptions);
-  }
-
-  return {
-    onProcessStyle: onProcessStyle,
-    onChangeValue: onChangeValue
-  };
-}
-
-// Export javascript style and css style vendor prefixes.
-var js$1 = '';
-var css$1 = '';
-var vendor$1 = '';
-var browser$1 = '';
-var isTouch$1 = isBrowser$2 && 'ontouchstart' in document.documentElement; // We should not do anything if required serverside.
-
-if (isBrowser$2) {
-  // Order matters. We need to check Webkit the last one because
-  // other vendors use to add Webkit prefixes to some properties
-  var jsCssMap$1 = {
-    Moz: '-moz-',
-    ms: '-ms-',
-    O: '-o-',
-    Webkit: '-webkit-'
-  };
-
-  var _document$createEleme$1 = document.createElement('p'),
-      style$2 = _document$createEleme$1.style;
-
-  var testProp$1 = 'Transform';
-
-  for (var key$2 in jsCssMap$1) {
-    if (key$2 + testProp$1 in style$2) {
-      js$1 = key$2;
-      css$1 = jsCssMap$1[key$2];
-      break;
-    }
-  } // Correctly detect the Edge browser.
-
-
-  if (js$1 === 'Webkit' && 'msHyphens' in style$2) {
-    js$1 = 'ms';
-    css$1 = jsCssMap$1.ms;
-    browser$1 = 'edge';
-  } // Correctly detect the Safari browser.
-
-
-  if (js$1 === 'Webkit' && '-apple-trailing-word' in style$2) {
-    vendor$1 = 'apple';
-  }
-}
-/**
- * Vendor prefix string for the current browser.
- *
- * @type {{js: String, css: String, vendor: String, browser: String}}
- * @api public
- */
-
-
-var prefix$1 = {
-  js: js$1,
-  css: css$1,
-  vendor: vendor$1,
-  browser: browser$1,
-  isTouch: isTouch$1
-};
-
-/**
- * Test if a keyframe at-rule should be prefixed or not
- *
- * @param {String} vendor prefix string for the current browser.
- * @return {String}
- * @api public
- */
-
-function supportedKeyframes$1(key) {
-  // Keyframes is already prefixed. e.g. key = '@-webkit-keyframes a'
-  if (key[1] === '-') return key; // No need to prefix IE/Edge. Older browsers will ignore unsupported rules.
-  // https://caniuse.com/#search=keyframes
-
-  if (prefix$1.js === 'ms') return key;
-  return "@" + prefix$1.css + "keyframes" + key.substr(10);
-}
-
-// https://caniuse.com/#search=appearance
-
-var appearence$1 = {
-  noPrefill: ['appearance'],
-  supportedProperty: function supportedProperty(prop) {
-    if (prop !== 'appearance') return false;
-    if (prefix$1.js === 'ms') return "-webkit-" + prop;
-    return prefix$1.css + prop;
-  }
-};
-
-// https://caniuse.com/#search=color-adjust
-
-var colorAdjust$1 = {
-  noPrefill: ['color-adjust'],
-  supportedProperty: function supportedProperty(prop) {
-    if (prop !== 'color-adjust') return false;
-    if (prefix$1.js === 'Webkit') return prefix$1.css + "print-" + prop;
-    return prop;
-  }
-};
-
-var regExp$1 = /[-\s]+(.)?/g;
-/**
- * Replaces the letter with the capital letter
- *
- * @param {String} match
- * @param {String} c
- * @return {String}
- * @api private
- */
-
-function toUpper$1(match, c) {
-  return c ? c.toUpperCase() : '';
-}
-/**
- * Convert dash separated strings to camel-cased.
- *
- * @param {String} str
- * @return {String}
- * @api private
- */
-
-
-function camelize$1(str) {
-  return str.replace(regExp$1, toUpper$1);
-}
-
-/**
- * Convert dash separated strings to pascal cased.
- *
- * @param {String} str
- * @return {String}
- * @api private
- */
-
-function pascalize$1(str) {
-  return camelize$1("-" + str);
-}
-
-// but we can use a longhand property instead.
-// https://caniuse.com/#search=mask
-
-var mask$1 = {
-  noPrefill: ['mask'],
-  supportedProperty: function supportedProperty(prop, style) {
-    if (!/^mask/.test(prop)) return false;
-
-    if (prefix$1.js === 'Webkit') {
-      var longhand = 'mask-image';
-
-      if (camelize$1(longhand) in style) {
-        return prop;
-      }
-
-      if (prefix$1.js + pascalize$1(longhand) in style) {
-        return prefix$1.css + prop;
-      }
-    }
-
-    return prop;
-  }
-};
-
-// https://caniuse.com/#search=text-orientation
-
-var textOrientation$1 = {
-  noPrefill: ['text-orientation'],
-  supportedProperty: function supportedProperty(prop) {
-    if (prop !== 'text-orientation') return false;
-
-    if (prefix$1.vendor === 'apple' && !prefix$1.isTouch) {
-      return prefix$1.css + prop;
-    }
-
-    return prop;
-  }
-};
-
-// https://caniuse.com/#search=transform
-
-var transform$1 = {
-  noPrefill: ['transform'],
-  supportedProperty: function supportedProperty(prop, style, options) {
-    if (prop !== 'transform') return false;
-
-    if (options.transform) {
-      return prop;
-    }
-
-    return prefix$1.css + prop;
-  }
-};
-
-// https://caniuse.com/#search=transition
-
-var transition$1 = {
-  noPrefill: ['transition'],
-  supportedProperty: function supportedProperty(prop, style, options) {
-    if (prop !== 'transition') return false;
-
-    if (options.transition) {
-      return prop;
-    }
-
-    return prefix$1.css + prop;
-  }
-};
-
-// https://caniuse.com/#search=writing-mode
-
-var writingMode$1 = {
-  noPrefill: ['writing-mode'],
-  supportedProperty: function supportedProperty(prop) {
-    if (prop !== 'writing-mode') return false;
-
-    if (prefix$1.js === 'Webkit' || prefix$1.js === 'ms' && prefix$1.browser !== 'edge') {
-      return prefix$1.css + prop;
-    }
-
-    return prop;
-  }
-};
-
-// https://caniuse.com/#search=user-select
-
-var userSelect$1 = {
-  noPrefill: ['user-select'],
-  supportedProperty: function supportedProperty(prop) {
-    if (prop !== 'user-select') return false;
-
-    if (prefix$1.js === 'Moz' || prefix$1.js === 'ms' || prefix$1.vendor === 'apple') {
-      return prefix$1.css + prop;
-    }
-
-    return prop;
-  }
-};
-
-// https://caniuse.com/#search=multicolumn
-// https://github.com/postcss/autoprefixer/issues/491
-// https://github.com/postcss/autoprefixer/issues/177
-
-var breakPropsOld$1 = {
-  supportedProperty: function supportedProperty(prop, style) {
-    if (!/^break-/.test(prop)) return false;
-
-    if (prefix$1.js === 'Webkit') {
-      var jsProp = "WebkitColumn" + pascalize$1(prop);
-      return jsProp in style ? prefix$1.css + "column-" + prop : false;
-    }
-
-    if (prefix$1.js === 'Moz') {
-      var _jsProp = "page" + pascalize$1(prop);
-
-      return _jsProp in style ? "page-" + prop : false;
-    }
-
-    return false;
-  }
-};
-
-// See https://github.com/postcss/autoprefixer/issues/324.
-
-var inlineLogicalOld$1 = {
-  supportedProperty: function supportedProperty(prop, style) {
-    if (!/^(border|margin|padding)-inline/.test(prop)) return false;
-    if (prefix$1.js === 'Moz') return prop;
-    var newProp = prop.replace('-inline', '');
-    return prefix$1.js + pascalize$1(newProp) in style ? prefix$1.css + newProp : false;
-  }
-};
-
-// Camelization is required because we can't test using.
-// CSS syntax for e.g. in FF.
-
-var unprefixed$1 = {
-  supportedProperty: function supportedProperty(prop, style) {
-    return camelize$1(prop) in style ? prop : false;
-  }
-};
-
-var prefixed$1 = {
-  supportedProperty: function supportedProperty(prop, style) {
-    var pascalized = pascalize$1(prop); // Return custom CSS variable without prefixing.
-
-    if (prop[0] === '-') return prop; // Return already prefixed value without prefixing.
-
-    if (prop[0] === '-' && prop[1] === '-') return prop;
-    if (prefix$1.js + pascalized in style) return prefix$1.css + prop; // Try webkit fallback.
-
-    if (prefix$1.js !== 'Webkit' && "Webkit" + pascalized in style) return "-webkit-" + prop;
-    return false;
-  }
-};
-
-// https://caniuse.com/#search=scroll-snap
-
-var scrollSnap$1 = {
-  supportedProperty: function supportedProperty(prop) {
-    if (prop.substring(0, 11) !== 'scroll-snap') return false;
-
-    if (prefix$1.js === 'ms') {
-      return "" + prefix$1.css + prop;
-    }
-
-    return prop;
-  }
-};
-
-// https://caniuse.com/#search=overscroll-behavior
-
-var overscrollBehavior$1 = {
-  supportedProperty: function supportedProperty(prop) {
-    if (prop !== 'overscroll-behavior') return false;
-
-    if (prefix$1.js === 'ms') {
-      return prefix$1.css + "scroll-chaining";
-    }
-
-    return prop;
-  }
-};
-
-var propMap$2 = {
-  'flex-grow': 'flex-positive',
-  'flex-shrink': 'flex-negative',
-  'flex-basis': 'flex-preferred-size',
-  'justify-content': 'flex-pack',
-  order: 'flex-order',
-  'align-items': 'flex-align',
-  'align-content': 'flex-line-pack' // 'align-self' is handled by 'align-self' plugin.
-
-}; // Support old flex spec from 2012.
-
-var flex2012$1 = {
-  supportedProperty: function supportedProperty(prop, style) {
-    var newProp = propMap$2[prop];
-    if (!newProp) return false;
-    return prefix$1.js + pascalize$1(newProp) in style ? prefix$1.css + newProp : false;
-  }
-};
-
-var propMap$1$1 = {
-  flex: 'box-flex',
-  'flex-grow': 'box-flex',
-  'flex-direction': ['box-orient', 'box-direction'],
-  order: 'box-ordinal-group',
-  'align-items': 'box-align',
-  'flex-flow': ['box-orient', 'box-direction'],
-  'justify-content': 'box-pack'
-};
-var propKeys$1 = Object.keys(propMap$1$1);
-
-var prefixCss$1 = function prefixCss(p) {
-  return prefix$1.css + p;
-}; // Support old flex spec from 2009.
-
-
-var flex2009$1 = {
-  supportedProperty: function supportedProperty(prop, style, _ref) {
-    var multiple = _ref.multiple;
-
-    if (propKeys$1.indexOf(prop) > -1) {
-      var newProp = propMap$1$1[prop];
-
-      if (!Array.isArray(newProp)) {
-        return prefix$1.js + pascalize$1(newProp) in style ? prefix$1.css + newProp : false;
-      }
-
-      if (!multiple) return false;
-
-      for (var i = 0; i < newProp.length; i++) {
-        if (!(prefix$1.js + pascalize$1(newProp[0]) in style)) {
-          return false;
-        }
-      }
-
-      return newProp.map(prefixCss$1);
-    }
-
-    return false;
-  }
-};
-
-// plugins = [
-//   ...plugins,
-//    breakPropsOld,
-//    inlineLogicalOld,
-//    unprefixed,
-//    prefixed,
-//    scrollSnap,
-//    flex2012,
-//    flex2009
-// ]
-// Plugins without 'noPrefill' value, going last.
-// 'flex-*' plugins should be at the bottom.
-// 'flex2009' going after 'flex2012'.
-// 'prefixed' going after 'unprefixed'
-
-var plugins$4 = [appearence$1, colorAdjust$1, mask$1, textOrientation$1, transform$1, transition$1, writingMode$1, userSelect$1, breakPropsOld$1, inlineLogicalOld$1, unprefixed$1, prefixed$1, scrollSnap$1, overscrollBehavior$1, flex2012$1, flex2009$1];
-var propertyDetectors$1 = plugins$4.filter(function (p) {
-  return p.supportedProperty;
-}).map(function (p) {
-  return p.supportedProperty;
-});
-var noPrefill$1 = plugins$4.filter(function (p) {
-  return p.noPrefill;
-}).reduce(function (a, p) {
-  a.push.apply(a, _toConsumableArray__default['default'](p.noPrefill));
-  return a;
-}, []);
-
-var el$2;
-var cache$3 = {};
-
-if (isBrowser$2) {
-  el$2 = document.createElement('p'); // We test every property on vendor prefix requirement.
-  // Once tested, result is cached. It gives us up to 70% perf boost.
-  // http://jsperf.com/element-style-object-access-vs-plain-object
-  //
-  // Prefill cache with known css properties to reduce amount of
-  // properties we need to feature test at runtime.
-  // http://davidwalsh.name/vendor-prefix
-
-  var computed$1 = window.getComputedStyle(document.documentElement, '');
-
-  for (var key$1$1 in computed$1) {
-    // eslint-disable-next-line no-restricted-globals
-    if (!isNaN(key$1$1)) cache$3[computed$1[key$1$1]] = computed$1[key$1$1];
-  } // Properties that cannot be correctly detected using the
-  // cache prefill method.
-
-
-  noPrefill$1.forEach(function (x) {
-    return delete cache$3[x];
-  });
-}
-/**
- * Test if a property is supported, returns supported property with vendor
- * prefix if required. Returns `false` if not supported.
- *
- * @param {String} prop dash separated
- * @param {Object} [options]
- * @return {String|Boolean}
- * @api public
- */
-
-
-function supportedProperty$1(prop, options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  // For server-side rendering.
-  if (!el$2) return prop; // Remove cache for benchmark tests or return property from the cache.
-
-  if (process.env.NODE_ENV !== 'benchmark' && cache$3[prop] != null) {
-    return cache$3[prop];
-  } // Check if 'transition' or 'transform' natively supported in browser.
-
-
-  if (prop === 'transition' || prop === 'transform') {
-    options[prop] = prop in el$2.style;
-  } // Find a plugin for current prefix property.
-
-
-  for (var i = 0; i < propertyDetectors$1.length; i++) {
-    cache$3[prop] = propertyDetectors$1[i](prop, el$2.style, options); // Break loop, if value found.
-
-    if (cache$3[prop]) break;
-  } // Reset styles for current property.
-  // Firefox can even throw an error for invalid properties, e.g., "0".
-
-
-  try {
-    el$2.style[prop] = '';
-  } catch (err) {
-    return false;
-  }
-
-  return cache$3[prop];
-}
-
-var cache$1$1 = {};
-var transitionProperties$1 = {
-  transition: 1,
-  'transition-property': 1,
-  '-webkit-transition': 1,
-  '-webkit-transition-property': 1
-};
-var transPropsRegExp$1 = /(^\s*[\w-]+)|, (\s*[\w-]+)(?![^()]*\))/g;
-var el$1$1;
-/**
- * Returns prefixed value transition/transform if needed.
- *
- * @param {String} match
- * @param {String} p1
- * @param {String} p2
- * @return {String}
- * @api private
- */
-
-function prefixTransitionCallback$1(match, p1, p2) {
-  if (p1 === 'var') return 'var';
-  if (p1 === 'all') return 'all';
-  if (p2 === 'all') return ', all';
-  var prefixedValue = p1 ? supportedProperty$1(p1) : ", " + supportedProperty$1(p2);
-  if (!prefixedValue) return p1 || p2;
-  return prefixedValue;
-}
-
-if (isBrowser$2) el$1$1 = document.createElement('p');
-/**
- * Returns prefixed value if needed. Returns `false` if value is not supported.
- *
- * @param {String} property
- * @param {String} value
- * @return {String|Boolean}
- * @api public
- */
-
-function supportedValue$1(property, value) {
-  // For server-side rendering.
-  var prefixedValue = value;
-  if (!el$1$1 || property === 'content') return value; // It is a string or a number as a string like '1'.
-  // We want only prefixable values here.
-  // eslint-disable-next-line no-restricted-globals
-
-  if (typeof prefixedValue !== 'string' || !isNaN(parseInt(prefixedValue, 10))) {
-    return prefixedValue;
-  } // Create cache key for current value.
-
-
-  var cacheKey = property + prefixedValue; // Remove cache for benchmark tests or return value from cache.
-
-  if (process.env.NODE_ENV !== 'benchmark' && cache$1$1[cacheKey] != null) {
-    return cache$1$1[cacheKey];
-  } // IE can even throw an error in some cases, for e.g. style.content = 'bar'.
-
-
-  try {
-    // Test value as it is.
-    el$1$1.style[property] = prefixedValue;
-  } catch (err) {
-    // Return false if value not supported.
-    cache$1$1[cacheKey] = false;
-    return false;
-  } // If 'transition' or 'transition-property' property.
-
-
-  if (transitionProperties$1[property]) {
-    prefixedValue = prefixedValue.replace(transPropsRegExp$1, prefixTransitionCallback$1);
-  } else if (el$1$1.style[property] === '') {
-    // Value with a vendor prefix.
-    prefixedValue = prefix$1.css + prefixedValue; // Hardcode test to convert "flex" to "-ms-flexbox" for IE10.
-
-    if (prefixedValue === '-ms-flex') el$1$1.style[property] = '-ms-flexbox'; // Test prefixed value.
-
-    el$1$1.style[property] = prefixedValue; // Return false if value not supported.
-
-    if (el$1$1.style[property] === '') {
-      cache$1$1[cacheKey] = false;
-      return false;
-    }
-  } // Reset styles for current property.
-
-
-  el$1$1.style[property] = ''; // Write current value to cache.
-
-  cache$1$1[cacheKey] = prefixedValue;
-  return cache$1$1[cacheKey];
-}
-
-var plainObjectConstrurctor$2 = {}.constructor;
-function cloneStyle$2(style) {
-  if (style == null || typeof style !== 'object') return style;
-  if (Array.isArray(style)) return style.map(cloneStyle$2);
-  if (style.constructor !== plainObjectConstrurctor$2) return style;
-  var newStyle = {};
-
-  for (var name in style) {
-    newStyle[name] = cloneStyle$2(style[name]);
-  }
-
-  return newStyle;
-}
-
-/**
- * Create a rule instance.
- */
-
-function createRule$2(name, decl, options) {
-  if (name === void 0) {
-    name = 'unnamed';
-  }
-
-  var jss = options.jss;
-  var declCopy = cloneStyle$2(decl);
-  var rule = jss.plugins.onCreateRule(name, declCopy, options);
-  if (rule) return rule; // It is an at-rule and it has no instance.
-
-  if (name[0] === '@') {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown rule " + name) : void 0;
-  }
-
-  return null;
-}
-
-var join$2 = function join(value, by) {
-  var result = '';
-
-  for (var i = 0; i < value.length; i++) {
-    // Remove !important from the value, it will be readded later.
-    if (value[i] === '!important') break;
-    if (result) result += by;
-    result += value[i];
-  }
-
-  return result;
-};
-
-/**
- * Converts array values to string.
- *
- * `margin: [['5px', '10px']]` > `margin: 5px 10px;`
- * `border: ['1px', '2px']` > `border: 1px, 2px;`
- * `margin: [['5px', '10px'], '!important']` > `margin: 5px 10px !important;`
- * `color: ['red', !important]` > `color: red !important;`
- */
-var toCssValue$2 = function toCssValue(value, ignoreImportant) {
-  if (ignoreImportant === void 0) {
-    ignoreImportant = false;
-  }
-
-  if (!Array.isArray(value)) return value;
-  var cssValue = ''; // Support space separated values via `[['5px', '10px']]`.
-
-  if (Array.isArray(value[0])) {
-    for (var i = 0; i < value.length; i++) {
-      if (value[i] === '!important') break;
-      if (cssValue) cssValue += ', ';
-      cssValue += join$2(value[i], ' ');
-    }
-  } else cssValue = join$2(value, ', '); // Add !important, because it was ignored.
-
-
-  if (!ignoreImportant && value[value.length - 1] === '!important') {
-    cssValue += ' !important';
-  }
-
-  return cssValue;
-};
-
-/**
- * Indent a string.
- * http://jsperf.com/array-join-vs-for
- */
-function indentStr$2(str, indent) {
-  var result = '';
-
-  for (var index = 0; index < indent; index++) {
-    result += '  ';
-  }
-
-  return result + str;
-}
-/**
- * Converts a Rule to CSS string.
- */
-
-
-function toCss$2(selector, style, options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var result = '';
-  if (!style) return result;
-  var _options = options,
-      _options$indent = _options.indent,
-      indent = _options$indent === void 0 ? 0 : _options$indent;
-  var fallbacks = style.fallbacks;
-  if (selector) indent++; // Apply fallbacks first.
-
-  if (fallbacks) {
-    // Array syntax {fallbacks: [{prop: value}]}
-    if (Array.isArray(fallbacks)) {
-      for (var index = 0; index < fallbacks.length; index++) {
-        var fallback = fallbacks[index];
-
-        for (var prop in fallback) {
-          var value = fallback[prop];
-
-          if (value != null) {
-            if (result) result += '\n';
-            result += "" + indentStr$2(prop + ": " + toCssValue$2(value) + ";", indent);
-          }
-        }
-      }
-    } else {
-      // Object syntax {fallbacks: {prop: value}}
-      for (var _prop in fallbacks) {
-        var _value = fallbacks[_prop];
-
-        if (_value != null) {
-          if (result) result += '\n';
-          result += "" + indentStr$2(_prop + ": " + toCssValue$2(_value) + ";", indent);
-        }
-      }
-    }
-  }
-
-  for (var _prop2 in style) {
-    var _value2 = style[_prop2];
-
-    if (_value2 != null && _prop2 !== 'fallbacks') {
-      if (result) result += '\n';
-      result += "" + indentStr$2(_prop2 + ": " + toCssValue$2(_value2) + ";", indent);
-    }
-  } // Allow empty style in this case, because properties will be added dynamically.
-
-
-  if (!result && !options.allowEmpty) return result; // When rule is being stringified before selector was defined.
-
-  if (!selector) return result;
-  indent--;
-  if (result) result = "\n" + result + "\n";
-  return indentStr$2(selector + " {" + result, indent) + indentStr$2('}', indent);
-}
-
-var escapeRegex$2 = /([[\].#*$><+~=|^:(),"'`\s])/g;
-var nativeEscape$2 = typeof CSS !== 'undefined' && CSS.escape;
-var escape$2 = (function (str) {
-  return nativeEscape$2 ? nativeEscape$2(str) : str.replace(escapeRegex$2, '\\$1');
-});
-
-var BaseStyleRule$2 =
-/*#__PURE__*/
-function () {
-  function BaseStyleRule(key, style, options) {
-    this.type = 'style';
-    this.key = void 0;
-    this.isProcessed = false;
-    this.style = void 0;
-    this.renderer = void 0;
-    this.renderable = void 0;
-    this.options = void 0;
-    var sheet = options.sheet,
-        Renderer = options.Renderer;
-    this.key = key;
-    this.options = options;
-    this.style = style;
-    if (sheet) this.renderer = sheet.renderer;else if (Renderer) this.renderer = new Renderer();
-  }
-  /**
-   * Get or set a style property.
-   */
-
-
-  var _proto = BaseStyleRule.prototype;
-
-  _proto.prop = function prop(name, value, options) {
-    // It's a getter.
-    if (value === undefined) return this.style[name]; // Don't do anything if the value has not changed.
-
-    var force = options ? options.force : false;
-    if (!force && this.style[name] === value) return this;
-    var newValue = value;
-
-    if (!options || options.process !== false) {
-      newValue = this.options.jss.plugins.onChangeValue(value, name, this);
-    }
-
-    var isEmpty = newValue == null || newValue === false;
-    var isDefined = name in this.style; // Value is empty and wasn't defined before.
-
-    if (isEmpty && !isDefined && !force) return this; // We are going to remove this value.
-
-    var remove = isEmpty && isDefined;
-    if (remove) delete this.style[name];else this.style[name] = newValue; // Renderable is defined if StyleSheet option `link` is true.
-
-    if (this.renderable && this.renderer) {
-      if (remove) this.renderer.removeProperty(this.renderable, name);else this.renderer.setProperty(this.renderable, name, newValue);
-      return this;
-    }
-
-    var sheet = this.options.sheet;
-
-    if (sheet && sheet.attached) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Rule is not linked. Missing sheet option "link: true".') : void 0;
-    }
-
-    return this;
-  };
-
-  return BaseStyleRule;
-}();
-var StyleRule$2 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](StyleRule, _BaseStyleRule);
-
-  function StyleRule(key, style, options) {
-    var _this;
-
-    _this = _BaseStyleRule.call(this, key, style, options) || this;
-    _this.selectorText = void 0;
-    _this.id = void 0;
-    _this.renderable = void 0;
-    var selector = options.selector,
-        scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-
-    if (selector) {
-      _this.selectorText = selector;
-    } else if (scoped !== false) {
-      _this.id = generateId(_assertThisInitialized__default['default'](_assertThisInitialized__default['default'](_this)), sheet);
-      _this.selectorText = "." + escape$2(_this.id);
-    }
-
-    return _this;
-  }
-  /**
-   * Set selector string.
-   * Attention: use this with caution. Most browsers didn't implement
-   * selectorText setter, so this may result in rerendering of entire Style Sheet.
-   */
-
-
-  var _proto2 = StyleRule.prototype;
-
-  /**
-   * Apply rule to an element inline.
-   */
-  _proto2.applyTo = function applyTo(renderable) {
-    var renderer = this.renderer;
-
-    if (renderer) {
-      var json = this.toJSON();
-
-      for (var prop in json) {
-        renderer.setProperty(renderable, prop, json[prop]);
-      }
-    }
-
-    return this;
-  }
-  /**
-   * Returns JSON representation of the rule.
-   * Fallbacks are not supported.
-   * Useful for inline styles.
-   */
-  ;
-
-  _proto2.toJSON = function toJSON() {
-    var json = {};
-
-    for (var prop in this.style) {
-      var value = this.style[prop];
-      if (typeof value !== 'object') json[prop] = value;else if (Array.isArray(value)) json[prop] = toCssValue$2(value);
-    }
-
-    return json;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto2.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$2(this.selectorText, this.style, opts);
-  };
-
-  _createClass__default['default'](StyleRule, [{
-    key: "selector",
-    set: function set(selector) {
-      if (selector === this.selectorText) return;
-      this.selectorText = selector;
-      var renderer = this.renderer,
-          renderable = this.renderable;
-      if (!renderable || !renderer) return;
-      var hasChanged = renderer.setSelector(renderable, selector); // If selector setter is not implemented, rerender the rule.
-
-      if (!hasChanged) {
-        renderer.replaceRule(renderable, this);
-      }
-    }
-    /**
-     * Get selector string.
-     */
-    ,
-    get: function get() {
-      return this.selectorText;
-    }
-  }]);
-
-  return StyleRule;
-}(BaseStyleRule$2);
-var pluginStyleRule$2 = {
-  onCreateRule: function onCreateRule(name, style, options) {
-    if (name[0] === '@' || options.parent && options.parent.type === 'keyframes') {
-      return null;
-    }
-
-    return new StyleRule$2(name, style, options);
-  }
-};
-
-var defaultToStringOptions$3 = {
-  indent: 1,
-  children: true
-};
-var atRegExp$2 = /@([\w-]+)/;
-/**
- * Conditional rule for @media, @supports
- */
-
-var ConditionalRule$2 =
-/*#__PURE__*/
-function () {
-  function ConditionalRule(key, styles, options) {
-    this.type = 'conditional';
-    this.at = void 0;
-    this.key = void 0;
-    this.query = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    var atMatch = key.match(atRegExp$2);
-    this.at = atMatch ? atMatch[1] : 'unknown'; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
-
-    this.query = options.name || "@" + this.at;
-    this.options = options;
-    this.rules = new RuleList$2(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Get a rule.
-   */
-
-
-  var _proto = ConditionalRule.prototype;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Create and register rule, run plugins.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, style, options) {
-    var rule = this.rules.add(name, style, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$3;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$3.indent;
-    if (options.children == null) options.children = defaultToStringOptions$3.children;
-
-    if (options.children === false) {
-      return this.query + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    return children ? this.query + " {\n" + children + "\n}" : '';
-  };
-
-  return ConditionalRule;
-}();
-var keyRegExp$4 = /@media|@supports\s+/;
-var pluginConditionalRule$2 = {
-  onCreateRule: function onCreateRule(key, styles, options) {
-    return keyRegExp$4.test(key) ? new ConditionalRule$2(key, styles, options) : null;
-  }
-};
-
-var defaultToStringOptions$1$2 = {
-  indent: 1,
-  children: true
-};
-var nameRegExp$2 = /@keyframes\s+([\w-]+)/;
-/**
- * Rule for @keyframes
- */
-
-var KeyframesRule$2 =
-/*#__PURE__*/
-function () {
-  function KeyframesRule(key, frames, options) {
-    this.type = 'keyframes';
-    this.at = '@keyframes';
-    this.key = void 0;
-    this.name = void 0;
-    this.id = void 0;
-    this.rules = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    var nameMatch = key.match(nameRegExp$2);
-
-    if (nameMatch && nameMatch[1]) {
-      this.name = nameMatch[1];
-    } else {
-      this.name = 'noname';
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Bad keyframes name " + key) : void 0;
-    }
-
-    this.key = this.type + "-" + this.name;
-    this.options = options;
-    var scoped = options.scoped,
-        sheet = options.sheet,
-        generateId = options.generateId;
-    this.id = scoped === false ? this.name : escape$2(generateId(this, sheet));
-    this.rules = new RuleList$2(_extends__default['default']({}, options, {
-      parent: this
-    }));
-
-    for (var name in frames) {
-      this.rules.add(name, frames[name], _extends__default['default']({}, options, {
-        parent: this
-      }));
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = KeyframesRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (options === void 0) {
-      options = defaultToStringOptions$1$2;
-    }
-
-    if (options.indent == null) options.indent = defaultToStringOptions$1$2.indent;
-    if (options.children == null) options.children = defaultToStringOptions$1$2.children;
-
-    if (options.children === false) {
-      return this.at + " " + this.id + " {}";
-    }
-
-    var children = this.rules.toString(options);
-    if (children) children = "\n" + children + "\n";
-    return this.at + " " + this.id + " {" + children + "}";
-  };
-
-  return KeyframesRule;
-}();
-var keyRegExp$1$2 = /@keyframes\s+/;
-var refRegExp$3 = /\$([\w-]+)/g;
-
-var findReferencedKeyframe$2 = function findReferencedKeyframe(val, keyframes) {
-  if (typeof val === 'string') {
-    return val.replace(refRegExp$3, function (match, name) {
-      if (name in keyframes) {
-        return keyframes[name];
-      }
-
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Referenced keyframes rule \"" + name + "\" is not defined.") : void 0;
-      return match;
-    });
-  }
-
-  return val;
-};
-/**
- * Replace the reference for a animation name.
- */
-
-
-var replaceRef$2 = function replaceRef(style, prop, keyframes) {
-  var value = style[prop];
-  var refKeyframe = findReferencedKeyframe$2(value, keyframes);
-
-  if (refKeyframe !== value) {
-    style[prop] = refKeyframe;
-  }
-};
-
-var plugin$2 = {
-  onCreateRule: function onCreateRule(key, frames, options) {
-    return typeof key === 'string' && keyRegExp$1$2.test(key) ? new KeyframesRule$2(key, frames, options) : null;
-  },
-  // Animation name ref replacer.
-  onProcessStyle: function onProcessStyle(style, rule, sheet) {
-    if (rule.type !== 'style' || !sheet) return style;
-    if ('animation-name' in style) replaceRef$2(style, 'animation-name', sheet.keyframes);
-    if ('animation' in style) replaceRef$2(style, 'animation', sheet.keyframes);
-    return style;
-  },
-  onChangeValue: function onChangeValue(val, prop, rule) {
-    var sheet = rule.options.sheet;
-
-    if (!sheet) {
-      return val;
-    }
-
-    switch (prop) {
-      case 'animation':
-        return findReferencedKeyframe$2(val, sheet.keyframes);
-
-      case 'animation-name':
-        return findReferencedKeyframe$2(val, sheet.keyframes);
-
-      default:
-        return val;
-    }
-  }
-};
-
-var KeyframeRule$2 =
-/*#__PURE__*/
-function (_BaseStyleRule) {
-  _inheritsLoose__default['default'](KeyframeRule, _BaseStyleRule);
-
-  function KeyframeRule() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _BaseStyleRule.call.apply(_BaseStyleRule, [this].concat(args)) || this;
-    _this.renderable = void 0;
-    return _this;
-  }
-
-  var _proto = KeyframeRule.prototype;
-
-  /**
-   * Generates a CSS string.
-   */
-  _proto.toString = function toString(options) {
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-    var opts = link ? _extends__default['default']({}, options, {
-      allowEmpty: true
-    }) : options;
-    return toCss$2(this.key, this.style, opts);
-  };
-
-  return KeyframeRule;
-}(BaseStyleRule$2);
-var pluginKeyframeRule$2 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    if (options.parent && options.parent.type === 'keyframes') {
-      return new KeyframeRule$2(key, style, options);
-    }
-
-    return null;
-  }
-};
-
-var FontFaceRule$2 =
-/*#__PURE__*/
-function () {
-  function FontFaceRule(key, style, options) {
-    this.type = 'font-face';
-    this.at = '@font-face';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = FontFaceRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.style)) {
-      var str = '';
-
-      for (var index = 0; index < this.style.length; index++) {
-        str += toCss$2(this.at, this.style[index]);
-        if (this.style[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return toCss$2(this.at, this.style, options);
-  };
-
-  return FontFaceRule;
-}();
-var keyRegExp$2$2 = /@font-face/;
-var pluginFontFaceRule$2 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return keyRegExp$2$2.test(key) ? new FontFaceRule$2(key, style, options) : null;
-  }
-};
-
-var ViewportRule$2 =
-/*#__PURE__*/
-function () {
-  function ViewportRule(key, style, options) {
-    this.type = 'viewport';
-    this.at = '@viewport';
-    this.key = void 0;
-    this.style = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.style = style;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-
-
-  var _proto = ViewportRule.prototype;
-
-  _proto.toString = function toString(options) {
-    return toCss$2(this.key, this.style, options);
-  };
-
-  return ViewportRule;
-}();
-var pluginViewportRule$2 = {
-  onCreateRule: function onCreateRule(key, style, options) {
-    return key === '@viewport' || key === '@-ms-viewport' ? new ViewportRule$2(key, style, options) : null;
-  }
-};
-
-var SimpleRule$2 =
-/*#__PURE__*/
-function () {
-  function SimpleRule(key, value, options) {
-    this.type = 'simple';
-    this.key = void 0;
-    this.value = void 0;
-    this.options = void 0;
-    this.isProcessed = false;
-    this.renderable = void 0;
-    this.key = key;
-    this.value = value;
-    this.options = options;
-  }
-  /**
-   * Generates a CSS string.
-   */
-  // eslint-disable-next-line no-unused-vars
-
-
-  var _proto = SimpleRule.prototype;
-
-  _proto.toString = function toString(options) {
-    if (Array.isArray(this.value)) {
-      var str = '';
-
-      for (var index = 0; index < this.value.length; index++) {
-        str += this.key + " " + this.value[index] + ";";
-        if (this.value[index + 1]) str += '\n';
-      }
-
-      return str;
-    }
-
-    return this.key + " " + this.value + ";";
-  };
-
-  return SimpleRule;
-}();
-var keysMap$2 = {
-  '@charset': true,
-  '@import': true,
-  '@namespace': true
-};
-var pluginSimpleRule$2 = {
-  onCreateRule: function onCreateRule(key, value, options) {
-    return key in keysMap$2 ? new SimpleRule$2(key, value, options) : null;
-  }
-};
-
-var plugins$3 = [pluginStyleRule$2, pluginConditionalRule$2, plugin$2, pluginKeyframeRule$2, pluginFontFaceRule$2, pluginViewportRule$2, pluginSimpleRule$2];
-
-var defaultUpdateOptions$2 = {
-  process: true
-};
-var forceUpdateOptions$2 = {
-  force: true,
-  process: true
-  /**
-   * Contains rules objects and allows adding/removing etc.
-   * Is used for e.g. by `StyleSheet` or `ConditionalRule`.
-   */
-
-};
-
-var RuleList$2 =
-/*#__PURE__*/
-function () {
-  // Rules registry for access by .get() method.
-  // It contains the same rule registered by name and by selector.
-  // Original styles object.
-  // Used to ensure correct rules order.
-  function RuleList(options) {
-    this.map = {};
-    this.raw = {};
-    this.index = [];
-    this.counter = 0;
-    this.options = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.options = options;
-    this.classes = options.classes;
-    this.keyframes = options.keyframes;
-  }
-  /**
-   * Create and register rule.
-   *
-   * Will not render after Style Sheet was rendered the first time.
-   */
-
-
-  var _proto = RuleList.prototype;
-
-  _proto.add = function add(name, decl, ruleOptions) {
-    var _this$options = this.options,
-        parent = _this$options.parent,
-        sheet = _this$options.sheet,
-        jss = _this$options.jss,
-        Renderer = _this$options.Renderer,
-        generateId = _this$options.generateId,
-        scoped = _this$options.scoped;
-
-    var options = _extends__default['default']({
-      classes: this.classes,
-      parent: parent,
-      sheet: sheet,
-      jss: jss,
-      Renderer: Renderer,
-      generateId: generateId,
-      scoped: scoped,
-      name: name,
-      keyframes: this.keyframes,
-      selector: undefined
-    }, ruleOptions); // When user uses .createStyleSheet(), duplicate names are not possible, but
-    // `sheet.addRule()` opens the door for any duplicate rule name. When this happens
-    // we need to make the key unique within this RuleList instance scope.
-
-
-    var key = name;
-
-    if (name in this.raw) {
-      key = name + "-d" + this.counter++;
-    } // We need to save the original decl before creating the rule
-    // because cache plugin needs to use it as a key to return a cached rule.
-
-
-    this.raw[key] = decl;
-
-    if (key in this.classes) {
-      // E.g. rules inside of @media container
-      options.selector = "." + escape$2(this.classes[key]);
-    }
-
-    var rule = createRule$2(key, decl, options);
-    if (!rule) return null;
-    this.register(rule);
-    var index = options.index === undefined ? this.index.length : options.index;
-    this.index.splice(index, 0, rule);
-    return rule;
-  }
-  /**
-   * Get a rule.
-   */
-  ;
-
-  _proto.get = function get(name) {
-    return this.map[name];
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.remove = function remove(rule) {
-    this.unregister(rule);
-    delete this.raw[rule.key];
-    this.index.splice(this.index.indexOf(rule), 1);
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.index.indexOf(rule);
-  }
-  /**
-   * Run `onProcessRule()` plugins on every rule.
-   */
-  ;
-
-  _proto.process = function process() {
-    var plugins = this.options.jss.plugins; // We need to clone array because if we modify the index somewhere else during a loop
-    // we end up with very hard-to-track-down side effects.
-
-    this.index.slice(0).forEach(plugins.onProcessRule, plugins);
-  }
-  /**
-   * Register a rule in `.map`, `.classes` and `.keyframes` maps.
-   */
-  ;
-
-  _proto.register = function register(rule) {
-    this.map[rule.key] = rule;
-
-    if (rule instanceof StyleRule$2) {
-      this.map[rule.selector] = rule;
-      if (rule.id) this.classes[rule.key] = rule.id;
-    } else if (rule instanceof KeyframesRule$2 && this.keyframes) {
-      this.keyframes[rule.name] = rule.id;
-    }
-  }
-  /**
-   * Unregister a rule.
-   */
-  ;
-
-  _proto.unregister = function unregister(rule) {
-    delete this.map[rule.key];
-
-    if (rule instanceof StyleRule$2) {
-      delete this.map[rule.selector];
-      delete this.classes[rule.key];
-    } else if (rule instanceof KeyframesRule$2) {
-      delete this.keyframes[rule.name];
-    }
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var name;
-    var data;
-    var options;
-
-    if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
-      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 2 ? undefined : arguments[2];
-    } else {
-      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
-
-      options = arguments.length <= 1 ? undefined : arguments[1];
-      name = null;
-    }
-
-    if (name) {
-      this.updateOne(this.map[name], data, options);
-    } else {
-      for (var index = 0; index < this.index.length; index++) {
-        this.updateOne(this.index[index], data, options);
-      }
-    }
-  }
-  /**
-   * Execute plugins, update rule props.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    if (options === void 0) {
-      options = defaultUpdateOptions$2;
-    }
-
-    var _this$options2 = this.options,
-        plugins = _this$options2.jss.plugins,
-        sheet = _this$options2.sheet; // It is a rules container like for e.g. ConditionalRule.
-
-    if (rule.rules instanceof RuleList) {
-      rule.rules.update(data, options);
-      return;
-    }
-
-    var styleRule = rule;
-    var style = styleRule.style;
-    plugins.onUpdate(data, rule, sheet, options); // We rely on a new `style` ref in case it was mutated during onUpdate hook.
-
-    if (options.process && style && style !== styleRule.style) {
-      // We need to run the plugins in case new `style` relies on syntax plugins.
-      plugins.onProcessStyle(styleRule.style, styleRule, sheet); // Update and add props.
-
-      for (var prop in styleRule.style) {
-        var nextValue = styleRule.style[prop];
-        var prevValue = style[prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (nextValue !== prevValue) {
-          styleRule.prop(prop, nextValue, forceUpdateOptions$2);
-        }
-      } // Remove props.
-
-
-      for (var _prop in style) {
-        var _nextValue = styleRule.style[_prop];
-        var _prevValue = style[_prop]; // We need to use `force: true` because `rule.style` has been updated during onUpdate hook, so `rule.prop()` will not update the CSSOM rule.
-        // We do this comparison to avoid unneeded `rule.prop()` calls, since we have the old `style` object here.
-
-        if (_nextValue == null && _nextValue !== _prevValue) {
-          styleRule.prop(_prop, null, forceUpdateOptions$2);
-        }
-      }
-    }
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    var str = '';
-    var sheet = this.options.sheet;
-    var link = sheet ? sheet.options.link : false;
-
-    for (var index = 0; index < this.index.length; index++) {
-      var rule = this.index[index];
-      var css = rule.toString(options); // No need to render an empty rule.
-
-      if (!css && !link) continue;
-      if (str) str += '\n';
-      str += css;
-    }
-
-    return str;
-  };
-
-  return RuleList;
-}();
-
-var StyleSheet$2 =
-/*#__PURE__*/
-function () {
-  function StyleSheet(styles, options) {
-    this.options = void 0;
-    this.deployed = void 0;
-    this.attached = void 0;
-    this.rules = void 0;
-    this.renderer = void 0;
-    this.classes = void 0;
-    this.keyframes = void 0;
-    this.queue = void 0;
-    this.attached = false;
-    this.deployed = false;
-    this.classes = {};
-    this.keyframes = {};
-    this.options = _extends__default['default']({}, options, {
-      sheet: this,
-      parent: this,
-      classes: this.classes,
-      keyframes: this.keyframes
-    });
-
-    if (options.Renderer) {
-      this.renderer = new options.Renderer(this);
-    }
-
-    this.rules = new RuleList$2(this.options);
-
-    for (var name in styles) {
-      this.rules.add(name, styles[name]);
-    }
-
-    this.rules.process();
-  }
-  /**
-   * Attach renderable to the render tree.
-   */
-
-
-  var _proto = StyleSheet.prototype;
-
-  _proto.attach = function attach() {
-    if (this.attached) return this;
-    if (this.renderer) this.renderer.attach();
-    this.attached = true; // Order is important, because we can't use insertRule API if style element is not attached.
-
-    if (!this.deployed) this.deploy();
-    return this;
-  }
-  /**
-   * Remove renderable from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.attached) return this;
-    if (this.renderer) this.renderer.detach();
-    this.attached = false;
-    return this;
-  }
-  /**
-   * Add a rule to the current stylesheet.
-   * Will insert a rule also after the stylesheet has been rendered first time.
-   */
-  ;
-
-  _proto.addRule = function addRule(name, decl, options) {
-    var queue = this.queue; // Plugins can create rules.
-    // In order to preserve the right order, we need to queue all `.addRule` calls,
-    // which happen after the first `rules.add()` call.
-
-    if (this.attached && !queue) this.queue = [];
-    var rule = this.rules.add(name, decl, options);
-    if (!rule) return null;
-    this.options.jss.plugins.onProcessRule(rule);
-
-    if (this.attached) {
-      if (!this.deployed) return rule; // Don't insert rule directly if there is no stringified version yet.
-      // It will be inserted all together when .attach is called.
-
-      if (queue) queue.push(rule);else {
-        this.insertRule(rule);
-
-        if (this.queue) {
-          this.queue.forEach(this.insertRule, this);
-          this.queue = undefined;
-        }
-      }
-      return rule;
-    } // We can't add rules to a detached style node.
-    // We will redeploy the sheet once user will attach it.
-
-
-    this.deployed = false;
-    return rule;
-  }
-  /**
-   * Insert rule into the StyleSheet
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule) {
-    if (this.renderer) {
-      this.renderer.insertRule(rule);
-    }
-  }
-  /**
-   * Create and add rules.
-   * Will render also after Style Sheet was rendered the first time.
-   */
-  ;
-
-  _proto.addRules = function addRules(styles, options) {
-    var added = [];
-
-    for (var name in styles) {
-      var rule = this.addRule(name, styles[name], options);
-      if (rule) added.push(rule);
-    }
-
-    return added;
-  }
-  /**
-   * Get a rule by name.
-   */
-  ;
-
-  _proto.getRule = function getRule(name) {
-    return this.rules.get(name);
-  }
-  /**
-   * Delete a rule by name.
-   * Returns `true`: if rule has been deleted from the DOM.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(name) {
-    var rule = typeof name === 'object' ? name : this.rules.get(name);
-
-    if (!rule || // Style sheet was created without link: true and attached, in this case we
-    // won't be able to remove the CSS rule from the DOM.
-    this.attached && !rule.renderable) {
-      return false;
-    }
-
-    this.rules.remove(rule);
-
-    if (this.attached && rule.renderable && this.renderer) {
-      return this.renderer.deleteRule(rule.renderable);
-    }
-
-    return true;
-  }
-  /**
-   * Get index of a rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(rule) {
-    return this.rules.indexOf(rule);
-  }
-  /**
-   * Deploy pure CSS string to a renderable.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    if (this.renderer) this.renderer.deploy();
-    this.deployed = true;
-    return this;
-  }
-  /**
-   * Update the function values with a new data.
-   */
-  ;
-
-  _proto.update = function update() {
-    var _this$rules;
-
-    (_this$rules = this.rules).update.apply(_this$rules, arguments);
-
-    return this;
-  }
-  /**
-   * Updates a single rule.
-   */
-  ;
-
-  _proto.updateOne = function updateOne(rule, data, options) {
-    this.rules.updateOne(rule, data, options);
-    return this;
-  }
-  /**
-   * Convert rules to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(options) {
-    return this.rules.toString(options);
-  };
-
-  return StyleSheet;
-}();
-
-var PluginsRegistry$2 =
-/*#__PURE__*/
-function () {
-  function PluginsRegistry() {
-    this.plugins = {
-      internal: [],
-      external: []
-    };
-    this.registry = void 0;
-  }
-
-  var _proto = PluginsRegistry.prototype;
-
-  /**
-   * Call `onCreateRule` hooks and return an object if returned by a hook.
-   */
-  _proto.onCreateRule = function onCreateRule(name, decl, options) {
-    for (var i = 0; i < this.registry.onCreateRule.length; i++) {
-      var rule = this.registry.onCreateRule[i](name, decl, options);
-      if (rule) return rule;
-    }
-
-    return null;
-  }
-  /**
-   * Call `onProcessRule` hooks.
-   */
-  ;
-
-  _proto.onProcessRule = function onProcessRule(rule) {
-    if (rule.isProcessed) return;
-    var sheet = rule.options.sheet;
-
-    for (var i = 0; i < this.registry.onProcessRule.length; i++) {
-      this.registry.onProcessRule[i](rule, sheet);
-    }
-
-    if (rule.style) this.onProcessStyle(rule.style, rule, sheet);
-    rule.isProcessed = true;
-  }
-  /**
-   * Call `onProcessStyle` hooks.
-   */
-  ;
-
-  _proto.onProcessStyle = function onProcessStyle(style, rule, sheet) {
-    for (var i = 0; i < this.registry.onProcessStyle.length; i++) {
-      // $FlowFixMe[prop-missing]
-      rule.style = this.registry.onProcessStyle[i](rule.style, rule, sheet);
-    }
-  }
-  /**
-   * Call `onProcessSheet` hooks.
-   */
-  ;
-
-  _proto.onProcessSheet = function onProcessSheet(sheet) {
-    for (var i = 0; i < this.registry.onProcessSheet.length; i++) {
-      this.registry.onProcessSheet[i](sheet);
-    }
-  }
-  /**
-   * Call `onUpdate` hooks.
-   */
-  ;
-
-  _proto.onUpdate = function onUpdate(data, rule, sheet, options) {
-    for (var i = 0; i < this.registry.onUpdate.length; i++) {
-      this.registry.onUpdate[i](data, rule, sheet, options);
-    }
-  }
-  /**
-   * Call `onChangeValue` hooks.
-   */
-  ;
-
-  _proto.onChangeValue = function onChangeValue(value, prop, rule) {
-    var processedValue = value;
-
-    for (var i = 0; i < this.registry.onChangeValue.length; i++) {
-      processedValue = this.registry.onChangeValue[i](processedValue, prop, rule);
-    }
-
-    return processedValue;
-  }
-  /**
-   * Register a plugin.
-   */
-  ;
-
-  _proto.use = function use(newPlugin, options) {
-    if (options === void 0) {
-      options = {
-        queue: 'external'
-      };
-    }
-
-    var plugins = this.plugins[options.queue]; // Avoids applying same plugin twice, at least based on ref.
-
-    if (plugins.indexOf(newPlugin) !== -1) {
-      return;
-    }
-
-    plugins.push(newPlugin);
-    this.registry = [].concat(this.plugins.external, this.plugins.internal).reduce(function (registry, plugin) {
-      for (var name in plugin) {
-        if (name in registry) {
-          registry[name].push(plugin[name]);
-        } else {
-          process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Unknown hook \"" + name + "\".") : void 0;
-        }
-      }
-
-      return registry;
-    }, {
-      onCreateRule: [],
-      onProcessRule: [],
-      onProcessStyle: [],
-      onProcessSheet: [],
-      onChangeValue: [],
-      onUpdate: []
-    });
-  };
-
-  return PluginsRegistry;
-}();
-
-/**
- * Sheets registry to access them all at one place.
- */
-var SheetsRegistry$2 =
-/*#__PURE__*/
-function () {
-  function SheetsRegistry() {
-    this.registry = [];
-  }
-
-  var _proto = SheetsRegistry.prototype;
-
-  /**
-   * Register a Style Sheet.
-   */
-  _proto.add = function add(sheet) {
-    var registry = this.registry;
-    var index = sheet.options.index;
-    if (registry.indexOf(sheet) !== -1) return;
-
-    if (registry.length === 0 || index >= this.index) {
-      registry.push(sheet);
-      return;
-    } // Find a position.
-
-
-    for (var i = 0; i < registry.length; i++) {
-      if (registry[i].options.index > index) {
-        registry.splice(i, 0, sheet);
-        return;
-      }
-    }
-  }
-  /**
-   * Reset the registry.
-   */
-  ;
-
-  _proto.reset = function reset() {
-    this.registry = [];
-  }
-  /**
-   * Remove a Style Sheet.
-   */
-  ;
-
-  _proto.remove = function remove(sheet) {
-    var index = this.registry.indexOf(sheet);
-    this.registry.splice(index, 1);
-  }
-  /**
-   * Convert all attached sheets to a CSS string.
-   */
-  ;
-
-  _proto.toString = function toString(_temp) {
-    var _ref = _temp === void 0 ? {} : _temp,
-        attached = _ref.attached,
-        options = _objectWithoutPropertiesLoose__default['default'](_ref, ["attached"]);
-
-    var css = '';
-
-    for (var i = 0; i < this.registry.length; i++) {
-      var sheet = this.registry[i];
-
-      if (attached != null && sheet.attached !== attached) {
-        continue;
-      }
-
-      if (css) css += '\n';
-      css += sheet.toString(options);
-    }
-
-    return css;
-  };
-
-  _createClass__default['default'](SheetsRegistry, [{
-    key: "index",
-
-    /**
-     * Current highest index number.
-     */
-    get: function get() {
-      return this.registry.length === 0 ? 0 : this.registry[this.registry.length - 1].options.index;
-    }
-  }]);
-
-  return SheetsRegistry;
-}();
-
-/**
- * This is a global sheets registry. Only DomRenderer will add sheets to it.
- * On the server one should use an own SheetsRegistry instance and add the
- * sheets to it, because you need to make sure to create a new registry for
- * each request in order to not leak sheets across requests.
- */
-
-var registry$2 = new SheetsRegistry$2();
-
-/* eslint-disable */
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var globalThis$3 = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-
-var ns$2 = '2f1acc6c3a606b082e5eef5e54414ffb';
-if (globalThis$3[ns$2] == null) globalThis$3[ns$2] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
-// the current version with just one short number and use it for classes generation
-// we use a counter. Also it is more accurate, because user can manually reevaluate
-// the module.
-
-var moduleId$2 = globalThis$3[ns$2]++;
-
-var maxRules$2 = 1e10;
-
-/**
- * Returns a function which generates unique class names based on counters.
- * When new generator function is created, rule counter is reseted.
- * We need to reset the rule counter for SSR for each request.
- */
-var createGenerateId$2 = function createGenerateId(options) {
-  if (options === void 0) {
-    options = {};
-  }
-
-  var ruleCounter = 0;
-  return function (rule, sheet) {
-    ruleCounter += 1;
-
-    if (ruleCounter > maxRules$2) {
-      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] You might have a memory leak. Rule counter is at " + ruleCounter + ".") : void 0;
-    }
-
-    var jssId = '';
-    var prefix = '';
-
-    if (sheet) {
-      if (sheet.options.classNamePrefix) {
-        prefix = sheet.options.classNamePrefix;
-      }
-
-      if (sheet.options.jss.id != null) {
-        jssId = String(sheet.options.jss.id);
-      }
-    }
-
-    if (options.minify) {
-      // Using "c" because a number can't be the first char in a class name.
-      return "" + (prefix || 'c') + moduleId$2 + jssId + ruleCounter;
-    }
-
-    return prefix + rule.key + "-" + moduleId$2 + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
-  };
-};
-
-/**
- * Cache the value from the first time a function is called.
- */
-var memoize$2 = function memoize(fn) {
-  var value;
-  return function () {
-    if (!value) value = fn();
-    return value;
-  };
-};
-
-/**
- * Get a style property value.
- */
-var getPropertyValue$2 = function getPropertyValue(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      return cssRule.attributeStyleMap.get(prop);
-    }
-
-    return cssRule.style.getPropertyValue(prop);
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return '';
-  }
-};
-
-/**
- * Set a style property.
- */
-var setProperty$2 = function setProperty(cssRule, prop, value) {
-  try {
-    var cssValue = value;
-
-    if (Array.isArray(value)) {
-      cssValue = toCssValue$2(value, true);
-
-      if (value[value.length - 1] === '!important') {
-        cssRule.style.setProperty(prop, cssValue, 'important');
-        return true;
-      }
-    } // Support CSSTOM.
-
-
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.set(prop, cssValue);
-    } else {
-      cssRule.style.setProperty(prop, cssValue);
-    }
-  } catch (err) {
-    // IE may throw if property is unknown.
-    return false;
-  }
-
-  return true;
-};
-
-/**
- * Remove a style property.
- */
-var removeProperty$2 = function removeProperty(cssRule, prop) {
-  try {
-    // Support CSSTOM.
-    if (cssRule.attributeStyleMap) {
-      cssRule.attributeStyleMap.delete(prop);
-    } else {
-      cssRule.style.removeProperty(prop);
-    }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] DOMException \"" + err.message + "\" was thrown. Tried to remove property \"" + prop + "\".") : void 0;
-  }
-};
-
-/**
- * Set the selector.
- */
-var setSelector$2 = function setSelector(cssRule, selectorText) {
-  cssRule.selectorText = selectorText; // Return false if setter was not successful.
-  // Currently works in chrome only.
-
-  return cssRule.selectorText === selectorText;
-};
-/**
- * Gets the `head` element upon the first call and caches it.
- * We assume it can't be null.
- */
-
-
-var getHead$2 = memoize$2(function () {
-  return document.querySelector('head');
-});
-/**
- * Find attached sheet with an index higher than the passed one.
- */
-
-function findHigherSheet$2(registry, options) {
-  for (var i = 0; i < registry.length; i++) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.index > options.index && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find attached sheet with the highest index.
- */
-
-
-function findHighestSheet$2(registry, options) {
-  for (var i = registry.length - 1; i >= 0; i--) {
-    var sheet = registry[i];
-
-    if (sheet.attached && sheet.options.insertionPoint === options.insertionPoint) {
-      return sheet;
-    }
-  }
-
-  return null;
-}
-/**
- * Find a comment with "jss" inside.
- */
-
-
-function findCommentNode$2(text) {
-  var head = getHead$2();
-
-  for (var i = 0; i < head.childNodes.length; i++) {
-    var node = head.childNodes[i];
-
-    if (node.nodeType === 8 && node.nodeValue.trim() === text) {
-      return node;
-    }
-  }
-
-  return null;
-}
-
-/**
- * Find a node before which we can insert the sheet.
- */
-function findPrevNode$2(options) {
-  var registry$1 = registry$2.registry;
-
-  if (registry$1.length > 0) {
-    // Try to insert before the next higher sheet.
-    var sheet = findHigherSheet$2(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element
-      };
-    } // Otherwise insert after the last attached.
-
-
-    sheet = findHighestSheet$2(registry$1, options);
-
-    if (sheet && sheet.renderer) {
-      return {
-        parent: sheet.renderer.element.parentNode,
-        node: sheet.renderer.element.nextSibling
-      };
-    }
-  } // Try to find a comment placeholder if registry is empty.
-
-
-  var insertionPoint = options.insertionPoint;
-
-  if (insertionPoint && typeof insertionPoint === 'string') {
-    var comment = findCommentNode$2(insertionPoint);
-
-    if (comment) {
-      return {
-        parent: comment.parentNode,
-        node: comment.nextSibling
-      };
-    } // If user specifies an insertion point and it can't be found in the document -
-    // bad specificity issues may appear.
-
-
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Insertion point \"" + insertionPoint + "\" not found.") : void 0;
-  }
-
-  return false;
-}
-/**
- * Insert style element into the DOM.
- */
-
-
-function insertStyle$2(style, options) {
-  var insertionPoint = options.insertionPoint;
-  var nextNode = findPrevNode$2(options);
-
-  if (nextNode !== false && nextNode.parent) {
-    nextNode.parent.insertBefore(style, nextNode.node);
-    return;
-  } // Works with iframes and any node types.
-
-
-  if (insertionPoint && typeof insertionPoint.nodeType === 'number') {
-    // https://stackoverflow.com/questions/41328728/force-casting-in-flow
-    var insertionPointElement = insertionPoint;
-    var parentNode = insertionPointElement.parentNode;
-    if (parentNode) parentNode.insertBefore(style, insertionPointElement.nextSibling);else process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Insertion point is not in the DOM.') : void 0;
-    return;
-  }
-
-  getHead$2().appendChild(style);
-}
-/**
- * Read jss nonce setting from the page if the user has set it.
- */
-
-
-var getNonce$2 = memoize$2(function () {
-  var node = document.querySelector('meta[property="csp-nonce"]');
-  return node ? node.getAttribute('content') : null;
-});
-
-var _insertRule$2 = function insertRule(container, rule, index) {
-  try {
-    if ('insertRule' in container) {
-      var c = container;
-      c.insertRule(rule, index);
-    } // Keyframes rule.
-    else if ('appendRule' in container) {
-        var _c = container;
-
-        _c.appendRule(rule);
-      }
-  } catch (err) {
-    process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] " + err.message) : void 0;
-    return false;
-  }
-
-  return container.cssRules[index];
-};
-
-var getValidRuleInsertionIndex$2 = function getValidRuleInsertionIndex(container, index) {
-  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
-
-  if (index === undefined || index > maxIndex) {
-    // eslint-disable-next-line no-param-reassign
-    return maxIndex;
-  }
-
-  return index;
-};
-
-var createStyle$2 = function createStyle() {
-  var el = document.createElement('style'); // Without it, IE will have a broken source order specificity if we
-  // insert rules after we insert the style tag.
-  // It seems to kick-off the source order specificity algorithm.
-
-  el.textContent = '\n';
-  return el;
-};
-
-var DomRenderer$2 =
-/*#__PURE__*/
-function () {
-  // HTMLStyleElement needs fixing https://github.com/facebook/flow/issues/2696
-  // Will be empty if link: true option is not set, because
-  // it is only for use together with insertRule API.
-  function DomRenderer(sheet) {
-    this.getPropertyValue = getPropertyValue$2;
-    this.setProperty = setProperty$2;
-    this.removeProperty = removeProperty$2;
-    this.setSelector = setSelector$2;
-    this.element = void 0;
-    this.sheet = void 0;
-    this.hasInsertedRules = false;
-    this.cssRules = [];
-    // There is no sheet when the renderer is used from a standalone StyleRule.
-    if (sheet) registry$2.add(sheet);
-    this.sheet = sheet;
-
-    var _ref = this.sheet ? this.sheet.options : {},
-        media = _ref.media,
-        meta = _ref.meta,
-        element = _ref.element;
-
-    this.element = element || createStyle$2();
-    this.element.setAttribute('data-jss', '');
-    if (media) this.element.setAttribute('media', media);
-    if (meta) this.element.setAttribute('data-meta', meta);
-    var nonce = getNonce$2();
-    if (nonce) this.element.setAttribute('nonce', nonce);
-  }
-  /**
-   * Insert style element into render tree.
-   */
-
-
-  var _proto = DomRenderer.prototype;
-
-  _proto.attach = function attach() {
-    // In the case the element node is external and it is already in the DOM.
-    if (this.element.parentNode || !this.sheet) return;
-    insertStyle$2(this.element, this.sheet.options); // When rules are inserted using `insertRule` API, after `sheet.detach().attach()`
-    // most browsers create a new CSSStyleSheet, except of all IEs.
-
-    var deployed = Boolean(this.sheet && this.sheet.deployed);
-
-    if (this.hasInsertedRules && deployed) {
-      this.hasInsertedRules = false;
-      this.deploy();
-    }
-  }
-  /**
-   * Remove style element from render tree.
-   */
-  ;
-
-  _proto.detach = function detach() {
-    if (!this.sheet) return;
-    var parentNode = this.element.parentNode;
-    if (parentNode) parentNode.removeChild(this.element); // In the most browsers, rules inserted using insertRule() API will be lost when style element is removed.
-    // Though IE will keep them and we need a consistent behavior.
-
-    if (this.sheet.options.link) {
-      this.cssRules = [];
-      this.element.textContent = '\n';
-    }
-  }
-  /**
-   * Inject CSS string into element.
-   */
-  ;
-
-  _proto.deploy = function deploy() {
-    var sheet = this.sheet;
-    if (!sheet) return;
-
-    if (sheet.options.link) {
-      this.insertRules(sheet.rules);
-      return;
-    }
-
-    this.element.textContent = "\n" + sheet.toString() + "\n";
-  }
-  /**
-   * Insert RuleList into an element.
-   */
-  ;
-
-  _proto.insertRules = function insertRules(rules, nativeParent) {
-    for (var i = 0; i < rules.index.length; i++) {
-      this.insertRule(rules.index[i], i, nativeParent);
-    }
-  }
-  /**
-   * Insert a rule into element.
-   */
-  ;
-
-  _proto.insertRule = function insertRule(rule, index, nativeParent) {
-    if (nativeParent === void 0) {
-      nativeParent = this.element.sheet;
-    }
-
-    if (rule.rules) {
-      var parent = rule;
-      var latestNativeParent = nativeParent;
-
-      if (rule.type === 'conditional' || rule.type === 'keyframes') {
-        var _insertionIndex = getValidRuleInsertionIndex$2(nativeParent, index); // We need to render the container without children first.
-
-
-        latestNativeParent = _insertRule$2(nativeParent, parent.toString({
-          children: false
-        }), _insertionIndex);
-
-        if (latestNativeParent === false) {
-          return false;
-        }
-
-        this.refCssRule(rule, _insertionIndex, latestNativeParent);
-      }
-
-      this.insertRules(parent.rules, latestNativeParent);
-      return latestNativeParent;
-    }
-
-    var ruleStr = rule.toString();
-    if (!ruleStr) return false;
-    var insertionIndex = getValidRuleInsertionIndex$2(nativeParent, index);
-
-    var nativeRule = _insertRule$2(nativeParent, ruleStr, insertionIndex);
-
-    if (nativeRule === false) {
-      return false;
-    }
-
-    this.hasInsertedRules = true;
-    this.refCssRule(rule, insertionIndex, nativeRule);
-    return nativeRule;
-  };
-
-  _proto.refCssRule = function refCssRule(rule, index, cssRule) {
-    rule.renderable = cssRule; // We only want to reference the top level rules, deleteRule API doesn't support removing nested rules
-    // like rules inside media queries or keyframes
-
-    if (rule.options.parent instanceof StyleSheet$2) {
-      this.cssRules[index] = cssRule;
-    }
-  }
-  /**
-   * Delete a rule.
-   */
-  ;
-
-  _proto.deleteRule = function deleteRule(cssRule) {
-    var sheet = this.element.sheet;
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return true;
-  }
-  /**
-   * Get index of a CSS Rule.
-   */
-  ;
-
-  _proto.indexOf = function indexOf(cssRule) {
-    return this.cssRules.indexOf(cssRule);
-  }
-  /**
-   * Generate a new CSS rule and replace the existing one.
-   *
-   * Only used for some old browsers because they can't set a selector.
-   */
-  ;
-
-  _proto.replaceRule = function replaceRule(cssRule, rule) {
-    var index = this.indexOf(cssRule);
-    if (index === -1) return false;
-    this.element.sheet.deleteRule(index);
-    this.cssRules.splice(index, 1);
-    return this.insertRule(rule, index);
-  }
-  /**
-   * Get all rules elements.
-   */
-  ;
-
-  _proto.getRules = function getRules() {
-    return this.element.sheet.cssRules;
-  };
-
-  return DomRenderer;
-}();
-
-var instanceCounter$2 = 0;
-
-var Jss$2 =
-/*#__PURE__*/
-function () {
-  function Jss(options) {
-    this.id = instanceCounter$2++;
-    this.version = "10.5.1";
-    this.plugins = new PluginsRegistry$2();
-    this.options = {
-      id: {
-        minify: false
-      },
-      createGenerateId: createGenerateId$2,
-      Renderer: isBrowser$2 ? DomRenderer$2 : null,
-      plugins: []
-    };
-    this.generateId = createGenerateId$2({
-      minify: false
-    });
-
-    for (var i = 0; i < plugins$3.length; i++) {
-      this.plugins.use(plugins$3[i], {
-        queue: 'internal'
-      });
-    }
-
-    this.setup(options);
-  }
-  /**
-   * Prepares various options, applies plugins.
-   * Should not be used twice on the same instance, because there is no plugins
-   * deduplication logic.
-   */
-
-
-  var _proto = Jss.prototype;
-
-  _proto.setup = function setup(options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    if (options.createGenerateId) {
-      this.options.createGenerateId = options.createGenerateId;
-    }
-
-    if (options.id) {
-      this.options.id = _extends__default['default']({}, this.options.id, options.id);
-    }
-
-    if (options.createGenerateId || options.id) {
-      this.generateId = this.options.createGenerateId(this.options.id);
-    }
-
-    if (options.insertionPoint != null) this.options.insertionPoint = options.insertionPoint;
-
-    if ('Renderer' in options) {
-      this.options.Renderer = options.Renderer;
-    } // eslint-disable-next-line prefer-spread
-
-
-    if (options.plugins) this.use.apply(this, options.plugins);
-    return this;
-  }
-  /**
-   * Create a Style Sheet.
-   */
-  ;
-
-  _proto.createStyleSheet = function createStyleSheet(styles, options) {
-    if (options === void 0) {
-      options = {};
-    }
-
-    var _options = options,
-        index = _options.index;
-
-    if (typeof index !== 'number') {
-      index = registry$2.index === 0 ? 0 : registry$2.index + 1;
-    }
-
-    var sheet = new StyleSheet$2(styles, _extends__default['default']({}, options, {
-      jss: this,
-      generateId: options.generateId || this.generateId,
-      insertionPoint: this.options.insertionPoint,
-      Renderer: this.options.Renderer,
-      index: index
-    }));
-    this.plugins.onProcessSheet(sheet);
-    return sheet;
-  }
-  /**
-   * Detach the Style Sheet and remove it from the registry.
-   */
-  ;
-
-  _proto.removeStyleSheet = function removeStyleSheet(sheet) {
-    sheet.detach();
-    registry$2.remove(sheet);
-    return this;
-  }
-  /**
-   * Create a rule without a Style Sheet.
-   * [Deprecated] will be removed in the next major version.
-   */
-  ;
-
-  _proto.createRule = function createRule$1(name, style, options) {
-    if (style === void 0) {
-      style = {};
-    }
-
-    if (options === void 0) {
-      options = {};
-    }
-
-    // Enable rule without name for inline styles.
-    if (typeof name === 'object') {
-      // $FlowFixMe[incompatible-call]
-      return this.createRule(undefined, name, style);
-    } // $FlowFixMe[incompatible-type]
-
-
-    var ruleOptions = _extends__default['default']({}, options, {
-      name: name,
-      jss: this,
-      Renderer: this.options.Renderer
-    });
-
-    if (!ruleOptions.generateId) ruleOptions.generateId = this.generateId;
-    if (!ruleOptions.classes) ruleOptions.classes = {};
-    if (!ruleOptions.keyframes) ruleOptions.keyframes = {};
-
-    var rule = createRule$2(name, style, ruleOptions);
-
-    if (rule) this.plugins.onProcessRule(rule);
-    return rule;
-  }
-  /**
-   * Register plugin. Passed function will be invoked with a rule instance.
-   */
-  ;
-
-  _proto.use = function use() {
-    var _this = this;
-
-    for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
-      plugins[_key] = arguments[_key];
-    }
-
-    plugins.forEach(function (plugin) {
-      _this.plugins.use(plugin);
-    });
-    return this;
-  };
-
-  return Jss;
-}();
-/**
- * Creates a new instance of Jss.
- */
-
-var create$3 = function create(options) {
-  return new Jss$2(options);
-};
-/**
- * A global Jss instance.
- */
-
-create$3();
-
-/**
- * Add vendor prefix to a property name when needed.
- *
- * @api public
- */
-
-function jssVendorPrefixer$1() {
-  function onProcessRule(rule) {
-    if (rule.type === 'keyframes') {
-      var atRule = rule;
-      atRule.at = supportedKeyframes$1(atRule.at);
-    }
-  }
-
-  function prefixStyle(style) {
-    for (var prop in style) {
-      var value = style[prop];
-
-      if (prop === 'fallbacks' && Array.isArray(value)) {
-        style[prop] = value.map(prefixStyle);
-        continue;
-      }
-
-      var changeProp = false;
-      var supportedProp = supportedProperty$1(prop);
-      if (supportedProp && supportedProp !== prop) changeProp = true;
-      var changeValue = false;
-      var supportedValue$1$1 = supportedValue$1(supportedProp, toCssValue$2(value));
-      if (supportedValue$1$1 && supportedValue$1$1 !== value) changeValue = true;
-
-      if (changeProp || changeValue) {
-        if (changeProp) delete style[prop];
-        style[supportedProp || prop] = supportedValue$1$1 || value;
-      }
-    }
-
-    return style;
-  }
-
-  function onProcessStyle(style, rule) {
-    if (rule.type !== 'style') return style;
-    return prefixStyle(style);
-  }
-
-  function onChangeValue(value, prop) {
-    return supportedValue$1(prop, toCssValue$2(value)) || value;
-  }
-
-  return {
-    onProcessRule: onProcessRule,
-    onProcessStyle: onProcessStyle,
-    onChangeValue: onChangeValue
-  };
-}
-
-/**
- * Sort props by length.
- */
-function jssPropsSort$1() {
-  var sort = function sort(prop0, prop1) {
-    if (prop0.length === prop1.length) {
-      return prop0 > prop1 ? 1 : -1;
-    }
-
-    return prop0.length - prop1.length;
-  };
-
-  return {
-    onProcessStyle: function onProcessStyle(style, rule) {
-      if (rule.type !== 'style') return style;
-      var newStyle = {};
-      var props = Object.keys(style).sort(sort);
-
-      for (var i = 0; i < props.length; i++) {
-        newStyle[props[i]] = style[props[i]];
-      }
-
-      return newStyle;
-    }
-  };
-}
-
-function jssPreset() {
-  return {
-    plugins: [functionPlugin$1(), jssGlobal$1(), jssNested$1(), camelCase$1(), defaultUnit$1(), // Disable the vendor prefixer server-side, it does nothing.
-    // This way, we can get a performance boost.
-    // In the documentation, we are using `autoprefixer` to solve this problem.
-    typeof window === 'undefined' ? null : jssVendorPrefixer$1(), jssPropsSort$1()]
-  };
-}
-
 var plainObjectConstrurctor$1 = {}.constructor;
 function cloneStyle$1(style) {
   if (style == null || typeof style !== 'object') return style;
@@ -13351,11 +3492,11 @@ function () {
   return KeyframesRule;
 }();
 var keyRegExp$1$1 = /@keyframes\s+/;
-var refRegExp$2 = /\$([\w-]+)/g;
+var refRegExp$3 = /\$([\w-]+)/g;
 
 var findReferencedKeyframe$1 = function findReferencedKeyframe(val, keyframes) {
   if (typeof val === 'string') {
-    return val.replace(refRegExp$2, function (match, name) {
+    return val.replace(refRegExp$3, function (match, name) {
       if (name in keyframes) {
         return keyframes[name];
       }
@@ -13585,7 +3726,7 @@ var pluginSimpleRule$1 = {
   }
 };
 
-var plugins$2 = [pluginStyleRule$1, pluginConditionalRule$1, plugin$1, pluginKeyframeRule$1, pluginFontFaceRule$1, pluginViewportRule$1, pluginSimpleRule$1];
+var plugins$3 = [pluginStyleRule$1, pluginConditionalRule$1, plugin$1, pluginKeyframeRule$1, pluginFontFaceRule$1, pluginViewportRule$1, pluginSimpleRule$1];
 
 var defaultUpdateOptions$1 = {
   process: true
@@ -14813,8 +4954,8 @@ function () {
       minify: false
     });
 
-    for (var i = 0; i < plugins$2.length; i++) {
-      this.plugins.use(plugins$2[i], {
+    for (var i = 0; i < plugins$3.length; i++) {
+      this.plugins.use(plugins$3[i], {
         queue: 'internal'
       });
     }
@@ -14977,6 +5118,20 @@ function getDynamicStyles$1(styles) {
 
   return to;
 }
+
+/**
+ * A better abstraction over CSS.
+ *
+ * @copyright Oleg Isonen (Slobodskoi) / Isonen 2014-present
+ * @website https://github.com/cssinjs/jss
+ * @license MIT
+ */
+
+/**
+ * Export a constant indicating if this browser has CSSTOM support.
+ * https://developers.google.com/web/updates/2018/03/cssom
+ */
+var hasCSSTOMSupport$1 = typeof CSS === 'object' && CSS != null && 'number' in CSS;
 /**
  * Creates a new instance of Jss.
  */
@@ -14989,6 +5144,1347 @@ var create$2 = function create(options) {
  */
 
 create$2();
+
+var now$1 = Date.now();
+var fnValuesNs$1 = "fnValues" + now$1;
+var fnRuleNs$1 = "fnStyle" + ++now$1;
+
+var functionPlugin$1 = function functionPlugin() {
+  return {
+    onCreateRule: function onCreateRule(name, decl, options) {
+      if (typeof decl !== 'function') return null;
+      var rule = createRule$1(name, {}, options);
+      rule[fnRuleNs$1] = decl;
+      return rule;
+    },
+    onProcessStyle: function onProcessStyle(style, rule) {
+      // We need to extract function values from the declaration, so that we can keep core unaware of them.
+      // We need to do that only once.
+      // We don't need to extract functions on each style update, since this can happen only once.
+      // We don't support function values inside of function rules.
+      if (fnValuesNs$1 in rule || fnRuleNs$1 in rule) return style;
+      var fnValues = {};
+
+      for (var prop in style) {
+        var value = style[prop];
+        if (typeof value !== 'function') continue;
+        delete style[prop];
+        fnValues[prop] = value;
+      } // $FlowFixMe[prop-missing]
+
+
+      rule[fnValuesNs$1] = fnValues;
+      return style;
+    },
+    onUpdate: function onUpdate(data, rule, sheet, options) {
+      var styleRule = rule; // $FlowFixMe[prop-missing]
+
+      var fnRule = styleRule[fnRuleNs$1]; // If we have a style function, the entire rule is dynamic and style object
+      // will be returned from that function.
+
+      if (fnRule) {
+        // Empty object will remove all currently defined props
+        // in case function rule returns a falsy value.
+        styleRule.style = fnRule(data) || {};
+
+        if (process.env.NODE_ENV === 'development') {
+          for (var prop in styleRule.style) {
+            if (typeof styleRule.style[prop] === 'function') {
+              process.env.NODE_ENV !== "production" ? warning$2(false, '[JSS] Function values inside function rules are not supported.') : void 0;
+              break;
+            }
+          }
+        }
+      } // $FlowFixMe[prop-missing]
+
+
+      var fnValues = styleRule[fnValuesNs$1]; // If we have a fn values map, it is a rule with function values.
+
+      if (fnValues) {
+        for (var _prop in fnValues) {
+          styleRule.prop(_prop, fnValues[_prop](data), options);
+        }
+      }
+    }
+  };
+};
+
+var at$1 = '@global';
+var atPrefix$1 = '@global ';
+
+var GlobalContainerRule$1 =
+/*#__PURE__*/
+function () {
+  function GlobalContainerRule(key, styles, options) {
+    this.type = 'global';
+    this.at = at$1;
+    this.rules = void 0;
+    this.options = void 0;
+    this.key = void 0;
+    this.isProcessed = false;
+    this.key = key;
+    this.options = options;
+    this.rules = new RuleList$1(_extends__default['default']({}, options, {
+      parent: this
+    }));
+
+    for (var selector in styles) {
+      this.rules.add(selector, styles[selector]);
+    }
+
+    this.rules.process();
+  }
+  /**
+   * Get a rule.
+   */
+
+
+  var _proto = GlobalContainerRule.prototype;
+
+  _proto.getRule = function getRule(name) {
+    return this.rules.get(name);
+  }
+  /**
+   * Create and register rule, run plugins.
+   */
+  ;
+
+  _proto.addRule = function addRule(name, style, options) {
+    var rule = this.rules.add(name, style, options);
+    if (rule) this.options.jss.plugins.onProcessRule(rule);
+    return rule;
+  }
+  /**
+   * Get index of a rule.
+   */
+  ;
+
+  _proto.indexOf = function indexOf(rule) {
+    return this.rules.indexOf(rule);
+  }
+  /**
+   * Generates a CSS string.
+   */
+  ;
+
+  _proto.toString = function toString() {
+    return this.rules.toString();
+  };
+
+  return GlobalContainerRule;
+}();
+
+var GlobalPrefixedRule$1 =
+/*#__PURE__*/
+function () {
+  function GlobalPrefixedRule(key, style, options) {
+    this.type = 'global';
+    this.at = at$1;
+    this.options = void 0;
+    this.rule = void 0;
+    this.isProcessed = false;
+    this.key = void 0;
+    this.key = key;
+    this.options = options;
+    var selector = key.substr(atPrefix$1.length);
+    this.rule = options.jss.createRule(selector, style, _extends__default['default']({}, options, {
+      parent: this
+    }));
+  }
+
+  var _proto2 = GlobalPrefixedRule.prototype;
+
+  _proto2.toString = function toString(options) {
+    return this.rule ? this.rule.toString(options) : '';
+  };
+
+  return GlobalPrefixedRule;
+}();
+
+var separatorRegExp$3 = /\s*,\s*/g;
+
+function addScope$1(selector, scope) {
+  var parts = selector.split(separatorRegExp$3);
+  var scoped = '';
+
+  for (var i = 0; i < parts.length; i++) {
+    scoped += scope + " " + parts[i].trim();
+    if (parts[i + 1]) scoped += ', ';
+  }
+
+  return scoped;
+}
+
+function handleNestedGlobalContainerRule$1(rule, sheet) {
+  var options = rule.options,
+      style = rule.style;
+  var rules = style ? style[at$1] : null;
+  if (!rules) return;
+
+  for (var name in rules) {
+    sheet.addRule(name, rules[name], _extends__default['default']({}, options, {
+      selector: addScope$1(name, rule.selector)
+    }));
+  }
+
+  delete style[at$1];
+}
+
+function handlePrefixedGlobalRule$1(rule, sheet) {
+  var options = rule.options,
+      style = rule.style;
+
+  for (var prop in style) {
+    if (prop[0] !== '@' || prop.substr(0, at$1.length) !== at$1) continue;
+    var selector = addScope$1(prop.substr(at$1.length), rule.selector);
+    sheet.addRule(selector, style[prop], _extends__default['default']({}, options, {
+      selector: selector
+    }));
+    delete style[prop];
+  }
+}
+/**
+ * Convert nested rules to separate, remove them from original styles.
+ *
+ * @param {Rule} rule
+ * @api public
+ */
+
+
+function jssGlobal$1() {
+  function onCreateRule(name, styles, options) {
+    if (!name) return null;
+
+    if (name === at$1) {
+      return new GlobalContainerRule$1(name, styles, options);
+    }
+
+    if (name[0] === '@' && name.substr(0, atPrefix$1.length) === atPrefix$1) {
+      return new GlobalPrefixedRule$1(name, styles, options);
+    }
+
+    var parent = options.parent;
+
+    if (parent) {
+      if (parent.type === 'global' || parent.options.parent && parent.options.parent.type === 'global') {
+        options.scoped = false;
+      }
+    }
+
+    if (options.scoped === false) {
+      options.selector = name;
+    }
+
+    return null;
+  }
+
+  function onProcessRule(rule, sheet) {
+    if (rule.type !== 'style' || !sheet) return;
+    handleNestedGlobalContainerRule$1(rule, sheet);
+    handlePrefixedGlobalRule$1(rule, sheet);
+  }
+
+  return {
+    onCreateRule: onCreateRule,
+    onProcessRule: onProcessRule
+  };
+}
+
+var separatorRegExp$2 = /\s*,\s*/g;
+var parentRegExp$1 = /&/g;
+var refRegExp$2 = /\$([\w-]+)/g;
+/**
+ * Convert nested rules to separate, remove them from original styles.
+ *
+ * @param {Rule} rule
+ * @api public
+ */
+
+function jssNested$1() {
+  // Get a function to be used for $ref replacement.
+  function getReplaceRef(container, sheet) {
+    return function (match, key) {
+      var rule = container.getRule(key) || sheet && sheet.getRule(key);
+
+      if (rule) {
+        rule = rule;
+        return rule.selector;
+      }
+
+      process.env.NODE_ENV !== "production" ? warning$2(false, "[JSS] Could not find the referenced rule \"" + key + "\" in \"" + (container.options.meta || container.toString()) + "\".") : void 0;
+      return key;
+    };
+  }
+
+  function replaceParentRefs(nestedProp, parentProp) {
+    var parentSelectors = parentProp.split(separatorRegExp$2);
+    var nestedSelectors = nestedProp.split(separatorRegExp$2);
+    var result = '';
+
+    for (var i = 0; i < parentSelectors.length; i++) {
+      var parent = parentSelectors[i];
+
+      for (var j = 0; j < nestedSelectors.length; j++) {
+        var nested = nestedSelectors[j];
+        if (result) result += ', '; // Replace all & by the parent or prefix & with the parent.
+
+        result += nested.indexOf('&') !== -1 ? nested.replace(parentRegExp$1, parent) : parent + " " + nested;
+      }
+    }
+
+    return result;
+  }
+
+  function getOptions(rule, container, prevOptions) {
+    // Options has been already created, now we only increase index.
+    if (prevOptions) return _extends__default['default']({}, prevOptions, {
+      index: prevOptions.index + 1 // $FlowFixMe[prop-missing]
+
+    });
+    var nestingLevel = rule.options.nestingLevel;
+    nestingLevel = nestingLevel === undefined ? 1 : nestingLevel + 1;
+
+    var options = _extends__default['default']({}, rule.options, {
+      nestingLevel: nestingLevel,
+      index: container.indexOf(rule) + 1 // We don't need the parent name to be set options for chlid.
+
+    });
+
+    delete options.name;
+    return options;
+  }
+
+  function onProcessStyle(style, rule, sheet) {
+    if (rule.type !== 'style') return style;
+    var styleRule = rule;
+    var container = styleRule.options.parent;
+    var options;
+    var replaceRef;
+
+    for (var prop in style) {
+      var isNested = prop.indexOf('&') !== -1;
+      var isNestedConditional = prop[0] === '@';
+      if (!isNested && !isNestedConditional) continue;
+      options = getOptions(styleRule, container, options);
+
+      if (isNested) {
+        var selector = replaceParentRefs(prop, styleRule.selector); // Lazily create the ref replacer function just once for
+        // all nested rules within the sheet.
+
+        if (!replaceRef) replaceRef = getReplaceRef(container, sheet); // Replace all $refs.
+
+        selector = selector.replace(refRegExp$2, replaceRef);
+        container.addRule(selector, style[prop], _extends__default['default']({}, options, {
+          selector: selector
+        }));
+      } else if (isNestedConditional) {
+        // Place conditional right after the parent rule to ensure right ordering.
+        container.addRule(prop, {}, options) // Flow expects more options but they aren't required
+        // And flow doesn't know this will always be a StyleRule which has the addRule method
+        // $FlowFixMe[incompatible-use]
+        // $FlowFixMe[prop-missing]
+        .addRule(styleRule.key, style[prop], {
+          selector: styleRule.selector
+        });
+      }
+
+      delete style[prop];
+    }
+
+    return style;
+  }
+
+  return {
+    onProcessStyle: onProcessStyle
+  };
+}
+
+/* eslint-disable no-var, prefer-template */
+var uppercasePattern$1 = /[A-Z]/g;
+var msPattern$1 = /^ms-/;
+var cache$4 = {};
+
+function toHyphenLower$1(match) {
+  return '-' + match.toLowerCase()
+}
+
+function hyphenateStyleName$1(name) {
+  if (cache$4.hasOwnProperty(name)) {
+    return cache$4[name]
+  }
+
+  var hName = name.replace(uppercasePattern$1, toHyphenLower$1);
+  return (cache$4[name] = msPattern$1.test(hName) ? '-' + hName : hName)
+}
+
+/**
+ * Convert camel cased property names to dash separated.
+ *
+ * @param {Object} style
+ * @return {Object}
+ */
+
+function convertCase$1(style) {
+  var converted = {};
+
+  for (var prop in style) {
+    var key = prop.indexOf('--') === 0 ? prop : hyphenateStyleName$1(prop);
+    converted[key] = style[prop];
+  }
+
+  if (style.fallbacks) {
+    if (Array.isArray(style.fallbacks)) converted.fallbacks = style.fallbacks.map(convertCase$1);else converted.fallbacks = convertCase$1(style.fallbacks);
+  }
+
+  return converted;
+}
+/**
+ * Allow camel cased property names by converting them back to dasherized.
+ *
+ * @param {Rule} rule
+ */
+
+
+function camelCase$1() {
+  function onProcessStyle(style) {
+    if (Array.isArray(style)) {
+      // Handle rules like @font-face, which can have multiple styles in an array
+      for (var index = 0; index < style.length; index++) {
+        style[index] = convertCase$1(style[index]);
+      }
+
+      return style;
+    }
+
+    return convertCase$1(style);
+  }
+
+  function onChangeValue(value, prop, rule) {
+    if (prop.indexOf('--') === 0) {
+      return value;
+    }
+
+    var hyphenatedProp = hyphenateStyleName$1(prop); // There was no camel case in place
+
+    if (prop === hyphenatedProp) return value;
+    rule.prop(hyphenatedProp, value); // Core will ignore that property value we set the proper one above.
+
+    return null;
+  }
+
+  return {
+    onProcessStyle: onProcessStyle,
+    onChangeValue: onChangeValue
+  };
+}
+
+var px$1 = hasCSSTOMSupport$1 && CSS ? CSS.px : 'px';
+var ms$1 = hasCSSTOMSupport$1 && CSS ? CSS.ms : 'ms';
+var percent$1 = hasCSSTOMSupport$1 && CSS ? CSS.percent : '%';
+/**
+ * Generated jss-plugin-default-unit CSS property units
+ *
+ * @type object
+ */
+
+var defaultUnits$1 = {
+  // Animation properties
+  'animation-delay': ms$1,
+  'animation-duration': ms$1,
+  // Background properties
+  'background-position': px$1,
+  'background-position-x': px$1,
+  'background-position-y': px$1,
+  'background-size': px$1,
+  // Border Properties
+  border: px$1,
+  'border-bottom': px$1,
+  'border-bottom-left-radius': px$1,
+  'border-bottom-right-radius': px$1,
+  'border-bottom-width': px$1,
+  'border-left': px$1,
+  'border-left-width': px$1,
+  'border-radius': px$1,
+  'border-right': px$1,
+  'border-right-width': px$1,
+  'border-top': px$1,
+  'border-top-left-radius': px$1,
+  'border-top-right-radius': px$1,
+  'border-top-width': px$1,
+  'border-width': px$1,
+  'border-block': px$1,
+  'border-block-end': px$1,
+  'border-block-end-width': px$1,
+  'border-block-start': px$1,
+  'border-block-start-width': px$1,
+  'border-block-width': px$1,
+  'border-inline': px$1,
+  'border-inline-end': px$1,
+  'border-inline-end-width': px$1,
+  'border-inline-start': px$1,
+  'border-inline-start-width': px$1,
+  'border-inline-width': px$1,
+  'border-start-start-radius': px$1,
+  'border-start-end-radius': px$1,
+  'border-end-start-radius': px$1,
+  'border-end-end-radius': px$1,
+  // Margin properties
+  margin: px$1,
+  'margin-bottom': px$1,
+  'margin-left': px$1,
+  'margin-right': px$1,
+  'margin-top': px$1,
+  'margin-block': px$1,
+  'margin-block-end': px$1,
+  'margin-block-start': px$1,
+  'margin-inline': px$1,
+  'margin-inline-end': px$1,
+  'margin-inline-start': px$1,
+  // Padding properties
+  padding: px$1,
+  'padding-bottom': px$1,
+  'padding-left': px$1,
+  'padding-right': px$1,
+  'padding-top': px$1,
+  'padding-block': px$1,
+  'padding-block-end': px$1,
+  'padding-block-start': px$1,
+  'padding-inline': px$1,
+  'padding-inline-end': px$1,
+  'padding-inline-start': px$1,
+  // Mask properties
+  'mask-position-x': px$1,
+  'mask-position-y': px$1,
+  'mask-size': px$1,
+  // Width and height properties
+  height: px$1,
+  width: px$1,
+  'min-height': px$1,
+  'max-height': px$1,
+  'min-width': px$1,
+  'max-width': px$1,
+  // Position properties
+  bottom: px$1,
+  left: px$1,
+  top: px$1,
+  right: px$1,
+  inset: px$1,
+  'inset-block': px$1,
+  'inset-block-end': px$1,
+  'inset-block-start': px$1,
+  'inset-inline': px$1,
+  'inset-inline-end': px$1,
+  'inset-inline-start': px$1,
+  // Shadow properties
+  'box-shadow': px$1,
+  'text-shadow': px$1,
+  // Column properties
+  'column-gap': px$1,
+  'column-rule': px$1,
+  'column-rule-width': px$1,
+  'column-width': px$1,
+  // Font and text properties
+  'font-size': px$1,
+  'font-size-delta': px$1,
+  'letter-spacing': px$1,
+  'text-decoration-thickness': px$1,
+  'text-indent': px$1,
+  'text-stroke': px$1,
+  'text-stroke-width': px$1,
+  'word-spacing': px$1,
+  // Motion properties
+  motion: px$1,
+  'motion-offset': px$1,
+  // Outline properties
+  outline: px$1,
+  'outline-offset': px$1,
+  'outline-width': px$1,
+  // Perspective properties
+  perspective: px$1,
+  'perspective-origin-x': percent$1,
+  'perspective-origin-y': percent$1,
+  // Transform properties
+  'transform-origin': percent$1,
+  'transform-origin-x': percent$1,
+  'transform-origin-y': percent$1,
+  'transform-origin-z': percent$1,
+  // Transition properties
+  'transition-delay': ms$1,
+  'transition-duration': ms$1,
+  // Alignment properties
+  'vertical-align': px$1,
+  'flex-basis': px$1,
+  // Some random properties
+  'shape-margin': px$1,
+  size: px$1,
+  gap: px$1,
+  // Grid properties
+  grid: px$1,
+  'grid-gap': px$1,
+  'row-gap': px$1,
+  'grid-row-gap': px$1,
+  'grid-column-gap': px$1,
+  'grid-template-rows': px$1,
+  'grid-template-columns': px$1,
+  'grid-auto-rows': px$1,
+  'grid-auto-columns': px$1,
+  // Not existing properties.
+  // Used to avoid issues with jss-plugin-expand integration.
+  'box-shadow-x': px$1,
+  'box-shadow-y': px$1,
+  'box-shadow-blur': px$1,
+  'box-shadow-spread': px$1,
+  'font-line-height': px$1,
+  'text-shadow-x': px$1,
+  'text-shadow-y': px$1,
+  'text-shadow-blur': px$1
+};
+
+/**
+ * Clones the object and adds a camel cased property version.
+ */
+function addCamelCasedVersion$1(obj) {
+  var regExp = /(-[a-z])/g;
+
+  var replace = function replace(str) {
+    return str[1].toUpperCase();
+  };
+
+  var newObj = {};
+
+  for (var _key in obj) {
+    newObj[_key] = obj[_key];
+    newObj[_key.replace(regExp, replace)] = obj[_key];
+  }
+
+  return newObj;
+}
+
+var units$1 = addCamelCasedVersion$1(defaultUnits$1);
+/**
+ * Recursive deep style passing function
+ */
+
+function iterate$1(prop, value, options) {
+  if (value == null) return value;
+
+  if (Array.isArray(value)) {
+    for (var i = 0; i < value.length; i++) {
+      value[i] = iterate$1(prop, value[i], options);
+    }
+  } else if (typeof value === 'object') {
+    if (prop === 'fallbacks') {
+      for (var innerProp in value) {
+        value[innerProp] = iterate$1(innerProp, value[innerProp], options);
+      }
+    } else {
+      for (var _innerProp in value) {
+        value[_innerProp] = iterate$1(prop + "-" + _innerProp, value[_innerProp], options);
+      }
+    }
+  } else if (typeof value === 'number' && !Number.isNaN(value)) {
+    var unit = options[prop] || units$1[prop]; // Add the unit if available, except for the special case of 0px.
+
+    if (unit && !(value === 0 && unit === px$1)) {
+      return typeof unit === 'function' ? unit(value).toString() : "" + value + unit;
+    }
+
+    return value.toString();
+  }
+
+  return value;
+}
+/**
+ * Add unit to numeric values.
+ */
+
+
+function defaultUnit$1(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var camelCasedOptions = addCamelCasedVersion$1(options);
+
+  function onProcessStyle(style, rule) {
+    if (rule.type !== 'style') return style;
+
+    for (var prop in style) {
+      style[prop] = iterate$1(prop, style[prop], camelCasedOptions);
+    }
+
+    return style;
+  }
+
+  function onChangeValue(value, prop) {
+    return iterate$1(prop, value, camelCasedOptions);
+  }
+
+  return {
+    onProcessStyle: onProcessStyle,
+    onChangeValue: onChangeValue
+  };
+}
+
+// Export javascript style and css style vendor prefixes.
+var js$1 = '';
+var css$1 = '';
+var vendor$1 = '';
+var browser$1 = '';
+var isTouch$1 = isBrowser$2 && 'ontouchstart' in document.documentElement; // We should not do anything if required serverside.
+
+if (isBrowser$2) {
+  // Order matters. We need to check Webkit the last one because
+  // other vendors use to add Webkit prefixes to some properties
+  var jsCssMap$1 = {
+    Moz: '-moz-',
+    ms: '-ms-',
+    O: '-o-',
+    Webkit: '-webkit-'
+  };
+
+  var _document$createEleme$1 = document.createElement('p'),
+      style$2 = _document$createEleme$1.style;
+
+  var testProp$1 = 'Transform';
+
+  for (var key$2 in jsCssMap$1) {
+    if (key$2 + testProp$1 in style$2) {
+      js$1 = key$2;
+      css$1 = jsCssMap$1[key$2];
+      break;
+    }
+  } // Correctly detect the Edge browser.
+
+
+  if (js$1 === 'Webkit' && 'msHyphens' in style$2) {
+    js$1 = 'ms';
+    css$1 = jsCssMap$1.ms;
+    browser$1 = 'edge';
+  } // Correctly detect the Safari browser.
+
+
+  if (js$1 === 'Webkit' && '-apple-trailing-word' in style$2) {
+    vendor$1 = 'apple';
+  }
+}
+/**
+ * Vendor prefix string for the current browser.
+ *
+ * @type {{js: String, css: String, vendor: String, browser: String}}
+ * @api public
+ */
+
+
+var prefix$1 = {
+  js: js$1,
+  css: css$1,
+  vendor: vendor$1,
+  browser: browser$1,
+  isTouch: isTouch$1
+};
+
+/**
+ * Test if a keyframe at-rule should be prefixed or not
+ *
+ * @param {String} vendor prefix string for the current browser.
+ * @return {String}
+ * @api public
+ */
+
+function supportedKeyframes$1(key) {
+  // Keyframes is already prefixed. e.g. key = '@-webkit-keyframes a'
+  if (key[1] === '-') return key; // No need to prefix IE/Edge. Older browsers will ignore unsupported rules.
+  // https://caniuse.com/#search=keyframes
+
+  if (prefix$1.js === 'ms') return key;
+  return "@" + prefix$1.css + "keyframes" + key.substr(10);
+}
+
+// https://caniuse.com/#search=appearance
+
+var appearence$1 = {
+  noPrefill: ['appearance'],
+  supportedProperty: function supportedProperty(prop) {
+    if (prop !== 'appearance') return false;
+    if (prefix$1.js === 'ms') return "-webkit-" + prop;
+    return prefix$1.css + prop;
+  }
+};
+
+// https://caniuse.com/#search=color-adjust
+
+var colorAdjust$1 = {
+  noPrefill: ['color-adjust'],
+  supportedProperty: function supportedProperty(prop) {
+    if (prop !== 'color-adjust') return false;
+    if (prefix$1.js === 'Webkit') return prefix$1.css + "print-" + prop;
+    return prop;
+  }
+};
+
+var regExp$1 = /[-\s]+(.)?/g;
+/**
+ * Replaces the letter with the capital letter
+ *
+ * @param {String} match
+ * @param {String} c
+ * @return {String}
+ * @api private
+ */
+
+function toUpper$1(match, c) {
+  return c ? c.toUpperCase() : '';
+}
+/**
+ * Convert dash separated strings to camel-cased.
+ *
+ * @param {String} str
+ * @return {String}
+ * @api private
+ */
+
+
+function camelize$1(str) {
+  return str.replace(regExp$1, toUpper$1);
+}
+
+/**
+ * Convert dash separated strings to pascal cased.
+ *
+ * @param {String} str
+ * @return {String}
+ * @api private
+ */
+
+function pascalize$1(str) {
+  return camelize$1("-" + str);
+}
+
+// but we can use a longhand property instead.
+// https://caniuse.com/#search=mask
+
+var mask$1 = {
+  noPrefill: ['mask'],
+  supportedProperty: function supportedProperty(prop, style) {
+    if (!/^mask/.test(prop)) return false;
+
+    if (prefix$1.js === 'Webkit') {
+      var longhand = 'mask-image';
+
+      if (camelize$1(longhand) in style) {
+        return prop;
+      }
+
+      if (prefix$1.js + pascalize$1(longhand) in style) {
+        return prefix$1.css + prop;
+      }
+    }
+
+    return prop;
+  }
+};
+
+// https://caniuse.com/#search=text-orientation
+
+var textOrientation$1 = {
+  noPrefill: ['text-orientation'],
+  supportedProperty: function supportedProperty(prop) {
+    if (prop !== 'text-orientation') return false;
+
+    if (prefix$1.vendor === 'apple' && !prefix$1.isTouch) {
+      return prefix$1.css + prop;
+    }
+
+    return prop;
+  }
+};
+
+// https://caniuse.com/#search=transform
+
+var transform$1 = {
+  noPrefill: ['transform'],
+  supportedProperty: function supportedProperty(prop, style, options) {
+    if (prop !== 'transform') return false;
+
+    if (options.transform) {
+      return prop;
+    }
+
+    return prefix$1.css + prop;
+  }
+};
+
+// https://caniuse.com/#search=transition
+
+var transition$1 = {
+  noPrefill: ['transition'],
+  supportedProperty: function supportedProperty(prop, style, options) {
+    if (prop !== 'transition') return false;
+
+    if (options.transition) {
+      return prop;
+    }
+
+    return prefix$1.css + prop;
+  }
+};
+
+// https://caniuse.com/#search=writing-mode
+
+var writingMode$1 = {
+  noPrefill: ['writing-mode'],
+  supportedProperty: function supportedProperty(prop) {
+    if (prop !== 'writing-mode') return false;
+
+    if (prefix$1.js === 'Webkit' || prefix$1.js === 'ms' && prefix$1.browser !== 'edge') {
+      return prefix$1.css + prop;
+    }
+
+    return prop;
+  }
+};
+
+// https://caniuse.com/#search=user-select
+
+var userSelect$1 = {
+  noPrefill: ['user-select'],
+  supportedProperty: function supportedProperty(prop) {
+    if (prop !== 'user-select') return false;
+
+    if (prefix$1.js === 'Moz' || prefix$1.js === 'ms' || prefix$1.vendor === 'apple') {
+      return prefix$1.css + prop;
+    }
+
+    return prop;
+  }
+};
+
+// https://caniuse.com/#search=multicolumn
+// https://github.com/postcss/autoprefixer/issues/491
+// https://github.com/postcss/autoprefixer/issues/177
+
+var breakPropsOld$1 = {
+  supportedProperty: function supportedProperty(prop, style) {
+    if (!/^break-/.test(prop)) return false;
+
+    if (prefix$1.js === 'Webkit') {
+      var jsProp = "WebkitColumn" + pascalize$1(prop);
+      return jsProp in style ? prefix$1.css + "column-" + prop : false;
+    }
+
+    if (prefix$1.js === 'Moz') {
+      var _jsProp = "page" + pascalize$1(prop);
+
+      return _jsProp in style ? "page-" + prop : false;
+    }
+
+    return false;
+  }
+};
+
+// See https://github.com/postcss/autoprefixer/issues/324.
+
+var inlineLogicalOld$1 = {
+  supportedProperty: function supportedProperty(prop, style) {
+    if (!/^(border|margin|padding)-inline/.test(prop)) return false;
+    if (prefix$1.js === 'Moz') return prop;
+    var newProp = prop.replace('-inline', '');
+    return prefix$1.js + pascalize$1(newProp) in style ? prefix$1.css + newProp : false;
+  }
+};
+
+// Camelization is required because we can't test using.
+// CSS syntax for e.g. in FF.
+
+var unprefixed$1 = {
+  supportedProperty: function supportedProperty(prop, style) {
+    return camelize$1(prop) in style ? prop : false;
+  }
+};
+
+var prefixed$1 = {
+  supportedProperty: function supportedProperty(prop, style) {
+    var pascalized = pascalize$1(prop); // Return custom CSS variable without prefixing.
+
+    if (prop[0] === '-') return prop; // Return already prefixed value without prefixing.
+
+    if (prop[0] === '-' && prop[1] === '-') return prop;
+    if (prefix$1.js + pascalized in style) return prefix$1.css + prop; // Try webkit fallback.
+
+    if (prefix$1.js !== 'Webkit' && "Webkit" + pascalized in style) return "-webkit-" + prop;
+    return false;
+  }
+};
+
+// https://caniuse.com/#search=scroll-snap
+
+var scrollSnap$1 = {
+  supportedProperty: function supportedProperty(prop) {
+    if (prop.substring(0, 11) !== 'scroll-snap') return false;
+
+    if (prefix$1.js === 'ms') {
+      return "" + prefix$1.css + prop;
+    }
+
+    return prop;
+  }
+};
+
+// https://caniuse.com/#search=overscroll-behavior
+
+var overscrollBehavior$1 = {
+  supportedProperty: function supportedProperty(prop) {
+    if (prop !== 'overscroll-behavior') return false;
+
+    if (prefix$1.js === 'ms') {
+      return prefix$1.css + "scroll-chaining";
+    }
+
+    return prop;
+  }
+};
+
+var propMap$2 = {
+  'flex-grow': 'flex-positive',
+  'flex-shrink': 'flex-negative',
+  'flex-basis': 'flex-preferred-size',
+  'justify-content': 'flex-pack',
+  order: 'flex-order',
+  'align-items': 'flex-align',
+  'align-content': 'flex-line-pack' // 'align-self' is handled by 'align-self' plugin.
+
+}; // Support old flex spec from 2012.
+
+var flex2012$1 = {
+  supportedProperty: function supportedProperty(prop, style) {
+    var newProp = propMap$2[prop];
+    if (!newProp) return false;
+    return prefix$1.js + pascalize$1(newProp) in style ? prefix$1.css + newProp : false;
+  }
+};
+
+var propMap$1$1 = {
+  flex: 'box-flex',
+  'flex-grow': 'box-flex',
+  'flex-direction': ['box-orient', 'box-direction'],
+  order: 'box-ordinal-group',
+  'align-items': 'box-align',
+  'flex-flow': ['box-orient', 'box-direction'],
+  'justify-content': 'box-pack'
+};
+var propKeys$1 = Object.keys(propMap$1$1);
+
+var prefixCss$1 = function prefixCss(p) {
+  return prefix$1.css + p;
+}; // Support old flex spec from 2009.
+
+
+var flex2009$1 = {
+  supportedProperty: function supportedProperty(prop, style, _ref) {
+    var multiple = _ref.multiple;
+
+    if (propKeys$1.indexOf(prop) > -1) {
+      var newProp = propMap$1$1[prop];
+
+      if (!Array.isArray(newProp)) {
+        return prefix$1.js + pascalize$1(newProp) in style ? prefix$1.css + newProp : false;
+      }
+
+      if (!multiple) return false;
+
+      for (var i = 0; i < newProp.length; i++) {
+        if (!(prefix$1.js + pascalize$1(newProp[0]) in style)) {
+          return false;
+        }
+      }
+
+      return newProp.map(prefixCss$1);
+    }
+
+    return false;
+  }
+};
+
+// plugins = [
+//   ...plugins,
+//    breakPropsOld,
+//    inlineLogicalOld,
+//    unprefixed,
+//    prefixed,
+//    scrollSnap,
+//    flex2012,
+//    flex2009
+// ]
+// Plugins without 'noPrefill' value, going last.
+// 'flex-*' plugins should be at the bottom.
+// 'flex2009' going after 'flex2012'.
+// 'prefixed' going after 'unprefixed'
+
+var plugins$2 = [appearence$1, colorAdjust$1, mask$1, textOrientation$1, transform$1, transition$1, writingMode$1, userSelect$1, breakPropsOld$1, inlineLogicalOld$1, unprefixed$1, prefixed$1, scrollSnap$1, overscrollBehavior$1, flex2012$1, flex2009$1];
+var propertyDetectors$1 = plugins$2.filter(function (p) {
+  return p.supportedProperty;
+}).map(function (p) {
+  return p.supportedProperty;
+});
+var noPrefill$1 = plugins$2.filter(function (p) {
+  return p.noPrefill;
+}).reduce(function (a, p) {
+  a.push.apply(a, _toConsumableArray__default['default'](p.noPrefill));
+  return a;
+}, []);
+
+var el$2;
+var cache$3 = {};
+
+if (isBrowser$2) {
+  el$2 = document.createElement('p'); // We test every property on vendor prefix requirement.
+  // Once tested, result is cached. It gives us up to 70% perf boost.
+  // http://jsperf.com/element-style-object-access-vs-plain-object
+  //
+  // Prefill cache with known css properties to reduce amount of
+  // properties we need to feature test at runtime.
+  // http://davidwalsh.name/vendor-prefix
+
+  var computed$1 = window.getComputedStyle(document.documentElement, '');
+
+  for (var key$1$1 in computed$1) {
+    // eslint-disable-next-line no-restricted-globals
+    if (!isNaN(key$1$1)) cache$3[computed$1[key$1$1]] = computed$1[key$1$1];
+  } // Properties that cannot be correctly detected using the
+  // cache prefill method.
+
+
+  noPrefill$1.forEach(function (x) {
+    return delete cache$3[x];
+  });
+}
+/**
+ * Test if a property is supported, returns supported property with vendor
+ * prefix if required. Returns `false` if not supported.
+ *
+ * @param {String} prop dash separated
+ * @param {Object} [options]
+ * @return {String|Boolean}
+ * @api public
+ */
+
+
+function supportedProperty$1(prop, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  // For server-side rendering.
+  if (!el$2) return prop; // Remove cache for benchmark tests or return property from the cache.
+
+  if (process.env.NODE_ENV !== 'benchmark' && cache$3[prop] != null) {
+    return cache$3[prop];
+  } // Check if 'transition' or 'transform' natively supported in browser.
+
+
+  if (prop === 'transition' || prop === 'transform') {
+    options[prop] = prop in el$2.style;
+  } // Find a plugin for current prefix property.
+
+
+  for (var i = 0; i < propertyDetectors$1.length; i++) {
+    cache$3[prop] = propertyDetectors$1[i](prop, el$2.style, options); // Break loop, if value found.
+
+    if (cache$3[prop]) break;
+  } // Reset styles for current property.
+  // Firefox can even throw an error for invalid properties, e.g., "0".
+
+
+  try {
+    el$2.style[prop] = '';
+  } catch (err) {
+    return false;
+  }
+
+  return cache$3[prop];
+}
+
+var cache$1$1 = {};
+var transitionProperties$1 = {
+  transition: 1,
+  'transition-property': 1,
+  '-webkit-transition': 1,
+  '-webkit-transition-property': 1
+};
+var transPropsRegExp$1 = /(^\s*[\w-]+)|, (\s*[\w-]+)(?![^()]*\))/g;
+var el$1$1;
+/**
+ * Returns prefixed value transition/transform if needed.
+ *
+ * @param {String} match
+ * @param {String} p1
+ * @param {String} p2
+ * @return {String}
+ * @api private
+ */
+
+function prefixTransitionCallback$1(match, p1, p2) {
+  if (p1 === 'var') return 'var';
+  if (p1 === 'all') return 'all';
+  if (p2 === 'all') return ', all';
+  var prefixedValue = p1 ? supportedProperty$1(p1) : ", " + supportedProperty$1(p2);
+  if (!prefixedValue) return p1 || p2;
+  return prefixedValue;
+}
+
+if (isBrowser$2) el$1$1 = document.createElement('p');
+/**
+ * Returns prefixed value if needed. Returns `false` if value is not supported.
+ *
+ * @param {String} property
+ * @param {String} value
+ * @return {String|Boolean}
+ * @api public
+ */
+
+function supportedValue$1(property, value) {
+  // For server-side rendering.
+  var prefixedValue = value;
+  if (!el$1$1 || property === 'content') return value; // It is a string or a number as a string like '1'.
+  // We want only prefixable values here.
+  // eslint-disable-next-line no-restricted-globals
+
+  if (typeof prefixedValue !== 'string' || !isNaN(parseInt(prefixedValue, 10))) {
+    return prefixedValue;
+  } // Create cache key for current value.
+
+
+  var cacheKey = property + prefixedValue; // Remove cache for benchmark tests or return value from cache.
+
+  if (process.env.NODE_ENV !== 'benchmark' && cache$1$1[cacheKey] != null) {
+    return cache$1$1[cacheKey];
+  } // IE can even throw an error in some cases, for e.g. style.content = 'bar'.
+
+
+  try {
+    // Test value as it is.
+    el$1$1.style[property] = prefixedValue;
+  } catch (err) {
+    // Return false if value not supported.
+    cache$1$1[cacheKey] = false;
+    return false;
+  } // If 'transition' or 'transition-property' property.
+
+
+  if (transitionProperties$1[property]) {
+    prefixedValue = prefixedValue.replace(transPropsRegExp$1, prefixTransitionCallback$1);
+  } else if (el$1$1.style[property] === '') {
+    // Value with a vendor prefix.
+    prefixedValue = prefix$1.css + prefixedValue; // Hardcode test to convert "flex" to "-ms-flexbox" for IE10.
+
+    if (prefixedValue === '-ms-flex') el$1$1.style[property] = '-ms-flexbox'; // Test prefixed value.
+
+    el$1$1.style[property] = prefixedValue; // Return false if value not supported.
+
+    if (el$1$1.style[property] === '') {
+      cache$1$1[cacheKey] = false;
+      return false;
+    }
+  } // Reset styles for current property.
+
+
+  el$1$1.style[property] = ''; // Write current value to cache.
+
+  cache$1$1[cacheKey] = prefixedValue;
+  return cache$1$1[cacheKey];
+}
+
+/**
+ * Add vendor prefix to a property name when needed.
+ *
+ * @api public
+ */
+
+function jssVendorPrefixer$1() {
+  function onProcessRule(rule) {
+    if (rule.type === 'keyframes') {
+      var atRule = rule;
+      atRule.at = supportedKeyframes$1(atRule.at);
+    }
+  }
+
+  function prefixStyle(style) {
+    for (var prop in style) {
+      var value = style[prop];
+
+      if (prop === 'fallbacks' && Array.isArray(value)) {
+        style[prop] = value.map(prefixStyle);
+        continue;
+      }
+
+      var changeProp = false;
+      var supportedProp = supportedProperty$1(prop);
+      if (supportedProp && supportedProp !== prop) changeProp = true;
+      var changeValue = false;
+      var supportedValue$1$1 = supportedValue$1(supportedProp, toCssValue$1(value));
+      if (supportedValue$1$1 && supportedValue$1$1 !== value) changeValue = true;
+
+      if (changeProp || changeValue) {
+        if (changeProp) delete style[prop];
+        style[supportedProp || prop] = supportedValue$1$1 || value;
+      }
+    }
+
+    return style;
+  }
+
+  function onProcessStyle(style, rule) {
+    if (rule.type !== 'style') return style;
+    return prefixStyle(style);
+  }
+
+  function onChangeValue(value, prop) {
+    return supportedValue$1(prop, toCssValue$1(value)) || value;
+  }
+
+  return {
+    onProcessRule: onProcessRule,
+    onProcessStyle: onProcessStyle,
+    onChangeValue: onChangeValue
+  };
+}
+
+/**
+ * Sort props by length.
+ */
+function jssPropsSort$1() {
+  var sort = function sort(prop0, prop1) {
+    if (prop0.length === prop1.length) {
+      return prop0 > prop1 ? 1 : -1;
+    }
+
+    return prop0.length - prop1.length;
+  };
+
+  return {
+    onProcessStyle: function onProcessStyle(style, rule) {
+      if (rule.type !== 'style') return style;
+      var newStyle = {};
+      var props = Object.keys(style).sort(sort);
+
+      for (var i = 0; i < props.length; i++) {
+        newStyle[props[i]] = style[props[i]];
+      }
+
+      return newStyle;
+    }
+  };
+}
+
+function jssPreset() {
+  return {
+    plugins: [functionPlugin$1(), jssGlobal$1(), jssNested$1(), camelCase$1(), defaultUnit$1(), // Disable the vendor prefixer server-side, it does nothing.
+    // This way, we can get a performance boost.
+    // In the documentation, we are using `autoprefixer` to solve this problem.
+    typeof window === 'undefined' ? null : jssVendorPrefixer$1(), jssPropsSort$1()]
+  };
+}
 
 function mergeClasses() {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -15570,243 +7066,6 @@ function clsx$1 () {
 	return str;
 }
 
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var b$2="function"===typeof Symbol&&Symbol.for,c$2=b$2?Symbol.for("react.element"):60103,d$2=b$2?Symbol.for("react.portal"):60106,e$2=b$2?Symbol.for("react.fragment"):60107,f$2=b$2?Symbol.for("react.strict_mode"):60108,g$2=b$2?Symbol.for("react.profiler"):60114,h$2=b$2?Symbol.for("react.provider"):60109,k$2=b$2?Symbol.for("react.context"):60110,l$2=b$2?Symbol.for("react.async_mode"):60111,m$1=b$2?Symbol.for("react.concurrent_mode"):60111,n$2=b$2?Symbol.for("react.forward_ref"):60112,p$2=b$2?Symbol.for("react.suspense"):60113,q$2=b$2?
-Symbol.for("react.suspense_list"):60120,r$2=b$2?Symbol.for("react.memo"):60115,t$2=b$2?Symbol.for("react.lazy"):60116,v$2=b$2?Symbol.for("react.block"):60121,w$2=b$2?Symbol.for("react.fundamental"):60117,x$2=b$2?Symbol.for("react.responder"):60118,y$2=b$2?Symbol.for("react.scope"):60119;
-function z$2(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c$2:switch(a=a.type,a){case l$2:case m$1:case e$2:case g$2:case f$2:case p$2:return a;default:switch(a=a&&a.$$typeof,a){case k$2:case n$2:case t$2:case r$2:case h$2:return a;default:return u}}case d$2:return u}}}function A$2(a){return z$2(a)===m$1}var AsyncMode$1=l$2;var ConcurrentMode$1=m$1;var ContextConsumer$1=k$2;var ContextProvider$1=h$2;var Element$2=c$2;var ForwardRef$1=n$2;var Fragment$1=e$2;var Lazy$1=t$2;var Memo$1=r$2;var Portal$2=d$2;
-var Profiler$1=g$2;var StrictMode$1=f$2;var Suspense$1=p$2;var isAsyncMode$1=function(a){return A$2(a)||z$2(a)===l$2};var isConcurrentMode$1=A$2;var isContextConsumer$1=function(a){return z$2(a)===k$2};var isContextProvider$1=function(a){return z$2(a)===h$2};var isElement$1=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c$2};var isForwardRef$1=function(a){return z$2(a)===n$2};var isFragment$1=function(a){return z$2(a)===e$2};var isLazy$1=function(a){return z$2(a)===t$2};
-var isMemo$1=function(a){return z$2(a)===r$2};var isPortal$1=function(a){return z$2(a)===d$2};var isProfiler$1=function(a){return z$2(a)===g$2};var isStrictMode$1=function(a){return z$2(a)===f$2};var isSuspense$1=function(a){return z$2(a)===p$2};
-var isValidElementType$1=function(a){return "string"===typeof a||"function"===typeof a||a===e$2||a===m$1||a===g$2||a===f$2||a===p$2||a===q$2||"object"===typeof a&&null!==a&&(a.$$typeof===t$2||a.$$typeof===r$2||a.$$typeof===h$2||a.$$typeof===k$2||a.$$typeof===n$2||a.$$typeof===w$2||a.$$typeof===x$2||a.$$typeof===y$2||a.$$typeof===v$2)};var typeOf$1=z$2;
-
-var reactIs_production_min$1 = {
-	AsyncMode: AsyncMode$1,
-	ConcurrentMode: ConcurrentMode$1,
-	ContextConsumer: ContextConsumer$1,
-	ContextProvider: ContextProvider$1,
-	Element: Element$2,
-	ForwardRef: ForwardRef$1,
-	Fragment: Fragment$1,
-	Lazy: Lazy$1,
-	Memo: Memo$1,
-	Portal: Portal$2,
-	Profiler: Profiler$1,
-	StrictMode: StrictMode$1,
-	Suspense: Suspense$1,
-	isAsyncMode: isAsyncMode$1,
-	isConcurrentMode: isConcurrentMode$1,
-	isContextConsumer: isContextConsumer$1,
-	isContextProvider: isContextProvider$1,
-	isElement: isElement$1,
-	isForwardRef: isForwardRef$1,
-	isFragment: isFragment$1,
-	isLazy: isLazy$1,
-	isMemo: isMemo$1,
-	isPortal: isPortal$1,
-	isProfiler: isProfiler$1,
-	isStrictMode: isStrictMode$1,
-	isSuspense: isSuspense$1,
-	isValidElementType: isValidElementType$1,
-	typeOf: typeOf$1
-};
-
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var reactIs_development$1 = createCommonjsModule$1(function (module, exports) {
-
-
-
-if (process.env.NODE_ENV !== "production") {
-  (function() {
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-// (unstable) APIs that have been removed. Can we remove the symbols?
-
-var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
-
-function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
-}
-
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
-
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
-
-        switch (type) {
-          case REACT_ASYNC_MODE_TYPE:
-          case REACT_CONCURRENT_MODE_TYPE:
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-          case REACT_SUSPENSE_TYPE:
-            return type;
-
-          default:
-            var $$typeofType = type && type.$$typeof;
-
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
-
-              default:
-                return $$typeof;
-            }
-
-        }
-
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
-
-  return undefined;
-} // AsyncMode is deprecated along with isAsyncMode
-
-var AsyncMode = REACT_ASYNC_MODE_TYPE;
-var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Lazy = REACT_LAZY_TYPE;
-var Memo = REACT_MEMO_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
-
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
-
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-    }
-  }
-
-  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
-}
-function isConcurrentMode(object) {
-  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isLazy(object) {
-  return typeOf(object) === REACT_LAZY_TYPE;
-}
-function isMemo(object) {
-  return typeOf(object) === REACT_MEMO_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-function isSuspense(object) {
-  return typeOf(object) === REACT_SUSPENSE_TYPE;
-}
-
-exports.AsyncMode = AsyncMode;
-exports.ConcurrentMode = ConcurrentMode;
-exports.ContextConsumer = ContextConsumer;
-exports.ContextProvider = ContextProvider;
-exports.Element = Element;
-exports.ForwardRef = ForwardRef;
-exports.Fragment = Fragment;
-exports.Lazy = Lazy;
-exports.Memo = Memo;
-exports.Portal = Portal;
-exports.Profiler = Profiler;
-exports.StrictMode = StrictMode;
-exports.Suspense = Suspense;
-exports.isAsyncMode = isAsyncMode;
-exports.isConcurrentMode = isConcurrentMode;
-exports.isContextConsumer = isContextConsumer;
-exports.isContextProvider = isContextProvider;
-exports.isElement = isElement;
-exports.isForwardRef = isForwardRef;
-exports.isFragment = isFragment;
-exports.isLazy = isLazy;
-exports.isMemo = isMemo;
-exports.isPortal = isPortal;
-exports.isProfiler = isProfiler;
-exports.isStrictMode = isStrictMode;
-exports.isSuspense = isSuspense;
-exports.isValidElementType = isValidElementType;
-exports.typeOf = typeOf;
-  })();
-}
-});
-
-var reactIs$1 = createCommonjsModule$1(function (module) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = reactIs_production_min$1;
-} else {
-  module.exports = reactIs_development$1;
-}
-});
-
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
@@ -15849,12 +7108,12 @@ var MEMO_STATICS$1 = {
   type: true
 };
 var TYPE_STATICS$1 = {};
-TYPE_STATICS$1[reactIs$1.ForwardRef] = FORWARD_REF_STATICS$1;
-TYPE_STATICS$1[reactIs$1.Memo] = MEMO_STATICS$1;
+TYPE_STATICS$1[reactIs$2.ForwardRef] = FORWARD_REF_STATICS$1;
+TYPE_STATICS$1[reactIs$2.Memo] = MEMO_STATICS$1;
 
 function getStatics$1(component) {
   // React v16.11 and below
-  if (reactIs$1.isMemo(component)) {
+  if (reactIs$2.isMemo(component)) {
     return MEMO_STATICS$1;
   } // React v16.12 and above
 
@@ -26695,6 +17954,17 @@ var Tooltip$1 = withStyles(styles, {
   flip: false
 })(Tooltip);
 
+var useStyles$3 = makeStyles(function () {
+    return createStyles({
+        mapRoot: {
+            width: "95vw",
+            height: "95vh",
+            border: " 1px solid black",
+            position: "relative",
+        },
+    });
+});
+
 var style$1 = makeStyles(function () {
     return createStyles({
         root: {
@@ -26891,6 +18161,11 @@ var usePlayer = function (_a) {
             start();
         }
     }, [autoPlay, formattedData]);
+    React.useEffect(function () {
+        return function () {
+            intervalID.current && clearInterval(intervalID.current);
+        };
+    }, []);
     return { start: start, stop: stop, startReverse: startReverse };
 };
 
@@ -40853,6 +32128,7 @@ var useStyles = makeStyles(function (theme) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            margin: 4,
         },
         indicatorBox: {
             border: "solid 2px " + theme.palette.grey["300"],
@@ -40864,6 +32140,7 @@ var useStyles = makeStyles(function (theme) {
         text: {
             color: theme.palette.grey["400"],
             fontSize: 11,
+            margin: "4px 0",
         },
     });
 });
@@ -40883,6 +32160,23 @@ var LegendStateLess = React.memo(function (_a) {
             React__default['default'].createElement("span", { className: classes.text }, k),
             React__default['default'].createElement("div", { className: classes.indicatorBox, style: { backgroundColor: users[k] } }))); })));
 });
+
+function useAttribution(map, attribution) {
+  const attributionRef = React.useRef(attribution);
+  React.useEffect(function updateAttribution() {
+    if (attribution !== attributionRef.current && map.attributionControl != null) {
+      if (attributionRef.current != null) {
+        map.attributionControl.removeAttribution(attributionRef.current);
+      }
+
+      if (attribution != null) {
+        map.attributionControl.addAttribution(attribution);
+      }
+    }
+
+    attributionRef.current = attribution;
+  }, [map, attribution]);
+}
 
 function updateCircle(layer, props, prevProps) {
   if (props.center !== prevProps.center) {
@@ -40920,6 +32214,17 @@ function createContainerComponent(useElement) {
   }
 
   return /*#__PURE__*/React.forwardRef(ContainerComponent);
+}
+function createLeafComponent(useElement) {
+  function LeafComponent(props, ref) {
+    const {
+      instance
+    } = useElement(props).current;
+    React.useImperativeHandle(ref, () => instance);
+    return null;
+  }
+
+  return /*#__PURE__*/React.forwardRef(LeafComponent);
 }
 
 function useEventHandlers(element, eventHandlers) {
@@ -55045,6 +46350,16 @@ function useLayerLifecycle(element, context) {
     };
   }, [context, element]);
 }
+function createLayerHook(useElement) {
+  return function useLayer(props) {
+    const context = useLeafletContext();
+    const elementRef = useElement(withPane(props, context), context);
+    useAttribution(context.map, props.attribution);
+    useEventHandlers(elementRef.current, props.eventHandlers);
+    useLayerLifecycle(elementRef.current, context);
+    return elementRef;
+  };
+}
 
 function usePathOptions(element, props) {
   const optionsRef = React.useRef();
@@ -55073,6 +46388,26 @@ function createPathComponent(createElement, updateElement) {
   const useElement = createElementHook(createElement, updateElement);
   const usePath = createPathHook(useElement);
   return createContainerComponent(usePath);
+}
+function createTileLayerComponent(createElement, updateElement) {
+  const useElement = createElementHook(createElement, updateElement);
+  const useLayer = createLayerHook(useElement);
+  return createLeafComponent(useLayer);
+}
+
+function updateGridLayer(layer, props, prevProps) {
+  const {
+    opacity,
+    zIndex
+  } = props;
+
+  if (opacity != null && opacity !== prevProps.opacity) {
+    layer.setOpacity(opacity);
+  }
+
+  if (zIndex != null && zIndex !== prevProps.zIndex) {
+    layer.setZIndex(zIndex);
+  }
 }
 
 function useMap() {
@@ -55167,41 +46502,45 @@ const Polyline = createPathComponent(function createPolyline({
   }
 });
 
+const TileLayer = createTileLayerComponent(function createTileLayer({
+  url,
+  ...options
+}, context) {
+  return {
+    instance: new leafletSrc.TileLayer(url, withPane(options, context)),
+    context
+  };
+}, updateGridLayer);
+
 function TDCircleMarker(_a) {
-    var coordinates = _a.coordinates;
-    return (React__default['default'].createElement(CircleMarker, { center: coordinates, 
-        // pathOptions={{ fillColor: "blue" }}
-        radius: 2 }));
+    var coordinates = _a.coordinates, pathOptions = _a.pathOptions, circleProps = _a.circleProps;
+    return (React__default['default'].createElement(React__default['default'].Fragment, null,
+        React__default['default'].createElement(CircleMarker, __assign({ center: [coordinates[1], coordinates[0]], pathOptions: pathOptions, radius: 6 }, circleProps))));
 }
 function TDPolyline(_a) {
-    var coordinates = _a.coordinates;
-    return (React__default['default'].createElement(Polyline
-    // pathOptions={{ fillColor: "blue" }}
-    , { 
-        // pathOptions={{ fillColor: "blue" }}
-        positions: coordinates.map(function (c) { return [c[1], c[0]]; }) }));
+    var coordinates = _a.coordinates, pathOptions = _a.pathOptions, polylineProps = _a.polylineProps;
+    return (React__default['default'].createElement(Polyline, __assign({ pathOptions: pathOptions, positions: coordinates.map(function (c) { return [c[1], c[0]]; }) }, polylineProps)));
 }
 
-function GeoJSONLayer$1() {
+function TDGeojsonLayer(_a) {
+    var pathOptions = _a.pathOptions, circleProps = _a.circleProps, polylineProps = _a.polylineProps;
     var currentData = useTDStoreState(function (state) { return state.currentData; });
     return (React__default['default'].createElement(React__default['default'].Fragment, null, currentData === null || currentData === void 0 ? void 0 : currentData.features.map(function (f) {
         return f.geometry.geometries.map(function (g) {
-            return g.type === "Point" ? (React__default['default'].createElement(TDCircleMarker, { coordinates: g.coordinates })) : (React__default['default'].createElement(TDPolyline, { coordinates: g.coordinates }));
+            var _a, _b;
+            return g.type === "Point" ? (React__default['default'].createElement(TDCircleMarker, { coordinates: g.coordinates, pathOptions: __assign({ color: (_a = f === null || f === void 0 ? void 0 : f.properties) === null || _a === void 0 ? void 0 : _a.color }, pathOptions), circleProps: circleProps })) : (React__default['default'].createElement(TDPolyline, { coordinates: g.coordinates, pathOptions: __assign({ color: (_b = f === null || f === void 0 ? void 0 : f.properties) === null || _b === void 0 ? void 0 : _b.color }, pathOptions), polylineProps: polylineProps }));
         });
     })));
 }
 
 var HesabaTimeDimensionView = function (_a) {
-    var 
-    // data,
-    playerProps = _a.playerProps, timeProps = _a.timeProps, LegendComponent = _a.LegendComponent;
+    var playerProps = _a.playerProps, timeProps = _a.timeProps, LegendComponent = _a.LegendComponent, layerProps = _a.layerProps;
     var map = useMap();
-    // useLayer(map);
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
         React__default['default'].createElement(PlayerControl, __assign({ leafletMap: map }, playerProps)),
         React__default['default'].createElement(TimerComponent, __assign({}, timeProps)),
         React__default['default'].createElement(LegendContainer, { LegendComponent: LegendComponent }),
-        React__default['default'].createElement(GeoJSONLayer$1, null)));
+        React__default['default'].createElement(TDGeojsonLayer, __assign({}, layerProps))));
 };
 
 function styleInject(css, ref) {
@@ -55269,20 +46608,21 @@ function useParseData(data) {
     }, []);
 }
 
-var HesabaTimeDimension = function (_a) {
-    _a.withTable; var props = __rest(_a, ["withTable"]);
+// import TDTable from "../table/TDTable";
+var HesabaTimeDimension = function (props) {
     var theme$1 = createMuiTheme(theme);
     theme$1 = responsiveFontSizes(theme$1);
-    return (React__default['default'].createElement(MapContainer, __assign({}, props.mapProps),
+    return (React__default['default'].createElement(Wrapper, null,
         React__default['default'].createElement(ThemeProvider, { theme: theme$1 },
-            React__default['default'].createElement("div", { style: { display: "flex" } },
-                React__default['default'].createElement(Wrapper, null,
-                    React__default['default'].createElement(CommonMap, __assign({}, props)))))));
+            React__default['default'].createElement(CommonMap, __assign({}, props)))));
 };
 var CommonMap = function (_a) {
-    var data = _a.data, _b = _a.playerProps, playerProps = _b === void 0 ? {} : _b, _c = _a.timeProps, timeProps = _c === void 0 ? {} : _c, _d = _a.geojsonProps, geojsonProps = _d === void 0 ? {} : _d, _e = _a.layerProps, layerProps = _e === void 0 ? {} : _e, extralLayerProps = _a.extralLayerProps, LegendComponent = _a.LegendComponent;
+    var data = _a.data, children = _a.children, _b = _a.playerProps, playerProps = _b === void 0 ? {} : _b, _c = _a.timeProps, timeProps = _c === void 0 ? {} : _c, _d = _a.geojsonProps, geojsonProps = _d === void 0 ? {} : _d, _e = _a.layerProps, layerProps = _e === void 0 ? {} : _e, extralLayerProps = _a.extralLayerProps, _f = _a.mapProps, className = _f.className, mapProps = __rest(_f, ["className"]), LegendComponent = _a.LegendComponent;
     useParseData(data);
-    return (React__default['default'].createElement(HesabaTimeDimensionView, { data: data, playerProps: playerProps, timeProps: timeProps, geojsonProps: geojsonProps, layerProps: layerProps, extralLayerProps: extralLayerProps, LegendComponent: LegendComponent }));
+    var classes = useStyles$3();
+    return (React__default['default'].createElement(MapContainer, __assign({ className: clsx$1(classes.mapRoot, className) }, mapProps),
+        children ? (children) : (React__default['default'].createElement(TileLayer, { attribution: '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors', url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" })),
+        React__default['default'].createElement(HesabaTimeDimensionView, { data: data, playerProps: playerProps, timeProps: timeProps, geojsonProps: geojsonProps, layerProps: layerProps, extralLayerProps: extralLayerProps, LegendComponent: LegendComponent })));
 };
 
 var download = createCommonjsModule$1(function (module, exports) {
@@ -55491,18 +46831,9 @@ var useVideoRecorder = function (_a) {
     return { startRecording: startRecording, stopRecording: stopRecording };
 };
 
-function GeoJSONLayer() {
-    var currentData = useTDStoreState(function (state) { return state.currentData; });
-    return (React__default['default'].createElement(React__default['default'].Fragment, null, currentData === null || currentData === void 0 ? void 0 : currentData.features.map(function (f) {
-        return f.geometry.geometries.map(function (g) {
-            return g.type === "Point" ? (React__default['default'].createElement(TDCircleMarker, { coordinates: g.coordinates })) : (React__default['default'].createElement(TDPolyline, { coordinates: g.coordinates }));
-        });
-    })));
-}
-
-exports.GeoJSONLayer = GeoJSONLayer;
 exports.Legend = LegendContainer;
 exports.PlayerController = PlayerControl;
+exports.TDGeojsonLayer = TDGeojsonLayer;
 exports.TDProvider = Wrapper;
 exports.TimeComponent = TimerComponent;
 exports.addTimeDuration = addTimeDuration;

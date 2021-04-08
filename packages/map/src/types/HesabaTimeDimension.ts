@@ -11,7 +11,7 @@ export interface HesabaTimeDimensionProps {
   mapProps: MapContainerProps & {
     classes?: { root?: string };
   };
-  // children?: React.ReactNode;
+  children?: React.ReactNode;
   playerProps?: PlayerProps;
   timeProps?: TimeProps;
   geojsonProps?: GeoJSONOptions;
