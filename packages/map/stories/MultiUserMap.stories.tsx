@@ -6,7 +6,7 @@ import data from "./utils/data/multiUserData.json";
 import { storiesOf } from "@storybook/react";
 import { baseMapProps } from "./utils/constants";
 
-import CustomStyleMDPlayerThumb from "./docs/MultiUserMap.md";
+import MultiUserMap from "./docs/MultiUserMap.md";
 import { DocsProvider } from "./docs/DocsProvider";
 
 export const MapWithMultiUserMap = () => (
@@ -17,7 +17,7 @@ MapWithMultiUserMap.parameters = {
   docs: {
     page: () => {
       return (
-        <DocsProvider MDFile={CustomStyleMDPlayerThumb}>
+        <DocsProvider MDFile={MultiUserMap}>
           <MapWithMultiUserMap />
         </DocsProvider>
       );

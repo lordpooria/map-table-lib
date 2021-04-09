@@ -21,6 +21,7 @@ const TimerComponent = ({
   am = "AM",
   pm = "PM",
   clockProps,
+  dateWrapperClasses,
   dateClasses,
   amPmClasses,
 }: /*timeZone*/ TimeProps) => {
@@ -28,7 +29,6 @@ const TimerComponent = ({
   usePerisan();
   const currentTime = useTDStoreState((state) => state.currentTime);
   const timeClasses = useStyles();
-  
 
   useEffect(() => {
     update(currentTime);
@@ -65,8 +65,10 @@ const TimerComponent = ({
           {state.isAM ? am : pm}
         </Typography>
       </div>
-      <div className={clsx(timeClasses.dateWrapper, dateClasses)}>
-        {state.displayDate}
+      <div className={clsx(timeClasses.dateWrapper, dateWrapperClasses)}>
+        <p className={clsx(timeClasses.date, dateClasses)}>
+          {state.displayDate}
+        </p>
       </div>
     </div>
   );

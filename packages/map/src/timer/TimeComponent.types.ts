@@ -5,6 +5,7 @@ export interface TimeProps {
   am?: string;
   pm?: string;
   dateClasses?: string;
+  dateWrapperClasses?: string;
   amPmClasses?: string;
   clockProps?: Partial<ClockProps>;
 }
