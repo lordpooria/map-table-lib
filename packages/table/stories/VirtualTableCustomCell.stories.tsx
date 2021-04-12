@@ -52,7 +52,7 @@ export const schemaColumns: RawTableColumns<keys> = [
   },
 ];
 
-storiesOf("Virtual Table", module).add(
+storiesOf("Virtual Table Custom Cell", module).add(
   "Custom Cell and Custom toolbar actions",
   () => {
     return (

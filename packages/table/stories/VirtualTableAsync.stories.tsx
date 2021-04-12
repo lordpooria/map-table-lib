@@ -1,10 +1,9 @@
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
 import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
-import { storiesOf } from "@storybook/react";
 import { useCallback, useEffect, useState } from "react";
 import { CommonVirtualTableContainer } from "./table-test/container";
 
-export const useTableData = () => {
+const useTableData = () => {
   const [table, setTable] = useState({ schemaColumns: [], rows: [] });
 
   const getData = useCallback(async () => {
@@ -44,15 +43,15 @@ export const useTableData = () => {
   return table;
 };
 
-storiesOf("Virtual Table", module).add("Table with Async server data", () => {
+export const TableWithAsyncServerData = () => {
   const { rows, schemaColumns } = useTableData();
   return (
     <CommonVirtualTableContainer>
       <AutoResizer>
         {({ width, height }) => (
           <HesabaVirtualTable
-            height={height}
-            width={width}
+            height={400}
+            width={400}
             columns={schemaColumns}
             rows={rows}
             selectable
@@ -70,4 +69,8 @@ storiesOf("Virtual Table", module).add("Table with Async server data", () => {
       </AutoResizer>
     </CommonVirtualTableContainer>
   );
-});
+};
+
+export default {
+  title: "Virtual Table Async",
+};

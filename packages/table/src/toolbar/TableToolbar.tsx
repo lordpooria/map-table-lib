@@ -8,13 +8,13 @@ import {
   Switch,
   Typography,
 } from "@material-ui/core";
-import MoreVert from "@/assets/icons/common/MoreVertIcon";
+import MoreVert from "../assets/icons/common/MoreVertIcon";
 
-import { useTStoreActions } from "@/store/reducerHooks";
+import { useTStoreActions } from "../store/reducerHooks";
 
 import { TableToolbarCompleteProps } from "../types/TableToolbar";
 import clsx from "clsx";
-import { SmallIconButton } from "@/styled-component/StyledButton";
+import { SmallIconButton } from "../styled-component/StyledButton";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

@@ -1,4 +1,4 @@
-import * as React from "react";
+import  React from "react";
 import {
   Slider,
   Tooltip,
@@ -6,30 +6,32 @@ import {
   withStyles,
 } from "@material-ui/core";
 
-export const PlayerSlider = withStyles({
+export const PlayerSlider = withStyles((theme) => ({
   root: {
-    color: "#1f6a6d",
+    color: `${theme.palette.secondary.main}`,
     height: 3,
     padding: "13px 0",
   },
   thumb: {
-    height: 9,
-    width: 9,
-    backgroundColor: "#1f6a6d",
+    height: 15,
+    width: 15,
+    borderRadius: 7.5,
+    backgroundColor: `${theme.palette.secondary.main}`,
     border: "1px solid currentColor",
-    marginTop: -3,
+    marginTop: -6,
     marginLeft: -3,
     // boxShadow: "#ebebeb 0 2px 2px",
     "&:focus, &:hover, &$active": {
       boxShadow: "#888 0 2px 3px 1px",
-      width: 14,
-      height: 14,
-      marginTop: -6,
-      marginLeft: -6,
+      height: 18,
+      width: 18,
+      borderRadius: 9,
+      marginTop: -9,
+      marginLeft: -3.5,
     },
     "& .bar": {
       // display: inline-block !important;
-      height: 7.5,
+      height: 9,
       width: 1,
       backgroundColor: "#FFF",
       marginLeft: 1,
@@ -38,14 +40,15 @@ export const PlayerSlider = withStyles({
   },
   active: {},
   track: {
-    height: 3,
+    height: 6,
+    bottom: 11,
   },
   rail: {
-    color: "#1f6a6d",
+    color: `${theme.palette.secondary.main}`,
     opacity: 1,
-    height: 0.5,
+    height: 2,
   },
-})(Slider);
+}))(Slider);
 
 export const PlayerThumb = React.forwardRef((props: any, ref) => {
   return (
@@ -56,6 +59,14 @@ export const PlayerThumb = React.forwardRef((props: any, ref) => {
   );
 });
 
+/**
+ * @ignore - internal component.
+ */
 export function ValueLabelComponent(props: ValueLabelProps) {
-  return <Tooltip title={props.value}>{props.children}</Tooltip>;
+  const { children, open, value } = props;
+  return (
+    <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+      {children}
+    </Tooltip>
+  );
 }

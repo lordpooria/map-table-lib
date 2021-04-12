@@ -10,7 +10,7 @@ import { useMapData } from "./useMapData";
 const TDTable = () => {
   const { rows, schemaColumns } = useMapData();
   return (
-    <div style={{ width: " calc(50vw + 220px)", height: "95vh" }}>
+    <div style={{ flex:1, height: "95vw"}}>
       <AutoResizer>
         {({ width, height }) => (
           <HesabaVirtualTable

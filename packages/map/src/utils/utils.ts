@@ -20,9 +20,7 @@ export function getDisplayDateFormat(date: Date, timeZone: TimeZone) {
     timeZoneName: "short",
   });
 }
-export function getDisplayNoTimeError() {
-  return "Time not available";
-}
+
 
 export function getTimeDuration(ISODuration: string) {
   return parse(ISODuration);
@@ -276,4 +274,3 @@ export function sort_and_deduplicate(arr: AvailableTimes) {
   }
   return result;
 }
-

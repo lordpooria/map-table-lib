@@ -40,7 +40,7 @@ export const schemaColumns: RawTableColumns<keys> = [
   },
 ];
 
-storiesOf("Virtual Table", module).add("Table with Custom Data Parser", () => {
+storiesOf("Virtual Table Custom Data Parser", module).add("Table with Custom Data Parser", () => {
   return (
     <CommonVirtualTableContainer>
       <AutoResizer>

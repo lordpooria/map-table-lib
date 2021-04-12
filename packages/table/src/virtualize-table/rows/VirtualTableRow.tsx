@@ -7,10 +7,10 @@ import Cell from "../../cell/Cell";
 import { Fragment } from "react";
 import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
-import { CommonTableRowProps } from "@/types/tableElements";
+import { CommonTableRowProps } from "../../types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
-import { calcRowWidth } from "@/utils/helper";
-import { useTableSizeState } from "@/container/TableSizeProvider";
+import { calcRowWidth } from "../../utils/helper";
+import { useTableSizeState } from "../../container/TableSizeProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

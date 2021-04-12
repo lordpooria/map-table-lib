@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from "react";
+import React, { FC, memo, useCallback, useRef } from "react";
 import { ListOnScrollProps, VariableSizeList } from "react-window";
 
 import { commonSidebar } from "../utils/themeConstants";
@@ -6,16 +6,19 @@ import { commonSidebar } from "../utils/themeConstants";
 import { useTableResizer } from "../hooks/useTableResizer";
 import useTableData from "../hooks/useTableData";
 import { useTStoreState } from "../store/reducerHooks";
-import TableToolbar from "@/toolbar/TableToolbar";
+import TableToolbar from "../toolbar/TableToolbar";
 import { VirtualTableProps } from "../types/tableTypes";
 import TableFilter from "../filter/VirtualTableFilter";
 import VirtualTableContainer from "./container-virtual/VirtualTableContainer";
-import CommonTablePagination from "@/pagination/CommonTablePagination";
+import CommonTablePagination from "../pagination/CommonTablePagination";
 import useStyles from "./resizableStyles";
 import Overlay from "./overlay";
 import VirtualList from "./container-virtual/VirtualList";
 
-const VirtualizaTable = memo(
+/**
+ * Decorator component that automatically adjusts the width and height of a single child
+ */
+const VirtualizaTable: FC<VirtualTableProps> = memo(
   ({
     rows,
     columns,
@@ -35,7 +38,7 @@ const VirtualizaTable = memo(
     ...rest
   }: VirtualTableProps) => {
     const tableClasses = useStyles();
-    useTableData(columns, rows,tableDataParser);
+    useTableData(columns, rows, tableDataParser);
     const { setTableRef } = useTableResizer(width, direction);
     const staticGrid = useRef<VariableSizeList | null | undefined>();
     const mainList = useRef<VariableSizeList | null | undefined>();
@@ -117,7 +120,6 @@ const VirtualizaTable = memo(
             sortable={sortable}
             resizable={resizable}
             numRowsSelected={numRowsSelected}
-          
             classes={classes}
             setTableRef={setTableRef}
             tableClasses={tableClasses}

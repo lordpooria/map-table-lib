@@ -7,7 +7,7 @@ import {
   PlayerSlider as Slider,
   PlayerThumb,
   ValueLabelComponent,
-} from "./slider";
+} from "@hesaba/styled-component";
 import GaugeIcon from "../../assets/icons/common/GaugeIcon";
 
 function valuetext(value: number) {

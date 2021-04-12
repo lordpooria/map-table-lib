@@ -4,7 +4,7 @@ import {
   PolylineLayerProps,
 } from "../types/layer";
 import React from "react";
-import { CircleMarker, Polyline } from "react-leaflet";
+import { CircleMarker, Polyline, Tooltip } from "react-leaflet";
 
 type LatLng = [number, number];
 
@@ -17,6 +17,8 @@ export function TDCircleMarker({
   coordinates,
   pathOptions,
   circleProps,
+  ToolTipComponent,
+  properties,
 }: CircleProps) {
   return (
     <>
@@ -25,7 +27,22 @@ export function TDCircleMarker({
         pathOptions={pathOptions}
         radius={6}
         {...circleProps}
-      />
+      >
+        {ToolTipComponent === false ? null : typeof ToolTipComponent !==
+            "boolean" && ToolTipComponent ? (
+          <Tooltip>
+            <ToolTipComponent properties={properties} />
+          </Tooltip>
+        ) : (
+          <Tooltip>
+            {Object.keys(properties).map((k) => (
+              <div>
+                {k}:{properties[k]}
+              </div>
+            ))}
+          </Tooltip>
+        )}
+      </CircleMarker>
     </>
   );
 }

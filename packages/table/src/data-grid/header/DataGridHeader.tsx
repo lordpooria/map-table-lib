@@ -6,7 +6,7 @@ import { useTStoreActions } from "../../store/reducerHooks";
 
 import HeadCell from "src/cell/HeadCell";
 import { Fragment } from "react";
-import { CommonHeaderProps } from "@/types/tableElements";
+import { CommonHeaderProps } from "../../types/tableElements";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

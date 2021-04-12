@@ -38,7 +38,8 @@ type TableValue =
       value: BaseTableValue;
       collapsedRows?: RawTableRows;
       extraData?: any;
-    };
+    }
+  | undefined;
 
 export type RawTableRow = Record<string, TableValue> & { id?: TableValue };
 

@@ -3,7 +3,7 @@
 //   UISchema,
 //   UISchemaWithId,
 //   ColumnTypes,
-// } from "@/models/graph";
+// } from "/models/graph";
 // import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 
 import { ColumnType } from "../../types/main";

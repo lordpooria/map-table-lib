@@ -3,7 +3,7 @@ declare type LatLng = [number, number];
 declare type CircleProps = CommonLayerComponentProps & CircleLayerProps & {
     coordinates: LatLng | Array<LatLng>;
 };
-export declare function TDCircleMarker({ coordinates, pathOptions, circleProps, }: CircleProps): JSX.Element;
+export declare function TDCircleMarker({ coordinates, pathOptions, circleProps, ToolTipComponent, properties, }: CircleProps): JSX.Element;
 declare type PolylineProps = CommonLayerComponentProps & PolylineLayerProps & {
     coordinates: Array<LatLng>;
 };

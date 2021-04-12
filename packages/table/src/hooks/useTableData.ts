@@ -9,7 +9,7 @@ import {
 } from "../types/main";
 
 import { useTStoreActions } from "../store/reducerHooks";
-import { DATA_FIELD, HESABA_DATA_FIELD } from "@/utils/constants";
+import { DATA_FIELD, HESABA_DATA_FIELD } from "../utils/constants";
 
 export function createEnhancedColumns(columns: RawTableColumns): TableColumns {
   return columns.map((c) => ({

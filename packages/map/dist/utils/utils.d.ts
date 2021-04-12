@@ -1,7 +1,6 @@
 import { AvailableTimes, DurationType, Period, TimeZone, UTCType } from "../types/common";
 import { Duration } from "iso8601-duration";
 export declare function getDisplayDateFormat(date: Date, timeZone: TimeZone): string;
-export declare function getDisplayNoTimeError(): string;
 export declare function getTimeDuration(ISODuration: string): Duration;
 export declare function addTimeDuration(date: any, duration: DurationType | Duration, utc?: UTCType): void;
 export declare function subtractTimeDuration(date: any, duration: Duration | DurationType, utc: UTCType): void;

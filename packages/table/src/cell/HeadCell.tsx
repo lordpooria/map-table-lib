@@ -10,9 +10,9 @@ import {
 import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
 import HeaderMenu from "../virtualize-table/header/HeaderMenu";
 import useCommonStyles from "../styles/commonStyles";
-import { HeaderCellProps } from "@/types/tableElements";
-import DividerIcon from "@/assets/icons/common/DividerIcon";
-import { useTableSizeState } from "@/container/TableSizeProvider";
+import { HeaderCellProps } from "../types/tableElements";
+import DividerIcon from "../assets/icons/common/DividerIcon";
+import { useTableSizeState } from "../container/TableSizeProvider";
 
 const useHeadStyles = makeStyles((theme) =>
   createStyles({

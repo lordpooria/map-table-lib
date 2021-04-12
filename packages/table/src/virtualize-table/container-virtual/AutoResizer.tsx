@@ -60,12 +60,7 @@ const AutoResizer = ({
       disableHeight={disableHeight}
       onResize={onResize}
     >
-      {(size) =>
-        children({
-          width: disableWidth ? width : size.width,
-          height: disableHeight ? height : size.height,
-        })
-      }
+      {children}
     </AutoSizer>
   );
 };

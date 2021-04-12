@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { DATA_FIELD } from "../utils/constants";
 import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
 import { CellClasses } from "../types/styles";
-import { useTableSizeState } from "@/container/TableSizeProvider";
+import { useTableSizeState } from "../container/TableSizeProvider";
 
 const SimpleTableCell = ({ value }: TableComponentProps) => {
   return <Typography>{value}</Typography>;

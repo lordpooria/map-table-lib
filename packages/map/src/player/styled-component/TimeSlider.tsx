@@ -6,12 +6,16 @@ import {
   PlayerSlider as Slider,
   PlayerThumb,
   ValueLabelComponent,
-} from "./slider";
+} from "@hesaba/styled-component";
 
 interface Props {
   timeSteps: PlayerCompleteProps["timeSteps"];
   classes: PlayerCompleteProps["classes"];
   playerSliderClasses?: string;
+}
+
+function valueText(value: number) {
+  return value;
 }
 
 const TimeSlider = (props: Props) => {
@@ -60,11 +64,11 @@ const TimeSliderStateless = memo(
 
         <Slider
           classes={classes?.playerSlider}
-          style={{}}
           valueLabelDisplay="auto"
           ThumbComponent={PlayerThumb as any}
           ValueLabelComponent={ValueLabelComponent}
           value={timeSliderValue}
+          valueLabelFormat={valueText}
           step={timeSteps}
           min={min}
           max={max}

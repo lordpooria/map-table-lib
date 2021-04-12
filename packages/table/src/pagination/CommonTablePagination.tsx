@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import clsx from "clsx";
-import { CommonTablePagination } from "@/types/tableElements";
+import { CommonTablePagination } from "../types/tableElements";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

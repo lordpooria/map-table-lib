@@ -11,9 +11,9 @@ import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import clsx from "clsx";
 import useCommonStyles from "../../styles/commonStyles";
 
-import { CommonHeaderProps } from "@/types/tableElements";
-import { calcRowWidth } from "@/utils/helper";
-import { useTableSizeState } from "@/container/TableSizeProvider";
+import { CommonHeaderProps } from "../../types/tableElements";
+import { calcRowWidth } from "../../utils/helper";
+import { useTableSizeState } from "../../container/TableSizeProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

@@ -45,5 +45,5 @@ export const baseMapProps = {
   zoom: 13,
 
   scrollWheelZoom: false,
-  style: { width: "95vw", height: "95vh", border: " 1px solid black" },
+  
 };

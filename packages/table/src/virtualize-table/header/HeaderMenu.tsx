@@ -12,7 +12,7 @@ import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
 import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
 import { SmallIconButton } from "../../styled-component/StyledButton";
 import { SortType } from "../../types/main";
-// import PinIcon from "@/assets/icons/common/PinIcon";
+// import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },

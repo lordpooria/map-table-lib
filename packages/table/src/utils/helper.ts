@@ -1,4 +1,4 @@
-import { TableColumns } from "@/types";
+import { TableColumns } from "../types";
 
 import {
   CHECKBOX_SIZE,

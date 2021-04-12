@@ -6,8 +6,6 @@ import { VirtualTableContainerType } from "../types-virtual/VirtualTableContaine
 const useStyles = makeStyles((theme) =>
   createStyles({
     vtContainerRoot: {
-      margin: 10,
-      borderRadius: 10,
       border: `solid 1px ${theme.palette.grey[300]}`,
       width: "100%",
     },

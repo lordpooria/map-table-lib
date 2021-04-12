@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) =>
       minWidth: 100,
       marginRight: 8,
       alignItems: "center",
+      
     },
     speedSlider: {
       display: "flex",

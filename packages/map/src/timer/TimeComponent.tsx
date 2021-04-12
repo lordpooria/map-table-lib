@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from "react";
-import { getDisplayNoTimeError } from "../utils/utils";
 import { useLocalStore } from "easy-peasy";
 import moment from "moment-jalaali";
 import { timerStoreModel } from "./timeReducer";
@@ -7,6 +6,9 @@ import {
   formatPersianDateComplete,
   usePerisan,
   findIsAM,
+  getAMText,
+  getDisplayNoTimeError,
+  getPMText,
 } from "./dateFormatter";
 
 import { Typography } from "@material-ui/core";
@@ -18,8 +20,9 @@ import ClockComponent from "./ClockComponent";
 // import { TimeZone } from "../types";
 
 const TimerComponent = ({
-  am = "AM",
-  pm = "PM",
+  am = getAMText,
+  pm = getPMText,
+  noTimeError = getDisplayNoTimeError,
   clockProps,
   dateWrapperClasses,
   dateClasses,
@@ -47,7 +50,7 @@ const TimerComponent = ({
       } catch (e) {}
     } else {
       actions.setDisplayDate({
-        displayDate: getDisplayNoTimeError(),
+        displayDate: noTimeError,
         displayTime: "",
         isAM: true,
       });

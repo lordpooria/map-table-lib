@@ -1,6 +1,8 @@
-## Basic map example
+## Custom Font Family ClassName
 
-The only require field for this component is `data` and `mapProps`
+You could add font family like this with className approach
+
+***but you should consider !important in styels***
 
 ```tsx
 import React from "react";
@@ -8,8 +10,11 @@ import React from "react";
 import HesabaTimeDimension from "@hesaba/map";
 
 import data from "../data/data.json";
-import "./css/map.css";
+import { makeStyles } from "@material-ui/core";
 
+const useStyles = makeStyles({
+  container: { fontFamily: "Arial, Helvetica, sans-serif !important" },
+});
 
 export default function BaseMapScreen() {
  return(
@@ -19,6 +24,7 @@ export default function BaseMapScreen() {
         center: [35.76498031616211, 51.33673858642578],
         zoom: 13,
         zoomControl: false,
+        className: classes.container
       }}
       data={data as any}
     />
@@ -76,14 +82,3 @@ body {
 }
 
 ```
-
-You could add map.css like this to push your font family to the map component:
-
-```ts
-.leaflet-container {
-  font-family: Vazir;
-}
-
-```
-
-You also could add this global inside all.css 

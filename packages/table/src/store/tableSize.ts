@@ -1,6 +1,6 @@
 import { action, Action } from "easy-peasy";
 
-import { CurrentWidths, TotalWidth } from "@/types";
+import { CurrentWidths, TotalWidth } from "../types";
 
 export interface VTStoreTableSize {
   currentWidths: CurrentWidths;

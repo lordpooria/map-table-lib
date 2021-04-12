@@ -7,9 +7,9 @@ import BaseMapMD from "./docs/BaseMap.md";
 import React, { useState } from "react";
 import { DocsProvider } from "./docs/DocsProvider";
 
-export const SimpleMap = () => (
-  <HesabaTimeDimension mapProps={baseMapProps} data={data as any} />
-);
+export const SimpleMap = () => {
+  return <HesabaTimeDimension mapProps={baseMapProps} data={data as any} />;
+};
 
 SimpleMap.parameters = {
   docs: {

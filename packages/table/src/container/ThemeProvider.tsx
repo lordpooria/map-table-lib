@@ -1,12 +1,7 @@
 import React from "react";
-import { create } from "jss";
-import expand from "jss-plugin-expand";
-import rtl from "jss-rtl";
+
 import {
   ThemeProvider,
-  StylesProvider,
-  createGenerateClassName,
-  jssPreset,
   createMuiTheme,
   responsiveFontSizes,
 } from "@material-ui/core/styles";
@@ -14,25 +9,7 @@ import {
 import rawThemeObj from "../utils/theme";
 import fontSelector from "../utils/fontSelector";
 import { useTStoreState } from "../store/reducerHooks";
-import { WrapperProps } from "@/virtualize-table/container-virtual";
-//create material-ui themes
-/* const rawRTLThemeObj = { ...rawThemeObj, direction: 'rtl' }
-const theme = createMuiTheme(rawThemeObj);
-const RTLtheme = createMuiTheme(rawRTLThemeObj); */
-
-// add "jss-plugin-expand" to it's correct place in preset Default
-const PluginArray = [...jssPreset().plugins, rtl()];
-PluginArray.splice(4, 0, expand());
-
-// Create a JSS instance with the default preset of plugins + expand plugin.
-const jss = create({
-  plugins: [...PluginArray],
-});
-
-// The standard class name generator.
-const generateClassName = createGenerateClassName({
-  productionPrefix: "Hesaba",
-});
+import { WrapperProps } from "../virtualize-table/container-virtual";
 
 const ThemeMaker = ({
   children,
@@ -57,13 +34,7 @@ const ThemeMaker = ({
 
   let theme = createMuiTheme(localRawThemeObj);
   theme = responsiveFontSizes(theme);
-  return (
-    <StylesProvider jss={jss} generateClassName={generateClassName}>
-      {/* MuiThemeProvider makes the theme available down the React tree
-          thanks to React context. */}
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </StylesProvider>
-  );
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export default ThemeMaker;

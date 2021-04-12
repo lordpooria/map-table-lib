@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { _getFeatureBetweenDates, _getFeatureTimes } from "../utils/layer.util";
 import { useTDStoreState } from "../store/reducerHooks";
@@ -9,28 +9,33 @@ export default function TDGeojsonLayer({
   pathOptions,
   circleProps,
   polylineProps,
+  ToolTipComponent,
 }: TDLayerOptions) {
   const currentData = useTDStoreState((state) => state.currentData);
 
   return (
     <>
-      {currentData?.features.map((f) =>
-        (f.geometry as any).geometries.map((g: any) =>
-          g.type === "Point" ? (
-            <TDCircleMarker
-              coordinates={g.coordinates}
-              pathOptions={{ color: f?.properties?.color, ...pathOptions }}
-              circleProps={circleProps}
-            />
-          ) : (
-            <TDPolyline
-              coordinates={g.coordinates}
-              pathOptions={{ color: f?.properties?.color, ...pathOptions }}
-              polylineProps={polylineProps}
-            />
-          )
-        )
-      )}
+      {currentData?.features.map((f, index) => (
+        <Fragment key={index}>
+          {(f.geometry as any).geometries.map((g: any) =>
+            g.type === "Point" ? (
+              <TDCircleMarker
+                coordinates={g.coordinates}
+                pathOptions={{ color: f?.properties?.color, ...pathOptions }}
+                circleProps={circleProps}
+                ToolTipComponent={ToolTipComponent}
+                properties={f.properties}
+              />
+            ) : (
+              <TDPolyline
+                coordinates={g.coordinates}
+                pathOptions={{ color: f?.properties?.color, ...pathOptions }}
+                polylineProps={polylineProps}
+              />
+            )
+          )}
+        </Fragment>
+      ))}
     </>
   );
 }

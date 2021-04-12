@@ -11,7 +11,7 @@ import {
   QuerySelectType,
   TotalWidth,
 } from "../types/useTableResizer";
-import { useTableSizeAction } from "@/container/TableSizeProvider";
+import { useTableSizeAction } from "../container/TableSizeProvider";
 // import { useStoreState } from "../store/reducerHooks";
 
 export const useTableResizer = (

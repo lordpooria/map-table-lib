@@ -4,6 +4,7 @@ export interface TimeProps {
   // timeZone: TimeZone;
   am?: string;
   pm?: string;
+  noTimeError?: string;
   dateClasses?: string;
   dateWrapperClasses?: string;
   amPmClasses?: string;

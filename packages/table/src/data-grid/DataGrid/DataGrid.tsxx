@@ -1,14 +1,14 @@
 // import React, { Fragment } from "react";
-// import { GridTableProps } from "@/types/tableTypes";
+// import { GridTableProps } from "/types/tableTypes";
 // import DataGridProvider from "../../container/Wrapper";
 // import DataGridRow from "../rows/DataGridRow";
 // import { useTableResizer } from "../../hooks/useTableResizer";
 // import useTableData from "../../hooks/useTableData";
 // import { useTStoreState } from "../../store/reducerHooks";
 // import DataGridHeader from "../header/DataGridHeader";
-// import { Table } from "@material-ui/core";
-// import TableToolbar from "@/toolbar/TableToolbar";
-// import CommonTablePagination from "@/pagination/CommonTablePagination";
+// import { Table } from "material-ui/core";
+// import TableToolbar from "/toolbar/TableToolbar";
+// import CommonTablePagination from "/pagination/CommonTablePagination";
 
 // const DataGridComponent = ({
 //   rows,

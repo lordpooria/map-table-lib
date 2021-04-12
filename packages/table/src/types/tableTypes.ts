@@ -4,7 +4,7 @@ import {
   VirtualTableContainerProps,
   WrapperProps,
 } from "../virtualize-table/types-virtual/VirtualTableContainer";
-import { TableToolbarProps } from "@/types/TableToolbar";
+import { TableToolbarProps } from "../types/TableToolbar";
 
 import { StyleTypes } from "./styles";
 

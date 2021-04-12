@@ -1,7 +1,7 @@
-import { CurrentWidths, TotalWidth } from "@/types";
+import { CurrentWidths, TotalWidth } from "../types";
 import { Actions, useLocalStore } from "easy-peasy";
 import React, { createContext, useContext } from "react";
-import vtStoreTableSize, { VTStoreTableSize } from "@/store/tableSize";
+import vtStoreTableSize, { VTStoreTableSize } from "../store/tableSize";
 
 type TableSizeStateType = {
   state: { currentWidths: CurrentWidths; totalWidth: TotalWidth };

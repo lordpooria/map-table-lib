@@ -16,3 +16,8 @@ export function formatPersianTimeComplete(m: Moment) {
 export function findIsAM(m: Moment) {
   return +m.hour() < 12;
 }
+
+export const getDisplayNoTimeError = "داده زمانی وجود ندارد";
+
+export const getAMText = "ق.ظ"
+export const getPMText = "ب.ظ"

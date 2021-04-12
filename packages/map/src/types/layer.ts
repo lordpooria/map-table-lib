@@ -2,6 +2,7 @@
 
 import { CircleMarkerProps } from "@react-leaflet/core";
 import { PathOptions } from "leaflet";
+import React from "react";
 import { PolylineProps } from "react-leaflet";
 
 export type TDLayerOptions = CommonLayerComponentProps &
@@ -21,7 +22,11 @@ export type TDLayerOptions = CommonLayerComponentProps &
 
 export interface CommonLayerComponentProps {
   pathOptions?: PathOptions;
+  ToolTipComponent?: React.FC<any> | boolean;
 }
 
-export type CircleLayerProps = { circleProps?: Partial<CircleMarkerProps> };
+export type CircleLayerProps = {
+  circleProps?: Partial<CircleMarkerProps>;
+  properties?: any;
+};
 export type PolylineLayerProps = { polylineProps?: Partial<PolylineProps> };
