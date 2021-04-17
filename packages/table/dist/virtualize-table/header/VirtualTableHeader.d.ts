@@ -1,3 +1,3 @@
-import { CommonHeaderProps } from "@/types/tableElements";
-declare const VirtualTableHeader: ({ selectable, columns, isSelected, totalWidth, classes, ...rest }: CommonHeaderProps) => JSX.Element;
+import { CompleteHeadProps } from "../../types/tableElements";
+declare const VirtualTableHeader: ({ selectable, isSelected, classes, width, CheckboxProps, ...rest }: CompleteHeadProps) => JSX.Element;
 export default VirtualTableHeader;

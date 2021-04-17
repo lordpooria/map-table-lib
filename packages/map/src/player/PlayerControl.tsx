@@ -10,7 +10,7 @@ import { playerStoreModel } from "./playerReducer";
 import { usePlayer } from "./usePlayer";
 
 import { PlayerCompleteProps } from "./PlayerControl.types";
-import { SmallIconButton } from "@hesaba/styled-component";
+import { SmallIconButton } from "@hesaba/theme-language"
 import { useTDStoreActions } from "../store/reducerHooks";
 import useStyles from "./PlayerControl.styles";
 import { withStyles } from "@material-ui/core";

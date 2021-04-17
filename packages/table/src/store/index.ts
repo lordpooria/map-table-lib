@@ -10,6 +10,7 @@ import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
 import { reorderValues } from "../filter/components/utilsFilter";
 
 export interface VTStoreModel {
+  VTVersion: string;
   settings: { direction: PageDir; lang: string };
   visibleRows: TableRows;
   enhancedColumns: TableColumns;
@@ -44,6 +45,7 @@ export interface VTStoreModel {
 }
 
 export const vtStore: VTStoreModel = {
+  VTVersion: "1.0.0",
   settings: { direction: "rtl", lang: "fa" },
   visibleRows: [],
   enhancedColumns: [],
@@ -129,15 +131,15 @@ export const vtStore: VTStoreModel = {
 
     state.enhancedColumns.map((ec) => (ec.sorted = undefined));
     state.enhancedColumns[idx].sorted = sortType;
-
-    state.visibleRows =
-      sortType === "DESC"
-        ? state.visibleRows.sort((a, b) =>
-            a[columnKey] < b[columnKey] ? 1 : -1
-          )
-        : state.visibleRows.sort((a, b) =>
-            a[columnKey] < b[columnKey] ? -1 : 1
-          );
+    if (state.visibleRows.length > 0)
+      state.visibleRows =
+        sortType === "DESC"
+          ? state.visibleRows.sort((a, b) =>
+              (a[columnKey] as any) < (b[columnKey] as any) ? 1 : -1
+            )
+          : state.visibleRows.sort((a, b) =>
+              (a[columnKey] as any) < (b[columnKey] as any) ? -1 : 1
+            );
   }),
 
   filterSetColumn: action((state, action) => {

@@ -8,7 +8,7 @@ addParameters({
     page: DocsPage,
   },
 });
-addDecorator(withPropsTable);
+// addDecorator(withPropsTable);
 
 
 // export const parameters = {

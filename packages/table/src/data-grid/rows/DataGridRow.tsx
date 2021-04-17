@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { Fragment } from "react";
 import { commonSidebar } from "../../utils/themeConstants";
 import Cell from "../../cell/Cell";
-import { CommonTableRowProps } from "../../types/tableElements";
+import { VTPublicRowProps } from "../../types/tableElements";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -39,7 +39,7 @@ const DataGridRow = ({
   rows,
   classes,
   stickyColumns,
-}: CommonTableRowProps) => {
+}: VTPublicRowProps) => {
   const rowClasses = useStyles();
 
   const toggleSingleRow = useTStoreActions(

@@ -63,6 +63,7 @@ const HeadCell = ({
   // currentWidths,
   classes,
   sticky,
+  DividerProps,
   ...rest
 }: HeaderCellProps) => {
   const cellClasses = useHeadStyles();
@@ -105,9 +106,10 @@ const HeadCell = ({
 
       {resizable && (
         <div className={clsx(DRAG_CLASS, cellClasses.dividerIconWrapper)}>
-          {/* <span className={clsx(cellClasses.dividerIcon, classes?.divider)} /> */}
           <DividerIcon
+          
             className={clsx(cellClasses.dividerIcon, classes?.divider)}
+            {...DividerProps}
           />
         </div>
       )}

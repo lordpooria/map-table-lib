@@ -4,29 +4,29 @@ import store, { VTStoreModel } from "../store";
 import ThemeMaker from "./ThemeProvider";
 import { WrapperProps } from "../virtualize-table/container-virtual";
 import { TableSizeProvider } from "./TableSizeProvider";
+import { StyleProvider } from "@hesaba/theme-language";
 
-const DataGridProvider: FC = ({ children }) => {
+export const TableStoreProvider: FC = ({ children }) => {
   const easyPeasyStore = useStore<VTStoreModel>();
-  const isWrapepdWithCTProvider = easyPeasyStore?.getState()?.filters;
+  const isWrapepdWithCTProvider = easyPeasyStore?.getState()?.VTVersion;
 
   if (isWrapepdWithCTProvider) {
-    // we need to wrap it with a fragment because t's not allowed for children to be a ReactNode
-    // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18051
+   
     return <>{children}</>;
   }
 
   return <StoreProvider store={store}>{children}</StoreProvider>;
 };
 
-const Provider = ({ children, direction, theme }: WrapperProps) => (
-  <DataGridProvider>
-    <TableSizeProvider>
-      <ThemeMaker direction={direction} theme={theme}>
-        {children}
-      </ThemeMaker>
-    </TableSizeProvider>
-  </DataGridProvider>
+export const Provider = ({
+  children,
+  direction,
+  language,
+  theme,
+}: WrapperProps) => (
+  <TableSizeProvider>
+    <StyleProvider language={language} direction={direction} theme={theme}>
+      <ThemeMaker>{children}</ThemeMaker>
+    </StyleProvider>
+  </TableSizeProvider>
 );
-
-
-export default Provider;

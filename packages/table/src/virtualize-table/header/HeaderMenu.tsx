@@ -12,6 +12,7 @@ import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
 import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
 import { SmallIconButton } from "../../styled-component/StyledButton";
 import { SortType } from "../../types/main";
+import { VTMainListProps } from "../../types";
 // import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
@@ -26,7 +27,7 @@ const useStyles = makeStyles(() =>
 
 interface Props {
   index: number;
-  sortable?: boolean;
+  sortable?: VTMainListProps["sortable"];
   columnKey: string;
   sorted: SortType;
 }

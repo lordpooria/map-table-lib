@@ -7,11 +7,12 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { useTStoreActions } from "../../store/reducerHooks";
-import MoreVert from "src/assets/icons/common/MoreVertIcon";
-import ArrowDown from "src/assets/icons/common/ArrowDownIcon";
-import ArrowUp from "src/assets/icons/common/ArrowUpIcon";
+import MoreVert from "../../assets/icons/common/MoreVertIcon";
+import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
+import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
 import { SortType } from "../../types/main";
 import { SmallIconButton } from "../styled-component/StyledButton";
+import { VTMainListProps } from "../../types";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) =>
 
 interface Props {
   index: number;
-  sortable?: boolean;
+  sortable?: VTMainListProps["sortable"];
   columnKey: string;
   sorted: SortType;
 }

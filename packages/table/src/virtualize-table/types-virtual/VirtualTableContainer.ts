@@ -1,5 +1,6 @@
 import { ThemeOptions } from "@material-ui/core";
 import { TableClasses } from "../../types/styles";
+import { Dir, LangString } from "@hesaba/theme-language"
 
 export interface VirtualTableContainerType extends VirtualTableContainerProps {
   children: React.ReactNode;
@@ -8,11 +9,12 @@ export interface VirtualTableContainerType extends VirtualTableContainerProps {
 
 export interface VirtualTableContainerProps {
   classes?: TableClasses;
-  direction?: AppDirection;
+  direction?: Dir;
 }
 
 export interface WrapperProps {
   children: React.ReactNode;
-  direction: AppDirection;
+  direction?: Dir;
+  language?: LangString;
   theme?: ThemeOptions;
 }

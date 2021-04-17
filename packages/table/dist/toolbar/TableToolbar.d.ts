@@ -1,3 +1,8 @@
 import { TableToolbarCompleteProps } from "../types/TableToolbar";
-declare const VirtualToolbar: ({ title, numRowsSelected, operationOnRows, columns, classes, }: TableToolbarCompleteProps) => JSX.Element;
-export default VirtualToolbar;
+export declare const TableToolbar: ({ title, classes, ...rest }: TableToolbarCompleteProps) => JSX.Element;
+export declare function ToolbarMoreVert({ classes, }: {
+    classes: TableToolbarCompleteProps["classes"];
+}): JSX.Element;
+export declare function ToolbarOperation({ operationOnRows, }: {
+    operationOnRows?: TableToolbarCompleteProps["operationOnRows"];
+}): JSX.Element;

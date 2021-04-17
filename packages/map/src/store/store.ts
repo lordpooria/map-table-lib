@@ -27,6 +27,7 @@ export interface TDStoreModel {
   currentData: CurrentData | null;
   users: Users | null;
   formattedData: FormattedData;
+  
   numberNextTimesReady: number;
   availableTimes: AvailableTimes;
   syncedLayers: SyncedLayer;

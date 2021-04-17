@@ -40,7 +40,9 @@ export default function MapComponent() {
           zoom: 13,
           zoomControl: false,
           className: styles.map,
+          
         }}
+        
         data={data as any}
         layerProps={{ToolTipComponent:Tooltip}}
         timeProps={{ am: "AM", pm: "PM", noTimeError: "No time Available" }}

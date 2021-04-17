@@ -1,7 +1,5 @@
-// We want to always get from source
-import Table from '../components/Table'
-
+import Table from "../components/table-test/Table";
 
 export default function Index() {
-  return(<Table />);
+  return <Table />;
 }

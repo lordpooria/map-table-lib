@@ -2,15 +2,14 @@ import React from "react";
 import clsx from "clsx";
 import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
 
-import { useTStoreActions } from "../../store/reducerHooks";
+import { useTStoreActions, useTStoreState } from "../../store/reducerHooks";
 import Cell from "../../cell/Cell";
 import { Fragment } from "react";
 import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
-import { CommonTableRowProps } from "../../types/tableElements";
+import { CompleteRowProps } from "../../types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
-import { calcRowWidth } from "../../utils/helper";
-import { useTableSizeState } from "../../container/TableSizeProvider";
+import { useCalcTableWidth } from "../../utils/helper";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export function VirtualTableRow(props: CommonTableRowProps) {
+export function VirtualTableRow(props: CompleteRowProps) {
   return (
     <>
       <SingleVirtualTableRow {...props} />
@@ -44,27 +43,26 @@ export function VirtualTableRow(props: CommonTableRowProps) {
 const SingleVirtualTableRow = ({
   style,
   rowIndex,
-  // totalWidth,
   selectable,
-  columns,
-  rows,
   classes,
+  width,
+  CheckboxProps,
   ...rest
-}: CommonTableRowProps) => {
+}: CompleteRowProps) => {
   const rowClasses = useStyles();
   const commonClasses = useCommonStyles();
-
+  const visibleColumns = useTStoreState((state) => state.visibleColumns);
+  const visibleRows = useTStoreState((state) => state.visibleRows);
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
-
-  const { totalWidth } = useTableSizeState();
+  const calcRowWidth = useCalcTableWidth(visibleColumns, width);
 
   return (
     <div
       style={{
         ...style,
-        width: calcRowWidth(totalWidth, columns),
+        width: calcRowWidth(),
         overflow: "hidden",
         marginTop: commonSidebar.itemHeight,
       }}
@@ -72,7 +70,7 @@ const SingleVirtualTableRow = ({
         HESABA_TABLE_ROW_CLASS,
         rowClasses.tableRow,
         classes?.root,
-        { [rowClasses.selected]: rows[rowIndex].selected },
+        { [rowClasses.selected]: visibleRows[rowIndex].selected },
         {
           [classes?.evenRow || "tempEvenRow"]:
             classes?.evenRow && rowIndex % 2 === 0,
@@ -85,25 +83,26 @@ const SingleVirtualTableRow = ({
     >
       {selectable && (
         <Checkbox
-          checked={rows[rowIndex].selected}
+          checked={visibleRows[rowIndex].selected}
           onChange={() => {
             toggleSingleRow({ index: rowIndex });
           }}
           // name={name}
           color="primary"
           classes={{ root: commonClasses.checkbox }}
+          {...CheckboxProps}
         />
       )}
 
-      {columns.map((props, colIndex) => (
+      {visibleColumns.map((props, colIndex) => (
         <Fragment key={props.key}>
           <Cell
             {...props}
             {...rest}
             colIndex={colIndex}
-            row={rows[rowIndex]}
+            row={visibleRows[rowIndex]}
             rowIndex={rowIndex}
-            columnsLength={columns.length}
+            columnsLength={visibleColumns.length}
             colKey={props.key}
           />
         </Fragment>

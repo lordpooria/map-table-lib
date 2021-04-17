@@ -2,6 +2,7 @@ import React from "react";
 import { createStyles, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import { VirtualTableContainerType } from "../types-virtual/VirtualTableContainer";
+import { useLanguageState } from "@hesaba/theme-language";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -16,9 +17,9 @@ const VirtualTableContainer = ({
   children,
   classes,
   width,
-  direction,
 }: VirtualTableContainerType) => {
   const containerClasses = useStyles();
+  const { direction } = useLanguageState();
   return (
     <div
       className={clsx(containerClasses.vtContainerRoot, classes?.root)}

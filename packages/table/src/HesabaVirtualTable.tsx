@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Provider from "./container/Wrapper";
+import { Provider, TableStoreProvider } from "./container/Wrapper";
 import { VirtualTableProps } from "./types/tableTypes";
 import VirtualizaTable from "./virtualize-table/VirtualizaTable";
 
@@ -7,14 +7,17 @@ import VirtualizaTable from "./virtualize-table/VirtualizaTable";
  * Decorator component that automatically adjusts the width and height of a single child
  */
 export const HesabaVirtualTable: FC<VirtualTableProps> = ({
-  direction = "ltr",
+  direction,
+  language,
   theme,
   ...props
 }: VirtualTableProps) => {
   return (
-    <Provider direction={direction} theme={theme}>
-      <VirtualizaTable {...props} direction={direction} />
-    </Provider>
+    <TableStoreProvider>
+      <Provider direction={direction} language={language} theme={theme}>
+        <VirtualizaTable {...props} />
+      </Provider>
+    </TableStoreProvider>
   );
 };
 

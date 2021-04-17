@@ -6,7 +6,7 @@ import { useTStoreActions } from "../../store/reducerHooks";
 
 import HeadCell from "src/cell/HeadCell";
 import { Fragment } from "react";
-import { CommonHeaderProps } from "../../types/tableElements";
+import { VTPublicHeaderProps } from "../../types/tableElements";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -55,7 +55,7 @@ const DataGridHeader = ({
   sortable,
   isSelected,
   stickyColumns,
-}: CommonHeaderProps) => {
+}: VTPublicHeaderProps) => {
   const classes = useStyles();
 
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);

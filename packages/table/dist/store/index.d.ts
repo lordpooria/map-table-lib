@@ -3,6 +3,7 @@ import { OnSetTableDataPayload, SetFilterColPayload, SetFilterOpPayload, SetFilt
 import { TableFilterType } from "../types/VirtualTableFilter";
 import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
 export interface VTStoreModel {
+    VTVersion: string;
     settings: {
         direction: PageDir;
         lang: string;
@@ -22,6 +23,7 @@ export interface VTStoreModel {
     }>;
     toggleShowFilter: Action<VTStoreModel, boolean>;
     setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
+    fakeAppendTableData: Action<VTStoreModel, any>;
     setStickyColumn: Action<VTStoreModel, {
         index: number;
     }>;

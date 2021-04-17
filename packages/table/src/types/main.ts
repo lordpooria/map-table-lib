@@ -41,7 +41,7 @@ type TableValue =
     }
   | undefined;
 
-export type RawTableRow = Record<string, TableValue> & { id?: TableValue };
+export type RawTableRow = Record<string, TableValue> & { id?: number | string };
 
 export type RawTableRows = Array<RawTableRow>;
 

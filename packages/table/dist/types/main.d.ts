@@ -22,6 +22,16 @@ export declare type RawTableColumn<T> = TableColumnData & {
     className?: string;
     custom?: T;
 };
+declare type BaseTableValue = string | number | boolean;
+declare type TableValue = BaseTableValue | {
+    value: BaseTableValue;
+    collapsedRows?: RawTableRows;
+    extraData?: any;
+} | undefined;
+export declare type RawTableRow = Record<string, TableValue> & {
+    id?: number | string;
+};
+export declare type RawTableRows = Array<RawTableRow>;
 export declare type RawTableColumns<T extends {} = any> = Array<RawTableColumn<T>>;
 export declare type TableColumn<T extends {} = any> = RawTableColumn<T> & {
     [DATA_FIELD]: string;
@@ -31,8 +41,11 @@ export declare type TableColumn<T extends {} = any> = RawTableColumn<T> & {
     type: ColumnType;
 };
 export declare type TableColumns<T extends {} = any> = Array<TableColumn<T>>;
-export declare type RawTableRow = Record<string, any>;
-export declare type RawTableRows = Array<RawTableRow>;
 export declare type TableRows = Array<RawTableRow & {
     selected: boolean;
 }>;
+export declare type TableDataParser = (columns: RawTableColumns, rows: RawTableRows) => {
+    enhancedColumns: TableColumns;
+    visibleRows: TableRows;
+};
+export {};

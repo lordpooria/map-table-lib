@@ -5,9 +5,9 @@ interface Props {
   className?: string;
 }
 
-const DividerIcon = ({ className }: Props) => {
+const DividerIcon = ({ className, ...rest }: Props) => {
   return (
-    <SvgIcon className={className} id="mdi-dots-vertical">
+    <SvgIcon className={className} id="mdi-dots-vertical" {...rest}>
       <path d="M11 24V5h2v24z" />
     </SvgIcon>
   );

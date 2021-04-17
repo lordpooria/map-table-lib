@@ -1,8 +1,8 @@
 import { FilterOperationsType } from "./VirtualTableFilter";
-import { RawTableColumns, RawTableRows, TableColumnData } from "./main";
+import { TableColumnData, TableColumns, TableRows } from "./main";
 export declare type OnSetTableDataPayload = {
-    columns: RawTableColumns;
-    rows: RawTableRows;
+    enhancedColumns: TableColumns;
+    visibleRows: TableRows;
 };
 export declare type SetFilterColPayload = {
     filterIndex: number;

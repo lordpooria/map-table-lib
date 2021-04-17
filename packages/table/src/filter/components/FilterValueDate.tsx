@@ -1,26 +1,27 @@
 import React from "react";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import MomentUtils from "@date-io/moment";
-
-import EditedJalaliUtils from "../../utils/calendar";
-import moment from "moment";
-import jMoment from "moment-jalaali";
+import DateFnsUtils from '@date-io/dayjs';
+// import EditedJalaliUtils from "../../utils/calendar";
+import dayjs from "dayjs";
+import jalaliday from "jalaliday";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import { FilterBaseProps } from "./FilterValues";
 
-jMoment.loadPersian({ dialect: "persian-modern", usePersianDigits: true });
+dayjs.extend(jalaliday);
+
+export type Calndar = "gregory" | "jalali";
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const FilterValueDateWrapper = ({ children }: Props) => {
-  const calendar: any = "";
+  const calendar: Calndar = "jalali";
   return (
     <MuiPickersUtilsProvider
-      utils={calendar === "jalali" ? EditedJalaliUtils : MomentUtils}
+      utils={calendar === "jalali" ? DateFnsUtils : DateFnsUtils}
       locale={calendar === "jalali" ? "fa" : "en"}
-      libInstance={calendar === "jalali" ? jMoment : moment}
+      // libInstance={(dayjs as any).calendar(calendar)}
     >
       {children}
     </MuiPickersUtilsProvider>
@@ -35,11 +36,7 @@ const FilterValueDate = ({
   classes,
   label,
 }: FilterBaseProps) => {
-  
-
-  const handleChange = (_: number) => (
-    date: MaterialUiPickersDate
-  ) => {
+  const handleChange = (_: number) => (date: MaterialUiPickersDate) => {
     if (!date) return;
     onSetFilter(filterIndex, valIndex, date.toISOString());
   };

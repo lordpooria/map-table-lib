@@ -5,6 +5,7 @@ import { TDLayerOptions } from "./layer";
 import { GeoJSONData } from "./common";
 import { LegendsContainerProps } from "./legend";
 import { MapContainerProps } from "react-leaflet";
+import { TdTableProps } from "./TableType";
 
 export interface HesabaTimeDimensionProps {
   data: GeoJSONData;
@@ -17,9 +18,11 @@ export interface HesabaTimeDimensionProps {
   geojsonProps?: GeoJSONOptions;
   layerProps?: TDLayerOptions;
   extralLayerProps?: any;
+  tableProps?: TdTableProps;
   withTable?: boolean;
 
   LegendComponent?: LegendsContainerProps["LegendComponent"];
+  theme?: any;
 }
 
 export interface TimeDimensionViewProps {

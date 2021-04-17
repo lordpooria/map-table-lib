@@ -7,7 +7,7 @@ import {
   PlayerSlider as Slider,
   PlayerThumb,
   ValueLabelComponent,
-} from "@hesaba/styled-component";
+} from "../../sliders";
 import GaugeIcon from "../../assets/icons/common/GaugeIcon";
 
 function valuetext(value: number) {
@@ -38,7 +38,6 @@ const SpeedSlider = memo(
     max,
     speedSliderValue,
   }: Props) => {
-    
     return (
       <div className={clsx(speedSliderClasses, classes?.speedSliderWrapper)}>
         <RenderComponent Component={speedIcon}>

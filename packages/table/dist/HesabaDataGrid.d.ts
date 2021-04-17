@@ -1,3 +1,3 @@
 import { GridTableProps } from "./types/tableTypes";
-declare const HesabaDataGrid: ({ direction, ...props }: GridTableProps) => JSX.Element;
+declare const HesabaDataGrid: ({ direction, }: GridTableProps) => JSX.Element;
 export default HesabaDataGrid;

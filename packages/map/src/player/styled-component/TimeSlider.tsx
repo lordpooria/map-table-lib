@@ -6,7 +6,7 @@ import {
   PlayerSlider as Slider,
   PlayerThumb,
   ValueLabelComponent,
-} from "@hesaba/styled-component";
+} from "../../sliders"
 
 interface Props {
   timeSteps: PlayerCompleteProps["timeSteps"];

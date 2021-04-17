@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { ThemeProvider } from "@hesaba/styled-component";
+import { StyleProvider } from "@hesaba/theme-language";
 
 import TDProvider from "./Provider";
 import useStyles from "./HesabaTimeDimension.styles";
@@ -12,15 +12,19 @@ import { useParseData } from "../hooks/useParseData";
 import { MapContainer, TileLayer } from "react-leaflet";
 import clsx from "clsx";
 import TDTable from "../table/TDTable";
+import ThemeMaker from "./ThemeProvider";
+import { TableStoreProvider } from "@hesaba/table";
 
 const HesabaTimeDimension: FC<HesabaTimeDimensionProps> = (
   props: HesabaTimeDimensionProps
 ) => {
   return (
     <TDProvider>
-      <ThemeProvider >
-        <CommonMap {...props} />
-      </ThemeProvider>
+      <StyleProvider theme={props.theme} direction="ltr" language="en">
+        <ThemeMaker>
+          <CommonMap {...props} />
+        </ThemeMaker>
+      </StyleProvider>
     </TDProvider>
   );
 };
@@ -36,12 +40,22 @@ const CommonMap: FC<HesabaTimeDimensionProps> = ({
   mapProps: { className, ...mapProps },
   LegendComponent,
   withTable,
+  tableProps,
 }: HesabaTimeDimensionProps) => {
   useParseData(data);
-  const classes = useStyles(withTable);
+  const classes = useStyles();
   return (
-    <div style={{ display: "flex" }}>
-      <MapContainer className={clsx(classes.mapRoot, className)} {...mapProps}>
+    <div className={classes.tdRoot}>
+      <MapContainer
+        className={clsx(
+          {
+            [classes.mapRoot]: !withTable,
+            [classes.mapRootWithTable]: withTable,
+          },
+          className
+        )}
+        {...mapProps}
+      >
         {children ? (
           children
         ) : (
@@ -61,7 +75,11 @@ const CommonMap: FC<HesabaTimeDimensionProps> = ({
           LegendComponent={LegendComponent}
         />
       </MapContainer>
-      {withTable && <TDTable />}
+      {withTable && (
+        <TableStoreProvider>
+          <TDTable className={classes.tableRoot} {...tableProps} />
+        </TableStoreProvider>
+      )}
     </div>
   );
 };

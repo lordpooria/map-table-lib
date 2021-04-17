@@ -11,7 +11,7 @@ import { CommonVirtualTableContainer } from "./table-test/container";
 const useStyles = makeStyles((theme) =>
   createStyles({
     toolbar: {
-      backgroundColor: "#D0c",
+      backgroundColor: "#D0C",
     },
 
     footer: {

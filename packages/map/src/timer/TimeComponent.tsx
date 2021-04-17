@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useLocalStore } from "easy-peasy";
-import moment from "moment-jalaali";
+import day from "dayjs";
 import { timerStoreModel } from "./timeReducer";
 import {
   formatPersianDateComplete,
@@ -40,7 +40,7 @@ const TimerComponent = ({
   const update = useCallback((currentTime) => {
     if (currentTime >= 0) {
       try {
-        const date = moment(currentTime);
+        const date = day(currentTime);
 
         actions.setDisplayDate({
           displayDate: formatPersianDateComplete(date),
