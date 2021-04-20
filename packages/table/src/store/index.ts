@@ -85,7 +85,6 @@ export const vtStore: VTStoreModel = {
   }),
 
   fakeAppendTableData: action((state, { rows, index }) => {
-    console.log(index, rows);
     state.visibleRows = [
       ...state.visibleRows.slice(0, index + 1),
       ...rows,

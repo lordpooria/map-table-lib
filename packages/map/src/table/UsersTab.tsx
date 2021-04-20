@@ -20,7 +20,6 @@ const UsersTab = ({ classes }: Props) => {
     setValue(newValue);
   };
   const users = useTDStoreState((state) => state.users);
-  console.log(users);
   return (
     <>
       <AppBar

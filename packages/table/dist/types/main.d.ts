@@ -9,6 +9,7 @@ export interface TableComponentProps {
     row: any;
     rowKey: any;
     label: string;
+    className?: string;
 }
 export declare type TableColumnData = {
     key: string;
@@ -22,13 +23,7 @@ export declare type RawTableColumn<T> = TableColumnData & {
     className?: string;
     custom?: T;
 };
-declare type BaseTableValue = string | number | boolean;
-declare type TableValue = BaseTableValue | {
-    value: BaseTableValue;
-    collapsedRows?: RawTableRows;
-    extraData?: any;
-} | undefined;
-export declare type RawTableRow = Record<string, TableValue> & {
+export declare type RawTableRow = Record<string, /*TableValue*/ any> & {
     id?: number | string;
 };
 export declare type RawTableRows = Array<RawTableRow>;
@@ -48,4 +43,3 @@ export declare type TableDataParser = (columns: RawTableColumns, rows: RawTableR
     enhancedColumns: TableColumns;
     visibleRows: TableRows;
 };
-export {};

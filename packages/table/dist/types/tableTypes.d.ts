@@ -55,7 +55,7 @@ export declare type VirtualTableProps = CommonPublicProps & CommonTableProps & {
      */
     pagination?: TablePaginationProps;
     VTFilterProps?: PublicFilterProps;
-    VTCommonTableElProps: CommonTableElProps;
+    VTCommonTableElProps?: CommonTableElProps;
 };
 export interface GridTableProps extends CommonTableProps {
 }

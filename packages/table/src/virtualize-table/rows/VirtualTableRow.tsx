@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import clsx from "clsx";
 import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
 
@@ -9,7 +9,8 @@ import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import { CompleteRowProps } from "../../types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
-import { useCalcTableWidth } from "../../utils/helper";
+import { chooseClass, useCalcTableWidth } from "../../utils/helper";
+import { useTableRowState } from "../../container/TableRowProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -20,6 +21,8 @@ const useStyles = makeStyles((theme) =>
     tableRow: {
       display: "flex",
       alignItems: "center",
+    },
+    tableRowCommon: {
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
       "&:hover": {
         backgroundColor: "rgba(0,0,0,0.1)",
@@ -29,6 +32,7 @@ const useStyles = makeStyles((theme) =>
     selected: {
       backgroundColor: "rgba(100,100,255,0.1)",
     },
+    activatedRow: { backgroundColor: "rgba(255,100,255,0.1)" },
   })
 );
 
@@ -47,6 +51,8 @@ const SingleVirtualTableRow = ({
   classes,
   width,
   CheckboxProps,
+  onRowClick,
+  extraStyles,
   ...rest
 }: CompleteRowProps) => {
   const rowClasses = useStyles();
@@ -57,11 +63,15 @@ const SingleVirtualTableRow = ({
     (actions) => actions.toggleSingleRow
   );
   const calcRowWidth = useCalcTableWidth(visibleColumns, width);
-
+  const { activeRow } = useTableRowState();
+  const onRowSelect = useCallback(() => {
+    onRowClick && onRowClick(rowIndex);
+  }, [onRowClick]);
   return (
     <div
       style={{
         ...style,
+        extraStyles,
         width: calcRowWidth(),
         overflow: "hidden",
         marginTop: commonSidebar.itemHeight,
@@ -69,8 +79,9 @@ const SingleVirtualTableRow = ({
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
         rowClasses.tableRow,
-        classes?.root,
+        chooseClass(rowClasses.tableRowCommon, classes?.root),
         { [rowClasses.selected]: visibleRows[rowIndex].selected },
+        { [rowClasses.activatedRow]: activeRow === rowIndex },
         {
           [classes?.evenRow || "tempEvenRow"]:
             classes?.evenRow && rowIndex % 2 === 0,
@@ -80,6 +91,7 @@ const SingleVirtualTableRow = ({
             classes?.oddRow && rowIndex % 2 !== 0,
         }
       )}
+      onClick={onRowSelect}
     >
       {selectable && (
         <Checkbox

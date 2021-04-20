@@ -34,14 +34,13 @@ export declare const SmallIconButton: React.JSXElementConstructor<Omit<{
     disableTouchRipple?: boolean | undefined;
     focusRipple?: boolean | undefined;
     focusVisibleClassName?: string | undefined;
-    LinkComponent?: React.ElementType<any> | undefined;
     onFocusVisible?: React.FocusEventHandler<any> | undefined;
     sx?: import("@material-ui/system").SxProps<import("@material-ui/core").Theme> | undefined;
     tabIndex?: string | number | undefined;
     TouchRippleProps?: Partial<import("@material-ui/core/ButtonBase/TouchRipple").TouchRippleProps> | undefined;
 }, "classes"> & import("@material-ui/core/OverridableComponent").CommonProps & Omit<Pick<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "key" | keyof React.ButtonHTMLAttributes<HTMLButtonElement>> & {
     ref?: ((instance: HTMLButtonElement | null) => void) | React.RefObject<HTMLButtonElement> | null | undefined;
-}, "color" | "size" | "disabled" | keyof import("@material-ui/core/OverridableComponent").CommonProps | "tabIndex" | "children" | "action" | "buttonRef" | "centerRipple" | "disableRipple" | "disableTouchRipple" | "focusRipple" | "focusVisibleClassName" | "LinkComponent" | "onFocusVisible" | "sx" | "TouchRippleProps" | "disableFocusRipple" | "edge">, "classes"> & import("@material-ui/core").StyledComponentProps<"root">>;
+}, "color" | "size" | "disabled" | keyof import("@material-ui/core/OverridableComponent").CommonProps | "tabIndex" | "children" | "action" | "buttonRef" | "centerRipple" | "disableRipple" | "disableTouchRipple" | "focusRipple" | "focusVisibleClassName" | "onFocusVisible" | "sx" | "TouchRippleProps" | "disableFocusRipple" | "edge">, "classes"> & import("@material-ui/core").StyledComponentProps<"root">>;
 declare type Props = IconButtonProps & {
     title: string;
 };

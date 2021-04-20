@@ -3,15 +3,15 @@ import jalaliday from "jalaliday";
 
 export function usePerisan() {
   dayjs.extend(jalaliday);
-  (dayjs as any).calendar("jalali");
+  (dayjs as any)().locale('fa').calendar("jalali");
   return null;
 }
 
 export function formatPersianDateComplete(m: Dayjs) {
-  return `${m.format("jYYYY dddd jD jMMMM")}`;
+  return `${m.locale('fa').calendar("jalali").format("YYYY dddd D MMMM")}`;
 }
 export function formatPersianTimeComplete(m: Dayjs) {
-  return `${m.format("hh:mm:ss A")}`;
+  return `${m.locale('fa').calendar("jalali").format("hh:mm:ss A")}`;
 }
 export function findIsAM(m: Dayjs) {
   return +m.hour() < 12;

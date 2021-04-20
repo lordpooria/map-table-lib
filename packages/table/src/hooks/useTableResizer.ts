@@ -26,7 +26,7 @@ export const useTableResizer = () => {
   const currentWidths = useRef<CurrentWidths>({});
   const totalWidth = useRef<TotalWidth>(0);
   const currentField = useRef<string>();
-  const actions = useTableSizeAction();
+  const { setSizes } = useTableSizeAction();
   const tableRef = useRef<HTMLDivElement | null | undefined>();
 
   // const dir = useStoreState((state) => state.settings.direction);
@@ -39,11 +39,12 @@ export const useTableResizer = () => {
       rowRef.current = tableRef.current?.querySelectorAll(
         `.${HESABA_TABLE_ROW_CLASS}`
       ) as NodeListOf<HTMLElement>;
-
       // }
     };
 
     const onMouseDown = (e: MouseEvent) => {
+      console.log(headers.current, rowRef.current);
+
       init();
       const div = e.target as HTMLElement;
       if (!div.classList.contains(DRAG_CLASS)) return;
@@ -118,13 +119,15 @@ export const useTableResizer = () => {
       if (dirRef.current === "rtl") {
         currentWidths.current[currentField.current] =
           -e.clientX + columnElements.current[0].getBoundingClientRect().right;
-        actions.setCurrentWidth({ currentWidths: currentWidths.current });
       } else {
         currentWidths.current[currentField.current] =
           e.clientX - columnElements.current[0].getBoundingClientRect().left;
-        actions.setCurrentWidth({ currentWidths: currentWidths.current });
       }
-      actions.setTotalWidth({ totalWidth: totalWidth.current });
+
+      setSizes({
+        totalWidth: totalWidth.current,
+        currentWidths: currentWidths.current,
+      });
     };
 
     const removeMouseDown = (table: HTMLDivElement) => {

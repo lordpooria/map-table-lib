@@ -8,7 +8,7 @@ export interface TDStoreTable {
   indicatorColor: string;
 
   setTabs: Action<TDStoreTable, TabType>;
-  setTabIndex: Action<TDStoreTable, string>;
+  setTabIndex: Action<TDStoreTable, { tabIndex: string; color: string }>;
 }
 
 export const tdStoreTableModel: TDStoreTable = {
@@ -21,10 +21,11 @@ export const tdStoreTableModel: TDStoreTable = {
     state.tabIndex = tabs[0].id;
     state.indicatorColor = tabs[0].color;
   }),
-  setTabIndex: action((state, tabIndex) => {
+  setTabIndex: action((state, { tabIndex, color }) => {
+    
     state.tabIndex = tabIndex;
-    state.indicatorColor =
-      state.tabs[+tabIndex] && state.tabs[+tabIndex]?.color;
+
+    state.indicatorColor = color;
   }),
 };
 

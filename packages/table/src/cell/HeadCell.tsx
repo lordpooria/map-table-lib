@@ -28,6 +28,7 @@ const useHeadStyles = makeStyles((theme) =>
     },
     titleText: {
       flex: 1,
+      fontFamily: "inherit",
     },
     dividerIcon: {
       pointerEvents: "none",
@@ -107,7 +108,6 @@ const HeadCell = ({
       {resizable && (
         <div className={clsx(DRAG_CLASS, cellClasses.dividerIconWrapper)}>
           <DividerIcon
-          
             className={clsx(cellClasses.dividerIcon, classes?.divider)}
             {...DividerProps}
           />

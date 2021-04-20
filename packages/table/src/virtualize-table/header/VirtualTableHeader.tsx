@@ -12,20 +12,19 @@ import clsx from "clsx";
 import useCommonStyles from "../../styles/commonStyles";
 
 import { CompleteHeadProps } from "../../types/tableElements";
-import { useCalcTableWidth } from "../../utils/helper";
+import { chooseClass, useCalcTableWidth } from "../../utils/helper";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     headerContainer: {
       display: "flex",
-      // flexDirection: theme.direction === "rtl" ? "row-reverse" : "row",
       top: 0,
-      left: 0,
       position: "sticky",
       zIndex: 2,
-      backgroundColor: "rgba(255,255,255,0.8)",
       alignItems: "center",
-      // justifyContent: "center",
+    },
+    commonHeaderContainer: {
+      backgroundColor: "rgba(255,255,255,0.8)",
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
     },
     titleText: {
@@ -48,9 +47,7 @@ const useStyles = makeStyles((theme) =>
 
 const VirtualTableHeader = ({
   selectable,
-
   isSelected,
-  // totalWidth,
   classes,
   width,
   CheckboxProps,
@@ -63,6 +60,7 @@ const VirtualTableHeader = ({
   const visibleColumns = useTStoreState((state) => state.visibleColumns);
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
   const calcRowWidth = useCalcTableWidth(visibleColumns, width);
+
   return (
     <div
       style={{
@@ -72,7 +70,7 @@ const VirtualTableHeader = ({
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
         tableClasses.headerContainer,
-        classes?.root
+        chooseClass(tableClasses.commonHeaderContainer, classes?.root)
       )}
     >
       {selectable && (

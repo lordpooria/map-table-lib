@@ -12,6 +12,7 @@ export interface TableComponentProps {
   row: any;
   rowKey: any;
   label: string;
+  className?:string
 }
 
 export type TableColumnData = {
@@ -30,18 +31,20 @@ export type RawTableColumn<T> = TableColumnData & {
   custom?: T;
 };
 
-type BaseTableValue = string | number | boolean;
+// type BaseTableValue = string | number | boolean;
 
-type TableValue =
-  | BaseTableValue
-  | {
-      value: BaseTableValue;
-      collapsedRows?: RawTableRows;
-      extraData?: any;
-    }
-  | undefined;
+// type TableValue =
+//   | BaseTableValue
+//   | {
+//       value: BaseTableValue;
+//       collapsedRows?: RawTableRows;
+//       extraData?: any;
+//     }
+//   | undefined;
 
-export type RawTableRow = Record<string, TableValue> & { id?: number | string };
+export type RawTableRow = Record<string, /*TableValue*/ any> & {
+  id?: number | string;
+};
 
 export type RawTableRows = Array<RawTableRow>;
 

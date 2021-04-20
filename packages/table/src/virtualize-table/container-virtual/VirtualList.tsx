@@ -9,10 +9,16 @@ import { CompleteMainListProps } from "../../types";
 import { useTStoreState } from "../../store/reducerHooks";
 import { commonSidebar } from "../../utils/themeConstants";
 import { useLanguageState } from "@hesaba/theme-language";
-import { makeStyles } from "@material-ui/core/styles";
+
+import { MAIN_LIST_ID } from "../../utils/constants";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {},
+});
+
+const outerElementTypeWithId = forwardRef((props: any, ref) => {
+  return <div id={MAIN_LIST_ID} {...props} ref={ref as any} />;
 });
 
 const VirtualList = memo(
@@ -102,22 +108,23 @@ const VirtualList = memo(
           itemCount={visibleRows.length}
           onScroll={onScroll}
           itemSize={itemSize}
-          itemKey={(index) => visibleRows[index].id as string}
+          itemKey={(index) => `${index}` as string}
           width={width}
           itemData={visibleRows}
           outerRef={setTableRef}
           innerElementType={innerElementType}
           className={clsx(tableClasses.root, classes?.table?.root)}
+          outerElementType={outerElementTypeWithId}
         >
           {({ index, ...rest }) => (
             <VirtualTableRow
               rowIndex={index}
               selectable={selectable}
               classes={classes?.row}
-              {...rest}
               width={width}
               {...VTCommonTableElProps}
               {...VTRowProps}
+              {...rest}
               // placeholderColumns={placeholderColumns}
               // placeholderTotalWidth={placeholderTotalWidth}
               // placeholderCurrentWidths={placeholderCurrentWidths}

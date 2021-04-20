@@ -74,7 +74,7 @@ export type VirtualTableProps = CommonPublicProps &
 
     VTFilterProps?: PublicFilterProps;
 
-    VTCommonTableElProps: CommonTableElProps;
+    VTCommonTableElProps?: CommonTableElProps;
 
     
   };

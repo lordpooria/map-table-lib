@@ -11,14 +11,14 @@ import MoreVert from "../../assets/icons/common/MoreVertIcon";
 import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
 import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
 import { SortType } from "../../types/main";
-import { SmallIconButton } from "../styled-component/StyledButton";
+import { SmallIconButton } from "@hesaba/theme-language";
 import { VTMainListProps } from "../../types";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },
 }))(SmallIconButton);
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     icons: { width: 14, height: 14 },
   })

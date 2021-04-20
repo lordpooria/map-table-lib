@@ -17,6 +17,17 @@ const TableSizeStateContext = createContext<TableSizeStateType>(
   {} as TableSizeStateType
 );
 
+// export const TableSizeProvider: FC = ({ children }) => {
+//   const easyPeasyStore = useStore<VTStoreTableSize>();
+//   const isWrapepdWithVTSizeProvider = easyPeasyStore?.getState()?.VTSizeVersion;
+
+//   if (isWrapepdWithVTSizeProvider) {
+//     return <>{children}</>;
+//   }
+
+//   return <StoreProvider store={vtStoreTableSize}>{children}</StoreProvider>;
+// };
+
 export function TableSizeProvider({ children }: { children: React.ReactNode }) {
   const [state, actions] = useLocalStore(() => vtStoreTableSize);
 

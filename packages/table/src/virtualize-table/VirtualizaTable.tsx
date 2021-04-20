@@ -28,7 +28,7 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     tableDataParser,
     VTContainerProps,
     VTToolbarProps,
-
+    
     ...rest
   }: VirtualTableProps) => {
     useTableData(columns, rows, tableDataParser);

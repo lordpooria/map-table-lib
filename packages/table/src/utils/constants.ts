@@ -8,3 +8,5 @@ export const HESABA_TABLE_CELL_PLACEHOLDER = "HESABA_TABLE_CELL_PLACEHOLDER";
 export const HESABA_DATA_FIELD = "HESABA_DATA_FIELD";
 
 export const DATA_FIELD = "data-field";
+export const MAIN_LIST_ID = "MainVirtualListId";
+

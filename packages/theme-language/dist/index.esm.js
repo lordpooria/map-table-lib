@@ -4731,8 +4731,8 @@ const dark = {
   },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
-    paper: '#121212',
-    default: '#121212'
+    paper: grey[800],
+    default: '#303030'
   },
   action: {
     active: common.white,
@@ -9183,7 +9183,7 @@ function getStylesCreator(stylesOrCreator) {
       Object.keys(overrides).forEach(key => {
         if (process.env.NODE_ENV !== 'production') {
           if (!stylesWithOverrides[key]) {
-            console.warn(['Material-UI: You are trying to override a style that does not exist.', `Fix the \`${key}\` key of \`theme.overrides.${name}\`.`, '', `If you intentionally wanted to add a new key, please use the theme.components[${name}].variants option.`].join('\n'));
+            console.warn(['Material-UI: You are trying to override a style that does not exist.', `Fix the \`${key}\` key of \`theme.components.${name}.styleOverrides\`.`, '', `If you intentionally wanted to add a new key, please use the theme.components[${name}].variants option.`].join('\n'));
           }
         }
 
@@ -13604,15 +13604,17 @@ const reflow = node => node.scrollTop;
 function getTransitionProps(props, options) {
   const {
     timeout,
-    easing,
     style = {}
   } = props;
   return {
     duration: style.transitionDuration || typeof timeout === 'number' ? timeout : timeout[options.mode] || 0,
-    easing: style.transitionTimingFunction || typeof easing === 'object' ? easing[options.mode] : easing,
     delay: style.transitionDelay
   };
 }
+
+/**
+ * @ignore - internal component.
+ */
 
 function Ripple(props) {
   const {
@@ -13650,13 +13652,12 @@ function Ripple(props) {
 
     return undefined;
   }, [handleExited, inProp, timeout]);
-  return /*#__PURE__*/jsxRuntime.jsx("span", {
+  return /*#__PURE__*/React.createElement("span", {
     className: rippleClassName,
-    style: rippleStyles,
-    children: /*#__PURE__*/jsxRuntime.jsx("span", {
-      className: childClassName
-    })
-  });
+    style: rippleStyles
+  }, /*#__PURE__*/React.createElement("span", {
+    className: childClassName
+  }));
 }
 
 process.env.NODE_ENV !== "production" ? Ripple.propTypes = {
@@ -13866,7 +13867,8 @@ const TouchRipple = /*#__PURE__*/React.forwardRef(function TouchRipple(inProps, 
       rippleSize,
       cb
     } = params;
-    setRipples(oldRipples => [...oldRipples, /*#__PURE__*/jsxRuntime.jsx(TouchRippleRipple, {
+    setRipples(oldRipples => [...oldRipples, /*#__PURE__*/React.createElement(TouchRippleRipple, {
+      key: nextKey.current,
       classes: {
         ripple: clsx(classes.ripple, touchRippleClasses.ripple),
         rippleVisible: clsx(classes.rippleVisible, touchRippleClasses.rippleVisible),
@@ -13880,7 +13882,7 @@ const TouchRipple = /*#__PURE__*/React.forwardRef(function TouchRipple(inProps, 
       rippleX: rippleX,
       rippleY: rippleY,
       rippleSize: rippleSize
-    }, nextKey.current)]);
+    })]);
     nextKey.current += 1;
     rippleCallback.current = cb;
   }, [classes]);
@@ -14006,16 +14008,13 @@ const TouchRipple = /*#__PURE__*/React.forwardRef(function TouchRipple(inProps, 
     start,
     stop
   }), [pulsate, start, stop]);
-  return /*#__PURE__*/jsxRuntime.jsx(TouchRippleRoot, _extends({
+  return /*#__PURE__*/React.createElement(TouchRippleRoot, _extends({
     className: clsx(classes.root, touchRippleClasses.root, className),
     ref: container
-  }, other, {
-    children: /*#__PURE__*/jsxRuntime.jsx(TransitionGroup, {
-      component: null,
-      exit: true,
-      children: ripples
-    })
-  }));
+  }, other), /*#__PURE__*/React.createElement(TransitionGroup, {
+    component: null,
+    exit: true
+  }, ripples));
 });
 process.env.NODE_ENV !== "production" ? TouchRipple.propTypes = {
   /**
@@ -14129,11 +14128,9 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
     disableRipple = false,
     disableTouchRipple = false,
     focusRipple = false,
-    LinkComponent = 'a',
     onBlur,
     onClick,
     onContextMenu,
-    onDragLeave,
     onFocus,
     onFocusVisible,
     onKeyDown,
@@ -14144,11 +14141,11 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
     onTouchEnd,
     onTouchMove,
     onTouchStart,
+    onDragLeave,
     tabIndex = 0,
-    TouchRippleProps,
-    type
+    TouchRippleProps
   } = props,
-        other = _objectWithoutPropertiesLoose(props, ["action", "buttonRef", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "type"]);
+        other = _objectWithoutPropertiesLoose(props, ["action", "buttonRef", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "onBlur", "onClick", "onContextMenu", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "onDragLeave", "tabIndex", "TouchRippleProps"]);
 
   const buttonRef = React.useRef(null);
   const rippleRef = React.useRef(null);
@@ -14303,13 +14300,13 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
   let ComponentProp = component;
 
   if (ComponentProp === 'button' && other.href) {
-    ComponentProp = LinkComponent;
+    ComponentProp = 'a';
   }
 
   const buttonProps = {};
 
   if (ComponentProp === 'button') {
-    buttonProps.type = type === undefined ? 'button' : type;
+    buttonProps.type = other.type === undefined ? 'button' : other.type;
     buttonProps.disabled = disabled;
   } else {
     if (ComponentProp !== 'a' || !other.href) {
@@ -14349,7 +14346,7 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
   });
 
   const classes = useUtilityClasses$3(styleProps);
-  return /*#__PURE__*/jsxRuntime.jsxs(ButtonBaseRoot, _extends({
+  return /*#__PURE__*/React.createElement(ButtonBaseRoot, _extends({
     as: ComponentProp,
     className: clsx(classes.root, className),
     styleProps: styleProps,
@@ -14367,22 +14364,17 @@ const ButtonBase = /*#__PURE__*/React.forwardRef(function ButtonBase(inProps, re
     onTouchMove: handleTouchMove,
     onTouchStart: handleTouchStart,
     ref: handleRef,
-    tabIndex: disabled ? -1 : tabIndex,
-    type: type
-  }, buttonProps, other, {
-    children: [children, enableTouchRipple ?
-    /*#__PURE__*/
+    tabIndex: disabled ? -1 : tabIndex
+  }, buttonProps, other), children, enableTouchRipple ?
+  /*#__PURE__*/
 
-    /* TouchRipple is only needed client-side, x2 boost on the server. */
-    jsxRuntime.jsx(TouchRipple, _extends({
-      ref: rippleRef,
-      center: centerRipple
-    }, TouchRippleProps)) : null]
-  }));
+  /* TouchRipple is only needed client-side, x2 boost on the server. */
+  React.createElement(TouchRipple, _extends({
+    ref: rippleRef,
+    center: centerRipple
+  }, TouchRippleProps)) : null);
 });
-process.env.NODE_ENV !== "production" ? ButtonBase.propTypes
-/* remove-proptypes */
-= {
+process.env.NODE_ENV !== "production" ? ButtonBase.propTypes = {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -14473,12 +14465,6 @@ process.env.NODE_ENV !== "production" ? ButtonBase.propTypes
   href: propTypes
   /* @typescript-to-proptypes-ignore */
   .any,
-
-  /**
-   * The component used to render a link when the `href` prop is provided.
-   * @default 'a'
-   */
-  LinkComponent: propTypes.elementType,
 
   /**
    * @ignore
@@ -14706,24 +14692,19 @@ const IconButton = /*#__PURE__*/React.forwardRef(function IconButton(inProps, re
   });
 
   const classes = useUtilityClasses$2(styleProps);
-  return /*#__PURE__*/jsxRuntime.jsx(IconButtonRoot, _extends({
+  return /*#__PURE__*/React.createElement(IconButtonRoot, _extends({
     className: clsx(classes.root, className),
     centerRipple: true,
     focusRipple: !disableFocusRipple,
     disabled: disabled,
     ref: ref,
     styleProps: styleProps
-  }, other, {
-    children: /*#__PURE__*/jsxRuntime.jsx(IconButtonLabel, {
-      className: classes.label,
-      styleProps: styleProps,
-      children: children
-    })
-  }));
+  }, other), /*#__PURE__*/React.createElement(IconButtonLabel, {
+    className: classes.label,
+    styleProps: styleProps
+  }, children));
 });
-process.env.NODE_ENV !== "production" ? IconButton.propTypes
-/* remove-proptypes */
-= {
+process.env.NODE_ENV !== "production" ? IconButton.propTypes = {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -14907,16 +14888,14 @@ const Typography = /*#__PURE__*/React.forwardRef(function Typography(inProps, re
 
   const Component = component || (paragraph ? 'p' : variantMapping[variant] || defaultVariantMapping[variant]) || 'span';
   const classes = useUtilityClasses$1(styleProps);
-  return /*#__PURE__*/jsxRuntime.jsx(TypographyRoot, _extends({
+  return /*#__PURE__*/React.createElement(TypographyRoot, _extends({
     as: Component,
     ref: ref,
     styleProps: styleProps,
     className: clsx(classes.root, className)
   }, other));
 });
-process.env.NODE_ENV !== "production" ? Typography.propTypes
-/* remove-proptypes */
-= {
+process.env.NODE_ENV !== "production" ? Typography.propTypes = {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -17075,28 +17054,24 @@ const Popper = /*#__PURE__*/React.forwardRef(function Popper(props, ref) {
 
 
   const container = containerProp || (anchorEl ? ownerDocument(getAnchorEl(anchorEl)).body : undefined);
-  return /*#__PURE__*/jsxRuntime.jsx(Portal$1, {
+  return /*#__PURE__*/React.createElement(Portal$1, {
     disablePortal: disablePortal,
-    container: container,
-    children: /*#__PURE__*/jsxRuntime.jsx("div", _extends({
-      ref: handleRef,
-      role: "tooltip"
-    }, other, {
-      style: _extends({
-        // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
-        position: 'fixed',
-        // Fix Popper.js display issue
-        top: 0,
-        left: 0,
-        display: !open && keepMounted && !transition ? 'none' : null
-      }, style),
-      children: typeof children === 'function' ? children(childProps) : children
-    }))
-  });
+    container: container
+  }, /*#__PURE__*/React.createElement("div", _extends({
+    ref: handleRef,
+    role: "tooltip"
+  }, other, {
+    style: _extends({
+      // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
+      position: 'fixed',
+      // Fix Popper.js display issue
+      top: 0,
+      left: 0,
+      display: !open && keepMounted && !transition ? 'none' : null
+    }, style)
+  }), typeof children === 'function' ? children(childProps) : children));
 });
-process.env.NODE_ENV !== "production" ? Popper.propTypes
-/* remove-proptypes */
-= {
+process.env.NODE_ENV !== "production" ? Popper.propTypes = {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -17242,7 +17217,6 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
   const {
     appear = true,
     children,
-    easing,
     in: inProp,
     onEnter,
     onEntered,
@@ -17255,7 +17229,7 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
     // eslint-disable-next-line react/prop-types
     TransitionComponent = Transition
   } = props,
-        other = _objectWithoutPropertiesLoose(props, ["appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
+        other = _objectWithoutPropertiesLoose(props, ["appear", "children", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
 
   const timer = React.useRef();
   const autoTimeout = React.useRef();
@@ -17282,12 +17256,10 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
 
     const {
       duration: transitionDuration,
-      delay,
-      easing: transitionTimingFunction
+      delay
     } = getTransitionProps({
       style,
-      timeout,
-      easing
+      timeout
     }, {
       mode: 'enter'
     });
@@ -17305,8 +17277,7 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
       delay
     }), theme.transitions.create('transform', {
       duration: duration * 0.666,
-      delay,
-      easing: transitionTimingFunction
+      delay
     })].join(',');
 
     if (onEnter) {
@@ -17318,12 +17289,10 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
   const handleExit = normalizedTransitionCallback(node => {
     const {
       duration: transitionDuration,
-      delay,
-      easing: transitionTimingFunction
+      delay
     } = getTransitionProps({
       style,
-      timeout,
-      easing
+      timeout
     }, {
       mode: 'exit'
     });
@@ -17341,8 +17310,7 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
       delay
     }), theme.transitions.create('transform', {
       duration: duration * 0.666,
-      delay: delay || duration * 0.333,
-      easing: transitionTimingFunction
+      delay: delay || duration * 0.333
     })].join(',');
     node.style.opacity = '0';
     node.style.transform = getScale(0.75);
@@ -17364,7 +17332,7 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
       clearTimeout(timer.current);
     };
   }, []);
-  return /*#__PURE__*/jsxRuntime.jsx(TransitionComponent, _extends({
+  return /*#__PURE__*/React.createElement(TransitionComponent, _extends({
     appear: appear,
     in: inProp,
     nodeRef: nodeRef,
@@ -17376,22 +17344,18 @@ const Grow = /*#__PURE__*/React.forwardRef(function Grow(props, ref) {
     onExiting: handleExiting,
     addEndListener: addEndListener,
     timeout: timeout === 'auto' ? null : timeout
-  }, other, {
-    children: (state, childProps) => {
-      return /*#__PURE__*/React.cloneElement(children, _extends({
-        style: _extends({
-          opacity: 0,
-          transform: getScale(0.75),
-          visibility: state === 'exited' && !inProp ? 'hidden' : undefined
-        }, styles[state], style, children.props.style),
-        ref: handleRef
-      }, childProps));
-    }
-  }));
+  }, other), (state, childProps) => {
+    return /*#__PURE__*/React.cloneElement(children, _extends({
+      style: _extends({
+        opacity: 0,
+        transform: getScale(0.75),
+        visibility: state === 'exited' && !inProp ? 'hidden' : undefined
+      }, styles[state], style, children.props.style),
+      ref: handleRef
+    }, childProps));
+  });
 });
-process.env.NODE_ENV !== "production" ? Grow.propTypes
-/* remove-proptypes */
-= {
+process.env.NODE_ENV !== "production" ? Grow.propTypes = {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -17408,15 +17372,6 @@ process.env.NODE_ENV !== "production" ? Grow.propTypes
    * A single child content element.
    */
   children: elementAcceptingRef,
-
-  /**
-   * The transition timing function.
-   * You may specify a single easing or a object containing enter and exit values.
-   */
-  easing: propTypes.oneOfType([propTypes.shape({
-    enter: propTypes.string,
-    exit: propTypes.string
-  }), propTypes.string]),
 
   /**
    * If `true`, the component will transition in.
@@ -17583,41 +17538,29 @@ const TooltipTooltip = experimentalStyled('div', {}, {
   fontSize: theme.typography.pxToRem(14),
   lineHeight: `${round(16 / 14)}em`,
   fontWeight: theme.typography.fontWeightRegular
-}, {
-  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "left". */
-  [`.${tooltipClasses.popper}[data-popper-placement*="left"] &`]: {
-    transformOrigin: 'right center',
-    marginRight: '24px',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: '14px'
-    }
-  },
-
-  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "right". */
-  [`.${tooltipClasses.popper}[data-popper-placement*="right"] &`]: {
-    transformOrigin: 'left center',
-    marginLeft: '24px',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: '14px'
-    }
-  },
-
-  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "top". */
-  [`.${tooltipClasses.popper}[data-popper-placement*="top"] &`]: {
-    transformOrigin: 'center bottom',
-    marginBottom: '24px',
-    [theme.breakpoints.up('sm')]: {
-      marginBottom: '14px'
-    }
-  },
-
-  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "bottom". */
-  [`.${tooltipClasses.popper}[data-popper-placement*="bottom"] &`]: {
-    transformOrigin: 'center top',
-    marginTop: '24px',
-    [theme.breakpoints.up('sm')]: {
-      marginTop: '14px'
-    }
+}, styleProps.placement.split('-')[0] === 'left' && {
+  transformOrigin: 'right center',
+  marginRight: '24px',
+  [theme.breakpoints.up('sm')]: {
+    marginRight: '14px'
+  }
+}, styleProps.placement.split('-')[0] === 'right' && {
+  transformOrigin: 'left center',
+  marginLeft: '24px',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: '14px'
+  }
+}, styleProps.placement.split('-')[0] === 'top' && {
+  transformOrigin: 'center bottom',
+  marginBottom: '24px',
+  [theme.breakpoints.up('sm')]: {
+    marginBottom: '14px'
+  }
+}, styleProps.placement.split('-')[0] === 'bottom' && {
+  transformOrigin: 'center top',
+  marginTop: '24px',
+  [theme.breakpoints.up('sm')]: {
+    marginTop: '14px'
   }
 }));
 const TooltipArrow = experimentalStyled('span', {}, {
@@ -17693,7 +17636,7 @@ const Tooltip = /*#__PURE__*/React.forwardRef(function Tooltip(inProps, ref) {
     TransitionComponent = Grow,
     TransitionProps
   } = props,
-        other = _objectWithoutPropertiesLoose(props, ["arrow", "children", "classes", "describeChild", "disableFocusListener", "disableHoverListener", "disableInteractive", "disableTouchListener", "enterDelay", "enterNextDelay", "enterTouchDelay", "followCursor", "id", "leaveDelay", "leaveTouchDelay", "onClose", "onOpen", "open", "placement", "PopperComponent", "PopperProps", "title", "TransitionComponent", "TransitionProps"]);
+        other = _objectWithoutPropertiesLoose(props, ["arrow", "children", "describeChild", "disableFocusListener", "disableHoverListener", "disableInteractive", "disableTouchListener", "enterDelay", "enterNextDelay", "enterTouchDelay", "followCursor", "id", "leaveDelay", "leaveTouchDelay", "onClose", "onOpen", "open", "placement", "PopperComponent", "PopperProps", "title", "TransitionComponent", "TransitionProps"]);
 
   const [childNode, setChildNode] = React.useState();
   const [arrowRef, setArrowRef] = React.useState(null);
@@ -18030,49 +17973,41 @@ const Tooltip = /*#__PURE__*/React.forwardRef(function Tooltip(inProps, ref) {
   });
 
   const classes = useUtilityClasses(styleProps);
-  return /*#__PURE__*/jsxRuntime.jsxs(React.Fragment, {
-    children: [/*#__PURE__*/React.cloneElement(children, childrenProps), /*#__PURE__*/jsxRuntime.jsx(TooltipPopper, _extends({
-      as: PopperComponent,
-      className: classes.popper,
-      placement: placement,
-      anchorEl: followCursor ? {
-        getBoundingClientRect: () => ({
-          top: positionRef.current.y,
-          left: positionRef.current.x,
-          right: positionRef.current.x,
-          bottom: positionRef.current.y,
-          width: 0,
-          height: 0
-        })
-      } : childNode,
-      popperRef: popperRef,
-      open: childNode ? open : false,
-      id: id,
-      transition: true
-    }, interactiveWrapperListeners, PopperProps, {
-      popperOptions: popperOptions,
-      styleProps: styleProps,
-      children: ({
-        TransitionProps: TransitionPropsInner
-      }) => /*#__PURE__*/jsxRuntime.jsx(TransitionComponent, _extends({
-        timeout: theme.transitions.duration.shorter
-      }, TransitionPropsInner, TransitionProps, {
-        children: /*#__PURE__*/jsxRuntime.jsxs(TooltipTooltip, {
-          className: classes.tooltip,
-          styleProps: styleProps,
-          children: [title, arrow ? /*#__PURE__*/jsxRuntime.jsx(TooltipArrow, {
-            className: classes.arrow,
-            ref: setArrowRef,
-            styleProps: styleProps
-          }) : null]
-        })
-      }))
-    }))]
-  });
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.cloneElement(children, childrenProps), /*#__PURE__*/React.createElement(TooltipPopper, _extends({
+    as: PopperComponent,
+    className: classes.popper,
+    placement: placement,
+    anchorEl: followCursor ? {
+      getBoundingClientRect: () => ({
+        top: positionRef.current.y,
+        left: positionRef.current.x,
+        right: positionRef.current.x,
+        bottom: positionRef.current.y,
+        width: 0,
+        height: 0
+      })
+    } : childNode,
+    popperRef: popperRef,
+    open: childNode ? open : false,
+    id: id,
+    transition: true
+  }, interactiveWrapperListeners, PopperProps, {
+    popperOptions: popperOptions,
+    styleProps: styleProps
+  }), ({
+    TransitionProps: TransitionPropsInner
+  }) => /*#__PURE__*/React.createElement(TransitionComponent, _extends({
+    timeout: theme.transitions.duration.shorter
+  }, TransitionPropsInner, TransitionProps), /*#__PURE__*/React.createElement(TooltipTooltip, {
+    className: classes.tooltip,
+    styleProps: styleProps
+  }, title, arrow ? /*#__PURE__*/React.createElement(TooltipArrow, {
+    className: classes.arrow,
+    ref: setArrowRef,
+    styleProps: styleProps
+  }) : null))));
 });
-process.env.NODE_ENV !== "production" ? Tooltip.propTypes
-/* remove-proptypes */
-= {
+process.env.NODE_ENV !== "production" ? Tooltip.propTypes = {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -18102,7 +18037,7 @@ process.env.NODE_ENV !== "production" ? Tooltip.propTypes
   describeChild: propTypes.bool,
 
   /**
-   * Do not respond to focus-visible events.
+   * Do not respond to focus events.
    * @default false
    */
   disableFocusListener: propTypes.bool,
@@ -18251,43 +18186,30 @@ var fontSelector = function (lang) {
 
 var defaultTheme = {
     palette: {
-        primary: {
-            main: "#1f6a6d",
-            dark: "#25E47A",
-            light: "#00E676",
-            border: "#4dc8ff",
-            shadow: "#4dc8ff",
-            contrastText: "#FFF",
+        primary: indigo,
+        secondary: red,
+        error: red,
+    },
+    typography: {
+        fontFamily: 'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',
+        headline: {
+            fontSize: "1rem",
         },
-        secondary: {
-            main: "#f1a83a",
-            light: "#FEB4FD",
-            dark: "#B28BFC",
+        subheading: {
+            fontSize: "0.8125rem",
         },
-        text: {
-            primary: "#444",
-            secondary: "#1de9b6",
-            disabled: "#616161",
+        button: {
+            fontWeight: 400,
+            textTransform: "initial",
         },
-        grey: {
-            A400: "#424242",
-            "600": "#050302",
-            "500": "#141414",
-            "400": "#282828",
-            "300": "#707070",
-            "200": "#BCBCBC",
-            "100": "#CDCDCC",
-        },
+    },
+    shape: {
+        borderRadius: 4,
     },
     mixins: {
         toolbar: {
             minHeight: 50,
         },
-    },
-    typography: {
-        useNextVariants: true,
-        fontFamily: ["Roboto", "Arial"].join(","),
-        fontSize: 14,
     },
 };
 function useThemeCreator(rawTheme) {

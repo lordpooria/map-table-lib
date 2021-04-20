@@ -25,6 +25,7 @@ export type RowClasses = {
   cell?: CellClasses;
   evenRow?: string;
   oddRow?: string;
+  activateRow?: string;
 };
 export type HeaderClasses = { root?: string; cell?: CellClasses };
 export type CellClasses = {
@@ -32,6 +33,7 @@ export type CellClasses = {
   title?: string;
   checkbox?: string;
   divider?: string;
+  simpleCell?:string
 };
 
 export type PaginationClasses = { root?: string };

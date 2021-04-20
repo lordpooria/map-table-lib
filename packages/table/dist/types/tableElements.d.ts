@@ -40,7 +40,7 @@ export declare type CompleteMainListProps = VTMainListProps & {
      */
     VTRowProps?: VTPublicRowProps;
     VTFilterProps?: PublicFilterProps;
-    VTCommonTableElProps: CommonTableElProps;
+    VTCommonTableElProps?: CommonTableElProps;
 };
 export interface HeaderCellProps extends TableColumn {
     colIndex: number;
@@ -63,6 +63,8 @@ export declare type CompleteHeadProps = VTPublicHeaderProps & VTPublicHeaderProp
 };
 export interface VTPublicRowProps {
     classes?: RowClasses;
+    onRowClick?: (index: number) => void;
+    extraStyles?: any;
 }
 export declare type SpecificRowProps = CommonTableElProps & {
     selectable?: VTMainListProps["selectable"];

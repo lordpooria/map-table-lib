@@ -6,46 +6,35 @@ import {
 import { useLanguageState } from "../provider/language";
 import fontSelector from "../utils/fontSelector";
 
+import { indigo, red } from "@material-ui/core/colors";
+
 export const defaultTheme = {
   palette: {
-    primary: {
-      main: "#1f6a6d",
-      dark: "#25E47A",
-      light: "#00E676",
-      border: "#4dc8ff",
-      shadow: "#4dc8ff",
-      contrastText: "#FFF",
+    primary: indigo,
+    secondary: red,
+    error: red,
+  },
+  typography: {
+    fontFamily: 'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',
+    headline: {
+      fontSize: "1rem",
     },
-    secondary: {
-      main: "#f1a83a",
-      light: "#FEB4FD",
-      dark: "#B28BFC",
+    subheading: {
+      fontSize: "0.8125rem",
     },
-
-    text: {
-      primary: "#444",
-      secondary: "#1de9b6",
-      disabled: "#616161",
-    },
-    grey: {
-      A400: "#424242",
-      "600": "#050302",
-      "500": "#141414",
-      "400": "#282828",
-      "300": "#707070",
-      "200": "#BCBCBC",
-      "100": "#CDCDCC",
+    button: {
+      fontWeight: 400,
+      textTransform: "initial",
     },
   },
+  shape: {
+    borderRadius: 4,
+  },
+
   mixins: {
     toolbar: {
       minHeight: 50,
     },
-  },
-  typography: {
-    useNextVariants: true,
-    fontFamily: ["Roboto", "Arial"].join(","),
-    fontSize: 14,
   },
 };
 

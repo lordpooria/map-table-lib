@@ -1,20 +1,34 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useCallback, useEffect } from "react";
 import {
   AutoResizer,
   HesabaVirtualTable,
   ToolbarMoreVert,
   useTStoreState,
 } from "@hesaba/table";
-import { useMapData } from "./useMapData";
 import { TdTableProps } from "../types/TableType";
 import clsx from "clsx";
-import { AppBar, Tabs, Tab, makeStyles } from "@material-ui/core";
+import { Tabs, Tab, makeStyles } from "@material-ui/core";
 import { useTDStoreState } from "../store";
 import tdStoreTableModel from "./tableReducer";
 import { useLocalStore } from "easy-peasy";
+import { tableDataParser, commonSchemaColumns } from "./table.utils";
+import { useAutoScroll } from "./useAutoScroll";
 
 const useStyles = makeStyles({
-  root: { width: "100%", backgroundColor: "#FFF" },
+  root: { width: "100%", backgroundColor: "#FFF", display: "flex" },
+  header: {
+    backgroundColor: "#f1ece7",
+    borderBottom: "none",
+  },
+  scrollButton: { color: "#000" },
+  tableContainer: { borderWidth: 0 },
+});
+
+type TDTableCompleteProps = TdTableProps & { className: string; theme?: any };
+
+const TDTableContainer = memo((props: TDTableCompleteProps) => {
+  const onRowClick = useAutoScroll();
+  return <TDTable {...props} onRowClick={onRowClick} />;
 });
 
 const TDTable = memo(
@@ -23,21 +37,27 @@ const TDTable = memo(
     classes,
     tableProps,
     operationOnRows,
-  }: TdTableProps & { className: string }) => {
-    const { rows, schemaColumns } = useMapData();
+    onRowClick,
+    schemaColumns: customSchemaColumns,
+    theme,
+  }: TDTableCompleteProps & { onRowClick: (_: number) => void }) => {
     const tabClasses = useStyles();
     const [state, actions] = useLocalStore(() => tdStoreTableModel);
 
     const users = useTDStoreState((state) => state.users);
     const formattedData = useTDStoreState((state) => state.formattedData);
 
-    // const enhancedColumns = useTStoreState((state) => state.enhancedColumns);
-
+    const dataParser = useCallback(
+      (col, row) => {
+        return tableDataParser(col, row, state.tabIndex);
+      },
+      [state.tabIndex]
+    );
     useEffect(() => {
       if (users && formattedData) {
         actions.setTabs(
-          Object.keys(users).map((k, index) => ({
-            id: `${index}`,
+          Object.keys(users).map((k) => ({
+            id: `${k}`,
             username: k,
             color: users[k],
           }))
@@ -47,53 +67,68 @@ const TDTable = memo(
 
     return (
       <div className={clsx(className, classes?.root)}>
-        <AppBar
-          position="static"
-          className={clsx(tabClasses.root, classes?.tabbar)}
-        >
-          <div style={{ display: "flex" }}>
-            <MoreVert />
-            <Tabs
-              value={state.tabIndex}
-              onChange={(_: any, newValue: string) =>
-                actions.setTabIndex(newValue)
-              }
-              TabIndicatorProps={{
-                style: { backgroundColor: state.indicatorColor },
-              }}
-            >
-              {/* <ToolbarMoreVert columns={enhancedColumns} /> */}
-              {state.tabs.map(({ username, color, id }) => (
-                <Tab
-                  key={username}
-                  value={id}
-                  label={username}
-                  wrapped
-                  style={{ color }}
-                />
-              ))}
-            </Tabs>
-          </div>
-          {operationOnRows && <Operations operationOnRows={operationOnRows} />}
-        </AppBar>
+        <div style={{}} className={clsx(tabClasses.root, classes?.tabbar)}>
+          <MoreVert />
+          <Tabs
+            value={state.tabIndex}
+            scrollButtons="on"
+            variant="scrollable"
+            classes={{ scrollButtons: tabClasses.scrollButton }}
+            onChange={(_: any, tabIndex: string) =>
+              actions.setTabIndex({
+                tabIndex,
+                color: (users && users[tabIndex]) || "",
+              })
+            }
+            TabIndicatorProps={{
+              style: { backgroundColor: state.indicatorColor },
+            }}
+          >
+            {/* <ToolbarMoreVert columns={enhancedColumns} /> */}
+            {state.tabs.map(({ username, color, id }) => (
+              <Tab
+                key={username}
+                value={id}
+                label={username}
+                wrapped
+                style={{ color }}
+              />
+            ))}
+          </Tabs>
+        </div>
+        {operationOnRows && <Operations operationOnRows={operationOnRows} />}
+
         <AutoResizer>
           {({ width, height }) => (
             <HesabaVirtualTable
               width={width as number}
               height={height as number}
-              columns={schemaColumns}
-              rows={rows}
+              columns={customSchemaColumns || commonSchemaColumns}
+              rows={formattedData as any}
               selectable
               resizable
               sortable
+              VTRowProps={{
+                onRowClick,
+                extraStyles: {
+                  backgroundColor: `${state.indicatorColor}33`,
+                  border: `solid ${state.indicatorColor}`,
+                  borderLeftWidth: 1,
+                },
+              }}
               hasToolbar={false}
+              tableDataParser={dataParser}
+              theme={theme}
+              classes={{
+                table: { root: tabClasses.tableContainer },
+                header: { root: tabClasses.header },
+              }}
               VTCommonTableElProps={{
                 CheckboxProps: { style: { color: state.indicatorColor } },
               }}
               VTHeaderProps={{
                 DividerProps: { style: { fill: state.indicatorColor } },
               }}
-              direction="ltr"
               {...tableProps}
             />
           )}
@@ -136,4 +171,4 @@ const Operations = memo(
   }
 );
 
-export default TDTable;
+export default TDTableContainer;

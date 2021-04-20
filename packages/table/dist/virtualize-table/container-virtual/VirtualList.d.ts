@@ -15,6 +15,6 @@ declare const VirtualList: React.MemoExoticComponent<React.ForwardRefExoticCompo
     VTHeaderProps?: import("../../types").VTPublicHeaderProps | undefined;
     VTRowProps?: import("../../types").VTPublicRowProps | undefined;
     VTFilterProps?: import("../../types/Filter").PublicFilterProps | undefined;
-    VTCommonTableElProps: import("../../types").CommonTableElProps;
+    VTCommonTableElProps?: import("../../types").CommonTableElProps | undefined;
 } & React.RefAttributes<unknown>>>;
 export default VirtualList;

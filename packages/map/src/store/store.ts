@@ -116,6 +116,7 @@ export const tdStoreModel: TDStoreModel = {
   setData: action((state, { formattedData, users }) => {
     state.formattedData = formattedData;
     state.users = users;
+    
   }),
   setAvailableTime: action((state, { times, mode, period }) => {
     const _availableTimes = setAvailableTime(

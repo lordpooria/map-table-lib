@@ -14,7 +14,7 @@ import { useTStoreActions, useTStoreState } from "../store/reducerHooks";
 
 import { TableToolbarCompleteProps } from "../types/TableToolbar";
 import clsx from "clsx";
-import { SmallIconButton } from "../styled-component/StyledButton";
+import { SmallIconButton } from "@hesaba/theme-language";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) =>
     tools: {
       display: "flex",
       alignItems: "center",
+    },
+    icon: {
+      fill: theme.palette.secondary.main,
     },
   })
 );
@@ -58,6 +61,7 @@ export function ToolbarMoreVert({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const enhancedColumns = useTStoreState((state) => state.enhancedColumns);
+  const toolbarClasses = useStyles();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -77,7 +81,12 @@ export function ToolbarMoreVert({
   return (
     <>
       <SmallIconButton onClick={handleClick} className={classes?.iconButton}>
-        <MoreVert className={classes?.icon} />
+        <MoreVert
+          className={clsx(
+            { [toolbarClasses.icon]: !classes?.icon },
+            classes?.icon
+          )}
+        />
       </SmallIconButton>
 
       <Menu

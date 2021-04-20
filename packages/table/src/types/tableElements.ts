@@ -52,7 +52,7 @@ export type CompleteMainListProps = VTMainListProps & {
 
   VTFilterProps?: PublicFilterProps;
 
-  VTCommonTableElProps: CommonTableElProps;
+  VTCommonTableElProps?: CommonTableElProps;
 };
 
 export interface HeaderCellProps extends TableColumn {
@@ -80,6 +80,8 @@ export type CompleteHeadProps = VTPublicHeaderProps &
 
 export interface VTPublicRowProps {
   classes?: RowClasses;
+  onRowClick?: (index: number) => void;
+  extraStyles?: any;
 }
 
 export type SpecificRowProps = CommonTableElProps & {

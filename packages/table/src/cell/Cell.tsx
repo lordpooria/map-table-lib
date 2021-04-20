@@ -8,15 +8,23 @@ import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
 import { CellClasses } from "../types/styles";
 import { useTableSizeState } from "../container/TableSizeProvider";
 
-const SimpleTableCell = ({ value }: TableComponentProps) => {
-  return <Typography>{value}</Typography>;
-};
-
 const useCellStyles = makeStyles(() =>
   createStyles({
     rowCell: {},
+    simpleCell: {
+      fontFamily: "inherit",
+    },
   })
 );
+
+const SimpleTableCell = ({ value, className }: TableComponentProps) => {
+  const classes = useCellStyles();
+  return (
+    <Typography className={clsx(classes.simpleCell, className)}>
+      {value}
+    </Typography>
+  );
+};
 
 interface Props extends TableColumn {
   row: any;
@@ -84,6 +92,7 @@ const Cell = ({
         rowKey={rowIndex}
         row={row}
         value={value}
+        className={classes?.simpleCell}
       />
     </div>
   );

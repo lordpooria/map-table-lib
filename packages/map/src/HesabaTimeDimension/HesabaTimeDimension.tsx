@@ -41,6 +41,7 @@ const CommonMap: FC<HesabaTimeDimensionProps> = ({
   LegendComponent,
   withTable,
   tableProps,
+  theme,
 }: HesabaTimeDimensionProps) => {
   useParseData(data);
   const classes = useStyles();
@@ -76,8 +77,13 @@ const CommonMap: FC<HesabaTimeDimensionProps> = ({
         />
       </MapContainer>
       {withTable && (
+        
         <TableStoreProvider>
-          <TDTable className={classes.tableRoot} {...tableProps} />
+          <TDTable
+            className={classes.tableRoot}
+            theme={theme}
+            {...tableProps}
+          />
         </TableStoreProvider>
       )}
     </div>

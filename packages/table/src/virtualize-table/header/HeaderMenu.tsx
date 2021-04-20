@@ -10,7 +10,7 @@ import { useTStoreActions } from "../../store/reducerHooks";
 import MoreVert from "../../assets/icons/common/MoreVertIcon";
 import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
 import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
-import { SmallIconButton } from "../../styled-component/StyledButton";
+import { SmallIconButton } from "@hesaba/theme-language";
 import { SortType } from "../../types/main";
 import { VTMainListProps } from "../../types";
 // import PinIcon from "/assets/icons/common/PinIcon";

@@ -16,7 +16,9 @@ export default function TDGeojsonLayer({
   return (
     <>
       {currentData?.features.map((f, index) => (
-        <Fragment key={index}>
+        <Fragment
+          key={`${f?.properties?.id || f?.properties?.username}-${index}`}
+        >
           {(f.geometry as any).geometries.map((g: any) =>
             g.type === "Point" ? (
               <TDCircleMarker
