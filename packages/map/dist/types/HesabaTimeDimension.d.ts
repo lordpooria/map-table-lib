@@ -1,10 +1,10 @@
 /// <reference types="react" />
-import { PlayerProps } from "../player/PlayerControl.types";
+import { PlayerProps } from "./PlayerControl";
 import { TimeProps } from "../timer/TimeComponent.types";
 import { GeoJSONOptions } from "leaflet";
 import { TDLayerOptions } from "./layer";
 import { GeoJSONData } from "./common";
-import { LegendsContainerProps } from "./legend";
+import { PublicLegendProps } from "./legend";
 import { MapContainerProps } from "react-leaflet";
 import { TdTableProps } from "./TableType";
 export interface HesabaTimeDimensionProps {
@@ -22,7 +22,7 @@ export interface HesabaTimeDimensionProps {
     extralLayerProps?: any;
     tableProps?: TdTableProps;
     withTable?: boolean;
-    LegendComponent?: LegendsContainerProps["LegendComponent"];
+    LegendComponent?: PublicLegendProps["LegendComponent"];
     theme?: any;
 }
 export interface TimeDimensionViewProps {
@@ -32,5 +32,5 @@ export interface TimeDimensionViewProps {
     geojsonProps: GeoJSONOptions;
     layerProps: TDLayerOptions;
     extralLayerProps: any;
-    LegendComponent?: LegendsContainerProps["LegendComponent"];
+    LegendComponent?: PublicLegendProps["LegendComponent"];
 }

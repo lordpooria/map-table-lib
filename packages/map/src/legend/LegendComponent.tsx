@@ -1,7 +1,8 @@
 import { createStyles, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
 import React, { memo } from "react";
 import { useTDStoreState } from "../store";
-import { LegendsContainerProps, LegendsProps } from "../types/legend";
+import { PublicLegendProps, LegendsProps } from "../types/legend";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) =>
     itemContainer: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "space-between",
       margin: 4,
     },
     indicatorBox: {
@@ -35,12 +36,12 @@ const useStyles = makeStyles((theme) =>
     },
   })
 );
-const LegendContainer = ({ LegendComponent }: LegendsContainerProps) => {
-  const classes = useStyles();
+const LegendContainer = ({ LegendComponent, classes }: PublicLegendProps) => {
+  const legendClasses = useStyles();
   const users = useTDStoreState((state) => state.users);
   const currentData = useTDStoreState((state) => state.currentData);
   return (
-    <div className={classes.root}>
+    <div className={clsx(legendClasses.root, classes?.root)}>
       {LegendComponent ? (
         <LegendComponent
           properties={currentData?.features?.map((d) => d.properties)}
@@ -52,16 +53,22 @@ const LegendContainer = ({ LegendComponent }: LegendsContainerProps) => {
   );
 };
 
-const LegendStateLess = memo(({ users }: LegendsProps) => {
-  const classes = useStyles();
+const LegendStateLess = memo(({ users, classes }: LegendsProps) => {
+  const legendClasses = useStyles();
   return (
     <>
       {users &&
         Object.keys(users).map((k) => (
-          <div key={k} className={classes.itemContainer}>
-            <span className={classes.text}>{k}</span>
+          <div
+            key={k}
+            className={clsx(legendClasses.itemContainer, classes?.item)}
+          >
+            <span className={clsx(legendClasses.text, classes?.item)}>{k}</span>
             <div
-              className={classes.indicatorBox}
+              className={clsx(
+                legendClasses.indicatorBox,
+                classes?.colorIndicator
+              )}
               style={{ backgroundColor: users[k] }}
             />
           </div>

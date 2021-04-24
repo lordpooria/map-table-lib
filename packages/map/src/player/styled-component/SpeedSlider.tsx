@@ -2,7 +2,7 @@ import clsx from "clsx";
 import React, { memo } from "react";
 
 import { RenderComponent } from "../helperComponent";
-import { PlayerCompleteProps } from "../PlayerControl.types";
+import { PlayerCompleteProps } from "../../types/PlayerControl";
 import {
   PlayerSlider as Slider,
   PlayerThumb,

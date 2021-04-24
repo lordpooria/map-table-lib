@@ -102,6 +102,7 @@ const SingleVirtualTableRow = ({
           // name={name}
           color="primary"
           classes={{ root: commonClasses.checkbox }}
+          onClick={(e) => e.stopPropagation()}
           {...CheckboxProps}
         />
       )}

@@ -1,5 +1,5 @@
 import React from "react";
-import { PlayerCompleteProps } from "../PlayerControl.types";
+import { PlayerCompleteProps } from "../../types/PlayerControl";
 interface Props {
     speedStep: PlayerCompleteProps["speedStep"];
     classes: PlayerCompleteProps["classes"];

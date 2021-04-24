@@ -43,8 +43,6 @@ export const useTableResizer = () => {
     };
 
     const onMouseDown = (e: MouseEvent) => {
-      console.log(headers.current, rowRef.current);
-
       init();
       const div = e.target as HTMLElement;
       if (!div.classList.contains(DRAG_CLASS)) return;

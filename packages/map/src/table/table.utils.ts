@@ -18,6 +18,10 @@ const nopeData = {
 };
 export const commonSchemaColumns = [
   {
+    label: "index",
+    key: "index",
+  },
+  {
     label: "time",
     key: "time",
   },
@@ -40,21 +44,25 @@ export function tableDataParser(
   username: string
 ) {
   const visibleRows: any = [];
-  rows.forEach((row) => {
-    const index = (row?.features as any).findIndex(
+  rows.forEach((row,idx) => {
+    const userIndex = (row?.features as any).findIndex(
       (ff: any) => ff.properties.username == username
     );
-    const time = dayjs(row.time as number).locale("fa").calendar("jalali").format("YYYY D MMMM");
-    if (index === -1) {
+    const time = dayjs(row.time as number)
+      .locale("fa")
+      .calendar("jalali")
+      .format("YYYY D MMMM");
+    if (userIndex === -1) {
       visibleRows.push({
         time,
         ...nopeData,
       });
     }
-    if (row?.features && (row?.features as any)[index]) {
-      const f = (row?.features as any)[index];
+    if (row?.features && (row?.features as any)[userIndex]) {
+      const f = (row?.features as any)[userIndex];
 
       visibleRows.push({
+        index: idx,
         time,
         username: f.properties.username,
         id: f.properties.id,

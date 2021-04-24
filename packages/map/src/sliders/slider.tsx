@@ -67,3 +67,4 @@ export function ValueLabelComponent(props: ValueLabelProps) {
     </Tooltip>
   );
 }
+

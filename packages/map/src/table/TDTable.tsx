@@ -22,6 +22,15 @@ const useStyles = makeStyles({
   },
   scrollButton: { color: "#000" },
   tableContainer: { borderWidth: 0 },
+  row: {
+    backgroundColor: "#FFF",
+    border: "#999",
+    borderBottom: "solid 1px",
+    "&:hover": {
+      backgroundColor: "rgba(0,0,0,0.1)",
+      border: "none",
+    },
+  },
 });
 
 type TDTableCompleteProps = TdTableProps & { className: string; theme?: any };
@@ -122,6 +131,7 @@ const TDTable = memo(
               classes={{
                 table: { root: tabClasses.tableContainer },
                 header: { root: tabClasses.header },
+                row: { root: tabClasses.row },
               }}
               VTCommonTableElProps={{
                 CheckboxProps: { style: { color: state.indicatorColor } },

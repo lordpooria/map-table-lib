@@ -1,4 +1,4 @@
-import { PlayerCompleteProps } from "../PlayerControl.types";
+import { PlayerCompleteProps } from "../../types/PlayerControl";
 interface Props {
     timeSteps: PlayerCompleteProps["timeSteps"];
     classes: PlayerCompleteProps["classes"];

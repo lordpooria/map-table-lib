@@ -9,7 +9,7 @@ import { playerStoreModel } from "./playerReducer";
 
 import { usePlayer } from "./usePlayer";
 
-import { PlayerCompleteProps } from "./PlayerControl.types";
+import { PlayerCompleteProps } from "../types/PlayerControl";
 import { SmallIconButton } from "@hesaba/theme-language"
 import { useTDStoreActions } from "../store/reducerHooks";
 import useStyles from "./PlayerControl.styles";
@@ -82,6 +82,7 @@ const PlayerControl = ({
   });
 
   return (
+    
     <div
       onMouseEnter={() => {
         leafletMap.dragging.disable();

@@ -57,8 +57,8 @@
   },
   "dependencies": {
     "@date-io/date-fns": "^2.10.8",
-    "@hesaba/table": "link:../table",
-    "@hesaba/theme-language": "link:../theme-language",
+    "@hesaba/table": "file:../table",
+    "@hesaba/theme-language": "file:../theme-language",
     "@material-ui/core": "^4.11.3",
     "clsx": "^1.1.1",
     "dayjs": "^1.10.4",

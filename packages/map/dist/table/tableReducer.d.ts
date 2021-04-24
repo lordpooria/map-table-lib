@@ -9,7 +9,10 @@ export interface TDStoreTable {
     tabIndex: string;
     indicatorColor: string;
     setTabs: Action<TDStoreTable, TabType>;
-    setTabIndex: Action<TDStoreTable, string>;
+    setTabIndex: Action<TDStoreTable, {
+        tabIndex: string;
+        color: string;
+    }>;
 }
 export declare const tdStoreTableModel: TDStoreTable;
 export default tdStoreTableModel;

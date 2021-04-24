@@ -16,26 +16,32 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   mapRoot: {
     border: "none",
-    
-    width: "0vw",
+
+    width: "48vw",
+    marginRight: 8,
   },
   tableRoot: {
-    
-    
-    width: "100vw",
+    width: "48vw",
+  },
+  root: {
+    padding: 10,
+    borderRadius: 10,
+    boxShadow: "0 0 5px #444",
   },
 }));
 
 storiesOf("Map With Table", module).add("Simple Map", () => {
   const classes = useStyles();
   return (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={{ ...baseMapProps, className:classes.mapRoot }}
-      tableProps={{ classes: { root: classes.tableRoot } }}
-      layerProps={baseLayerProps}
-      theme={theme}
-      withTable
-    />
+    <div className={classes.root}>
+      <HesabaTimeDimension
+        data={data as any}
+        mapProps={{ ...baseMapProps, className: classes.mapRoot }}
+        tableProps={{ classes: { root: classes.tableRoot } }}
+        layerProps={baseLayerProps}
+        theme={theme}
+        withTable
+      />
+    </div>
   );
 });

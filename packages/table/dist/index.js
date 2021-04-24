@@ -85200,7 +85200,7 @@ var SingleVirtualTableRow = function (_a) {
                 toggleSingleRow({ index: rowIndex });
             }, 
             // name={name}
-            color: "primary", classes: { root: commonClasses.checkbox } }, CheckboxProps))),
+            color: "primary", classes: { root: commonClasses.checkbox }, onClick: function (e) { return e.stopPropagation(); } }, CheckboxProps))),
         visibleColumns.map(function (props, colIndex) { return (React__default['default'].createElement(React.Fragment, { key: props.key },
             React__default['default'].createElement(Cell, __assign({}, props, rest, { colIndex: colIndex, row: visibleRows[rowIndex], rowIndex: rowIndex, columnsLength: visibleColumns.length, colKey: props.key })))); })));
 };
@@ -85393,9 +85393,9 @@ var VirtualTableHeader = function (_a) {
 var useStyles$f = makeStyles$2({
     root: {},
 });
-var outerElementTypeWithId = function (props) {
-    return React__default['default'].createElement("div", __assign({ id: MAIN_LIST_ID }, props));
-};
+var outerElementTypeWithId = React.forwardRef(function (props, ref) {
+    return React__default['default'].createElement("div", __assign({ id: MAIN_LIST_ID }, props, { ref: ref }));
+});
 var VirtualList = React.memo(React.forwardRef(function (_a, ref) {
     var _b;
     var height = _a.height, width = _a.width, classes = _a.classes, onScroll = _a.onScroll, setTableRef = _a.setTableRef, extraStyle = _a.extraStyle, _c = _a.selectable, selectable = _c === void 0 ? false : _c, _d = _a.itemSize, itemSize = _d === void 0 ? function () { return commonSidebar.itemHeight; } : _d, resizable = _a.resizable, sortable = _a.sortable, VTCommonTableElProps = _a.VTCommonTableElProps, VTRowProps = _a.VTRowProps, VTFilterProps = _a.VTFilterProps, VTHeaderProps = _a.VTHeaderProps;

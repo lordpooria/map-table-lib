@@ -10,23 +10,66 @@ export const useAutoScroll = () => {
   const setCurrentTimeIndex = useTDStoreActions(
     (actions) => actions.setCurrentTimeIndex
   );
+  const autoScroll = useRef(true);
+  const preventAutoScroll = useRef(false);
   const setActiveRow = useTableRowAction();
 
-  const onScroll = useCallback((e) => {
+  const onScrolling = useCallback((e) => {
     const top = e?.target?.scrollTop;
     if (!top) return;
 
     setCurrentTimeIndex({ index: Math.floor(top / 50) });
     // setCurrentTimeIndex()
   }, []);
+  const onScroll = useCallback(
+    (e) => {
+      if (autoScroll.current) return;
+      onScrolling(e);
+    },
+    [onScrolling]
+  );
 
-  const onRowClick = useCallback((index:number)=>{
-    console.log(index)
-    setCurrentTimeIndex({index})
-  },[])
+  const onMouseDown = useCallback(() => {
+    autoScroll.current = false;
+  }, []);
+  const onMouseUp = useCallback(() => {
+    autoScroll.current = true;
+  }, []);
+
+  const onWheel = useCallback((e) => {
+    onPreventAutoScroll();
+    onScrolling(e);
+  }, []);
+
+  const onPreventAutoScroll = () => {
+    autoScroll.current = false;
+    preventAutoScroll.current = true;
+  };
+  const releaseAutoScroll = useCallback(() => {
+    preventAutoScroll.current = false;
+    autoScroll.current = true;
+  }, []);
+
+  const onRowClick = useCallback((index: number) => {
+    setCurrentTimeIndex({ index });
+    onPreventAutoScroll();
+  }, []);
+
+  const scrollTo = useCallback((index) => {
+    mainListRef.current?.scrollTo({
+      top: index * 50,
+      behavior: "smooth",
+    });
+  }, []);
+
   useEffect(() => {
-    mainListRef.current?.scrollTo({ top: currentTimeIndex * 50 });
+    if (autoScroll.current) {
+      scrollTo(currentTimeIndex);
+    }
     setActiveRow(currentTimeIndex);
+    if (preventAutoScroll.current) {
+      releaseAutoScroll();
+    }
   }, [currentTimeIndex]);
 
   useEffect(() => {
@@ -38,9 +81,17 @@ export const useAutoScroll = () => {
         clearInterval(interval);
         mainListRef.current = el;
         mainListRef.current?.addEventListener("scroll", onScroll);
+        mainListRef.current?.addEventListener("wheel", onWheel);
+        mainListRef.current?.addEventListener("mousedown", onMouseDown);
+        mainListRef.current?.addEventListener("mouseup", onMouseUp);
       }
     }, 50);
-    return () => mainListRef.current?.removeEventListener("scroll", onScroll);
+    return () => {
+      mainListRef.current?.removeEventListener("scroll", onScroll);
+      mainListRef.current?.removeEventListener("wheel", onWheel);
+      mainListRef.current?.removeEventListener("mousedown", onMouseDown);
+      mainListRef.current?.removeEventListener("mouseup", onMouseUp);
+    };
   }, []);
 
   return onRowClick;
