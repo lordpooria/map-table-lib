@@ -6,10 +6,10 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     playerRoot: {
       position: "absolute",
-      display: "flex",
+      display: "grid",
       bottom: 20,
       left: 20,
-      flexWrap: "wrap",
+      gridTemplateColumns: "repeat(auto-fit,minmax(70px,1fr))",
       width: "60%",
       alignItems: "center",
       justifyContent: "space-between",

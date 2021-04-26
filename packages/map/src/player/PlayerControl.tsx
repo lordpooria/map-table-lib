@@ -1,5 +1,5 @@
 import { useLocalStore } from "easy-peasy";
-import React, { useCallback, useEffect } from "react";
+import React, { memo, useCallback, useEffect } from "react";
 import NextIcon from "../assets/icons/common/NextIcon";
 import PauseIcon from "../assets/icons/common/PauseIcon";
 import PlayIcon from "../assets/icons/common/PlayIcon";
@@ -32,7 +32,7 @@ const BorderIconButton = withStyles((theme) => ({
 
 const BUFFER = 5;
 
-const PlayerControl = ({
+const PlayerControl = memo(({
   leafletMap,
   loop = false,
   timeSteps = 1,
@@ -183,6 +183,6 @@ const PlayerControl = ({
       </RenderComponent>
     </div>
   );
-};
+});
 
 export default PlayerControl;
