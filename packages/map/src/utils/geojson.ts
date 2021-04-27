@@ -1,5 +1,5 @@
 import { _getFeatureTimes } from "./layer.util";
-
+import { AppGeoJSONLayer } from "../types/common";
 export function extractAvailableTimes(layer: AppGeoJSONLayer | undefined) {
   const times: Array<any> = [];
   if (!layer) return [];
