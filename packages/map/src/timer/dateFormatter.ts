@@ -1,18 +1,23 @@
-import { Moment } from "moment";
-import moment from "moment-jalaali";
+import dayjs, { Dayjs } from "dayjs";
+import jalaliday from "jalaliday";
 
 export function usePerisan() {
-  require("moment/locale/fa");
-  moment.loadPersian({ dialect: "persian-modern" });
+  dayjs.extend(jalaliday);
+  (dayjs as any)().locale('fa').calendar("jalali");
   return null;
 }
 
-export function formatPersianDateComplete(m: Moment) {
-  return `${m.format("jYYYY dddd jD jMMMM")}`;
+export function formatPersianDateComplete(m: Dayjs) {
+  return `${m.locale('fa').calendar("jalali").format("YYYY dddd D MMMM")}`;
 }
-export function formatPersianTimeComplete(m: Moment) {
-  return `${m.format("hh:mm:ss A")}`;
+export function formatPersianTimeComplete(m: Dayjs) {
+  return `${m.locale('fa').calendar("jalali").format("hh:mm:ss A")}`;
 }
-export function findIsAM(m: Moment) {
+export function findIsAM(m: Dayjs) {
   return +m.hour() < 12;
 }
+
+export const getDisplayNoTimeError = "داده زمانی وجود ندارد";
+
+export const getAMText = "ق.ظ";
+export const getPMText = "ب.ظ";

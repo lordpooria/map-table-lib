@@ -4,6 +4,7 @@ declare type SliderValue = {
     max: number;
 };
 export interface PlayerStoreModel {
+    smallPlayerSize: boolean;
     isPlaying: boolean;
     isReversePlaying: boolean;
     isRecording: boolean;
@@ -13,6 +14,9 @@ export interface PlayerStoreModel {
     timeSlider: number;
     speedSliderRange: SliderValue;
     speedSlider: number;
+    setPlayerSize: Action<PlayerStoreModel, {
+        isSmall: boolean;
+    }>;
     setPlay: Action<PlayerStoreModel, boolean>;
     setReversePlay: Action<PlayerStoreModel, boolean>;
     setRecording: Action<PlayerStoreModel, boolean>;

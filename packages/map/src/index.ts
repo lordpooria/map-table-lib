@@ -5,7 +5,7 @@ export default HesabaTimeDimension;
 export { default as TDProvider } from "./HesabaTimeDimension/Provider";
 export * from "./timer";
 
-export * from "./types";
+export * from "./types/common";
 export * from "./store";
 export * from "./legend";
 export * from "./utils/utils";

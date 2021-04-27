@@ -24,12 +24,18 @@ const useStyles = makeStyles(() =>
       bottom: 10,
       left: "50%",
       transform: "translate(-50%)",
+      fontFamily: "inherit",
     },
     dateWrapper: {
       backgroundColor: "#FFF",
       marginTop: 8,
       padding: "0 4px",
       borderRadius: "99em",
+    },
+    date: {
+      padding: 4,
+      margin: 0,
+      fontFamily: "inherit",
     },
   })
 );

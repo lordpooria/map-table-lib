@@ -1,0 +1,7 @@
+import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
+import data from "./utils/data/small_data.json";
+import { baseMapProps } from "./utils/constants";
+
+export const SimpleMap2 = () => (
+  <HesabaTimeDimension mapProps={baseMapProps} data={data as any} />
+);

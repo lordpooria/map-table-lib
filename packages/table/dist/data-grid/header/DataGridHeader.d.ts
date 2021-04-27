@@ -1,3 +1,3 @@
-import { CommonHeaderProps } from "@/types/tableElements";
-declare const DataGridHeader: ({ selectable, currentWidths, columns, resizable, sortable, isSelected, stickyColumns, }: CommonHeaderProps) => JSX.Element;
+import { VTPublicHeaderProps } from "../../types/tableElements";
+declare const DataGridHeader: ({ selectable, currentWidths, columns, resizable, sortable, isSelected, stickyColumns, }: VTPublicHeaderProps) => JSX.Element;
 export default DataGridHeader;

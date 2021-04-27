@@ -1,11 +1,8 @@
-import { RawTableColumns } from "@hesaba/table/dist/types";
-interface Props {
-}
-declare const rows: {
-    name: string;
-    type: string;
-}[];
-declare type keys = typeof rows[number];
-export declare const schemaColumns: RawTableColumns<keys>;
-declare const TDTable: ({}: Props) => JSX.Element;
-export default TDTable;
+import React from "react";
+import { TdTableProps } from "../types/TableType";
+declare type TDTableCompleteProps = TdTableProps & {
+    className: string;
+    theme?: any;
+};
+declare const TDTableContainer: React.MemoExoticComponent<(props: TDTableCompleteProps) => JSX.Element>;
+export default TDTableContainer;

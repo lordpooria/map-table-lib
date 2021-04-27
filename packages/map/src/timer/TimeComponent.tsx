@@ -1,26 +1,30 @@
 import React, { useCallback, useEffect } from "react";
-import { getDisplayNoTimeError } from "../utils/utils";
 import { useLocalStore } from "easy-peasy";
-import moment from "moment-jalaali";
+import day from "dayjs";
 import { timerStoreModel } from "./timeReducer";
 import {
   formatPersianDateComplete,
   usePerisan,
   findIsAM,
+  getAMText,
+  getDisplayNoTimeError,
+  getPMText,
 } from "./dateFormatter";
-import Clock from "react-clock";
 
 import { Typography } from "@material-ui/core";
 import { useTDStoreState } from "../store/reducerHooks";
 import useStyles from "./TimeComponent.styles";
 import { TimeProps } from "./TimeComponent.types";
 import clsx from "clsx";
+import ClockComponent from "./ClockComponent";
 // import { TimeZone } from "../types";
 
 const TimerComponent = ({
-  am = "AM",
-  pm = "PM",
+  am = getAMText,
+  pm = getPMText,
+  noTimeError = getDisplayNoTimeError,
   clockProps,
+  dateWrapperClasses,
   dateClasses,
   amPmClasses,
 }: /*timeZone*/ TimeProps) => {
@@ -36,7 +40,7 @@ const TimerComponent = ({
   const update = useCallback((currentTime) => {
     if (currentTime >= 0) {
       try {
-        const date = moment(currentTime);
+        const date = day(currentTime);
 
         actions.setDisplayDate({
           displayDate: formatPersianDateComplete(date),
@@ -46,7 +50,7 @@ const TimerComponent = ({
       } catch (e) {}
     } else {
       actions.setDisplayDate({
-        displayDate: getDisplayNoTimeError(),
+        displayDate: noTimeError,
         displayTime: "",
         isAM: true,
       });
@@ -56,15 +60,18 @@ const TimerComponent = ({
   return (
     <div className={timeClasses.root}>
       <div className={timeClasses.clockWrapper}>
-        <Clock value={state.displayTime} size={80} 
-        renderNumbers={true}
-        {...clockProps} />
+        <ClockComponent
+          displayTime={state.displayTime}
+          clockProps={clockProps}
+        />
         <Typography className={clsx(timeClasses.amPm, amPmClasses)}>
           {state.isAM ? am : pm}
         </Typography>
       </div>
-      <div className={clsx(timeClasses.dateWrapper, dateClasses)}>
-        {state.displayDate}
+      <div className={clsx(timeClasses.dateWrapper, dateWrapperClasses)}>
+        <p className={clsx(timeClasses.date, dateClasses)}>
+          {state.displayDate}
+        </p>
       </div>
     </div>
   );

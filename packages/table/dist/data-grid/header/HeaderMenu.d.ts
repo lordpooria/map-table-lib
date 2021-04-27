@@ -1,7 +1,8 @@
 import { SortType } from "../../types/main";
+import { VTMainListProps } from "../../types";
 interface Props {
     index: number;
-    sortable?: boolean;
+    sortable?: VTMainListProps["sortable"];
     columnKey: string;
     sorted: SortType;
 }

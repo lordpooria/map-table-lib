@@ -12,6 +12,7 @@ export interface TableComponentProps {
   row: any;
   rowKey: any;
   label: string;
+  className?:string
 }
 
 export type TableColumnData = {
@@ -30,6 +31,23 @@ export type RawTableColumn<T> = TableColumnData & {
   custom?: T;
 };
 
+// type BaseTableValue = string | number | boolean;
+
+// type TableValue =
+//   | BaseTableValue
+//   | {
+//       value: BaseTableValue;
+//       collapsedRows?: RawTableRows;
+//       extraData?: any;
+//     }
+//   | undefined;
+
+export type RawTableRow = Record<string, /*TableValue*/ any> & {
+  id?: number | string;
+};
+
+export type RawTableRows = Array<RawTableRow>;
+
 export type RawTableColumns<T extends {} = any> = Array<RawTableColumn<T>>;
 
 export type TableColumn<T extends {} = any> = RawTableColumn<T> & {
@@ -42,8 +60,9 @@ export type TableColumn<T extends {} = any> = RawTableColumn<T> & {
 
 export type TableColumns<T extends {} = any> = Array<TableColumn<T>>;
 
-export type RawTableRow = Record<string, any>;
-
-export type RawTableRows = Array<RawTableRow>;
-
 export type TableRows = Array<RawTableRow & { selected: boolean }>;
+
+export type TableDataParser = (
+  columns: RawTableColumns,
+  rows: RawTableRows
+) => { enhancedColumns: TableColumns; visibleRows: TableRows };

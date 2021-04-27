@@ -1,12 +1,12 @@
 import React from "react";
 import Provider from "./container/Wrapper";
-import DataGrid from "./data-grid/DataGrid/DataGrid";
+// import DataGrid from "./data-grid/DataGrid/DataGrid.tsxx";
 import { GridTableProps } from "./types/tableTypes";
 
-const HesabaDataGrid = ({ direction = "ltr", ...props }: GridTableProps) => {
+const HesabaDataGrid = ({ direction = "ltr", /*...props*/ }: GridTableProps) => {
   return (
     <Provider direction={direction}>
-      <DataGrid {...props} direction={direction} />
+      {/* <DataGrid {...props} direction={direction} /> */}
     </Provider>
   );
 };

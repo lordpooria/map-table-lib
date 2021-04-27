@@ -5,24 +5,32 @@ import { TableComponentProps, TableColumn } from "../types/main";
 import clsx from "clsx";
 import { DATA_FIELD } from "../utils/constants";
 import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
-import { CurrentWidths } from "../types/useTableResizer";
 import { CellClasses } from "../types/styles";
-
-const SimpleTableCell = ({ value }: TableComponentProps) => {
-  return <Typography>{value}</Typography>;
-};
+import { useTableSizeState } from "../container/TableSizeProvider";
 
 const useCellStyles = makeStyles(() =>
   createStyles({
     rowCell: {},
+    simpleCell: {
+      fontFamily: "inherit",
+    },
   })
 );
+
+const SimpleTableCell = ({ value, className }: TableComponentProps) => {
+  const classes = useCellStyles();
+  return (
+    <Typography className={clsx(classes.simpleCell, className)}>
+      {value}
+    </Typography>
+  );
+};
 
 interface Props extends TableColumn {
   row: any;
   rowIndex: number;
   colIndex: number;
-  currentWidths: CurrentWidths;
+  // currentWidths: CurrentWidths;
   columnsLength: number;
   colKey: string;
   classes?: CellClasses;
@@ -41,7 +49,7 @@ const Cell = ({
   rowIndex,
   colIndex,
   columnsLength,
-  currentWidths,
+  // currentWidths,
   classes,
   sticky,
   custom,
@@ -51,10 +59,13 @@ const Cell = ({
   const cellClasses = useCellStyles();
 
   // const handleW = colIndex === columnsLength - 1 ? 0 : RESIZE_HANDLE_WIDTH;
+  const { currentWidths } = useTableSizeState();
 
   const calcMinWidth = currentWidths[rest[DATA_FIELD]]
     ? currentWidths[rest[DATA_FIELD]] + RESIZE_HANDLE_WIDTH
     : minWidth + RESIZE_HANDLE_WIDTH;
+  const value =
+    typeof row[colKey] === "object" ? row[colKey]?.value : row[colKey];
 
   return (
     <div
@@ -80,7 +91,8 @@ const Cell = ({
         index={rowIndex}
         rowKey={rowIndex}
         row={row}
-        value={row[colKey]}
+        value={value}
+        className={classes?.simpleCell}
       />
     </div>
   );

@@ -1,43 +1,27 @@
-import React from "react";
-import { useLayer } from "../layer";
-import { GeoJsonObject } from "geojson";
-import  { GeoJSONOptions } from "leaflet";
+import React, { FC } from "react";
+
 import { PlayerController } from "../player";
 import { TimeComponent } from "../timer";
-import LegendComponent from "../legend/LegendComponent";
+import LegendContainer from "../legend/LegendComponent";
+
+import { TimeDimensionViewProps } from "../types/HesabaTimeDimension";
+import GeoJSONLayer from "../layer/TDGeojsonLayer";
 import { useMap } from "react-leaflet";
-import { PlayerProps } from "../player/PlayerControl.types";
-import { TimeProps } from "../timer/TimeComponent.types";
-import { TDLayerOptions } from "../layer/layer.type";
 
-interface Props {
-  data: GeoJsonObject;
-  playerProps: PlayerProps;
-  timeProps: TimeProps;
-  geojsonProps: GeoJSONOptions;
-  layerProps: TDLayerOptions;
-  extralLayerProps: any;
-}
-
-const HesabaTimeDimensionView = ({
-  data,
+const HesabaTimeDimensionView: FC<TimeDimensionViewProps> = ({
   playerProps,
   timeProps,
+  LegendComponent,
   layerProps,
-  geojsonProps,
-  extralLayerProps = {},
-}: // addLayer,
-// removeLayer,
-// map,
-Props) => {
+}: TimeDimensionViewProps) => {
   const map = useMap();
-  useLayer(data as any, map, geojsonProps, layerProps, extralLayerProps);
- 
+
   return (
     <>
       <PlayerController leafletMap={map} {...playerProps} />
       <TimeComponent {...timeProps} />
-      <LegendComponent legends={[0, 1, 2, 3, 4]} />
+      <LegendContainer LegendComponent={LegendComponent} />
+      <GeoJSONLayer {...layerProps} />
     </>
   );
 };

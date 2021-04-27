@@ -3,7 +3,7 @@
 //   UISchema,
 //   UISchemaWithId,
 //   ColumnTypes,
-// } from "@/models/graph";
+// } from "/models/graph";
 // import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 
 import { ColumnType } from "../../types/main";
@@ -152,8 +152,7 @@ export const reorderValues = (
   op: FilterOperationsType,
   // val: FilterValuesType
 ) => {
-  console.log(type, op);
-  return !op.valSize
+ return !op.valSize
     ? []
     : // : op.valSize < val.length
       // ? val.slice(0, op.valSize)

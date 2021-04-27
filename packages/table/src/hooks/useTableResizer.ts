@@ -11,21 +11,22 @@ import {
   QuerySelectType,
   TotalWidth,
 } from "../types/useTableResizer";
+import { useTableSizeAction } from "../container/TableSizeProvider";
+import { useLanguageState } from "@hesaba/theme-language";
 // import { useStoreState } from "../store/reducerHooks";
 
-export const useTableResizer = (
-  tableWidth: number | string,
-  direction?: AppDirection
-) => {
+export const useTableResizer = () => {
   const columnElements = useRef<QuerySelectType>();
   const headers = useRef<QuerySelectType>();
   const rowRef = useRef<QuerySelectType>();
-  const widthRef = useRef<number | string>(tableWidth);
+  const { direction } = useLanguageState();
+
+  // const placeholderCellRef = useRef<QuerySelectType>();
   const dirRef = useRef(direction);
   const currentWidths = useRef<CurrentWidths>({});
-  const currentField = useRef<string>();
   const totalWidth = useRef<TotalWidth>(0);
-  
+  const currentField = useRef<string>();
+  const { setSizes } = useTableSizeAction();
   const tableRef = useRef<HTMLDivElement | null | undefined>();
 
   // const dir = useStoreState((state) => state.settings.direction);
@@ -38,7 +39,6 @@ export const useTableResizer = (
       rowRef.current = tableRef.current?.querySelectorAll(
         `.${HESABA_TABLE_ROW_CLASS}`
       ) as NodeListOf<HTMLElement>;
-
       // }
     };
 
@@ -84,18 +84,7 @@ export const useTableResizer = (
             el.getBoundingClientRect().width + RESIZE_HANDLE_WIDTH)
       );
 
-      if (typeof widthRef.current === "number") {
-        totalWidth.current =
-          headerWidth > widthRef.current ? headerWidth : widthRef.current;
-      } else {
-        totalWidth.current = headerWidth;
-      }
-      // if (tableRef.current) {
-      //   tableRef.current.style.width = `${headerWidth}px`
-      //   tableRef.current.style.minWidth = `${headerWidth}px`
-      //   tableRef.current.style.maxWidth = `${headerWidth}px`
-
-      // };
+      totalWidth.current = headerWidth;
 
       columnElements.current.forEach((el, index) => {
         if (index === 0) {
@@ -108,11 +97,11 @@ export const useTableResizer = (
           el.style.maxWidth = `${newWidth + RESIZE_HANDLE_WIDTH}px`;
         }
       });
-      rowRef.current.forEach((el) => {
-        el.style.width = `${totalWidth.current}px`;
-        el.style.minWidth = `${totalWidth.current}px`;
-        el.style.maxWidth = `${totalWidth.current}px`;
-      });
+      // rowRef.current.forEach((el) => {
+      //   el.style.width = `${headerWidth}px`;
+      //   el.style.minWidth = `${headerWidth}px`;
+      //   el.style.maxWidth = `${headerWidth}px`;
+      // });
     };
 
     const onMouseUp = (e: MouseEvent) => {
@@ -132,6 +121,11 @@ export const useTableResizer = (
         currentWidths.current[currentField.current] =
           e.clientX - columnElements.current[0].getBoundingClientRect().left;
       }
+
+      setSizes({
+        totalWidth: totalWidth.current,
+        currentWidths: currentWidths.current,
+      });
     };
 
     const removeMouseDown = (table: HTMLDivElement) => {
@@ -158,14 +152,8 @@ export const useTableResizer = (
   }, [removeMouseDownListerner]);
 
   useEffect(() => {
-    widthRef.current = tableWidth;
     dirRef.current = direction;
-  }, [tableWidth,direction]);
+  }, [direction]);
 
-  return {
-    currentWidths,
-    totalWidth,
-    setTableRef,
-    tableRef,
-  };
+  return { setTableRef, tableRef };
 };

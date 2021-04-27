@@ -6,31 +6,35 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     playerRoot: {
       position: "absolute",
-      display: "flex",
+      display: "grid",
+      bottom: 20,
+      left: 20,
+      gridTemplateColumns: "repeat(auto-fit,minmax(70px,1fr))",
       width: "60%",
       alignItems: "center",
       justifyContent: "space-between",
       padding: "4px 16px",
       zIndex: 1000,
-      bottom: 20,
-      left: 20,
+
       borderRadius: "50em",
       backgroundColor: "#fff",
-      border: "solid 1px #999",
+      // border: `solid 1px ${theme.palette.grey["300"]}`,
     },
 
     playerSlider: {
       display: "flex",
       flex: 3,
-      minWidth: 100,
+
       marginRight: 8,
       alignItems: "center",
+      minWidth: 100,
     },
     speedSlider: {
       display: "flex",
       flex: 1,
       margin: "0 8px",
       alignItems: "center",
+      minWidth: 50,
     },
     controller: {
       display: "flex",

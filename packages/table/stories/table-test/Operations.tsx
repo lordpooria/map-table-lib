@@ -17,7 +17,6 @@ const Operations = ({}: Props) => {
   return (
     <IconButton
       onClick={() => {
-        console.log(selectedRows);
         alert(selectedRows);
       }}
     >

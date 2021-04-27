@@ -1,4 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import { VirtualTableProps } from "../types/tableTypes";
-declare const VirtualizaTable: React.MemoExoticComponent<({ rows, columns, selectable, height, width, resizable, hasFilter, title, sortable, operationOnRows, itemSize, classes, direction, pagination, ...rest }: VirtualTableProps) => JSX.Element | null>;
+/**
+ * Decorator component that automatically adjusts the width and height of a single child
+ */
+declare const VirtualizaTable: FC<VirtualTableProps>;
 export default VirtualizaTable;

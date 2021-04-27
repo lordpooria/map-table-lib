@@ -1,37 +1,76 @@
-import React, { forwardRef,  memo } from "react";
+import React, { forwardRef, memo } from "react";
 import { VariableSizeList as List } from "react-window";
 
 import VirtualTableRow from "../rows/VirtualTableRow";
 import VirtualTableHeader from "../header/VirtualTableHeader";
 
 import clsx from "clsx";
+import { CompleteMainListProps } from "../../types";
+import { useTStoreState } from "../../store/reducerHooks";
+import { commonSidebar } from "../../utils/themeConstants";
+import { useLanguageState } from "@hesaba/theme-language";
 
-// interface Props {}
+import { MAIN_LIST_ID } from "../../utils/constants";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  root: {},
+});
+
+const outerElementTypeWithId = forwardRef((props: any, ref) => {
+  return <div id={MAIN_LIST_ID} {...props} ref={ref as any} />;
+});
 
 const VirtualList = memo(
   forwardRef(
     (
       {
-        direction,
         height,
-        rows,
-        columns,
-        onScroll,
-        itemSize,
         width,
-        selectable,
-        sortable,
-        resizable,
-        numRowsSelected,
-        totalWidth,
-        currentWidths,
         classes,
+        onScroll,
         setTableRef,
-        tableClasses,
         extraStyle,
-      }: any,
+        selectable = false,
+        itemSize = () => commonSidebar.itemHeight,
+        resizable,
+        sortable,
+        VTCommonTableElProps,
+        VTRowProps,
+        VTFilterProps,
+        VTHeaderProps,
+      }: CompleteMainListProps,
       ref
     ) => {
+      const { direction } = useLanguageState();
+      const visibleRows = useTStoreState((state) => state.visibleRows);
+      const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
+      const tableClasses = useStyles();
+      if (!visibleRows || visibleRows.length === 0) {
+        return null;
+      }
+
+      // const [rowSizes, setRowSizes] = useState(
+      //   new Array(rows.length).fill(true).reduce((acc, item, i) => {
+      //     acc[i] = 50;
+      //     return acc;
+      //   }, {})
+      // );
+
+      // function toggleSize(i: number) {
+      //   if (ref) {
+      //     (ref as any).resetAfterIndex(i);
+      //   }
+      //   setRowSizes((prevState: any) => ({
+      //     ...prevState.rowSizes,
+      //     [i]: prevState.rowSizes[i] === 50 ? 75 : 50,
+      //   }));
+      // }
+
+      // function getSize(i: number) {
+      //   return rowSizes[i];
+      // }
+
       const innerElementType = ({
         children,
         style,
@@ -43,13 +82,14 @@ const VirtualList = memo(
         <div {...rest} style={{ ...style, ...extraStyle }}>
           <VirtualTableHeader
             selectable={selectable}
-            sortable={sortable}
-            currentWidths={currentWidths}
-            columns={columns}
-            resizable={resizable}
             isSelected={numRowsSelected !== 0}
-            totalWidth={totalWidth}
             classes={classes?.header}
+            width={width}
+            resizable={resizable}
+            sortable={sortable}
+            {...VTCommonTableElProps}
+            {...VTHeaderProps}
+            {...VTFilterProps}
             // placeholderColumns={placeholderColumns}
             // placeholderTotalWidth={placeholderTotalWidth}
             // placeholderCurrentWidths={placeholderCurrentWidths}
@@ -65,31 +105,30 @@ const VirtualList = memo(
           ref={ref as any}
           direction={direction}
           height={height}
-          itemCount={rows.length}
+          itemCount={visibleRows.length}
           onScroll={onScroll}
           itemSize={itemSize}
-          itemKey={(index) => rows[index].id}
+          itemKey={(index) => `${index}` as string}
           width={width}
-          itemData={rows}
+          itemData={visibleRows}
           outerRef={setTableRef}
           innerElementType={innerElementType}
           className={clsx(tableClasses.root, classes?.table?.root)}
+          outerElementType={outerElementTypeWithId}
         >
           {({ index, ...rest }) => (
-           
-              <VirtualTableRow
-                rowIndex={index}
-                selectable={selectable}
-                totalWidth={totalWidth}
-                currentWidths={currentWidths}
-                columns={columns}
-                rows={rows}
-                classes={classes?.row}
-                {...rest}
-                // placeholderColumns={placeholderColumns}
-                // placeholderTotalWidth={placeholderTotalWidth}
-                // placeholderCurrentWidths={placeholderCurrentWidths}
-              />
+            <VirtualTableRow
+              rowIndex={index}
+              selectable={selectable}
+              classes={classes?.row}
+              width={width}
+              {...VTCommonTableElProps}
+              {...VTRowProps}
+              {...rest}
+              // placeholderColumns={placeholderColumns}
+              // placeholderTotalWidth={placeholderTotalWidth}
+              // placeholderCurrentWidths={placeholderCurrentWidths}
+            />
           )}
         </List>
       );

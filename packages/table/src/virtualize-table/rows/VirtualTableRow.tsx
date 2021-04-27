@@ -1,15 +1,16 @@
-import React from "react";
-import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
+import React, { useCallback } from "react";
 import clsx from "clsx";
+import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
 
-import { useTStoreActions } from "../../store/reducerHooks";
+import { useTStoreActions, useTStoreState } from "../../store/reducerHooks";
 import Cell from "../../cell/Cell";
 import { Fragment } from "react";
 import { commonSidebar } from "../../utils/themeConstants";
 import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
-import { CommonTableRowType } from "@/types/tableElements";
+import { CompleteRowProps } from "../../types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
-import { calcRowWidth } from "@/utils/helper";
+import { chooseClass, useCalcTableWidth } from "../../utils/helper";
+import { useTableRowState } from "../../container/TableRowProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -20,7 +21,8 @@ const useStyles = makeStyles((theme) =>
     tableRow: {
       display: "flex",
       alignItems: "center",
-      // flexDirection: theme.direction === "rtl" ? "row-reverse" : "row",
+    },
+    tableRowCommon: {
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
       "&:hover": {
         backgroundColor: "rgba(0,0,0,0.1)",
@@ -30,68 +32,90 @@ const useStyles = makeStyles((theme) =>
     selected: {
       backgroundColor: "rgba(100,100,255,0.1)",
     },
+    activatedRow: { backgroundColor: "rgba(255,100,255,0.1)" },
   })
 );
 
-const VirtualTableRow = ({
+export function VirtualTableRow(props: CompleteRowProps) {
+  return (
+    <>
+      <SingleVirtualTableRow {...props} />
+    </>
+  );
+}
+
+const SingleVirtualTableRow = ({
   style,
   rowIndex,
-  totalWidth,
   selectable,
-  columns,
-  rows,
   classes,
+  width,
+  CheckboxProps,
+  onRowClick,
+  extraStyles,
   ...rest
-}: CommonTableRowType) => {
+}: CompleteRowProps) => {
   const rowClasses = useStyles();
   const commonClasses = useCommonStyles();
-
+  const visibleColumns = useTStoreState((state) => state.visibleColumns);
+  const visibleRows = useTStoreState((state) => state.visibleRows);
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
-  
+  const calcRowWidth = useCalcTableWidth(visibleColumns, width);
+  const { activeRow } = useTableRowState();
+  const onRowSelect = useCallback(() => {
+    onRowClick && onRowClick(rowIndex);
+  }, [onRowClick]);
   return (
     <div
       style={{
         ...style,
-        width: calcRowWidth(totalWidth, columns),
+        extraStyles,
+        width: calcRowWidth(),
         overflow: "hidden",
-        // alignItems: "stretch",
-        // width: "100%",
-
         marginTop: commonSidebar.itemHeight,
       }}
-      key={rows[rowIndex].name}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
         rowClasses.tableRow,
-        classes?.root,
-        { [rowClasses.selected]: rows[rowIndex].selected }
-        // { [classes.evenRow]: index % 2 === 0 },
-        // { [classes.oddRow]: index % 2 !== 0 }
+        chooseClass(rowClasses.tableRowCommon, classes?.root),
+        { [rowClasses.selected]: visibleRows[rowIndex].selected },
+        { [rowClasses.activatedRow]: activeRow === rowIndex },
+        {
+          [classes?.evenRow || "tempEvenRow"]:
+            classes?.evenRow && rowIndex % 2 === 0,
+        },
+        {
+          [classes?.oddRow || "tempOddRow"]:
+            classes?.oddRow && rowIndex % 2 !== 0,
+        }
       )}
+      onClick={onRowSelect}
     >
       {selectable && (
         <Checkbox
-          checked={rows[rowIndex].selected}
+          checked={visibleRows[rowIndex].selected}
           onChange={() => {
             toggleSingleRow({ index: rowIndex });
           }}
           // name={name}
           color="primary"
           classes={{ root: commonClasses.checkbox }}
+          onClick={(e) => e.stopPropagation()}
+          {...CheckboxProps}
         />
       )}
 
-      {columns.map((props, colIndex) => (
+      {visibleColumns.map((props, colIndex) => (
         <Fragment key={props.key}>
           <Cell
             {...props}
             {...rest}
             colIndex={colIndex}
-            row={rows[rowIndex]}
+            row={visibleRows[rowIndex]}
             rowIndex={rowIndex}
-            columnsLength={columns.length}
+            columnsLength={visibleColumns.length}
             colKey={props.key}
           />
         </Fragment>

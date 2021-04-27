@@ -1,6 +1,6 @@
-import { HesabaVirtualTable, AutoResizer } from "@hesaba/table";
+import { HesabaVirtualTable, AutoResizer, TableStoreProvider } from "@hesaba/table";
 import { PercentCell, QualityCell } from "../table-test/CellComponent";
-import Operations from "../table-test/Operations";
+// import Operations from "../table-test/Operations";
 
 const rows = [...Array.from({ length: 4000 }, (_, i) => i)].map((item) => {
   const random = Math.random();
@@ -29,19 +29,19 @@ export const schemaColumns = [
     key: "type",
     type: "string",
   },
-  {
-    label: "percent",
-    key: "percent",
-    type: "date",
-    CellComponent: PercentCell,
-  },
+  // {
+  //   label: "percent",
+  //   key: "percent",
+  //   type: "date",
+  //   CellComponent: PercentCell,
+  // },
 
-  {
-    label: "vaildated",
-    key: "vaildated",
-    type: "number",
-    CellComponent: QualityCell,
-  },
+  // {
+  //   label: "vaildated",
+  //   key: "vaildated",
+  //   type: "number",
+  //   CellComponent: QualityCell,
+  // },
 ];
 
 interface Props {}
@@ -49,35 +49,26 @@ interface Props {}
 const Table = ({}: Props) => {
   return (
     <div style={{ width: " calc(50vw + 220px)", height: "70vh" }}>
-      <AutoResizer>
-        {({ width, height }) => (
-          <HesabaVirtualTable
-            height={height}
-            width={width}
-            columns={schemaColumns}
-            rows={rows}
-            selectable
-            resizable
-            sortable
-            pagination={{
-              rowsPerPage: 10,
-              count: 20,
-              page: 1,
-              onPageChange: () => {},
-            }}
-            // classes={{
-            //   table: { container: classes.root },
-            //   row: { root: classes.row, cell: { root: classes.cell } },
-            //   footer: { root: classes.footer },
-            //   toolbar: { root: classes.toolbar },
-            //   header: { root: classes.header, cell: { root: classes.cell } },
-            // }}
-            // title="Simple Table"
-            operationOnRows={[Operations]}
-            direction="ltr"
-          />
-        )}
-      </AutoResizer>
+    <AutoResizer>
+          {({ width, height }) => (
+            <HesabaVirtualTable
+              width={width}
+              height={height as number}
+              columns={schemaColumns}
+              rows={rows}
+              selectable
+              resizable
+              sortable
+              hasToolbar={false}
+              VTCommonTableElProps={{
+                CheckboxProps: { style: { color: "#F0f" } },
+              }}
+              VTHeaderProps={{DividerProps:{color: "#F0f"}}}
+              direction="ltr"
+              
+            />
+          )}
+        </AutoResizer>
     </div>
   );
 };

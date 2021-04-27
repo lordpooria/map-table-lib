@@ -4,7 +4,7 @@ import {
   Period,
   TimeZone,
   UTCType,
-} from "../types";
+} from "../types/common";
 import { parse, Duration } from "iso8601-duration";
 
 export function getDisplayDateFormat(date: Date, timeZone: TimeZone) {
@@ -20,9 +20,7 @@ export function getDisplayDateFormat(date: Date, timeZone: TimeZone) {
     timeZoneName: "short",
   });
 }
-export function getDisplayNoTimeError() {
-  return "Time not available";
-}
+
 
 export function getTimeDuration(ISODuration: string) {
   return parse(ISODuration);

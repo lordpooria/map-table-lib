@@ -10,9 +10,10 @@ import { useTStoreActions } from "../../store/reducerHooks";
 import MoreVert from "../../assets/icons/common/MoreVertIcon";
 import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
 import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
-import { SmallIconButton } from "../../styled-component/StyledButton";
+import { SmallIconButton } from "@hesaba/theme-language";
 import { SortType } from "../../types/main";
-// import PinIcon from "@/assets/icons/common/PinIcon";
+import { VTMainListProps } from "../../types";
+// import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },
@@ -26,7 +27,7 @@ const useStyles = makeStyles(() =>
 
 interface Props {
   index: number;
-  sortable?: boolean;
+  sortable?: VTMainListProps["sortable"];
   columnKey: string;
   sorted: SortType;
 }

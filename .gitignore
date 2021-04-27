@@ -31,3 +31,6 @@ yarn-error.log*
 
 #example
 examples/.next
+
+#docs 
+/**/.docz

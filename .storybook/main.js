@@ -1,4 +1,20 @@
 module.exports = {
-  stories: ["../stories/**/*.stories.tsx", "../stories/**/*.stories.js"],
-  addons: ["@storybook/addon-actions", "@storybook/addon-links"],
+  stories: ["../packages/**/stories/**/*.stories.@(tsx|mdx)"],
+  addons: [
+    "storybook-addon-react-docgen",
+    "storybook-addon-package-json",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        configureJSX: true,
+        babelOptions: {},
+      },
+    },
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        viewport: false,
+      },
+    },
+  ],
 };

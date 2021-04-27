@@ -1,12 +1,18 @@
 import React from "react";
-import "leaflet/dist/leaflet.css";
-import { TileLayer } from "react-leaflet";
+
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
-import data from "./track_bus699.json";
-// export default { title: "Basic Map" };
-import { storiesOf } from "@storybook/react";
-import { baseLayerProps, baseMapProps, commonGeojsonProps } from "./constants";
+import data from "./utils/data/small_data.json";
+
+import { baseMapProps, commonGeojsonProps } from "./utils/constants";
 import { useTDStoreActions } from "../src/store/reducerHooks";
+
+import PlayerPropAutoPlayAndReload from "./docs/PlayerPropAutoPlayAndReload.md";
+import PlayerPropSlidersProps from "./docs/PlayerPropSlidersProps.md";
+import PlayerPropCustomComponent from "./docs/PlayerPropCustomComponent.md";
+import PlayerPropRemoveComponent from "./docs/PlayerPropRemoveComponent.md";
+import { DocsProvider } from "./docs/DocsProvider";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const INITIAL_SPEED = 20;
 
@@ -20,95 +26,105 @@ const BackwardButton = () => {
   );
 };
 
-storiesOf("Player props", module)
-  .add("auto play & reload", () => (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={baseMapProps}
-      layerProps={{ ...baseLayerProps, addlastPoint: true }}
-      playerProps={{ loop: true, autoPlay: true }}
-      geojsonProps={commonGeojsonProps}
-    />
-  ))
-  .add("slider and speeds props", () => (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={baseMapProps}
-      layerProps={{ ...baseLayerProps, addlastPoint: true }}
-      geojsonProps={commonGeojsonProps}
-      playerProps={{
+export const AutoPlayAndReload = () => {
+  const props = JSON.parse(
+    JSON.stringify({
+      data: data as any,
+      mapProps: baseMapProps,
+      playerProps: { loop: true, autoPlay: true },
+    })
+  );
+  return <HesabaTimeDimension {...props} />;
+};
+
+AutoPlayAndReload.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropSlidersProps}>
+          <AutoPlayAndReload />
+        </DocsProvider>
+      );
+    },
+  },
+};
+
+export const SliderAndSpeedsProps = () => {
+  const props = JSON.parse(
+    JSON.stringify({
+      data: data as any,
+      mapProps: baseMapProps,
+      geojsonProps: commonGeojsonProps,
+      playerProps: {
         timeSteps: 2,
         speedStep: 5,
         minSpeed: 1,
         maxSpeed: 100,
         transitionTime: 1000 / INITIAL_SPEED,
-      }}
-    >
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </HesabaTimeDimension>
-  ))
-  .add("player custom button components", () => (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={baseMapProps}
-      layerProps={{ ...baseLayerProps, addlastPoint: true }}
-      geojsonProps={commonGeojsonProps}
-      playerProps={{
-        backwardButton: BackwardButton,
-      }}
-    >
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </HesabaTimeDimension>
-  ))
-  .add("player remove components", () => (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={baseMapProps}
-      layerProps={{ ...baseLayerProps, addlastPoint: true }}
-      geojsonProps={commonGeojsonProps}
-      playerProps={{
-        speedIcon: false,
-      }}
-    >
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </HesabaTimeDimension>
-  )).add("player remove components2", () => (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={baseMapProps}
-      layerProps={{ ...baseLayerProps, addlastPoint: true }}
-      geojsonProps={commonGeojsonProps}
-      playerProps={{
-        speedSlider: false,
-      }}
-    >
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </HesabaTimeDimension>
-  )).add("extra buttons", () => (
-    <HesabaTimeDimension
-      data={data as any}
-      mapProps={baseMapProps}
-      layerProps={{ ...baseLayerProps, addlastPoint: true }}
-      geojsonProps={commonGeojsonProps}
-      playerProps={{
-        playReverseButton: true,
-      }}
-    >
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-    </HesabaTimeDimension>
-  ));
+      },
+    })
+  );
+  return <HesabaTimeDimension {...props} />;
+};
+
+SliderAndSpeedsProps.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropAutoPlayAndReload}>
+          <SliderAndSpeedsProps />
+        </DocsProvider>
+      );
+    },
+  },
+};
+
+export const PlayerCustomButtonComponents = () => (
+  <HesabaTimeDimension
+    data={data as any}
+    mapProps={baseMapProps}
+    playerProps={{
+      backwardButton: BackwardButton,
+    }}
+  />
+);
+
+PlayerCustomButtonComponents.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropCustomComponent}>
+          <PlayerCustomButtonComponents />
+        </DocsProvider>
+      );
+    },
+  },
+};
+
+export const PlayerAddRemoveComponents = () => (
+  <HesabaTimeDimension
+    data={data as any}
+    mapProps={baseMapProps}
+    playerProps={{
+      speedIcon: false,
+      forwardButton: false,
+      speedSlider: false,
+      playReverseButton: true,
+    }}
+  />
+);
+
+PlayerAddRemoveComponents.parameters = {
+  docs: {
+    page: () => {
+      return (
+        <DocsProvider MDFile={PlayerPropRemoveComponent}>
+          <PlayerAddRemoveComponents />
+        </DocsProvider>
+      );
+    },
+  },
+};
+export default {
+  title: "Player props",
+};

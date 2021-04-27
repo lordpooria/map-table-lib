@@ -1,8 +1,8 @@
 import JalaliUtils from "@date-io/jalaali";
-import { Moment } from "moment";
+import { Dayjs } from "dayjs";
 
 class EditedJalaliUtils extends JalaliUtils {
-  getDatePickerHeaderText(date: Moment) {
+  getDatePickerHeaderText(date: Dayjs) {
     return date.format("dddd, jD jMMMM");
   }
 }

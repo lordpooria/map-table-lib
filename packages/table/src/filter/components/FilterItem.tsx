@@ -9,14 +9,14 @@ import { useTStoreActions } from "../../store/reducerHooks";
 import TrashIcon from "../../assets/icons/common/TrashIcon";
 
 
-// import CollapseVertical from "@/assets/icons/CollapseVertical";
-// import DeleteConfirm from "@/components/actions/DeleteConfirm";
+// import CollapseVertical from "/assets/icons/CollapseVertical";
+// import DeleteConfirm from "/components/actions/DeleteConfirm";
 
-// import { UISchema } from "@/models/graph";
+// import { UISchema } from "/models/graph";
 // import { useDispatch } from "react-redux";
 // import { filterDelete, filterSetName } from "../services/filterActions";
-// import { useTranslation } from "@/app/i18n";
-// import SimpleWarning from "@/components/info/SimpleWarning";
+// import { useTranslation } from "/app/i18n";
+// import SimpleWarning from "/components/info/SimpleWarning";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

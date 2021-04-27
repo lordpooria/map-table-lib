@@ -1,41 +1,80 @@
-import React, { Fragment } from "react";
-import { LegendsProps } from "./types";
+import { createStyles, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import React, { memo } from "react";
+import { useTDStoreState } from "../store";
+import { PublicLegendProps, LegendsProps } from "../types/legend";
 
-const LegendComponent = ({ legends }: LegendsProps) => {
-  const getColor = (d: number) => {
-    return d > 1000
-      ? "#800026"
-      : d > 500
-      ? "#BD0026"
-      : d > 200
-      ? "#E31A1C"
-      : d > 100
-      ? "#FC4E2A"
-      : d > 50
-      ? "#FD8D3C"
-      : d > 20
-      ? "#FEB24C"
-      : d > 10
-      ? "#FED976"
-      : "#FFEDA0";
-  };
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      position: "absolute",
+      bottom: 20,
+      right: 20,
+      zIndex: 999,
+      backgroundColor: "#FFF",
+      borderRadius: 5,
 
+      // border: `solid 1px ${theme.palette.grey["300"]}`,
+    },
+    itemContainer: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      margin: 4,
+    },
+    indicatorBox: {
+      border: `solid 2px ${theme.palette.grey["300"]}`,
+      width: 10,
+      height: 10,
+      borderRadius: 1,
+      margin: "0 4px",
+    },
+    text: {
+      color: theme.palette.grey["400"],
+      fontSize: 11,
+      margin: "4px 0",
+    },
+  })
+);
+const LegendContainer = ({ LegendComponent, classes }: PublicLegendProps) => {
+  const legendClasses = useStyles();
+  const users = useTDStoreState((state) => state.users);
+  const currentData = useTDStoreState((state) => state.currentData);
   return (
-    <div
-      style={{
-        position: "absolute",
-        bottom: 20,
-        right: 20,
-      }}
-    >
-      {legends.map((g) => (
-        <Fragment key={g}>
-          <i style={{ backgroundColor: getColor(g + 1) }}>{g}</i>
-          <br />
-        </Fragment>
-      ))}
+    <div className={clsx(legendClasses.root, classes?.root)}>
+      {LegendComponent ? (
+        <LegendComponent
+          properties={currentData?.features?.map((d) => d.properties)}
+        />
+      ) : (
+        <LegendStateLess users={users} />
+      )}
     </div>
   );
 };
 
-export default LegendComponent;
+const LegendStateLess = memo(({ users, classes }: LegendsProps) => {
+  const legendClasses = useStyles();
+  return (
+    <>
+      {users &&
+        Object.keys(users).map((k) => (
+          <div
+            key={k}
+            className={clsx(legendClasses.itemContainer, classes?.item)}
+          >
+            <span className={clsx(legendClasses.text, classes?.item)}>{k}</span>
+            <div
+              className={clsx(
+                legendClasses.indicatorBox,
+                classes?.colorIndicator
+              )}
+              style={{ backgroundColor: users[k] }}
+            />
+          </div>
+        ))}
+    </>
+  );
+});
+
+export default LegendContainer;

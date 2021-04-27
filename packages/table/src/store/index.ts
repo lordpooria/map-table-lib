@@ -7,10 +7,10 @@ import {
 } from "../types/store";
 import { TableFilterType } from "../types/VirtualTableFilter";
 import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
-import { DATA_FIELD, HESABA_DATA_FIELD } from "../utils/constants";
 import { reorderValues } from "../filter/components/utilsFilter";
 
 export interface VTStoreModel {
+  VTVersion: string;
   settings: { direction: PageDir; lang: string };
   visibleRows: TableRows;
   enhancedColumns: TableColumns;
@@ -24,6 +24,7 @@ export interface VTStoreModel {
   toggleShowFilter: Action<VTStoreModel, boolean>;
 
   setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
+  fakeAppendTableData: Action<VTStoreModel, any>;
   setStickyColumn: Action<VTStoreModel, { index: number }>;
 
   filterSetColumn: Action<VTStoreModel, SetFilterColPayload>;
@@ -44,6 +45,7 @@ export interface VTStoreModel {
 }
 
 export const vtStore: VTStoreModel = {
+  VTVersion: "1.0.0",
   settings: { direction: "rtl", lang: "fa" },
   visibleRows: [],
   enhancedColumns: [],
@@ -77,24 +79,17 @@ export const vtStore: VTStoreModel = {
   }),
 
   setTableData: action((state, payload) => {
-    const { columns, rows } = payload;
-    state.enhancedColumns = columns.map((c) => ({
-      ...c,
-      [DATA_FIELD]: `${HESABA_DATA_FIELD}-${c.key as string}`,
-      visible: true,
-      sticky: false,
-      sorted: undefined,
-      type: c?.type ?? "string",
-    }));
-    if (!rows[0]?.id) {
-      state.visibleRows = rows.map((r, index) => ({
-        ...r,
-        selected: false,
-        id: index,
-      }));
-    } else {
-      state.visibleRows = rows.map((r) => ({ ...r, selected: false }));
-    }
+    const { enhancedColumns, visibleRows } = payload;
+    state.visibleRows = visibleRows;
+    state.enhancedColumns = enhancedColumns;
+  }),
+
+  fakeAppendTableData: action((state, { rows, index }) => {
+    state.visibleRows = [
+      ...state.visibleRows.slice(0, index + 1),
+      ...rows,
+      ...state.visibleRows.slice(index + 1),
+    ];
   }),
 
   toggleVisibleColumns: action((state, { index }) => {
@@ -135,15 +130,15 @@ export const vtStore: VTStoreModel = {
 
     state.enhancedColumns.map((ec) => (ec.sorted = undefined));
     state.enhancedColumns[idx].sorted = sortType;
-
-    state.visibleRows =
-      sortType === "DESC"
-        ? state.visibleRows.sort((a, b) =>
-            a[columnKey] < b[columnKey] ? 1 : -1
-          )
-        : state.visibleRows.sort((a, b) =>
-            a[columnKey] < b[columnKey] ? -1 : 1
-          );
+    if (state.visibleRows.length > 0)
+      state.visibleRows =
+        sortType === "DESC"
+          ? state.visibleRows.sort((a, b) =>
+              (a[columnKey] as any) < (b[columnKey] as any) ? 1 : -1
+            )
+          : state.visibleRows.sort((a, b) =>
+              (a[columnKey] as any) < (b[columnKey] as any) ? -1 : 1
+            );
   }),
 
   filterSetColumn: action((state, action) => {
@@ -186,7 +181,6 @@ export const vtStore: VTStoreModel = {
   }),
 
   filterAdd: action((state, { columnKey }) => {
-    console.log(columnKey);
     state.showFilter = true;
     const col = state.enhancedColumns.filter((ec) => ec.key === columnKey);
     if (!col || col.length === 0) {

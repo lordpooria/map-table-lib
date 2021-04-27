@@ -1,5 +1,6 @@
 import React from "react";
 import { FilterBaseProps } from "./FilterValues";
+export declare type Calndar = "gregory" | "jalali";
 interface Props {
     children: React.ReactNode;
 }

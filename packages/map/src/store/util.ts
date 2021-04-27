@@ -1,4 +1,10 @@
-import { AvailableTimes, Mode, Period, SyncedLayer } from "../types";
+import {
+  AvailableTimes,
+  FormattedData,
+  Mode,
+  Period,
+  SyncedLayer,
+} from "../types/common";
 import {
   explodeTimeRange,
   intersect_arrays,
@@ -8,15 +14,17 @@ import {
 
 export function seekNearestTimeIndex(
   time: number,
-  availableTimes: AvailableTimes
+  formattedData: FormattedData
 ) {
-  var newIndex = 0;
-  var len = availableTimes.length;
-  for (; newIndex < len; newIndex++) {
-    if (time < availableTimes[newIndex]) {
-      break;
-    }
+  let newIndex = 0;
+  console.log(newIndex);
+  for (; newIndex < formattedData.length; newIndex++) {
+   console.log(time)
+    // if (time < formattedData[newIndex][0].properties.time) {
+    //   break;
+    // }
   }
+  console.log(newIndex)
   // We've found the first index greater than the time. Return the previous
   if (newIndex > 0) {
     newIndex--;
@@ -29,8 +37,9 @@ export function getLowerLimit(
   upperLimit: number,
   availableTimes: AvailableTimes
 ) {
-  var index = seekNearestTimeIndex(time, availableTimes);
-  return getLowerLimitIndex(index, upperLimit, availableTimes);
+  console.log(time)
+  // var index = seekNearestTimeIndex(time, availableTimes);
+  return getLowerLimitIndex(0, upperLimit, availableTimes);
 }
 
 export function getLowerLimitIndex(
@@ -49,8 +58,9 @@ export function getUpperLimit(
   lowerLimit: number,
   availableTimes: AvailableTimes
 ) {
-  var index = seekNearestTimeIndex(time, availableTimes);
-  return getUpperLimitIndex(index, lowerLimit, availableTimes);
+  // var index = seekNearestTimeIndex(time, availableTimes);
+  console.log(time)
+  return getUpperLimitIndex(0, lowerLimit, availableTimes);
 }
 
 export function getUpperLimitIndex(
@@ -65,7 +75,7 @@ export function setAvailableTime(
   times: AvailableTimes | undefined,
   period: Period,
   availableTimes: AvailableTimes
-):AvailableTimes {
+): AvailableTimes {
   if (mode == "extremes" && times) {
     return explodeTimeRange(
       new Date(times[0]),

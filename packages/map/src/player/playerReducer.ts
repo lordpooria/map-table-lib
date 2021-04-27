@@ -5,6 +5,7 @@ type SliderValue = { min: number; max: number };
 const DEFAULT_TRANSITION = 1000;
 
 export interface PlayerStoreModel {
+  smallPlayerSize: boolean;
   isPlaying: boolean;
   isReversePlaying: boolean;
   isRecording: boolean;
@@ -14,6 +15,8 @@ export interface PlayerStoreModel {
   timeSlider: number;
   speedSliderRange: SliderValue;
   speedSlider: number;
+
+  setPlayerSize: Action<PlayerStoreModel, { isSmall: boolean }>;
   setPlay: Action<PlayerStoreModel, boolean>;
   setReversePlay: Action<PlayerStoreModel, boolean>;
   setRecording: Action<PlayerStoreModel, boolean>;
@@ -32,6 +35,7 @@ export interface PlayerStoreModel {
 }
 
 export const playerStoreModel: PlayerStoreModel = {
+  smallPlayerSize: false,
   isPlaying: false,
   isReversePlaying: false,
   isRecording: false,
@@ -42,6 +46,9 @@ export const playerStoreModel: PlayerStoreModel = {
   timeSlider: 0,
   speedSlider: Math.round(10000 / DEFAULT_TRANSITION) / 10,
 
+  setPlayerSize: action((state, { isSmall }) => {
+    state.smallPlayerSize = isSmall;
+  }),
   setPlay: action((state, isPlaying) => {
     state.isPlaying = isPlaying;
   }),

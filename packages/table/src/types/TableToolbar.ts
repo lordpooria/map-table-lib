@@ -1,13 +1,18 @@
-import { TableColumns } from "./main";
 import { ToolbarClasses } from "./styles";
 
-export interface TableToolbarCompleteProps extends TableToolbarProps {
-  numRowsSelected: number;
-  columns: TableColumns;
+export interface TableToolbarCompleteProps extends PublicTableToolbarProps {
+  // columns: TableColumns;
+  classes?: ToolbarClasses;
 }
 
-export interface TableToolbarProps {
+export interface PublicTableToolbarProps {
+  /**
+   * This title appear on toolbar, This is name of your table
+   */
   title?: string;
-  operationOnRows: any;
-  classes?: ToolbarClasses;
+  /**
+   */
+  
+  operationOnRows?: Array<React.ReactNode>;
+  
 }

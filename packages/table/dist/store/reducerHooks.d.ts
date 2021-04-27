@@ -2,6 +2,7 @@ import { VTStoreModel } from ".";
 export declare const useTStoreActions: <Result>(mapActions: (actions: import("easy-peasy").ActionMapper<VTStoreModel, import("easy-peasy").ValidActionProperties<VTStoreModel>>) => Result) => Result;
 export declare const useStoreDispatch: () => import("easy-peasy").Dispatch<VTStoreModel, import("redux").AnyAction>;
 export declare const useTStoreState: <Result>(mapState: (state: import("easy-peasy").StateMapper<{
+    VTVersion: string;
     settings: {
         direction: import("..").PageDir;
         lang: string;

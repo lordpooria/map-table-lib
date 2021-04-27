@@ -1,15 +1,19 @@
 // We want to always get from source
 import { MapContainer } from "react-leaflet";
 import dynamic from "next/dynamic";
-
-import "leaflet/dist/leaflet.css";
-
-
+import Head from "next/head";
 // import MyMapContainer from "../components/Player";
-const MapComponent = dynamic(import("../components/MapComponent"), {
+const MapComponent = dynamic(import("../components/map/MapComponent"), {
   ssr: false,
 });
 
 export default function Index() {
-  return(<MapComponent />);
+  return (
+    <>
+      <Head>
+        <link rel="stylesheet" href="/css/all.css"/>
+      </Head>
+      <MapComponent />
+    </>
+  );
 }

@@ -1,0 +1,119 @@
+import { geoJSON, Map } from "leaflet";
+import { Feature, Geometry } from "geojson";
+import { useEffect, useRef } from "react";
+import L from "leaflet";
+
+import { _getFeatureBetweenDates, _getFeatureTimes } from "../utils/layer.util";
+import { useTDStoreState } from "../store/reducerHooks";
+import { CurrentData } from "../types/common";
+// import { TDLayerOptions } from "../types";
+
+const commonOption = {
+  style: function (feature: Feature<Geometry, any> | undefined) {
+    return { color: feature?.properties.color };
+  },
+  pointToLayer: function (
+    feature: Feature<Geometry, any> | undefined,
+    latLng: L.LatLng
+  ) {
+    return L.circleMarker(latLng, {
+      radius: 7,
+      color: feature?.properties.color,
+      fillColor: feature?.properties.color,
+      weight: 2,
+      opacity: 0.7,
+      fillOpacity: 0.1,
+    });
+  },
+};
+
+export const useLayer = (
+  // data: GeoJSON,
+  leafletMapRef: Map
+  // options: GeoJSONOptions
+  // layerOptions?: TDLayerOptions
+) =>
+  // { getFeatureBetweenDates = _getFeatureBetweenDates }
+  {
+    const currentData = useTDStoreState((state) => state.currentData);
+
+    const _loaded = useRef(false);
+    const _currentLayer = useRef<AppGeoJSONLayer>();
+
+   
+    function _update(currentData: CurrentData) {
+      if (!currentData) return;
+
+      if (_currentLayer.current) {
+        leafletMapRef.removeLayer(_currentLayer.current);
+      }
+      const _layer = geoJSON(undefined, commonOption);
+      
+
+      _layer.addTo(leafletMapRef);
+
+  
+      
+
+      // const layers = layer.current.getLayers() as Array<any>;
+
+      currentData.features.forEach((feature) => {
+        _layer.addData(feature).bindTooltip(function () {
+          return feature.properties?.id;
+        });
+        //   if (
+        //     layerOptions?.addlastPoint &&
+        //     (feature?.geometry as any)?.geometries?.length > 0
+        //   ) {
+        //     (feature?.geometry as any)?.geometries?.forEach((f: any) => {
+
+        //       const properties = f.properties;
+        //       if (!properties) return;
+        //       properties.last = true;
+        //       _layer.addData({
+        //         type: "Feature",
+        //         properties,
+        //         geometry: {
+        //           type: "Point",
+        //           coordinates: (feature?.geometry as any).coordinates[
+        //             (feature?.geometry as any).coordinates.length - 1
+        //           ],
+        //         },
+        //       } as GeoJSON);
+        //     });
+        //   }
+      });
+      leafletMapRef.addLayer(_layer)
+      _currentLayer.current = _layer;
+    }
+
+    // useEffect(() => {
+    // getFeatureBetweenDates && getFeatureBetweenDates({} as any,{} as any,{} as any)
+    // if (!data) return;
+    // layer.current = geoJSON(data, {});
+    // _setAvailableTimes();
+    // if (layer.current) {
+    //   if (waitForReady) {
+    //     layer.current.on("ready", _onReadyBaseLayer);
+    //   } else {
+    //     _loaded.current = true;
+    //   }
+    // } else {
+    //   _loaded.current = true;
+    //   _setAvailableTimes();
+    // }
+    // // reload available times if data is added to the base layer
+    // layer.current.on("layeradd", function () {
+    //   if (_loaded.current) {
+    //     _setAvailableTimes();
+    //   }
+    // });
+    // }, [data]);
+console.log(currentData)
+    useEffect(() => {
+      if (!currentData || !_loaded) return;
+      _update(currentData);
+    }, [currentData]);
+
+    return {};
+  };
