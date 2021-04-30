@@ -6,14 +6,6 @@ import data from "./utils/data/small_data.json";
 import { baseMapProps, commonGeojsonProps } from "./utils/constants";
 import { useTDStoreActions } from "../src/store/reducerHooks";
 
-import PlayerPropAutoPlayAndReload from "./docs/PlayerPropAutoPlayAndReload.md";
-import PlayerPropSlidersProps from "./docs/PlayerPropSlidersProps.md";
-import PlayerPropCustomComponent from "./docs/PlayerPropCustomComponent.md";
-import PlayerPropRemoveComponent from "./docs/PlayerPropRemoveComponent.md";
-import { DocsProvider } from "./docs/DocsProvider";
-import { useState } from "react";
-import { useEffect } from "react";
-
 const INITIAL_SPEED = 20;
 
 const BackwardButton = () => {
@@ -37,18 +29,6 @@ export const AutoPlayAndReload = () => {
   return <HesabaTimeDimension {...props} />;
 };
 
-AutoPlayAndReload.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={PlayerPropSlidersProps}>
-          <AutoPlayAndReload />
-        </DocsProvider>
-      );
-    },
-  },
-};
-
 export const SliderAndSpeedsProps = () => {
   const props = JSON.parse(
     JSON.stringify({
@@ -67,17 +47,6 @@ export const SliderAndSpeedsProps = () => {
   return <HesabaTimeDimension {...props} />;
 };
 
-SliderAndSpeedsProps.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={PlayerPropAutoPlayAndReload}>
-          <SliderAndSpeedsProps />
-        </DocsProvider>
-      );
-    },
-  },
-};
 
 export const PlayerCustomButtonComponents = () => (
   <HesabaTimeDimension
@@ -89,17 +58,6 @@ export const PlayerCustomButtonComponents = () => (
   />
 );
 
-PlayerCustomButtonComponents.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={PlayerPropCustomComponent}>
-          <PlayerCustomButtonComponents />
-        </DocsProvider>
-      );
-    },
-  },
-};
 
 export const PlayerAddRemoveComponents = () => (
   <HesabaTimeDimension
@@ -114,17 +72,6 @@ export const PlayerAddRemoveComponents = () => (
   />
 );
 
-PlayerAddRemoveComponents.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={PlayerPropRemoveComponent}>
-          <PlayerAddRemoveComponents />
-        </DocsProvider>
-      );
-    },
-  },
-};
 export default {
   title: "Player props",
 };

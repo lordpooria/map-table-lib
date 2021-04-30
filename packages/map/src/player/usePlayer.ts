@@ -103,7 +103,7 @@ export const usePlayer = ({
     }
 
     setPlay(true);
-    intervalID.current = window.setInterval(play, transitionTime);
+    intervalID.current = window?.setInterval(play, transitionTime);
     if (!startOver) play();
   }, [
     play,

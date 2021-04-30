@@ -1,12 +1,7 @@
 import * as React from "react";
-import {
-  Slider as MaterialSlider,
-  Tooltip,
-  ValueLabelProps,
-  withStyles,
-} from "@material-ui/core";
+import { makeStyles, Tooltip, ValueLabelProps } from "@material-ui/core";
 
-export const PlayerSlider = withStyles((theme) => ({
+export const useCommonSliderStyles = makeStyles((theme) => ({
   root: {
     color: `${theme.palette.secondary.main}`,
     height: 3,
@@ -48,7 +43,7 @@ export const PlayerSlider = withStyles((theme) => ({
     opacity: 1,
     height: 2,
   },
-}))(MaterialSlider);
+}));
 
 export const PlayerThumb = React.forwardRef((props: any, ref) => {
   return (
@@ -67,4 +62,3 @@ export function ValueLabelComponent(props: ValueLabelProps) {
     </Tooltip>
   );
 }
-

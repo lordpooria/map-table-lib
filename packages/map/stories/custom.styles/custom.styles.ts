@@ -71,12 +71,11 @@ export const useOtherClasses = makeStyles((theme) =>
       backgroundColor: ROOT_BACKGROUND_COLOR,
     },
     dateClasses: {
-      backgroundColor: ROOT_BACKGROUND_COLOR,
       fontSize: 8,
       fontFamily: "roboto",
     },
     amPmClasses: {
-      backgroundColor: ROOT_BACKGROUND_COLOR,
+      // backgroundColor: ROOT_BACKGROUND_COLOR,
       fontSize: 8,
       fontFamily: "roboto",
     },

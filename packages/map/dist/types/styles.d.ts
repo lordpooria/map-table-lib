@@ -5,6 +5,8 @@ export interface StyleTypes {
     classes?: {
         table?: TDTableClasses;
         legend?: LegendClasses;
+        map?: MapClasses;
+        tdRoot?: ContainerClasses;
     };
 }
 export declare type TDTableClasses = TableClasses & {
@@ -16,3 +18,5 @@ export declare type LegendClasses = {
     text?: string;
     colorIndicator?: string;
 };
+export declare type ContainerClasses = string;
+export declare type MapClasses = string;

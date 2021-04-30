@@ -1,0 +1,16 @@
+import React from "react";
+
+import { ThemeProvider, StylesProvider } from "@material-ui/styles";
+import { useThemeObject } from "@hesaba/theme-language";
+
+const ThemeMaker = ({ children }: { children: any }) => {
+  const theme = useThemeObject();
+
+  return (
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </StylesProvider>
+  );
+};
+
+export default ThemeMaker;

@@ -35,8 +35,8 @@ export function TDCircleMarker({
           </Tooltip>
         ) : (
           <Tooltip>
-            {Object.keys(properties).map((k) => (
-              <div key={k}>
+            {Object.keys(properties).map((k,index) => (
+              <div key={`${k}-${index}`}>
                 {k}:{properties[k]}
               </div>
             ))}

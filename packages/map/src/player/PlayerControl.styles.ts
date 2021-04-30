@@ -4,35 +4,37 @@ const ICON_SIZE = 0.75;
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    playerRoot: {
-      position: "absolute",
-      display: "grid",
-      bottom: 20,
-      left: 20,
-      gridTemplateColumns: "repeat(auto-fit,minmax(70px,1fr))",
-      width: "60%",
+    commonPlayerRoot: {
+      display: "flex",
+      flexWrap: "wrap",
+      maxWidth: 700,
+      minWidth: 200,
       alignItems: "center",
       justifyContent: "space-between",
       padding: "4px 16px",
-      zIndex: 1000,
-
+      marginRight: 32,
+      marginTop: 16,
       borderRadius: "50em",
       backgroundColor: "#fff",
-      // border: `solid 1px ${theme.palette.grey["300"]}`,
     },
-
-    playerSlider: {
+    playerRoot: {
+      padding: "4px 16px",
+      borderRadius: "50em",
+      backgroundColor: "#fff",
+    },
+    iconContainer: {
       display: "flex",
+    },
+    playerSlider: {
       flex: 3,
-
-      marginRight: 8,
+      display: "flex",
+      margin: "0 16px",
       alignItems: "center",
-      minWidth: 100,
+      
     },
     speedSlider: {
-      display: "flex",
       flex: 1,
-      margin: "0 8px",
+      display: "flex",
       alignItems: "center",
       minWidth: 50,
     },
@@ -51,11 +53,8 @@ const useStyles = makeStyles((theme) =>
       borderRadius: "0.5em",
       border: `solid 2px ${theme.palette.primary.main}`,
     },
-    whiteIcon: {
-      width: `${ICON_SIZE}em`,
-      height: `${ICON_SIZE}em`,
+    marginIcon: {
       margin: "0 4px",
-      fill: `${theme.palette.primary.main}`,
     },
   })
 );

@@ -4,6 +4,7 @@ import { simpleSchemaColumns, simpleRows } from "./table-test/fakeData";
 import { CommonVirtualTableContainer } from "./table-test/container";
 import { makeStyles } from "@material-ui/core";
 
+
 const useStyles = makeStyles({
   container: { fontFamily: "Arial, Helvetica, sans-serif !important" },
 });
@@ -33,6 +34,7 @@ export const SimpleVirtualTableRTL = () => {
     </CommonVirtualTableContainer>
   );
 };
+
 
 export const SimpleVirtualTableLTR = () => {
   return (
@@ -82,6 +84,9 @@ export const SimpleVirtualTableWithSmallWithHeight = () => {
     />
   );
 };
+
+
+
 
 export default {
   title: "Base VT",

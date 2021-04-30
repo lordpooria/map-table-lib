@@ -1,0 +1,34 @@
+## Player Props Auto play and loop
+
+This is main component of hesaba-time-dimension with custom player props you could set your player to be auto play and reload when it's finished
+
+
+import {AutoPlayAndReload} from "../../components/PlayerProps";
+
+<AutoPlayAndReload />
+
+import SyntaxHighlighter from "../../../SyntaxHighlighter";
+
+<SyntaxHighlighter>
+  {`import React from "react";
+import HesabaTimeDimension from "@hesaba/map";
+import data from "../data/data.json";
+export default function BaseMapScreen() {
+ return(
+  return (
+    <HesabaTimeDimension
+      mapProps={{
+        center: [35.76498031616211, 51.33673858642578],
+        zoom: 13,
+        zoomControl: false,
+        className: classes.container
+      }}
+      data={data}
+      playerProps={{ loop: true, autoPlay: true }}
+    />
+  );
+ )
+}
+`}
+</SyntaxHighlighter>
+;

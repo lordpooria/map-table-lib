@@ -6,7 +6,6 @@ import multiUserData from "./utils/data/multiUserData.json";
 
 import { ExternalLegendsComponent } from "../src/types";
 import NumberFormat from "react-number-format";
-import LegendCustomProps from "./docs/LegendCustomProps.md";
 import { baseMapProps } from "./utils/constants";
 import { DocsProvider } from "./docs/DocsProvider";
 
@@ -40,17 +39,6 @@ export const BaseLegendComponent = () => (
   />
 );
 
-BaseLegendComponent.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={LegendCustomProps}>
-          <BaseLegendComponent />
-        </DocsProvider>
-      );
-    },
-  },
-};
 export const MutiuserWithCustomLegendComponent = () => (
   <HesabaTimeDimension
     mapProps={baseMapProps}
@@ -59,17 +47,6 @@ export const MutiuserWithCustomLegendComponent = () => (
   />
 );
 
-MutiuserWithCustomLegendComponent.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={LegendCustomProps}>
-          <MutiuserWithCustomLegendComponent />
-        </DocsProvider>
-      );
-    },
-  },
-};
 
 export default {
   title: "Custom Legend",

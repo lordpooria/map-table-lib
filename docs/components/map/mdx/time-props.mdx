@@ -1,0 +1,31 @@
+## Custom Time Props
+
+import TimeProps from "../components/TimeProps";
+
+<TimeProps />
+
+import SyntaxHighlighter from '../../SyntaxHighlighter'
+
+<SyntaxHighlighter>
+  {`import React from "react";
+import HesabaTimeDimension from "@hesaba/map";
+import data from "../data/data.json";
+export default function BaseMapScreen() {
+ return(
+  return (
+    <HesabaTimeDimension
+      mapProps={{
+        center: [35.76498031616211, 51.33673858642578],
+        zoom: 13,
+        zoomControl: false,
+      }}
+      data={data}
+      timeProps={{ am: "AM", pm: "PM", noTimeError: "No time Available" }}
+    />
+  );
+ )
+}`}
+</SyntaxHighlighter>
+;
+
+

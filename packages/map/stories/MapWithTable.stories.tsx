@@ -3,8 +3,7 @@ import "leaflet/dist/leaflet.css";
 
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 import data from "./utils/data/multiUserData.json";
-// export default { title: "Basic Map" };
-import { storiesOf } from "@storybook/react";
+
 import {
   baseLayerProps,
   baseMapProps,
@@ -17,31 +16,36 @@ const useStyles = makeStyles((theme) => ({
   mapRoot: {
     border: "none",
 
-    width: "48vw",
+    width: "50%",
+    height: "100vh",
     marginRight: 8,
   },
   tableRoot: {
-    width: "48vw",
+    width: "50%",
   },
   root: {
     padding: 10,
+    width: "100vw",
     borderRadius: 10,
     boxShadow: "0 0 5px #444",
   },
 }));
 
-storiesOf("Map With Table", module).add("Simple Map", () => {
+export const BaseTable = () => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div style={{ width: "80vw", height: "80vh" }}>
       <HesabaTimeDimension
         data={data as any}
-        mapProps={{ ...baseMapProps, className: classes.mapRoot }}
-        tableProps={{ classes: { root: classes.tableRoot } }}
-        layerProps={baseLayerProps}
+        mapProps={{ ...baseMapProps }}
+        classes={{ table: { root: classes.tableRoot } }}
         theme={theme}
         withTable
       />
     </div>
   );
-});
+};
+
+export default {
+  title: "Map With Table",
+};

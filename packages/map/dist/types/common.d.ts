@@ -1,4 +1,8 @@
 import { Feature, Position, FeatureCollection } from "geojson";
+import theme from "../styles/theme";
+import { GeoJSON } from "leaflet";
+export declare type AppTheme = typeof theme;
+export declare type AppGeoJSONLayer = GeoJSON<any>;
 export declare type CurrentData = {
     time: number;
     features: Array<Feature>;

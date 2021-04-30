@@ -1,4 +1,4 @@
-## Multi User Map
+## Map User Map
 
 This is main component of hesaba-time-dimension with custom style added to it's component
 

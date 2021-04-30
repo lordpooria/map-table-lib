@@ -15,9 +15,6 @@ import {
   useClockStyles as useClockStyles2,
 } from "./custom.styles/custom.styles2";
 import { commonGeojsonProps, baseMapProps } from "./utils/constants";
-
-import CustomStyleTransparentMD from "./docs/CustomStyleTransparent.md";
-import CustomStyleMDPlayerThumb from "./docs/CustomStylePlayerThumb.md";
 import { DocsProvider } from "./docs/DocsProvider";
 
 export const TransparentBackgroundTimeDimension = () => {
@@ -32,6 +29,7 @@ export const TransparentBackgroundTimeDimension = () => {
         clockProps: { classes: clockClasses, renderNumbers: true },
         dateClasses: otherClasses.dateClasses,
         amPmClasses: otherClasses.amPmClasses,
+        dateWrapperClasses: otherClasses.root,
       }}
       playerProps={{
         classes: {
@@ -45,18 +43,6 @@ export const TransparentBackgroundTimeDimension = () => {
       geojsonProps={commonGeojsonProps}
     />
   );
-};
-
-TransparentBackgroundTimeDimension.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={CustomStyleTransparentMD}>
-          <TransparentBackgroundTimeDimension />
-        </DocsProvider>
-      );
-    },
-  },
 };
 
 export const WithDifferentPlayerThumb = () => {
@@ -85,18 +71,6 @@ export const WithDifferentPlayerThumb = () => {
       geojsonProps={commonGeojsonProps}
     />
   );
-};
-
-WithDifferentPlayerThumb.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={CustomStyleMDPlayerThumb}>
-          <WithDifferentPlayerThumb />
-        </DocsProvider>
-      );
-    },
-  },
 };
 
 export default {
