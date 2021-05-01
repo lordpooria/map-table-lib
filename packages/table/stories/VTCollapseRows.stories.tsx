@@ -1,7 +1,7 @@
 import { RawTableColumns, RawTableRows } from "../src/types";
 
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { storiesOf } from "@storybook/react";
 import { CommonVirtualTableContainer } from "./table-test/container";
 
@@ -43,7 +43,7 @@ export const schemaColumns: RawTableColumns<keys> = [
 storiesOf("VT Custom Data Parser", module).add("Table with Custom Data Parser", () => {
   return (
     <CommonVirtualTableContainer>
-      <AutoResizer>
+      <AutoSizer>
         {({ width, height }) => (
           <HesabaVirtualTable
             height={height}
@@ -61,7 +61,7 @@ storiesOf("VT Custom Data Parser", module).add("Table with Custom Data Parser", 
             }}
           />
         )}
-      </AutoResizer>
+      </AutoSizer>
     </CommonVirtualTableContainer>
   );
 });

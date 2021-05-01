@@ -4735,7 +4735,7 @@ const light = {
   // Consistency between these values is important.
   background: {
     paper: common.white,
-    default: grey[50]
+    default: common.white
   },
   // The colors used to style the action elements.
   action: {
@@ -4766,8 +4766,8 @@ const dark = {
   },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
-    paper: grey[800],
-    default: '#303030'
+    paper: '#121212',
+    default: '#121212'
   },
   action: {
     active: common.white,
@@ -8660,7 +8660,7 @@ var noPrefill = plugins.filter(function (p) {
 }, []);
 
 var el;
-var cache = {};
+var cache$1 = {};
 
 if (isBrowser$5) {
   el = document.createElement('p'); // We test every property on vendor prefix requirement.
@@ -8675,13 +8675,13 @@ if (isBrowser$5) {
 
   for (var key$1 in computed) {
     // eslint-disable-next-line no-restricted-globals
-    if (!isNaN(key$1)) cache[computed[key$1]] = computed[key$1];
+    if (!isNaN(key$1)) cache$1[computed[key$1]] = computed[key$1];
   } // Properties that cannot be correctly detected using the
   // cache prefill method.
 
 
   noPrefill.forEach(function (x) {
-    return delete cache[x];
+    return delete cache$1[x];
   });
 }
 /**
@@ -8703,8 +8703,8 @@ function supportedProperty(prop, options) {
   // For server-side rendering.
   if (!el) return prop; // Remove cache for benchmark tests or return property from the cache.
 
-  if (process.env.NODE_ENV !== 'benchmark' && cache[prop] != null) {
-    return cache[prop];
+  if (process.env.NODE_ENV !== 'benchmark' && cache$1[prop] != null) {
+    return cache$1[prop];
   } // Check if 'transition' or 'transform' natively supported in browser.
 
 
@@ -8714,9 +8714,9 @@ function supportedProperty(prop, options) {
 
 
   for (var i = 0; i < propertyDetectors.length; i++) {
-    cache[prop] = propertyDetectors[i](prop, el.style, options); // Break loop, if value found.
+    cache$1[prop] = propertyDetectors[i](prop, el.style, options); // Break loop, if value found.
 
-    if (cache[prop]) break;
+    if (cache$1[prop]) break;
   } // Reset styles for current property.
   // Firefox can even throw an error for invalid properties, e.g., "0".
 
@@ -8727,10 +8727,10 @@ function supportedProperty(prop, options) {
     return false;
   }
 
-  return cache[prop];
+  return cache$1[prop];
 }
 
-var cache$1 = {};
+var cache$1$1 = {};
 var transitionProperties = {
   transition: 1,
   'transition-property': 1,
@@ -8782,8 +8782,8 @@ function supportedValue(property, value) {
 
   var cacheKey = property + prefixedValue; // Remove cache for benchmark tests or return value from cache.
 
-  if (process.env.NODE_ENV !== 'benchmark' && cache$1[cacheKey] != null) {
-    return cache$1[cacheKey];
+  if (process.env.NODE_ENV !== 'benchmark' && cache$1$1[cacheKey] != null) {
+    return cache$1$1[cacheKey];
   } // IE can even throw an error in some cases, for e.g. style.content = 'bar'.
 
 
@@ -8792,7 +8792,7 @@ function supportedValue(property, value) {
     el$1.style[property] = prefixedValue;
   } catch (err) {
     // Return false if value not supported.
-    cache$1[cacheKey] = false;
+    cache$1$1[cacheKey] = false;
     return false;
   } // If 'transition' or 'transition-property' property.
 
@@ -8808,7 +8808,7 @@ function supportedValue(property, value) {
     el$1.style[property] = prefixedValue; // Return false if value not supported.
 
     if (el$1.style[property] === '') {
-      cache$1[cacheKey] = false;
+      cache$1$1[cacheKey] = false;
       return false;
     }
   } // Reset styles for current property.
@@ -8816,8 +8816,8 @@ function supportedValue(property, value) {
 
   el$1.style[property] = ''; // Write current value to cache.
 
-  cache$1[cacheKey] = prefixedValue;
-  return cache$1[cacheKey];
+  cache$1$1[cacheKey] = prefixedValue;
+  return cache$1$1[cacheKey];
 }
 
 /**
@@ -11901,7 +11901,7 @@ var EmotionCacheContext = /* #__PURE__ */React.createContext( // we're doing thi
 typeof HTMLElement !== 'undefined' ? /* #__PURE__ */createCache({
   key: 'css'
 }) : null);
-EmotionCacheContext.Provider;
+var CacheProvider = EmotionCacheContext.Provider;
 
 var withEmotionCache = function withEmotionCache(func) {
   // $FlowFixMe
@@ -12529,6 +12529,33 @@ tags.forEach(function (tagName) {
   // $FlowFixMe: we can ignore this because its exposed type is defined by the CreateStyled type
   newStyled[tagName] = newStyled(tagName);
 });
+
+const cache = createCache({
+  key: 'css',
+  prepend: true
+});
+function StyledEngineProvider(props) {
+  const {
+    injectFirst,
+    children
+  } = props;
+  return injectFirst ? /*#__PURE__*/React__namespace.createElement(CacheProvider, {
+    value: cache
+  }, children) : children;
+}
+process.env.NODE_ENV !== "production" ? StyledEngineProvider.propTypes = {
+  /**
+   * Your component tree.
+   */
+  children: propTypes.node,
+
+  /**
+   * By default, the styles are injected last in the <head> element of the page.
+   * As a result, they gain more specificity than any other style sheet.
+   * If you want to override Material-UI's styles, set this prop.
+   */
+  injectFirst: propTypes.bool
+} : void 0;
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -13639,17 +13666,15 @@ const reflow = node => node.scrollTop;
 function getTransitionProps(props, options) {
   const {
     timeout,
+    easing,
     style = {}
   } = props;
   return {
     duration: style.transitionDuration || typeof timeout === 'number' ? timeout : timeout[options.mode] || 0,
+    easing: style.transitionTimingFunction || typeof easing === 'object' ? easing[options.mode] : easing,
     delay: style.transitionDelay
   };
 }
-
-/**
- * @ignore - internal component.
- */
 
 function Ripple(props) {
   const {
@@ -13687,12 +13712,13 @@ function Ripple(props) {
 
     return undefined;
   }, [handleExited, inProp, timeout]);
-  return /*#__PURE__*/React__namespace.createElement("span", {
+  return /*#__PURE__*/jsxRuntime.jsx("span", {
     className: rippleClassName,
-    style: rippleStyles
-  }, /*#__PURE__*/React__namespace.createElement("span", {
-    className: childClassName
-  }));
+    style: rippleStyles,
+    children: /*#__PURE__*/jsxRuntime.jsx("span", {
+      className: childClassName
+    })
+  });
 }
 
 process.env.NODE_ENV !== "production" ? Ripple.propTypes = {
@@ -13902,8 +13928,7 @@ const TouchRipple = /*#__PURE__*/React__namespace.forwardRef(function TouchRippl
       rippleSize,
       cb
     } = params;
-    setRipples(oldRipples => [...oldRipples, /*#__PURE__*/React__namespace.createElement(TouchRippleRipple, {
-      key: nextKey.current,
+    setRipples(oldRipples => [...oldRipples, /*#__PURE__*/jsxRuntime.jsx(TouchRippleRipple, {
       classes: {
         ripple: clsx(classes.ripple, touchRippleClasses.ripple),
         rippleVisible: clsx(classes.rippleVisible, touchRippleClasses.rippleVisible),
@@ -13917,7 +13942,7 @@ const TouchRipple = /*#__PURE__*/React__namespace.forwardRef(function TouchRippl
       rippleX: rippleX,
       rippleY: rippleY,
       rippleSize: rippleSize
-    })]);
+    }, nextKey.current)]);
     nextKey.current += 1;
     rippleCallback.current = cb;
   }, [classes]);
@@ -14043,13 +14068,16 @@ const TouchRipple = /*#__PURE__*/React__namespace.forwardRef(function TouchRippl
     start,
     stop
   }), [pulsate, start, stop]);
-  return /*#__PURE__*/React__namespace.createElement(TouchRippleRoot, _extends__default['default']({
+  return /*#__PURE__*/jsxRuntime.jsx(TouchRippleRoot, _extends__default['default']({
     className: clsx(classes.root, touchRippleClasses.root, className),
     ref: container
-  }, other), /*#__PURE__*/React__namespace.createElement(TransitionGroup, {
-    component: null,
-    exit: true
-  }, ripples));
+  }, other, {
+    children: /*#__PURE__*/jsxRuntime.jsx(TransitionGroup, {
+      component: null,
+      exit: true,
+      children: ripples
+    })
+  }));
 });
 process.env.NODE_ENV !== "production" ? TouchRipple.propTypes = {
   /**
@@ -14163,9 +14191,11 @@ const ButtonBase = /*#__PURE__*/React__namespace.forwardRef(function ButtonBase(
     disableRipple = false,
     disableTouchRipple = false,
     focusRipple = false,
+    LinkComponent = 'a',
     onBlur,
     onClick,
     onContextMenu,
+    onDragLeave,
     onFocus,
     onFocusVisible,
     onKeyDown,
@@ -14176,11 +14206,11 @@ const ButtonBase = /*#__PURE__*/React__namespace.forwardRef(function ButtonBase(
     onTouchEnd,
     onTouchMove,
     onTouchStart,
-    onDragLeave,
     tabIndex = 0,
-    TouchRippleProps
+    TouchRippleProps,
+    type
   } = props,
-        other = _objectWithoutPropertiesLoose__default['default'](props, ["action", "buttonRef", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "onBlur", "onClick", "onContextMenu", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "onDragLeave", "tabIndex", "TouchRippleProps"]);
+        other = _objectWithoutPropertiesLoose__default['default'](props, ["action", "buttonRef", "centerRipple", "children", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "LinkComponent", "onBlur", "onClick", "onContextMenu", "onDragLeave", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "tabIndex", "TouchRippleProps", "type"]);
 
   const buttonRef = React__namespace.useRef(null);
   const rippleRef = React__namespace.useRef(null);
@@ -14335,13 +14365,13 @@ const ButtonBase = /*#__PURE__*/React__namespace.forwardRef(function ButtonBase(
   let ComponentProp = component;
 
   if (ComponentProp === 'button' && other.href) {
-    ComponentProp = 'a';
+    ComponentProp = LinkComponent;
   }
 
   const buttonProps = {};
 
   if (ComponentProp === 'button') {
-    buttonProps.type = other.type === undefined ? 'button' : other.type;
+    buttonProps.type = type === undefined ? 'button' : type;
     buttonProps.disabled = disabled;
   } else {
     if (ComponentProp !== 'a' || !other.href) {
@@ -14381,7 +14411,7 @@ const ButtonBase = /*#__PURE__*/React__namespace.forwardRef(function ButtonBase(
   });
 
   const classes = useUtilityClasses$3(styleProps);
-  return /*#__PURE__*/React__namespace.createElement(ButtonBaseRoot, _extends__default['default']({
+  return /*#__PURE__*/jsxRuntime.jsxs(ButtonBaseRoot, _extends__default['default']({
     as: ComponentProp,
     className: clsx(classes.root, className),
     styleProps: styleProps,
@@ -14399,17 +14429,22 @@ const ButtonBase = /*#__PURE__*/React__namespace.forwardRef(function ButtonBase(
     onTouchMove: handleTouchMove,
     onTouchStart: handleTouchStart,
     ref: handleRef,
-    tabIndex: disabled ? -1 : tabIndex
-  }, buttonProps, other), children, enableTouchRipple ?
-  /*#__PURE__*/
+    tabIndex: disabled ? -1 : tabIndex,
+    type: type
+  }, buttonProps, other, {
+    children: [children, enableTouchRipple ?
+    /*#__PURE__*/
 
-  /* TouchRipple is only needed client-side, x2 boost on the server. */
-  React__namespace.createElement(TouchRipple, _extends__default['default']({
-    ref: rippleRef,
-    center: centerRipple
-  }, TouchRippleProps)) : null);
+    /* TouchRipple is only needed client-side, x2 boost on the server. */
+    jsxRuntime.jsx(TouchRipple, _extends__default['default']({
+      ref: rippleRef,
+      center: centerRipple
+    }, TouchRippleProps)) : null]
+  }));
 });
-process.env.NODE_ENV !== "production" ? ButtonBase.propTypes = {
+process.env.NODE_ENV !== "production" ? ButtonBase.propTypes
+/* remove-proptypes */
+= {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -14500,6 +14535,12 @@ process.env.NODE_ENV !== "production" ? ButtonBase.propTypes = {
   href: propTypes
   /* @typescript-to-proptypes-ignore */
   .any,
+
+  /**
+   * The component used to render a link when the `href` prop is provided.
+   * @default 'a'
+   */
+  LinkComponent: propTypes.elementType,
 
   /**
    * @ignore
@@ -14727,19 +14768,24 @@ const IconButton = /*#__PURE__*/React__namespace.forwardRef(function IconButton(
   });
 
   const classes = useUtilityClasses$2(styleProps);
-  return /*#__PURE__*/React__namespace.createElement(IconButtonRoot, _extends__default['default']({
+  return /*#__PURE__*/jsxRuntime.jsx(IconButtonRoot, _extends__default['default']({
     className: clsx(classes.root, className),
     centerRipple: true,
     focusRipple: !disableFocusRipple,
     disabled: disabled,
     ref: ref,
     styleProps: styleProps
-  }, other), /*#__PURE__*/React__namespace.createElement(IconButtonLabel, {
-    className: classes.label,
-    styleProps: styleProps
-  }, children));
+  }, other, {
+    children: /*#__PURE__*/jsxRuntime.jsx(IconButtonLabel, {
+      className: classes.label,
+      styleProps: styleProps,
+      children: children
+    })
+  }));
 });
-process.env.NODE_ENV !== "production" ? IconButton.propTypes = {
+process.env.NODE_ENV !== "production" ? IconButton.propTypes
+/* remove-proptypes */
+= {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -14923,14 +14969,16 @@ const Typography = /*#__PURE__*/React__namespace.forwardRef(function Typography(
 
   const Component = component || (paragraph ? 'p' : variantMapping[variant] || defaultVariantMapping[variant]) || 'span';
   const classes = useUtilityClasses$1(styleProps);
-  return /*#__PURE__*/React__namespace.createElement(TypographyRoot, _extends__default['default']({
+  return /*#__PURE__*/jsxRuntime.jsx(TypographyRoot, _extends__default['default']({
     as: Component,
     ref: ref,
     styleProps: styleProps,
     className: clsx(classes.root, className)
   }, other));
 });
-process.env.NODE_ENV !== "production" ? Typography.propTypes = {
+process.env.NODE_ENV !== "production" ? Typography.propTypes
+/* remove-proptypes */
+= {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -17089,24 +17137,28 @@ const Popper = /*#__PURE__*/React__namespace.forwardRef(function Popper(props, r
 
 
   const container = containerProp || (anchorEl ? ownerDocument(getAnchorEl(anchorEl)).body : undefined);
-  return /*#__PURE__*/React__namespace.createElement(Portal$1, {
+  return /*#__PURE__*/jsxRuntime.jsx(Portal$1, {
     disablePortal: disablePortal,
-    container: container
-  }, /*#__PURE__*/React__namespace.createElement("div", _extends__default['default']({
-    ref: handleRef,
-    role: "tooltip"
-  }, other, {
-    style: _extends__default['default']({
-      // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
-      position: 'fixed',
-      // Fix Popper.js display issue
-      top: 0,
-      left: 0,
-      display: !open && keepMounted && !transition ? 'none' : null
-    }, style)
-  }), typeof children === 'function' ? children(childProps) : children));
+    container: container,
+    children: /*#__PURE__*/jsxRuntime.jsx("div", _extends__default['default']({
+      ref: handleRef,
+      role: "tooltip"
+    }, other, {
+      style: _extends__default['default']({
+        // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
+        position: 'fixed',
+        // Fix Popper.js display issue
+        top: 0,
+        left: 0,
+        display: !open && keepMounted && !transition ? 'none' : null
+      }, style),
+      children: typeof children === 'function' ? children(childProps) : children
+    }))
+  });
 });
-process.env.NODE_ENV !== "production" ? Popper.propTypes = {
+process.env.NODE_ENV !== "production" ? Popper.propTypes
+/* remove-proptypes */
+= {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -17252,6 +17304,7 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
   const {
     appear = true,
     children,
+    easing,
     in: inProp,
     onEnter,
     onEntered,
@@ -17264,7 +17317,7 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
     // eslint-disable-next-line react/prop-types
     TransitionComponent = Transition
   } = props,
-        other = _objectWithoutPropertiesLoose__default['default'](props, ["appear", "children", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
+        other = _objectWithoutPropertiesLoose__default['default'](props, ["appear", "children", "easing", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
 
   const timer = React__namespace.useRef();
   const autoTimeout = React__namespace.useRef();
@@ -17291,10 +17344,12 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
 
     const {
       duration: transitionDuration,
-      delay
+      delay,
+      easing: transitionTimingFunction
     } = getTransitionProps({
       style,
-      timeout
+      timeout,
+      easing
     }, {
       mode: 'enter'
     });
@@ -17312,7 +17367,8 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
       delay
     }), theme.transitions.create('transform', {
       duration: duration * 0.666,
-      delay
+      delay,
+      easing: transitionTimingFunction
     })].join(',');
 
     if (onEnter) {
@@ -17324,10 +17380,12 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
   const handleExit = normalizedTransitionCallback(node => {
     const {
       duration: transitionDuration,
-      delay
+      delay,
+      easing: transitionTimingFunction
     } = getTransitionProps({
       style,
-      timeout
+      timeout,
+      easing
     }, {
       mode: 'exit'
     });
@@ -17345,7 +17403,8 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
       delay
     }), theme.transitions.create('transform', {
       duration: duration * 0.666,
-      delay: delay || duration * 0.333
+      delay: delay || duration * 0.333,
+      easing: transitionTimingFunction
     })].join(',');
     node.style.opacity = '0';
     node.style.transform = getScale(0.75);
@@ -17367,7 +17426,7 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
       clearTimeout(timer.current);
     };
   }, []);
-  return /*#__PURE__*/React__namespace.createElement(TransitionComponent, _extends__default['default']({
+  return /*#__PURE__*/jsxRuntime.jsx(TransitionComponent, _extends__default['default']({
     appear: appear,
     in: inProp,
     nodeRef: nodeRef,
@@ -17379,18 +17438,22 @@ const Grow = /*#__PURE__*/React__namespace.forwardRef(function Grow(props, ref) 
     onExiting: handleExiting,
     addEndListener: addEndListener,
     timeout: timeout === 'auto' ? null : timeout
-  }, other), (state, childProps) => {
-    return /*#__PURE__*/React__namespace.cloneElement(children, _extends__default['default']({
-      style: _extends__default['default']({
-        opacity: 0,
-        transform: getScale(0.75),
-        visibility: state === 'exited' && !inProp ? 'hidden' : undefined
-      }, styles[state], style, children.props.style),
-      ref: handleRef
-    }, childProps));
-  });
+  }, other, {
+    children: (state, childProps) => {
+      return /*#__PURE__*/React__namespace.cloneElement(children, _extends__default['default']({
+        style: _extends__default['default']({
+          opacity: 0,
+          transform: getScale(0.75),
+          visibility: state === 'exited' && !inProp ? 'hidden' : undefined
+        }, styles[state], style, children.props.style),
+        ref: handleRef
+      }, childProps));
+    }
+  }));
 });
-process.env.NODE_ENV !== "production" ? Grow.propTypes = {
+process.env.NODE_ENV !== "production" ? Grow.propTypes
+/* remove-proptypes */
+= {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -17407,6 +17470,15 @@ process.env.NODE_ENV !== "production" ? Grow.propTypes = {
    * A single child content element.
    */
   children: elementAcceptingRef,
+
+  /**
+   * The transition timing function.
+   * You may specify a single easing or a object containing enter and exit values.
+   */
+  easing: propTypes.oneOfType([propTypes.shape({
+    enter: propTypes.string,
+    exit: propTypes.string
+  }), propTypes.string]),
 
   /**
    * If `true`, the component will transition in.
@@ -17573,29 +17645,41 @@ const TooltipTooltip = experimentalStyled('div', {}, {
   fontSize: theme.typography.pxToRem(14),
   lineHeight: `${round(16 / 14)}em`,
   fontWeight: theme.typography.fontWeightRegular
-}, styleProps.placement.split('-')[0] === 'left' && {
-  transformOrigin: 'right center',
-  marginRight: '24px',
-  [theme.breakpoints.up('sm')]: {
-    marginRight: '14px'
-  }
-}, styleProps.placement.split('-')[0] === 'right' && {
-  transformOrigin: 'left center',
-  marginLeft: '24px',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: '14px'
-  }
-}, styleProps.placement.split('-')[0] === 'top' && {
-  transformOrigin: 'center bottom',
-  marginBottom: '24px',
-  [theme.breakpoints.up('sm')]: {
-    marginBottom: '14px'
-  }
-}, styleProps.placement.split('-')[0] === 'bottom' && {
-  transformOrigin: 'center top',
-  marginTop: '24px',
-  [theme.breakpoints.up('sm')]: {
-    marginTop: '14px'
+}, {
+  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "left". */
+  [`.${tooltipClasses.popper}[data-popper-placement*="left"] &`]: {
+    transformOrigin: 'right center',
+    marginRight: '24px',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: '14px'
+    }
+  },
+
+  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "right". */
+  [`.${tooltipClasses.popper}[data-popper-placement*="right"] &`]: {
+    transformOrigin: 'left center',
+    marginLeft: '24px',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: '14px'
+    }
+  },
+
+  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "top". */
+  [`.${tooltipClasses.popper}[data-popper-placement*="top"] &`]: {
+    transformOrigin: 'center bottom',
+    marginBottom: '24px',
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: '14px'
+    }
+  },
+
+  /* Styles applied to the tooltip (label wrapper) element if `placement` contains "bottom". */
+  [`.${tooltipClasses.popper}[data-popper-placement*="bottom"] &`]: {
+    transformOrigin: 'center top',
+    marginTop: '24px',
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '14px'
+    }
   }
 }));
 const TooltipArrow = experimentalStyled('span', {}, {
@@ -17671,7 +17755,7 @@ const Tooltip = /*#__PURE__*/React__namespace.forwardRef(function Tooltip(inProp
     TransitionComponent = Grow,
     TransitionProps
   } = props,
-        other = _objectWithoutPropertiesLoose__default['default'](props, ["arrow", "children", "describeChild", "disableFocusListener", "disableHoverListener", "disableInteractive", "disableTouchListener", "enterDelay", "enterNextDelay", "enterTouchDelay", "followCursor", "id", "leaveDelay", "leaveTouchDelay", "onClose", "onOpen", "open", "placement", "PopperComponent", "PopperProps", "title", "TransitionComponent", "TransitionProps"]);
+        other = _objectWithoutPropertiesLoose__default['default'](props, ["arrow", "children", "classes", "describeChild", "disableFocusListener", "disableHoverListener", "disableInteractive", "disableTouchListener", "enterDelay", "enterNextDelay", "enterTouchDelay", "followCursor", "id", "leaveDelay", "leaveTouchDelay", "onClose", "onOpen", "open", "placement", "PopperComponent", "PopperProps", "title", "TransitionComponent", "TransitionProps"]);
 
   const [childNode, setChildNode] = React__namespace.useState();
   const [arrowRef, setArrowRef] = React__namespace.useState(null);
@@ -18008,41 +18092,49 @@ const Tooltip = /*#__PURE__*/React__namespace.forwardRef(function Tooltip(inProp
   });
 
   const classes = useUtilityClasses(styleProps);
-  return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.cloneElement(children, childrenProps), /*#__PURE__*/React__namespace.createElement(TooltipPopper, _extends__default['default']({
-    as: PopperComponent,
-    className: classes.popper,
-    placement: placement,
-    anchorEl: followCursor ? {
-      getBoundingClientRect: () => ({
-        top: positionRef.current.y,
-        left: positionRef.current.x,
-        right: positionRef.current.x,
-        bottom: positionRef.current.y,
-        width: 0,
-        height: 0
-      })
-    } : childNode,
-    popperRef: popperRef,
-    open: childNode ? open : false,
-    id: id,
-    transition: true
-  }, interactiveWrapperListeners, PopperProps, {
-    popperOptions: popperOptions,
-    styleProps: styleProps
-  }), ({
-    TransitionProps: TransitionPropsInner
-  }) => /*#__PURE__*/React__namespace.createElement(TransitionComponent, _extends__default['default']({
-    timeout: theme.transitions.duration.shorter
-  }, TransitionPropsInner, TransitionProps), /*#__PURE__*/React__namespace.createElement(TooltipTooltip, {
-    className: classes.tooltip,
-    styleProps: styleProps
-  }, title, arrow ? /*#__PURE__*/React__namespace.createElement(TooltipArrow, {
-    className: classes.arrow,
-    ref: setArrowRef,
-    styleProps: styleProps
-  }) : null))));
+  return /*#__PURE__*/jsxRuntime.jsxs(React__namespace.Fragment, {
+    children: [/*#__PURE__*/React__namespace.cloneElement(children, childrenProps), /*#__PURE__*/jsxRuntime.jsx(TooltipPopper, _extends__default['default']({
+      as: PopperComponent,
+      className: classes.popper,
+      placement: placement,
+      anchorEl: followCursor ? {
+        getBoundingClientRect: () => ({
+          top: positionRef.current.y,
+          left: positionRef.current.x,
+          right: positionRef.current.x,
+          bottom: positionRef.current.y,
+          width: 0,
+          height: 0
+        })
+      } : childNode,
+      popperRef: popperRef,
+      open: childNode ? open : false,
+      id: id,
+      transition: true
+    }, interactiveWrapperListeners, PopperProps, {
+      popperOptions: popperOptions,
+      styleProps: styleProps,
+      children: ({
+        TransitionProps: TransitionPropsInner
+      }) => /*#__PURE__*/jsxRuntime.jsx(TransitionComponent, _extends__default['default']({
+        timeout: theme.transitions.duration.shorter
+      }, TransitionPropsInner, TransitionProps, {
+        children: /*#__PURE__*/jsxRuntime.jsxs(TooltipTooltip, {
+          className: classes.tooltip,
+          styleProps: styleProps,
+          children: [title, arrow ? /*#__PURE__*/jsxRuntime.jsx(TooltipArrow, {
+            className: classes.arrow,
+            ref: setArrowRef,
+            styleProps: styleProps
+          }) : null]
+        })
+      }))
+    }))]
+  });
 });
-process.env.NODE_ENV !== "production" ? Tooltip.propTypes = {
+process.env.NODE_ENV !== "production" ? Tooltip.propTypes
+/* remove-proptypes */
+= {
   // ----------------------------- Warning --------------------------------
   // | These PropTypes are generated from the TypeScript type definitions |
   // |     To update them edit the d.ts file and run "yarn proptypes"     |
@@ -18072,7 +18164,7 @@ process.env.NODE_ENV !== "production" ? Tooltip.propTypes = {
   describeChild: propTypes.bool,
 
   /**
-   * Do not respond to focus events.
+   * Do not respond to focus-visible events.
    * @default false
    */
   disableFocusListener: propTypes.bool,
@@ -18314,7 +18406,7 @@ var WithFontTypography = withStyles({
 
 var SmallIconButton = withStyles(function () { return ({
     root: {
-        padding: "2px !important",
+        padding: "2px",
     },
 }); })(IconButton);
 function ButtonTooltip(_a) {
@@ -18325,8 +18417,9 @@ function ButtonTooltip(_a) {
 
 function StyleProvider(_a) {
     var children = _a.children, theme = _a.theme, language = _a.language, direction = _a.direction;
-    return (React__default['default'].createElement(LanguageProvider, { direction: direction, language: language },
-        React__default['default'].createElement(ThemeProvider, { rawTheme: theme }, children)));
+    return (React__default['default'].createElement(StyledEngineProvider, { injectFirst: true },
+        React__default['default'].createElement(LanguageProvider, { direction: direction, language: language },
+            React__default['default'].createElement(ThemeProvider, { rawTheme: theme }, children))));
 }
 
 exports.ButtonTooltip = ButtonTooltip;

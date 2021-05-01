@@ -1,10 +1,9 @@
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 
 import data from "./utils/data/small_data.json";
-import { storiesOf } from "@storybook/react";
+
 import { baseMapProps } from "./utils/constants";
-import BaseMapMD from "./docs/GeoJsonCustom.md";
-import React, { useState } from "react";
+import React from "react";
 import { DocsProvider } from "./docs/DocsProvider";
 
 export const CustomGeoJSONProps = () => (
@@ -18,18 +17,6 @@ export const CustomGeoJSONProps = () => (
     }}
   />
 );
-
-CustomGeoJSONProps.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={BaseMapMD}>
-          <CustomGeoJSONProps />
-        </DocsProvider>
-      );
-    },
-  },
-};
 
 export default {
   title: "GeoJson Props",

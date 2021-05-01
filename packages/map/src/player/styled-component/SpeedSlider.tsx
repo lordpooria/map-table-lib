@@ -1,14 +1,14 @@
-import clsx from "clsx";
 import React, { memo } from "react";
 
 import { RenderComponent } from "../helperComponent";
 import { PlayerCompleteProps } from "../../types/PlayerControl";
 import {
-  PlayerSlider as Slider,
   PlayerThumb,
+  useCommonSliderStyles,
   ValueLabelComponent,
 } from "../../sliders";
 import GaugeIcon from "../../assets/icons/common/GaugeIcon";
+import { Slider } from "@material-ui/core";
 
 function valuetext(value: number) {
   return `${value}fps`;
@@ -38,24 +38,24 @@ const SpeedSlider = memo(
     max,
     speedSliderValue,
   }: Props) => {
+    const commonClasses = useCommonSliderStyles();
     return (
-      <div className={clsx(speedSliderClasses, classes?.speedSliderWrapper)}>
+      <div className={classes?.speedSliderWrapper || speedSliderClasses}>
         <RenderComponent Component={speedIcon}>
-          <GaugeIcon className={clsx(whiteIconClasses, classes?.icons)} />
+          <GaugeIcon className={whiteIconClasses} />
         </RenderComponent>
 
         <Slider
-          classes={classes?.speedSlider}
+          classes={classes?.speedSlider || commonClasses}
           ThumbComponent={PlayerThumb as any}
           ValueLabelComponent={ValueLabelComponent}
-          style={{}}
           valueLabelDisplay="auto"
           value={speedSliderValue}
           valueLabelFormat={valuetext}
           step={speedStep}
           min={min}
           max={max}
-          onChange={(_, v) => {
+          onChange={(_: any, v: any) => {
             setTransitionTime(1000 / +v);
           }}
         />

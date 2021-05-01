@@ -51,7 +51,7 @@ export function tableDataParser(
     const time = dayjs(row.time as number)
       .locale("fa")
       .calendar("jalali")
-      .format("YYYY D MMMM");
+      .format("YYYY D MMMM hh:mm A");
     if (userIndex === -1) {
       visibleRows.push({
         time,

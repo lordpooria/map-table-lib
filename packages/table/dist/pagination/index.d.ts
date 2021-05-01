@@ -5,4 +5,4 @@ export declare type CommonTablePagination = TablePaginationProps & {
         root?: string;
     };
 };
-export declare function TablePagination({ classes, width, rowsPerPageOptions, page, count, rowsPerPage, onRowsPerPageChange, ...rest }: CommonTablePagination): JSX.Element;
+export declare function TablePagination({ classes, width, rowsPerPageOptions, page, count, rowsPerPage, onRowsPerPageChange, height, ...rest }: CommonTablePagination): JSX.Element;

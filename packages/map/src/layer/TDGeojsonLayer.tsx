@@ -12,7 +12,6 @@ export default function TDGeojsonLayer({
   ToolTipComponent,
 }: TDLayerOptions) {
   const currentData = useTDStoreState((state) => state.currentData);
-
   return (
     <>
       {currentData?.features.map((f, index) => (

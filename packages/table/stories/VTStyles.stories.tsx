@@ -1,7 +1,7 @@
 import { createStyles, makeStyles } from "@material-ui/styles";
 import Operations from "./Operations";
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { storiesOf } from "@storybook/react";
 
 import theme from "./table-test/theme";
@@ -41,7 +41,7 @@ storiesOf("VT Styles", module)
   .add("Customizable Theme Styles", () => {
     return (
       <CommonVirtualTableContainer>
-        <AutoResizer>
+        <AutoSizer>
           {({ width, height }) => (
             <HesabaVirtualTable
               height={height}
@@ -63,7 +63,7 @@ storiesOf("VT Styles", module)
               direction="ltr"
             />
           )}
-        </AutoResizer>
+        </AutoSizer>
       </CommonVirtualTableContainer>
     );
   })
@@ -71,7 +71,7 @@ storiesOf("VT Styles", module)
     const classes = useStyles();
     return (
       <CommonVirtualTableContainer>
-        <AutoResizer>
+        <AutoSizer>
           {({ width, height }) => (
             <HesabaVirtualTable
               height={height}
@@ -99,7 +99,7 @@ storiesOf("VT Styles", module)
               direction="ltr"
             />
           )}
-        </AutoResizer>
+        </AutoSizer>
       </CommonVirtualTableContainer>
     );
   });

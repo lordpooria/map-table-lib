@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect } from "react";
 import {
-  AutoResizer,
   HesabaVirtualTable,
   ToolbarMoreVert,
   useTStoreState,
@@ -12,18 +11,23 @@ import { useTDStoreState } from "../store";
 import tdStoreTableModel from "./tableReducer";
 import { useLocalStore } from "easy-peasy";
 import { tableDataParser, commonSchemaColumns } from "./table.utils";
+import { colourNameToHex } from "../utils/colorConverter";
 import { useAutoScroll } from "./useAutoScroll";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: { width: "100%", backgroundColor: "#FFF", display: "flex" },
   header: {
     backgroundColor: "#f1ece7",
     borderBottom: "none",
   },
-  scrollButton: { color: "#000" },
+  tabRoot: { borderTopRightRadius: theme.shape.borderRadius * 2 },
+  scrollButton: {
+    color: "#000",
+    borderTopRightRadius: theme.shape.borderRadius * 2,
+  },
   tableContainer: { borderWidth: 0 },
   row: {
-    backgroundColor: "#FFF",
+    // backgroundColor: "#FFF",
     border: "#999",
     borderBottom: "solid 1px",
     "&:hover": {
@@ -31,9 +35,22 @@ const useStyles = makeStyles({
       border: "none",
     },
   },
-});
+}));
 
-type TDTableCompleteProps = TdTableProps & { className: string; theme?: any };
+type TDTableCompleteProps = TdTableProps & {
+  height: number | undefined;
+  width: number;
+  initialWidth: number;
+  className: string;
+  theme?: any;
+};
+
+function calcTableHeight(height: any, theme?: any) {
+  if (theme?.mixins?.toolbar?.minHeight) {
+    return height - theme?.mixins?.toolbar?.minHeight;
+  }
+  return height - 60;
+}
 
 const TDTableContainer = memo((props: TDTableCompleteProps) => {
   const onRowClick = useAutoScroll();
@@ -43,12 +60,15 @@ const TDTableContainer = memo((props: TDTableCompleteProps) => {
 const TDTable = memo(
   ({
     className,
-    classes,
+    tableClasses,
     tableProps,
     operationOnRows,
     onRowClick,
     schemaColumns: customSchemaColumns,
     theme,
+    height,
+    width,
+    initialWidth,
   }: TDTableCompleteProps & { onRowClick: (_: number) => void }) => {
     const tabClasses = useStyles();
     const [state, actions] = useLocalStore(() => tdStoreTableModel);
@@ -75,14 +95,17 @@ const TDTable = memo(
     }, [users, formattedData]);
 
     return (
-      <div className={clsx(className, classes?.root)} id="hesaba-table">
-        <div style={{}} className={clsx(tabClasses.root, classes?.tabbar)}>
+      <div className={clsx(className, tableClasses?.root)} id="hesaba-table">
+        <div style={{}} className={clsx(tabClasses.root, tableClasses?.tabbar)}>
           <MoreVert />
           <Tabs
             value={state.tabIndex}
             scrollButtons="on"
             variant="scrollable"
-            classes={{ scrollButtons: tabClasses.scrollButton }}
+            classes={{
+              root: tabClasses.tabRoot,
+              scrollButtons: tabClasses.scrollButton,
+            }}
             onChange={(_: any, tabIndex: string) =>
               actions.setTabIndex({
                 tabIndex,
@@ -107,42 +130,39 @@ const TDTable = memo(
         </div>
         {operationOnRows && <Operations operationOnRows={operationOnRows} />}
 
-        <AutoResizer>
-          {({ width, height }) => (
-            <HesabaVirtualTable
-              width={width as number}
-              height={height as number}
-              columns={customSchemaColumns || commonSchemaColumns}
-              rows={formattedData as any}
-              selectable
-              resizable
-              sortable
-              VTRowProps={{
-                onRowClick,
-                extraStyles: {
-                  backgroundColor: `${state.indicatorColor}33`,
-                  border: `solid ${state.indicatorColor}`,
-                  borderLeftWidth: 1,
-                },
-              }}
-              hasToolbar={false}
-              tableDataParser={dataParser}
-              theme={theme}
-              classes={{
-                table: { root: tabClasses.tableContainer },
-                header: { root: tabClasses.header },
-                row: { root: tabClasses.row },
-              }}
-              VTCommonTableElProps={{
-                CheckboxProps: { style: { color: state.indicatorColor } },
-              }}
-              VTHeaderProps={{
-                DividerProps: { style: { fill: state.indicatorColor } },
-              }}
-              {...tableProps}
-            />
-          )}
-        </AutoResizer>
+        <HesabaVirtualTable
+          width={width || initialWidth}
+          height={calcTableHeight(height, theme)}
+          columns={customSchemaColumns || commonSchemaColumns}
+          rows={formattedData as any}
+          selectable
+          resizable
+          sortable
+          VTRowProps={{
+            onRowClick,
+            selectedRowStyle: {
+              borderRight: `solid 2px  ${state.indicatorColor}`,
+              backgroundColor: `${colourNameToHex(state.indicatorColor)}22`,
+            },
+          }}
+          hasToolbar={false}
+          tableDataParser={dataParser}
+          theme={theme}
+          classes={
+            {
+              table: { root: tabClasses.tableContainer },
+              header: { root: tabClasses.header },
+              row: { root: tabClasses.row },
+            } as any
+          }
+          VTCommonTableElProps={{
+            CheckboxProps: { style: { color: state.indicatorColor } },
+          }}
+          VTHeaderProps={{
+            DividerProps: { style: { fill: state.indicatorColor } },
+          }}
+          {...tableProps}
+        />
       </div>
     );
   }

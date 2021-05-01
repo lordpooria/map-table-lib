@@ -53,7 +53,9 @@ export declare type VirtualTableProps = CommonPublicProps & CommonTableProps & {
      * if pagination data provided we render a footer pagination on table
      * for a pagination you need at least page,rowsPerPage, count of data
      */
-    pagination?: TablePaginationProps;
+    pagination?: TablePaginationProps & {
+        height?: number;
+    };
     VTFilterProps?: PublicFilterProps;
     VTCommonTableElProps?: CommonTableElProps;
 };

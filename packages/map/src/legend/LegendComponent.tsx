@@ -7,10 +7,6 @@ import { PublicLegendProps, LegendsProps } from "../types/legend";
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
-      position: "absolute",
-      bottom: 20,
-      right: 20,
-      zIndex: 999,
       backgroundColor: "#FFF",
       borderRadius: 5,
 
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) =>
       margin: "0 4px",
     },
     text: {
-      color: theme.palette.grey["400"],
+      color: theme.palette.grey["600"],
       fontSize: 11,
       margin: "4px 0",
     },

@@ -1,5 +1,5 @@
 import { TableToolbarCompleteProps } from "../types/TableToolbar";
-export declare const TableToolbar: ({ title, classes, ...rest }: TableToolbarCompleteProps) => JSX.Element;
+export declare const TableToolbar: ({ title, height, classes, ...rest }: TableToolbarCompleteProps) => JSX.Element;
 export declare function ToolbarMoreVert({ classes, }: {
     classes: TableToolbarCompleteProps["classes"];
 }): JSX.Element;

@@ -1,6 +1,6 @@
 import HesabaTimeDimension from "./HesabaTimeDimension/HesabaTimeDimension";
 export default HesabaTimeDimension;
-export { default as TDProvider } from "./HesabaTimeDimension/Provider";
+export { default as TDProvider } from "./provider/Provider";
 export * from "./timer";
 export * from "./types/common";
 export * from "./store";

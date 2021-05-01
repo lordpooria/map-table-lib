@@ -1,7 +1,7 @@
 import Operations from "./Operations";
 import { PercentCell, QualityCell } from "./table-test/CellComponent";
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { storiesOf } from "@storybook/react";
 import { RawTableColumns, RawTableRows } from "../src/types";
 import { CommonVirtualTableContainer } from "./table-test/container";
@@ -57,7 +57,7 @@ storiesOf("VT Custom Cell", module).add(
   () => {
     return (
       <CommonVirtualTableContainer>
-        <AutoResizer>
+        <AutoSizer>
           {({ width, height }) => (
             <HesabaVirtualTable
               height={height}
@@ -77,7 +77,7 @@ storiesOf("VT Custom Cell", module).add(
               direction="ltr"
             />
           )}
-        </AutoResizer>
+        </AutoSizer>
       </CommonVirtualTableContainer>
     );
   }

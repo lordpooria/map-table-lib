@@ -1,5 +1,5 @@
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { useCallback, useEffect, useState } from "react";
 import { CommonVirtualTableContainer } from "./table-test/container";
 
@@ -47,7 +47,7 @@ export const TableWithAsyncServerData = () => {
   const { rows, schemaColumns } = useTableData();
   return (
     <CommonVirtualTableContainer>
-      <AutoResizer>
+      <AutoSizer>
         {({ width, height }) => (
           <HesabaVirtualTable
             height={400}
@@ -66,7 +66,7 @@ export const TableWithAsyncServerData = () => {
             direction="ltr"
           />
         )}
-      </AutoResizer>
+      </AutoSizer>
     </CommonVirtualTableContainer>
   );
 };

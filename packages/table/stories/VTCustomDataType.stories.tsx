@@ -1,5 +1,5 @@
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { storiesOf } from "@storybook/react";
 import { CommonVirtualTableContainer } from "./table-test/container";
 import { createEnhancedColumns } from "../src";
@@ -51,7 +51,7 @@ function tableDataParser(columns, rows) {
 storiesOf("Custom Data Type", module).add("Table with Collapsable Rows", () => {
   return (
     <CommonVirtualTableContainer>
-      <AutoResizer>
+      <AutoSizer>
         {({ width, height }) => (
           <HesabaVirtualTable
             height={height}
@@ -70,7 +70,7 @@ storiesOf("Custom Data Type", module).add("Table with Collapsable Rows", () => {
             }}
           />
         )}
-      </AutoResizer>
+      </AutoSizer>
     </CommonVirtualTableContainer>
   );
 });

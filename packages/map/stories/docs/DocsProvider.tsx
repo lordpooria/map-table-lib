@@ -21,7 +21,7 @@ export const DocsProvider = ({
 
 function CodeBlock({ language = null, value }: any) {
   return (
-    <SyntaxHighlighter language={language} style={coy}>
+    <SyntaxHighlighter language="js" style={coy}>
       {value}
     </SyntaxHighlighter>
   );

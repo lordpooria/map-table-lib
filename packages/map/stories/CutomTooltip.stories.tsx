@@ -1,9 +1,7 @@
 import HesabaTimeDimension from "../src/HesabaTimeDimension/HesabaTimeDimension";
 
 import data from "./utils/data/small_data.json";
-import { storiesOf } from "@storybook/react";
 import { baseMapProps } from "./utils/constants";
-import TooltipCustomMD from "./docs/TooltipCustom.md";
 import React from "react";
 import { DocsProvider } from "./docs/DocsProvider";
 import { Typography } from "@material-ui/core";
@@ -45,17 +43,6 @@ export const CustomTooltip = () => {
   );
 };
 
-CustomTooltip.parameters = {
-  docs: {
-    page: () => {
-      return (
-        <DocsProvider MDFile={TooltipCustomMD}>
-          <CustomTooltip />
-        </DocsProvider>
-      );
-    },
-  },
-};
 
 export default {
   title: "Tooltip Custom Component",

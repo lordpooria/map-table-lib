@@ -70,13 +70,11 @@ export type VirtualTableProps = CommonPublicProps &
      * if pagination data provided we render a footer pagination on table
      * for a pagination you need at least page,rowsPerPage, count of data
      */
-    pagination?: TablePaginationProps;
+    pagination?: TablePaginationProps & { height?: number };
 
     VTFilterProps?: PublicFilterProps;
 
     VTCommonTableElProps?: CommonTableElProps;
-
-    
   };
 
 export interface GridTableProps extends CommonTableProps {}

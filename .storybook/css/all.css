@@ -42,4 +42,6 @@ body {
   background-color: #fafafa;
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  margin: 0px;
+  padding: 0px;
 }

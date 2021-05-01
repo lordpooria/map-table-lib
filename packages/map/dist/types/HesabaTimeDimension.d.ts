@@ -7,12 +7,11 @@ import { GeoJSONData } from "./common";
 import { PublicLegendProps } from "./legend";
 import { MapContainerProps } from "react-leaflet";
 import { TdTableProps } from "./TableType";
-export interface HesabaTimeDimensionProps {
+import { MapClasses, StyleTypes } from "./styles";
+export declare type HesabaTimeDimensionProps = StyleTypes & {
     data: GeoJSONData;
     mapProps: MapContainerProps & {
-        classes?: {
-            root?: string;
-        };
+        classes?: MapClasses;
     };
     children?: React.ReactNode;
     playerProps?: PlayerProps;
@@ -24,7 +23,7 @@ export interface HesabaTimeDimensionProps {
     withTable?: boolean;
     LegendComponent?: PublicLegendProps["LegendComponent"];
     theme?: any;
-}
+};
 export interface TimeDimensionViewProps {
     data: GeoJSONData;
     playerProps: PlayerProps;
@@ -34,3 +33,7 @@ export interface TimeDimensionViewProps {
     extralLayerProps: any;
     LegendComponent?: PublicLegendProps["LegendComponent"];
 }
+export declare type BottomContainerProps = {
+    LegendComponent?: TimeDimensionViewProps["LegendComponent"];
+    playerProps: TimeDimensionViewProps["playerProps"];
+};

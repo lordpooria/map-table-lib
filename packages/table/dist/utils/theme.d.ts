@@ -6,3 +6,4 @@ declare const _default: {
     };
 };
 export default _default;
+export declare function calcTableHeght(hasToolbar: boolean, toolbarHeight: number | undefined, pagination: any, height: number): number;

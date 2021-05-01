@@ -1,12 +1,12 @@
-import clsx from "clsx";
 import React, { memo, useEffect, useState } from "react";
 import { useTDStoreActions, useTDStoreState } from "../../store";
 import { PlayerCompleteProps } from "../../types/PlayerControl";
 import {
-  PlayerSlider as Slider,
   PlayerThumb,
+  useCommonSliderStyles,
   ValueLabelComponent,
-} from "../../sliders"
+} from "../../sliders";
+import { Slider } from "@material-ui/core";
 
 interface Props {
   timeSteps: PlayerCompleteProps["timeSteps"];
@@ -58,13 +58,14 @@ const TimeSliderStateless = memo(
     const setCurrentTimeIndex = useTDStoreActions(
       (actions) => actions.setCurrentTimeIndex
     );
-    
+    const commonClasses = useCommonSliderStyles();
+
     return (
-      <div className={clsx(playerSlider, classes?.playerSliderWrapper)}>
+      <div className={classes?.playerSliderWrapper || playerSlider}>
         {/* <PlayCircleIcon className={classes.whiteIcon} /> */}
 
         <Slider
-          classes={classes?.playerSlider}
+          classes={classes?.playerSlider || commonClasses}
           valueLabelDisplay="auto"
           ThumbComponent={PlayerThumb as any}
           ValueLabelComponent={ValueLabelComponent}
@@ -73,8 +74,8 @@ const TimeSliderStateless = memo(
           step={timeSteps}
           min={min}
           max={max}
-          onChange={(_, index) => {
-            setCurrentTimeIndex({ index: index as number });
+          onChange={(_: any, index: any) => {
+            setCurrentTimeIndex({ index: index as any });
           }}
         />
       </div>
