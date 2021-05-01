@@ -8,6 +8,10 @@ const withMDX = require("@next/mdx")({
   },
 });
 
+const isProd = process.env.NODE_ENV === 'production';
+
+
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  distDir: isProd ? `build` : '.next',
 });

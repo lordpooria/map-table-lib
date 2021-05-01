@@ -11,6 +11,7 @@ import { useTDStoreState } from "../store";
 import tdStoreTableModel from "./tableReducer";
 import { useLocalStore } from "easy-peasy";
 import { tableDataParser, commonSchemaColumns } from "./table.utils";
+import { colourNameToHex } from "../utils/colorConverter";
 import { useAutoScroll } from "./useAutoScroll";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: { borderWidth: 0 },
   row: {
-    backgroundColor: "#FFF",
+    // backgroundColor: "#FFF",
     border: "#999",
     borderBottom: "solid 1px",
     "&:hover": {
@@ -139,10 +140,9 @@ const TDTable = memo(
           sortable
           VTRowProps={{
             onRowClick,
-            extraStyles: {
-              backgroundColor: `${state.indicatorColor}33`,
-              border: `solid ${state.indicatorColor}`,
-              borderLeftWidth: 1,
+            selectedRowStyle: {
+              borderRight: `solid 2px  ${state.indicatorColor}`,
+              backgroundColor: `${colourNameToHex(state.indicatorColor)}22`,
             },
           }}
           hasToolbar={false}

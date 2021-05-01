@@ -1,14 +1,17 @@
 import BaseLayout from "../components/layout/baselayout";
-import Head from 'next/head'
+import Head from "next/head";
+import ThemeProvider from "../components/ThemeProvider";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <BaseLayout>
-      <Head>
-        <link rel="stylesheet" type="text/css" href="/css/all.css" />
-      </Head>
-      {typeof window === "undefined" ? null : <Component {...pageProps} />}
-    </BaseLayout>
+    <ThemeProvider>
+      <BaseLayout>
+        <Head>
+          <link rel="stylesheet" type="text/css" href="/css/all.css" />
+        </Head>
+        <Component {...pageProps} />
+      </BaseLayout>
+    </ThemeProvider>
   );
 }
 

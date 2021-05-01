@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 //   root: { width: "200px", height: "70vh" },
 });
 
-export default function SetFontFamilyWithClassName() {
+ function SetFontFamilyWithClassName() {
   const classes = useStyles();
 
   return (
@@ -26,3 +26,4 @@ export default function SetFontFamilyWithClassName() {
     // <BaseMap mapProps={{ ...baseMapProps, className: classes.container }} />
   );
 }
+export default SetFontFamilyWithClassName

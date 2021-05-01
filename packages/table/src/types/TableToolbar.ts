@@ -12,7 +12,7 @@ export interface PublicTableToolbarProps {
   title?: string;
   /**
    */
-  
+
   operationOnRows?: Array<React.ReactNode>;
-  
+  height?: number;
 }

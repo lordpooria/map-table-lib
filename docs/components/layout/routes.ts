@@ -1,4 +1,5 @@
 export const mapRoutes = [
+  { title: "installation", href: "/map/installation" },
   { title: "Simple Map", href: "/map/simple-map" },
   {
     title: "Custom Styles",
@@ -52,4 +53,37 @@ export const mapRoutes = [
   { title: "Map With table", href: "/map/map-with-table" },
 ];
 
-export const tableRoutes = [{ title: "Simple Map", href: "/map/simple-map" }];
+export const tableRoutes = [
+  { title: "installation", href: "/table/installation" },
+  { title: "Simple Table", href: "/table/simple-table" },
+  { title: "Auto Sizer", href: "/table/auto-sizer" },
+  { title: "Simple Props", href: "/table/simple-props" },
+  {
+    title: "Custom Styles",
+    href: "/table/custom-styles",
+    children: [
+      { title: "LTR Table", href: "/table/custom-styles/ltr-table" },
+      { title: "Custom material theme", href: "/table/custom-styles/custom-mat-theme" },
+      { title: "Customize Class Component", href: "/table/custom-styles/custom-class-component" },
+    ],
+  },
+  {
+    title: "Toolbar",
+    href: "/table/toolbar",
+    children: [
+      { title: "Toolbar Props", href: "/table/toolbar/toolbar-props" },
+      { title: "Operation On Rows", href: "/table/toolbar/operation-on-rows" },
+      
+    ],
+  },
+  {
+    title: "Schema",
+    href: "/table/schema",
+    children: [
+      { title: "Custom Cell", href: "/table/schema/custom-cell" },
+            
+    ],
+  },
+  { title: "Custom Data Type", href: "/table/custom-data-type" },
+  { title: "Pagination", href: "/table/pagination" },
+];

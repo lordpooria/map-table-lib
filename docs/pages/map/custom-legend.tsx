@@ -3,10 +3,12 @@ const CustomLegend = dynamic(() => import("../../components/map/mdx/custom-legen
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
       <CustomLegend />
     </div>
   );
 }
+
+export default Page

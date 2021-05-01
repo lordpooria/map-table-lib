@@ -1,0 +1,82 @@
+## Simple Virtual Table
+
+This is table with virtual rows, suitable for large amount of data
+
+Simplest virtual table needs this props
+
+<table>
+  <tr>
+    <td>height</td>
+    <td>number</td>
+  </tr>
+  <tr>
+    <td>width</td>
+    <td>number</td>
+  </tr>
+  <tr>
+    <td>columns</td>
+    <td>{`[{key:string,label:string,type?:string|number|etc}]`}</td>
+  </tr>
+  <tr>
+    <td>rows</td>
+    <td>{`[any]`}</td>
+  </tr>
+</table>
+
+import SimpleTable from "../components/BaseTable";
+
+<SimpleTable />
+
+import SyntaxHighlighter from "../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+  import {
+  AutoResizer,
+  HesabaVirtualTable,
+  VirtualTableProps,
+} from "@hesaba/table";
+import React from "react";
+const rows = [...Array.from({ length: 40 }, (_, i) => i)].map(
+  (item) => {
+    const random = Math.random();
+    return {
+      name: \`name\${item}\`,
+      type: \`type\${item}\`,
+    };
+  }
+);
+const schemaColumns: RawTableColumns<keys> = [
+  {
+    label: "name",
+    key: "name",
+  },
+  {
+    label: "type",
+    key: "type",
+    type: "string",
+  },
+];
+const SimpleTable = () => {
+  return (
+    <HesabaVirtualTable
+      height={800}
+      width={500}
+      columns={schemaColumns}
+      rows={rows}
+    />
+  );
+};
+export default SimpleTable;`}</SyntaxHighlighter>
+
+Property width and height are obvious and later we introduce new component (AutoSizer) to
+extract width and height of parent which is implicitly set.
+
+To declare a table we need schema of columns, column schema is array of object and each item of array connect to each item in a row so each schema column should have property label which shuold be equal to item key in row object
+
+schema column could also has these other properties:
+ * label
+ * key: which should be unique
+ * type: define data type of item on each column for example it could be number,string,date,etc
+ * minWidth?: a number declare initial column width which is 150px by default
+ * CellComponent?:  you could define custom react component to render on each column(dicussed later examples)
+

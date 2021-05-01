@@ -3,10 +3,11 @@ const Basemap = dynamic(() => import("../../components/map/mdx/simple-map.mdx"as
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
       <Basemap />
     </div>
   );
 }
+export default Page

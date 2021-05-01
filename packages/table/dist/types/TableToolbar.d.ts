@@ -11,4 +11,5 @@ export interface PublicTableToolbarProps {
     /**
      */
     operationOnRows?: Array<React.ReactNode>;
+    height?: number;
 }

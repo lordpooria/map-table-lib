@@ -3,14 +3,14 @@ import {
   useSliderStyles,
   useOtherClasses,
   useClockStyles,
-} from "../styles/transparent.styles";
+} from "../../styles/transparent.styles";
 import {
   useSliderStyles as useSliderStyles2,
   useOtherClasses as useOtherClasses2,
   useClockStyles as useClockStyles2,
-} from "../styles/player-thumb.styles";
+} from "../../styles/player-thumb.styles";
 import { commonGeojsonProps } from "../utils/constants";
-import theme from "../styles/theme";
+import theme from "../../styles/theme";
 
 export const MaterialThemeObject = () => {
   return <BaseMap theme={theme} />;

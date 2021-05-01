@@ -82,6 +82,7 @@ export interface VTPublicRowProps {
   classes?: RowClasses;
   onRowClick?: (index: number) => void;
   extraStyles?: any;
+  selectedRowStyle?: any;
 }
 
 export type SpecificRowProps = CommonTableElProps & {

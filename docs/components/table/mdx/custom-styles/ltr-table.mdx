@@ -1,0 +1,32 @@
+## Table direciton
+
+Table direction could be set by direciton prop, this props has **ltr** and **rtl** values and default is **rtl**
+
+import {LTRTable} from "../../components/CustomStyles";
+
+<LTRTable />
+
+import SyntaxHighlighter from "../../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={simpleSchemaColumns}
+            rows={simpleRows}
+            direction="ltr"
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;`}</SyntaxHighlighter>

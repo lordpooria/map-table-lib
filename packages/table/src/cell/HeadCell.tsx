@@ -91,7 +91,7 @@ const HeadCell = ({
       >
         <>
           <Typography
-            align="left"
+            align="center"
             className={clsx(cellClasses.titleText, classes?.title)}
           >
             {label}

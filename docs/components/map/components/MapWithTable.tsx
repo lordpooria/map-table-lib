@@ -1,9 +1,18 @@
 import BaseMap from "./BaseMap";
 
-export default function MapComponent(props: any) {
+function MapComponent(props: any) {
   return (
-    <BaseMap
-      timeProps={{ am: "AM", pm: "PM", noTimeError: "No time Available" }}
-    />
+    <div
+      style={{
+        width: "70vw",
+        height: "80vh",
+        borderRadius: 15,
+        boxShadow: "0 0 5px #444",
+        overflow: "hidden",
+      }}
+    >
+      <BaseMap withTable />
+    </div>
   );
 }
+export default MapComponent;

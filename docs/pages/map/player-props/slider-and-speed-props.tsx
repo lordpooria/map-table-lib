@@ -3,10 +3,11 @@ const SliderAndSpeedsProps = dynamic(() => import("../../../components/map/mdx/p
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
       <SliderAndSpeedsProps />
     </div>
   );
 }
+export default Page

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   createStyles,
   FormControlLabel,
+  IconButton,
   makeStyles,
   Menu,
   MenuItem,
@@ -14,18 +15,22 @@ import { useTStoreActions, useTStoreState } from "../store/reducerHooks";
 
 import { TableToolbarCompleteProps } from "../types/TableToolbar";
 import clsx from "clsx";
-import { SmallIconButton } from "@hesaba/theme-language";
+import { DEFAULT_TOOLBAR_HEIGHT } from "../utils/themeConstants";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     toolbarContainer: {
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
-      padding: theme.spacing(1),
+      display: "flex",
+      alignItems: "center",
+      
     },
     tools: {
       display: "flex",
       alignItems: "center",
+      flex:1,
     },
+    title: { padding: `0 ${theme.spacing(1)}`},
     icon: {
       fill: theme.palette.secondary.main,
     },
@@ -34,21 +39,27 @@ const useStyles = makeStyles((theme) =>
 
 export const TableToolbar = ({
   title,
-
+  height,
   classes,
   ...rest
 }: TableToolbarCompleteProps) => {
   const toolbarClasses = useStyles();
 
   return (
-    <div className={clsx(toolbarClasses.toolbarContainer, classes?.root)}>
-      <Typography align="center">{title ?? ""}</Typography>
-
+    <div
+      style={{ height: height || DEFAULT_TOOLBAR_HEIGHT }}
+      className={clsx(toolbarClasses.toolbarContainer, classes?.root)}
+    >
+      
       <div className={clsx(toolbarClasses.tools)}>
         <ToolbarMoreVert classes={classes} />
 
         {rest.operationOnRows && <ToolbarOperation {...rest} />}
       </div>
+      <Typography align="center" className={toolbarClasses.title}>
+        {title ?? ""}
+      </Typography>
+
     </div>
   );
 };
@@ -80,14 +91,14 @@ export function ToolbarMoreVert({
 
   return (
     <>
-      <SmallIconButton onClick={handleClick} className={classes?.iconButton}>
+      <IconButton onClick={handleClick} className={classes?.iconButton}>
         <MoreVert
           className={clsx(
             { [toolbarClasses.icon]: !classes?.icon },
             classes?.icon
           )}
         />
-      </SmallIconButton>
+      </IconButton>
 
       <Menu
         disableScrollLock={true}

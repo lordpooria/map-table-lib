@@ -74,7 +74,7 @@ const TimeSliderStateless = memo(
           step={timeSteps}
           min={min}
           max={max}
-          onChange={(_, index: any) => {
+          onChange={(_: any, index: any) => {
             setCurrentTimeIndex({ index: index as any });
           }}
         />

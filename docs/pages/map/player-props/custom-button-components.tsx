@@ -3,10 +3,11 @@ const CustomButtonComponents = dynamic(() => import("../../../components/map/mdx
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
       <CustomButtonComponents />
     </div>
   );
 }
+export default Page

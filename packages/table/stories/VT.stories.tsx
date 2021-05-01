@@ -1,8 +1,9 @@
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { simpleSchemaColumns, simpleRows } from "./table-test/fakeData";
 import { CommonVirtualTableContainer } from "./table-test/container";
 import { makeStyles } from "@material-ui/core";
+import Operations from "./Operations";
 
 
 const useStyles = makeStyles({
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
 export const SimpleVirtualTableRTL = () => {
   return (
     <CommonVirtualTableContainer>
-      <AutoResizer>
+      <AutoSizer>
         {({ width, height }) => (
           <HesabaVirtualTable
             height={height}
@@ -28,9 +29,11 @@ export const SimpleVirtualTableRTL = () => {
               page: 1,
               onPageChange: () => {},
             }}
+            title="Table Title"
+            operationOnRows={[Operations]}
           />
         )}
-      </AutoResizer>
+      </AutoSizer>
     </CommonVirtualTableContainer>
   );
 };
@@ -39,7 +42,7 @@ export const SimpleVirtualTableRTL = () => {
 export const SimpleVirtualTableLTR = () => {
   return (
     <CommonVirtualTableContainer>
-      <AutoResizer>
+      <AutoSizer>
         {({ width, height }) => (
           <HesabaVirtualTable
             height={height}
@@ -59,7 +62,7 @@ export const SimpleVirtualTableLTR = () => {
             language="en"
           />
         )}
-      </AutoResizer>
+      </AutoSizer>
     </CommonVirtualTableContainer>
   );
 };

@@ -6,10 +6,11 @@ const CustomFontFamily = dynamic(
   }
 );
 
-export default function () {
+function Page() {
   return (
     <div>
       <CustomFontFamily />
     </div>
   );
 }
+export default Page

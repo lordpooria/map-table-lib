@@ -1,12 +1,13 @@
 import dynamic from "next/dynamic";
-const MapWithTable = dynamic(() => import("../../components/map/mdx/map-with-table.mdx"as any), {
+const TimeProps = dynamic(() => import("../../components/map/mdx/time-props.mdx"as any), {
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
-      <MapWithTable />
+      <TimeProps />
     </div>
   );
 }
+export default Page

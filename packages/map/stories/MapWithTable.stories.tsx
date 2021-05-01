@@ -38,7 +38,7 @@ export const BaseTable = () => {
       <HesabaTimeDimension
         data={data as any}
         mapProps={{ ...baseMapProps }}
-        classes={{ table: { root: classes.tableRoot } }}
+       
         theme={theme}
         withTable
       />

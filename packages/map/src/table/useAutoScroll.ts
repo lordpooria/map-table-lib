@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef } from "react";
 import { useTDStoreActions, useTDStoreState } from "../store";
 
 type QuerySelectType = HTMLElement | null;
+const SHIFT_SCROLL_INDEX = 2;
+const ITEM_SIZE = 50;
 
 export const useAutoScroll = () => {
   const mainListRef = useRef<QuerySelectType>();
@@ -18,7 +20,9 @@ export const useAutoScroll = () => {
     const top = e?.target?.scrollTop;
     if (!top) return;
 
-    setCurrentTimeIndex({ index: Math.floor(top / 50) });
+    setCurrentTimeIndex({
+      index: Math.floor(top / ITEM_SIZE) + SHIFT_SCROLL_INDEX,
+    });
     // setCurrentTimeIndex()
   }, []);
   const onScroll = useCallback(
@@ -57,7 +61,7 @@ export const useAutoScroll = () => {
 
   const scrollTo = useCallback((index) => {
     mainListRef.current?.scrollTo({
-      top: index * 50,
+      top: index * ITEM_SIZE,
       behavior: "smooth",
     });
   }, []);

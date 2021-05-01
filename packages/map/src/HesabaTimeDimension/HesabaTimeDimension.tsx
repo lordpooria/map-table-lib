@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 
 import { StyleProvider } from "@hesaba/theme-language";
-import { AutoResizer, TableStoreProvider } from "@hesaba/table";
+import { AutoSizer, TableStoreProvider } from "@hesaba/table";
 
 import TDProvider from "../provider/Provider";
 import useStyles from "./HesabaTimeDimension.styles";
@@ -109,7 +109,7 @@ const PanelMap: FC<HesabaTimeDimensionProps> = ({
   const rootClass = classes?.tdRoot || tdClasses.tdRootWithTable;
   const mapClass = classes?.map || tdClasses.mapRootWithTable;
   return (
-    <AutoResizer>
+    <AutoSizer>
       {({ width, height }) => (
         <div style={{ width, height }} className={rootClass}>
           <SplitPane
@@ -178,7 +178,7 @@ const PanelMap: FC<HesabaTimeDimensionProps> = ({
           </SplitPane>
         </div>
       )}
-    </AutoResizer>
+    </AutoSizer>
   );
 };
 

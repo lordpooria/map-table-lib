@@ -3,10 +3,11 @@ const AddRemoveComponents = dynamic(() => import("../../../components/map/mdx/pl
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
       <AddRemoveComponents />
     </div>
   );
 }
+export default Page

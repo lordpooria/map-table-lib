@@ -1,6 +1,6 @@
 import BaseMap from "./BaseMap";
 
-export default function MapComponent(props: any) {
+function MapComponent(props: any) {
   return (
     <BaseMap
       layerProps={{
@@ -11,3 +11,4 @@ export default function MapComponent(props: any) {
     />
   );
 }
+export default MapComponent

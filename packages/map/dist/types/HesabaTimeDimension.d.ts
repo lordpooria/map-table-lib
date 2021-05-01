@@ -33,3 +33,7 @@ export interface TimeDimensionViewProps {
     extralLayerProps: any;
     LegendComponent?: PublicLegendProps["LegendComponent"];
 }
+export declare type BottomContainerProps = {
+    LegendComponent?: TimeDimensionViewProps["LegendComponent"];
+    playerProps: TimeDimensionViewProps["playerProps"];
+};

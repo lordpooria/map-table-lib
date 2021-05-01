@@ -11,6 +11,8 @@ import Overlay from "./overlay";
 import VirtualList from "./container-virtual/VirtualList";
 
 import { TablePagination } from "../Pagination";
+import { calcTableHeght } from "../utils/theme";
+
 /**
  * Decorator component that automatically adjusts the width and height of a single child
  */
@@ -19,6 +21,7 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     rows,
     columns,
     width = "100%",
+    height,
     hasFilter = true,
     hasToolbar = true,
     title,
@@ -28,7 +31,7 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     tableDataParser,
     VTContainerProps,
     VTToolbarProps,
-    
+
     ...rest
   }: VirtualTableProps) => {
     useTableData(columns, rows, tableDataParser);
@@ -93,6 +96,12 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
             onScroll={onScroll}
             classes={classes}
             setTableRef={setTableRef}
+            height={calcTableHeght(
+              hasToolbar,
+              VTToolbarProps?.height,
+              pagination,
+              height
+            )}
             {...rest}
           />
 

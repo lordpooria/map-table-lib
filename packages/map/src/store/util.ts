@@ -17,14 +17,13 @@ export function seekNearestTimeIndex(
   formattedData: FormattedData
 ) {
   let newIndex = 0;
-  console.log(newIndex);
   for (; newIndex < formattedData.length; newIndex++) {
-   console.log(time)
+
     // if (time < formattedData[newIndex][0].properties.time) {
     //   break;
     // }
   }
-  console.log(newIndex)
+
   // We've found the first index greater than the time. Return the previous
   if (newIndex > 0) {
     newIndex--;

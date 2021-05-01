@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) =>
     tableRow: {
       display: "flex",
       alignItems: "center",
+      overflow: "hidden",
+      marginTop: commonSidebar.itemHeight,
     },
     tableRowCommon: {
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
@@ -29,9 +31,7 @@ const useStyles = makeStyles((theme) =>
       },
     },
     rowCell: {},
-    selected: {
-      backgroundColor: "rgba(100,100,255,0.1)",
-    },
+    selected: { backgroundColor: "rgba(100,100,255,0.1)" },
     activatedRow: { backgroundColor: "rgba(255,100,255,0.1)" },
   })
 );
@@ -53,6 +53,7 @@ const SingleVirtualTableRow = ({
   CheckboxProps,
   onRowClick,
   extraStyles,
+  selectedRowStyle,
   ...rest
 }: CompleteRowProps) => {
   const rowClasses = useStyles();
@@ -71,10 +72,9 @@ const SingleVirtualTableRow = ({
     <div
       style={{
         ...style,
-        extraStyles,
+        ...extraStyles,
+        ...(activeRow === rowIndex && selectedRowStyle),
         width: calcRowWidth(),
-        overflow: "hidden",
-        marginTop: commonSidebar.itemHeight,
       }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,

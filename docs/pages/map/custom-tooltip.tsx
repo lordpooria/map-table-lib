@@ -7,6 +7,7 @@ const CustomTooltip = dynamic(
 );
 
 
-export default function CustomThumb() {
+function CustomThumb() {
   return <CustomTooltip />;
 }
+export default CustomThumb

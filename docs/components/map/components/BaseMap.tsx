@@ -1,4 +1,4 @@
-import data from "../assets/small_data.json";
+import data from "../assets/data.json";
 import HesabaTimeDimension from "@hesaba/map";
 import { makeStyles } from "@material-ui/core";
 import { commonMapProps } from "../utils/constants";
@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   map: { width: "100%", height: "100%" },
 });
 
-export default function MapComponent(props: any) {
+ function MapComponent(props: any) {
   const classes = useStyles();
   return (
     <HesabaTimeDimension
@@ -22,3 +22,4 @@ export default function MapComponent(props: any) {
     />
   );
 }
+export default MapComponent

@@ -39,7 +39,7 @@ function renderMenu(props: LinkItem & { children?: Array<LinkItem> }) {
   );
 }
 
-export default function Sidebar() {
+function Sidebar() {
   return (
     <ProSidebar style={{ width: 200 }}>
       <SidebarHeader>
@@ -58,3 +58,5 @@ export default function Sidebar() {
     </ProSidebar>
   );
 }
+
+export default  Sidebar

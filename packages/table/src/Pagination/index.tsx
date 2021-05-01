@@ -21,6 +21,7 @@ import { TablePaginationActionsProps } from "@material-ui/core/TablePagination/T
 import ArrowRightIcon from "../assets/icons/common/ArrowRightIcon";
 import ArrowLeftIcon from "../assets/icons/common/ArrowLeftIcon";
 import { useTStoreState } from "../store/reducerHooks";
+import { DEFAULT_PAGINATION_HEIGHT } from "../utils/themeConstants";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -153,6 +154,7 @@ export function TablePagination({
   count,
   rowsPerPage,
   onRowsPerPageChange,
+  height,
   ...rest
 }: CommonTablePagination) {
   const paginationClasses = useStyles();
@@ -170,7 +172,7 @@ export function TablePagination({
   return (
     <div
       className={clsx(paginationClasses.paginationRoot, classes?.root)}
-      style={{ width, direction }}
+      style={{ width, direction, height: height || DEFAULT_PAGINATION_HEIGHT }}
     >
       <Toolbar className={paginationClasses.toolbar}>
         <div className={paginationClasses.spacer} />

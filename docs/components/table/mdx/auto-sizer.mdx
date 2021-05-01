@@ -1,0 +1,33 @@
+## Auto Sizer
+
+Because this is virtual table, width and height should be provided as number of pixels
+But this approach cause many problem in terms of responsive design so there is auto sizer component helps use
+to specify width and height in percents and viewport unit as well and convert that to pixel table could consume
+
+import AutoSize from "../components/AutoSizer";
+
+<AutoSize />
+
+import SyntaxHighlighter from "../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={simpleSchemaColumns}
+            rows={simpleRows}
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;`}</SyntaxHighlighter>

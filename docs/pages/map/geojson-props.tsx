@@ -3,10 +3,11 @@ const GeoJSONProps = dynamic(() => import("../../components/map/mdx/geojson-prop
   ssr: false,
 });
 
-export default function () {
+function Page () {
   return (
     <div>
       <GeoJSONProps />
     </div>
   );
 }
+export default Page

@@ -3,7 +3,6 @@ import { Typography } from "@material-ui/core";
 import NumberFormat from "react-number-format";
 
 const Tooltip = ({ properties }: { properties: Record<string, any> }) => {
-  console.log("here")
   return (
     <>
       <div>
@@ -29,6 +28,7 @@ const Tooltip = ({ properties }: { properties: Record<string, any> }) => {
   );
 };
 
-export default function MapComponent(props: any) {
+function MapComponent(props: any) {
   return <BaseMap layerProps={{ ToolTipComponent: Tooltip }} />;
 }
+export default MapComponent

@@ -1,5 +1,4 @@
 import BaseMap from "./BaseMap";
-import { Typography } from "@material-ui/core";
 import NumberFormat from "react-number-format";
 import { ExternalLegendsComponent } from "@hesaba/map/dist/types/legend";
 
@@ -25,6 +24,7 @@ const CustomLegendComponent = ({ properties }: ExternalLegendsComponent) => {
   );
 };
 
-export default function MapComponent(props: any) {
+function MapComponent(props: any) {
   return <BaseMap LegendComponent={CustomLegendComponent} />;
 }
+export default MapComponent;

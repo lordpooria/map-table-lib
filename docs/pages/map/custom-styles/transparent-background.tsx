@@ -7,10 +7,11 @@ const CustomStyleTransparent = dynamic(
   }
 );
 
-export default function () {
+function Page() {
   return (
     <div>
       <CustomStyleTransparent />
     </div>
   );
 }
+export default Page

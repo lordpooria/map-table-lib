@@ -3,10 +3,11 @@ const AutoPlayAndReload = dynamic(() => import("../../../components/map/mdx/play
   ssr: false,
 });
 
-export default function () {
+function Page() {
   return (
     <div>
       <AutoPlayAndReload />
     </div>
   );
 }
+export default Page

@@ -20,7 +20,7 @@ const useCellStyles = makeStyles(() =>
 const SimpleTableCell = ({ value, className }: TableComponentProps) => {
   const classes = useCellStyles();
   return (
-    <Typography color="" className={clsx(classes.simpleCell, className)}>
+    <Typography align="center" className={clsx(classes.simpleCell, className)}>
       {value}
     </Typography>
   );

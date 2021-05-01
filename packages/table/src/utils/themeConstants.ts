@@ -22,5 +22,8 @@ export const DIALOG_CONTENT_HEIGHT =
 export const MIN_TABLE_WIDTH = 24;
 export const RESIZE_HANDLE_WIDTH = 24;
 
-export const ROW_MIN_WIDTH = 100
-export const CHECKBOX_SIZE = 48
+export const ROW_MIN_WIDTH = 100;
+export const CHECKBOX_SIZE = 48;
+
+export const DEFAULT_PAGINATION_HEIGHT = 70;
+export const DEFAULT_TOOLBAR_HEIGHT = 70;

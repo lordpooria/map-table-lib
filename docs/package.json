@@ -1,6 +1,6 @@
 {
   "name": "@hesaba/docs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 6007",
@@ -9,13 +9,14 @@
     "export": "next export"
   },
   "dependencies": {
-    "@hesaba/map": "file:../packages/map",
-    "@hesaba/table": "file:../packages/table",
-    "@material-ui/core": "^4.11.4",
+    "@hesaba/map": "link:../packages/map",
+    "@hesaba/table": "link:../packages/table",
+    "@material-ui": "link:../packages/map/node_modules/@material-ui",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/mdx": "1.6.22",
     "@next/mdx": "^9.5.3",
-    "leaflet": "^1.7.1",
+    "leaflet": "link:../packages/map/node_modules/leaflet",
+    
     "next": "10.0.7",
     "react-number-format": "^4.5.3",
     "react-pro-sidebar": "^0.6.0",
@@ -24,6 +25,8 @@
   "devDependencies": {
     "@types/node": "link:../node_modules/@types/node",
     "babel-plugin-import-glob-array": "^0.2.0",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
     "typescript": "^4.2.2"
   },
   "peerDependencies": {

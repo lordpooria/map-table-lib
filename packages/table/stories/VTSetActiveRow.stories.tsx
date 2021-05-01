@@ -1,7 +1,7 @@
 import { createStyles, makeStyles } from "@material-ui/styles";
 import Operations from "./Operations";
 import HesabaVirtualTable from "../src/HesabaVirtualTable";
-import AutoResizer from "../src/virtualize-table/container-virtual/AutoResizer";
+import AutoSizer from "../src/virtualize-table/container-virtual/AutoSizer";
 import { storiesOf } from "@storybook/react";
 
 import theme from "./table-test/theme";
@@ -40,9 +40,9 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const onRowClick = (index)=>{
-console.log(index)
-}
+const onRowClick = (index) => {
+  console.log(index);
+};
 
 const TableWithActiveRow = () => {
   const setActive = useTableRowAction();
@@ -50,7 +50,7 @@ const TableWithActiveRow = () => {
     setActive(1);
   }, []);
   return (
-    <AutoResizer>
+    <AutoSizer>
       {({ width, height }) => (
         <HesabaVirtualTable
           height={height}
@@ -66,14 +66,20 @@ const TableWithActiveRow = () => {
             page: 1,
             onPageChange: () => {},
           }}
-          VTRowProps={{onRowClick}}
+          VTRowProps={{
+            onRowClick,
+            selectedRowStyle: {
+              backgroundColor: "#FF0",
+              borderRight: "solid 2px",
+            },
+          }}
           theme={theme as any}
           title="Simple Table"
           operationOnRows={[Operations]}
           direction="ltr"
         />
       )}
-    </AutoResizer>
+    </AutoSizer>
   );
 };
 

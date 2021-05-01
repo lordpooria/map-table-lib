@@ -1,0 +1,41 @@
+## Simple Virtual Table Props
+
+Some feature could be added to table simply by providing boolean props
+
+import BaseTable from "../components/BaseTable";
+
+<BaseTable />
+
+import SyntaxHighlighter from "../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={simpleSchemaColumns}
+            rows={simpleRows}
+            resizable
+            selectable
+            sortable
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;`}</SyntaxHighlighter>
+
+As you see
+
+- selectable add check box beside each rows
+- sortable you could sort each column with menu beside column name
+- resizable handles added to table head, Table column could be resize with this handles
+  these are important feature added to table simply by adding boolean props to virtual table
