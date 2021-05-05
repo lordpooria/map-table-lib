@@ -5,4 +5,5 @@ export declare const fa: {
     moreThan: string;
     next: string;
     prev: string;
+    filter: string;
 };

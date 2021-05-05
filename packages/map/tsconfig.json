@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "exclude": ["node_modules", "tests"],
+  "exclude": ["node_modules", "tests", "dist", "stories"],
   "include": ["src/**/*"],
-  "compilerOptions": {
-    "declarationDir": "./typings"
-  }
+  "compilerOptions": { "declaration": true, "declarationDir": "./dist" }
 }

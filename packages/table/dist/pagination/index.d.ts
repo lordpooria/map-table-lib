@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { TablePaginationProps } from "@material-ui/core";
 export declare type CommonTablePagination = TablePaginationProps & {
     width: number | string;

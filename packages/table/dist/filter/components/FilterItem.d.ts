@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { TableFilterType } from "../../types/VirtualTableFilter";
 import { TableColumns } from "../../types/main";
 interface Props {

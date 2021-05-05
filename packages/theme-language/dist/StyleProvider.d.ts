@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { Dir, LangString } from "./types";
 interface Props {
     children: any;

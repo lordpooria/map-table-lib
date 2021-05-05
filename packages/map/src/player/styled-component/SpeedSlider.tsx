@@ -58,6 +58,7 @@ const SpeedSlider = memo(
           onChange={(_: any, v: any) => {
             setTransitionTime(1000 / +v);
           }}
+          {...({} as any)}
         />
       </div>
     );

@@ -1,19 +1,20 @@
 {
   "name": "@hesaba/theme-language",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "> TODO: description",
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
   "homepage": "",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "directories": {
-    "lib": "lib",
+    "lib": "src",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "esm/*",
+    "umd/*"
   ],
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
@@ -23,35 +24,6 @@
     "url": "https://gitlab.hesaba.co/visualization-infrastructure/react-dashboard-infra.git"
   },
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c --environment NODE_ENV:production"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "@material-ui/core": "^5.0.0-alpha.24",
-    "clsx": "^1.1.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/plugin-transform-react-jsx": "^7.13.12",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.12.13",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "@rollup/plugin-replace": "^2.3.4",
-    "@types/react": "^17.0.1",
-    "@types/react-dom": "^17.0.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "rollup": "^2.39.0",
-    "rollup-plugin-bundle-size": "^1.0.3",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "typescript": "^4.1.5"
+    "dev": "rollup -c -w"
   }
 }

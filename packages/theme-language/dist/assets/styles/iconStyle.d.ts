@@ -1,2 +1,2 @@
-declare const style: (props?: any) => import("@material-ui/styles").ClassNameMap<"root">;
+declare const style: (props?: any) => Record<"root", string>;
 export default style;

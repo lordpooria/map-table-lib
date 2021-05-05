@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { AppLanguage, Dir, LangString } from "../types";
 export declare type LangContextType = {
     langSetting: AppLanguage;

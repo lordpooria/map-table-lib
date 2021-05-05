@@ -6,7 +6,6 @@ declare const VirtualTableStore: {
     }>;
     useStore: () => import("easy-peasy").Store<import(".").VTStoreModel, import("easy-peasy").EasyPeasyConfig<undefined, {}>>;
     useStoreState: <Result = any>(mapState: (state: import("easy-peasy").StateMapper<{
-        stickyColumns: import("easy-peasy").Computed<import(".").VTStoreModel, import("..").TableColumns<any>, {}>;
         VTVersion: string;
         settings: {
             direction: import("@hesaba/theme-language").Dir;
@@ -19,6 +18,7 @@ declare const VirtualTableStore: {
         numRowsSelected: import("easy-peasy").Computed<import(".").VTStoreModel, number, {}>;
         selectedRows: import("easy-peasy").Computed<import(".").VTStoreModel, number[], {}>;
         visibleColumns: import("easy-peasy").Computed<import(".").VTStoreModel, import("..").TableColumns<any>, {}>;
+        stickyColumns: import("easy-peasy").Computed<import(".").VTStoreModel, import("..").TableColumns<any>, {}>;
     }>) => Result, equalityFn?: ((prev: Result, next: Result) => boolean) | undefined) => Result;
     useStoreActions: <Result_1 = any>(mapActions: (actions: import("easy-peasy").ActionMapper<import(".").VTStoreModel, import("easy-peasy").ValidActionProperties<import(".").VTStoreModel>>) => Result_1) => Result_1;
     useStoreDispatch: () => import("easy-peasy").Dispatch<import(".").VTStoreModel, import("redux").AnyAction>;

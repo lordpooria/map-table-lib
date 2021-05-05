@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { CommonLayerComponentProps, CircleLayerProps, PolylineLayerProps } from "../types/layer";
 declare type LatLng = [number, number];
 declare type CircleProps = CommonLayerComponentProps & CircleLayerProps & {

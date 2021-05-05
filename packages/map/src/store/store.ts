@@ -27,7 +27,7 @@ export interface TDStoreModel {
   currentData: CurrentData | null;
   users: Users | null;
   formattedData: FormattedData;
-  
+
   numberNextTimesReady: number;
   availableTimes: AvailableTimes;
   syncedLayers: SyncedLayer;
@@ -116,7 +116,6 @@ export const tdStoreModel: TDStoreModel = {
   setData: action((state, { formattedData, users }) => {
     state.formattedData = formattedData;
     state.users = users;
-    
   }),
   setAvailableTime: action((state, { times, mode, period }) => {
     const _availableTimes = setAvailableTime(

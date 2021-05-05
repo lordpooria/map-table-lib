@@ -65,6 +65,7 @@ const TimeSliderStateless = memo(
         {/* <PlayCircleIcon className={classes.whiteIcon} /> */}
 
         <Slider
+          component="div"
           classes={classes?.playerSlider || commonClasses}
           valueLabelDisplay="auto"
           ThumbComponent={PlayerThumb as any}
@@ -77,6 +78,7 @@ const TimeSliderStateless = memo(
           onChange={(_: any, index: any) => {
             setCurrentTimeIndex({ index: index as any });
           }}
+          {...({} as any)}
         />
       </div>
     );

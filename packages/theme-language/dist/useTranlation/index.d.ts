@@ -6,5 +6,6 @@ export declare function useTranslation(): {
         moreThan: string;
         next: string;
         prev: string;
+        filter: string;
     };
 };

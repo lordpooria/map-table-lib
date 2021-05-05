@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#f1ece7",
     borderBottom: "none",
   },
-  tabRoot: { borderTopRightRadius: theme.shape.borderRadius * 2 },
+  tabRoot: { borderTopRightRadius: (theme.shape.borderRadius as number) * 2 },
   scrollButton: {
     color: "#000",
-    borderTopRightRadius: theme.shape.borderRadius * 2,
+    borderTopRightRadius: (theme.shape.borderRadius as number) * 2,
   },
   tableContainer: { borderWidth: 0 },
   row: {
@@ -100,7 +100,7 @@ const TDTable = memo(
           <MoreVert />
           <Tabs
             value={state.tabIndex}
-            scrollButtons="on"
+            scrollButtons="auto"
             variant="scrollable"
             classes={{
               root: tabClasses.tabRoot,

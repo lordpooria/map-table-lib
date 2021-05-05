@@ -5,4 +5,5 @@ export declare const en: {
     moreThan: string;
     next: string;
     prev: string;
+    filter: string;
 };

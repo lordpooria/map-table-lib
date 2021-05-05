@@ -1,5 +1,6 @@
 import { useCallback, useRef } from "react";
 import download from "downloadjs";
+
 declare global {
   interface MediaDevices {
     getDisplayMedia(constraints?: MediaStreamConstraints): Promise<MediaStream>;

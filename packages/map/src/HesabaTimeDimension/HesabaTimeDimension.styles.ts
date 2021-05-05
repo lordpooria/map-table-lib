@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) =>
       position: "relative",
     },
     tdRootWithTable: {
-      borderRadius: theme.shape.borderRadius * 2,
+      borderRadius: (theme.shape.borderRadius as number) * 2,
       boxShadow: "0 0 5px #444",
       overflow: "hidden",
     },
@@ -23,12 +23,12 @@ const useStyles = makeStyles((theme) =>
       flex: 1,
       height: "100%",
       position: "relative",
-      borderTopLeftRadius: theme.shape.borderRadius * 2,
-      borderBottomLeftRadius: theme.shape.borderRadius * 2,
+      borderTopLeftRadius: (theme.shape.borderRadius as number) * 2,
+      borderBottomLeftRadius: (theme.shape.borderRadius as number) * 2,
     },
     tableRoot: {
       flex: 1,
-      borderTopRightRadius: theme.shape.borderRadius * 2,
+      borderTopRightRadius: (theme.shape.borderRadius as number) * 2,
       overflow: "hidden",
     },
   })

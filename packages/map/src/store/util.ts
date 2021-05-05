@@ -13,7 +13,7 @@ import {
 } from "../utils/utils";
 
 export function seekNearestTimeIndex(
-  time: number,
+  _: number,
   formattedData: FormattedData
 ) {
   let newIndex = 0;
@@ -32,11 +32,11 @@ export function seekNearestTimeIndex(
 }
 
 export function getLowerLimit(
-  time: number,
+  _: number,
   upperLimit: number,
   availableTimes: AvailableTimes
 ) {
-  console.log(time)
+ 
   // var index = seekNearestTimeIndex(time, availableTimes);
   return getLowerLimitIndex(0, upperLimit, availableTimes);
 }
@@ -53,12 +53,11 @@ export function getLowerLimitIndex(
 }
 
 export function getUpperLimit(
-  time: number,
+  _: number,
   lowerLimit: number,
   availableTimes: AvailableTimes
 ) {
   // var index = seekNearestTimeIndex(time, availableTimes);
-  console.log(time)
   return getUpperLimitIndex(0, lowerLimit, availableTimes);
 }
 

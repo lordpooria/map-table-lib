@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { SortType } from "../../types/main";
 import { VTMainListProps } from "../../types";
 interface Props {

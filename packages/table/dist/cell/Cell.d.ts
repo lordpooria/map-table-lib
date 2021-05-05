@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { TableColumn } from "../types/main";
 import { CellClasses } from "../types/styles";
 interface Props extends TableColumn {
