@@ -8,7 +8,8 @@
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
   "license": "MIT",
   "scripts": {
-    "build": "lerna exec --parallel 'BABEL_ENV=build babel src --out-dir dist --source-maps --extensions .ts,.tsx --config-file ../../babel.config.js --delete-dir-on-start --no-comments'",
+    "prebuild": "lerna run prebuild",
+    "build": "lerna exec --concurrency 1 'BABEL_ENV=build babel src --out-dir dist --source-maps --extensions .ts,.tsx --config-file ../../babel.config.js  --no-comments'",
     "dev": "next dev",
     "watch": "lerna run watch",
     "storybook": "start-storybook -p ${PORT:-6006} -h localhost",
@@ -35,6 +36,8 @@
     "lerna": "^4.0.0",
     "lerna-get-packages": "^1.0.0",
     "recrawl-sync": "^2.2.1",
+    "remark-emoji": "^2.2.0",
+    "remark-images": "^2.0.0",
     "rollup": "^2.39.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-dts": "^3.0.1",

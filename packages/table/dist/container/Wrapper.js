@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Provider = exports.TableStoreProvider = void 0;
+exports.default = exports.Provider = exports.TableStoreProvider = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -52,4 +52,6 @@ const Provider = ({
 }, _react.default.createElement(_ThemeProvider.default, null, children));
 
 exports.Provider = Provider;
+var _default = Provider;
+exports.default = _default;
 //# sourceMappingURL=Wrapper.js.map

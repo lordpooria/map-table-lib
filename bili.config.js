@@ -1,5 +1,6 @@
 // bili.config.js
 // ...
+import path from 'path'
 
 module.exports = {
   input: "./src/index.ts",
@@ -7,7 +8,7 @@ module.exports = {
     moduleName: "Package",
     minify: true,
     format: ["umd", "esm"],
-    dir: "./build",
+    dir: "./dist",
   },
   plugins: {
     typescript2: {

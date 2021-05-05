@@ -7,6 +7,7 @@
     "jsx": "react",
     "moduleResolution": "node",
     "declaration": true,
+    "skipLibCheck": true,
     "strict": false,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -22,9 +23,10 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src"],
+  "include": ["packages"],
   "exclude": [
     "node_modules",
+    "packages/**/node_modules/*",
     "build",
     "dist",
     "example",

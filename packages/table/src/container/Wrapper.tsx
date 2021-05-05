@@ -34,3 +34,5 @@ export const Provider = ({
     <ThemeMaker>{children}</ThemeMaker>
   </StyleProvider>
 );
+
+export default Provider;
