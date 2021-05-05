@@ -30,7 +30,7 @@ const LOCAL_EXTERNALS = ["react", "react-dom"];
 const mirror = (array) =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
 const IS_BROWSER_BUNDLE = true
-const formats = IS_BROWSER_BUNDLE ? ["umd"] : ["es", "cjs"];
+const formats = IS_BROWSER_BUNDLE ? ["es", "cjs","umd"] : ["es", "cjs"];
 
 export default formats.map((format) => ({
   plugins: [

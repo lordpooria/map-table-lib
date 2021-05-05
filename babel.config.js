@@ -33,6 +33,6 @@ module.exports = (api) => {
       },
     },
     ignore: ["node_modules"],
-    plugin: ["@babel/plugin-transform-runtime"],
+    plugins: ["@babel/plugin-transform-runtime"],
   };
 };

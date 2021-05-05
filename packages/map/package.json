@@ -1,8 +1,8 @@
 {
   "name": "@hesaba/time-dimension",
   "version": "1.1.0",
-  "main": "dist/index.js",
-  "module": "dist/index.umd.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "repository": "https://gitlab.hesaba.co/visualization-infrastructure/react-dashboard-infra.git",
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",

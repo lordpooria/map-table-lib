@@ -8,7 +8,7 @@
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "lerna run prebuild",
+  
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec -- rollup -c=../../rollup.config.js",
     "dev": "next dev",
@@ -50,8 +50,6 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "@material-ui/pickers": "^3.2.10",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/mdx": "1.6.22",
     "@next/mdx": "^9.5.3",
