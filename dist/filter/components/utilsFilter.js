@@ -5,11 +5,7 @@
 //   ColumnTypes,
 // } from "/models/graph";
 // import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
+import { __spreadArray } from "tslib";
 export var FILTER_SCHEMA_KEY = "schema";
 // export type FilterOperationsType = {
 //   key: string;

@@ -4,34 +4,35 @@ module.exports = (api) => {
   return {
     presets: [
       [
-        '@babel/env',
+        "@babel/env",
         {
           targets: {
-            browsers: 'Last 2 Chrome versions, Firefox ESR',
-            node: '8.9',
+            browsers: "Last 2 Chrome versions, Firefox ESR",
+            node: "8.9",
           },
         },
       ],
       [
-        '@babel/preset-react',
+        "@babel/preset-react",
         {
-          development: process.env.BABEL_ENV !== 'build',
+          development: process.env.BABEL_ENV !== "build",
         },
       ],
-      '@babel/preset-typescript',
+      "@babel/preset-typescript",
     ],
     env: {
       build: {
         ignore: [
-          '**/*.test.tsx',
-          '**/*.test.ts',
-          '**/*.story.tsx',
-          '__snapshots__',
-          '__tests__',
-          '__stories__',
+          "**/*.test.tsx",
+          "**/*.test.ts",
+          "**/*.story.tsx",
+          "__snapshots__",
+          "__tests__",
+          "__stories__",
         ],
       },
     },
-    ignore: ['node_modules'],
+    ignore: ["node_modules"],
+    plugin: ["@babel/plugin-transform-runtime"],
   };
 };

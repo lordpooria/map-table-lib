@@ -9,12 +9,12 @@
     "export": "next export"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/mdx": "1.6.22",
     "@next/mdx": "^9.5.3",
-    "@emotion": "link:../node_modules/@emotion",
-    "@material-ui": "link:../node_modules/@material-ui",
     "clsx": "^1.1.1",
+    "leaflet": "^1.7.1",
     "next": "10.0.7",
     "react-number-format": "^4.5.3",
     "react-pro-sidebar": "^0.6.0",
@@ -23,8 +23,6 @@
   "devDependencies": {
     "@types/node": "link:../node_modules/@types/node",
     "babel-plugin-import-glob-array": "^0.2.0",
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
     "typescript": "^4.2.2"
   },
   "peerDependencies": {

@@ -1,2 +1,2 @@
-declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"icon" | "speedSlider" | "commonPlayerRoot" | "playerRoot" | "iconContainer" | "playerSlider" | "controller" | "playIcon" | "marginIcon">;
+declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"icon" | "commonPlayerRoot" | "playerRoot" | "iconContainer" | "playerSlider" | "speedSlider" | "controller" | "playIcon" | "marginIcon">;
 export default useStyles;

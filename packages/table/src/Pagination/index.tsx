@@ -5,7 +5,7 @@ import {
   makeStyles,
   MenuItem,
   Select,
-  TablePaginationProps,
+  // TablePaginationProps,
   Toolbar,
 } from "@material-ui/core";
 
@@ -16,7 +16,7 @@ import {
   ButtonTooltip,
   useLanguageState,
 } from "@hesaba/theme-language";
-import { TablePaginationActionsProps } from "@material-ui/core/TablePagination/TablePaginationActions";
+// import { TablePaginationActionsProps } from "@material-ui/core/TablePagination/TablePaginationActions";
 
 import ArrowRightIcon from "../assets/icons/common/ArrowRightIcon";
 import ArrowLeftIcon from "../assets/icons/common/ArrowLeftIcon";
@@ -80,12 +80,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-function ActionsComponent({
-  page,
-  onPageChange,
-  count,
-  rowsPerPage,
-}: TablePaginationActionsProps) {
+function ActionsComponent({ page, onPageChange, count, rowsPerPage }: any) {
   const { t } = useTranslation();
   // const handleFirstPageButtonClick = (event: any) => {
   //   onPageChange(event, 0);
@@ -141,7 +136,7 @@ function defaultLabelDisplayedRows({
   }`;
 }
 
-export type CommonTablePagination = TablePaginationProps & {
+export type CommonTablePagination = any & {
   width: number | string;
   classes?: { root?: string };
 };
@@ -205,7 +200,7 @@ export function TablePagination({
           value={rowsPerPage}
           onChange={onRowsPerPageChange as any}
         >
-          {rowsPerPageOptions.map((rowsPerPageOption) => (
+          {rowsPerPageOptions.map((rowsPerPageOption: any) => (
             <MenuItem
               className={paginationClasses.menuItem}
               key={rowsPerPageOption as any}

@@ -50,7 +50,7 @@ export default formats.map((format) => ({
       },
     }),
     babel({
-      exclude: ["node_modules/**"],
+      exclude: /node_modules/,
       babelHelpers: "runtime",
     }),
   ],

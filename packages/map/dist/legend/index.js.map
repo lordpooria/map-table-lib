@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/legend/index.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA","sourcesContent":["export { default as Legend } from \"./LegendComponent\";\n\n"],"file":"index.js"}

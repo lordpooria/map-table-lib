@@ -1,6 +1,5 @@
 /// <reference types="react" />
-import { TablePaginationProps } from "@material-ui/core";
-export declare type CommonTablePagination = TablePaginationProps & {
+export declare type CommonTablePagination = any & {
     width: number | string;
     classes?: {
         root?: string;

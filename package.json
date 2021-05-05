@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "lerna run prebuild",
-    "build": "lerna exec --concurrency 1 'BABEL_ENV=build babel src --out-dir dist --source-maps --extensions .ts,.tsx --config-file ../../babel.config.js  --no-comments'",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna exec -- rollup -c=../../rollup.config.js",
     "dev": "next dev",
     "watch": "lerna run watch",
     "storybook": "start-storybook -p ${PORT:-6006} -h localhost",
@@ -42,14 +43,13 @@
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-dts": "^3.0.1",
     "rollup-plugin-esbuild": "^4.2.3",
-    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-postcss": "https://github.com/isaacl/rollup-plugin-postcss",
     "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.2.0",
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "@material-ui/core": "^5.0.0-alpha.24",
+    "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^3.2.10",
     "@mdx-js/loader": "1.6.22",
