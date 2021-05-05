@@ -2,7 +2,7 @@ import {
   AutoSizer,
   HesabaVirtualTable,
   VirtualTableProps,
-} from "@hesaba/table";
+} from "hesaba/packages/table";
 import React from "react";
 import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
 

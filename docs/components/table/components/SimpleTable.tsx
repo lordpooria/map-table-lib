@@ -1,4 +1,4 @@
-import { HesabaVirtualTable, VirtualTableProps } from "@hesaba/table";
+import { HesabaVirtualTable, VirtualTableProps } from "hesaba/packages/table";
 import React from "react";
 import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
 

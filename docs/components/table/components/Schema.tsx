@@ -1,4 +1,4 @@
-import { RawTableColumns, VirtualTableProps } from "@hesaba/table";
+import { RawTableColumns, VirtualTableProps } from "hesaba/packages/table";
 import React from "react";
 import { PercentCell, QualityCell } from "../helper/CellComponent";
 import BaseTable from "./BaseTable";

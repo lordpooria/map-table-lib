@@ -8,31 +8,56 @@
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
   "license": "MIT",
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna exec --parallel 'BABEL_ENV=build babel src --out-dir dist --source-maps --extensions .ts,.tsx --config-file ../../babel.config.js --delete-dir-on-start --no-comments'",
     "dev": "next dev",
     "watch": "lerna run watch",
     "storybook": "start-storybook -p ${PORT:-6006} -h localhost",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.12.13",
-    "@types/node": "^15.0.0",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-replace": "^2.4.2",
+    "@types/node": "^15.0.2",
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
-    "typescript": "^4.1.5"
+    "babel-core": "7.0.0-bridge.0",
+    "find-lerna-packages": "^1.2.0",
+    "fs-extra": "^10.0.0",
+    "lerna": "^4.0.0",
+    "lerna-get-packages": "^1.0.0",
+    "recrawl-sync": "^2.2.1",
+    "rollup": "^2.39.0",
+    "rollup-plugin-bundle-size": "^1.0.3",
+    "rollup-plugin-dts": "^3.0.1",
+    "rollup-plugin-esbuild": "^4.2.3",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@material-ui/core": "^5.0.0-alpha.24",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.2.10",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/mdx": "1.6.22",
     "@next/mdx": "^9.5.3",
+    "clsx": "^1.1.1",
     "next": "^9.5.3",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "remark-emoji": "^2.1.0",
-    "remark-images": "^2.0.0"
+    "react-dom": "^17.0.1"
+  },
+  "resolutions": {
+    "babel-core": "^7.0.0-bridge.0"
   }
 }

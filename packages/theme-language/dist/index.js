@@ -1,2 +1,117 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("tslib"),r=require("react"),t=require("@material-ui/core"),n=require("@material-ui/core/colors");function a(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var i=a(r),o={en:"rtl",fa:"rtl"},u=r.createContext({});function s(t){var n=t.children,a=t.language,s=void 0===a?"fa":a,l=t.direction,c=void 0===l?"rtl":l,g=r.useState({lang:s,direction:c}),d=g[0],f=g[1],h=r.useRef({language:s,direction:c}),p=r.useCallback((function(e){f({lang:e,direction:o[e]})}),[]);return r.useEffect((function(){h.current.direction!==c&&h.current.language!==s?f({lang:s,direction:c}):(h.current.direction!==c&&f((function(r){return e.__assign(e.__assign({},r),{direction:c})})),h.current.language!==s&&f((function(r){return e.__assign(e.__assign({},r),{language:s})})))}),[c,s]),i.default.createElement(u.Provider,{value:{langSetting:d,changeLanguage:p}},n)}function l(){var e=r.useContext(u).langSetting;if(!e)throw new Error("Language Setting should use inside language provider");return e}var c=function(e){var r=[];switch(e){case"en":r=["Roboto","Arial","sans-serif"];break;case"fa":r=["Vazir","Arial","Roboto"];break;default:r=["Roboto","Arial","sans-serif"]}return r.join(",")},g={palette:{primary:n.indigo,secondary:n.red,error:n.red},typography:{fontFamily:'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',headline:{fontSize:"1rem"},subheading:{fontSize:"0.8125rem"},button:{fontWeight:400,textTransform:"initial"}},shape:{borderRadius:4},mixins:{toolbar:{minHeight:50}}};function d(r){var n=l(),a=e.__assign({fontFamily:c(n.lang)},r.typography),i=e.__assign(e.__assign(e.__assign({},a),r),{direction:n.direction}),o=t.createMuiTheme(i);return o=t.responsiveFontSizes(o)}var f=r.createContext({});function h(e){var r=e.children,t=e.rawTheme,n=d(void 0===t?g:t);return i.default.createElement(f.Provider,{value:n},r)}var p={rowSelected:" rows selected",rowPerPage:"Rows per page:",of:"Of",moreThan:"more than",next:"Next Page",prev:"Previous Page",filter:"Filter"},v={rowSelected:" ردیف انتخاب شده است",rowPerPage:"ردیف در هر صفحه:",of:"از",moreThan:"بیشتر از",next:"صفحه بعد",prev:"صفحه قبل",filter:"فیلتر"};var m=t.withStyles({root:{fontFamily:"inherit"}})(t.Typography),x=t.withStyles((function(){return{root:{padding:"2px"}}}))(t.IconButton);exports.ButtonTooltip=function(r){var n=r.title,a=e.__rest(r,["title"]);return i.default.createElement(t.Tooltip,{title:n},i.default.createElement(x,e.__assign({},a)))},exports.LanguageProvider=s,exports.SmallIconButton=x,exports.StyleProvider=function(e){var r=e.children,n=e.theme,a=e.language,o=e.direction;return i.default.createElement(t.StylesProvider,{injectFirst:!0},i.default.createElement(s,{direction:o,language:a},i.default.createElement(h,{rawTheme:n},r)))},exports.ThemeProvider=h,exports.WithFontTypography=m,exports.defaultTheme=g,exports.useLanguageAction=function(){var e=r.useContext(u).changeLanguage;if(!e)throw new Error("Change Language should use inside language provider");return e},exports.useLanguageState=l,exports.useThemeCreator=d,exports.useThemeObject=function(){var e=r.useContext(f);if(!e)throw new Error("Language Setting should use inside language provider");return e},exports.useTranslation=function(){var e=l().lang,t=r.useRef(v);return r.useEffect((function(){switch(e){case"en":t.current=p;break;case"fa":t.current=v;break;default:t.current=v}}),[]),{t:t.current}};
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _exportNames = {
+  StyleProvider: true
+};
+Object.defineProperty(exports, "StyleProvider", {
+  enumerable: true,
+  get: function () {
+    return _StyleProvider.default;
+  }
+});
+
+var _language = require("./provider/language");
+
+Object.keys(_language).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _language[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _language[key];
+    }
+  });
+});
+
+var _theme = require("./provider/theme");
+
+Object.keys(_theme).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _theme[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _theme[key];
+    }
+  });
+});
+
+var _createTheme = require("./theme/createTheme");
+
+Object.keys(_createTheme).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _createTheme[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _createTheme[key];
+    }
+  });
+});
+
+var _types = require("./types");
+
+Object.keys(_types).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _types[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _types[key];
+    }
+  });
+});
+
+var _useTranlation = require("./useTranlation");
+
+Object.keys(_useTranlation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _useTranlation[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _useTranlation[key];
+    }
+  });
+});
+
+var _typography = require("./typography");
+
+Object.keys(_typography).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _typography[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _typography[key];
+    }
+  });
+});
+
+var _buttons = require("./buttons");
+
+Object.keys(_buttons).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _buttons[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _buttons[key];
+    }
+  });
+});
+
+var _StyleProvider = _interopRequireDefault(require("./StyleProvider"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 //# sourceMappingURL=index.js.map

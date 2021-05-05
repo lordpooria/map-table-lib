@@ -2,9 +2,9 @@ import React from "react";
 import {
   createMuiTheme,
   CssBaseline,
-  responsiveFontSizes,StylesProvider
+  responsiveFontSizes,StylesProvider,ThemeProvider
 } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/core";
+
 
 import rawThemeObject from "../styles/theme";
 

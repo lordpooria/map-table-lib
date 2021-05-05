@@ -1,4 +1,4 @@
-import { useTDStoreActions } from "@hesaba/map";
+import { useTDStoreActions } from "hesaba/packages/map";
 import BaseMap from "./BaseMap";
 
 const INITIAL_SPEED = 20;
