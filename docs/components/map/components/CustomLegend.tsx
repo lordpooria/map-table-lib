@@ -1,6 +1,6 @@
 import BaseMap from "./BaseMap";
 import NumberFormat from "react-number-format";
-import { ExternalLegendsComponent } from "hesaba/packages/map/dist/types/legend";
+import { ExternalLegendsComponent } from "@hesaba/packages/map/dist/types/legend";
 
 const CustomLegendComponent = ({ properties }: ExternalLegendsComponent) => {
   if (!properties) return null;

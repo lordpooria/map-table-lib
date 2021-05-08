@@ -1,7 +1,7 @@
 import React from "react";
 import BaseTable from "./BaseTable";
 import map_data from "../../assets/map_data.json";
-import { createEnhancedColumns } from "hesaba/packages/table";
+import { createEnhancedColumns } from "@hesaba/packages/table";
 
 const schemaColumns = [
   {

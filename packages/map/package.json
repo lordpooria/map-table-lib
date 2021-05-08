@@ -38,7 +38,7 @@
     "easy-peasy": "^5.0.1",
     "iso8601-duration": "^1.3.0",
     "jalaliday": "^2.3.0",
-    "react-clock": "git+https://github.com/lordpooria/react-clock",
+    "@heasaba/clock": "^1.1.0",
     "react-collapse-pane": "^1.4.2",
     "react-leaflet": "^3.1.0",
     "react-split-pane": "^0.1.92"

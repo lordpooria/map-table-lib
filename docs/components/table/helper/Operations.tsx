@@ -1,6 +1,6 @@
 import { IconButton, SvgIcon } from "@material-ui/core";
 import React from "react";
-import { useTStoreState } from "@hesaba/table";
+import { useTStoreState } from "@hesaba/packages/table";
 
 interface Props {}
 

@@ -13,9 +13,12 @@
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/mdx": "1.6.22",
     "@next/mdx": "^9.5.3",
+    "remark-emoji": "^2.2.0",
+    "remark-images": "^2.0.0",
     "clsx": "^1.1.1",
     "leaflet": "^1.7.1",
     "next": "10.0.7",
+    "@hesaba": "git+https://gitlab.hesaba.co/visualization-infrastructure/react-dashboard-infra#dev",
     "react-number-format": "^4.5.3",
     "react-pro-sidebar": "^0.6.0",
     "react-syntax-highlighter": "^15.4.3"

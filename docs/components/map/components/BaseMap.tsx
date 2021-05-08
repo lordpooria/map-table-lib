@@ -1,5 +1,5 @@
 import data from "../assets/data.json";
-import HesabaTimeDimension from "hesaba/packages/map";
+import HesabaTimeDimension from "@hesaba/packages/map";
 import { makeStyles } from "@material-ui/core";
 import { commonMapProps } from "../utils/constants";
 

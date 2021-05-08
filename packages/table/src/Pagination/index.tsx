@@ -5,7 +5,7 @@ import {
   makeStyles,
   MenuItem,
   Select,
-  // TablePaginationProps,
+  TablePaginationProps,
   Toolbar,
 } from "@material-ui/core";
 
@@ -136,7 +136,7 @@ function defaultLabelDisplayedRows({
   }`;
 }
 
-export type CommonTablePagination = any & {
+export type CommonTablePagination = TablePaginationProps & {
   width: number | string;
   classes?: { root?: string };
 };
@@ -148,7 +148,7 @@ export function TablePagination({
   page,
   count,
   rowsPerPage,
-  onRowsPerPageChange,
+  onChangeRowsPerPage,
   height,
   ...rest
 }: CommonTablePagination) {
@@ -198,13 +198,13 @@ export function TablePagination({
             />
           }
           value={rowsPerPage}
-          onChange={onRowsPerPageChange as any}
+          onChange={onChangeRowsPerPage as any}
         >
           {rowsPerPageOptions.map((rowsPerPageOption: any) => (
             <MenuItem
               className={paginationClasses.menuItem}
-              key={rowsPerPageOption as any}
-              value={rowsPerPageOption as any}
+              key={rowsPerPageOption}
+              value={rowsPerPageOption}
             >
               {rowsPerPageOption}
             </MenuItem>

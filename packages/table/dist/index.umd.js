@@ -50518,7 +50518,7 @@
     }
     function TablePagination(_a) {
         var _b, _c;
-        var classes = _a.classes, width = _a.width, _d = _a.rowsPerPageOptions, rowsPerPageOptions = _d === void 0 ? [10, 25, 50, 100] : _d, page = _a.page, count = _a.count, rowsPerPage = _a.rowsPerPage, onRowsPerPageChange = _a.onRowsPerPageChange, height = _a.height, rest = __rest$1(_a, ["classes", "width", "rowsPerPageOptions", "page", "count", "rowsPerPage", "onRowsPerPageChange", "height"]);
+        var classes = _a.classes, width = _a.width, _d = _a.rowsPerPageOptions, rowsPerPageOptions = _d === void 0 ? [10, 25, 50, 100] : _d, page = _a.page, count = _a.count, rowsPerPage = _a.rowsPerPage, onChangeRowsPerPage = _a.onChangeRowsPerPage, height = _a.height, rest = __rest$1(_a, ["classes", "width", "rowsPerPageOptions", "page", "count", "rowsPerPage", "onChangeRowsPerPage", "height"]);
         var paginationClasses = useStyles();
         var t = useTranslation().t;
         var direction = useLanguageState().direction;
@@ -50537,7 +50537,7 @@
                 React__default['default'].createElement(Select$1, { classes: {
                         select: paginationClasses.select,
                         icon: paginationClasses.selectIcon,
-                    }, input: React__default['default'].createElement(InputBase$1, { className: clsx(clsx(paginationClasses.input, paginationClasses.selectRoot, (_b = {}, _b[paginationClasses.selectRootLTR] = direction === "ltr", _b), (_c = {}, _c[paginationClasses.selectRootRTL] = direction !== "ltr", _c))) }), value: rowsPerPage, onChange: onRowsPerPageChange }, rowsPerPageOptions.map(function (rowsPerPageOption) { return (React__default['default'].createElement(MenuItem$1, { className: paginationClasses.menuItem, key: rowsPerPageOption, value: rowsPerPageOption }, rowsPerPageOption)); })),
+                    }, input: React__default['default'].createElement(InputBase$1, { className: clsx(clsx(paginationClasses.input, paginationClasses.selectRoot, (_b = {}, _b[paginationClasses.selectRootLTR] = direction === "ltr", _b), (_c = {}, _c[paginationClasses.selectRootRTL] = direction !== "ltr", _c))) }), value: rowsPerPage, onChange: onChangeRowsPerPage }, rowsPerPageOptions.map(function (rowsPerPageOption) { return (React__default['default'].createElement(MenuItem$1, { className: paginationClasses.menuItem, key: rowsPerPageOption, value: rowsPerPageOption }, rowsPerPageOption)); })),
                 React__default['default'].createElement(WithFontTypography, { color: "inherit", variant: "body2", className: paginationClasses.caption }, defaultLabelDisplayedRows({
                     from: count === 0 ? 0 : page * rowsPerPage + 1,
                     to: getLabelDisplayedRowsTo(),

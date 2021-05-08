@@ -11,6 +11,7 @@
   
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec -- rollup -c=../../rollup.config.js",
+    "single":" lerna exec --scope @hesaba/time-dimension  -- rollup -c=../../rollup.config.js",
     "dev": "next dev",
     "watch": "lerna run watch",
     "storybook": "start-storybook -p ${PORT:-6006} -h localhost",
@@ -37,8 +38,6 @@
     "lerna": "^4.0.0",
     "lerna-get-packages": "^1.0.0",
     "recrawl-sync": "^2.2.1",
-    "remark-emoji": "^2.2.0",
-    "remark-images": "^2.0.0",
     "rollup": "^2.39.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-dts": "^3.0.1",
@@ -50,9 +49,6 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
-    "@mdx-js/loader": "1.6.22",
-    "@mdx-js/mdx": "1.6.22",
-    "@next/mdx": "^9.5.3",
     "clsx": "^1.1.1",
     "next": "^9.5.3",
     "react": "^17.0.1",

@@ -1,4 +1,4 @@
-import { RawTableColumns } from "@hesaba/table";
+import { RawTableColumns } from "@hesaba/packages/table";
 
 export const simpleRows = [...Array.from({ length: 40 }, (_, i) => i)].map(
   (item) => {
