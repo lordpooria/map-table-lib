@@ -1,0 +1,34 @@
+## Toolbar Props
+
+Toolbar props are under VTToolbarProps props but title and operationOnRows are also available directly
+on table props as well
+
+import { ToolbarProps } from "../../components/Toolbar";
+
+<ToolbarProps />
+
+import SyntaxHighlighter from "../../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={simpleSchemaColumns}
+            rows={simpleRows}
+             title="Table Title" 
+             VTToolbarProps={{ height: 50 }}
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;`}</SyntaxHighlighter>

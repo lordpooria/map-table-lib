@@ -1,0 +1,18 @@
+0 silly argv {
+0 silly argv   _: [ 'bootstrap' ],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra
+3 info versioning independent
+4 error Error: Invalid package name "@hesaba/packages/table": name can only contain URL-friendly characters
+4 error     at invalidPackageName (/Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/npm-package-arg/npa.js:89:15)
+4 error     at Result.setName (/Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/npm-package-arg/npa.js:124:11)
+4 error     at new Result (/Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/npm-package-arg/npa.js:114:23)
+4 error     at Function.resolve (/Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/npm-package-arg/npa.js:61:15)
+4 error     at /Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/@lerna/package-graph/index.js:66:30
+4 error     at Array.forEach (<anonymous>)
+4 error     at /Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/@lerna/package-graph/index.js:60:38
+4 error     at Map.forEach (<anonymous>)
+4 error     at new PackageGraph (/Users/lordpooria/Workspace/hesaba/projects/react-dashboard-infra/node_modules/@lerna/package-graph/index.js:49:10)

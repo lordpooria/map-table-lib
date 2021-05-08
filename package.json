@@ -10,9 +10,13 @@
   "scripts": {
   
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec -- rollup -c=../../rollup.config.js",
-    "single":" lerna exec --scope @hesaba/time-dimension  -- rollup -c=../../rollup.config.js",
-    "dev": "next dev",
+    "build": "lerna exec --ignore @hesaba/docs -- rollup -c=../../rollup.config.js",
+    "build:single":"lerna exec --scope @hesaba/map  -- rollup -c=../../rollup.config.js",
+    "dev:single": "lerna exec --scope @hesaba/table --stream -- rollup -c=../../rollup.config.dev.js -w",
+    "dev:docs": "lerna run dev --scope @hesaba/docs --stream ",
+    "build:docs": "lerna run build --scope @hesaba/docs --stream ",
+    "start:docs": "lerna run start --scope @hesaba/docs --stream ",
+    "dev": "lerna exec -- rollup -c=../../rollup.config.js -w",
     "watch": "lerna run watch",
     "storybook": "start-storybook -p ${PORT:-6006} -h localhost",
     "build-storybook": "build-storybook"

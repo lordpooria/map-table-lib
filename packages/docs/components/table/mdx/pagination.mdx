@@ -1,0 +1,38 @@
+## Pagination
+
+pagination could add to the table by providing pagination data, If you provide this data pagination
+footer appear automatically, Unless there is no footer on the table
+
+import {Pagination} from "../components/Pagination";
+
+<Pagination />
+
+import SyntaxHighlighter from "../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={simpleSchemaColumns}
+            rows={simpleRows}
+            pagination={{
+              rowsPerPage: 10,
+              count: 20,
+              page: 1,
+              onPageChange: () => {},
+           }}
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;`}</SyntaxHighlighter>
