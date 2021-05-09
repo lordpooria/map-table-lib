@@ -1,12 +1,13 @@
 import React from "react";
-import { createStyles, makeStyles, IconButton } from "@material-ui/core";
-import {} from "./utilsFilter";
+import { createStyles, makeStyles } from "@material-ui/core";
 import { FilterColumn, FilterOperations, FilterValues } from "./FilterFields";
 
 import { TableFilterType } from "../../../types/VirtualTableFilter";
-import { TableColumns } from "../../../types/main";
-import {TrashIcon} from "@hesaba/assets";
+
+import { TrashIcon } from "@hesaba/assets";
 import { useTableToolbarAction } from "../../TableToolbarProvider";
+import { useTStoreState } from "../../../store/reducerHooks";
+import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
 
 // import CollapseVertical from "/assets/icons/CollapseVertical";
 // import DeleteConfirm from "/components/actions/DeleteConfirm";
@@ -32,28 +33,31 @@ const useStyles = makeStyles((theme) =>
 interface Props {
   filter: TableFilterType;
   index: number;
-  columns: TableColumns;
 }
 
-const FilterItem = ({ filter, columns, index }: Props) => {
+const FilterItem = ({ filter, index }: Props) => {
   //   const [notExpanded, setExpanded] = useState<any>({});
-  const t = (v: any) => v;
+ 
   const classes = useStyles();
+  const { t } = useTranslation();
   const { filterDelete: deleteFilter } = useTableToolbarAction();
   //   const dispatch = useDispatch();
+  const columns = useTStoreState((state) => state.visibleColumns);
+ 
 
-  if (!filter?.column?.length) return null;
   //   const { typedSchema, remainingSchema } = filteredSchema(filter, schema);
   //   const deleteWarning = `${t("deleteConfirmMsg")} filter ${filter.name}`;
   return (
     <>
-      <IconButton
+      <ButtonTooltip
+        title={t("delete")}
         size="small"
+        status="error"
         className={classes.deleteButton}
         onClick={() => deleteFilter({ index })}
       >
         <TrashIcon />
-      </IconButton>
+      </ButtonTooltip>
       {filter?.column.map((column, columnIndex) => (
         <FilterColumn
           key={`${filter?.column[0]?.type}-${columnIndex}`}
@@ -79,7 +83,7 @@ const FilterItem = ({ filter, columns, index }: Props) => {
           valIndex={valIndex}
           val={val}
           columnType={filter?.column[0]?.type}
-          label={t("value")}
+          label={t("filter.value")}
           classes={{ root: classes.autoComplete, input: classes.inputs }}
         />
       ))}

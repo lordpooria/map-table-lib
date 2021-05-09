@@ -8,10 +8,9 @@
   "author": "Pooria Rajabzadeh <pooria.rajabzadeh@hesaba.co>",
   "license": "MIT",
   "scripts": {
-  
     "bootstrap": "lerna bootstrap",
     "build": "BABEL_ENV=prod lerna exec --ignore @hesaba/docs -- rollup -c=../../rollup.config.js",
-    "build:single":"BABEL_ENV=prod lerna exec --scope $npm_config_package  -- rollup -c=../../rollup.config.js",
+    "build:single": "BABEL_ENV=prod lerna exec --scope $npm_config_package  -- rollup -c=../../rollup.config.js",
     "dev:single": "lerna exec --scope $npm_config_package --stream -- rollup -c=../../rollup.config.dev.js -w",
     "dev:docs": "lerna run dev --scope @hesaba/docs --stream ",
     "build:docs": "lerna run build --scope @hesaba/docs --stream ",
@@ -53,6 +52,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "clsx": "^1.1.1",
     "next": "^9.5.3",
     "react": "^17.0.1",

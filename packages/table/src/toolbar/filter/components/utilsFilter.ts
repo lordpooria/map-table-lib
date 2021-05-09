@@ -47,7 +47,8 @@ export const FILTER_SCHEMA_KEY = "schema";
 //   return properties[node.id]?.filters.length;
 // };
 
-const baseTranslation = "preperation.filter.operations.";
+const baseTranslation = "filter.operations.";
+
 export const operations = (
   t: any
 ): Record<string, Array<FilterOperationsType>> => ({

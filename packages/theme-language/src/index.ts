@@ -4,7 +4,7 @@ export * from "./theme/createTheme";
 
 export * from "./types";
 
-export * from "./useTranlation";
+export * from "./useTranlation/index";
 
 export * from "./typography";
 

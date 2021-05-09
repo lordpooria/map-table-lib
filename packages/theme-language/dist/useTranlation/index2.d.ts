@@ -1,6 +1,5 @@
 export declare function useTranslation(): {
-    t: (key: string) => string;
-    translations: {
+    t: {
         rowSelected: string;
         rowPerPage: string;
         of: string;
@@ -12,10 +11,10 @@ export declare function useTranslation(): {
         sortDsc: string;
         menu: string;
         close: string;
+        op: string;
+        column: string;
+        value: string;
         filter: {
-            op: string;
-            column: string;
-            value: string;
             filter: string;
             add: string;
             operations: {

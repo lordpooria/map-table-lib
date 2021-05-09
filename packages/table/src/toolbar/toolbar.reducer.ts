@@ -22,7 +22,7 @@ export interface VTToolbarStoreModel {
   filterSetOperation: Action<VTToolbarStoreModel, SetFilterOpPayload>;
   filterSetValue: Action<VTToolbarStoreModel, SetFilterValPayload>;
   filterDelete: Action<VTToolbarStoreModel, { index: number }>;
-  filterAdd: Action<VTToolbarStoreModel, { columnKey: string }>;
+  filterAdd: Action<VTToolbarStoreModel>;
 }
 
 const vtToolbarStore: VTToolbarStoreModel = {
@@ -33,11 +33,11 @@ const vtToolbarStore: VTToolbarStoreModel = {
 
   toggleShowFilter: action((state, showFilter) => {
     if (state.filters.length === 0) {
-      const col = state.enhancedColumns[0];
+      // const col = null;
       state.filters.push({
         id: new Date().getTime().toString(),
         // key: string;
-        column: [{ key: col.key, label: col.label, type: col.type }],
+        column: [undefined],
         operation: undefined,
         value: [undefined],
       });
@@ -97,18 +97,16 @@ const vtToolbarStore: VTToolbarStoreModel = {
     // if (!col || col.length === 0) {
     //   return;
     // }
-    // state.filters.push({
-    //   id: new Date().getTime().toString(),
-    //   // key: string;
-    //   column: [{ key: col[0].key, label: col[0].label, type: col[0].type }],
-    //   operation: undefined,
-    //   value: [undefined],
-    // });
+    state.filters.push({
+      id: new Date().getTime().toString(),
+      // key: string;
+      column: [undefined],
+      operation: undefined,
+      value: [undefined],
+    });
   }),
 
   filterDelete: action((state, { index }) => {
-    // const el = findNodeState<FilterNodeProp>(state);
-
     state.filters?.splice(index, 1);
   }),
 };

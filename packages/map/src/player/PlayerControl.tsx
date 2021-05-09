@@ -1,9 +1,9 @@
 import { useLocalStore } from "easy-peasy";
 import React, { memo, useCallback, useEffect } from "react";
-import {NextIcon} from "@hesaba/assets";
-import {PauseIcon} from "@hesaba/assets";
-import {PlayIcon} from "@hesaba/assets";
-import {PreviousIcon} from "@hesaba/assets";
+import { NextIcon } from "@hesaba/assets";
+import { PauseIcon } from "@hesaba/assets";
+import { PlayIcon } from "@hesaba/assets";
+import { PreviousIcon } from "@hesaba/assets";
 
 import { playerStoreModel } from "./playerReducer";
 
@@ -15,7 +15,7 @@ import { useTDStoreActions } from "../store/reducerHooks";
 import useStyles from "./PlayerControl.styles";
 import { withStyles } from "@material-ui/core";
 import clsx from "clsx";
-import {PlayReverseIcon} from "@hesaba/assets";
+import { PlayReverseIcon } from "@hesaba/assets";
 import TimeSlider from "./styled-component/TimeSlider";
 import { RenderComponent } from "./helperComponent";
 import SpeedSlider from "./styled-component/SpeedSlider";
@@ -105,7 +105,7 @@ const PlayerControl = memo(
         <div className={playerClasses.iconContainer}>
           <RenderComponent Component={backwardButton}>
             <BorderIconButton
-             title={t.player.previousTime}
+              title={t("player.previousTime")}
               className={classes?.iconButton}
               onClick={() => {
                 previousTime({ numSteps: timeSteps, loop });
@@ -117,7 +117,7 @@ const PlayerControl = memo(
 
           <RenderComponent Component={playReverseButton}>
             <BorderIconButton
-            title={t.player.playReverse}
+              title={t("player.playReverse")}
               className={classes?.iconButton}
               onClick={() => {
                 if (state.isReversePlaying) {
@@ -137,7 +137,7 @@ const PlayerControl = memo(
 
           <RenderComponent Component={playButton}>
             <BorderIconButton
-             title={t.player.play}
+              title={t("player.play")}
               className={classes?.iconButton}
               onClick={() => {
                 if (state.isPlaying) {
@@ -157,7 +157,7 @@ const PlayerControl = memo(
 
           <RenderComponent Component={forwardButton}>
             <BorderIconButton
-             title={t.player.nextTime}
+              title={t("player.nextTime")}
               className={classes?.iconButton}
               onClick={() => {
                 nextTime({ numSteps: timeSteps, loop });

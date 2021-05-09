@@ -14230,10 +14230,41 @@ var en = {
     moreThan: "more than",
     next: "Next Page",
     prev: "Previous Page",
-    filter: "Filter",
+    delete: "Delete",
     sortAsc: "Sort Ascending",
     sortDsc: "Sort Descending",
-    menu: "Menu"
+    menu: "Menu",
+    close: "Close",
+    filter: {
+        op: "Operation",
+        column: "Column",
+        value: "Value",
+        filter: "Filter",
+        add: "Add Filter",
+        operations: {
+            equals: "Equals",
+            notEquals: "Not Equals",
+            isNull: "Is Null",
+            isNotNull: "is Not Null",
+            isEmpty: "Is Empty",
+            isNotEmpty: "Is Not Empty",
+            contains: "Contains",
+            notContaines: "Not Containes",
+            regex: "Regex",
+            startWith: "Start With",
+            endWith: "End With",
+            between: "Between",
+            dateFrom: "Date From",
+            dateTo: "Date To",
+            surrounded: "Surrounded",
+        },
+    },
+    player: {
+        playReverse: "Play Reverse",
+        play: "Play",
+        nextTime: "Next time",
+        previousTime: "Previous Time",
+    },
 };
 
 var fa = {
@@ -14243,15 +14274,65 @@ var fa = {
     moreThan: "بیشتر از",
     next: "صفحه بعد",
     prev: "صفحه قبل",
-    filter: "فیلتر",
+    delete: "حذف کردن",
     sortAsc: "مرتب سازی صعودی",
     sortDsc: "مرتب سازی نزولی",
-    menu: "منو"
+    menu: "منو",
+    close: "بستن",
+    filter: {
+        op: "عملیات",
+        column: "ستون",
+        value: "مقدار",
+        filter: "فیلتر",
+        add: "افزودن فیلتر",
+        operations: {
+            equals: "برابر",
+            notEquals: "مخالف",
+            isNull: "Is Null",
+            isNotNull: "is Not Null",
+            isEmpty: "Is Empty",
+            isNotEmpty: "Is Not Empty",
+            contains: "شامل",
+            notContaines: "شامل نباشد",
+            regex: "Regex",
+            startWith: "شروع شود با",
+            endWith: "پایان شود با",
+            between: "بین",
+            dateFrom: "از تاریخ",
+            dateTo: "تا تاریخ",
+            surrounded: "احاطه شده با",
+        },
+    },
+    player: {
+        playReverse: "اجرای برعکس",
+        play: "اجرا",
+        nextTime: "زمان بعدی",
+        previousTime: "زمان قبلی",
+    },
 };
 
 function useTranslation() {
     var lang = useLanguageState().lang;
     var translateFile = useRef(fa);
+    var t = useCallback(function (key) {
+        try {
+            var trans = key.split(".").reduce(function (acc, k) {
+                if (k in acc) {
+                    return acc[k];
+                }
+                return acc;
+            }, translateFile.current);
+            console.log("here", trans);
+            if (typeof trans === "string")
+                return trans;
+            return key;
+        }
+        catch (err) {
+            return key;
+        }
+        finally {
+        }
+    }, []);
     useEffect(function () {
         switch (lang) {
             case "en":
@@ -14264,7 +14345,7 @@ function useTranslation() {
                 translateFile.current = fa;
         }
     }, []);
-    return { t: translateFile.current };
+    return { t: t, translations: translateFile.current };
 }
 
 var WithFontTypography = withStyles({

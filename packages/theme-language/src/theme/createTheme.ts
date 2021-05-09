@@ -2,6 +2,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeOptions,
+  
 } from "@material-ui/core";
 import { useLanguageState } from "../provider/language";
 import fontSelector from "../utils/fontSelector";

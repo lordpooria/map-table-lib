@@ -596,6 +596,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
+localize-react@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/localize-react/-/localize-react-1.7.1.tgz#4be2688b3ece72860e5daf4340a37cb72182a6e2"
+  integrity sha512-BgyVWdYbphPGA2VbsbCf+BoVxYwgfX43I0tFu9DkrJQMwCcH3q0NaSB231XFzJzdip3Tp8m/MFBUe209FC/nqQ==
+
 loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"

@@ -100,7 +100,7 @@ function ActionsComponent({ page, onPageChange, count, rowsPerPage }: any) {
   return (
     <div style={{ display: "flex", direction: "ltr" }}>
       <ButtonTooltip
-        title={t?.prev}
+        title={t("prev")}
         onClick={handleBackButtonClick}
         disabled={page === 0}
         color="inherit"
@@ -108,7 +108,7 @@ function ActionsComponent({ page, onPageChange, count, rowsPerPage }: any) {
         <ArrowLeftIcon />
       </ButtonTooltip>
       <ButtonTooltip
-        title={t?.next}
+        title={t("next")}
         onClick={handleNextButtonClick}
         disabled={
           count !== -1 ? page >= Math.ceil(count / rowsPerPage) - 1 : false
@@ -131,8 +131,8 @@ function defaultLabelDisplayedRows({
   count: number;
 }) {
   const { t } = useTranslation();
-  return `${from}-${to} ${t?.of} ${
-    count !== -1 ? count : `${t?.moreThan}${to}`
+  return `${from}-${to} ${t("of")} ${
+    count !== -1 ? count : `${t("moreThan")}${to}`
   }`;
 }
 
@@ -176,7 +176,7 @@ export function TablePagination({
           variant="body2"
           className={paginationClasses.caption}
         >
-          {t?.rowPerPage}
+          {t("rowPerPage")}
         </WithFontTypography>
 
         <Select
@@ -227,7 +227,7 @@ export function TablePagination({
 
       {numRowsSelected > 0 && (
         <WithFontTypography>
-          {numRowsSelected} {t.rowSelected}
+          {numRowsSelected} {t("rowSelected")}
         </WithFontTypography>
       )}
     </div>

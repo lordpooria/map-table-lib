@@ -13,6 +13,7 @@ import {
   FilterValueType,
 } from "../../../types/VirtualTableFilter";
 import { useTableToolbarAction } from "../../TableToolbarProvider";
+import { useTranslation } from "@hesaba/theme-language";
 
 const useStyles = makeStyles(() =>
   createStyles({ input: { borderColor: "transparent" } })
@@ -21,17 +22,17 @@ const useStyles = makeStyles(() =>
 interface ColumnProps {
   filterIndex: number;
   columnIndex: number;
-  value: TableColumnData | null;
+  value: TableColumnData | undefined;
   columns: TableColumns | undefined;
   classes?: { root?: string; input?: string };
 }
 
 export const FilterColumn = memo(
   ({ value, filterIndex, columns, columnIndex, classes }: ColumnProps) => {
-    const t = (v: any) => v;
+ 
     const inClasses = useStyles();
     const [inputValue, setInputValue] = useState("");
-
+    const {t} = useTranslation()
     const { filterSetColumn } = useTableToolbarAction();
     // const allOptions = value && columns ? [value, ...columns] : columns;
     // if (!columns) return null;
@@ -61,7 +62,7 @@ export const FilterColumn = memo(
           <TextField
             {...params}
             classes={{ root: classes?.input }}
-            label={t("column")}
+            label={t("filter.column")}
             // InputProps={{ ...params.InputProps }}
 
             variant="standard"
@@ -83,7 +84,7 @@ interface OperationProps {
 
 export const FilterOperations = memo(
   ({ operation, filterIndex, columnType, classes }: OperationProps) => {
-    const t = (v: any) => v;
+    const {t} = useTranslation()
     const inClasses = useStyles();
 
     const { filterSetOperation } = useTableToolbarAction();
@@ -122,7 +123,7 @@ export const FilterOperations = memo(
         }
       }
     }, [columnType, t]);
-
+console.log(options)
     return (
       <Autocomplete
         autoComplete
@@ -152,7 +153,7 @@ export const FilterOperations = memo(
             <TextField
               {...params}
               classes={{ root: classes?.input }}
-              label={t("op")}
+              label={t("filter.op")}
               InputProps={{ ...params.InputProps }}
               variant="standard"
               //  label={t("preperation.filter.operation")}

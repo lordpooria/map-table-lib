@@ -74,12 +74,12 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
   return (
     <>
       {sortable && sorted === "DESC" && (
-        <HeaderIconButton title={t.sortDsc} onClick={sortDesc}>
+        <HeaderIconButton title={t("sortDsc")} onClick={sortDesc}>
           <ArrowUpIcon className={classes.icons} />
         </HeaderIconButton>
       )}
       {sortable && sorted === "ASC" && (
-        <HeaderIconButton title={t.sortAsc} onClick={sortAsc}>
+        <HeaderIconButton title={t("sortAsc")} onClick={sortAsc}>
           <ArrowDownIcon className={classes.icons} />
         </HeaderIconButton>
       )}
@@ -88,7 +88,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
           <PinIcon className={classes.icons} />
         </HeaderIconButton>
       )} */}
-      <HeaderIconButton title={t.menu} onClick={handleClick}>
+      <HeaderIconButton title={t("menu")} onClick={handleClick}>
         <MoreVertIcon className={classes.icons} />
       </HeaderIconButton>
       <Menu

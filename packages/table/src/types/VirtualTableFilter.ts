@@ -14,7 +14,7 @@ type FilterTypes = "common" | ColumnType;
 export type TableFilterType = {
   id: string;
   // key: string;
-  column: Array<TableColumnData>;
+  column: Array<TableColumnData | undefined>;
   operation: FilterOperationsType | undefined;
   value: any;
 };
