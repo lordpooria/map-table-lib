@@ -7,7 +7,7 @@ import {
   useCommonSliderStyles,
   ValueLabelComponent,
 } from "../../sliders";
-import GaugeIcon from "../../assets/icons/common/GaugeIcon";
+import { GaugeIcon } from "@hesaba/assets";
 import { Slider } from "@material-ui/core";
 
 function valuetext(value: number) {

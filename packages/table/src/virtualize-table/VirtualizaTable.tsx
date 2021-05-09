@@ -5,13 +5,13 @@ import { useTableResizer } from "../hooks/useTableResizer";
 import useTableData from "../hooks/useTableData";
 import { TableToolbar } from "../toolbar/TableToolbar";
 import { VirtualTableProps } from "../types/tableTypes";
-import TableFilter from "../filter/VirtualTableFilter";
 import VirtualTableContainer from "./container-virtual/VirtualTableContainer";
 import Overlay from "./overlay";
 import VirtualList from "./container-virtual/VirtualList";
 
-import { TablePagination } from "../Pagination";
+import { TablePagination } from "../footer/Pagination";
 import { calcTableHeght } from "../utils/theme";
+import { TableToolbarProvider } from "../toolbar/TableToolbarProvider";
 
 /**
  * Decorator component that automatically adjusts the width and height of a single child
@@ -24,6 +24,7 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     height,
     hasFilter = true,
     hasToolbar = true,
+    searchable = true,
     title,
     operationOnRows,
     classes,
@@ -31,7 +32,6 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     tableDataParser,
     VTContainerProps,
     VTToolbarProps,
-
     ...rest
   }: VirtualTableProps) => {
     useTableData(columns, rows, tableDataParser);
@@ -55,12 +55,16 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
         width={width}
       >
         {hasToolbar && (
-          <TableToolbar
-            title={title}
-            operationOnRows={operationOnRows}
-            classes={classes?.toolbar}
-            {...VTToolbarProps}
-          />
+          <TableToolbarProvider>
+            <TableToolbar
+              title={title}
+              operationOnRows={operationOnRows}
+              classes={classes?.toolbar}
+              hasFilter={hasFilter}
+              searchable={searchable}
+              {...VTToolbarProps}
+            />
+          </TableToolbarProvider>
         )}
 
         <div
@@ -108,7 +112,6 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
           <Overlay />
         </div>
 
-        {hasFilter && <TableFilter />}
         {pagination && (
           <TablePagination
             {...pagination}

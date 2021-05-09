@@ -17,6 +17,10 @@ export type VTMainListProps = {
   /**
    * If you wanna make selectable table each row has a check box
    */
+   searchable?: boolean;
+  /**
+   * If you wanna make selectable table each row has a check box
+   */
   selectable?: boolean;
   /**
    * If you wanna make resizable column table

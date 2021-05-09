@@ -26,6 +26,7 @@
 	"@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^3.2.10",
 	"@hesaba/theme-language":"^1.1.0",
+  "@hesaba/assets": "^1.1.0",
     "dayjs": "^1.10.4",
     "easy-peasy": "^4.0.1",
     "git": "^0.1.0",

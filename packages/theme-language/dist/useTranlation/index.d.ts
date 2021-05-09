@@ -7,5 +7,8 @@ export declare function useTranslation(): {
         next: string;
         prev: string;
         filter: string;
+        sortAsc: string;
+        sortDsc: string;
+        menu: string;
     };
 };

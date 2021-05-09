@@ -27,6 +27,9 @@
     "prebuild": "tsc",
     "dev": "rollup -c -w"
   },
+  "dependencies": {
+    "@hesaba/assets": "^1.1.0"
+  },
   "peerDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

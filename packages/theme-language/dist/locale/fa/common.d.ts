@@ -6,4 +6,7 @@ export declare const fa: {
     next: string;
     prev: string;
     filter: string;
+    sortAsc: string;
+    sortDsc: string;
+    menu: string;
 };

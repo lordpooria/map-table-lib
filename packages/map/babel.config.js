@@ -33,6 +33,9 @@ module.exports = (api) => {
       },
     },
     ignore: ["node_modules"],
-    plugins: ["@babel/plugin-transform-runtime"],
+    plugins:
+      process.env.BABEL_ENV === "prod"
+        ? ["@babel/plugin-transform-runtime"]
+        : [],
   };
 };

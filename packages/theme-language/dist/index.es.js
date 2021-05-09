@@ -7143,7 +7143,7 @@ function useSynchronousEffect(func, values) {
   );
 }
 
-function makeStyles(stylesOrCreator) {
+function makeStyles$1(stylesOrCreator) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   var name = options.name,
@@ -7377,7 +7377,7 @@ var withStyles$1 = function withStyles(stylesOrCreator) {
       }
     }
 
-    var useStyles = makeStyles(stylesOrCreator, _extends$1({
+    var useStyles = makeStyles$1(stylesOrCreator, _extends$1({
       defaultTheme: defaultTheme,
       Component: Component,
       name: name || Component.displayName,
@@ -7460,6 +7460,13 @@ var withStyles$1 = function withStyles(stylesOrCreator) {
 };
 
 var defaultTheme$1 = createMuiTheme();
+
+function makeStyles(stylesOrCreator) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return makeStyles$1(stylesOrCreator, _extends$1({
+    defaultTheme: defaultTheme$1
+  }, options));
+}
 
 function isUnitless(value) {
   return String(parseFloat(value)).length === String(value).length;
@@ -14224,6 +14231,9 @@ var en = {
     next: "Next Page",
     prev: "Previous Page",
     filter: "Filter",
+    sortAsc: "Sort Ascending",
+    sortDsc: "Sort Descending",
+    menu: "Menu"
 };
 
 var fa = {
@@ -14234,6 +14244,9 @@ var fa = {
     next: "صفحه بعد",
     prev: "صفحه قبل",
     filter: "فیلتر",
+    sortAsc: "مرتب سازی صعودی",
+    sortDsc: "مرتب سازی نزولی",
+    menu: "منو"
 };
 
 function useTranslation() {
@@ -14258,13 +14271,28 @@ var WithFontTypography = withStyles({
     root: { fontFamily: "inherit" },
 })(Typography$1);
 
-var SmallIconButton = withStyles(function () { return ({
-    root: { padding: "2px" },
-}); })(IconButton$1);
+var useStyles = makeStyles(function (theme) { return ({
+    root: {
+        padding: 2,
+    },
+    primary: { "&:hover": { color: theme.palette.primary.main } },
+    secondary: { "&:hover": { color: theme.palette.secondary.main } },
+    error: { "&:hover": { color: theme.palette.error.main } },
+    warning: { "&:hover": { color: theme.palette.warning.main } },
+    success: { "&:hover": { color: theme.palette.success.main } },
+}); });
 function ButtonTooltip(_a) {
-    var title = _a.title, rest = __rest(_a, ["title"]);
+    var _b;
+    var title = _a.title, _c = _a.status, status = _c === void 0 ? "primary" : _c, rest = __rest(_a, ["title", "status"]);
+    var classes = useStyles();
     return (React__default.createElement(Tooltip$1, { title: title },
-        React__default.createElement(SmallIconButton, __assign({}, rest))));
+        React__default.createElement(IconButton$1, __assign({}, rest, { className: clsx((_b = {},
+                _b[classes.primary] = status === "primary",
+                _b[classes.secondary] = status === "secondary",
+                _b[classes.error] = status === "error",
+                _b[classes.warning] = status === "warning",
+                _b[classes.success] = status === "success",
+                _b)) }))));
 }
 
 function StyleProvider(_a) {
@@ -14274,5 +14302,5 @@ function StyleProvider(_a) {
             React__default.createElement(ThemeProvider, { rawTheme: theme }, children))));
 }
 
-export { ButtonTooltip, LanguageProvider, SmallIconButton, StyleProvider, ThemeProvider, WithFontTypography, defaultTheme, useLanguageAction, useLanguageState, useThemeCreator, useThemeObject, useTranslation };
+export { ButtonTooltip, LanguageProvider, StyleProvider, ThemeProvider, WithFontTypography, defaultTheme, useLanguageAction, useLanguageState, useThemeCreator, useThemeObject, useTranslation };
 //# sourceMappingURL=index.es.js.map

@@ -1,6 +1,5 @@
 import { Action, Computed } from "easy-peasy";
-import { OnSetTableDataPayload, SetFilterColPayload, SetFilterOpPayload, SetFilterValPayload } from "../types/store";
-import { TableFilterType } from "../types/VirtualTableFilter";
+import { OnSetTableDataPayload } from "../types/store";
 import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
 export interface VTStoreModel {
     VTVersion: string;
@@ -10,8 +9,6 @@ export interface VTStoreModel {
     };
     visibleRows: TableRows;
     enhancedColumns: TableColumns;
-    showFilter: boolean;
-    filters: Array<TableFilterType>;
     toggleSingleRow: Action<VTStoreModel, {
         index: number;
     }>;
@@ -21,20 +18,10 @@ export interface VTStoreModel {
     toggleVisibleColumns: Action<VTStoreModel, {
         index: number;
     }>;
-    toggleShowFilter: Action<VTStoreModel, boolean>;
     setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
     fakeAppendTableData: Action<VTStoreModel, any>;
     setStickyColumn: Action<VTStoreModel, {
         index: number;
-    }>;
-    filterSetColumn: Action<VTStoreModel, SetFilterColPayload>;
-    filterSetOperation: Action<VTStoreModel, SetFilterOpPayload>;
-    filterSetValue: Action<VTStoreModel, SetFilterValPayload>;
-    filterDelete: Action<VTStoreModel, {
-        index: number;
-    }>;
-    filterAdd: Action<VTStoreModel, {
-        columnKey: string;
     }>;
     sortTable: Action<VTStoreModel, {
         index: number;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import {
   createStyles,
   FormControlLabel,
@@ -9,13 +9,20 @@ import {
   Switch,
   Typography,
 } from "@material-ui/core";
-import MoreVert from "../assets/icons/common/MoreVertIcon";
+import { MoreVertIcon } from "@hesaba/assets";
 
 import { useTStoreActions, useTStoreState } from "../store/reducerHooks";
 
 import { TableToolbarCompleteProps } from "../types/TableToolbar";
 import clsx from "clsx";
 import { DEFAULT_TOOLBAR_HEIGHT } from "../utils/themeConstants";
+import TableFilter from "./filter/VirtualTableFilter";
+import TableSearch from "./TableSearch";
+import {
+  useTableToolbarAction,
+  useTableToolbarState,
+} from "./TableToolbarProvider";
+import { FilterIcon, SearchTableIcon } from "@hesaba/assets";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -23,14 +30,13 @@ const useStyles = makeStyles((theme) =>
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
       display: "flex",
       alignItems: "center",
-      
     },
     tools: {
       display: "flex",
       alignItems: "center",
-      flex:1,
+      flex: 1,
     },
-    title: { padding: `0 ${theme.spacing(1)}`},
+    title: { padding: `0 ${theme.spacing(1)}` },
     icon: {
       fill: theme.palette.secondary.main,
     },
@@ -41,33 +47,57 @@ export const TableToolbar = ({
   title,
   height,
   classes,
+  hasFilter,
+  searchable,
   ...rest
 }: TableToolbarCompleteProps) => {
   const toolbarClasses = useStyles();
-
   return (
     <div
       style={{ height: height || DEFAULT_TOOLBAR_HEIGHT }}
       className={clsx(toolbarClasses.toolbarContainer, classes?.root)}
     >
-      
       <div className={clsx(toolbarClasses.tools)}>
-        <ToolbarMoreVert classes={classes} />
+        <ToolbarMoreVert
+          classes={classes}
+          hasFilter={hasFilter}
+          searchable={searchable}
+        />
+
+        <ToolbarFilter hasFilter={hasFilter} />
+        <ToolbarSearch searchable={searchable} />
 
         {rest.operationOnRows && <ToolbarOperation {...rest} />}
       </div>
       <Typography align="center" className={toolbarClasses.title}>
         {title ?? ""}
       </Typography>
-
     </div>
   );
 };
 
+const ToolbarFilter = memo(({ hasFilter }: any) => {
+  const { showFilter } = useTableToolbarState();
+
+  if (!hasFilter || !showFilter) return null;
+  return <TableFilter />;
+});
+
+const ToolbarSearch = memo(({ searchable }: any) => {
+  const { showSearch } = useTableToolbarState();
+
+  if (!searchable || !showSearch) return null;
+  return <TableSearch />;
+});
+
 export function ToolbarMoreVert({
   classes,
+  hasFilter,
+  searchable,
 }: {
   classes: TableToolbarCompleteProps["classes"];
+  hasFilter: TableToolbarCompleteProps["hasFilter"];
+  searchable: TableToolbarCompleteProps["searchable"];
 }) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -85,20 +115,58 @@ export function ToolbarMoreVert({
   const toggleVisibleColumns = useTStoreActions(
     (actions) => actions.toggleVisibleColumns
   );
-  const toggleShowFilter = useTStoreActions(
-    (actions) => actions.toggleShowFilter
-  );
+  const { toggleShowSearch, toggleShowFilter } = useTableToolbarAction();
+  // const toggleShowFilter = useTStoreActions(
+  //   (actions) => actions.toggleShowFilter
+  // );
 
   return (
     <>
       <IconButton onClick={handleClick} className={classes?.iconButton}>
-        <MoreVert
+        <MoreVertIcon
           className={clsx(
             { [toolbarClasses.icon]: !classes?.icon },
             classes?.icon
           )}
         />
       </IconButton>
+
+      {hasFilter && (
+        <IconButton
+          onClick={() => {
+            toggleShowFilter(true);
+            handleClose();
+          }}
+          className={classes?.iconButton}
+        >
+          <MenuItem
+            className={clsx(
+              { [toolbarClasses.icon]: !classes?.icon },
+              classes?.icon
+            )}
+          >
+            <FilterIcon />
+          </MenuItem>
+        </IconButton>
+      )}
+      {searchable && (
+        <IconButton
+          onClick={() => {
+            toggleShowSearch(true);
+            handleClose();
+          }}
+          className={classes?.iconButton}
+        >
+          <MenuItem
+            className={clsx(
+              { [toolbarClasses.icon]: !classes?.icon },
+              classes?.icon
+            )}
+          >
+            <SearchTableIcon />
+          </MenuItem>
+        </IconButton>
+      )}
 
       <Menu
         disableScrollLock={true}
@@ -109,15 +177,6 @@ export function ToolbarMoreVert({
         onClose={handleClose}
         className={classes?.menu}
       >
-        <MenuItem
-          className={classes?.menuItem}
-          onClick={() => {
-            toggleShowFilter(true);
-            handleClose();
-          }}
-        >
-          filter
-        </MenuItem>
         {enhancedColumns?.map((c: any, index: any) => (
           <MenuItem key={c.key} className={classes?.menuItem}>
             <FormControlLabel

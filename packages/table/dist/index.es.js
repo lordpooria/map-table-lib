@@ -1220,191 +1220,11 @@ function n(n){return n&&"object"==typeof n&&"default"in n?n.default:n}var t=Reac
 //# sourceMappingURL=easy-peasy.js.map
 });
 
-// import {
-// export type FilterOperationsType = {
-//   key: string;
-//   name: string;
-//   type: FilterTypes;
-//   valSize?: number;
-// };
-// export type GraphFilter = {
-//   id: string;
-//   name: string;
-//   col: Array<UISchemaItem | null>;
-//   op: FilterOperationsType | null;
-//   val: FilterValuesType;
-//   // uiValid: string | undefined;
-// };
-// export type FilterNodeProp = AppNodeType & {
-//   data: {
-//     filters: Array<GraphFilter>;
-//     groupFilterName: string;
-//     [FILTER_SCHEMA_KEY]: UISchemaWithId;
-//     script: string;
-//   };
-// };
-// export const filtersExist = (
-//   properties: Record<string, any>,
-//   node: AppNodeType
-// ) => {
-//   return properties[node.id]?.filters.length;
-// };
-var baseTranslation = "preperation.filter.operations.";
-var operations = function (t) { return ({
-    commonOperations: [
-        {
-            key: "equals",
-            name: t(baseTranslation + "equals"),
-            type: "common",
-            valSize: 1,
-        },
-        {
-            key: "notEquals",
-            name: t(baseTranslation + "notEquals"),
-            type: "common",
-            valSize: 1,
-        },
-        { key: "isNull", name: t(baseTranslation + "isNull"), type: "common" },
-        {
-            key: "isNotNull",
-            name: t(baseTranslation + "isNotNull"),
-            type: "common",
-        },
-        { key: "isEmpty", name: t(baseTranslation + "isEmpty"), type: "common" },
-        {
-            key: "isNotEmpty",
-            name: t(baseTranslation + "isNotEmpty"),
-            type: "common",
-        },
-        {
-            key: "contains",
-            name: t(baseTranslation + "contains"),
-            type: "common",
-            valSize: 1,
-        },
-        {
-            key: "notContaines",
-            name: t(baseTranslation + "notContaines"),
-            type: "common",
-            valSize: 1,
-        },
-    ],
-    stringOptions: [
-        {
-            key: "regex",
-            name: t(baseTranslation + "regex"),
-            type: "string",
-            valSize: 1,
-        },
-        {
-            key: "startWith",
-            name: t(baseTranslation + "startWith"),
-            type: "string",
-            valSize: 1,
-        },
-        {
-            key: "endWith",
-            name: t(baseTranslation + "endWith"),
-            type: "string",
-            valSize: 1,
-        },
-    ],
-    numericOptions: [
-        {
-            key: "between",
-            name: t(baseTranslation + "between"),
-            type: "number",
-            valSize: 2,
-        },
-    ],
-    dateOptions: [
-        {
-            key: "dateFrom",
-            name: t(baseTranslation + "dateFrom"),
-            type: "date",
-            valSize: 1,
-        },
-        {
-            key: "dateTo",
-            name: t(baseTranslation + "dateTo"),
-            type: "date",
-            valSize: 1,
-        },
-        {
-            key: "between",
-            name: t(baseTranslation + "between"),
-            type: "date",
-            valSize: 2,
-        },
-    ],
-    mapOptions: [
-        {
-            key: "surrounded",
-            name: t(baseTranslation + "surrounded"),
-            type: "geographic",
-            valSize: 1,
-        },
-    ],
-}); };
-var reorderValues = function (type, op) {
-    return !op.valSize
-        ? []
-        : // : op.valSize < val.length
-         __spreadArray([], new Array(op.valSize).fill(type === "date"
-            ? new Date().toISOString()
-            : type === "number"
-                ? 0
-                : type === "geographic"
-                    ? undefined
-                    : ""));
-};
-// export const filterGetProperAttr = (node: FilterNodeProp) => {
-//   return node;
-// };
-// export function filteredSchema(filter: GraphFilter, schema: UISchema) {
-//   let remainingSchema;
-//   let typedSchema;
-//   if (filter?.col?.length) {
-//     const filtercolumnsObj = filter.col.reduce(
-//       (prev, cur) => (cur?.name ? { ...prev, [cur.name]: true } : prev),
-//       {}
-//     );
-//     remainingSchema = schema.filter((s) => !(s.name in filtercolumnsObj));
-//     typedSchema = remainingSchema.filter(
-//       (s) => s.type === filter?.col[0]?.type
-//     );
-//   }
-//   return {
-//     typedSchema,
-//     remainingSchema,
-//   };
-// }
-// export const checkFilterValidation = (
-//   schema: UISchema,
-//   filter: GraphFilter,
-//   t: any
-// ) => {
-//   const schemaObj = schema.reduce(
-//     (prev, cur) => ({
-//       ...prev,
-//       [cur.name]: cur,
-//     }),
-//     {}
-//   );
-//   if (filter.col.length === 0 || !filter.op) {
-//     return t("error.required");
-//   } else if (filter.col.some((col) => !col || !(col.name in schemaObj))) {
-//     return t("error.wrongSchema");
-//   }
-// };
-
 var vtStore = {
     VTVersion: "1.0.0",
     settings: { direction: "rtl", lang: "fa" },
     visibleRows: [],
     enhancedColumns: [],
-    showFilter: false,
-    filters: [],
     toggleSingleRow: easyPeasy.action(function (state, _a) {
         var index = _a.index;
         state.visibleRows[index].selected = !state.visibleRows[index].selected;
@@ -1412,19 +1232,6 @@ var vtStore = {
     toggleAllRows: easyPeasy.action(function (state, _a) {
         var isSelected = _a.isSelected;
         state.visibleRows = state.visibleRows.map(function (r) { return (__assign$1(__assign$1({}, r), { selected: !isSelected })); });
-    }),
-    toggleShowFilter: easyPeasy.action(function (state, showFilter) {
-        if (state.filters.length === 0) {
-            var col = state.enhancedColumns[0];
-            state.filters.push({
-                id: new Date().getTime().toString(),
-                // key: string;
-                column: [{ key: col.key, label: col.label, type: col.type }],
-                operation: undefined,
-                value: [undefined],
-            });
-        }
-        state.showFilter = showFilter;
     }),
     setTableData: easyPeasy.action(function (state, payload) {
         var enhancedColumns = payload.enhancedColumns, visibleRows = payload.visibleRows;
@@ -1474,60 +1281,6 @@ var vtStore = {
                     : state.visibleRows.sort(function (a, b) {
                         return a[columnKey] < b[columnKey] ? -1 : 1;
                     });
-    }),
-    filterSetColumn: easyPeasy.action(function (state, action) {
-        var _a;
-        var filterIndex = action.filterIndex, column = action.column, columnIndex = action.columnIndex;
-        var filter = state.filters[filterIndex];
-        if (((_a = filter.operation) === null || _a === void 0 ? void 0 : _a.type) !== column.type) {
-            filter.operation = undefined;
-        }
-        // const colIndex = state.enhancedColumns.findIndex((ec) => ec.key === colKey);
-        // if (colIndex === -1) return;
-        filter.column[columnIndex] = column;
-        // if (column.type === "geographic" && filter.column.length === 1) {
-        //   filter.col.push(column);
-        // } else if (column.type !== "geographic" && filter.col.length === 2) {
-        //   el.data.filters[filterIndex].col = filter.col.slice(0, 1);
-        // }
-    }),
-    filterSetOperation: easyPeasy.action(function (state, action) {
-        var _a;
-        var filterIndex = action.filterIndex, operation = action.operation;
-        // const filter = state.filters[filterIndex];
-        state.filters[filterIndex].operation = operation;
-        var type = (_a = state.filters[filterIndex].column[0]) === null || _a === void 0 ? void 0 : _a.type;
-        state.filters[filterIndex].value = reorderValues(type, operation
-        // filter.value
-        );
-    }),
-    filterSetValue: easyPeasy.action(function (state, action) {
-        var filterIndex = action.filterIndex, value = action.value, valueIndex = action.valueIndex;
-        state.filters[filterIndex].value[valueIndex] = value;
-        // else if (val !== undefined) {
-        //   el.data.filters[filterIndex].val = val;
-        // }
-    }),
-    filterAdd: easyPeasy.action(function (state, _a) {
-        var columnKey = _a.columnKey;
-        state.showFilter = true;
-        var col = state.enhancedColumns.filter(function (ec) { return ec.key === columnKey; });
-        if (!col || col.length === 0) {
-            return;
-        }
-        state.filters.push({
-            id: new Date().getTime().toString(),
-            // key: string;
-            column: [{ key: col[0].key, label: col[0].label, type: col[0].type }],
-            operation: undefined,
-            value: [undefined],
-        });
-    }),
-    filterDelete: easyPeasy.action(function (state, _a) {
-        // const el = findNodeState<FilterNodeProp>(state);
-        var _b;
-        var index = _a.index;
-        (_b = state.filters) === null || _b === void 0 ? void 0 : _b.splice(index, 1);
     }),
 };
 // const nodeEnv: string = (typeof process?.__ENV__ !== 'undefined' && __ENV__) as string;
@@ -40414,67 +40167,6 @@ var MoreVert = function (_a) {
         React__default.createElement("path", { d: "M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" })));
 };
 
-var useStyles$g = makeStyles(function (theme) {
-    return createStyles({
-        toolbarContainer: {
-            borderBottom: "solid " + theme.palette.grey[300] + " 1px",
-            display: "flex",
-            alignItems: "center",
-        },
-        tools: {
-            display: "flex",
-            alignItems: "center",
-            flex: 1,
-        },
-        title: { padding: "0 " + theme.spacing(1) },
-        icon: {
-            fill: theme.palette.secondary.main,
-        },
-    });
-});
-var TableToolbar = function (_a) {
-    var title = _a.title, height = _a.height, classes = _a.classes, rest = __rest$1(_a, ["title", "height", "classes"]);
-    var toolbarClasses = useStyles$g();
-    return (React__default.createElement("div", { style: { height: height || DEFAULT_TOOLBAR_HEIGHT }, className: clsx(toolbarClasses.toolbarContainer, classes === null || classes === void 0 ? void 0 : classes.root) },
-        React__default.createElement("div", { className: clsx(toolbarClasses.tools) },
-            React__default.createElement(ToolbarMoreVert, { classes: classes }),
-            rest.operationOnRows && React__default.createElement(ToolbarOperation, __assign$1({}, rest))),
-        React__default.createElement(Typography$1, { align: "center", className: toolbarClasses.title }, title !== null && title !== void 0 ? title : "")));
-};
-function ToolbarMoreVert(_a) {
-    var _b;
-    var classes = _a.classes;
-    var _c = useState(null), anchorEl = _c[0], setAnchorEl = _c[1];
-    var open = Boolean(anchorEl);
-    var enhancedColumns = useTStoreState(function (state) { return state.enhancedColumns; });
-    var toolbarClasses = useStyles$g();
-    var handleClick = function (event) {
-        setAnchorEl(event.currentTarget);
-    };
-    var handleClose = function () {
-        setAnchorEl(null);
-    };
-    var toggleVisibleColumns = useTStoreActions(function (actions) { return actions.toggleVisibleColumns; });
-    var toggleShowFilter = useTStoreActions(function (actions) { return actions.toggleShowFilter; });
-    return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement(IconButton$1, { onClick: handleClick, className: classes === null || classes === void 0 ? void 0 : classes.iconButton },
-            React__default.createElement(MoreVert, { className: clsx((_b = {}, _b[toolbarClasses.icon] = !(classes === null || classes === void 0 ? void 0 : classes.icon), _b), classes === null || classes === void 0 ? void 0 : classes.icon) })),
-        React__default.createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, className: classes === null || classes === void 0 ? void 0 : classes.menu },
-            React__default.createElement(MenuItem$1, { className: classes === null || classes === void 0 ? void 0 : classes.menuItem, onClick: function () {
-                    toggleShowFilter(true);
-                    handleClose();
-                } }, "filter"), enhancedColumns === null || enhancedColumns === void 0 ? void 0 :
-            enhancedColumns.map(function (c, index) { return (React__default.createElement(MenuItem$1, { key: c.key, className: classes === null || classes === void 0 ? void 0 : classes.menuItem },
-                React__default.createElement(FormControlLabel$1, { control: React__default.createElement(Switch$1, { checked: c.visible, onChange: function () { return toggleVisibleColumns({ index: index }); }, name: c.label }), label: c.label }))); }))));
-}
-function ToolbarOperation(_a) {
-    var operationOnRows = _a.operationOnRows;
-    var numRowsSelected = useTStoreState(function (state) { return state.numRowsSelected; });
-    return (React__default.createElement(React__default.Fragment, null, operationOnRows &&
-        numRowsSelected > 0 &&
-        operationOnRows.map(function (Component, index) { return (React__default.createElement(Component, { key: index })); })));
-}
-
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -43705,6 +43397,184 @@ var Autocomplete$1 = withStyles(styles$4, {
   name: 'MuiAutocomplete'
 })(Autocomplete);
 
+// import {
+// export type FilterOperationsType = {
+//   key: string;
+//   name: string;
+//   type: FilterTypes;
+//   valSize?: number;
+// };
+// export type GraphFilter = {
+//   id: string;
+//   name: string;
+//   col: Array<UISchemaItem | null>;
+//   op: FilterOperationsType | null;
+//   val: FilterValuesType;
+//   // uiValid: string | undefined;
+// };
+// export type FilterNodeProp = AppNodeType & {
+//   data: {
+//     filters: Array<GraphFilter>;
+//     groupFilterName: string;
+//     [FILTER_SCHEMA_KEY]: UISchemaWithId;
+//     script: string;
+//   };
+// };
+// export const filtersExist = (
+//   properties: Record<string, any>,
+//   node: AppNodeType
+// ) => {
+//   return properties[node.id]?.filters.length;
+// };
+var baseTranslation = "preperation.filter.operations.";
+var operations = function (t) { return ({
+    commonOperations: [
+        {
+            key: "equals",
+            name: t(baseTranslation + "equals"),
+            type: "common",
+            valSize: 1,
+        },
+        {
+            key: "notEquals",
+            name: t(baseTranslation + "notEquals"),
+            type: "common",
+            valSize: 1,
+        },
+        { key: "isNull", name: t(baseTranslation + "isNull"), type: "common" },
+        {
+            key: "isNotNull",
+            name: t(baseTranslation + "isNotNull"),
+            type: "common",
+        },
+        { key: "isEmpty", name: t(baseTranslation + "isEmpty"), type: "common" },
+        {
+            key: "isNotEmpty",
+            name: t(baseTranslation + "isNotEmpty"),
+            type: "common",
+        },
+        {
+            key: "contains",
+            name: t(baseTranslation + "contains"),
+            type: "common",
+            valSize: 1,
+        },
+        {
+            key: "notContaines",
+            name: t(baseTranslation + "notContaines"),
+            type: "common",
+            valSize: 1,
+        },
+    ],
+    stringOptions: [
+        {
+            key: "regex",
+            name: t(baseTranslation + "regex"),
+            type: "string",
+            valSize: 1,
+        },
+        {
+            key: "startWith",
+            name: t(baseTranslation + "startWith"),
+            type: "string",
+            valSize: 1,
+        },
+        {
+            key: "endWith",
+            name: t(baseTranslation + "endWith"),
+            type: "string",
+            valSize: 1,
+        },
+    ],
+    numericOptions: [
+        {
+            key: "between",
+            name: t(baseTranslation + "between"),
+            type: "number",
+            valSize: 2,
+        },
+    ],
+    dateOptions: [
+        {
+            key: "dateFrom",
+            name: t(baseTranslation + "dateFrom"),
+            type: "date",
+            valSize: 1,
+        },
+        {
+            key: "dateTo",
+            name: t(baseTranslation + "dateTo"),
+            type: "date",
+            valSize: 1,
+        },
+        {
+            key: "between",
+            name: t(baseTranslation + "between"),
+            type: "date",
+            valSize: 2,
+        },
+    ],
+    mapOptions: [
+        {
+            key: "surrounded",
+            name: t(baseTranslation + "surrounded"),
+            type: "geographic",
+            valSize: 1,
+        },
+    ],
+}); };
+var reorderValues = function (type, op) {
+    return !op.valSize
+        ? []
+        : // : op.valSize < val.length
+         __spreadArray([], new Array(op.valSize).fill(type === "date"
+            ? new Date().toISOString()
+            : type === "number"
+                ? 0
+                : type === "geographic"
+                    ? undefined
+                    : ""));
+};
+// export const filterGetProperAttr = (node: FilterNodeProp) => {
+//   return node;
+// };
+// export function filteredSchema(filter: GraphFilter, schema: UISchema) {
+//   let remainingSchema;
+//   let typedSchema;
+//   if (filter?.col?.length) {
+//     const filtercolumnsObj = filter.col.reduce(
+//       (prev, cur) => (cur?.name ? { ...prev, [cur.name]: true } : prev),
+//       {}
+//     );
+//     remainingSchema = schema.filter((s) => !(s.name in filtercolumnsObj));
+//     typedSchema = remainingSchema.filter(
+//       (s) => s.type === filter?.col[0]?.type
+//     );
+//   }
+//   return {
+//     typedSchema,
+//     remainingSchema,
+//   };
+// }
+// export const checkFilterValidation = (
+//   schema: UISchema,
+//   filter: GraphFilter,
+//   t: any
+// ) => {
+//   const schemaObj = schema.reduce(
+//     (prev, cur) => ({
+//       ...prev,
+//       [cur.name]: cur,
+//     }),
+//     {}
+//   );
+//   if (filter.col.length === 0 || !filter.op) {
+//     return t("error.required");
+//   } else if (filter.col.some((col) => !col || !(col.name in schemaObj))) {
+//     return t("error.wrongSchema");
+//   }
+// };
+
 function SimpleNumericInput(_a) {
     // const classes = filterValueStyles();
     var filterIndex = _a.filterIndex, valIndex = _a.valIndex, onSetFilter = _a.onSetFilter, value = _a.value, label = _a.label, classes = _a.classes;
@@ -43788,7 +43658,7 @@ var DIALOG_WIDTH = 310;
 var DIALOG_WIDTH_WIDER = 325;
 var VIEW_HEIGHT = 305;
 
-var useStyles$f = makeStyles(function (theme) {
+var useStyles$h = makeStyles(function (theme) {
   return {
     staticWrapperRoot: {
       overflow: 'hidden',
@@ -43803,7 +43673,7 @@ var useStyles$f = makeStyles(function (theme) {
 });
 var StaticWrapper = function StaticWrapper(_ref) {
   var children = _ref.children;
-  var classes = useStyles$f();
+  var classes = useStyles$h();
   return createElement("div", {
     className: classes.staticWrapperRoot,
     children: children
@@ -44249,7 +44119,7 @@ function _inherits(subClass, superClass) {
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
 
-var useStyles$e = makeStyles(function (theme) {
+var useStyles$g = makeStyles(function (theme) {
   return {
     day: {
       width: 36,
@@ -44292,7 +44162,7 @@ var Day = function Day(_ref) {
       selected = _ref.selected,
       other = _objectWithoutProperties(_ref, ["children", "disabled", "hidden", "current", "selected"]);
 
-  var classes = useStyles$e();
+  var classes = useStyles$g();
   var className = clsx(classes.day, hidden && classes.hidden, current && classes.current, selected && classes.daySelected, disabled && classes.dayDisabled);
   return createElement(IconButton$1, _extends$1({
     className: className,
@@ -45810,7 +45680,7 @@ var DayWrapper = function DayWrapper(_ref) {
 };
 
 var animationDuration = 350;
-var useStyles$d = makeStyles(function (theme) {
+var useStyles$f = makeStyles(function (theme) {
   var slideTransition = theme.transitions.create('transform', {
     duration: animationDuration,
     easing: 'cubic-bezier(0.35, 0.8, 0.4, 1)'
@@ -45862,7 +45732,7 @@ var SlideTransition = function SlideTransition(_ref) {
       slideDirection = _ref.slideDirection,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? null : _ref$className;
-  var classes = useStyles$d();
+  var classes = useStyles$f();
   var transitionClasses = {
     exit: classes.slideExit,
     enterActive: classes.slideEnterActive,
@@ -46732,7 +46602,7 @@ var positions = {
   22: [-64, 77],
   23: [-37, 50]
 };
-var useStyles$c = makeStyles(function (theme) {
+var useStyles$e = makeStyles(function (theme) {
   var size = theme.spacing(4);
   return {
     clockNumber: {
@@ -46759,7 +46629,7 @@ var ClockNumber = function ClockNumber(_ref) {
       label = _ref.label,
       index = _ref.index,
       isInner = _ref.isInner;
-  var classes = useStyles$c();
+  var classes = useStyles$e();
   var className = clsx(classes.clockNumber, selected && classes.clockNumberSelected);
   var transformStyle = useMemo$1(function () {
     var position = positions[index];
@@ -47014,7 +46884,7 @@ function useViews(views, openTo, onChange) {
   };
 }
 
-var useStyles$b = makeStyles(function (theme) {
+var useStyles$d = makeStyles(function (theme) {
   return {
     root: {
       height: 40,
@@ -47049,7 +46919,7 @@ var Year = function Year(_ref) {
       children = _ref.children,
       other = _objectWithoutProperties(_ref, ["onSelect", "forwardedRef", "value", "selected", "disabled", "children"]);
 
-  var classes = useStyles$b();
+  var classes = useStyles$d();
   var handleClick = useCallback$1(function () {
     return onSelect(value);
   }, [onSelect, value]);
@@ -47381,7 +47251,7 @@ Picker.defaultProps = _objectSpread$1$2({}, datePickerDefaultProps, {
   views: Object.keys(viewsMap)
 });
 
-var useStyles$a = makeStyles(function (theme) {
+var useStyles$c = makeStyles(function (theme) {
   var textColor = theme.palette.type === 'light' ? theme.palette.primary.contrastText : theme.palette.getContrastText(theme.palette.background["default"]);
   return {
     toolbarTxt: {
@@ -47402,7 +47272,7 @@ var ToolbarText = function ToolbarText(_ref) {
       className = _ref$className === void 0 ? null : _ref$className,
       other = _objectWithoutProperties(_ref, ["selected", "label", "className"]);
 
-  var classes = useStyles$a();
+  var classes = useStyles$c();
   return createElement(Typography$1, _extends$1({
     children: label,
     className: clsx(classes.toolbarTxt, className, selected && classes.toolbarBtnSelected)
@@ -48016,7 +47886,7 @@ function makePickerWithState(_ref) {
   return PickerWithState;
 }
 
-var useStyles$9 = makeStyles({
+var useStyles$b = makeStyles({
   toolbar: {
     flexDirection: 'column',
     alignItems: 'flex-start'
@@ -48037,7 +47907,7 @@ var DatePickerToolbar = function DatePickerToolbar(_ref) {
       isLandscape = _ref.isLandscape,
       openView = _ref.openView;
   var utils = useUtils();
-  var classes = useStyles$9();
+  var classes = useStyles$b();
   var isYearOnly = useMemo$1(function () {
     return isYearOnlyView(views);
   }, [views]);
@@ -48960,15 +48830,117 @@ var FilterValueDate = function (_a) {
             animateYearScrolling: true })));
 };
 
-var useStyles$8 = makeStyles(function () {
+var vtToolbarStore = {
+    showFilter: false,
+    showSearch: false,
+    filters: [],
+    searchText: "",
+    toggleShowFilter: easyPeasy.action(function (state, showFilter) {
+        // if (state.filters.length === 0) {
+        //   const col = state.enhancedColumns[0];
+        //   state.filters.push({
+        //     id: new Date().getTime().toString(),
+        //     // key: string;
+        //     column: [{ key: col.key, label: col.label, type: col.type }],
+        //     operation: undefined,
+        //     value: [undefined],
+        //   });
+        // }
+        state.showFilter = showFilter;
+    }),
+    toggleShowSearch: easyPeasy.action(function (state, showFilter) {
+        state.showFilter = showFilter;
+    }),
+    onSearchTextChange: easyPeasy.action(function (state, text) {
+        state.searchText = text;
+    }),
+    filterSetColumn: easyPeasy.action(function (state, action) {
+        var _a;
+        var filterIndex = action.filterIndex, column = action.column, columnIndex = action.columnIndex;
+        var filter = state.filters[filterIndex];
+        if (((_a = filter.operation) === null || _a === void 0 ? void 0 : _a.type) !== column.type) {
+            filter.operation = undefined;
+        }
+        // const colIndex = state.enhancedColumns.findIndex((ec) => ec.key === colKey);
+        // if (colIndex === -1) return;
+        filter.column[columnIndex] = column;
+        // if (column.type === "geographic" && filter.column.length === 1) {
+        //   filter.col.push(column);
+        // } else if (column.type !== "geographic" && filter.col.length === 2) {
+        //   el.data.filters[filterIndex].col = filter.col.slice(0, 1);
+        // }
+    }),
+    filterSetOperation: easyPeasy.action(function (state, action) {
+        var _a;
+        var filterIndex = action.filterIndex, operation = action.operation;
+        // const filter = state.filters[filterIndex];
+        state.filters[filterIndex].operation = operation;
+        var type = (_a = state.filters[filterIndex].column[0]) === null || _a === void 0 ? void 0 : _a.type;
+        state.filters[filterIndex].value = reorderValues(type, operation
+        // filter.value
+        );
+    }),
+    filterSetValue: easyPeasy.action(function (state, action) {
+        var filterIndex = action.filterIndex, value = action.value, valueIndex = action.valueIndex;
+        state.filters[filterIndex].value[valueIndex] = value;
+        // else if (val !== undefined) {
+        //   el.data.filters[filterIndex].val = val;
+        // }
+    }),
+    filterAdd: easyPeasy.action(function (state) {
+        state.showFilter = true;
+        // const col = state.enhancedColumns.filter((ec) => ec.key === columnKey);
+        // if (!col || col.length === 0) {
+        //   return;
+        // }
+        // state.filters.push({
+        //   id: new Date().getTime().toString(),
+        //   // key: string;
+        //   column: [{ key: col[0].key, label: col[0].label, type: col[0].type }],
+        //   operation: undefined,
+        //   value: [undefined],
+        // });
+    }),
+    filterDelete: easyPeasy.action(function (state, _a) {
+        // const el = findNodeState<FilterNodeProp>(state);
+        var _b;
+        var index = _a.index;
+        (_b = state.filters) === null || _b === void 0 ? void 0 : _b.splice(index, 1);
+    }),
+};
+
+var TableToolbarStateContext = createContext({});
+var TableToolbarActionContext = createContext({});
+function TableToolbarProvider(_a) {
+    var children = _a.children;
+    var _b = easyPeasy.useLocalStore(function () { return vtToolbarStore; }), state = _b[0], actions = _b[1];
+    return (React__default.createElement(TableToolbarStateContext.Provider, { value: state },
+        React__default.createElement(TableToolbarActionContext.Provider, { value: actions }, children)));
+}
+function useTableToolbarState() {
+    var state = useContext(TableToolbarStateContext);
+    if (!state) {
+        throw Error("use state inside provider");
+    }
+    return state;
+}
+function useTableToolbarAction() {
+    var actions = useContext(TableToolbarActionContext);
+    if (!actions) {
+        throw Error("use state inside provider");
+    }
+    return actions;
+}
+
+var useStyles$a = makeStyles(function () {
     return createStyles({ input: { borderColor: "transparent" } });
 });
 var FilterColumn = memo(function (_a) {
     var value = _a.value, filterIndex = _a.filterIndex, columns = _a.columns, columnIndex = _a.columnIndex, classes = _a.classes;
     var t = function (v) { return v; };
-    var inClasses = useStyles$8();
+    var inClasses = useStyles$a();
     var _b = useState(""), inputValue = _b[0], setInputValue = _b[1];
-    var filterSetColumn = useTStoreActions(function (actions) { return actions.filterSetColumn; });
+    var filterSetColumn = useTableToolbarAction().filterSetColumn;
     // const allOptions = value && columns ? [value, ...columns] : columns;
     // if (!columns) return null;
     return (React__default.createElement(Autocomplete$1, { value: value, onChange: function (_, column) {
@@ -48990,8 +48962,8 @@ var FilterColumn = memo(function (_a) {
 var FilterOperations = memo(function (_a) {
     var operation = _a.operation, filterIndex = _a.filterIndex, columnType = _a.columnType, classes = _a.classes;
     var t = function (v) { return v; };
-    var inClasses = useStyles$8();
-    var filterSetOperation = useTStoreActions(function (actions) { return actions.filterSetOperation; });
+    var inClasses = useStyles$a();
+    var filterSetOperation = useTableToolbarAction().filterSetOperation;
     var _b = useState(operations(t).commonOperations), options = _b[0], setOptions = _b[1];
     var _c = useState(""), inputValue = _c[0], setInputValue = _c[1];
     var lastType = useRef("");
@@ -49031,7 +49003,7 @@ var FilterOperations = memo(function (_a) {
 });
 var FilterValues = memo(function (_a) {
     var filterIndex = _a.filterIndex, val = _a.val, valIndex = _a.valIndex, columnType = _a.columnType, label = _a.label, classes = _a.classes;
-    var filterSetValue = useTStoreActions(function (actions) { return actions.filterSetValue; });
+    var filterSetValue = useTableToolbarAction().filterSetValue;
     var onSetFilter = function (filterIndex, valueIndex, value) {
         filterSetValue({ filterIndex: filterIndex, valueIndex: valueIndex, value: value });
     };
@@ -49065,7 +49037,7 @@ var TrashIcon = function (_a) {
 // import { filterDelete, filterSetName } from "../services/filterActions";
 // import { useTranslation } from "/app/i18n";
 // import SimpleWarning from "/components/info/SimpleWarning";
-var useStyles$7 = makeStyles(function (theme) {
+var useStyles$9 = makeStyles(function (theme) {
     return createStyles({
         deleteButton: {
         // display: "flex",
@@ -49080,8 +49052,8 @@ var FilterItem = function (_a) {
     var filter = _a.filter, columns = _a.columns, index = _a.index;
     //   const [notExpanded, setExpanded] = useState<any>({});
     var t = function (v) { return v; };
-    var classes = useStyles$7();
-    var deleteFilter = useTStoreActions(function (actions) { return actions.filterDelete; });
+    var classes = useStyles$9();
+    var deleteFilter = useTableToolbarAction().filterDelete;
     //   const dispatch = useDispatch();
     if (!((_b = filter === null || filter === void 0 ? void 0 : filter.column) === null || _b === void 0 ? void 0 : _b.length))
         return null;
@@ -49108,7 +49080,7 @@ var CloseIcon = function (_a) {
         " "));
 };
 
-var useStyles$6 = makeStyles(function (theme) {
+var useStyles$8 = makeStyles(function (theme) {
     return createStyles({
         rootFilter: {
             position: "absolute",
@@ -49125,14 +49097,13 @@ var useStyles$6 = makeStyles(function (theme) {
     });
 });
 var TableFilter = function (_a) {
-    var classes = useStyles$6();
-    var showFilter = useTStoreState(function (state) { return state.showFilter; });
-    var toggleShowFilter = useTStoreActions(function (actions) { return actions.toggleShowFilter; });
+    var classes = useStyles$8();
+    var _b = useTableToolbarState(), showFilter = _b.showFilter, filters = _b.filters;
+    var toggleShowFilter = useTableToolbarAction().toggleShowFilter;
     var handleClose = function () {
         toggleShowFilter(false);
     };
     // const filterAdd = useStoreActions((actions) => actions.filterAdd);
-    var filters = useTStoreState(function (state) { return state.filters; });
     if (!showFilter)
         return null;
     return (React__default.createElement("div", { className: classes.rootFilter },
@@ -49142,6 +49113,153 @@ var TableFilter = function (_a) {
             React__default.createElement(FilterItem, { filter: filter, index: index, columns: [] }))); }),
         React__default.createElement("div", { style: { width: "100%" } })));
 };
+
+var SearchIcon = function (_a) {
+    var className = _a.className;
+    return (React__default.createElement(SvgIcon, { className: className, id: "mdi-database-search" },
+        React__default.createElement("path", { d: "M18.68,12.32C16.92,10.56 14.07,10.57 12.32,12.33C10.56,14.09 10.56,16.94 12.32,18.69C13.81,20.17 16.11,20.43 17.89,19.32L21,22.39L22.39,21L19.3,17.89C20.43,16.12 20.17,13.8 18.68,12.32M17.27,17.27C16.29,18.25 14.71,18.24 13.73,17.27C12.76,16.29 12.76,14.71 13.74,13.73C14.71,12.76 16.29,12.76 17.27,13.73C18.24,14.71 18.24,16.29 17.27,17.27M10.9,20.1C10.25,19.44 9.74,18.65 9.42,17.78C6.27,17.25 4,15.76 4,14V17C4,19.21 7.58,21 12,21V21C11.6,20.74 11.23,20.44 10.9,20.1M4,9V12C4,13.68 6.07,15.12 9,15.7C9,15.63 9,15.57 9,15.5C9,14.57 9.2,13.65 9.58,12.81C6.34,12.3 4,10.79 4,9M12,3C7.58,3 4,4.79 4,7C4,9 7,10.68 10.85,11H10.9C12.1,9.74 13.76,9 15.5,9C16.41,9 17.31,9.19 18.14,9.56C19.17,9.09 19.87,8.12 20,7C20,4.79 16.42,3 12,3Z" }),
+        " "));
+};
+
+var ClearIcon = function (_a) {
+    var className = _a.className;
+    return (React__default.createElement(SvgIcon, { className: className, id: "mdi-notification-clear-all" },
+        React__default.createElement("path", { d: "M5,13H19V11H5M3,17H17V15H3M7,7V9H21V7" })));
+};
+
+var useStyles$7 = makeStyles(function (theme) { return ({
+    main: {
+        position: 'absolute',
+        display: "flex",
+        flex: "1 0 auto",
+    },
+    searchIcon: {
+        color: theme.palette.text.secondary,
+        marginTop: "10px",
+        marginRight: "8px",
+    },
+    searchText: {
+        flex: "0.8 0",
+    },
+    clearIcon: {
+        "&:hover": {
+            color: theme.palette.error.main,
+        },
+    },
+}); }, { name: "MUIDataTableSearch" });
+var TableSearch = function (_a) {
+    var classes = useStyles$7();
+    var _b = useTableToolbarAction(), onSearchTextChange = _b.onSearchTextChange, toggleShowSearch = _b.toggleShowSearch;
+    var searchText = useTableToolbarState().searchText;
+    var handleTextChange = function (event) {
+        onSearchTextChange(event.target.value);
+    };
+    var onHide = function () {
+        toggleShowSearch(false);
+    };
+    var onKeyDown = function (event) {
+        if (event.key === "Escape") {
+            onHide();
+        }
+    };
+    return (React__default.createElement(Grow, { appear: true, in: true, timeout: 300 },
+        React__default.createElement("div", { className: classes.main },
+            React__default.createElement(SearchIcon, { className: classes.searchIcon }),
+            React__default.createElement(TextField$1, { className: classes.searchText, autoFocus: true, 
+                // InputProps={{
+                //   "data-test-id": options.textLabels.toolbar.search,
+                // }}
+                // inputProps={{
+                //   "aria-label": options.textLabels.toolbar.search,
+                // }}
+                value: searchText || "", onKeyDown: onKeyDown, onChange: handleTextChange, fullWidth: true }),
+            React__default.createElement(IconButton$1, { className: classes.clearIcon, onClick: onHide },
+                React__default.createElement(ClearIcon, null)))));
+};
+
+var useStyles$6 = makeStyles(function (theme) {
+    return createStyles({
+        toolbarContainer: {
+            borderBottom: "solid " + theme.palette.grey[300] + " 1px",
+            display: "flex",
+            alignItems: "center",
+        },
+        tools: {
+            display: "flex",
+            alignItems: "center",
+            flex: 1,
+        },
+        title: { padding: "0 " + theme.spacing(1) },
+        icon: {
+            fill: theme.palette.secondary.main,
+        },
+    });
+});
+var TableToolbar = function (_a) {
+    var title = _a.title, height = _a.height, classes = _a.classes, hasFilter = _a.hasFilter, searchable = _a.searchable, rest = __rest$1(_a, ["title", "height", "classes", "hasFilter", "searchable"]);
+    var toolbarClasses = useStyles$6();
+    return (React__default.createElement("div", { style: { height: height || DEFAULT_TOOLBAR_HEIGHT }, className: clsx(toolbarClasses.toolbarContainer, classes === null || classes === void 0 ? void 0 : classes.root) },
+        React__default.createElement("div", { className: clsx(toolbarClasses.tools) },
+            React__default.createElement(ToolbarFilter, { hasFilter: hasFilter }),
+            React__default.createElement(ToolbarSearch, { searchable: searchable }),
+            React__default.createElement(ToolbarMoreVert, { classes: classes, hasFilter: hasFilter, searchable: searchable }),
+            rest.operationOnRows && React__default.createElement(ToolbarOperation, __assign$1({}, rest))),
+        React__default.createElement(Typography$1, { align: "center", className: toolbarClasses.title }, title !== null && title !== void 0 ? title : "")));
+};
+var ToolbarFilter = memo(function (_a) {
+    var hasFilter = _a.hasFilter;
+    var showFilter = useTableToolbarState().showFilter;
+    if (!hasFilter || !showFilter)
+        return null;
+    return React__default.createElement(TableFilter, null);
+});
+var ToolbarSearch = memo(function (_a) {
+    var searchable = _a.searchable;
+    var showSearch = useTableToolbarState().showSearch;
+    if (!searchable || !showSearch)
+        return null;
+    return React__default.createElement(TableSearch, null);
+});
+function ToolbarMoreVert(_a) {
+    var _b;
+    var classes = _a.classes, hasFilter = _a.hasFilter, searchable = _a.searchable;
+    var _c = useState(null), anchorEl = _c[0], setAnchorEl = _c[1];
+    var open = Boolean(anchorEl);
+    var enhancedColumns = useTStoreState(function (state) { return state.enhancedColumns; });
+    var toolbarClasses = useStyles$6();
+    var handleClick = function (event) {
+        setAnchorEl(event.currentTarget);
+    };
+    var handleClose = function () {
+        setAnchorEl(null);
+    };
+    var toggleVisibleColumns = useTStoreActions(function (actions) { return actions.toggleVisibleColumns; });
+    var toggleShowSearch = useTableToolbarAction().toggleShowSearch;
+    // const toggleShowFilter = useTStoreActions(
+    //   (actions) => actions.toggleShowFilter
+    // );
+    return (React__default.createElement(React__default.Fragment, null,
+        React__default.createElement(IconButton$1, { onClick: handleClick, className: classes === null || classes === void 0 ? void 0 : classes.iconButton },
+            React__default.createElement(MoreVert, { className: clsx((_b = {}, _b[toolbarClasses.icon] = !(classes === null || classes === void 0 ? void 0 : classes.icon), _b), classes === null || classes === void 0 ? void 0 : classes.icon) })),
+        React__default.createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, className: classes === null || classes === void 0 ? void 0 : classes.menu },
+            hasFilter && (React__default.createElement(MenuItem$1, { className: classes === null || classes === void 0 ? void 0 : classes.menuItem, onClick: function () {
+                    // toggleShowFilter(true);
+                    handleClose();
+                } }, "filter")),
+            searchable && (React__default.createElement(MenuItem$1, { className: classes === null || classes === void 0 ? void 0 : classes.menuItem, onClick: function () {
+                    toggleShowSearch(true);
+                    handleClose();
+                } }, "search")), enhancedColumns === null || enhancedColumns === void 0 ? void 0 :
+            enhancedColumns.map(function (c, index) { return (React__default.createElement(MenuItem$1, { key: c.key, className: classes === null || classes === void 0 ? void 0 : classes.menuItem },
+                React__default.createElement(FormControlLabel$1, { control: React__default.createElement(Switch$1, { checked: c.visible, onChange: function () { return toggleVisibleColumns({ index: index }); }, name: c.label }), label: c.label }))); }))));
+}
+function ToolbarOperation(_a) {
+    var operationOnRows = _a.operationOnRows;
+    var numRowsSelected = useTStoreState(function (state) { return state.numRowsSelected; });
+    return (React__default.createElement(React__default.Fragment, null, operationOnRows &&
+        numRowsSelected > 0 &&
+        operationOnRows.map(function (Component, index) { return (React__default.createElement(Component, { key: index })); })));
+}
 
 var useCalcTableWidth = function (columns, width) {
     var totalWidth = useTableSizeState().totalWidth;
@@ -50196,7 +50314,7 @@ var HeaderMenu = function (_a) {
         setAnchorEl(event.currentTarget);
     };
     var sortTable = useTStoreActions(function (actions) { return actions.sortTable; });
-    var filterAdd = useTStoreActions(function (actions) { return actions.filterAdd; });
+    // const filterAdd = useTStoreActions((actions) => actions.filterAdd);
     // const setStickyColumn = useTStoreActions(
     //   (actions) => actions.setStickyColumn
     // );
@@ -50226,10 +50344,7 @@ var HeaderMenu = function (_a) {
             } },
             sortable && React__default.createElement(MenuItem$1, { onClick: sortAsc }, OPTIONS.sortAsc),
             sortable && React__default.createElement(MenuItem$1, { onClick: sortDesc }, OPTIONS.sortDesc),
-            React__default.createElement(MenuItem$1, { onClick: function () { return toggleVisibleColumns({ index: index }); } }, OPTIONS.hideColumn),
-            React__default.createElement(MenuItem$1, { onClick: function () {
-                    filterAdd({ columnKey: columnKey });
-                } }, OPTIONS.filter))));
+            React__default.createElement(MenuItem$1, { onClick: function () { return toggleVisibleColumns({ index: index }); } }, OPTIONS.hideColumn))));
 };
 
 var DividerIcon = function (_a) {
@@ -50546,7 +50661,7 @@ function calcTableHeght(hasToolbar, toolbarHeight, pagination, height) {
  */
 var VirtualizaTable = memo(function (_a) {
     var _b;
-    var rows = _a.rows, columns = _a.columns, _c = _a.width, width = _c === void 0 ? "100%" : _c, height = _a.height, _d = _a.hasFilter, hasFilter = _d === void 0 ? true : _d, _e = _a.hasToolbar, hasToolbar = _e === void 0 ? true : _e, title = _a.title, operationOnRows = _a.operationOnRows, classes = _a.classes, pagination = _a.pagination, tableDataParser = _a.tableDataParser, VTContainerProps = _a.VTContainerProps, VTToolbarProps = _a.VTToolbarProps, rest = __rest$1(_a, ["rows", "columns", "width", "height", "hasFilter", "hasToolbar", "title", "operationOnRows", "classes", "pagination", "tableDataParser", "VTContainerProps", "VTToolbarProps"]);
+    var rows = _a.rows, columns = _a.columns, _c = _a.width, width = _c === void 0 ? "100%" : _c, height = _a.height, _d = _a.hasFilter, hasFilter = _d === void 0 ? true : _d, _e = _a.hasToolbar, hasToolbar = _e === void 0 ? true : _e, _f = _a.searchable, searchable = _f === void 0 ? true : _f, title = _a.title, operationOnRows = _a.operationOnRows, classes = _a.classes, pagination = _a.pagination, tableDataParser = _a.tableDataParser, VTContainerProps = _a.VTContainerProps, VTToolbarProps = _a.VTToolbarProps, rest = __rest$1(_a, ["rows", "columns", "width", "height", "hasFilter", "hasToolbar", "searchable", "title", "operationOnRows", "classes", "pagination", "tableDataParser", "VTContainerProps", "VTToolbarProps"]);
     useTableData(columns, rows, tableDataParser);
     var setTableRef = useTableResizer().setTableRef;
     var staticGrid = useRef();
@@ -50558,12 +50673,12 @@ var VirtualizaTable = memo(function (_a) {
         }
     }, []);
     return (React__default.createElement(VirtualTableContainer, __assign$1({ classes: classes === null || classes === void 0 ? void 0 : classes.table }, VTContainerProps, { width: width }),
-        hasToolbar && (React__default.createElement(TableToolbar, __assign$1({ title: title, operationOnRows: operationOnRows, classes: classes === null || classes === void 0 ? void 0 : classes.toolbar }, VTToolbarProps))),
+        hasToolbar && (React__default.createElement(TableToolbarProvider, null,
+            React__default.createElement(TableToolbar, __assign$1({ title: title, operationOnRows: operationOnRows, classes: classes === null || classes === void 0 ? void 0 : classes.toolbar, hasFilter: hasFilter, searchable: searchable }, VTToolbarProps)))),
         React__default.createElement("div", { role: "table", className: (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.container, style: { display: "flex" } },
             React__default.createElement(Overlay, null),
             React__default.createElement(VirtualList, __assign$1({ ref: mainList, width: width, onScroll: onScroll, classes: classes, setTableRef: setTableRef, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) }, rest)),
             React__default.createElement(Overlay, null)),
-        hasFilter && React__default.createElement(TableFilter, null),
         pagination && (React__default.createElement(TablePagination, __assign$1({}, pagination, { classes: classes === null || classes === void 0 ? void 0 : classes.footer, width: width })))));
 });
 

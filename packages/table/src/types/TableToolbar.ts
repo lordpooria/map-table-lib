@@ -3,6 +3,8 @@ import { ToolbarClasses } from "./styles";
 export interface TableToolbarCompleteProps extends PublicTableToolbarProps {
   // columns: TableColumns;
   classes?: ToolbarClasses;
+  hasFilter?: boolean;
+  searchable?: boolean;
 }
 
 export interface PublicTableToolbarProps {

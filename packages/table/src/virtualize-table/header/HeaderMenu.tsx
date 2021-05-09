@@ -7,17 +7,16 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { useTStoreActions } from "../../store/reducerHooks";
-import MoreVert from "../../assets/icons/common/MoreVertIcon";
-import ArrowDown from "../../assets/icons/common/ArrowDownIcon";
-import ArrowUp from "../../assets/icons/common/ArrowUpIcon";
-import { SmallIconButton } from "@hesaba/theme-language";
+import { MoreVertIcon, ArrowDownIcon, ArrowUpIcon } from "@hesaba/assets";
+
+import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
 import { SortType } from "../../types/main";
 import { VTMainListProps } from "../../types";
 // import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },
-}))(SmallIconButton);
+}))(ButtonTooltip);
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -45,11 +44,13 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
+  const { t } = useTranslation();
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const sortTable = useTStoreActions((actions) => actions.sortTable);
-  const filterAdd = useTStoreActions((actions) => actions.filterAdd);
+  // const filterAdd = useTStoreActions((actions) => actions.filterAdd);
   // const setStickyColumn = useTStoreActions(
   //   (actions) => actions.setStickyColumn
   // );
@@ -73,13 +74,13 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
   return (
     <>
       {sortable && sorted === "DESC" && (
-        <HeaderIconButton onClick={sortAsc}>
-          <ArrowUp className={classes.icons} />
+        <HeaderIconButton title={t.sortDsc} onClick={sortDesc}>
+          <ArrowUpIcon className={classes.icons} />
         </HeaderIconButton>
       )}
       {sortable && sorted === "ASC" && (
-        <HeaderIconButton onClick={sortDesc}>
-          <ArrowDown className={classes.icons} />
+        <HeaderIconButton title={t.sortAsc} onClick={sortAsc}>
+          <ArrowDownIcon className={classes.icons} />
         </HeaderIconButton>
       )}
       {/* {sortable && sorted === "ASC" && (
@@ -87,8 +88,8 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
           <PinIcon className={classes.icons} />
         </HeaderIconButton>
       )} */}
-      <HeaderIconButton onClick={handleClick}>
-        <MoreVert className={classes.icons} />
+      <HeaderIconButton title={t.menu} onClick={handleClick}>
+        <MoreVertIcon className={classes.icons} />
       </HeaderIconButton>
       <Menu
         disableScrollLock={true}
@@ -109,13 +110,13 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
         <MenuItem onClick={() => toggleVisibleColumns({ index })}>
           {OPTIONS.hideColumn}
         </MenuItem>
-        <MenuItem
+        {/* <MenuItem
           onClick={() => {
             filterAdd({ columnKey });
           }}
         >
           {OPTIONS.filter}
-        </MenuItem>
+        </MenuItem> */}
         {/* <MenuItem onClick={stickColumn}>{OPTIONS.stick}</MenuItem> */}
       </Menu>
     </>
