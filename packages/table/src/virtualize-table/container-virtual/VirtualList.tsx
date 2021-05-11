@@ -110,7 +110,7 @@ export const VirtualList = memo(
       } = useTableRef();
       const visibleColumns = useTStoreState((state) => state.visibleColumns);
 
-      const visibleRows = useTStoreState((state) => state.visibleRows);
+      const visibleRows = useTStoreState((state) => state.rows);
       const tableClasses = useStyles();
       if (!visibleRows || visibleRows.length === 0) {
         return null;
@@ -220,7 +220,7 @@ export const StickyVirtualList = memo(
         stickyTableRef: { setRef },
       } = useTableRef();
       const stickyColumns = useTStoreState((state) => state.stickyColumns);
-      const visibleRows = useTStoreState((state) => state.visibleRows);
+      const visibleRows = useTStoreState((state) => state.rows);
       const tableClasses = useStyles();
       if (!visibleRows || visibleRows.length === 0) {
         return null;

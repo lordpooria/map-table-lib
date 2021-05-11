@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Grow from "@material-ui/core/Grow";
 import TextField from "@material-ui/core/TextField";
 import { CloseIcon } from "@hesaba/assets";
@@ -7,11 +7,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { TableSearchProps } from "../types/TableSearch";
 
-import {
-  useTableToolbarAction,
-  useTableToolbarState,
-} from "./TableToolbarProvider";
+import { useTableToolbarAction } from "./TableToolbarProvider";
 import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
+import { useTStoreActions } from "../store/reducerHooks";
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -38,57 +36,66 @@ const useStyles = makeStyles(
   { name: "MUIDataTableSearch" }
 );
 
-const TableSearch = ({}: TableSearchProps) => {
-  const classes = useStyles();
-  const { t } = useTranslation();
-  const { onSearchTextChange, toggleShowSearch } = useTableToolbarAction();
-  const { searchText } = useTableToolbarState();
-  const handleTextChange = (event: any) => {
-    onSearchTextChange(event.target.value);
-  };
+const TableSearch = memo(
+  ({ onSearchTextChange: onChange, searchText }: TableSearchProps) => {
+    const classes = useStyles();
+    const { t } = useTranslation();
+    const { onSearchTextChange, toggleShowSearch } = useTableToolbarAction();
+    const filterRowsOnSearch = useTStoreActions(
+      (actions) => actions.filterRowsOnSearch
+    );
+    // const { searchText } = useTableToolbarState();
+    const handleTextChange = (event: any) => {
+      if (onChange) onChange(event.target.value);
+      else {
+        filterRowsOnSearch(event.target.value);
+      }
+      onSearchTextChange(event.target.value);
+    };
 
-  const onHide = () => {
-    toggleShowSearch(false);
-  };
-  const onKeyDown = (event: any) => {
-    if (event.key === "Escape") {
-      onHide();
-    }
-  };
+    const onHide = () => {
+      toggleShowSearch(false);
+    };
+    const onKeyDown = (event: any) => {
+      if (event.key === "Escape") {
+        onHide();
+      }
+    };
 
-  return (
-    <Grow appear in={true} timeout={300}>
-      <div className={classes.main}>
-        <ButtonTooltip
-          title={t("close")}
-          status="error"
-          className={classes.clearIcon}
-          onClick={onHide}
-        >
-          <CloseIcon />
-        </ButtonTooltip>
+    return (
+      <Grow appear in={true} timeout={300}>
+        <div className={classes.main}>
+          <ButtonTooltip
+            title={t("close")}
+            status="error"
+            className={classes.clearIcon}
+            onClick={onHide}
+          >
+            <CloseIcon />
+          </ButtonTooltip>
 
-        <TextField
-          className={classes.searchText}
-          autoFocus={true}
-          label={t("search")}
-          placeholder={t("type")}
-          // InputProps={{
-          //   "data-test-id": options.textLabels.toolbar.search,
-          // }}
-          // inputProps={{
-          //   "aria-label": options.textLabels.toolbar.search,
-          // }}
-          value={searchText || ""}
-          onKeyDown={onKeyDown}
-          onChange={handleTextChange}
-          fullWidth={true}
-          // placeholder={options.searchPlaceholder}
-          // {...(options.searchProps ? options.searchProps : {})}
-        />
-      </div>
-    </Grow>
-  );
-};
+          <TextField
+            className={classes.searchText}
+            autoFocus={true}
+            label={t("search")}
+            placeholder={t("type")}
+            // InputProps={{
+            //   "data-test-id": options.textLabels.toolbar.search,
+            // }}
+            // inputProps={{
+            //   "aria-label": options.textLabels.toolbar.search,
+            // }}
+            value={searchText || ""}
+            onKeyDown={onKeyDown}
+            onChange={handleTextChange}
+            fullWidth={true}
+            // placeholder={options.searchPlaceholder}
+            // {...(options.searchProps ? options.searchProps : {})}
+          />
+        </div>
+      </Grow>
+    );
+  }
+);
 
 export default TableSearch;

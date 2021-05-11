@@ -36,6 +36,8 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     VTContainerProps,
     VTToolbarProps,
     headerHeight,
+    onFilterChange,
+    onSearchTextChange,
     ...rest
   }: VirtualTableProps) => {
     useTableData(columns, rows, tableDataParser);
@@ -69,6 +71,8 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
         {hasToolbar && (
           <TableToolbarProvider>
             <TableToolbar
+              onSearchTextChange={onSearchTextChange}
+              onFilterChange={onFilterChange}
               title={title}
               operationOnRows={operationOnRows}
               classes={classes?.toolbar}
@@ -86,24 +90,26 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
         >
           <Overlay />
 
-          {rest.withSticky && <StickyVirtualList
-            ref={staticGrid}
-            width={CHECKBOX_WIDTH}
-            onScroll={onStickyScroll}
-            height={
-              calcTableHeght(
-                hasToolbar,
-                VTToolbarProps?.height,
-                pagination,
-                height
-              ) - 13
-            }
-            {...rest}
-          />}
+          {rest.withSticky && (
+            <StickyVirtualList
+              ref={staticGrid}
+              width={CHECKBOX_WIDTH}
+              onScroll={onStickyScroll}
+              height={
+                calcTableHeght(
+                  hasToolbar,
+                  VTToolbarProps?.height,
+                  pagination,
+                  height
+                ) - 13
+              }
+              {...rest}
+            />
+          )}
 
           <VirtualList
             ref={mainList}
-            width={width }
+            width={width}
             onScroll={onScroll}
             classes={classes}
             height={calcTableHeght(

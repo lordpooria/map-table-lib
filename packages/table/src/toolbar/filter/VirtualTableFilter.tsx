@@ -1,14 +1,14 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
 
 import FilterItem from "./components/FilterItem";
 import { CloseIcon } from "@hesaba/assets";
 import { makeStyles, createStyles } from "@material-ui/core";
-import {
-  useTableToolbarAction,
-  useTableToolbarState,
-} from "../TableToolbarProvider";
+
 import { Add } from "@material-ui/icons";
 import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
+import { TableToolbarCompleteProps } from "../../types/TableToolbar";
+import { TableFilterType } from "../../types/VirtualTableFilter";
+import { useTableToolbarAction } from "../TableToolbarProvider";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -29,17 +29,25 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-interface Props {}
+interface Props {
+  onFilterChange: TableToolbarCompleteProps["onFilterChange"];
+  filters: Array<TableFilterType>;
+  showFilter: boolean;
+}
 
-const TableFilter = ({}: Props) => {
+const TableFilter = memo(({ onFilterChange, filters, showFilter }: Props) => {
   const classes = useStyles();
-  const { showFilter, filters } = useTableToolbarState();
-  const { toggleShowFilter } = useTableToolbarAction();
+
+  const { toggleShowFilter, filterAdd } = useTableToolbarAction();
+
   const handleClose = () => {
     toggleShowFilter(false);
   };
-  console.log(filters);
-  const { filterAdd } = useTableToolbarAction();
+
+  useEffect(() => {
+    onFilterChange && onFilterChange(filters);
+  }, [filters]);
+
   const { t } = useTranslation();
   if (!showFilter) return null;
   return (
@@ -49,7 +57,6 @@ const TableFilter = ({}: Props) => {
         title={t("close")}
         size="small"
         onClick={handleClose}
-       
       >
         <CloseIcon />
       </ButtonTooltip>
@@ -65,6 +72,6 @@ const TableFilter = ({}: Props) => {
       </div>
     </div>
   );
-};
+});
 
 export default TableFilter;

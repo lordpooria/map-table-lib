@@ -21,6 +21,8 @@ export const BaseTable = () => {
               selectable
               resizable
               sortable
+              // onSearchTextChange={(text)=>{console.log(text)}}
+              onFilterChange={(text)=>{console.log(text)}}
               direction="rtl"
             />
           )}

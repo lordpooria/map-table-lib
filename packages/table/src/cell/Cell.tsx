@@ -59,7 +59,7 @@ const EnhancedCell = memo(({ tooltips, tooltipKeys, ...rest }: Props) => {
   ) {
     const tooltipData = pickObjectKeys(rest.row, tooltipKeys);
     if (rest.rowIndex === 0) {
-      console.log(tooltipData, tooltipKeys, rest.row, tooltips);
+      // console.log(tooltipData, tooltipKeys, rest.row, tooltips);
     }
     return (
       <Tooltip

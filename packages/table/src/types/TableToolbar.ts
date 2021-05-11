@@ -17,4 +17,6 @@ export interface PublicTableToolbarProps {
 
   operationOnRows?: Array<React.ReactNode>;
   height?: number;
+  onSearchTextChange?: (_: string) => void;
+  onFilterChange?: (_: any) => void;
 }

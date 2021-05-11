@@ -14,7 +14,11 @@
   "devDependencies": {
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.2",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9"
   },
   "scripts": {
     "prebuild": "tsc ",

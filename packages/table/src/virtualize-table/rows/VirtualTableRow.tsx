@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { memo, useCallback } from "react";
 import clsx from "clsx";
 import { Checkbox, createStyles, makeStyles } from "@material-ui/core";
 
@@ -11,6 +11,16 @@ import { CompleteRowProps } from "../../types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
 import { chooseClass, useCalcTableWidth } from "../../utils/helper";
 import { useTableRowState } from "../../container/TableRowProvider";
+import { TableColumn, TableRows } from "../../types";
+
+type RowWrapperProps = CompleteRowProps & {
+  visibleRows: TableRows;
+};
+
+type VirtualRowProps = RowWrapperProps & {
+  getTooltipColumns: (label: string) => Array<TableColumn<any>>;
+  getTooltipKeys: (label: string) => Array<string>;
+};
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -37,16 +47,31 @@ const useStyles = makeStyles((theme) =>
 );
 
 export function VirtualTableRow(props: CompleteRowProps) {
+  const visibleRows = useTStoreState((state) => state.visibleRows);
+  const { getTooltipColumns, getTooltipKeys } = useTooltip();
+
   return (
     <>
-      <SingleVirtualTableRow {...props} />
+      <SingleVirtualTableRow
+        {...props}
+        visibleRows={visibleRows}
+        getTooltipColumns={getTooltipColumns}
+        getTooltipKeys={getTooltipKeys}
+      />
     </>
   );
 }
 export function VirtualStickyTableRow(props: CompleteRowProps) {
+  const visibleRows = useTStoreState((state) => state.visibleRows);
+  const { getTooltipColumns, getTooltipKeys } = useTooltip();
   return (
     <>
-      <SingleStickyVirtualTableRow {...props} />
+      <SingleStickyVirtualTableRow
+        {...props}
+        visibleRows={visibleRows}
+        getTooltipColumns={getTooltipColumns}
+        getTooltipKeys={getTooltipKeys}
+      />
     </>
   );
 }
@@ -63,66 +88,71 @@ function useTooltip() {
   return { getTooltipKeys, getTooltipColumns };
 }
 
-const RowWrapper = ({
-  children,
-  style,
-  extraStyles,
-  selectedRowStyle,
-  classes,
-  onRowClick,
-  rowIndex,
-  width,
-}: CompleteRowProps & { children: React.ReactNode }) => {
-  const rowClasses = useStyles();
-  const visibleRows = useTStoreState((state) => state.visibleRows);
+const RowWrapper = memo(
+  ({
+    children,
+    style,
+    extraStyles,
+    selectedRowStyle,
+    classes,
+    onRowClick,
+    rowIndex,
+    width,
+    visibleRows,
+  }: RowWrapperProps & { children: React.ReactNode }) => {
+    const rowClasses = useStyles();
 
-  const { activeRow } = useTableRowState();
-  const onRowSelect = useCallback(() => {
-    onRowClick && onRowClick(rowIndex);
-  }, [onRowClick]);
-  return (
-    <div
-      style={{
-        ...style,
-        ...extraStyles,
-        ...(activeRow === rowIndex && selectedRowStyle),
-        width,
-      }}
-      className={clsx(
-        HESABA_TABLE_ROW_CLASS,
-        rowClasses.tableRow,
-        chooseClass(rowClasses.tableRowCommon, classes?.root),
-        { [rowClasses.selected]: visibleRows[rowIndex].selected },
-        { [rowClasses.activatedRow]: activeRow === rowIndex },
-        {
-          [classes?.evenRow || "tempEvenRow"]:
-            classes?.evenRow && rowIndex % 2 === 0,
-        },
-        {
-          [classes?.oddRow || "tempOddRow"]:
-            classes?.oddRow && rowIndex % 2 !== 0,
-        }
-      )}
-      onClick={onRowSelect}
-    >
-      {children}
-    </div>
-  );
-};
+    const { activeRow } = useTableRowState();
+    const onRowSelect = useCallback(() => {
+      onRowClick && onRowClick(rowIndex);
+    }, [onRowClick]);
+    return (
+      <div
+        style={{
+          ...style,
+          ...extraStyles,
+          ...(activeRow === rowIndex && selectedRowStyle),
+          width,
+        }}
+        className={clsx(
+          HESABA_TABLE_ROW_CLASS,
+          rowClasses.tableRow,
+          chooseClass(rowClasses.tableRowCommon, classes?.root),
+          { [rowClasses.selected]: visibleRows[rowIndex].selected },
+          { [rowClasses.activatedRow]: activeRow === rowIndex },
+          {
+            [classes?.evenRow || "tempEvenRow"]:
+              classes?.evenRow && rowIndex % 2 === 0,
+          },
+          {
+            [classes?.oddRow || "tempOddRow"]:
+              classes?.oddRow && rowIndex % 2 !== 0,
+          }
+        )}
+        onClick={onRowSelect}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
-const SingleVirtualTableRow = (props: CompleteRowProps) => {
-  const visibleRows = useTStoreState((state) => state.visibleRows);
+const SingleVirtualTableRow = memo((props: VirtualRowProps) => {
   const commonClasses = useCommonStyles();
-  const { getTooltipColumns, getTooltipKeys } = useTooltip();
+
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
   const calcRowWidth = useCalcTableWidth(props.columns, props.width);
   return (
-    <RowWrapper {...props} width={calcRowWidth()}>
+    <RowWrapper
+      {...props}
+      width={calcRowWidth()}
+      visibleRows={props.visibleRows}
+    >
       {props.selectable && !props.withSticky && (
         <Checkbox
-          checked={visibleRows[props.rowIndex].selected}
+          checked={props.visibleRows[props.rowIndex].selected}
           onChange={() => {
             toggleSingleRow({ index: props.rowIndex });
           }}
@@ -138,34 +168,35 @@ const SingleVirtualTableRow = (props: CompleteRowProps) => {
           <Cell
             {...col}
             colIndex={colIndex}
-            row={visibleRows[props.rowIndex]}
+            row={props.visibleRows[props.rowIndex]}
             rowIndex={props.rowIndex}
             columnsLength={props.columns.length}
             colKey={col.key}
-            tooltips={getTooltipColumns(col.label)}
-            tooltipKeys={getTooltipKeys(col.label)}
+            tooltips={props.getTooltipColumns(col.label)}
+            tooltipKeys={props.getTooltipKeys(col.label)}
           />
         </Fragment>
       ))}
     </RowWrapper>
   );
-};
+});
 
-const SingleStickyVirtualTableRow = (props: CompleteRowProps) => {
+const SingleStickyVirtualTableRow = memo((props: VirtualRowProps) => {
   const commonClasses = useCommonStyles();
-
-  const visibleRows = useTStoreState((state) => state.visibleRows);
-  const { getTooltipColumns, getTooltipKeys } = useTooltip();
 
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
 
   return (
-    <RowWrapper {...props} width={"auto" as any}>
+    <RowWrapper
+      {...props}
+      width={"auto" as any}
+      visibleRows={props.visibleRows}
+    >
       {props.selectable && (
         <Checkbox
-          checked={visibleRows[props.rowIndex].selected}
+          checked={props.visibleRows[props.rowIndex].selected}
           onChange={() => {
             toggleSingleRow({ index: props.rowIndex });
           }}
@@ -182,15 +213,15 @@ const SingleStickyVirtualTableRow = (props: CompleteRowProps) => {
           <Cell
             {...col}
             colIndex={colIndex}
-            row={visibleRows[props.rowIndex]}
+            row={props.visibleRows[props.rowIndex]}
             rowIndex={props.rowIndex}
             columnsLength={props.columns.length}
             colKey={col.key}
-            tooltips={getTooltipColumns(col.label)}
-            tooltipKeys={getTooltipKeys(col.label)}
+            tooltips={props.getTooltipColumns(col.label)}
+            tooltipKeys={props.getTooltipKeys(col.label)}
           />
         </Fragment>
       ))}
     </RowWrapper>
   );
-};
+});

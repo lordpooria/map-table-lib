@@ -89,7 +89,6 @@ export type CompleteHeadProps = VTPublicHeaderProps & {
   width: CommonPublicProps["width"];
   classes?: HeaderClasses;
   columns: TableColumns;
-
 };
 
 export interface VTPublicRowProps {
@@ -106,6 +105,7 @@ export type SpecificRowProps = CommonTableElProps & {
   width: CommonPublicProps["width"];
   style: any;
   columns: TableColumns;
+ 
 };
 
 export type CompleteRowProps = VTPublicRowProps & SpecificRowProps;

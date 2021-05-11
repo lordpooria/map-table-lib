@@ -18,11 +18,12 @@ import clsx from "clsx";
 import { DEFAULT_TOOLBAR_HEIGHT } from "../utils/themeConstants";
 import TableFilter from "./filter/VirtualTableFilter";
 import TableSearch from "./TableSearch";
+
+import { FilterIcon, SearchTableIcon } from "@hesaba/assets";
 import {
   useTableToolbarAction,
   useTableToolbarState,
 } from "./TableToolbarProvider";
-import { FilterIcon, SearchTableIcon } from "@hesaba/assets";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -51,6 +52,8 @@ export const TableToolbar = ({
   classes,
   hasFilter,
   searchable,
+  onSearchTextChange,
+  onFilterChange,
   ...rest
 }: TableToolbarCompleteProps) => {
   const toolbarClasses = useStyles();
@@ -66,8 +69,11 @@ export const TableToolbar = ({
           searchable={searchable}
         />
 
-        <ToolbarFilter hasFilter={hasFilter} />
-        <ToolbarSearch searchable={searchable} />
+        <ToolbarFilter hasFilter={hasFilter} onFilterChange={onFilterChange} />
+        <ToolbarSearch
+          searchable={searchable}
+          onSearchTextChange={onSearchTextChange}
+        />
 
         {rest.operationOnRows && <ToolbarOperation {...rest} />}
       </div>
@@ -78,19 +84,41 @@ export const TableToolbar = ({
   );
 };
 
-const ToolbarFilter = memo(({ hasFilter }: any) => {
-  const { showFilter } = useTableToolbarState();
+interface FilterProps {
+  hasFilter: TableToolbarCompleteProps["hasFilter"];
+  onFilterChange: TableToolbarCompleteProps["onFilterChange"];
+}
 
+const ToolbarFilter = memo(({ hasFilter, onFilterChange }: FilterProps) => {
+  const { filters, showFilter } = useTableToolbarState();
   if (!hasFilter || !showFilter) return null;
-  return <TableFilter />;
+  return (
+    <TableFilter
+      onFilterChange={onFilterChange}
+      filters={filters}
+      showFilter={showFilter}
+    />
+  );
 });
 
-const ToolbarSearch = memo(({ searchable }: any) => {
-  const { showSearch } = useTableToolbarState();
+interface SearchProps {
+  searchable: TableToolbarCompleteProps["searchable"];
+  onSearchTextChange: TableToolbarCompleteProps["onSearchTextChange"];
+}
 
-  if (!searchable || !showSearch) return null;
-  return <TableSearch />;
-});
+const ToolbarSearch = memo(
+  ({ searchable, onSearchTextChange }: SearchProps) => {
+    const { showSearch, searchText } = useTableToolbarState();
+
+    if (!searchable || !showSearch) return null;
+    return (
+      <TableSearch
+        onSearchTextChange={onSearchTextChange}
+        searchText={searchText}
+      />
+    );
+  }
+);
 
 export function ToolbarMoreVert({
   classes,
@@ -118,6 +146,7 @@ export function ToolbarMoreVert({
     (actions) => actions.toggleVisibleColumns
   );
   const { toggleShowSearch, toggleShowFilter } = useTableToolbarAction();
+
   // const toggleShowFilter = useTStoreActions(
   //   (actions) => actions.toggleShowFilter
   // );
