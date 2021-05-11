@@ -1,7 +1,9 @@
 import { FilterOperationsType } from "./VirtualTableFilter";
-import { TableColumnData, TableColumns, TableRows } from "./main";
+import { TooltipKeys, TooltipColumns, TableColumnData, TableColumns, TableRows } from "./main";
 export declare type OnSetTableDataPayload = {
     enhancedColumns: TableColumns;
+    tooltipColumns?: TooltipColumns;
+    tooltipKeys?: TooltipKeys;
     visibleRows: TableRows;
 };
 export declare type SetFilterColPayload = {

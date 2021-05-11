@@ -31,3 +31,15 @@ export const useCalcTableWidth = (
 export function chooseClass(common: string, user?: string) {
   return user ? user : common;
 }
+
+export const pickObjectKeys = (
+  object: Record<string, string>,
+  keys: Array<string>
+) =>
+  keys.reduce(
+    (acc, k) => (k in object ? { ...acc, [k]: object[k] as any } : acc),
+    {}
+  );
+
+export const flatStringObject = (object: Record<string, string>) =>
+  Object.keys(object).reduce((acc, k) => `${acc} \n ${k}:${acc[k as any]}`, "");

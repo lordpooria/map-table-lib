@@ -12,7 +12,7 @@ import { MoreVertIcon, ArrowDownIcon, ArrowUpIcon } from "@hesaba/assets";
 import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
 import { SortType } from "../../types/main";
 import { VTMainListProps } from "../../types";
-import { useAddSticky } from "../../container/TableSizeProvider";
+import { useAddSticky } from "../../container/TableStickyProvider";
 // import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({

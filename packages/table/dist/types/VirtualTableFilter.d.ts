@@ -3,7 +3,7 @@ import { ColumnType, TableColumnData } from "./main";
 declare type FilterTypes = "common" | ColumnType;
 export declare type TableFilterType = {
     id: string;
-    column: Array<TableColumnData>;
+    column: Array<TableColumnData | undefined>;
     operation: FilterOperationsType | undefined;
     value: any;
 };

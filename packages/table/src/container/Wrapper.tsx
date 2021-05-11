@@ -4,6 +4,7 @@ import store, { VTStoreModel } from "../store";
 import ThemeMaker from "./ThemeProvider";
 import { WrapperProps } from "../virtualize-table/container-virtual";
 import { TableSizeProvider } from "./TableSizeProvider";
+import { TableStickyProvider } from "./TableStickyProvider";
 import { HesabaStyleProvider } from "@hesaba/theme-language";
 import { TableRowProvider } from "./TableRowProvider";
 
@@ -21,7 +22,9 @@ export const TableStoreProvider: FC<{
   return (
     <TableRowProvider>
       <StoreProvider store={store}>
-        <TableSizeProvider width={width}>{children}</TableSizeProvider>
+        <TableSizeProvider>
+          <TableStickyProvider width={width}>{children}</TableStickyProvider>
+        </TableSizeProvider>
       </StoreProvider>
     </TableRowProvider>
   );

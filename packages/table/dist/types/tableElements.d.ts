@@ -2,19 +2,21 @@ import { TablePaginationProps } from "@material-ui/core";
 import { CheckboxProps } from "@material-ui/core/Checkbox";
 import { SVGProps } from "react";
 import { PublicFilterProps } from "./Filter";
-import { TableColumn } from "./main";
+import { TableColumn, TableColumns } from "./main";
 import { CellClasses, HeaderClasses, PaginationClasses, RowClasses, StyleTypes } from "./styles";
 import { CommonPublicProps } from "./tableTypes";
 export declare type VTMainListProps = {
     height: number;
     /**
-     * If you wanna make selectable table each row has a check box
      */
     searchable?: boolean;
     /**
      * If you wanna make selectable table each row has a check box
      */
     selectable?: boolean;
+    /**
+     */
+    withSticky?: boolean;
     /**
      * If you wanna make resizable column table
      * This option make some handle appear you could resize your table
@@ -29,13 +31,16 @@ export declare type VTMainListProps = {
     /**
      * in a virtual table you should specify item height
      */
-    itemSize?: (_: number) => number;
+    itemSize?: number;
+    /**
+     * in a virtual table you should specify item height
+     */
+    headerHeight?: number;
 };
 export declare type CompleteMainListProps = VTMainListProps & {
     width: CommonPublicProps["width"];
     classes?: StyleTypes["classes"];
     onScroll?: any;
-    setTableRef?: any;
     extraStyle?: any;
     /**
      */
@@ -57,13 +62,15 @@ export interface HeaderCellProps extends TableColumn {
 export declare type VTPublicHeaderProps = CommonTableElProps & {
     DividerProps?: SVGProps<any>;
 };
-export declare type CompleteHeadProps = VTPublicHeaderProps & VTPublicHeaderProps & {
-    isSelected: boolean;
+export declare type CompleteHeadProps = VTPublicHeaderProps & {
+    headerHeight?: number;
     sortable?: VTMainListProps["sortable"];
+    withSticky?: VTMainListProps["withSticky"];
     resizable?: VTMainListProps["resizable"];
     selectable?: VTMainListProps["selectable"];
     width: CommonPublicProps["width"];
     classes?: HeaderClasses;
+    columns: TableColumns;
 };
 export interface VTPublicRowProps {
     classes?: RowClasses;
@@ -73,9 +80,11 @@ export interface VTPublicRowProps {
 }
 export declare type SpecificRowProps = CommonTableElProps & {
     selectable?: VTMainListProps["selectable"];
+    withSticky?: VTMainListProps["withSticky"];
     rowIndex: number;
     width: CommonPublicProps["width"];
     style: any;
+    columns: TableColumns;
 };
 export declare type CompleteRowProps = VTPublicRowProps & SpecificRowProps;
 export declare type VTPublicPagination = TablePaginationProps & {

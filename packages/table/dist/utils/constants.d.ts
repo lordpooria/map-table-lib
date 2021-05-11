@@ -6,3 +6,4 @@ export declare const HESABA_TABLE_CELL_PLACEHOLDER = "HESABA_TABLE_CELL_PLACEHOL
 export declare const HESABA_DATA_FIELD = "HESABA_DATA_FIELD";
 export declare const DATA_FIELD = "data-field";
 export declare const MAIN_LIST_ID = "MainVirtualListId";
+export declare const MAIN_STICKY_LIST_ID = "MainStickyVirtualListId";

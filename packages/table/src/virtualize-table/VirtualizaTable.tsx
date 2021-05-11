@@ -51,6 +51,14 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
       },
       []
     );
+    const onStickyScroll = useCallback(
+      ({ scrollOffset, scrollUpdateWasRequested }: ListOnScrollProps) => {
+        if (!scrollUpdateWasRequested && mainList.current) {
+          mainList.current.scrollTo(scrollOffset);
+        }
+      },
+      []
+    );
 
     return (
       <VirtualTableContainer
@@ -78,21 +86,24 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
         >
           <Overlay />
 
-          <StickyVirtualList
+          {rest.withSticky && <StickyVirtualList
             ref={staticGrid}
             width={CHECKBOX_WIDTH}
-            height={calcTableHeght(
-              hasToolbar,
-              VTToolbarProps?.height,
-              pagination,
-              height
-            )}
+            onScroll={onStickyScroll}
+            height={
+              calcTableHeght(
+                hasToolbar,
+                VTToolbarProps?.height,
+                pagination,
+                height
+              ) - 13
+            }
             {...rest}
-          />
+          />}
 
           <VirtualList
             ref={mainList}
-            width={width - CHECKBOX_WIDTH}
+            width={width }
             onScroll={onScroll}
             classes={classes}
             height={calcTableHeght(

@@ -6,6 +6,7 @@ import { AutoSizer } from "../src";
 import React from "react";
 import { simpleSchemaColumns, simpleRows } from "./helper/fakeData";
 
+
 export const BaseTable = () => {
   return (
     <div style={{ padding: 16 }}>

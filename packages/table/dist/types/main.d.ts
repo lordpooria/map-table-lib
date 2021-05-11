@@ -2,7 +2,7 @@
 import { DATA_FIELD } from "../utils/constants";
 export declare type SortType = undefined | "ASC" | "DESC";
 export declare type PageDir = "rtl" | "ltr";
-export declare type ColumnType = "number" | "string" | "date" | "geographic";
+export declare type ColumnType = "number" | "string" | "date" | "geographic" | "tooltip";
 export interface TableComponentProps {
     index: number;
     value: any;
@@ -15,6 +15,7 @@ export declare type TableColumnData = {
     key: string;
     label: string;
     type?: ColumnType;
+    reference?: string;
 };
 export declare type RawTableColumn<T> = TableColumnData & {
     minWidth?: number;
@@ -30,16 +31,21 @@ export declare type RawTableRows = Array<RawTableRow>;
 export declare type RawTableColumns<T extends {} = any> = Array<RawTableColumn<T>>;
 export declare type TableColumn<T extends {} = any> = RawTableColumn<T> & {
     [DATA_FIELD]: string;
+    colIndex: number;
     visible: boolean;
-    sticky: boolean;
+    sticked: boolean;
     sorted: SortType;
     type: ColumnType;
 };
 export declare type TableColumns<T extends {} = any> = Array<TableColumn<T>>;
+export declare type TooltipColumns<T extends {} = any> = Record<string, Array<TableColumn<T>>>;
+export declare type TooltipKeys<T extends {} = any> = Record<string, Array<T>>;
 export declare type TableRows = Array<RawTableRow & {
     selected: boolean;
 }>;
 export declare type TableDataParser = (columns: RawTableColumns, rows: RawTableRows) => {
     enhancedColumns: TableColumns;
+    tooltipColumns?: TooltipColumns;
+    tooltipKeys?: TooltipKeys;
     visibleRows: TableRows;
 };

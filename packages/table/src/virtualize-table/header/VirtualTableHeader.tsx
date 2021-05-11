@@ -50,13 +50,18 @@ export const VirtualTableHeader = ({
   classes,
   width,
   columns,
+  withSticky,
   CheckboxProps,
   headerHeight = commonSidebar.itemHeight,
   ...rest
 }: CompleteHeadProps) => {
   const tableClasses = useStyles();
+  const commonClasses = useCommonStyles();
 
   const calcRowWidth = useCalcTableWidth(columns, width);
+  const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
+
+  const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
 
   return (
     <div
@@ -70,6 +75,18 @@ export const VirtualTableHeader = ({
         chooseClass(tableClasses.commonHeaderContainer, classes?.root)
       )}
     >
+      {selectable && !withSticky && (
+        <Checkbox
+          className={clsx("HESABA_TABLE_HEADER_CLASS")}
+          checked={numRowsSelected !== 0}
+          onChange={() => {
+            toggleAllRows({ isSelected: numRowsSelected !== 0 });
+          }}
+          color="primary"
+          classes={{ root: commonClasses.checkbox }}
+          {...CheckboxProps}
+        />
+      )}
       {columns.map((props) => (
         <Fragment key={props.key}>
           <HeadCell
@@ -99,7 +116,6 @@ export const VirtualTableStickyHeader = ({
   const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
 
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
-  const calcRowWidth = useCalcTableWidth(columns, width);
 
   return (
     <div

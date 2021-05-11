@@ -1,6 +1,6 @@
 import { Action, Computed } from "easy-peasy";
 import { OnSetTableDataPayload } from "../types/store";
-import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
+import { TableColumns, TableRows, SortType, PageDir, TooltipColumns, TooltipKeys } from "../types/main";
 export interface VTStoreModel {
     VTVersion: string;
     settings: {
@@ -9,6 +9,8 @@ export interface VTStoreModel {
     };
     visibleRows: TableRows;
     enhancedColumns: TableColumns;
+    tooltipColumns: TooltipColumns;
+    tooltipKeys: TooltipKeys;
     toggleSingleRow: Action<VTStoreModel, {
         index: number;
     }>;
@@ -20,7 +22,7 @@ export interface VTStoreModel {
     }>;
     setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
     fakeAppendTableData: Action<VTStoreModel, any>;
-    setStickyColumn: Action<VTStoreModel, {
+    toggleStickyColumn: Action<VTStoreModel, {
         index: number;
     }>;
     sortTable: Action<VTStoreModel, {

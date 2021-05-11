@@ -4,7 +4,12 @@ export type SortType = undefined | "ASC" | "DESC";
 
 export type PageDir = "rtl" | "ltr";
 
-export type ColumnType = "number" | "string" | "date" | "geographic";
+export type ColumnType =
+  | "number"
+  | "string"
+  | "date"
+  | "geographic"
+  | "tooltip";
 
 export interface TableComponentProps {
   index: number;
@@ -21,6 +26,7 @@ export type TableColumnData = {
   key: string;
   label: string;
   type?: ColumnType;
+  reference?: string;
 };
 
 export type RawTableColumn<T> = TableColumnData & {
@@ -61,9 +67,20 @@ export type TableColumn<T extends {} = any> = RawTableColumn<T> & {
 
 export type TableColumns<T extends {} = any> = Array<TableColumn<T>>;
 
+export type TooltipColumns<T extends {} = any> = Record<
+  string,
+  Array<TableColumn<T>>
+>;
+export type TooltipKeys<T extends {} = any> = Record<string, Array<T>>;
+
 export type TableRows = Array<RawTableRow & { selected: boolean }>;
 
 export type TableDataParser = (
   columns: RawTableColumns,
   rows: RawTableRows
-) => { enhancedColumns: TableColumns; visibleRows: TableRows };
+) => {
+  enhancedColumns: TableColumns;
+  tooltipColumns?: TooltipColumns;
+  tooltipKeys?: TooltipKeys;
+  visibleRows: TableRows;
+};

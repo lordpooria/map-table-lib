@@ -1,27 +1,72 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef, memo,  } from "react";
 import { VariableSizeList as List } from "react-window";
 
-import {VirtualTableRow,VirtualStickyTableRow} from "../rows/VirtualTableRow";
-import {VirtualTableHeader,VirtualTableStickyHeader} from "../header/VirtualTableHeader";
+import {
+  VirtualTableRow,
+  VirtualStickyTableRow,
+} from "../rows/VirtualTableRow";
+import {
+  VirtualTableHeader,
+  VirtualTableStickyHeader,
+} from "../header/VirtualTableHeader";
 
 import clsx from "clsx";
 import { CompleteMainListProps } from "../../types";
 import { useTStoreState } from "../../store/reducerHooks";
 import { useLanguageState } from "@hesaba/theme-language";
+// import { Scrollbars } from "react-custom-scrollbars";
 
 import { MAIN_LIST_ID, MAIN_STICKY_LIST_ID } from "../../utils/constants";
 import { makeStyles } from "@material-ui/core";
-import { useTableRef } from "../../container/TableSizeProvider";
+import { useTableRef } from "../../container/TableStickyProvider";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {},
   stickyTable: {
     zIndex: 10,
     backgroundColor: "#FFF",
     overflowY: "hidden",
-    boxShadow: theme.shadows[5],
+    border: "solid 1px #aaa",
+
+    "&::-webkit-scrollbar": {
+      // General scrollbar
+      // width: "0px",
+      // display: "none",
+      // height: "0px",
+
+      /* Remove scrollbar space */
+      background: "transparent" /* Optional: just make scrollbar invisible */,
+    },
+
+    "&:::-webkit-scrollbar-thumb": {
+      background: "#FF0000",
+    },
   },
+  stickyTableWrapper: { overflow: "hidden" },
 }));
+
+// const CustomScrollbars = ({ onScroll, forwardedRef, style, children }: any) => {
+//   const refSetter = useCallback(
+//     (scrollbarsRef) => {
+//       if (scrollbarsRef) {
+//         forwardedRef(scrollbarsRef.view);
+//       } else {
+//         forwardedRef(null);
+//       }
+//     },
+//     [forwardedRef]
+//   );
+
+//   return (
+//     <Scrollbars
+//       ref={refSetter}
+//       style={{ ...style, overflow: "hidden" }}
+//       onScroll={onScroll}
+//     >
+//       {children}
+//     </Scrollbars>
+//   );
+// };
 
 const outerElementTypeWithId = forwardRef((props: any, ref) => {
   return <div id={MAIN_LIST_ID} {...props} ref={ref as any} />;
@@ -33,8 +78,8 @@ const stickyOuterElementTypeWithId = forwardRef((props: any, ref) => {
       id={MAIN_STICKY_LIST_ID}
       {...props}
       className={classes.stickyTable}
-      style={{ ...props.style, overflow: "hidden" }}
       ref={ref as any}
+      style={{ ...props.style, overflow: "hidden" }}
     />
   );
 });
@@ -50,6 +95,8 @@ export const VirtualList = memo(
         itemSize = 50,
         resizable,
         sortable,
+        withSticky,
+        selectable,
         VTCommonTableElProps,
         VTRowProps,
         VTFilterProps,
@@ -103,6 +150,8 @@ export const VirtualList = memo(
             classes={classes?.header}
             width={width}
             resizable={resizable}
+            withSticky={withSticky}
+            selectable={selectable}
             sortable={sortable}
             columns={visibleColumns}
             {...VTCommonTableElProps}
@@ -139,7 +188,7 @@ export const VirtualList = memo(
               {...VTCommonTableElProps}
               {...VTRowProps}
               {...rest}
-              selectable={false}
+            selectable={selectable}
             />
           )}
         </List>

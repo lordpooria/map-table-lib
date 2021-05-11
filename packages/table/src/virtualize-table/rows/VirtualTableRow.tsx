@@ -51,24 +51,31 @@ export function VirtualStickyTableRow(props: CompleteRowProps) {
   );
 }
 
-const SingleVirtualTableRow = ({
+function useTooltip() {
+  const tooltipColumns = useTStoreState((state) => state.tooltipColumns);
+  const tooltipKeys = useTStoreState((state) => state.tooltipKeys);
+  const getTooltipColumns = useCallback((label: string) => {
+    return tooltipColumns[label as any];
+  }, []);
+  const getTooltipKeys = useCallback((label: string) => {
+    return tooltipKeys[label as any];
+  }, []);
+  return { getTooltipKeys, getTooltipColumns };
+}
+
+const RowWrapper = ({
+  children,
   style,
-  rowIndex,
-  selectable,
-  classes,
-  width,
-  columns,
-  CheckboxProps,
-  onRowClick,
   extraStyles,
   selectedRowStyle,
-  ...rest
-}: CompleteRowProps) => {
+  classes,
+  onRowClick,
+  rowIndex,
+  width,
+}: CompleteRowProps & { children: React.ReactNode }) => {
   const rowClasses = useStyles();
-
   const visibleRows = useTStoreState((state) => state.visibleRows);
 
-  const calcRowWidth = useCalcTableWidth(columns, width);
   const { activeRow } = useTableRowState();
   const onRowSelect = useCallback(() => {
     onRowClick && onRowClick(rowIndex);
@@ -79,7 +86,7 @@ const SingleVirtualTableRow = ({
         ...style,
         ...extraStyles,
         ...(activeRow === rowIndex && selectedRowStyle),
-        width: calcRowWidth(),
+        width,
       }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
@@ -98,100 +105,92 @@ const SingleVirtualTableRow = ({
       )}
       onClick={onRowSelect}
     >
-      {columns.map((props, colIndex) => (
-        <Fragment key={props.key}>
-          <Cell
-            {...props}
-            {...rest}
-            colIndex={colIndex}
-            row={visibleRows[rowIndex]}
-            rowIndex={rowIndex}
-            columnsLength={columns.length}
-            colKey={props.key}
-          />
-        </Fragment>
-      ))}
+      {children}
     </div>
   );
 };
 
-const SingleStickyVirtualTableRow = ({
-  style,
-  rowIndex,
-  selectable,
-  classes,
-  width,
-  columns,
-  CheckboxProps,
-  onRowClick,
-  extraStyles,
-  selectedRowStyle,
-  ...rest
-}: CompleteRowProps) => {
-  const rowClasses = useStyles();
-  const commonClasses = useCommonStyles();
-
+const SingleVirtualTableRow = (props: CompleteRowProps) => {
   const visibleRows = useTStoreState((state) => state.visibleRows);
+  const commonClasses = useCommonStyles();
+  const { getTooltipColumns, getTooltipKeys } = useTooltip();
   const toggleSingleRow = useTStoreActions(
     (actions) => actions.toggleSingleRow
   );
-  const calcRowWidth = useCalcTableWidth(columns, width);
-  const { activeRow } = useTableRowState();
-  const onRowSelect = useCallback(() => {
-    onRowClick && onRowClick(rowIndex);
-  }, [onRowClick]);
+  const calcRowWidth = useCalcTableWidth(props.columns, props.width);
   return (
-    <div
-      style={{
-        ...style,
-        ...extraStyles,
-        ...(activeRow === rowIndex && selectedRowStyle),
-        // width: calcRowWidth(),
-      }}
-      className={clsx(
-        HESABA_TABLE_ROW_CLASS,
-        rowClasses.tableRow,
-        chooseClass(rowClasses.tableRowCommon, classes?.root),
-        { [rowClasses.selected]: visibleRows[rowIndex].selected },
-        { [rowClasses.activatedRow]: activeRow === rowIndex },
-        {
-          [classes?.evenRow || "tempEvenRow"]:
-            classes?.evenRow && rowIndex % 2 === 0,
-        },
-        {
-          [classes?.oddRow || "tempOddRow"]:
-            classes?.oddRow && rowIndex % 2 !== 0,
-        }
-      )}
-      onClick={onRowSelect}
-    >
-      {selectable && (
+    <RowWrapper {...props} width={calcRowWidth()}>
+      {props.selectable && !props.withSticky && (
         <Checkbox
-          checked={visibleRows[rowIndex].selected}
+          checked={visibleRows[props.rowIndex].selected}
           onChange={() => {
-            toggleSingleRow({ index: rowIndex });
+            toggleSingleRow({ index: props.rowIndex });
           }}
           // name={name}
           color="primary"
           classes={{ root: commonClasses.checkbox }}
           onClick={(e) => e.stopPropagation()}
-          {...CheckboxProps}
+          {...props.CheckboxProps}
         />
       )}
-
-      {columns.map((props, colIndex) => (
-        <Fragment key={props.key}>
+      {props.columns.map((col, colIndex) => (
+        <Fragment key={col.key}>
           <Cell
-            {...props}
-            {...rest}
+            {...col}
             colIndex={colIndex}
-            row={visibleRows[rowIndex]}
-            rowIndex={rowIndex}
-            columnsLength={columns.length}
-            colKey={props.key}
+            row={visibleRows[props.rowIndex]}
+            rowIndex={props.rowIndex}
+            columnsLength={props.columns.length}
+            colKey={col.key}
+            tooltips={getTooltipColumns(col.label)}
+            tooltipKeys={getTooltipKeys(col.label)}
           />
         </Fragment>
       ))}
-    </div>
+    </RowWrapper>
+  );
+};
+
+const SingleStickyVirtualTableRow = (props: CompleteRowProps) => {
+  const commonClasses = useCommonStyles();
+
+  const visibleRows = useTStoreState((state) => state.visibleRows);
+  const { getTooltipColumns, getTooltipKeys } = useTooltip();
+
+  const toggleSingleRow = useTStoreActions(
+    (actions) => actions.toggleSingleRow
+  );
+
+  return (
+    <RowWrapper {...props} width={"auto" as any}>
+      {props.selectable && (
+        <Checkbox
+          checked={visibleRows[props.rowIndex].selected}
+          onChange={() => {
+            toggleSingleRow({ index: props.rowIndex });
+          }}
+          // name={name}
+          color="primary"
+          classes={{ root: commonClasses.checkbox }}
+          onClick={(e) => e.stopPropagation()}
+          {...props.CheckboxProps}
+        />
+      )}
+
+      {props.columns.map((col, colIndex) => (
+        <Fragment key={col.key}>
+          <Cell
+            {...col}
+            colIndex={colIndex}
+            row={visibleRows[props.rowIndex]}
+            rowIndex={props.rowIndex}
+            columnsLength={props.columns.length}
+            colKey={col.key}
+            tooltips={getTooltipColumns(col.label)}
+            tooltipKeys={getTooltipKeys(col.label)}
+          />
+        </Fragment>
+      ))}
+    </RowWrapper>
   );
 };

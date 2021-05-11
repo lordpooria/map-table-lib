@@ -4,7 +4,8 @@ export interface VTStoreTableSize {
     currentWidths: CurrentWidths;
     totalWidth: TotalWidth;
     setSizes: Action<VTStoreTableSize, {
-        currentWidths: CurrentWidths;
+        widthKey: string;
+        currentWidth: number;
         totalWidth: TotalWidth;
     }>;
     setCurrentWidth: Action<VTStoreTableSize, {

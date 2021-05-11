@@ -15,9 +15,7 @@ export interface VTToolbarStoreModel {
     filterDelete: Action<VTToolbarStoreModel, {
         index: number;
     }>;
-    filterAdd: Action<VTToolbarStoreModel, {
-        columnKey: string;
-    }>;
+    filterAdd: Action<VTToolbarStoreModel>;
 }
 declare const vtToolbarStore: VTToolbarStoreModel;
 export default vtToolbarStore;

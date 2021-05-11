@@ -1,5 +1,5 @@
-/// <reference types="react" />
-import { TableColumn } from "../types/main";
+import React from "react";
+import { TableColumn, TooltipColumns, TooltipKeys } from "../types/main";
 import { CellClasses } from "../types/styles";
 interface Props extends TableColumn {
     row: any;
@@ -9,6 +9,8 @@ interface Props extends TableColumn {
     colKey: string;
     classes?: CellClasses;
     isScrolling?: any;
+    tooltips?: TooltipColumns[string];
+    tooltipKeys?: TooltipKeys[string];
 }
-declare const Cell: ({ label, minWidth, colKey, CellComponent, HeaderComponent, visible, sorted, row, rowIndex, colIndex, columnsLength, classes, sticky, custom, isScrolling, ...rest }: Props) => JSX.Element;
-export default Cell;
+declare const EnhancedCell: React.MemoExoticComponent<({ tooltips, tooltipKeys, ...rest }: Props) => JSX.Element>;
+export default EnhancedCell;

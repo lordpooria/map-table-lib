@@ -1,13 +1,22 @@
 import { action, Action, computed, Computed, createStore } from "easy-peasy";
 import { OnSetTableDataPayload } from "../types/store";
 
-import { TableColumns, TableRows, SortType, PageDir } from "../types/main";
+import {
+  TableColumns,
+  TableRows,
+  SortType,
+  PageDir,
+  TooltipColumns,
+  TooltipKeys,
+} from "../types/main";
 
 export interface VTStoreModel {
   VTVersion: string;
   settings: { direction: PageDir; lang: string };
   visibleRows: TableRows;
   enhancedColumns: TableColumns;
+  tooltipColumns: TooltipColumns;
+  tooltipKeys: TooltipKeys;
 
   toggleSingleRow: Action<VTStoreModel, { index: number }>;
   toggleAllRows: Action<VTStoreModel, { isSelected: boolean }>;
@@ -33,6 +42,8 @@ export const vtStore: VTStoreModel = {
   settings: { direction: "rtl", lang: "fa" },
   visibleRows: [],
   enhancedColumns: [],
+  tooltipColumns: {},
+  tooltipKeys: {},
 
   toggleSingleRow: action((state, { index }) => {
     state.visibleRows[index].selected = !state.visibleRows[index].selected;
@@ -46,9 +57,11 @@ export const vtStore: VTStoreModel = {
   }),
 
   setTableData: action((state, payload) => {
-    const { enhancedColumns, visibleRows } = payload;
+    const { enhancedColumns, visibleRows, tooltipColumns ,tooltipKeys} = payload;
     state.visibleRows = visibleRows;
     state.enhancedColumns = enhancedColumns;
+    if (tooltipColumns) state.tooltipColumns = tooltipColumns;
+    if (tooltipKeys) state.tooltipKeys = tooltipKeys;
   }),
 
   fakeAppendTableData: action((state, { rows, index }) => {
@@ -65,7 +78,8 @@ export const vtStore: VTStoreModel = {
   }),
 
   toggleStickyColumn: action((state, { index }) => {
-    state.enhancedColumns[index].sticked = !state.enhancedColumns[index].sticked;
+    state.enhancedColumns[index].sticked = !state.enhancedColumns[index]
+      .sticked;
   }),
 
   numRowsSelected: computed(

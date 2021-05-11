@@ -41,6 +41,7 @@
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
     "babel-core": "7.0.0-bridge.0",
+    "faker": "^5.5.3",
     "find-lerna-packages": "^1.2.0",
     "fs-extra": "^10.0.0",
     "lerna": "^4.0.0",

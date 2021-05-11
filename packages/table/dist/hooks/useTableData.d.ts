@@ -3,6 +3,8 @@ export declare function createEnhancedColumns(columns: RawTableColumns): TableCo
 export declare function createEnhancedRows(rows: RawTableRows): TableRows;
 export declare function parseTableData(columns: RawTableColumns, rows: RawTableRows): {
     enhancedColumns: TableColumns<any>;
+    tooltipColumns: any;
+    tooltipKeys: any;
     visibleRows: TableRows;
 };
 export default function useTableData(columns: RawTableColumns, rows: RawTableRows, tableDataParser: TableDataParser | undefined): void;

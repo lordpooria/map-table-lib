@@ -15,13 +15,15 @@ import { CommonPublicProps } from "./tableTypes";
 export type VTMainListProps = {
   height: number;
   /**
-   * If you wanna make selectable table each row has a check box
    */
   searchable?: boolean;
   /**
    * If you wanna make selectable table each row has a check box
    */
   selectable?: boolean;
+  /**
+   */
+  withSticky?: boolean;
   /**
    * If you wanna make resizable column table
    * This option make some handle appear you could resize your table
@@ -81,11 +83,13 @@ export type CompleteHeadProps = VTPublicHeaderProps & {
   // isSelected: boolean;
   headerHeight?: number;
   sortable?: VTMainListProps["sortable"];
+  withSticky?: VTMainListProps["withSticky"];
   resizable?: VTMainListProps["resizable"];
   selectable?: VTMainListProps["selectable"];
   width: CommonPublicProps["width"];
   classes?: HeaderClasses;
   columns: TableColumns;
+
 };
 
 export interface VTPublicRowProps {
@@ -97,6 +101,7 @@ export interface VTPublicRowProps {
 
 export type SpecificRowProps = CommonTableElProps & {
   selectable?: VTMainListProps["selectable"];
+  withSticky?: VTMainListProps["withSticky"];
   rowIndex: number;
   width: CommonPublicProps["width"];
   style: any;

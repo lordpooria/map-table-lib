@@ -7,7 +7,7 @@ import { Dir, LangString } from "@hesaba/theme-language";
 import { VTPublicHeaderProps, VTPublicRowProps, VTMainListProps, CommonTableElProps } from "./tableElements";
 import { PublicFilterProps } from "./Filter";
 export declare type CommonPublicProps = {
-    width: number | string;
+    width: number;
 };
 declare type CommonTableProps = VTMainListProps & StyleTypes & PublicTableToolbarProps & {
     /**

@@ -31,9 +31,34 @@ export function createEnhancedRows(rows: RawTableRows): TableRows {
 }
 
 export function parseTableData(columns: RawTableColumns, rows: RawTableRows) {
-  const enhancedColumns = createEnhancedColumns(columns);
+  const mainColumns = columns.filter((c) => c.type !== "tooltip");
+  // const tooltipColumns = columns.filter((c) => c.type == "tooltip");
+  const tooltipKeys = columns
+    .filter((c) => c.type == "tooltip")
+    .reduce(
+      (acc, { reference, label }) =>
+        reference
+          ? reference in acc
+            ? { ...acc, [reference]: [...acc[reference], label] }
+            : { ...acc, [reference]: [label] }
+          : acc,
+      {} as any
+    );
+  const tooltipColumns = columns
+    .filter((c) => c.type == "tooltip")
+    .reduce(
+      (acc, { reference, ...rest }) =>
+        reference
+          ? reference in acc
+            ? { ...acc, [reference]: [...acc[reference], rest] }
+            : { ...acc, [reference]: [rest] }
+          : acc,
+      {} as any
+    );
+
+  const enhancedColumns = createEnhancedColumns(mainColumns);
   const visibleRows = createEnhancedRows(rows);
-  return { enhancedColumns, visibleRows };
+  return { enhancedColumns, tooltipColumns,tooltipKeys, visibleRows };
 }
 
 export default function useTableData(
