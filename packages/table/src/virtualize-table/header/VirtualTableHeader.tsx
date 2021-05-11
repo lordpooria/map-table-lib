@@ -45,27 +45,66 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const VirtualTableHeader = ({
+export const VirtualTableHeader = ({
   selectable,
-  isSelected,
+  classes,
+  width,
+  columns,
+  CheckboxProps,
+  headerHeight = commonSidebar.itemHeight,
+  ...rest
+}: CompleteHeadProps) => {
+  const tableClasses = useStyles();
+
+  const calcRowWidth = useCalcTableWidth(columns, width);
+
+  return (
+    <div
+      style={{
+        height: headerHeight,
+        width: calcRowWidth() - RESIZE_HANDLE_WIDTH,
+      }}
+      className={clsx(
+        HESABA_TABLE_ROW_CLASS,
+        tableClasses.headerContainer,
+        chooseClass(tableClasses.commonHeaderContainer, classes?.root)
+      )}
+    >
+      {columns.map((props) => (
+        <Fragment key={props.key}>
+          <HeadCell
+            {...props}
+            {...rest}
+            colKey={props.key}
+            classes={classes?.cell}
+          />
+        </Fragment>
+      ))}
+    </div>
+  );
+};
+
+export const VirtualTableStickyHeader = ({
+  selectable,
+  columns,
   classes,
   width,
   CheckboxProps,
-
+  headerHeight = commonSidebar.itemHeight,
   ...rest
 }: CompleteHeadProps) => {
   const tableClasses = useStyles();
   // const commonClasses = useCommonStyles();
   const commonClasses = useCommonStyles();
-  const visibleColumns = useTStoreState((state) => state.visibleColumns);
+  const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
+
   const toggleAllRows = useTStoreActions((actions) => actions.toggleAllRows);
-  const calcRowWidth = useCalcTableWidth(visibleColumns, width);
+  const calcRowWidth = useCalcTableWidth(columns, width);
 
   return (
     <div
       style={{
-        height: commonSidebar.itemHeight,
-        width: calcRowWidth(),
+        height: headerHeight,
       }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
@@ -76,9 +115,9 @@ const VirtualTableHeader = ({
       {selectable && (
         <Checkbox
           className={clsx("HESABA_TABLE_HEADER_CLASS")}
-          checked={isSelected}
+          checked={numRowsSelected !== 0}
           onChange={() => {
-            toggleAllRows({ isSelected });
+            toggleAllRows({ isSelected: numRowsSelected !== 0 });
           }}
           color="primary"
           classes={{ root: commonClasses.checkbox }}
@@ -86,12 +125,11 @@ const VirtualTableHeader = ({
         />
       )}
 
-      {visibleColumns.map((props, index) => (
+      {columns.map((props) => (
         <Fragment key={props.key}>
           <HeadCell
             {...props}
             {...rest}
-            colIndex={index}
             colKey={props.key}
             classes={classes?.cell}
           />
@@ -100,5 +138,3 @@ const VirtualTableHeader = ({
     </div>
   );
 };
-
-export default VirtualTableHeader;

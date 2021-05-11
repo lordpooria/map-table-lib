@@ -9,4 +9,5 @@ export const HESABA_DATA_FIELD = "HESABA_DATA_FIELD";
 
 export const DATA_FIELD = "data-field";
 export const MAIN_LIST_ID = "MainVirtualListId";
+export const MAIN_STICKY_LIST_ID = "MainStickyVirtualListId";
 

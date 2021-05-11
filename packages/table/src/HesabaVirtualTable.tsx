@@ -13,11 +13,11 @@ export const HesabaVirtualTable: FC<VirtualTableProps> = ({
   ...props
 }: VirtualTableProps) => {
   return (
-    <TableStoreProvider>
-      <Provider direction={direction} language={language} theme={theme}>
+    <Provider direction={direction} language={language} theme={theme}>
+      <TableStoreProvider width={props.width }>
         <VirtualizaTable {...props} />
-      </Provider>
-    </TableStoreProvider>
+      </TableStoreProvider>
+    </Provider>
   );
 };
 

@@ -61,16 +61,18 @@ const HeadCell = ({
   sortable,
   resizable,
   colIndex,
+
   // currentWidths,
   classes,
-  sticky,
+  sticked,
   DividerProps,
   ...rest
 }: HeaderCellProps) => {
   const cellClasses = useHeadStyles();
   const commonClasses = useCommonStyles();
   const { currentWidths } = useTableSizeState();
-  // const setStickyColumn = useStoreActions((actions) => actions.setStickyColumn);
+
+  
   const calcMinWidth = currentWidths[rest[DATA_FIELD]]
     ? currentWidths[rest[DATA_FIELD]]
     : minWidth;
@@ -101,6 +103,8 @@ const HeadCell = ({
             sortable={sortable}
             columnKey={colKey}
             sorted={sorted}
+            sticked={sticked}
+            dataField={rest["data-field"]}
           />
         </>
       </div>

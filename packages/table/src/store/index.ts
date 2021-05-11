@@ -15,7 +15,7 @@ export interface VTStoreModel {
 
   setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
   fakeAppendTableData: Action<VTStoreModel, any>;
-  setStickyColumn: Action<VTStoreModel, { index: number }>;
+  toggleStickyColumn: Action<VTStoreModel, { index: number }>;
 
   sortTable: Action<
     VTStoreModel,
@@ -64,8 +64,8 @@ export const vtStore: VTStoreModel = {
       .visible;
   }),
 
-  setStickyColumn: action((state, { index }) => {
-    state.enhancedColumns[index].sticky = !state.enhancedColumns[index].sticky;
+  toggleStickyColumn: action((state, { index }) => {
+    state.enhancedColumns[index].sticked = !state.enhancedColumns[index].sticked;
   }),
 
   numRowsSelected: computed(
@@ -80,10 +80,10 @@ export const vtStore: VTStoreModel = {
       ) as any
   ),
   visibleColumns: computed((state) =>
-    state.enhancedColumns.filter((c) => c.visible && !c.sticky)
+    state.enhancedColumns.filter((c) => c.visible && !c.sticked)
   ),
   stickyColumns: computed((state) =>
-    state.enhancedColumns.filter((c) => c.visible && c.sticky)
+    state.enhancedColumns.filter((c) => c.visible && c.sticked)
   ),
 
   sortTable: action((state, { index, sortType, columnKey }) => {

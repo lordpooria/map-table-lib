@@ -1,4 +1,3 @@
-import { CHECKBOX_SIZE } from "../utils/themeConstants";
 import { createStyles, makeStyles } from "@material-ui/core";
 
 const style = makeStyles(() =>
@@ -20,8 +19,8 @@ const style = makeStyles(() =>
       // textAlign: "center",
     },
     checkbox: {
-      width: CHECKBOX_SIZE,
-      height: CHECKBOX_SIZE,
+      // width: CHECKBOX_WIDTH/2,
+      // height: CHECKBOX_WIDTH/2,
     },
   })
 );

@@ -49,7 +49,7 @@ const TableFilter = ({}: Props) => {
         title={t("close")}
         size="small"
         onClick={handleClose}
-        style={{ float: "right" }}
+       
       >
         <CloseIcon />
       </ButtonTooltip>

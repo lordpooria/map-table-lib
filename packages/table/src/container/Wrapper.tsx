@@ -4,10 +4,13 @@ import store, { VTStoreModel } from "../store";
 import ThemeMaker from "./ThemeProvider";
 import { WrapperProps } from "../virtualize-table/container-virtual";
 import { TableSizeProvider } from "./TableSizeProvider";
-import { StyleProvider } from "@hesaba/theme-language";
+import { HesabaStyleProvider } from "@hesaba/theme-language";
 import { TableRowProvider } from "./TableRowProvider";
 
-export const TableStoreProvider: FC = ({ children }) => {
+export const TableStoreProvider: FC<{
+  children: React.ReactNode;
+  width: number;
+}> = ({ children, width }) => {
   const easyPeasyStore = useStore<VTStoreModel>();
   const isWrapepdWithCTProvider = easyPeasyStore?.getState()?.VTVersion;
 
@@ -16,11 +19,11 @@ export const TableStoreProvider: FC = ({ children }) => {
   }
 
   return (
-    <TableSizeProvider>
-      <TableRowProvider>
-        <StoreProvider store={store}>{children}</StoreProvider>
-      </TableRowProvider>
-    </TableSizeProvider>
+    <TableRowProvider>
+      <StoreProvider store={store}>
+        <TableSizeProvider width={width}>{children}</TableSizeProvider>
+      </StoreProvider>
+    </TableRowProvider>
   );
 };
 
@@ -30,9 +33,9 @@ export const Provider = ({
   language,
   theme,
 }: WrapperProps) => (
-  <StyleProvider language={language} direction={direction} theme={theme}>
+  <HesabaStyleProvider language={language} direction={direction} theme={theme}>
     <ThemeMaker>{children}</ThemeMaker>
-  </StyleProvider>
+  </HesabaStyleProvider>
 );
 
 export default Provider;

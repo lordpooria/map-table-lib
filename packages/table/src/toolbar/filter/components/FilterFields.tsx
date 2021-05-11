@@ -63,8 +63,7 @@ export const FilterColumn = memo(
             {...params}
             classes={{ root: classes?.input }}
             label={t("filter.column")}
-            // InputProps={{ ...params.InputProps }}
-
+            InputProps={{ ...params.InputProps }}
             variant="standard"
             // label={t("preperation.filter.selectColumn")}
             // variant="outlined"
@@ -123,7 +122,7 @@ export const FilterOperations = memo(
         }
       }
     }, [columnType, t]);
-console.log(options)
+
     return (
       <Autocomplete
         autoComplete
@@ -144,21 +143,14 @@ console.log(options)
           !option?.name ? option.name === value.name : true
         }
         renderInput={(params) => (
-          <div style={{ display: "flex", alignItems: "center" }}>
-            {/* <Tooltip title={t('preperation.filter.selectOpTip') as string}>
-                        <div>
-                            <Calculator />
-                        </div>
-                    </Tooltip> */}
             <TextField
               {...params}
               classes={{ root: classes?.input }}
               label={t("filter.op")}
               InputProps={{ ...params.InputProps }}
               variant="standard"
-              //  label={t("preperation.filter.operation")}
             />
-          </div>
+        
         )}
       />
     );

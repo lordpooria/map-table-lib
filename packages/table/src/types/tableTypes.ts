@@ -17,7 +17,7 @@ import {
 import { PublicFilterProps } from "./Filter";
 
 export type CommonPublicProps = {
-  width: number | string;
+  width: number;
 };
 
 type CommonTableProps = VTMainListProps &

@@ -12,7 +12,7 @@ export interface TableComponentProps {
   row: any;
   rowKey: any;
   label: string;
-  className?:string
+  className?: string;
 }
 
 export type TableColumnData = {
@@ -52,8 +52,9 @@ export type RawTableColumns<T extends {} = any> = Array<RawTableColumn<T>>;
 
 export type TableColumn<T extends {} = any> = RawTableColumn<T> & {
   [DATA_FIELD]: string;
+  colIndex: number;
   visible: boolean;
-  sticky: boolean;
+  sticked: boolean;
   sorted: SortType;
   type: ColumnType;
 };

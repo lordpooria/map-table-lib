@@ -2,12 +2,17 @@ import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeOptions,
-  
+  jssPreset,
 } from "@material-ui/core";
 import { useLanguageState } from "../provider/language";
 import fontSelector from "../utils/fontSelector";
+import { create } from "jss";
+import rtl from "jss-rtl";
 
 import { indigo, red } from "@material-ui/core/colors";
+
+export const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
+
 
 export const defaultTheme = {
   palette: {
@@ -38,6 +43,8 @@ export const defaultTheme = {
     },
   },
 };
+
+
 
 export function useThemeCreator(rawTheme?: any) {
   const langSetting = useLanguageState();

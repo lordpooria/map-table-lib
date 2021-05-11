@@ -10,7 +10,8 @@ export const en = {
   sortDsc: "Sort Descending",
   menu: "Menu",
   close: "Close",
-
+  search:"Search a word",
+  type:"Type a word...",
   filter: {
     op: "Operation",
     column: "Column",

@@ -1,12 +1,12 @@
 import React, { memo, useState } from "react";
 import {
+  Checkbox,
   createStyles,
   FormControlLabel,
   IconButton,
   makeStyles,
   Menu,
   MenuItem,
-  Switch,
   Typography,
 } from "@material-ui/core";
 import { MoreVertIcon } from "@hesaba/assets";
@@ -26,6 +26,8 @@ import { FilterIcon, SearchTableIcon } from "@hesaba/assets";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
+    menuList: { display: "flex", flexDirection: "column", padding: 16 },
+    menuItem: { justifyContent: "space-around" },
     toolbarContainer: {
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
       display: "flex",
@@ -175,16 +177,26 @@ export function ToolbarMoreVert({
         keepMounted
         open={open}
         onClose={handleClose}
+        classes={{ list: toolbarClasses.menuList }}
         className={classes?.menu}
       >
         {enhancedColumns?.map((c: any, index: any) => (
-          <MenuItem key={c.key} className={classes?.menuItem}>
+          <MenuItem
+            key={c.key}
+            className={clsx(toolbarClasses.menuItem, classes?.menuItem)}
+          >
             <FormControlLabel
               control={
-                <Switch
+                <Checkbox
                   checked={c.visible}
-                  onChange={() => toggleVisibleColumns({ index })}
+                  onChange={() => {
+                    toggleVisibleColumns({ index });
+                  }}
+                  color="primary"
                   name={c.label}
+
+                  // classes={{ root: commonClasses.checkbox }}
+                  // {...CheckboxProps}
                 />
               }
               label={c.label}

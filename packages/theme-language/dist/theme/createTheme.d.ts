@@ -1,3 +1,4 @@
+export declare const jss: import("jss").Jss;
 export declare const defaultTheme: {
     palette: {
         primary: {

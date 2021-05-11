@@ -10,7 +10,8 @@ export const fa = {
   sortDsc: "مرتب سازی نزولی",
   menu: "منو",
   close: "بستن",
-
+  search:"جستجو کنید",
+  type:"یک کلمه را جستجو کنید",
   filter: {
     op: "عملیات",
     column: "ستون",

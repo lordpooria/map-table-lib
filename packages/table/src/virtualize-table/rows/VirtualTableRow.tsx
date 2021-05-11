@@ -43,6 +43,13 @@ export function VirtualTableRow(props: CompleteRowProps) {
     </>
   );
 }
+export function VirtualStickyTableRow(props: CompleteRowProps) {
+  return (
+    <>
+      <SingleStickyVirtualTableRow {...props} />
+    </>
+  );
+}
 
 const SingleVirtualTableRow = ({
   style,
@@ -50,6 +57,7 @@ const SingleVirtualTableRow = ({
   selectable,
   classes,
   width,
+  columns,
   CheckboxProps,
   onRowClick,
   extraStyles,
@@ -57,13 +65,10 @@ const SingleVirtualTableRow = ({
   ...rest
 }: CompleteRowProps) => {
   const rowClasses = useStyles();
-  const commonClasses = useCommonStyles();
-  const visibleColumns = useTStoreState((state) => state.visibleColumns);
+
   const visibleRows = useTStoreState((state) => state.visibleRows);
-  const toggleSingleRow = useTStoreActions(
-    (actions) => actions.toggleSingleRow
-  );
-  const calcRowWidth = useCalcTableWidth(visibleColumns, width);
+
+  const calcRowWidth = useCalcTableWidth(columns, width);
   const { activeRow } = useTableRowState();
   const onRowSelect = useCallback(() => {
     onRowClick && onRowClick(rowIndex);
@@ -75,6 +80,73 @@ const SingleVirtualTableRow = ({
         ...extraStyles,
         ...(activeRow === rowIndex && selectedRowStyle),
         width: calcRowWidth(),
+      }}
+      className={clsx(
+        HESABA_TABLE_ROW_CLASS,
+        rowClasses.tableRow,
+        chooseClass(rowClasses.tableRowCommon, classes?.root),
+        { [rowClasses.selected]: visibleRows[rowIndex].selected },
+        { [rowClasses.activatedRow]: activeRow === rowIndex },
+        {
+          [classes?.evenRow || "tempEvenRow"]:
+            classes?.evenRow && rowIndex % 2 === 0,
+        },
+        {
+          [classes?.oddRow || "tempOddRow"]:
+            classes?.oddRow && rowIndex % 2 !== 0,
+        }
+      )}
+      onClick={onRowSelect}
+    >
+      {columns.map((props, colIndex) => (
+        <Fragment key={props.key}>
+          <Cell
+            {...props}
+            {...rest}
+            colIndex={colIndex}
+            row={visibleRows[rowIndex]}
+            rowIndex={rowIndex}
+            columnsLength={columns.length}
+            colKey={props.key}
+          />
+        </Fragment>
+      ))}
+    </div>
+  );
+};
+
+const SingleStickyVirtualTableRow = ({
+  style,
+  rowIndex,
+  selectable,
+  classes,
+  width,
+  columns,
+  CheckboxProps,
+  onRowClick,
+  extraStyles,
+  selectedRowStyle,
+  ...rest
+}: CompleteRowProps) => {
+  const rowClasses = useStyles();
+  const commonClasses = useCommonStyles();
+
+  const visibleRows = useTStoreState((state) => state.visibleRows);
+  const toggleSingleRow = useTStoreActions(
+    (actions) => actions.toggleSingleRow
+  );
+  const calcRowWidth = useCalcTableWidth(columns, width);
+  const { activeRow } = useTableRowState();
+  const onRowSelect = useCallback(() => {
+    onRowClick && onRowClick(rowIndex);
+  }, [onRowClick]);
+  return (
+    <div
+      style={{
+        ...style,
+        ...extraStyles,
+        ...(activeRow === rowIndex && selectedRowStyle),
+        // width: calcRowWidth(),
       }}
       className={clsx(
         HESABA_TABLE_ROW_CLASS,
@@ -107,7 +179,7 @@ const SingleVirtualTableRow = ({
         />
       )}
 
-      {visibleColumns.map((props, colIndex) => (
+      {columns.map((props, colIndex) => (
         <Fragment key={props.key}>
           <Cell
             {...props}
@@ -115,7 +187,7 @@ const SingleVirtualTableRow = ({
             colIndex={colIndex}
             row={visibleRows[rowIndex]}
             rowIndex={rowIndex}
-            columnsLength={visibleColumns.length}
+            columnsLength={columns.length}
             colKey={props.key}
           />
         </Fragment>
@@ -123,5 +195,3 @@ const SingleVirtualTableRow = ({
     </div>
   );
 };
-
-export default VirtualTableRow;

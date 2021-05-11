@@ -17,7 +17,7 @@ export function useTranslation() {
         }
         return acc;
       }, translateFile.current);
-      console.log("here",trans)
+    
       if (typeof trans === "string") return trans;
       return key;
     } catch (err) {

@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 
-import { StyleProvider } from "@hesaba/theme-language";
+import { HesabaStyleProvider } from "@hesaba/theme-language";
 import { AutoSizer, TableStoreProvider } from "@hesaba/table";
 
 import TDProvider from "../provider/Provider";
@@ -22,11 +22,11 @@ const HesabaTimeDimension: FC<HesabaTimeDimensionProps> = (
 ) => {
   return (
     <TDProvider>
-      <StyleProvider theme={props.theme} direction="ltr" language="en">
+      <HesabaStyleProvider theme={props.theme} direction="ltr" language="en">
         <ThemeMaker>
           {props.withTable ? <PanelMap {...props} /> : <CommonMap {...props} />}
         </ThemeMaker>
-      </StyleProvider>
+      </HesabaStyleProvider>
     </TDProvider>
   );
 };

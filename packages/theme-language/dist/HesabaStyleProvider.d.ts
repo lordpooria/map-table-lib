@@ -6,5 +6,5 @@ interface Props {
     direction?: Dir;
     theme?: any;
 }
-declare function StyleProvider({ children, theme, language, direction, }: Props): JSX.Element;
-export default StyleProvider;
+declare function HesabaStyleProvider({ children, theme, language, direction, }: Props): JSX.Element;
+export default HesabaStyleProvider;

@@ -28,7 +28,9 @@
     "dev": "rollup -c -w"
   },
   "dependencies": {
-    "@hesaba/assets": "^1.1.0"
+    "@hesaba/assets": "^1.1.0",
+    "jss": "^10.6.0",
+    "jss-rtl": "^0.3.0"
   },
   "peerDependencies": {
     "@types/react": "^17.0.4",

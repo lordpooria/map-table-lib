@@ -11,4 +11,4 @@ export * from "./typography";
 export * from "./buttons";
 
 
-export { default as StyleProvider } from "./StyleProvider";
+export { default as HesabaStyleProvider } from "./HesabaStyleProvider";

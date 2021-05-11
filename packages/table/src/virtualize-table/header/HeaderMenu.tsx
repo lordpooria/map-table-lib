@@ -12,6 +12,7 @@ import { MoreVertIcon, ArrowDownIcon, ArrowUpIcon } from "@hesaba/assets";
 import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
 import { SortType } from "../../types/main";
 import { VTMainListProps } from "../../types";
+import { useAddSticky } from "../../container/TableSizeProvider";
 // import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
@@ -21,6 +22,7 @@ const HeaderIconButton = withStyles(() => ({
 const useStyles = makeStyles(() =>
   createStyles({
     icons: { width: 14, height: 14 },
+    menu: { display: "flex", flexDirection: "column", padding: 16 },
   })
 );
 
@@ -28,7 +30,9 @@ interface Props {
   index: number;
   sortable?: VTMainListProps["sortable"];
   columnKey: string;
+  dataField: string;
   sorted: SortType;
+  sticked?: boolean;
 }
 
 const OPTIONS = {
@@ -39,8 +43,15 @@ const OPTIONS = {
   stick: "Stick",
 };
 
-const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
-  const classes = useStyles();
+const HeaderMenu = ({
+  index,
+  sortable,
+  columnKey,
+  sorted,
+  sticked,
+  dataField,
+}: Props) => {
+  const menuClasses = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -51,9 +62,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
   };
   const sortTable = useTStoreActions((actions) => actions.sortTable);
   // const filterAdd = useTStoreActions((actions) => actions.filterAdd);
-  // const setStickyColumn = useTStoreActions(
-  //   (actions) => actions.setStickyColumn
-  // );
+  const onAddSticky = useAddSticky();
 
   const toggleVisibleColumns = useTStoreActions(
     (actions) => actions.toggleVisibleColumns
@@ -75,12 +84,12 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
     <>
       {sortable && sorted === "DESC" && (
         <HeaderIconButton title={t("sortDsc")} onClick={sortDesc}>
-          <ArrowUpIcon className={classes.icons} />
+          <ArrowUpIcon className={menuClasses.icons} />
         </HeaderIconButton>
       )}
       {sortable && sorted === "ASC" && (
         <HeaderIconButton title={t("sortAsc")} onClick={sortAsc}>
-          <ArrowDownIcon className={classes.icons} />
+          <ArrowDownIcon className={menuClasses.icons} />
         </HeaderIconButton>
       )}
       {/* {sortable && sorted === "ASC" && (
@@ -89,7 +98,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
         </HeaderIconButton>
       )} */}
       <HeaderIconButton title={t("menu")} onClick={handleClick}>
-        <MoreVertIcon className={classes.icons} />
+        <MoreVertIcon className={menuClasses.icons} />
       </HeaderIconButton>
       <Menu
         disableScrollLock={true}
@@ -98,6 +107,7 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
         keepMounted
         open={open}
         onClose={handleClose}
+        classes={{ list: menuClasses.menu }}
         PaperProps={{
           style: {
             //   maxHeight: ITEM_HEIGHT * 4.5,
@@ -105,6 +115,9 @@ const HeaderMenu = ({ index, sortable, columnKey, sorted }: Props) => {
           },
         }}
       >
+        <MenuItem onClick={() => onAddSticky(index, dataField, sticked)}>
+          {sticked ? "UnStick" : "Stick"}
+        </MenuItem>
         {sortable && <MenuItem onClick={sortAsc}>{OPTIONS.sortAsc}</MenuItem>}
         {sortable && <MenuItem onClick={sortDesc}>{OPTIONS.sortDesc}</MenuItem>}
         <MenuItem onClick={() => toggleVisibleColumns({ index })}>

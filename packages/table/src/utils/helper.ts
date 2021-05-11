@@ -3,7 +3,7 @@ import { useTableSizeState } from "../container/TableSizeProvider";
 import { CommonPublicProps, TableColumns } from "../types";
 
 import {
-  CHECKBOX_SIZE,
+  CHECKBOX_WIDTH,
   RESIZE_HANDLE_WIDTH,
   ROW_MIN_WIDTH,
 } from "./themeConstants";
@@ -20,7 +20,7 @@ export const useCalcTableWidth = (
     const totalColumnSize = columns.reduce(
       (acc, cur) =>
         acc + (cur?.minWidth || ROW_MIN_WIDTH + RESIZE_HANDLE_WIDTH),
-      CHECKBOX_SIZE
+      CHECKBOX_WIDTH
     );
     return totalColumnSize > width ? totalColumnSize : width;
   }, [columns, width, totalWidth]);

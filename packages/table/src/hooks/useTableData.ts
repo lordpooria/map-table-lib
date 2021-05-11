@@ -12,11 +12,12 @@ import { useTStoreActions } from "../store/reducerHooks";
 import { DATA_FIELD, HESABA_DATA_FIELD } from "../utils/constants";
 
 export function createEnhancedColumns(columns: RawTableColumns): TableColumns {
-  return columns.map((c) => ({
+  return columns.map((c, index) => ({
     ...c,
     [DATA_FIELD]: `${HESABA_DATA_FIELD}-${c.key as string}`,
+    colIndex: index,
     visible: true,
-    sticky: false,
+    sticked: false,
     sorted: undefined,
     type: c?.type ?? "string",
   }));

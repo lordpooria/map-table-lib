@@ -2,7 +2,7 @@ import { TablePaginationProps } from "@material-ui/core";
 import { CheckboxProps } from "@material-ui/core/Checkbox";
 import { SVGProps } from "react";
 import { PublicFilterProps } from "./Filter";
-import { TableColumn } from "./main";
+import { TableColumn, TableColumns } from "./main";
 import {
   CellClasses,
   HeaderClasses,
@@ -17,7 +17,7 @@ export type VTMainListProps = {
   /**
    * If you wanna make selectable table each row has a check box
    */
-   searchable?: boolean;
+  searchable?: boolean;
   /**
    * If you wanna make selectable table each row has a check box
    */
@@ -37,7 +37,11 @@ export type VTMainListProps = {
   /**
    * in a virtual table you should specify item height
    */
-  itemSize?: (_: number) => number;
+  itemSize?: number;
+  /**
+   * in a virtual table you should specify item height
+   */
+  headerHeight?: number;
 };
 
 export type CompleteMainListProps = VTMainListProps & {
@@ -45,7 +49,8 @@ export type CompleteMainListProps = VTMainListProps & {
   width: CommonPublicProps["width"];
   classes?: StyleTypes["classes"];
   onScroll?: any;
-  setTableRef?: any;
+
+  // setTableRef?: any;
   extraStyle?: any;
   /**
    */
@@ -72,15 +77,16 @@ export type VTPublicHeaderProps = CommonTableElProps & {
   DividerProps?: SVGProps<any>;
 };
 
-export type CompleteHeadProps = VTPublicHeaderProps &
-  VTPublicHeaderProps & {
-    isSelected: boolean;
-    sortable?: VTMainListProps["sortable"];
-    resizable?: VTMainListProps["resizable"];
-    selectable?: VTMainListProps["selectable"];
-    width: CommonPublicProps["width"];
-    classes?: HeaderClasses;
-  };
+export type CompleteHeadProps = VTPublicHeaderProps & {
+  // isSelected: boolean;
+  headerHeight?: number;
+  sortable?: VTMainListProps["sortable"];
+  resizable?: VTMainListProps["resizable"];
+  selectable?: VTMainListProps["selectable"];
+  width: CommonPublicProps["width"];
+  classes?: HeaderClasses;
+  columns: TableColumns;
+};
 
 export interface VTPublicRowProps {
   classes?: RowClasses;
@@ -94,6 +100,7 @@ export type SpecificRowProps = CommonTableElProps & {
   rowIndex: number;
   width: CommonPublicProps["width"];
   style: any;
+  columns: TableColumns;
 };
 
 export type CompleteRowProps = VTPublicRowProps & SpecificRowProps;

@@ -51,7 +51,7 @@ const Cell = ({
   columnsLength,
   // currentWidths,
   classes,
-  sticky,
+  sticked: sticky,
   custom,
   isScrolling,
   ...rest

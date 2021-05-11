@@ -1,32 +1,51 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
-import { useLanguageState } from "@hesaba/theme-language";
-import { useResizer } from "./useResizer";
 import { useTableSizeAction } from "../container/TableSizeProvider";
 
-export const useTableResizer = () => {
-  const { direction } = useLanguageState();
+import { MAIN_LIST_ID } from "../utils/constants";
+import { useResizer } from "./useResizer";
 
-  const dirRef = useRef(direction);
+export const useStickyTableResizer = (width: number) => {
   const { setSizes } = useTableSizeAction();
-
   const ref = useRef<HTMLDivElement | undefined>();
+  const mainRef = useRef<HTMLDivElement | undefined>();
 
   const onMouseUpCB = useCallback((totalWidth, currentWidths) => {
-    // setSizes({
-    //   totalWidth,
-    //   currentWidths,
-    // });
-  }, []);
-  const onMouseMoveCB = useCallback((totalWidth, currentWidths) => {
     // setSizes({
     //   totalWidth: totalWidth.current,
     //   currentWidths: currentWidths.current,
     // });
   }, []);
-  const { onMouseDown } = useResizer(ref, onMouseMoveCB, onMouseUpCB, 0);
+
+  const onMouseMoveCB = useCallback(
+    (headerWidth: number, wholeWidth: number) => {
+      if (ref.current && mainRef.current) {
+        ref.current.style.width = `${headerWidth}px`;
+        mainRef.current.style.width = `${wholeWidth - headerWidth}px`;
+      }
+    },
+    []
+  );
+
+  const { onMouseDown } = useResizer(ref, onMouseMoveCB, onMouseUpCB, width);
 
   const [setRef, removeMouseDownListerner] = useMemo(() => {
+    // const onMouseDown = (e: MouseEvent) => {
+    //   init();
+    //   const div = e.target as HTMLElement;
+    //   if (!ref.current || !div.classList.contains(DRAG_CLASS)) return;
+    //   const parent = div.previousElementSibling;
+    //   if (!parent) return;
+    //   currentField.current = parent.getAttribute(DATA_FIELD) as string;
+    //   //   columnElements.current = el as HTMLElement;
+    //   window.addEventListener("mousemove", onMouseMove);
+    //   window.addEventListener("mouseup", onMouseUp);
+    //   columnElements.current = ref.current?.querySelectorAll(
+    //     `[${DATA_FIELD}="${currentField.current}"]`
+    //   ) as NodeListOf<HTMLElement>;
+    //   tableWidth.current = +ref.current.style.width.replace("px", "");
+    // };
+
     // const onMouseMove = (e: MouseEvent) => {
     //   if (
     //     !columnElements.current ||
@@ -54,8 +73,10 @@ export const useTableResizer = () => {
     //         el.getBoundingClientRect().width + RESIZE_HANDLE_WIDTH)
     //   );
 
-    //   totalWidth.current = headerWidth;
-
+    //   if (ref.current && mainRef.current) {
+    //     ref.current.style.width = `${headerWidth}px`;
+    //     mainRef.current.style.width = `${widthRef.current - headerWidth}px`;
+    //   }
     //   columnElements.current.forEach((el, index) => {
     //     if (index === 0) {
     //       el.style.width = `${newWidth}px`;
@@ -93,7 +114,7 @@ export const useTableResizer = () => {
     //   }
 
     //   setSizes({
-    //     totalWidth: totalWidth.current,
+    //     totalWidth: tableWidth.current,
     //     currentWidths: currentWidths.current,
     //   });
     // };
@@ -105,14 +126,23 @@ export const useTableResizer = () => {
       table.addEventListener("mousedown", onMouseDown);
     };
 
-    const setTableRef = (nodeRef: any) => {
+    const setStickyTableRef = (nodeRef: any) => {
       if (nodeRef) {
         ref.current = nodeRef;
+
         addMouseDownListerner(nodeRef as HTMLDivElement);
+
+        const interval = setInterval(() => {
+          const el = document.getElementById(MAIN_LIST_ID);
+          if (el) {
+            clearInterval(interval);
+            mainRef.current = el as HTMLDivElement;
+          }
+        }, 100);
       }
     };
 
-    return [setTableRef, removeMouseDown];
+    return [setStickyTableRef, removeMouseDown];
   }, []);
 
   useEffect(() => {
@@ -121,9 +151,10 @@ export const useTableResizer = () => {
     };
   }, [removeMouseDownListerner]);
 
-  useEffect(() => {
-    dirRef.current = direction;
-  }, [direction]);
+  // useEffect(() => {
+  //   dirRef.current = direction;
+  //   widthRef.current = width;
+  // }, [direction, width]);
 
   return { setRef, ref: ref.current };
 };

@@ -1,27 +1,45 @@
 import React, { forwardRef, memo } from "react";
 import { VariableSizeList as List } from "react-window";
 
-import VirtualTableRow from "../rows/VirtualTableRow";
-import VirtualTableHeader from "../header/VirtualTableHeader";
+import {VirtualTableRow,VirtualStickyTableRow} from "../rows/VirtualTableRow";
+import {VirtualTableHeader,VirtualTableStickyHeader} from "../header/VirtualTableHeader";
 
 import clsx from "clsx";
 import { CompleteMainListProps } from "../../types";
 import { useTStoreState } from "../../store/reducerHooks";
-import { commonSidebar } from "../../utils/themeConstants";
 import { useLanguageState } from "@hesaba/theme-language";
 
-import { MAIN_LIST_ID } from "../../utils/constants";
+import { MAIN_LIST_ID, MAIN_STICKY_LIST_ID } from "../../utils/constants";
 import { makeStyles } from "@material-ui/core";
+import { useTableRef } from "../../container/TableSizeProvider";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {},
-});
+  stickyTable: {
+    zIndex: 10,
+    backgroundColor: "#FFF",
+    overflowY: "hidden",
+    boxShadow: theme.shadows[5],
+  },
+}));
 
 const outerElementTypeWithId = forwardRef((props: any, ref) => {
   return <div id={MAIN_LIST_ID} {...props} ref={ref as any} />;
 });
+const stickyOuterElementTypeWithId = forwardRef((props: any, ref) => {
+  const classes = useStyles();
+  return (
+    <div
+      id={MAIN_STICKY_LIST_ID}
+      {...props}
+      className={classes.stickyTable}
+      style={{ ...props.style, overflow: "hidden" }}
+      ref={ref as any}
+    />
+  );
+});
 
-const VirtualList = memo(
+export const VirtualList = memo(
   forwardRef(
     (
       {
@@ -29,10 +47,7 @@ const VirtualList = memo(
         width,
         classes,
         onScroll,
-        setTableRef,
-        extraStyle,
-        selectable = false,
-        itemSize = () => commonSidebar.itemHeight,
+        itemSize = 50,
         resizable,
         sortable,
         VTCommonTableElProps,
@@ -43,8 +58,12 @@ const VirtualList = memo(
       ref
     ) => {
       const { direction } = useLanguageState();
+      const {
+        mainTableRef: { setRef },
+      } = useTableRef();
+      const visibleColumns = useTStoreState((state) => state.visibleColumns);
+
       const visibleRows = useTStoreState((state) => state.visibleRows);
-      const numRowsSelected = useTStoreState((state) => state.numRowsSelected);
       const tableClasses = useStyles();
       if (!visibleRows || visibleRows.length === 0) {
         return null;
@@ -79,20 +98,16 @@ const VirtualList = memo(
         children: React.ReactNode;
         style: any;
       }) => (
-        <div {...rest} style={{ ...style, ...extraStyle }}>
+        <div {...rest} style={{ ...style }}>
           <VirtualTableHeader
-            selectable={selectable}
-            isSelected={numRowsSelected !== 0}
             classes={classes?.header}
             width={width}
             resizable={resizable}
             sortable={sortable}
+            columns={visibleColumns}
             {...VTCommonTableElProps}
             {...VTHeaderProps}
             {...VTFilterProps}
-            // placeholderColumns={placeholderColumns}
-            // placeholderTotalWidth={placeholderTotalWidth}
-            // placeholderCurrentWidths={placeholderCurrentWidths}
           />
 
           {children}
@@ -101,17 +116,16 @@ const VirtualList = memo(
 
       return (
         <List
-          // style={{ position: "absolute", ...extraStyle }}
           ref={ref as any}
           direction={direction}
           height={height}
           itemCount={visibleRows.length}
           onScroll={onScroll}
-          itemSize={itemSize}
+          itemSize={() => itemSize}
           itemKey={(index) => `${index}` as string}
           width={width}
           itemData={visibleRows}
-          outerRef={setTableRef}
+          outerRef={setRef}
           innerElementType={innerElementType}
           className={clsx(tableClasses.root, classes?.table?.root)}
           outerElementType={outerElementTypeWithId}
@@ -119,15 +133,13 @@ const VirtualList = memo(
           {({ index, ...rest }) => (
             <VirtualTableRow
               rowIndex={index}
-              selectable={selectable}
               classes={classes?.row}
               width={width}
+              columns={visibleColumns}
               {...VTCommonTableElProps}
               {...VTRowProps}
               {...rest}
-              // placeholderColumns={placeholderColumns}
-              // placeholderTotalWidth={placeholderTotalWidth}
-              // placeholderCurrentWidths={placeholderCurrentWidths}
+              selectable={false}
             />
           )}
         </List>
@@ -135,5 +147,90 @@ const VirtualList = memo(
     }
   )
 );
+export const StickyVirtualList = memo(
+  forwardRef(
+    (
+      {
+        height,
+        width,
+        classes,
+        onScroll,
+        selectable = false,
+        itemSize = 50,
+        resizable,
+        sortable,
+        VTCommonTableElProps,
+        VTRowProps,
+        VTFilterProps,
+        VTHeaderProps,
+      }: CompleteMainListProps,
+      ref
+    ) => {
+      const { direction } = useLanguageState();
+      const {
+        stickyTableRef: { setRef },
+      } = useTableRef();
+      const stickyColumns = useTStoreState((state) => state.stickyColumns);
+      const visibleRows = useTStoreState((state) => state.visibleRows);
+      const tableClasses = useStyles();
+      if (!visibleRows || visibleRows.length === 0) {
+        return null;
+      }
+      const innerElementType = ({
+        children,
+        style,
+        ...rest
+      }: {
+        children: React.ReactNode;
+        style: any;
+      }) => (
+        <div {...rest} style={{ ...style }}>
+          <VirtualTableStickyHeader
+            selectable={selectable}
+            classes={classes?.header}
+            width={width}
+            resizable={resizable}
+            sortable={sortable}
+            columns={stickyColumns}
+            {...VTCommonTableElProps}
+            {...VTHeaderProps}
+            {...VTFilterProps}
+          />
 
-export default VirtualList;
+          {children}
+        </div>
+      );
+
+      return (
+        <List
+          ref={ref as any}
+          direction={direction}
+          height={height}
+          itemCount={visibleRows.length}
+          onScroll={onScroll}
+          itemSize={() => itemSize}
+          itemKey={(index) => `${index}`}
+          width={width}
+          itemData={visibleRows}
+          outerRef={setRef}
+          className={clsx(tableClasses.root, classes?.table?.root)}
+          innerElementType={innerElementType}
+          outerElementType={stickyOuterElementTypeWithId}
+        >
+          {({ index, ...rest }) => (
+            <VirtualStickyTableRow
+              rowIndex={index}
+              selectable={selectable}
+              classes={classes?.row}
+              width={width}
+              columns={stickyColumns}
+              {...VTCommonTableElProps}
+              {...VTRowProps}
+              {...rest}
+            />
+          )}
+        </List>
+      );
+    }
+  )
+);
