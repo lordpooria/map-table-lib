@@ -1,4 +1,4 @@
-import React, { forwardRef, memo,  } from "react";
+import React, { forwardRef, memo } from "react";
 import { VariableSizeList as List } from "react-window";
 
 import {
@@ -26,47 +26,11 @@ const useStyles = makeStyles(() => ({
     zIndex: 10,
     backgroundColor: "#FFF",
     overflowY: "hidden",
-    border: "solid 1px #aaa",
-
-    "&::-webkit-scrollbar": {
-      // General scrollbar
-      // width: "0px",
-      // display: "none",
-      // height: "0px",
-
-      /* Remove scrollbar space */
-      background: "transparent" /* Optional: just make scrollbar invisible */,
-    },
-
-    "&:::-webkit-scrollbar-thumb": {
-      background: "#FF0000",
-    },
+    border: "solid  #ddd",
+    borderWidth:"0 0 1px 3px",
+    
   },
-  stickyTableWrapper: { overflow: "hidden" },
 }));
-
-// const CustomScrollbars = ({ onScroll, forwardedRef, style, children }: any) => {
-//   const refSetter = useCallback(
-//     (scrollbarsRef) => {
-//       if (scrollbarsRef) {
-//         forwardedRef(scrollbarsRef.view);
-//       } else {
-//         forwardedRef(null);
-//       }
-//     },
-//     [forwardedRef]
-//   );
-
-//   return (
-//     <Scrollbars
-//       ref={refSetter}
-//       style={{ ...style, overflow: "hidden" }}
-//       onScroll={onScroll}
-//     >
-//       {children}
-//     </Scrollbars>
-//   );
-// };
 
 const outerElementTypeWithId = forwardRef((props: any, ref) => {
   return <div id={MAIN_LIST_ID} {...props} ref={ref as any} />;
@@ -110,7 +74,7 @@ export const VirtualList = memo(
       } = useTableRef();
       const visibleColumns = useTStoreState((state) => state.visibleColumns);
 
-      const visibleRows = useTStoreState((state) => state.rows);
+      const visibleRows = useTStoreState((state) => state.visibleRows);
       const tableClasses = useStyles();
       if (!visibleRows || visibleRows.length === 0) {
         return null;
@@ -185,10 +149,11 @@ export const VirtualList = memo(
               classes={classes?.row}
               width={width}
               columns={visibleColumns}
+              withSticky={withSticky}
               {...VTCommonTableElProps}
               {...VTRowProps}
               {...rest}
-            selectable={selectable}
+              selectable={selectable}
             />
           )}
         </List>
@@ -220,7 +185,7 @@ export const StickyVirtualList = memo(
         stickyTableRef: { setRef },
       } = useTableRef();
       const stickyColumns = useTStoreState((state) => state.stickyColumns);
-      const visibleRows = useTStoreState((state) => state.rows);
+      const visibleRows = useTStoreState((state) => state.visibleRows);
       const tableClasses = useStyles();
       if (!visibleRows || visibleRows.length === 0) {
         return null;
@@ -233,7 +198,7 @@ export const StickyVirtualList = memo(
         children: React.ReactNode;
         style: any;
       }) => (
-        <div {...rest} style={{ ...style }}>
+        <div {...rest} style={{ ...style }} onWheel={onScroll}>
           <VirtualTableStickyHeader
             selectable={selectable}
             classes={classes?.header}
@@ -251,34 +216,36 @@ export const StickyVirtualList = memo(
       );
 
       return (
-        <List
-          ref={ref as any}
-          direction={direction}
-          height={height}
-          itemCount={visibleRows.length}
-          onScroll={onScroll}
-          itemSize={() => itemSize}
-          itemKey={(index) => `${index}`}
-          width={width}
-          itemData={visibleRows}
-          outerRef={setRef}
-          className={clsx(tableClasses.root, classes?.table?.root)}
-          innerElementType={innerElementType}
-          outerElementType={stickyOuterElementTypeWithId}
-        >
-          {({ index, ...rest }) => (
-            <VirtualStickyTableRow
-              rowIndex={index}
-              selectable={selectable}
-              classes={classes?.row}
-              width={width}
-              columns={stickyColumns}
-              {...VTCommonTableElProps}
-              {...VTRowProps}
-              {...rest}
-            />
-          )}
-        </List>
+        <>
+          <List
+            ref={ref as any}
+            direction={direction}
+            height={height}
+            itemCount={visibleRows.length}
+            // onScroll={onScroll}
+            itemSize={() => itemSize}
+            itemKey={(index) => `${index}`}
+            width={width}
+            itemData={visibleRows}
+            outerRef={setRef}
+            className={clsx(tableClasses?.root, classes?.table?.root)}
+            innerElementType={innerElementType}
+            outerElementType={stickyOuterElementTypeWithId}
+          >
+            {({ index, ...rest }) => (
+              <VirtualStickyTableRow
+                rowIndex={index}
+                selectable={selectable}
+                classes={classes?.row}
+                width={width}
+                columns={stickyColumns}
+                {...VTCommonTableElProps}
+                {...VTRowProps}
+                {...rest}
+              />
+            )}
+          </List>
+        </>
       );
     }
   )

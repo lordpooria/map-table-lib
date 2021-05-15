@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 import { TableSearchProps } from "../types/TableSearch";
-declare const TableSearch: ({}: TableSearchProps) => JSX.Element;
+declare const TableSearch: React.MemoExoticComponent<({ onSearchTextChange: onChange, searchText }: TableSearchProps) => JSX.Element>;
 export default TableSearch;

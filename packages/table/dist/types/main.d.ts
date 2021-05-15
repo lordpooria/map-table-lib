@@ -3,6 +3,9 @@ import { DATA_FIELD } from "../utils/constants";
 export declare type SortType = undefined | "ASC" | "DESC";
 export declare type PageDir = "rtl" | "ltr";
 export declare type ColumnType = "number" | "string" | "date" | "geographic" | "tooltip";
+export declare type TooltipComponentProps = {
+    tooltipData: Record<string, any>;
+};
 export interface TableComponentProps {
     index: number;
     value: any;
@@ -20,6 +23,7 @@ export declare type TableColumnData = {
 export declare type RawTableColumn<T> = TableColumnData & {
     minWidth?: number;
     CellComponent?: React.FC<TableComponentProps>;
+    TooltipComponent?: React.FC<TooltipComponentProps>;
     HeaderComponent?: React.FC<any>;
     className?: string;
     custom?: T;

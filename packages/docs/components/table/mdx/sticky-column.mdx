@@ -1,0 +1,37 @@
+## Sticky Column
+
+You could set Sticky Column, If you set `withSticky` on props new option appear in
+header menu named `stick/Unstick` if you click this button in each column that column 
+appear in stick table
+
+import {StickyColumns} from "../components/StickyColumns";
+
+<StickyColumns />
+
+import SyntaxHighlighter from "../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+import { simpleSchemaColumns, simpleRows } from "../helper/fakeData";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={simpleSchemaColumns}
+            rows={simpleRows}
+            resizable
+            selectable
+            sortable
+            withSticky
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;`}</SyntaxHighlighter>

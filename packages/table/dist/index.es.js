@@ -1223,6 +1223,7 @@ function n(n){return n&&"object"==typeof n&&"default"in n?n.default:n}var t=Reac
 var vtStore = {
     VTVersion: "1.0.0",
     settings: { direction: "rtl", lang: "fa" },
+    rows: [],
     visibleRows: [],
     enhancedColumns: [],
     tooltipColumns: {},
@@ -1237,16 +1238,13 @@ var vtStore = {
     }),
     setTableData: easyPeasy.action(function (state, payload) {
         var enhancedColumns = payload.enhancedColumns, visibleRows = payload.visibleRows, tooltipColumns = payload.tooltipColumns, tooltipKeys = payload.tooltipKeys;
+        state.rows = visibleRows;
         state.visibleRows = visibleRows;
         state.enhancedColumns = enhancedColumns;
         if (tooltipColumns)
             state.tooltipColumns = tooltipColumns;
         if (tooltipKeys)
             state.tooltipKeys = tooltipKeys;
-    }),
-    fakeAppendTableData: easyPeasy.action(function (state, _a) {
-        var rows = _a.rows, index = _a.index;
-        state.visibleRows = __spreadArray$1(__spreadArray$1(__spreadArray$1([], state.visibleRows.slice(0, index + 1)), rows), state.visibleRows.slice(index + 1));
     }),
     toggleVisibleColumns: easyPeasy.action(function (state, _a) {
         var index = _a.index;
@@ -1267,6 +1265,13 @@ var vtStore = {
     }),
     stickyColumns: easyPeasy.computed(function (state) {
         return state.enhancedColumns.filter(function (c) { return c.visible && c.sticked; });
+    }),
+    filterRowsOnSearch: easyPeasy.action(function (state, text) {
+        if (!text)
+            state.visibleRows = state.rows;
+        state.visibleRows = state.rows.filter(function (r) {
+            return Object.values(r).some(function (v) { return typeof v === "string" && v.includes(text); });
+        });
     }),
     sortTable: easyPeasy.action(function (state, _a) {
         var index = _a.index, sortType = _a.sortType, columnKey = _a.columnKey;
@@ -6808,7 +6813,7 @@ function useTheme$3() {
   return theme;
 }
 
-var jss$3 = create$3(jssPreset$2()); // Use a singleton or the provided one by the context.
+var jss$2 = create$3(jssPreset$2()); // Use a singleton or the provided one by the context.
 //
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
@@ -6819,7 +6824,7 @@ var sheetsManager$2 = new Map();
 var defaultOptions$2 = {
   disableGeneration: false,
   generateClassName: generateClassName$2,
-  jss: jss$3,
+  jss: jss$2,
   sheetsCache: null,
   sheetsManager: sheetsManager$2,
   sheetsRegistry: null
@@ -10834,12 +10839,12 @@ if(includes(propsToIgnore,originalKey)){newObj[originalKey]=originalValue;return
  */function getValueDoppelganger(key,originalValue){/* eslint complexity:[2, 10] */ // let's try to keep the complexity down... If we have to do this much more, let's break this up
 if(isNullOrUndefined(originalValue)||isBoolean(originalValue)){return originalValue;}if(isObject(originalValue)){return convert$1(originalValue);// recurssion 🌀
 }var isNum=isNumber(originalValue);var isFunc=isFunction$2(originalValue);var importantlessValue=isNum||isFunc?originalValue:originalValue.replace(/ !important.*?$/,'');var isImportant=!isNum&&importantlessValue.length!==originalValue.length;var valueConverter=propertyValueConverters[key];var newValue;if(valueConverter){newValue=valueConverter({value:importantlessValue,valuesToConvert:valuesToConvert,propertiesToConvert:propertiesToConvert,isRtl:true,bgImgDirectionRegex:bgImgDirectionRegex,bgPosDirectionRegex:bgPosDirectionRegex});}else {newValue=valuesToConvert[importantlessValue]||importantlessValue;}if(isImportant){return newValue+" !important";}return newValue;}var esm=/*#__PURE__*/Object.freeze({__proto__:null,'default':convert$1});var rtl=/*@__PURE__*/getAugmentedNamespace(esm);var convert=rtl['default']||rtl;function jssRTL(_a){var _b=_a===void 0?{}:_a,_c=_b.enabled,enabled=_c===void 0?true:_c,_d=_b.opt,opt=_d===void 0?'out':_d;return {onProcessStyle:function(style,rule,sheet){if(rule.type==='font-face'){return style;}if(!enabled){if(typeof style.flip==='boolean'){delete style.flip;}return style;}var flip=opt==='out';// If it's set to opt-out, then it should flip by default
-if(typeof sheet.options.flip==='boolean'){flip=sheet.options.flip;}if(typeof style.flip==='boolean'){flip=style.flip;delete style.flip;}if(!flip){return style;}return convert(typeof rule.toJSON==='function'?rule.toJSON():style);}};}var _default=jssRTL;var jss$2=create$2({plugins:__spreadArray(__spreadArray([],jssPreset$1().plugins),[_default()])});var defaultTheme$2={palette:{primary:indigo$2,secondary:red$2,error:red$2},typography:{fontFamily:'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',headline:{fontSize:"1rem"},subheading:{fontSize:"0.8125rem"},button:{fontWeight:400,textTransform:"initial"}},shape:{borderRadius:4},mixins:{toolbar:{minHeight:50}}};function useThemeCreator(rawTheme){var langSetting=useLanguageState();var localtypography=__assign$1({fontFamily:fontSelector(langSetting.lang)},rawTheme.typography);var localRawThemeObj=__assign$1(__assign$1(__assign$1({},localtypography),rawTheme),{direction:langSetting.direction});var theme=createMuiTheme$2(localRawThemeObj);theme=responsiveFontSizes(theme);return theme;}var ThemeContext$2=/*#__PURE__*/createContext({});function ThemeProvider(_a){var children=_a.children,_b=_a.rawTheme,rawTheme=_b===void 0?defaultTheme$2:_b;var theme=useThemeCreator(rawTheme);return/*#__PURE__*/React__default.createElement(ThemeContext$2.Provider,{value:theme},children);}function useThemeObject(){var theme=useContext(ThemeContext$2);if(!theme){throw new Error("Language Setting should use inside language provider");}return theme;}var en={rowSelected:" rows selected",rowPerPage:"Rows per page:",of:"Of",moreThan:"more than",next:"Next Page",prev:"Previous Page",delete:"Delete",sortAsc:"Sort Ascending",sortDsc:"Sort Descending",menu:"Menu",close:"Close",filter:{op:"Operation",column:"Column",value:"Value",filter:"Filter",add:"Add Filter",operations:{equals:"Equals",notEquals:"Not Equals",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"Contains",notContaines:"Not Containes",regex:"Regex",startWith:"Start With",endWith:"End With",between:"Between",dateFrom:"Date From",dateTo:"Date To",surrounded:"Surrounded"}},player:{playReverse:"Play Reverse",play:"Play",nextTime:"Next time",previousTime:"Previous Time"}};var fa$2={rowSelected:" ردیف انتخاب شده است",rowPerPage:"ردیف در هر صفحه:",of:"از",moreThan:"بیشتر از",next:"صفحه بعد",prev:"صفحه قبل",delete:"حذف کردن",sortAsc:"مرتب سازی صعودی",sortDsc:"مرتب سازی نزولی",menu:"منو",close:"بستن",filter:{op:"عملیات",column:"ستون",value:"مقدار",filter:"فیلتر",add:"افزودن فیلتر",operations:{equals:"برابر",notEquals:"مخالف",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"شامل",notContaines:"شامل نباشد",regex:"Regex",startWith:"شروع شود با",endWith:"پایان شود با",between:"بین",dateFrom:"از تاریخ",dateTo:"تا تاریخ",surrounded:"احاطه شده با"}},player:{playReverse:"اجرای برعکس",play:"اجرا",nextTime:"زمان بعدی",previousTime:"زمان قبلی"}};function useTranslation(){var lang=useLanguageState().lang;var translateFile=useRef(fa$2);var t=useCallback$1(function(key){try{var trans=key.split(".").reduce(function(acc,k){if(k in acc){return acc[k];}return acc;},translateFile.current);if(typeof trans==="string")return trans;return key;}catch(err){return key;}finally{}},[]);useEffect(function(){switch(lang){case"en":translateFile.current=en;break;case"fa":translateFile.current=fa$2;break;default:translateFile.current=fa$2;}},[]);return {t:t,translations:translateFile.current};}var WithFontTypography=withStyles$2({root:{fontFamily:"inherit"}})(Typography$1$1);var useStyles$i=makeStyles$3(function(theme){return {root:{padding:2},primary:{"&:hover":{color:theme.palette.primary.main}},secondary:{"&:hover":{color:theme.palette.secondary.main}},error:{"&:hover":{color:theme.palette.error.main}},warning:{"&:hover":{color:theme.palette.warning.main}},success:{"&:hover":{color:theme.palette.success.main}}};});function ButtonTooltip(_a){var _b;var title=_a.title,_c=_a.status,status=_c===void 0?"primary":_c,rest=__rest$1(_a,["title","status"]);var classes=useStyles$i();return/*#__PURE__*/React__default.createElement(Tooltip$1$1,{title:title},/*#__PURE__*/React__default.createElement(IconButton$1$1,__assign$1({},rest,{className:clsx$2((_b={},_b[classes.primary]=status==="primary",_b[classes.secondary]=status==="secondary",_b[classes.error]=status==="error",_b[classes.warning]=status==="warning",_b[classes.success]=status==="success",_b))})));}function HesabaStyleProvider(_a){var children=_a.children,theme=_a.theme,language=_a.language,_b=_a.direction,direction=_b===void 0?"rtl":_b;return/*#__PURE__*/React__default.createElement(StylesProvider$1,{injectFirst:true},/*#__PURE__*/React__default.createElement(LanguageProvider,{direction:direction,language:language},/*#__PURE__*/React__default.createElement(ThemeProvider,{rawTheme:theme},children)));}
+if(typeof sheet.options.flip==='boolean'){flip=sheet.options.flip;}if(typeof style.flip==='boolean'){flip=style.flip;delete style.flip;}if(!flip){return style;}return convert(typeof rule.toJSON==='function'?rule.toJSON():style);}};}var _default=jssRTL;create$2({plugins:__spreadArray(__spreadArray([],jssPreset$1().plugins),[_default()])});var defaultTheme$2={palette:{primary:indigo$2,secondary:red$2,error:red$2},typography:{fontFamily:'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',headline:{fontSize:"1rem"},subheading:{fontSize:"0.8125rem"},button:{fontWeight:400,textTransform:"initial"}},shape:{borderRadius:4},mixins:{toolbar:{minHeight:50}}};function useThemeCreator(rawTheme){var langSetting=useLanguageState();var localtypography=__assign$1({fontFamily:fontSelector(langSetting.lang)},rawTheme.typography);var localRawThemeObj=__assign$1(__assign$1(__assign$1({},localtypography),rawTheme),{direction:langSetting.direction});var theme=createMuiTheme$2(localRawThemeObj);theme=responsiveFontSizes(theme);return theme;}var ThemeContext$2=/*#__PURE__*/createContext({});function ThemeProvider(_a){var children=_a.children,_b=_a.rawTheme,rawTheme=_b===void 0?defaultTheme$2:_b;var theme=useThemeCreator(rawTheme);return/*#__PURE__*/React__default.createElement(ThemeContext$2.Provider,{value:theme},children);}function useThemeObject(){var theme=useContext(ThemeContext$2);if(!theme){throw new Error("Language Setting should use inside language provider");}return theme;}var en={rowSelected:" rows selected",rowPerPage:"Rows per page:",of:"Of",moreThan:"more than",next:"Next Page",prev:"Previous Page",delete:"Delete",sortAsc:"Sort Ascending",sortDsc:"Sort Descending",menu:"Menu",close:"Close",filter:{op:"Operation",column:"Column",value:"Value",filter:"Filter",add:"Add Filter",operations:{equals:"Equals",notEquals:"Not Equals",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"Contains",notContaines:"Not Containes",regex:"Regex",startWith:"Start With",endWith:"End With",between:"Between",dateFrom:"Date From",dateTo:"Date To",surrounded:"Surrounded"}},player:{playReverse:"Play Reverse",play:"Play",nextTime:"Next time",previousTime:"Previous Time"}};var fa$2={rowSelected:" ردیف انتخاب شده است",rowPerPage:"ردیف در هر صفحه:",of:"از",moreThan:"بیشتر از",next:"صفحه بعد",prev:"صفحه قبل",delete:"حذف کردن",sortAsc:"مرتب سازی صعودی",sortDsc:"مرتب سازی نزولی",menu:"منو",close:"بستن",filter:{op:"عملیات",column:"ستون",value:"مقدار",filter:"فیلتر",add:"افزودن فیلتر",operations:{equals:"برابر",notEquals:"مخالف",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"شامل",notContaines:"شامل نباشد",regex:"Regex",startWith:"شروع شود با",endWith:"پایان شود با",between:"بین",dateFrom:"از تاریخ",dateTo:"تا تاریخ",surrounded:"احاطه شده با"}},player:{playReverse:"اجرای برعکس",play:"اجرا",nextTime:"زمان بعدی",previousTime:"زمان قبلی"}};function useTranslation(){var lang=useLanguageState().lang;var translateFile=useRef(fa$2);var t=useCallback$1(function(key){try{var trans=key.split(".").reduce(function(acc,k){if(k in acc){return acc[k];}return acc;},translateFile.current);if(typeof trans==="string")return trans;return key;}catch(err){return key;}finally{}},[]);useEffect(function(){switch(lang){case"en":translateFile.current=en;break;case"fa":translateFile.current=fa$2;break;default:translateFile.current=fa$2;}},[]);return {t:t,translations:translateFile.current};}var WithFontTypography=withStyles$2({root:{fontFamily:"inherit"}})(Typography$1$1);var useStyles$i=makeStyles$3(function(theme){return {root:{padding:2},primary:{"&:hover":{color:theme.palette.primary.main}},secondary:{"&:hover":{color:theme.palette.secondary.main}},error:{"&:hover":{color:theme.palette.error.main}},warning:{"&:hover":{color:theme.palette.warning.main}},success:{"&:hover":{color:theme.palette.success.main}}};});function ButtonTooltip(_a){var _b;var title=_a.title,_c=_a.status,status=_c===void 0?"primary":_c,rest=__rest$1(_a,["title","status"]);var classes=useStyles$i();return/*#__PURE__*/React__default.createElement(Tooltip$1$1,{title:title},/*#__PURE__*/React__default.createElement(IconButton$1$1,__assign$1({},rest,{className:clsx$2((_b={},_b[classes.primary]=status==="primary",_b[classes.secondary]=status==="secondary",_b[classes.error]=status==="error",_b[classes.warning]=status==="warning",_b[classes.success]=status==="success",_b))})));}function HesabaStyleProvider(_a){var children=_a.children,theme=_a.theme,language=_a.language,_b=_a.direction,direction=_b===void 0?"rtl":_b;return/*#__PURE__*/React__default.createElement(StylesProvider$1,{injectFirst:true},/*#__PURE__*/React__default.createElement(LanguageProvider,{direction:direction,language:language},/*#__PURE__*/React__default.createElement(ThemeProvider,{rawTheme:theme},children)));}
 
 var ThemeMaker = function (_a) {
     var children = _a.children;
     var theme = useThemeObject();
-    return (React__default.createElement(StylesProvider$2, { injectFirst: true, jss: jss$2 },
+    return (React__default.createElement(StylesProvider$2, { injectFirst /*jss={jss}*/: true },
         React__default.createElement(ThemeProvider$1, { theme: theme }, children)));
 };
 
@@ -11213,53 +11218,6 @@ var Provider = function (_a) {
     return (React__default.createElement(HesabaStyleProvider, { language: language, direction: direction, theme: theme },
         React__default.createElement(ThemeMaker, null, children)));
 };
-
-function createEnhancedColumns(columns) {
-    return columns.map(function (c, index) {
-        var _a;
-        var _b;
-        return (__assign$2(__assign$2({}, c), (_a = {}, _a[DATA_FIELD] = HESABA_DATA_FIELD + "-" + c.key, _a.colIndex = index, _a.visible = true, _a.sticked = false, _a.sorted = undefined, _a.type = (_b = c === null || c === void 0 ? void 0 : c.type) !== null && _b !== void 0 ? _b : "string", _a)));
-    });
-}
-function createEnhancedRows(rows) {
-    return rows.map(function (r, index) { return (__assign$2({ id: index, selected: false }, r)); });
-}
-function parseTableData(columns, rows) {
-    var mainColumns = columns.filter(function (c) { return c.type !== "tooltip"; });
-    // const tooltipColumns = columns.filter((c) => c.type == "tooltip");
-    var tooltipKeys = columns
-        .filter(function (c) { return c.type == "tooltip"; })
-        .reduce(function (acc, _a) {
-        var _b, _c;
-        var reference = _a.reference, label = _a.label;
-        return reference
-            ? reference in acc
-                ? __assign$2(__assign$2({}, acc), (_b = {}, _b[reference] = __spreadArray$1(__spreadArray$1([], acc[reference]), [label]), _b)) : __assign$2(__assign$2({}, acc), (_c = {}, _c[reference] = [label], _c))
-            : acc;
-    }, {});
-    var tooltipColumns = columns
-        .filter(function (c) { return c.type == "tooltip"; })
-        .reduce(function (acc, _a) {
-        var _b, _c;
-        var reference = _a.reference, rest = __rest$2(_a, ["reference"]);
-        return reference
-            ? reference in acc
-                ? __assign$2(__assign$2({}, acc), (_b = {}, _b[reference] = __spreadArray$1(__spreadArray$1([], acc[reference]), [rest]), _b)) : __assign$2(__assign$2({}, acc), (_c = {}, _c[reference] = [rest], _c))
-            : acc;
-    }, {});
-    var enhancedColumns = createEnhancedColumns(mainColumns);
-    var visibleRows = createEnhancedRows(rows);
-    return { enhancedColumns: enhancedColumns, tooltipColumns: tooltipColumns, tooltipKeys: tooltipKeys, visibleRows: visibleRows };
-}
-function useTableData(columns, rows, tableDataParser) {
-    var setTableData = useTStoreActions(function (actions) { return actions.setTableData; });
-    useEffect(function () {
-        if (tableDataParser)
-            setTableData(tableDataParser(columns, rows));
-        else
-            setTableData(parseTableData(columns, rows));
-    }, [columns, rows, tableDataParser]);
-}
 
 var common$1 = {
   black: '#000',
@@ -45361,9 +45319,11 @@ var vtToolbarStore = {
                 value: [undefined],
             });
         }
+        state.showSearch = false;
         state.showFilter = showFilter;
     }),
     toggleShowSearch: easyPeasy.action(function (state, showSearch) {
+        state.showFilter = false;
         state.showSearch = showSearch;
     }),
     onSearchTextChange: easyPeasy.action(function (state, text) {
@@ -45580,6 +45540,10 @@ var Add = createSvgIcon( /*#__PURE__*/React.createElement("path", {
   d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
 }), 'Add');
 
+var Info = createSvgIcon( /*#__PURE__*/React.createElement("path", {
+  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+}), 'Info');
+
 var useStyles$8 = makeStyles$2(function (theme) {
     return createStyles$2({
         rootFilter: {
@@ -45598,27 +45562,29 @@ var useStyles$8 = makeStyles$2(function (theme) {
         },
     });
 });
-var TableFilter = function (_a) {
+var TableFilter = memo(function (_a) {
+    var onFilterChange = _a.onFilterChange, filters = _a.filters, showFilter = _a.showFilter;
     var classes = useStyles$8();
-    var _b = useTableToolbarState(), showFilter = _b.showFilter, filters = _b.filters;
-    var toggleShowFilter = useTableToolbarAction().toggleShowFilter;
+    var _b = useTableToolbarAction(), toggleShowFilter = _b.toggleShowFilter, filterAdd = _b.filterAdd;
     var handleClose = function () {
         toggleShowFilter(false);
     };
-    console.log(filters);
-    var filterAdd = useTableToolbarAction().filterAdd;
+    useEffect(function () {
+        onFilterChange && onFilterChange(filters);
+    }, [filters]);
     var t = useTranslation().t;
     if (!showFilter)
         return null;
-    return (React__default.createElement("div", { className: classes.rootFilter },
-        React__default.createElement(ButtonTooltip, { status: "error", title: t("close"), size: "small", onClick: handleClose },
-            React__default.createElement(CloseIcon$1, null)),
-        filters.map(function (filter, index) { return (React__default.createElement("div", { key: filter.id, className: classes.filterWrapper },
-            React__default.createElement(FilterItem, { filter: filter, index: index }))); }),
-        React__default.createElement("div", { style: { width: "100%" } },
-            React__default.createElement(ButtonTooltip, { title: t("filter.add"), onClick: function () { return filterAdd(); } },
-                React__default.createElement(Add, null)))));
-};
+    return (React__default.createElement(Grow, { appear: true, in: true, timeout: 300 },
+        React__default.createElement("div", { className: classes.rootFilter },
+            React__default.createElement(ButtonTooltip, { status: "error", title: t("close"), size: "small", onClick: handleClose },
+                React__default.createElement(CloseIcon$1, null)),
+            filters.map(function (filter, index) { return (React__default.createElement("div", { key: filter.id, className: classes.filterWrapper },
+                React__default.createElement(FilterItem, { filter: filter, index: index }))); }),
+            React__default.createElement("div", { style: { width: "100%" } },
+                React__default.createElement(ButtonTooltip, { title: t("filter.add"), onClick: function () { return filterAdd(); } },
+                    React__default.createElement(Add, null))))));
+});
 
 var useStyles$7 = makeStyles$2(function (theme) { return ({
     main: {
@@ -45640,12 +45606,19 @@ var useStyles$7 = makeStyles$2(function (theme) { return ({
         },
     },
 }); }, { name: "MUIDataTableSearch" });
-var TableSearch = function (_a) {
+var TableSearch = memo(function (_a) {
+    var onChange = _a.onSearchTextChange, searchText = _a.searchText;
     var classes = useStyles$7();
     var t = useTranslation().t;
     var _b = useTableToolbarAction(), onSearchTextChange = _b.onSearchTextChange, toggleShowSearch = _b.toggleShowSearch;
-    var searchText = useTableToolbarState().searchText;
+    var filterRowsOnSearch = useTStoreActions(function (actions) { return actions.filterRowsOnSearch; });
+    // const { searchText } = useTableToolbarState();
     var handleTextChange = function (event) {
+        if (onChange)
+            onChange(event.target.value);
+        else {
+            filterRowsOnSearch(event.target.value);
+        }
         onSearchTextChange(event.target.value);
     };
     var onHide = function () {
@@ -45668,12 +45641,12 @@ var TableSearch = function (_a) {
                 //   "aria-label": options.textLabels.toolbar.search,
                 // }}
                 value: searchText || "", onKeyDown: onKeyDown, onChange: handleTextChange, fullWidth: true }))));
-};
+});
 
 var useStyles$6 = makeStyles$2(function (theme) {
     return createStyles$2({
         menuList: { display: "flex", flexDirection: "column", padding: 16 },
-        menuItem: { justifyContent: "space-around" },
+        formControl: { justifyContent: "flex-start", width: '100%' },
         toolbarContainer: {
             borderBottom: "solid " + theme.palette.grey[300] + " 1px",
             display: "flex",
@@ -45691,37 +45664,38 @@ var useStyles$6 = makeStyles$2(function (theme) {
     });
 });
 var TableToolbar = function (_a) {
-    var title = _a.title, height = _a.height, classes = _a.classes, hasFilter = _a.hasFilter, searchable = _a.searchable, rest = __rest$2(_a, ["title", "height", "classes", "hasFilter", "searchable"]);
+    var title = _a.title, height = _a.height, classes = _a.classes, hasFilter = _a.hasFilter, searchable = _a.searchable, onSearchTextChange = _a.onSearchTextChange, onFilterChange = _a.onFilterChange, rest = __rest$2(_a, ["title", "height", "classes", "hasFilter", "searchable", "onSearchTextChange", "onFilterChange"]);
     var toolbarClasses = useStyles$6();
     return (React__default.createElement("div", { style: { height: height || DEFAULT_TOOLBAR_HEIGHT }, className: clsx(toolbarClasses.toolbarContainer, classes === null || classes === void 0 ? void 0 : classes.root) },
         React__default.createElement("div", { className: clsx(toolbarClasses.tools) },
             React__default.createElement(ToolbarMoreVert, { classes: classes, hasFilter: hasFilter, searchable: searchable }),
-            React__default.createElement(ToolbarFilter, { hasFilter: hasFilter }),
-            React__default.createElement(ToolbarSearch, { searchable: searchable }),
+            React__default.createElement(ToolbarFilter, { hasFilter: hasFilter, onFilterChange: onFilterChange }),
+            React__default.createElement(ToolbarSearch, { searchable: searchable, onSearchTextChange: onSearchTextChange }),
             rest.operationOnRows && React__default.createElement(ToolbarOperation, __assign$2({}, rest))),
         React__default.createElement(Typography$1, { align: "center", className: toolbarClasses.title }, title !== null && title !== void 0 ? title : "")));
 };
 var ToolbarFilter = memo(function (_a) {
-    var hasFilter = _a.hasFilter;
-    var showFilter = useTableToolbarState().showFilter;
+    var hasFilter = _a.hasFilter, onFilterChange = _a.onFilterChange;
+    var _b = useTableToolbarState(), filters = _b.filters, showFilter = _b.showFilter;
     if (!hasFilter || !showFilter)
         return null;
-    return React__default.createElement(TableFilter, null);
+    return (React__default.createElement(TableFilter, { onFilterChange: onFilterChange, filters: filters, showFilter: showFilter }));
 });
 var ToolbarSearch = memo(function (_a) {
-    var searchable = _a.searchable;
-    var showSearch = useTableToolbarState().showSearch;
+    var searchable = _a.searchable, onSearchTextChange = _a.onSearchTextChange;
+    var _b = useTableToolbarState(), showSearch = _b.showSearch, searchText = _b.searchText;
     if (!searchable || !showSearch)
         return null;
-    return React__default.createElement(TableSearch, null);
+    return (React__default.createElement(TableSearch, { onSearchTextChange: onSearchTextChange, searchText: searchText }));
 });
 function ToolbarMoreVert(_a) {
-    var _b, _c, _d;
+    var _b;
     var classes = _a.classes, hasFilter = _a.hasFilter, searchable = _a.searchable;
-    var _e = useState(null), anchorEl = _e[0], setAnchorEl = _e[1];
+    var _c = useState(null), anchorEl = _c[0], setAnchorEl = _c[1];
     var open = Boolean(anchorEl);
     var enhancedColumns = useTStoreState(function (state) { return state.enhancedColumns; });
     var toolbarClasses = useStyles$6();
+    var t = useTranslation().t;
     var handleClick = function (event) {
         setAnchorEl(event.currentTarget);
     };
@@ -45729,27 +45703,25 @@ function ToolbarMoreVert(_a) {
         setAnchorEl(null);
     };
     var toggleVisibleColumns = useTStoreActions(function (actions) { return actions.toggleVisibleColumns; });
-    var _f = useTableToolbarAction(), toggleShowSearch = _f.toggleShowSearch, toggleShowFilter = _f.toggleShowFilter;
+    var _d = useTableToolbarAction(), toggleShowSearch = _d.toggleShowSearch, toggleShowFilter = _d.toggleShowFilter;
     // const toggleShowFilter = useTStoreActions(
     //   (actions) => actions.toggleShowFilter
     // );
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement(IconButton$1, { onClick: handleClick, className: classes === null || classes === void 0 ? void 0 : classes.iconButton },
+        React__default.createElement(ButtonTooltip, { title: t(""), onClick: handleClick, className: classes === null || classes === void 0 ? void 0 : classes.iconButton },
             React__default.createElement(MoreVert, { className: clsx((_b = {}, _b[toolbarClasses.icon] = !(classes === null || classes === void 0 ? void 0 : classes.icon), _b), classes === null || classes === void 0 ? void 0 : classes.icon) })),
-        hasFilter && (React__default.createElement(IconButton$1, { onClick: function () {
+        hasFilter && (React__default.createElement(ButtonTooltip, { title: t("filter.filter"), onClick: function () {
                 toggleShowFilter(true);
                 handleClose();
             }, className: classes === null || classes === void 0 ? void 0 : classes.iconButton },
-            React__default.createElement(MenuItem$1, { className: clsx((_c = {}, _c[toolbarClasses.icon] = !(classes === null || classes === void 0 ? void 0 : classes.icon), _c), classes === null || classes === void 0 ? void 0 : classes.icon) },
-                React__default.createElement(FilterIcon, null)))),
-        searchable && (React__default.createElement(IconButton$1, { onClick: function () {
+            React__default.createElement(FilterIcon, null))),
+        searchable && (React__default.createElement(ButtonTooltip, { title: t("search"), onClick: function () {
                 toggleShowSearch(true);
                 handleClose();
             }, className: classes === null || classes === void 0 ? void 0 : classes.iconButton },
-            React__default.createElement(MenuItem$1, { className: clsx((_d = {}, _d[toolbarClasses.icon] = !(classes === null || classes === void 0 ? void 0 : classes.icon), _d), classes === null || classes === void 0 ? void 0 : classes.icon) },
-                React__default.createElement(SearchTableIcon, null)))),
-        React__default.createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, classes: { list: toolbarClasses.menuList }, className: classes === null || classes === void 0 ? void 0 : classes.menu }, enhancedColumns === null || enhancedColumns === void 0 ? void 0 : enhancedColumns.map(function (c, index) { return (React__default.createElement(MenuItem$1, { key: c.key, className: clsx(toolbarClasses.menuItem, classes === null || classes === void 0 ? void 0 : classes.menuItem) },
-            React__default.createElement(FormControlLabel$1, { control: React__default.createElement(Checkbox$1, { checked: c.visible, onChange: function () {
+            React__default.createElement(SearchTableIcon, null))),
+        React__default.createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, classes: { list: toolbarClasses.menuList }, className: classes === null || classes === void 0 ? void 0 : classes.menu }, enhancedColumns === null || enhancedColumns === void 0 ? void 0 : enhancedColumns.map(function (c, index) { return (React__default.createElement(MenuItem$1, { key: c.key, className: clsx(classes === null || classes === void 0 ? void 0 : classes.menuItem) },
+            React__default.createElement(FormControlLabel$1, { className: toolbarClasses.formControl, control: React__default.createElement(Checkbox$1, { checked: c.visible, onChange: function () {
                         toggleVisibleColumns({ index: index });
                     }, color: "primary", name: c.label }), label: c.label }))); }))));
 }
@@ -46666,7 +46638,12 @@ createListComponent({
 
 var useCellStyles = makeStyles$2(function () {
     return createStyles$2({
-        rowCell: {},
+        rowCell: {
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "normal",
+            position: "relative",
+        },
         simpleCell: {
             fontFamily: "inherit",
         },
@@ -46677,26 +46654,44 @@ var SimpleTableCell = function (_a) {
     var classes = useCellStyles();
     return (React__default.createElement(Typography$1, { align: "center", className: clsx(classes.simpleCell, className) }, value));
 };
-var EnhancedCell = memo(function (_a) {
-    var tooltips = _a.tooltips, tooltipKeys = _a.tooltipKeys, rest = __rest$2(_a, ["tooltips", "tooltipKeys"]);
+var SimpleTooltipComponent = function (_a) {
+    var tooltipData = _a.tooltipData;
+    return (React__default.createElement("div", null, Object.keys(tooltipData).map(function (k) { return (React__default.createElement(Fragment$7, { key: k },
+        React__default.createElement(Typography$1, null,
+            k,
+            " : ",
+            tooltipData[k]),
+        React__default.createElement("br", null))); })));
+};
+var useTooltipCellStyles = makeStyles$2(function (theme) {
+    return createStyles$2({
+        tooltip: { position: "absolute", right: 0 },
+        icon: { fill: theme.palette.secondary.light },
+    });
+});
+var CellTooltip = memo(function (_a) {
+    var row = _a.row, tooltipKeys = _a.tooltipKeys, tooltips = _a.tooltips, _b = _a.TooltipComponent, TooltipComponent = _b === void 0 ? SimpleTooltipComponent : _b;
+    var classes = useTooltipCellStyles();
     if (tooltips &&
         tooltipKeys &&
         (tooltipKeys === null || tooltipKeys === void 0 ? void 0 : tooltipKeys.length) > 0 &&
         tooltips.length > 0) {
-        var tooltipData_1 = pickObjectKeys(rest.row, tooltipKeys);
-        if (rest.rowIndex === 0) {
-            console.log(tooltipData_1, tooltipKeys, rest.row, tooltips);
-        }
-        return (React__default.createElement(Tooltip$1, { title: Object.keys(tooltipData_1).map(function (k) { return "\n " + k + ":" + tooltipData_1[k] + " \n"; }) },
-            React__default.createElement(Cell, __assign$2({}, rest))));
+        var tooltipData = pickObjectKeys(row, tooltipKeys);
+        return (React__default.createElement(Tooltip$1, { className: classes.tooltip, title: React__default.createElement(TooltipComponent, { tooltipData: tooltipData }) },
+            React__default.createElement(Info, { className: classes.icon })));
     }
-    return React__default.createElement(Cell, __assign$2({}, rest));
+    return null;
+});
+var EnhancedCell = memo(function (_a) {
+    var tooltips = _a.tooltips, tooltipKeys = _a.tooltipKeys, TooltipComponent = _a.TooltipComponent, rest = __rest$2(_a, ["tooltips", "tooltipKeys", "TooltipComponent"]);
+    return (React__default.createElement(Cell, __assign$2({}, rest),
+        React__default.createElement(CellTooltip, { row: rest.row, tooltipKeys: tooltipKeys, tooltips: tooltips, TooltipComponent: TooltipComponent })));
 });
 var Cell = memo(forwardRef(function (_a, ref) {
     var _b;
-    var label = _a.label, _c = _a.minWidth, minWidth = _c === void 0 ? ROW_MIN_WIDTH : _c, colKey = _a.colKey, _d = _a.CellComponent, CellComponent = _d === void 0 ? SimpleTableCell : _d; _a.HeaderComponent; _a.visible; _a.sorted; var row = _a.row, rowIndex = _a.rowIndex; _a.colIndex; _a.columnsLength; 
-    var // currentWidths,
-    classes = _a.classes; _a.sticked; _a.custom; _a.isScrolling; var rest = __rest$2(_a, ["label", "minWidth", "colKey", "CellComponent", "HeaderComponent", "visible", "sorted", "row", "rowIndex", "colIndex", "columnsLength", "classes", "sticked", "custom", "isScrolling"]);
+    var label = _a.label, _c = _a.minWidth, minWidth = _c === void 0 ? ROW_MIN_WIDTH : _c, colKey = _a.colKey, _d = _a.CellComponent, CellComponent = _d === void 0 ? SimpleTableCell : _d; _a.HeaderComponent; _a.visible; _a.sorted; var row = _a.row, rowIndex = _a.rowIndex; _a.colIndex; _a.columnsLength; var children = _a.children, 
+    // currentWidths,
+    classes = _a.classes; _a.sticked; _a.custom; _a.isScrolling; var rest = __rest$2(_a, ["label", "minWidth", "colKey", "CellComponent", "HeaderComponent", "visible", "sorted", "row", "rowIndex", "colIndex", "columnsLength", "children", "classes", "sticked", "custom", "isScrolling"]);
     var cellClasses = useCellStyles();
     // const handleW = colIndex === columnsLength - 1 ? 0 : RESIZE_HANDLE_WIDTH;
     var currentWidths = useTableSizeState().currentWidths;
@@ -46707,15 +46702,13 @@ var Cell = memo(forwardRef(function (_a, ref) {
     return (React__default.createElement("div", __assign$2({ ref: ref }, rest, { key: colKey, style: {
             minWidth: calcMinWidth || minWidth,
             width: calcMinWidth || minWidth,
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "normal",
         }, className: clsx(
         // commonClasses.tableCell,
         cellClasses.rowCell, classes === null || classes === void 0 ? void 0 : classes.root
         // { [classes.evenRow]: index % 2 === 0 },
         // { [classes.oddRow]: index % 2 !== 0 }
         ) }),
+        children,
         React__default.createElement(CellComponent, { label: label, index: rowIndex, rowKey: rowIndex, row: row, value: value, className: classes === null || classes === void 0 ? void 0 : classes.simpleCell })));
 }));
 
@@ -46768,29 +46761,32 @@ var useStyles$4 = makeStyles$2(function (theme) {
     });
 });
 function VirtualTableRow(props) {
+    var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
+    var _a = useTooltip(), getTooltipColumns = _a.getTooltipColumns, getTooltipKeys = _a.getTooltipKeys;
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement(SingleVirtualTableRow, __assign$2({}, props))));
+        React__default.createElement(SingleVirtualTableRow, __assign$2({}, props, { visibleRows: visibleRows, getTooltipColumns: getTooltipColumns, getTooltipKeys: getTooltipKeys }))));
 }
 function VirtualStickyTableRow(props) {
+    var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
+    var _a = useTooltip(), getTooltipColumns = _a.getTooltipColumns, getTooltipKeys = _a.getTooltipKeys;
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement(SingleStickyVirtualTableRow, __assign$2({}, props))));
+        React__default.createElement(SingleStickyVirtualTableRow, __assign$2({}, props, { visibleRows: visibleRows, getTooltipColumns: getTooltipColumns, getTooltipKeys: getTooltipKeys }))));
 }
 function useTooltip() {
     var tooltipColumns = useTStoreState(function (state) { return state.tooltipColumns; });
     var tooltipKeys = useTStoreState(function (state) { return state.tooltipKeys; });
-    var getTooltipColumns = useCallback$1(function (label) {
-        return tooltipColumns[label];
+    var getTooltipColumns = useCallback$1(function (key) {
+        return tooltipColumns[key];
     }, []);
-    var getTooltipKeys = useCallback$1(function (label) {
-        return tooltipKeys[label];
+    var getTooltipKeys = useCallback$1(function (key) {
+        return tooltipKeys[key];
     }, []);
     return { getTooltipKeys: getTooltipKeys, getTooltipColumns: getTooltipColumns };
 }
-var RowWrapper = function (_a) {
+var RowWrapper = memo(function (_a) {
     var _b, _c, _d, _e;
-    var children = _a.children, style = _a.style, extraStyles = _a.extraStyles, selectedRowStyle = _a.selectedRowStyle, classes = _a.classes, onRowClick = _a.onRowClick, rowIndex = _a.rowIndex, width = _a.width;
+    var children = _a.children, style = _a.style, extraStyles = _a.extraStyles, selectedRowStyle = _a.selectedRowStyle, classes = _a.classes, onRowClick = _a.onRowClick, rowIndex = _a.rowIndex, width = _a.width, visibleRows = _a.visibleRows;
     var rowClasses = useStyles$4();
-    var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
     var activeRow = useTableRowState().activeRow;
     var onRowSelect = useCallback$1(function () {
         onRowClick && onRowClick(rowIndex);
@@ -46800,38 +46796,33 @@ var RowWrapper = function (_a) {
             _d), (_e = {},
             _e[(classes === null || classes === void 0 ? void 0 : classes.oddRow) || "tempOddRow"] = (classes === null || classes === void 0 ? void 0 : classes.oddRow) && rowIndex % 2 !== 0,
             _e)), onClick: onRowSelect }, children));
-};
-var SingleVirtualTableRow = function (props) {
-    var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
+});
+var SingleVirtualTableRow = memo(function (props) {
     var commonClasses = style();
-    var _a = useTooltip(), getTooltipColumns = _a.getTooltipColumns, getTooltipKeys = _a.getTooltipKeys;
     var toggleSingleRow = useTStoreActions(function (actions) { return actions.toggleSingleRow; });
     var calcRowWidth = useCalcTableWidth(props.columns, props.width);
-    return (React__default.createElement(RowWrapper, __assign$2({}, props, { width: calcRowWidth() }),
-        props.selectable && !props.withSticky && (React__default.createElement(Checkbox$1, __assign$2({ checked: visibleRows[props.rowIndex].selected, onChange: function () {
+    return (React__default.createElement(RowWrapper, __assign$2({}, props, { width: calcRowWidth(), visibleRows: props.visibleRows }),
+        props.selectable && !props.withSticky && (React__default.createElement(Checkbox$1, __assign$2({ checked: props.visibleRows[props.rowIndex].selected, onChange: function () {
                 toggleSingleRow({ index: props.rowIndex });
             }, 
             // name={name}
             color: "primary", classes: { root: commonClasses.checkbox }, onClick: function (e) { return e.stopPropagation(); } }, props.CheckboxProps))),
         props.columns.map(function (col, colIndex) { return (React__default.createElement(Fragment$7, { key: col.key },
-            React__default.createElement(EnhancedCell, __assign$2({}, col, { colIndex: colIndex, row: visibleRows[props.rowIndex], rowIndex: props.rowIndex, columnsLength: props.columns.length, colKey: col.key, tooltips: getTooltipColumns(col.label), tooltipKeys: getTooltipKeys(col.label) })))); })));
-};
-var SingleStickyVirtualTableRow = function (props) {
+            React__default.createElement(EnhancedCell, __assign$2({}, col, { colIndex: colIndex, row: props.visibleRows[props.rowIndex], rowIndex: props.rowIndex, columnsLength: props.columns.length, colKey: col.key, tooltips: props.getTooltipColumns(col.key), tooltipKeys: props.getTooltipKeys(col.key) })))); })));
+});
+var SingleStickyVirtualTableRow = memo(function (props) {
     var commonClasses = style();
-    var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
-    var _a = useTooltip(), getTooltipColumns = _a.getTooltipColumns, getTooltipKeys = _a.getTooltipKeys;
     var toggleSingleRow = useTStoreActions(function (actions) { return actions.toggleSingleRow; });
-    return (React__default.createElement(RowWrapper, __assign$2({}, props, { width: "auto" }),
-        props.selectable && (React__default.createElement(Checkbox$1, __assign$2({ checked: visibleRows[props.rowIndex].selected, onChange: function () {
+    return (React__default.createElement(RowWrapper, __assign$2({}, props, { width: "auto", visibleRows: props.visibleRows }),
+        props.selectable && (React__default.createElement(Checkbox$1, __assign$2({ checked: props.visibleRows[props.rowIndex].selected, onChange: function () {
                 toggleSingleRow({ index: props.rowIndex });
             }, 
             // name={name}
             color: "primary", classes: { root: commonClasses.checkbox }, onClick: function (e) { return e.stopPropagation(); } }, props.CheckboxProps))),
         props.columns.map(function (col, colIndex) { return (React__default.createElement(Fragment$7, { key: col.key },
-            React__default.createElement(EnhancedCell, __assign$2({}, col, { colIndex: colIndex, row: visibleRows[props.rowIndex], rowIndex: props.rowIndex, columnsLength: props.columns.length, colKey: col.key, tooltips: getTooltipColumns(col.label), tooltipKeys: getTooltipKeys(col.label) })))); })));
-};
+            React__default.createElement(EnhancedCell, __assign$2({}, col, { colIndex: colIndex, row: props.visibleRows[props.rowIndex], rowIndex: props.rowIndex, columnsLength: props.columns.length, colKey: col.key, tooltips: props.getTooltipColumns(col.key), tooltipKeys: props.getTooltipKeys(col.key) })))); })));
+});
 
-// import PinIcon from "/assets/icons/common/PinIcon";
 var HeaderIconButton = withStyles(function () { return ({
     root: { margin: 4 },
 }); })(ButtonTooltip);
@@ -46839,6 +46830,7 @@ var useStyles$3 = makeStyles$2(function () {
     return createStyles$2({
         icons: { width: 14, height: 14 },
         menu: { display: "flex", flexDirection: "column", padding: 16 },
+        headerButton: { cursor: "pointer" },
     });
 });
 var OPTIONS = {
@@ -46849,7 +46841,7 @@ var OPTIONS = {
     stick: "Stick",
 };
 var HeaderMenu = function (_a) {
-    var index = _a.index, sortable = _a.sortable, columnKey = _a.columnKey, sorted = _a.sorted, sticked = _a.sticked, dataField = _a.dataField;
+    var index = _a.index, sortable = _a.sortable, columnKey = _a.columnKey, sorted = _a.sorted, sticked = _a.sticked, dataField = _a.dataField, children = _a.children;
     var menuClasses = useStyles$3();
     var _b = useState(null), anchorEl = _b[0], setAnchorEl = _b[1];
     var open = Boolean(anchorEl);
@@ -46876,8 +46868,7 @@ var HeaderMenu = function (_a) {
             React__default.createElement(ArrowUp, { className: menuClasses.icons }))),
         sortable && sorted === "ASC" && (React__default.createElement(HeaderIconButton, { title: t("sortAsc"), onClick: sortAsc },
             React__default.createElement(ArrowDown, { className: menuClasses.icons }))),
-        React__default.createElement(HeaderIconButton, { title: t("menu"), onClick: handleClick },
-            React__default.createElement(MoreVert, { className: menuClasses.icons })),
+        React__default.createElement("div", { onClick: handleClick, className: menuClasses.headerButton }, children),
         React__default.createElement(Menu$1, { disableScrollLock: true, id: "long-menu", anchorEl: anchorEl, keepMounted: true, open: open, onClose: handleClose, classes: { list: menuClasses.menu }, PaperProps: {
                 style: {
                 //   maxHeight: ITEM_HEIGHT * 4.5,
@@ -46939,9 +46930,8 @@ var HeadCell = function (_a) {
                 minWidth: calcMinWidth || minWidth,
                 width: calcMinWidth || minWidth,
             } }, rest),
-            React__default.createElement(React__default.Fragment, null,
-                React__default.createElement(Typography$1, { align: "center", className: clsx(cellClasses.titleText, classes === null || classes === void 0 ? void 0 : classes.title) }, label),
-                React__default.createElement(HeaderMenu, { index: colIndex, sortable: sortable, columnKey: colKey, sorted: sorted, sticked: sticked, dataField: rest["data-field"] }))),
+            React__default.createElement(HeaderMenu, { index: colIndex, sortable: sortable, columnKey: colKey, sorted: sorted, sticked: sticked, dataField: rest["data-field"] },
+                React__default.createElement(Typography$1, { align: "center", className: clsx(cellClasses.titleText, classes === null || classes === void 0 ? void 0 : classes.title) }, label))),
         resizable && (React__default.createElement("div", { className: clsx(DRAG_CLASS, cellClasses.dividerIconWrapper) },
             React__default.createElement(DividerIcon, __assign$2({ className: clsx(cellClasses.dividerIcon, classes === null || classes === void 0 ? void 0 : classes.divider) }, DividerProps))))));
 };
@@ -47016,42 +47006,10 @@ var useStyles$1 = makeStyles$2(function () { return ({
         zIndex: 10,
         backgroundColor: "#FFF",
         overflowY: "hidden",
-        border: "solid 1px #aaa",
-        "&::-webkit-scrollbar": {
-            // General scrollbar
-            // width: "0px",
-            // display: "none",
-            // height: "0px",
-            /* Remove scrollbar space */
-            background: "transparent" /* Optional: just make scrollbar invisible */,
-        },
-        "&:::-webkit-scrollbar-thumb": {
-            background: "#FF0000",
-        },
+        border: "solid  #ddd",
+        borderWidth: "0 0 1px 3px",
     },
-    stickyTableWrapper: { overflow: "hidden" },
 }); });
-// const CustomScrollbars = ({ onScroll, forwardedRef, style, children }: any) => {
-//   const refSetter = useCallback(
-//     (scrollbarsRef) => {
-//       if (scrollbarsRef) {
-//         forwardedRef(scrollbarsRef.view);
-//       } else {
-//         forwardedRef(null);
-//       }
-//     },
-//     [forwardedRef]
-//   );
-//   return (
-//     <Scrollbars
-//       ref={refSetter}
-//       style={{ ...style, overflow: "hidden" }}
-//       onScroll={onScroll}
-//     >
-//       {children}
-//     </Scrollbars>
-//   );
-// };
 var outerElementTypeWithId = forwardRef(function (props, ref) {
     return React__default.createElement("div", __assign$2({ id: MAIN_LIST_ID }, props, { ref: ref }));
 });
@@ -47096,7 +47054,7 @@ var VirtualList = memo(forwardRef(function (_a, ref) {
     };
     return (React__default.createElement(VariableSizeList, { ref: ref, direction: direction, height: height, itemCount: visibleRows.length, onScroll: onScroll, itemSize: function () { return itemSize; }, itemKey: function (index) { return "" + index; }, width: width, itemData: visibleRows, outerRef: setRef, innerElementType: innerElementType, className: clsx(tableClasses.root, (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.root), outerElementType: outerElementTypeWithId }, function (_a) {
         var index = _a.index, rest = __rest$2(_a, ["index"]);
-        return (React__default.createElement(VirtualTableRow, __assign$2({ rowIndex: index, classes: classes === null || classes === void 0 ? void 0 : classes.row, width: width, columns: visibleColumns }, VTCommonTableElProps, VTRowProps, rest, { selectable: selectable })));
+        return (React__default.createElement(VirtualTableRow, __assign$2({ rowIndex: index, classes: classes === null || classes === void 0 ? void 0 : classes.row, width: width, columns: visibleColumns, withSticky: withSticky }, VTCommonTableElProps, VTRowProps, rest, { selectable: selectable })));
     }));
 }));
 var StickyVirtualList = memo(forwardRef(function (_a, ref) {
@@ -47112,14 +47070,17 @@ var StickyVirtualList = memo(forwardRef(function (_a, ref) {
     }
     var innerElementType = function (_a) {
         var children = _a.children, style = _a.style, rest = __rest$2(_a, ["children", "style"]);
-        return (React__default.createElement("div", __assign$2({}, rest, { style: __assign$2({}, style) }),
+        return (React__default.createElement("div", __assign$2({}, rest, { style: __assign$2({}, style), onWheel: onScroll }),
             React__default.createElement(VirtualTableStickyHeader, __assign$2({ selectable: selectable, classes: classes === null || classes === void 0 ? void 0 : classes.header, width: width, resizable: resizable, sortable: sortable, columns: stickyColumns }, VTCommonTableElProps, VTHeaderProps, VTFilterProps)),
             children));
     };
-    return (React__default.createElement(VariableSizeList, { ref: ref, direction: direction, height: height, itemCount: visibleRows.length, onScroll: onScroll, itemSize: function () { return itemSize; }, itemKey: function (index) { return "" + index; }, width: width, itemData: visibleRows, outerRef: setRef, className: clsx(tableClasses.root, (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.root), innerElementType: innerElementType, outerElementType: stickyOuterElementTypeWithId }, function (_a) {
-        var index = _a.index, rest = __rest$2(_a, ["index"]);
-        return (React__default.createElement(VirtualStickyTableRow, __assign$2({ rowIndex: index, selectable: selectable, classes: classes === null || classes === void 0 ? void 0 : classes.row, width: width, columns: stickyColumns }, VTCommonTableElProps, VTRowProps, rest)));
-    }));
+    return (React__default.createElement(React__default.Fragment, null,
+        React__default.createElement(VariableSizeList, { ref: ref, direction: direction, height: height, itemCount: visibleRows.length, 
+            // onScroll={onScroll}
+            itemSize: function () { return itemSize; }, itemKey: function (index) { return "" + index; }, width: width, itemData: visibleRows, outerRef: setRef, className: clsx(tableClasses === null || tableClasses === void 0 ? void 0 : tableClasses.root, (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.root), innerElementType: innerElementType, outerElementType: stickyOuterElementTypeWithId }, function (_a) {
+            var index = _a.index, rest = __rest$2(_a, ["index"]);
+            return (React__default.createElement(VirtualStickyTableRow, __assign$2({ rowIndex: index, selectable: selectable, classes: classes === null || classes === void 0 ? void 0 : classes.row, width: width, columns: stickyColumns }, VTCommonTableElProps, VTRowProps, rest)));
+        })));
 }));
 
 var useStyles = makeStyles$2(function (theme) {
@@ -47238,33 +47199,118 @@ function TablePagination(_a) {
             t("rowSelected")))));
 }
 
-/**
- * Decorator component that automatically adjusts the width and height of a single child
- */
-var VirtualizaTable = memo(function (_a) {
-    var _b;
-    var rows = _a.rows, columns = _a.columns, width = _a.width, height = _a.height, _c = _a.hasFilter, hasFilter = _c === void 0 ? true : _c, _d = _a.hasToolbar, hasToolbar = _d === void 0 ? true : _d, _e = _a.searchable, searchable = _e === void 0 ? true : _e, title = _a.title, operationOnRows = _a.operationOnRows, classes = _a.classes, pagination = _a.pagination, tableDataParser = _a.tableDataParser, VTContainerProps = _a.VTContainerProps, VTToolbarProps = _a.VTToolbarProps; _a.headerHeight; var rest = __rest$2(_a, ["rows", "columns", "width", "height", "hasFilter", "hasToolbar", "searchable", "title", "operationOnRows", "classes", "pagination", "tableDataParser", "VTContainerProps", "VTToolbarProps", "headerHeight"]);
+function createEnhancedColumns(columns) {
+    return columns.map(function (c, index) {
+        var _a;
+        var _b;
+        return (__assign$2(__assign$2({}, c), (_a = {}, _a[DATA_FIELD] = HESABA_DATA_FIELD + "-" + c.key, _a.colIndex = index, _a.visible = true, _a.sticked = false, _a.sorted = undefined, _a.type = (_b = c === null || c === void 0 ? void 0 : c.type) !== null && _b !== void 0 ? _b : "string", _a)));
+    });
+}
+function createEnhancedRows(rows) {
+    return rows.map(function (r, index) { return (__assign$2({ id: index, selected: false }, r)); });
+}
+function parseTableData(columns, rows) {
+    var mainColumns = columns.filter(function (c) { return c.type !== "tooltip"; });
+    // const tooltipColumns = columns.filter((c) => c.type == "tooltip");
+    var tooltipKeys = columns
+        .filter(function (c) { return c.type == "tooltip"; })
+        .reduce(function (acc, _a) {
+        var _b, _c;
+        var reference = _a.reference, label = _a.label;
+        return reference
+            ? reference in acc
+                ? __assign$2(__assign$2({}, acc), (_b = {}, _b[reference] = __spreadArray$1(__spreadArray$1([], acc[reference]), [label]), _b)) : __assign$2(__assign$2({}, acc), (_c = {}, _c[reference] = [label], _c))
+            : acc;
+    }, {});
+    var tooltipColumns = columns
+        .filter(function (c) { return c.type == "tooltip"; })
+        .reduce(function (acc, _a) {
+        var _b, _c;
+        var reference = _a.reference, rest = __rest$2(_a, ["reference"]);
+        return reference
+            ? reference in acc
+                ? __assign$2(__assign$2({}, acc), (_b = {}, _b[reference] = __spreadArray$1(__spreadArray$1([], acc[reference]), [rest]), _b)) : __assign$2(__assign$2({}, acc), (_c = {}, _c[reference] = [rest], _c))
+            : acc;
+    }, {});
+    var enhancedColumns = createEnhancedColumns(mainColumns);
+    var visibleRows = createEnhancedRows(rows);
+    return { enhancedColumns: enhancedColumns, tooltipColumns: tooltipColumns, tooltipKeys: tooltipKeys, visibleRows: visibleRows };
+}
+function useTableData(columns, rows, tableDataParser) {
+    var setTableData = useTStoreActions(function (actions) { return actions.setTableData; });
+    useEffect(function () {
+        if (tableDataParser)
+            setTableData(tableDataParser(columns, rows));
+        else
+            setTableData(parseTableData(columns, rows));
+    }, [columns, rows, tableDataParser]);
+}
+
+function useVTInit(rows, columns, tableDataParser, withSticky) {
     useTableData(columns, rows, tableDataParser);
     var staticGrid = useRef();
     var mainList = useRef();
+    var mainOuterRefList = useRef();
+    var stickyOuterRefList = useRef();
+    var _a = useState(15), scrollHeight = _a[0], setScrollHeight = _a[1];
+    useEffect(function () {
+        if (withSticky) {
+            var retry_1 = 0;
+            var interval_1 = setInterval(function () {
+                var _a;
+                retry_1 += 1;
+                var el = document.getElementById(MAIN_LIST_ID);
+                var stickyEl = document.getElementById(MAIN_STICKY_LIST_ID);
+                if (el && stickyEl) {
+                    clearInterval(interval_1);
+                    mainOuterRefList.current = el;
+                    stickyOuterRefList.current = stickyEl;
+                    setScrollHeight(Math.abs(mainOuterRefList.current.getBoundingClientRect().height -
+                        ((_a = mainOuterRefList.current) === null || _a === void 0 ? void 0 : _a.clientHeight)));
+                }
+                else if (retry_1 > 5) {
+                    clearInterval(interval_1);
+                }
+                console.log("geprj");
+            }, 100);
+        }
+    }, [withSticky]);
     var onScroll = useCallback$1(function (_a) {
         var scrollOffset = _a.scrollOffset, scrollUpdateWasRequested = _a.scrollUpdateWasRequested;
         if (!scrollUpdateWasRequested && staticGrid.current) {
             staticGrid.current.scrollTo(scrollOffset);
         }
     }, []);
-    var onStickyScroll = useCallback$1(function (_a) {
-        var scrollOffset = _a.scrollOffset, scrollUpdateWasRequested = _a.scrollUpdateWasRequested;
-        if (!scrollUpdateWasRequested && mainList.current) {
-            mainList.current.scrollTo(scrollOffset);
+    var onStickyScroll = useCallback$1(function (e) {
+        var _a;
+        if (mainList.current && staticGrid.current && mainOuterRefList.current) {
+            var offset = ((_a = mainOuterRefList.current) === null || _a === void 0 ? void 0 : _a.scrollTop) + Math.sign(e.deltaY) * 30;
+            mainList.current.scrollTo(offset);
+            staticGrid.current.scrollTo(offset);
         }
     }, []);
+    return {
+        onScroll: onScroll,
+        onStickyScroll: onStickyScroll,
+        staticGrid: staticGrid,
+        mainList: mainList,
+        scrollHeight: scrollHeight,
+    };
+}
+
+/**
+ * Decorator component that automatically adjusts the width and height of a single child
+ */
+var VirtualizaTable = memo(function (_a) {
+    var _b;
+    var rows = _a.rows, columns = _a.columns, width = _a.width, height = _a.height, _c = _a.hasFilter, hasFilter = _c === void 0 ? true : _c, _d = _a.hasToolbar, hasToolbar = _d === void 0 ? true : _d, _e = _a.searchable, searchable = _e === void 0 ? true : _e, title = _a.title, operationOnRows = _a.operationOnRows, classes = _a.classes, pagination = _a.pagination, tableDataParser = _a.tableDataParser, VTContainerProps = _a.VTContainerProps, VTToolbarProps = _a.VTToolbarProps; _a.headerHeight; var onFilterChange = _a.onFilterChange, onSearchTextChange = _a.onSearchTextChange, rest = __rest$2(_a, ["rows", "columns", "width", "height", "hasFilter", "hasToolbar", "searchable", "title", "operationOnRows", "classes", "pagination", "tableDataParser", "VTContainerProps", "VTToolbarProps", "headerHeight", "onFilterChange", "onSearchTextChange"]);
+    var _f = useVTInit(rows, columns, tableDataParser, rest.withSticky), onScroll = _f.onScroll, onStickyScroll = _f.onStickyScroll, staticGrid = _f.staticGrid, mainList = _f.mainList, scrollHeight = _f.scrollHeight;
     return (React__default.createElement(VirtualTableContainer, __assign$2({ classes: classes === null || classes === void 0 ? void 0 : classes.table }, VTContainerProps, { width: width }),
         hasToolbar && (React__default.createElement(TableToolbarProvider, null,
-            React__default.createElement(TableToolbar, __assign$2({ title: title, operationOnRows: operationOnRows, classes: classes === null || classes === void 0 ? void 0 : classes.toolbar, hasFilter: hasFilter, searchable: searchable }, VTToolbarProps)))),
+            React__default.createElement(TableToolbar, __assign$2({ onSearchTextChange: onSearchTextChange, onFilterChange: onFilterChange, title: title, operationOnRows: operationOnRows, classes: classes === null || classes === void 0 ? void 0 : classes.toolbar, hasFilter: hasFilter, searchable: searchable }, VTToolbarProps)))),
         React__default.createElement("div", { role: "table", className: (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.container, style: { display: "flex" } },
             React__default.createElement(Overlay, null),
-            rest.withSticky && React__default.createElement(StickyVirtualList, __assign$2({ ref: staticGrid, width: CHECKBOX_WIDTH, onScroll: onStickyScroll, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) - 13 }, rest)),
+            rest.withSticky && (React__default.createElement(StickyVirtualList, __assign$2({ ref: staticGrid, width: CHECKBOX_WIDTH, onScroll: onStickyScroll, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) - scrollHeight }, rest))),
             React__default.createElement(VirtualList, __assign$2({ ref: mainList, width: width, onScroll: onScroll, classes: classes, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) }, rest)),
             React__default.createElement(Overlay, null)),
         pagination && (React__default.createElement(TablePagination, __assign$2({}, pagination, { classes: classes === null || classes === void 0 ? void 0 : classes.footer, width: width })))));

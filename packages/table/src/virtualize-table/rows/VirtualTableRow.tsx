@@ -18,8 +18,8 @@ type RowWrapperProps = CompleteRowProps & {
 };
 
 type VirtualRowProps = RowWrapperProps & {
-  getTooltipColumns: (label: string) => Array<TableColumn<any>>;
-  getTooltipKeys: (label: string) => Array<string>;
+  getTooltipColumns: (key: string) => Array<TableColumn<any>>;
+  getTooltipKeys: (key: string) => Array<string>;
 };
 
 const useStyles = makeStyles((theme) =>
@@ -79,11 +79,11 @@ export function VirtualStickyTableRow(props: CompleteRowProps) {
 function useTooltip() {
   const tooltipColumns = useTStoreState((state) => state.tooltipColumns);
   const tooltipKeys = useTStoreState((state) => state.tooltipKeys);
-  const getTooltipColumns = useCallback((label: string) => {
-    return tooltipColumns[label as any];
+  const getTooltipColumns = useCallback((key: string) => {
+    return tooltipColumns[key as any];
   }, []);
-  const getTooltipKeys = useCallback((label: string) => {
-    return tooltipKeys[label as any];
+  const getTooltipKeys = useCallback((key: string) => {
+    return tooltipKeys[key as any];
   }, []);
   return { getTooltipKeys, getTooltipColumns };
 }
@@ -172,8 +172,8 @@ const SingleVirtualTableRow = memo((props: VirtualRowProps) => {
             rowIndex={props.rowIndex}
             columnsLength={props.columns.length}
             colKey={col.key}
-            tooltips={props.getTooltipColumns(col.label)}
-            tooltipKeys={props.getTooltipKeys(col.label)}
+            tooltips={props.getTooltipColumns(col.key)}
+            tooltipKeys={props.getTooltipKeys(col.key)}
           />
         </Fragment>
       ))}
@@ -217,8 +217,8 @@ const SingleStickyVirtualTableRow = memo((props: VirtualRowProps) => {
             rowIndex={props.rowIndex}
             columnsLength={props.columns.length}
             colKey={col.key}
-            tooltips={props.getTooltipColumns(col.label)}
-            tooltipKeys={props.getTooltipKeys(col.label)}
+            tooltips={props.getTooltipColumns(col.key)}
+            tooltipKeys={props.getTooltipKeys(col.key)}
           />
         </Fragment>
       ))}

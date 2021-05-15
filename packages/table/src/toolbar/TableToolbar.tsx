@@ -3,7 +3,6 @@ import {
   Checkbox,
   createStyles,
   FormControlLabel,
-  IconButton,
   makeStyles,
   Menu,
   MenuItem,
@@ -24,11 +23,12 @@ import {
   useTableToolbarAction,
   useTableToolbarState,
 } from "./TableToolbarProvider";
+import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     menuList: { display: "flex", flexDirection: "column", padding: 16 },
-    menuItem: { justifyContent: "space-around" },
+    formControl: { justifyContent: "flex-start",width:'100%' },
     toolbarContainer: {
       borderBottom: `solid ${theme.palette.grey[300]} 1px`,
       display: "flex",
@@ -133,7 +133,7 @@ export function ToolbarMoreVert({
   const open = Boolean(anchorEl);
   const enhancedColumns = useTStoreState((state) => state.enhancedColumns);
   const toolbarClasses = useStyles();
-
+  const { t } = useTranslation();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -153,50 +153,42 @@ export function ToolbarMoreVert({
 
   return (
     <>
-      <IconButton onClick={handleClick} className={classes?.iconButton}>
+      <ButtonTooltip
+        title={t("")}
+        onClick={handleClick}
+        className={classes?.iconButton}
+      >
         <MoreVertIcon
           className={clsx(
             { [toolbarClasses.icon]: !classes?.icon },
             classes?.icon
           )}
         />
-      </IconButton>
+      </ButtonTooltip>
 
       {hasFilter && (
-        <IconButton
+        <ButtonTooltip
+          title={t("filter.filter")}
           onClick={() => {
             toggleShowFilter(true);
             handleClose();
           }}
           className={classes?.iconButton}
         >
-          <MenuItem
-            className={clsx(
-              { [toolbarClasses.icon]: !classes?.icon },
-              classes?.icon
-            )}
-          >
-            <FilterIcon />
-          </MenuItem>
-        </IconButton>
+          <FilterIcon />
+        </ButtonTooltip>
       )}
       {searchable && (
-        <IconButton
+        <ButtonTooltip
+          title={t("search")}
           onClick={() => {
             toggleShowSearch(true);
             handleClose();
           }}
           className={classes?.iconButton}
         >
-          <MenuItem
-            className={clsx(
-              { [toolbarClasses.icon]: !classes?.icon },
-              classes?.icon
-            )}
-          >
-            <SearchTableIcon />
-          </MenuItem>
-        </IconButton>
+          <SearchTableIcon />
+        </ButtonTooltip>
       )}
 
       <Menu
@@ -212,9 +204,11 @@ export function ToolbarMoreVert({
         {enhancedColumns?.map((c: any, index: any) => (
           <MenuItem
             key={c.key}
-            className={clsx(toolbarClasses.menuItem, classes?.menuItem)}
+         
+            className={clsx(classes?.menuItem)}
           >
             <FormControlLabel
+            className={toolbarClasses.formControl}
               control={
                 <Checkbox
                   checked={c.visible}
@@ -223,9 +217,6 @@ export function ToolbarMoreVert({
                   }}
                   color="primary"
                   name={c.label}
-
-                  // classes={{ root: commonClasses.checkbox }}
-                  // {...CheckboxProps}
                 />
               }
               label={c.label}

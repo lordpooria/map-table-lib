@@ -1,9 +1,20 @@
-import { RawTableColumns } from "../../src";
-import faker from "faker";
-import { Typography } from "@material-ui/core";
-import { Fragment } from "react";
-import NumberFormat from "react-number-format";
+## Tooltip Columns
 
+You could define some of columns as tooltip type, This type means this columns doesn't
+shown in the table but they appear as tooltip for other columns. To define a tooltip type
+you should set type to tooltip and also it needs reference with shuold be key of another column
+which is exist in table.
+
+import { SimpleTooltip } from "../../components/Tooltip";
+
+<SimpleTooltip />
+
+import SyntaxHighlighter from "../../../SyntaxHighlighter";
+
+<SyntaxHighlighter>{`
+import { RawTableColumns } from "@hesaba/table";
+import { Typography } from "@material-ui/core";
+import faker from "faker";
 export const simpleRows = [...Array.from({ length: 40 }, (_, i) => i)].map(
   (item) => {
     return {
@@ -12,19 +23,15 @@ export const simpleRows = [...Array.from({ length: 40 }, (_, i) => i)].map(
       phoneNumber: faker.phone.phoneNumber(),
       address: faker.address.streetAddress(),
       timeZone: faker.address.timeZone(),
-
       avatar: faker.image.avatar(),
       email: faker.internet.email(),
-
       jobTitle: faker.name.jobTitle(),
       jobDescriptor: faker.name.jobDescriptor(),
       business: faker.image.business(),
     };
   }
 );
-
-type keys = typeof simpleRows[number];
-
+type keys = typeof rows[number];
 const FirstTooltipComponent = ({ tooltipData }: any) => {
   return (
     <div style={{ backgroundColor: "#FFF" }}>
@@ -35,8 +42,7 @@ const FirstTooltipComponent = ({ tooltipData }: any) => {
     </div>
   );
 };
-
-export const simpleSchemaColumns: RawTableColumns<keys> = [
+export const schemaColumns: RawTableColumns<keys> = [
   {
     label: "firstName",
     key: "firstName",
@@ -91,4 +97,26 @@ export const simpleSchemaColumns: RawTableColumns<keys> = [
     type: "tooltip",
     reference: "jobTitle",
   },
-];
+];`}</SyntaxHighlighter>
+
+<SyntaxHighlighter>{`
+import { AutoSizer, HesabaVirtualTable } from "@hesaba/table";
+import React from "react";
+const BaseTable = () => {
+  return (
+    <div style={{ width: "70vw", height: "70vh" }}>
+      <AutoSizer>
+        {({ width, height }) => (
+          <HesabaVirtualTable
+            height={height}
+            width={width}
+            columns={schemaColumns}
+            rows={rows}
+          />
+        )}
+      </AutoSizer>
+    </div>
+  );
+};
+export default BaseTable;
+    `}</SyntaxHighlighter>

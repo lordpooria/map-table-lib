@@ -4,24 +4,26 @@ import {
   makeStyles,
   Tooltip,
 } from "@material-ui/core";
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef, Fragment, memo } from "react";
 
-import {
-  TableComponentProps,
-  TableColumn,
-  TooltipColumns,
-  TooltipKeys,
-} from "../types/main";
+import { TableComponentProps, TooltipComponentProps } from "../types/main";
 import clsx from "clsx";
 import { DATA_FIELD } from "../utils/constants";
 import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
-import { CellClasses } from "../types/styles";
+
 import { useTableSizeState } from "../container/TableSizeProvider";
+import { Info } from "@material-ui/icons";
 import { pickObjectKeys } from "../utils/helper";
+import { CompleteCellProps } from "../types";
 
 const useCellStyles = makeStyles(() =>
   createStyles({
-    rowCell: {},
+    rowCell: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "normal",
+      position: "relative",
+    },
     simpleCell: {
       fontFamily: "inherit",
     },
@@ -36,43 +38,77 @@ const SimpleTableCell = ({ value, className }: TableComponentProps) => {
     </Typography>
   );
 };
+const SimpleTooltipComponent = ({ tooltipData }: TooltipComponentProps) => {
+  return (
+    <div>
+      {Object.keys(tooltipData).map((k) => (
+        <Fragment key={k}>
+          <Typography>
+            {k}
+            {" : "}
+            {(tooltipData as any)[k]}
+          </Typography>
+          <br />
+        </Fragment>
+      ))}
+    </div>
+  );
+};
 
-interface Props extends TableColumn {
-  row: any;
-  rowIndex: number;
-  colIndex: number;
-  // currentWidths: CurrentWidths;
-  columnsLength: number;
-  colKey: string;
-  classes?: CellClasses;
-  isScrolling?: any;
-  tooltips?: TooltipColumns[string];
-  tooltipKeys?: TooltipKeys[string];
-}
+const useTooltipCellStyles = makeStyles((theme) =>
+  createStyles({
+    tooltip: { position: "absolute", right: 0 },
+    icon: { fill: theme.palette.secondary.light },
+  })
+);
 
-const EnhancedCell = memo(({ tooltips, tooltipKeys, ...rest }: Props) => {
-  if (
-    tooltips &&
-    tooltipKeys &&
-    tooltipKeys?.length > 0 &&
-    tooltips.length > 0
-  ) {
-    const tooltipData = pickObjectKeys(rest.row, tooltipKeys);
-    if (rest.rowIndex === 0) {
-      // console.log(tooltipData, tooltipKeys, rest.row, tooltips);
+const CellTooltip = memo(
+  ({
+    row,
+    tooltipKeys,
+    tooltips,
+    TooltipComponent = SimpleTooltipComponent,
+  }: {
+    row: CompleteCellProps["row"];
+    tooltipKeys: CompleteCellProps["tooltipKeys"];
+    tooltips: CompleteCellProps["tooltips"];
+    TooltipComponent: CompleteCellProps["TooltipComponent"];
+  }) => {
+    const classes = useTooltipCellStyles();
+    if (
+      tooltips &&
+      tooltipKeys &&
+      tooltipKeys?.length > 0 &&
+      tooltips.length > 0
+    ) {
+      const tooltipData = pickObjectKeys(row, tooltipKeys);
+      return (
+        <Tooltip
+          className={classes.tooltip}
+          title={<TooltipComponent tooltipData={tooltipData} />}
+        >
+          <Info className={classes.icon} />
+        </Tooltip>
+      );
     }
+    return null;
+  }
+);
+
+const EnhancedCell = memo(
+  ({ tooltips, tooltipKeys, TooltipComponent, ...rest }: CompleteCellProps) => {
     return (
-      <Tooltip
-        title={Object.keys(tooltipData).map(
-          (k) => `\n ${k}:${(tooltipData as any)[k]} \n`
-        )}
-      >
-        <Cell {...rest} />
-      </Tooltip>
+      <Cell {...rest}>
+        <CellTooltip
+          row={rest.row}
+          tooltipKeys={tooltipKeys}
+          tooltips={tooltips}
+          TooltipComponent={TooltipComponent}
+        />
+      </Cell>
     );
   }
-  return <Cell {...rest} />;
-});
+);
 
 const Cell = memo(
   forwardRef(
@@ -89,13 +125,14 @@ const Cell = memo(
         rowIndex,
         colIndex,
         columnsLength,
+        children,
         // currentWidths,
         classes,
         sticked: sticky,
         custom,
         isScrolling,
         ...rest
-      }: Props,
+      }: CompleteCellProps,
       ref
     ) => {
       const cellClasses = useCellStyles();
@@ -117,9 +154,6 @@ const Cell = memo(
           style={{
             minWidth: calcMinWidth || minWidth,
             width: calcMinWidth || minWidth,
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "normal",
           }}
           className={clsx(
             // commonClasses.tableCell,
@@ -129,6 +163,7 @@ const Cell = memo(
             // { [classes.oddRow]: index % 2 !== 0 }
           )}
         >
+          {children}
           <CellComponent
             label={label}
             index={rowIndex}

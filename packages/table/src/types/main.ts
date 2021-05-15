@@ -11,6 +11,7 @@ export type ColumnType =
   | "geographic"
   | "tooltip";
 
+export type TooltipComponentProps = { tooltipData: Record<string, any> };
 export interface TableComponentProps {
   index: number;
   value: any;
@@ -32,6 +33,7 @@ export type TableColumnData = {
 export type RawTableColumn<T> = TableColumnData & {
   minWidth?: number;
   CellComponent?: React.FC<TableComponentProps>;
+  TooltipComponent?: React.FC<TooltipComponentProps>;
   HeaderComponent?: React.FC<any>;
   className?: string;
   custom?: T;

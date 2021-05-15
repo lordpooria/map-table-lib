@@ -42,10 +42,12 @@ const vtToolbarStore: VTToolbarStoreModel = {
         value: [undefined],
       });
     }
+    state.showSearch = false;
     state.showFilter = showFilter;
   }),
 
   toggleShowSearch: action((state, showSearch) => {
+    state.showFilter = false;
     state.showSearch = showSearch;
   }),
   onSearchTextChange: action((state, text) => {
@@ -92,6 +94,7 @@ const vtToolbarStore: VTToolbarStoreModel = {
   }),
 
   filterAdd: action((state) => {
+   
     state.showFilter = true;
     // const col = state.enhancedColumns.filter((ec) => ec.key === columnKey);
     // if (!col || col.length === 0) {

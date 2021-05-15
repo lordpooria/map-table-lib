@@ -84,6 +84,15 @@ export const tableRoutes = [
             
     ],
   },
+  {
+    title: "Tooltip",
+    href: "/table/tooltip",
+    children: [
+      { title: "Simple Tooltip Column", href: "/table/tooltip/simple-tooltip" },
+            
+    ],
+  },
   { title: "Custom Data Type", href: "/table/custom-data-type" },
+  { title: "Sticky Column", href: "/table/sticky-column" },
   { title: "Pagination", href: "/table/pagination" },
 ];

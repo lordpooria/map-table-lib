@@ -7,13 +7,12 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { useTStoreActions } from "../../store/reducerHooks";
-import { MoreVertIcon, ArrowDownIcon, ArrowUpIcon } from "@hesaba/assets";
+import { ArrowDownIcon, ArrowUpIcon } from "@hesaba/assets";
 
 import { ButtonTooltip, useTranslation } from "@hesaba/theme-language";
 import { SortType } from "../../types/main";
 import { VTMainListProps } from "../../types";
 import { useAddSticky } from "../../container/TableStickyProvider";
-// import PinIcon from "/assets/icons/common/PinIcon";
 
 const HeaderIconButton = withStyles(() => ({
   root: { margin: 4 },
@@ -23,6 +22,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     icons: { width: 14, height: 14 },
     menu: { display: "flex", flexDirection: "column", padding: 16 },
+    headerButton: { cursor: "pointer" },
   })
 );
 
@@ -33,6 +33,7 @@ interface Props {
   dataField: string;
   sorted: SortType;
   sticked?: boolean;
+  children: React.ReactNode;
 }
 
 const OPTIONS = {
@@ -50,6 +51,7 @@ const HeaderMenu = ({
   sorted,
   sticked,
   dataField,
+  children,
 }: Props) => {
   const menuClasses = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -92,14 +94,15 @@ const HeaderMenu = ({
           <ArrowDownIcon className={menuClasses.icons} />
         </HeaderIconButton>
       )}
-      {/* {sortable && sorted === "ASC" && (
-        <HeaderIconButton onClick={stickColumn}>
-          <PinIcon className={classes.icons} />
-        </HeaderIconButton>
-      )} */}
-      <HeaderIconButton title={t("menu")} onClick={handleClick}>
+
+      <div onClick={handleClick} className={menuClasses.headerButton}>
+        {children}
+      </div>
+
+      {/* <HeaderIconButton title={t("menu")} onClick={handleClick}>
+      
         <MoreVertIcon className={menuClasses.icons} />
-      </HeaderIconButton>
+      </HeaderIconButton> */}
       <Menu
         disableScrollLock={true}
         id="long-menu"

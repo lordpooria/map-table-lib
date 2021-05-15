@@ -1,5 +1,4 @@
 import {
-  commonSidebar,
   DEFAULT_PAGINATION_HEIGHT,
   DEFAULT_TOOLBAR_HEIGHT,
 } from "./themeConstants";
@@ -29,9 +28,6 @@ export function calcTableHeght(
     else tableH -= DEFAULT_TOOLBAR_HEIGHT;
   }
   return tableH;
-}
-export function calcStickyTableHeght(tableH: number, headerHeight?: number) {
-  return tableH - 16 - (headerHeight ?? commonSidebar.itemHeight);
 }
 
 export function getWidthNumber(width: string) {

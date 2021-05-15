@@ -1,7 +1,5 @@
-import React, { FC, memo, useCallback, useRef } from "react";
-import { ListOnScrollProps, VariableSizeList } from "react-window";
+import React, { FC, memo } from "react";
 
-import useTableData from "../hooks/useTableData";
 import { TableToolbar } from "../toolbar/TableToolbar";
 import { VirtualTableProps } from "../types/tableTypes";
 import VirtualTableContainer from "./container-virtual/VirtualTableContainer";
@@ -15,6 +13,7 @@ import { TablePagination } from "../footer/Pagination";
 import { calcTableHeght } from "../utils/theme";
 import { TableToolbarProvider } from "../toolbar/TableToolbarProvider";
 import { CHECKBOX_WIDTH } from "../utils/themeConstants";
+import { useVTInit } from "./useInit";
 
 /**
  * Decorator component that automatically adjusts the width and height of a single child
@@ -40,27 +39,13 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
     onSearchTextChange,
     ...rest
   }: VirtualTableProps) => {
-    useTableData(columns, rows, tableDataParser);
-
-    const staticGrid = useRef<VariableSizeList | null | undefined>();
-    const mainList = useRef<VariableSizeList | null | undefined>();
-
-    const onScroll = useCallback(
-      ({ scrollOffset, scrollUpdateWasRequested }: ListOnScrollProps) => {
-        if (!scrollUpdateWasRequested && staticGrid.current) {
-          staticGrid.current.scrollTo(scrollOffset);
-        }
-      },
-      []
-    );
-    const onStickyScroll = useCallback(
-      ({ scrollOffset, scrollUpdateWasRequested }: ListOnScrollProps) => {
-        if (!scrollUpdateWasRequested && mainList.current) {
-          mainList.current.scrollTo(scrollOffset);
-        }
-      },
-      []
-    );
+    const {
+      onScroll,
+      onStickyScroll,
+      staticGrid,
+      mainList,
+      scrollHeight,
+    } = useVTInit(rows, columns, tableDataParser, rest.withSticky);
 
     return (
       <VirtualTableContainer
@@ -101,7 +86,7 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
                   VTToolbarProps?.height,
                   pagination,
                   height
-                ) - 13
+                ) - scrollHeight
               }
               {...rest}
             />

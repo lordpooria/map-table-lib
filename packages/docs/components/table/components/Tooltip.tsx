@@ -1,8 +1,9 @@
-import { RawTableColumns } from "../../src";
-import faker from "faker";
+import React from "react";
+import Operations from "../helper/Operations";
+import BaseTable from "./BaseTable";
+import { RawTableColumns } from "@hesaba/table";
 import { Typography } from "@material-ui/core";
-import { Fragment } from "react";
-import NumberFormat from "react-number-format";
+import faker from "faker";
 
 export const simpleRows = [...Array.from({ length: 40 }, (_, i) => i)].map(
   (item) => {
@@ -92,3 +93,14 @@ export const simpleSchemaColumns: RawTableColumns<keys> = [
     reference: "jobTitle",
   },
 ];
+
+export function SimpleTooltip() {
+  return (
+    <BaseTable
+      title="Table Title"
+      VTToolbarProps={{ height: 50 }}
+      columns={simpleSchemaColumns}
+      rows={simpleRows}
+    />
+  );
+}

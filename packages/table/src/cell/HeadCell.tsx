@@ -72,7 +72,6 @@ const HeadCell = ({
   const commonClasses = useCommonStyles();
   const { currentWidths } = useTableSizeState();
 
-  
   const calcMinWidth = currentWidths[rest[DATA_FIELD]]
     ? currentWidths[rest[DATA_FIELD]]
     : minWidth;
@@ -91,22 +90,21 @@ const HeadCell = ({
         }}
         {...rest}
       >
-        <>
+        <HeaderMenu
+          index={colIndex}
+          sortable={sortable}
+          columnKey={colKey}
+          sorted={sorted}
+          sticked={sticked}
+          dataField={rest["data-field"]}
+        >
           <Typography
             align="center"
             className={clsx(cellClasses.titleText, classes?.title)}
           >
             {label}
           </Typography>
-          <HeaderMenu
-            index={colIndex}
-            sortable={sortable}
-            columnKey={colKey}
-            sorted={sorted}
-            sticked={sticked}
-            dataField={rest["data-field"]}
-          />
-        </>
+        </HeaderMenu>
       </div>
 
       {resizable && (

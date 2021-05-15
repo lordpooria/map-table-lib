@@ -1,11 +1,7 @@
-import {
-  HesabaVirtualTable,
-  VirtualTableContainerProps,
-} from "../src";
+import { HesabaVirtualTable, VirtualTableContainerProps } from "../src";
 import { AutoSizer } from "../src";
 import React from "react";
 import { simpleSchemaColumns, simpleRows } from "./helper/fakeData";
-
 
 export const BaseTable = () => {
   return (
@@ -21,8 +17,11 @@ export const BaseTable = () => {
               selectable
               resizable
               sortable
+              withSticky
               // onSearchTextChange={(text)=>{console.log(text)}}
-              onFilterChange={(text)=>{console.log(text)}}
+              onFilterChange={(text) => {
+                console.log(text);
+              }}
               direction="rtl"
             />
           )}
@@ -33,5 +32,5 @@ export const BaseTable = () => {
 };
 
 export default {
-    title:'table'
+  title: "table",
 };

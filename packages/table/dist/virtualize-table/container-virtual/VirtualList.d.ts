@@ -14,7 +14,7 @@ export declare const VirtualList: React.MemoExoticComponent<React.ForwardRefExot
     VTHeaderProps?: import("../../types").VTPublicHeaderProps | undefined;
     VTRowProps?: import("../../types").VTPublicRowProps | undefined;
     VTFilterProps?: import("../../types/Filter").PublicFilterProps | undefined;
-    VTCommonTableElProps?: import("../../types").CommonTableElProps | undefined;
+    VTCommonTableElProps?: import("../../types").CommonTableRowProps | undefined;
 } & React.RefAttributes<unknown>>>;
 export declare const StickyVirtualList: React.MemoExoticComponent<React.ForwardRefExoticComponent<import("../../types").VTMainListProps & {
     width: number;
@@ -31,5 +31,5 @@ export declare const StickyVirtualList: React.MemoExoticComponent<React.ForwardR
     VTHeaderProps?: import("../../types").VTPublicHeaderProps | undefined;
     VTRowProps?: import("../../types").VTPublicRowProps | undefined;
     VTFilterProps?: import("../../types/Filter").PublicFilterProps | undefined;
-    VTCommonTableElProps?: import("../../types").CommonTableElProps | undefined;
+    VTCommonTableElProps?: import("../../types").CommonTableRowProps | undefined;
 } & React.RefAttributes<unknown>>>;

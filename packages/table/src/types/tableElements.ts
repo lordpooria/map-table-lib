@@ -1,8 +1,8 @@
 import { TablePaginationProps } from "@material-ui/core";
 import { CheckboxProps } from "@material-ui/core/Checkbox";
-import { SVGProps } from "react";
+import React, { SVGProps } from "react";
 import { PublicFilterProps } from "./Filter";
-import { TableColumn, TableColumns } from "./main";
+import { TableColumn, TableColumns, TooltipColumns, TooltipKeys } from "./main";
 import {
   CellClasses,
   HeaderClasses,
@@ -63,7 +63,7 @@ export type CompleteMainListProps = VTMainListProps & {
 
   VTFilterProps?: PublicFilterProps;
 
-  VTCommonTableElProps?: CommonTableElProps;
+  VTCommonTableElProps?: CommonTableRowProps;
 };
 
 export interface HeaderCellProps extends TableColumn {
@@ -75,7 +75,7 @@ export interface HeaderCellProps extends TableColumn {
   DividerProps?: SVGProps<any>;
 }
 
-export type VTPublicHeaderProps = CommonTableElProps & {
+export type VTPublicHeaderProps = CommonTableRowProps & {
   DividerProps?: SVGProps<any>;
 };
 
@@ -91,6 +91,23 @@ export type CompleteHeadProps = VTPublicHeaderProps & {
   columns: TableColumns;
 };
 
+export type VTPublicCellProps = {};
+
+export type CompleteCellProps = VTPublicCellProps &
+  TableColumn & {
+    row: any;
+    rowIndex: number;
+    colIndex: number;
+    children?: React.ReactNode;
+    // currentWidths: CurrentWidths;
+    columnsLength: number;
+    colKey: string;
+    classes?: CellClasses;
+    isScrolling?: any;
+    tooltips?: TooltipColumns[string];
+    tooltipKeys?: TooltipKeys[string];
+  };
+
 export interface VTPublicRowProps {
   classes?: RowClasses;
   onRowClick?: (index: number) => void;
@@ -98,14 +115,13 @@ export interface VTPublicRowProps {
   selectedRowStyle?: any;
 }
 
-export type SpecificRowProps = CommonTableElProps & {
+export type SpecificRowProps = CommonTableRowProps & {
   selectable?: VTMainListProps["selectable"];
   withSticky?: VTMainListProps["withSticky"];
   rowIndex: number;
   width: CommonPublicProps["width"];
   style: any;
   columns: TableColumns;
- 
 };
 
 export type CompleteRowProps = VTPublicRowProps & SpecificRowProps;
@@ -115,6 +131,6 @@ export type VTPublicPagination = TablePaginationProps & {
   classes?: PaginationClasses;
 };
 
-export interface CommonTableElProps {
+export interface CommonTableRowProps {
   CheckboxProps?: CheckboxProps;
 }

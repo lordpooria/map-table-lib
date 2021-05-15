@@ -4,7 +4,7 @@ import { VirtualTableContainerProps, WrapperProps } from "../virtualize-table/ty
 import { PublicTableToolbarProps } from "../types/TableToolbar";
 import { StyleTypes } from "./styles";
 import { Dir, LangString } from "@hesaba/theme-language";
-import { VTPublicHeaderProps, VTPublicRowProps, VTMainListProps, CommonTableElProps } from "./tableElements";
+import { VTPublicHeaderProps, VTPublicRowProps, VTMainListProps, CommonTableRowProps } from "./tableElements";
 import { PublicFilterProps } from "./Filter";
 export declare type CommonPublicProps = {
     width: number;
@@ -50,6 +50,9 @@ export declare type VirtualTableProps = CommonPublicProps & CommonTableProps & {
      */
     VTRowProps?: VTPublicRowProps;
     /**
+     */
+    VTCellProps?: VTPublicRowProps;
+    /**
      * if pagination data provided we render a footer pagination on table
      * for a pagination you need at least page,rowsPerPage, count of data
      */
@@ -57,7 +60,7 @@ export declare type VirtualTableProps = CommonPublicProps & CommonTableProps & {
         height?: number;
     };
     VTFilterProps?: PublicFilterProps;
-    VTCommonTableElProps?: CommonTableElProps;
+    VTCommonTableElProps?: CommonTableRowProps;
 };
 export interface GridTableProps extends CommonTableProps {
 }

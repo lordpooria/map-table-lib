@@ -7,6 +7,7 @@ export interface VTStoreModel {
         direction: PageDir;
         lang: string;
     };
+    rows: TableRows;
     visibleRows: TableRows;
     enhancedColumns: TableColumns;
     tooltipColumns: TooltipColumns;
@@ -21,10 +22,10 @@ export interface VTStoreModel {
         index: number;
     }>;
     setTableData: Action<VTStoreModel, OnSetTableDataPayload>;
-    fakeAppendTableData: Action<VTStoreModel, any>;
     toggleStickyColumn: Action<VTStoreModel, {
         index: number;
     }>;
+    filterRowsOnSearch: Action<VTStoreModel, string>;
     sortTable: Action<VTStoreModel, {
         index: number;
         sortType: SortType;

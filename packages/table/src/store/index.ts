@@ -49,11 +49,11 @@ export const vtStore: VTStoreModel = {
   tooltipKeys: {},
 
   toggleSingleRow: action((state, { index }) => {
-    state.rows[index].selected = !state.rows[index].selected;
+    state.visibleRows[index].selected = !state.visibleRows[index].selected;
   }),
 
   toggleAllRows: action((state, { isSelected }) => {
-    state.rows = state.rows.map((r) => ({
+    state.visibleRows = state.visibleRows.map((r) => ({
       ...r,
       selected: !isSelected,
     }));
@@ -84,12 +84,12 @@ export const vtStore: VTStoreModel = {
   }),
 
   numRowsSelected: computed(
-    (state) => state.rows.filter((r) => r.selected).length
+    (state) => state.visibleRows.filter((r) => r.selected).length
   ),
 
   selectedRows: computed(
     (state) =>
-      state.rows.reduce(
+      state.visibleRows.reduce(
         (acc, cur, idx) => (cur.selected ? [...acc, idx] : acc) as any,
         []
       ) as any
@@ -119,13 +119,13 @@ export const vtStore: VTStoreModel = {
 
     state.enhancedColumns.map((ec) => (ec.sorted = undefined));
     state.enhancedColumns[idx].sorted = sortType;
-    if (state.rows.length > 0)
-      state.rows =
+    if (state.visibleRows.length > 0)
+      state.visibleRows =
         sortType === "DESC"
-          ? state.rows.sort((a, b) =>
+          ? state.visibleRows.sort((a, b) =>
               (a[columnKey] as any) < (b[columnKey] as any) ? 1 : -1
             )
-          : state.rows.sort((a, b) =>
+          : state.visibleRows.sort((a, b) =>
               (a[columnKey] as any) < (b[columnKey] as any) ? -1 : 1
             );
   }),

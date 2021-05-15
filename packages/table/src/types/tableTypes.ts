@@ -12,7 +12,7 @@ import {
   VTPublicHeaderProps,
   VTPublicRowProps,
   VTMainListProps,
-  CommonTableElProps,
+  CommonTableRowProps,
 } from "./tableElements";
 import { PublicFilterProps } from "./Filter";
 
@@ -67,6 +67,9 @@ export type VirtualTableProps = CommonPublicProps &
      */
     VTRowProps?: VTPublicRowProps;
     /**
+     */
+    VTCellProps?: VTPublicRowProps;
+    /**
      * if pagination data provided we render a footer pagination on table
      * for a pagination you need at least page,rowsPerPage, count of data
      */
@@ -74,7 +77,7 @@ export type VirtualTableProps = CommonPublicProps &
 
     VTFilterProps?: PublicFilterProps;
 
-    VTCommonTableElProps?: CommonTableElProps;
+    VTCommonTableElProps?: CommonTableRowProps;
   };
 
 export interface GridTableProps extends CommonTableProps {}
