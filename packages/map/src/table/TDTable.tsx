@@ -177,7 +177,13 @@ const useMenuStyles = makeStyles({
 
 const MoreVert = memo(() => {
   const classes = useMenuStyles();
-  return <ToolbarMoreVert classes={{ iconButton: classes.iconButton }} />;
+  return (
+    <ToolbarMoreVert
+      classes={{ iconButton: classes.iconButton }}
+      hasFilter
+      searchable
+    />
+  );
 });
 
 const Operations = memo(

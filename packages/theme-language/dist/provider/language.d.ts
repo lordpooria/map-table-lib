@@ -11,3 +11,4 @@ export declare function LanguageProvider({ children, language, direction, }: {
 }): JSX.Element;
 export declare function useLanguageState(): AppLanguage;
 export declare function useLanguageAction(): (_: LangString) => void;
+export declare function useIsStyleProvided(): boolean;

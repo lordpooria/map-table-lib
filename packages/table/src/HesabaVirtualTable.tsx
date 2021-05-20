@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Provider, TableStoreProvider } from "./container/Wrapper";
+import { TableStoreProvider } from "./container/Wrapper";
 import { VirtualTableProps } from "./types/tableTypes";
 import VirtualizaTable from "./virtualize-table/VirtualizaTable";
 
@@ -13,11 +13,9 @@ export const HesabaVirtualTable: FC<VirtualTableProps> = ({
   ...props
 }: VirtualTableProps) => {
   return (
-    <Provider direction={direction} language={language} theme={theme}>
-      <TableStoreProvider width={props.width }>
-        <VirtualizaTable {...props} />
-      </TableStoreProvider>
-    </Provider>
+    <TableStoreProvider direction={direction} language={language} theme={theme}>
+      <VirtualizaTable {...props} />
+    </TableStoreProvider>
   );
 };
 

@@ -18,7 +18,10 @@ import { useLanguageState } from "@hesaba/theme-language";
 
 import { MAIN_LIST_ID, MAIN_STICKY_LIST_ID } from "../../utils/constants";
 import { makeStyles } from "@material-ui/core";
-import { useTableRef } from "../../container/TableStickyProvider";
+import {
+  useStickyTableResizer,
+  useTableResizer,
+} from "../../hooks/useTableResizer";
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -27,8 +30,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#FFF",
     overflowY: "hidden",
     border: "solid  #ddd",
-    borderWidth:"0 0 1px 3px",
-    
+    borderWidth: "0 0 1px 3px",
   },
 }));
 
@@ -69,9 +71,8 @@ export const VirtualList = memo(
       ref
     ) => {
       const { direction } = useLanguageState();
-      const {
-        mainTableRef: { setRef },
-      } = useTableRef();
+      const { setRef } = useTableResizer();
+
       const visibleColumns = useTStoreState((state) => state.visibleColumns);
 
       const visibleRows = useTStoreState((state) => state.visibleRows);
@@ -167,6 +168,7 @@ export const StickyVirtualList = memo(
       {
         height,
         width,
+        tableWidth,
         classes,
         onScroll,
         selectable = false,
@@ -177,13 +179,12 @@ export const StickyVirtualList = memo(
         VTRowProps,
         VTFilterProps,
         VTHeaderProps,
-      }: CompleteMainListProps,
+      }: CompleteMainListProps&{tableWidth:number},
       ref
     ) => {
       const { direction } = useLanguageState();
-      const {
-        stickyTableRef: { setRef },
-      } = useTableRef();
+      const { setRef } = useStickyTableResizer(tableWidth);
+
       const stickyColumns = useTStoreState((state) => state.stickyColumns);
       const visibleRows = useTStoreState((state) => state.visibleRows);
       const tableClasses = useStyles();

@@ -142,8 +142,7 @@ export function colourNameToHex(color: string) {
     yellow: "#ffff00",
     yellowgreen: "#9acd32",
   };
-
-  if (color.toLowerCase() in colors)
+  if (color?.toLowerCase() in colors)
     return colors[color.toLowerCase() as keyof typeof colors];
 
   return false;

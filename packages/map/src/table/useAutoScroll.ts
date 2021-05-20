@@ -14,7 +14,7 @@ export const useAutoScroll = () => {
   );
   const autoScroll = useRef(true);
   const preventAutoScroll = useRef(false);
-  const setActiveRow = useTableRowAction();
+  const setActiveRow  = useTableRowAction();
 
   const onScrolling = useCallback((e) => {
     const top = e?.target?.scrollTop;

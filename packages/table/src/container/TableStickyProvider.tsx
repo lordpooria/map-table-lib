@@ -7,10 +7,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
-import {
-  useTableResizer,
-  useStickyTableResizer,
-} from "../hooks/useTableResizer";
+
 import { useTStoreActions } from "../store/reducerHooks";
 import { MAIN_LIST_ID, MAIN_STICKY_LIST_ID } from "../utils";
 import { RESIZE_HANDLE_WIDTH, ROW_MIN_WIDTH } from "../utils/themeConstants";
@@ -24,23 +21,15 @@ type AddStickyType = (
   dataField: ColumnDataField,
   sticked?: boolean
 ) => void;
-type TableRefType = {
-  mainTableRef: { ref: HTMLDivElement | undefined; setRef: any };
-  stickyTableRef: { ref: HTMLDivElement | undefined; setRef: any };
-};
 
-const TableRefContext = createContext<TableRefType>({} as TableRefType);
+
 const AddStickyContext = createContext<AddStickyType>({} as AddStickyType);
 
 interface Props {
   children: React.ReactNode;
 }
 
-interface PropsWidth extends Props {
-  width: number;
-}
-
-function AddStickyProvider({ children }: Props) {
+export function AddStickyProvider({ children }: Props) {
   const { currentWidths } = useTableSizeState();
   const currentWidthsRef = useRef(currentWidths);
   const mainRef = useRef<HTMLDivElement | undefined>();
@@ -90,31 +79,6 @@ function AddStickyProvider({ children }: Props) {
   );
 }
 
-function TableRefProvider({ children, width }: PropsWidth) {
-  const mainTableRef = useTableResizer();
-  const stickyTableRef = useStickyTableResizer(width);
-  return (
-    <TableRefContext.Provider value={{ mainTableRef, stickyTableRef }}>
-      {children}
-    </TableRefContext.Provider>
-  );
-}
-
-export function TableStickyProvider({ children, width }: PropsWidth) {
-  return (
-    <TableRefProvider width={width}>
-      <AddStickyProvider>{children}</AddStickyProvider>
-    </TableRefProvider>
-  );
-}
-
-export function useTableRef() {
-  const refs = useContext(TableRefContext);
-  if (!refs) {
-    throw Error("use state inside provider");
-  }
-  return refs;
-}
 export function useAddSticky() {
   const onAddSticky = useContext(AddStickyContext);
   if (!onAddSticky) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default, { useState, useRef, useEffect, useContext, Children, isValidElement, cloneElement, useCallback as useCallback$1, createContext, useMemo as useMemo$1, memo, createElement, useLayoutEffect, Fragment as Fragment$7, Component, forwardRef, useDebugValue, PureComponent } from 'react';
+import React__default, { useState, useRef, useEffect, useContext, Children, isValidElement, cloneElement, useCallback as useCallback$1, createContext, memo, useMemo as useMemo$1, createElement, useLayoutEffect, Fragment as Fragment$7, Component, forwardRef, useDebugValue, PureComponent } from 'react';
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default from 'react-dom';
 
@@ -10839,7 +10839,7 @@ if(includes(propsToIgnore,originalKey)){newObj[originalKey]=originalValue;return
  */function getValueDoppelganger(key,originalValue){/* eslint complexity:[2, 10] */ // let's try to keep the complexity down... If we have to do this much more, let's break this up
 if(isNullOrUndefined(originalValue)||isBoolean(originalValue)){return originalValue;}if(isObject(originalValue)){return convert$1(originalValue);// recurssion 🌀
 }var isNum=isNumber(originalValue);var isFunc=isFunction$2(originalValue);var importantlessValue=isNum||isFunc?originalValue:originalValue.replace(/ !important.*?$/,'');var isImportant=!isNum&&importantlessValue.length!==originalValue.length;var valueConverter=propertyValueConverters[key];var newValue;if(valueConverter){newValue=valueConverter({value:importantlessValue,valuesToConvert:valuesToConvert,propertiesToConvert:propertiesToConvert,isRtl:true,bgImgDirectionRegex:bgImgDirectionRegex,bgPosDirectionRegex:bgPosDirectionRegex});}else {newValue=valuesToConvert[importantlessValue]||importantlessValue;}if(isImportant){return newValue+" !important";}return newValue;}var esm=/*#__PURE__*/Object.freeze({__proto__:null,'default':convert$1});var rtl=/*@__PURE__*/getAugmentedNamespace(esm);var convert=rtl['default']||rtl;function jssRTL(_a){var _b=_a===void 0?{}:_a,_c=_b.enabled,enabled=_c===void 0?true:_c,_d=_b.opt,opt=_d===void 0?'out':_d;return {onProcessStyle:function(style,rule,sheet){if(rule.type==='font-face'){return style;}if(!enabled){if(typeof style.flip==='boolean'){delete style.flip;}return style;}var flip=opt==='out';// If it's set to opt-out, then it should flip by default
-if(typeof sheet.options.flip==='boolean'){flip=sheet.options.flip;}if(typeof style.flip==='boolean'){flip=style.flip;delete style.flip;}if(!flip){return style;}return convert(typeof rule.toJSON==='function'?rule.toJSON():style);}};}var _default=jssRTL;create$2({plugins:__spreadArray(__spreadArray([],jssPreset$1().plugins),[_default()])});var defaultTheme$2={palette:{primary:indigo$2,secondary:red$2,error:red$2},typography:{fontFamily:'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',headline:{fontSize:"1rem"},subheading:{fontSize:"0.8125rem"},button:{fontWeight:400,textTransform:"initial"}},shape:{borderRadius:4},mixins:{toolbar:{minHeight:50}}};function useThemeCreator(rawTheme){var langSetting=useLanguageState();var localtypography=__assign$1({fontFamily:fontSelector(langSetting.lang)},rawTheme.typography);var localRawThemeObj=__assign$1(__assign$1(__assign$1({},localtypography),rawTheme),{direction:langSetting.direction});var theme=createMuiTheme$2(localRawThemeObj);theme=responsiveFontSizes(theme);return theme;}var ThemeContext$2=/*#__PURE__*/createContext({});function ThemeProvider(_a){var children=_a.children,_b=_a.rawTheme,rawTheme=_b===void 0?defaultTheme$2:_b;var theme=useThemeCreator(rawTheme);return/*#__PURE__*/React__default.createElement(ThemeContext$2.Provider,{value:theme},children);}function useThemeObject(){var theme=useContext(ThemeContext$2);if(!theme){throw new Error("Language Setting should use inside language provider");}return theme;}var en={rowSelected:" rows selected",rowPerPage:"Rows per page:",of:"Of",moreThan:"more than",next:"Next Page",prev:"Previous Page",delete:"Delete",sortAsc:"Sort Ascending",sortDsc:"Sort Descending",menu:"Menu",close:"Close",filter:{op:"Operation",column:"Column",value:"Value",filter:"Filter",add:"Add Filter",operations:{equals:"Equals",notEquals:"Not Equals",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"Contains",notContaines:"Not Containes",regex:"Regex",startWith:"Start With",endWith:"End With",between:"Between",dateFrom:"Date From",dateTo:"Date To",surrounded:"Surrounded"}},player:{playReverse:"Play Reverse",play:"Play",nextTime:"Next time",previousTime:"Previous Time"}};var fa$2={rowSelected:" ردیف انتخاب شده است",rowPerPage:"ردیف در هر صفحه:",of:"از",moreThan:"بیشتر از",next:"صفحه بعد",prev:"صفحه قبل",delete:"حذف کردن",sortAsc:"مرتب سازی صعودی",sortDsc:"مرتب سازی نزولی",menu:"منو",close:"بستن",filter:{op:"عملیات",column:"ستون",value:"مقدار",filter:"فیلتر",add:"افزودن فیلتر",operations:{equals:"برابر",notEquals:"مخالف",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"شامل",notContaines:"شامل نباشد",regex:"Regex",startWith:"شروع شود با",endWith:"پایان شود با",between:"بین",dateFrom:"از تاریخ",dateTo:"تا تاریخ",surrounded:"احاطه شده با"}},player:{playReverse:"اجرای برعکس",play:"اجرا",nextTime:"زمان بعدی",previousTime:"زمان قبلی"}};function useTranslation(){var lang=useLanguageState().lang;var translateFile=useRef(fa$2);var t=useCallback$1(function(key){try{var trans=key.split(".").reduce(function(acc,k){if(k in acc){return acc[k];}return acc;},translateFile.current);if(typeof trans==="string")return trans;return key;}catch(err){return key;}finally{}},[]);useEffect(function(){switch(lang){case"en":translateFile.current=en;break;case"fa":translateFile.current=fa$2;break;default:translateFile.current=fa$2;}},[]);return {t:t,translations:translateFile.current};}var WithFontTypography=withStyles$2({root:{fontFamily:"inherit"}})(Typography$1$1);var useStyles$i=makeStyles$3(function(theme){return {root:{padding:2},primary:{"&:hover":{color:theme.palette.primary.main}},secondary:{"&:hover":{color:theme.palette.secondary.main}},error:{"&:hover":{color:theme.palette.error.main}},warning:{"&:hover":{color:theme.palette.warning.main}},success:{"&:hover":{color:theme.palette.success.main}}};});function ButtonTooltip(_a){var _b;var title=_a.title,_c=_a.status,status=_c===void 0?"primary":_c,rest=__rest$1(_a,["title","status"]);var classes=useStyles$i();return/*#__PURE__*/React__default.createElement(Tooltip$1$1,{title:title},/*#__PURE__*/React__default.createElement(IconButton$1$1,__assign$1({},rest,{className:clsx$2((_b={},_b[classes.primary]=status==="primary",_b[classes.secondary]=status==="secondary",_b[classes.error]=status==="error",_b[classes.warning]=status==="warning",_b[classes.success]=status==="success",_b))})));}function HesabaStyleProvider(_a){var children=_a.children,theme=_a.theme,language=_a.language,_b=_a.direction,direction=_b===void 0?"rtl":_b;return/*#__PURE__*/React__default.createElement(StylesProvider$1,{injectFirst:true},/*#__PURE__*/React__default.createElement(LanguageProvider,{direction:direction,language:language},/*#__PURE__*/React__default.createElement(ThemeProvider,{rawTheme:theme},children)));}
+if(typeof sheet.options.flip==='boolean'){flip=sheet.options.flip;}if(typeof style.flip==='boolean'){flip=style.flip;delete style.flip;}if(!flip){return style;}return convert(typeof rule.toJSON==='function'?rule.toJSON():style);}};}var _default=jssRTL;create$2({plugins:__spreadArray(__spreadArray([],jssPreset$1().plugins),[_default()])});var defaultTheme$2={palette:{primary:indigo$2,secondary:red$2,error:red$2},typography:{fontFamily:'Vazir,Roboto,"Helvetica Neue",Arial,sans-serif',headline:{fontSize:"1rem"},subheading:{fontSize:"0.8125rem"},button:{fontWeight:400,textTransform:"initial"}},shape:{borderRadius:4},mixins:{toolbar:{minHeight:50}}};function useThemeCreator(rawTheme){var langSetting=useLanguageState();var localtypography=__assign$1({fontFamily:fontSelector(langSetting.lang)},rawTheme.typography);var localRawThemeObj=__assign$1(__assign$1(__assign$1({},localtypography),rawTheme),{direction:langSetting.direction});var theme=createMuiTheme$2(localRawThemeObj);theme=responsiveFontSizes(theme);return theme;}var ThemeContext$2=/*#__PURE__*/createContext({});function ThemeProvider(_a){var children=_a.children,_b=_a.rawTheme,rawTheme=_b===void 0?defaultTheme$2:_b;var theme=useThemeCreator(rawTheme);return/*#__PURE__*/React__default.createElement(ThemeContext$2.Provider,{value:theme},children);}function useThemeObject(){var theme=useContext(ThemeContext$2);if(!theme){throw new Error("Language Setting should use inside language provider");}return theme;}var en={rowSelected:" rows selected",rowPerPage:"Rows per page:",of:"Of",moreThan:"more than",next:"Next Page",prev:"Previous Page",delete:"Delete",sortAsc:"Sort Ascending",sortDsc:"Sort Descending",menu:"Menu",close:"Close",search:"Search a word",type:"Type a word...",filter:{op:"Operation",column:"Column",value:"Value",filter:"Filter",add:"Add Filter",operations:{equals:"Equals",notEquals:"Not Equals",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"Contains",notContaines:"Not Containes",regex:"Regex",startWith:"Start With",endWith:"End With",between:"Between",dateFrom:"Date From",dateTo:"Date To",surrounded:"Surrounded"}},player:{playReverse:"Play Reverse",play:"Play",nextTime:"Next time",previousTime:"Previous Time"}};var fa$2={rowSelected:" ردیف انتخاب شده است",rowPerPage:"ردیف در هر صفحه:",of:"از",moreThan:"بیشتر از",next:"صفحه بعد",prev:"صفحه قبل",delete:"حذف کردن",sortAsc:"مرتب سازی صعودی",sortDsc:"مرتب سازی نزولی",menu:"منو",close:"بستن",search:"جستجو کنید",type:"یک کلمه را جستجو کنید",filter:{op:"عملیات",column:"ستون",value:"مقدار",filter:"فیلتر",add:"افزودن فیلتر",operations:{equals:"برابر",notEquals:"مخالف",isNull:"Is Null",isNotNull:"is Not Null",isEmpty:"Is Empty",isNotEmpty:"Is Not Empty",contains:"شامل",notContaines:"شامل نباشد",regex:"Regex",startWith:"شروع شود با",endWith:"پایان شود با",between:"بین",dateFrom:"از تاریخ",dateTo:"تا تاریخ",surrounded:"احاطه شده با"}},player:{playReverse:"اجرای برعکس",play:"اجرا",nextTime:"زمان بعدی",previousTime:"زمان قبلی"}};function useTranslation(){var lang=useLanguageState().lang;var translateFile=useRef(fa$2);var t=useCallback$1(function(key){try{var trans=key.split(".").reduce(function(acc,k){if(k in acc){return acc[k];}return acc;},translateFile.current);if(typeof trans==="string")return trans;return key;}catch(err){return key;}finally{}},[]);useEffect(function(){switch(lang){case"en":translateFile.current=en;break;case"fa":translateFile.current=fa$2;break;default:translateFile.current=fa$2;}},[]);return {t:t,translations:translateFile.current};}var WithFontTypography=withStyles$2({root:{fontFamily:"inherit"}})(Typography$1$1);var useStyles$i=makeStyles$3(function(theme){return {root:{padding:2},primary:{"&:hover":{color:theme.palette.primary.main}},secondary:{"&:hover":{color:theme.palette.secondary.main}},error:{"&:hover":{color:theme.palette.error.main}},warning:{"&:hover":{color:theme.palette.warning.main}},success:{"&:hover":{color:theme.palette.success.main}}};});function ButtonTooltip(_a){var _b;var title=_a.title,_c=_a.status,status=_c===void 0?"primary":_c,rest=__rest$1(_a,["title","status"]);var classes=useStyles$i();return/*#__PURE__*/React__default.createElement(Tooltip$1$1,{title:title},/*#__PURE__*/React__default.createElement(IconButton$1$1,__assign$1({},rest,{className:clsx$2((_b={},_b[classes.primary]=status==="primary",_b[classes.secondary]=status==="secondary",_b[classes.error]=status==="error",_b[classes.warning]=status==="warning",_b[classes.success]=status==="success",_b))})));}function HesabaStyleProvider(_a){var children=_a.children,theme=_a.theme,language=_a.language,_b=_a.direction,direction=_b===void 0?"rtl":_b;return/*#__PURE__*/React__default.createElement(LanguageProvider,{direction:direction,language:language},/*#__PURE__*/React__default.createElement(ThemeProvider,{rawTheme:theme},children));}
 
 var ThemeMaker = function (_a) {
     var children = _a.children;
@@ -10848,7 +10848,7 @@ var ThemeMaker = function (_a) {
         React__default.createElement(ThemeProvider$1, { theme: theme }, children)));
 };
 
-var vtStoreTableSize = {
+var vtOtherStoreTable = {
     currentWidths: {},
     totalWidth: 0,
     setSizes: easyPeasy.action(function (state, _a) {
@@ -10870,24 +10870,36 @@ var TableSizeActionContext$1 = createContext({});
 var TableSizeStateContext = createContext({});
 function TableSizeProvider(_a) {
     var children = _a.children;
-    var _b = easyPeasy.useLocalStore(function () { return vtStoreTableSize; }), state = _b[0], actions = _b[1];
-    return (React__default.createElement(TableSizeStateContext.Provider, { value: { state: state } },
-        React__default.createElement(TableSizeActionContext$1.Provider, { value: { actions: actions } }, children)));
+    var _b = easyPeasy.useLocalStore(function () { return vtOtherStoreTable; }), state = _b[0], actions = _b[1];
+    return (React__default.createElement(TableSizeStateContext.Provider, { value: state },
+        React__default.createElement(TableSizeActionContext$1.Provider, { value: actions }, children)));
 }
 function useTableSizeState() {
-    var state = useContext(TableSizeStateContext).state;
+    var state = useContext(TableSizeStateContext);
     if (!state) {
         throw Error("use state inside provider");
     }
     return state;
 }
 function useTableSizeAction() {
-    var actions = useContext(TableSizeActionContext$1).actions;
+    var actions = useContext(TableSizeActionContext$1);
     if (!actions) {
         throw Error("use state inside provider");
     }
     return actions;
 }
+
+// import { VTStoreTableSize } from "./tableSize";
+var typedHooks = easyPeasy.createTypedHooks();
+var useTStoreActions = typedHooks.useStoreActions;
+var useStoreDispatch = typedHooks.useStoreDispatch;
+var useTStoreState = typedHooks.useStoreState;
+var useStore = typedHooks.useStore;
+// const typedHooksTableSize = createTypedHooks<VTStoreTableSize>();
+// export const useTableSizeStoreActions = typedHooksTableSize.useStoreActions;
+// export const useTableSizeStoreDispatch = typedHooksTableSize.useStoreDispatch;
+// export const useTableSizeStoreState = typedHooksTableSize.useStoreState;
+// export const useTableSizeStore = typedHooksTableSize.useStore;
 
 var DRAG_CLASS = "HESABA_DRAG_HANDLER";
 var HESABA_TABLE_HEADER_CLASS = "HESABA_TABLE_HEADER_CLASS";
@@ -10907,180 +10919,6 @@ var ROW_MIN_WIDTH = 100;
 var CHECKBOX_WIDTH = 48;
 var DEFAULT_PAGINATION_HEIGHT = 70;
 var DEFAULT_TOOLBAR_HEIGHT = 70;
-
-function useResizer(ref, onMouseMoveCB, width) {
-    var direction = useLanguageState().direction;
-    //   const ref = useRef<HTMLDivElement | undefined>();
-    var headerElments = useRef();
-    var rowElements = useRef();
-    var resizedDataField = useRef();
-    var resizedElement = useRef();
-    var dirRef = useRef(direction);
-    var newColumnWidth = useRef(MIN_TABLE_WIDTH);
-    // const tableWidth = useRef<TotalWidth>(0);
-    var totalWidth = useRef(0);
-    var widthRef = useRef(width);
-    var setSizes = useTableSizeAction().setSizes;
-    var init = useCallback$1(function () {
-        var _a, _b;
-        headerElments.current = (_a = ref.current) === null || _a === void 0 ? void 0 : _a.querySelectorAll("." + HESABA_TABLE_HEADER_CLASS);
-        rowElements.current = (_b = ref.current) === null || _b === void 0 ? void 0 : _b.querySelectorAll("." + HESABA_TABLE_ROW_CLASS);
-    }, []);
-    var onMouseDown = useCallback$1(function (e) {
-        var _a;
-        init();
-        var div = e.target;
-        if (!div.classList.contains(DRAG_CLASS))
-            return;
-        var parent = div.previousElementSibling;
-        if (!parent)
-            return;
-        resizedDataField.current = parent.getAttribute(DATA_FIELD);
-        //   columnElements.current = el as HTMLElement;
-        window.addEventListener("mousemove", onMouseMove);
-        window.addEventListener("mouseup", onMouseUp);
-        resizedElement.current = (_a = ref.current) === null || _a === void 0 ? void 0 : _a.querySelectorAll("[" + DATA_FIELD + "=\"" + resizedDataField.current + "\"]");
-    }, []);
-    var onMouseMove = useCallback$1(function (e) {
-        if (!resizedElement.current ||
-            resizedElement.current.length === 0 ||
-            !headerElments.current ||
-            headerElments.current.length === 0 ||
-            !ref ||
-            !rowElements.current)
-            return;
-        if (dirRef.current === "rtl") {
-            var right = resizedElement.current[0].getBoundingClientRect().right;
-            newColumnWidth.current = Math.max(-e.clientX + right, MIN_TABLE_WIDTH);
-        }
-        else {
-            var left = resizedElement.current[0].getBoundingClientRect().left;
-            newColumnWidth.current = Math.max(e.clientX - left, MIN_TABLE_WIDTH);
-        }
-        var headerWidth = -RESIZE_HANDLE_WIDTH;
-        headerElments.current.forEach(function (el) {
-            return (headerWidth += el.getBoundingClientRect().width + RESIZE_HANDLE_WIDTH);
-        });
-        totalWidth.current = headerWidth;
-        onMouseMoveCB(headerWidth, widthRef.current);
-        resizedElement.current.forEach(function (el, index) {
-            if (index === 0) {
-                el.style.width = newColumnWidth.current + "px";
-                el.style.minWidth = newColumnWidth.current + "px";
-                el.style.maxWidth = newColumnWidth.current + "px";
-            }
-            else {
-                el.style.width = newColumnWidth.current + RESIZE_HANDLE_WIDTH + "px";
-                el.style.minWidth = newColumnWidth.current + RESIZE_HANDLE_WIDTH + "px";
-                el.style.maxWidth = newColumnWidth.current + RESIZE_HANDLE_WIDTH + "px";
-            }
-        });
-    }, []);
-    var onMouseUp = useCallback$1(function () {
-        window.removeEventListener("mousemove", onMouseMove);
-        window.removeEventListener("mouseup", onMouseUp);
-        if (!resizedDataField.current ||
-            !resizedElement.current ||
-            resizedElement.current.length === 0)
-            return;
-        setSizes({
-            totalWidth: totalWidth.current,
-            widthKey: resizedDataField.current,
-            currentWidth: newColumnWidth.current,
-        });
-    }, []);
-    useEffect(function () {
-        dirRef.current = direction;
-        widthRef.current = width;
-    }, [direction]);
-    return {
-        onMouseDown: onMouseDown,
-        onMouseMove: onMouseMove,
-        onMouseUp: onMouseUp,
-    };
-}
-var useTableResizer = function () {
-    var direction = useLanguageState().direction;
-    var dirRef = useRef(direction);
-    var ref = useRef();
-    var onMouseMoveCB = useCallback$1(function () { }, []);
-    var onMouseDown = useResizer(ref, onMouseMoveCB, 0).onMouseDown;
-    var _a = useMemo$1(function () {
-        var removeMouseDown = function (table) {
-            table.removeEventListener("mousedown", onMouseDown);
-        };
-        var addMouseDownListerner = function (table) {
-            table.addEventListener("mousedown", onMouseDown);
-        };
-        var setTableRef = function (nodeRef) {
-            if (nodeRef) {
-                ref.current = nodeRef;
-                addMouseDownListerner(nodeRef);
-            }
-        };
-        return [setTableRef, removeMouseDown];
-    }, []), setRef = _a[0], removeMouseDownListerner = _a[1];
-    useEffect(function () {
-        return function () {
-            ref.current && removeMouseDownListerner(ref.current);
-        };
-    }, [removeMouseDownListerner]);
-    useEffect(function () {
-        dirRef.current = direction;
-    }, [direction]);
-    return { setRef: setRef, ref: ref.current };
-};
-var useStickyTableResizer = function (width) {
-    var ref = useRef();
-    var mainRef = useRef();
-    var onMouseMoveCB = useCallback$1(function (headerWidth, wholeWidth) {
-        if (ref.current && mainRef.current) {
-            ref.current.style.width = headerWidth + "px";
-            mainRef.current.style.width = wholeWidth - headerWidth + "px";
-        }
-    }, []);
-    var onMouseDown = useResizer(ref, onMouseMoveCB, width).onMouseDown;
-    var _a = useMemo$1(function () {
-        var removeMouseDown = function (table) {
-            table.removeEventListener("mousedown", onMouseDown);
-        };
-        var addMouseDownListerner = function (table) {
-            table.addEventListener("mousedown", onMouseDown);
-        };
-        var setStickyTableRef = function (nodeRef) {
-            if (nodeRef) {
-                ref.current = nodeRef;
-                addMouseDownListerner(nodeRef);
-                var interval_1 = setInterval(function () {
-                    var el = document.getElementById(MAIN_LIST_ID);
-                    if (el) {
-                        clearInterval(interval_1);
-                        mainRef.current = el;
-                    }
-                }, 100);
-            }
-        };
-        return [setStickyTableRef, removeMouseDown];
-    }, []), setRef = _a[0], removeMouseDownListerner = _a[1];
-    useEffect(function () {
-        return function () {
-            ref.current && removeMouseDownListerner(ref.current);
-        };
-    }, [removeMouseDownListerner]);
-    return { setRef: setRef, ref: ref.current };
-};
-
-// import { VTStoreTableSize } from "./tableSize";
-var typedHooks = easyPeasy.createTypedHooks();
-var useTStoreActions = typedHooks.useStoreActions;
-var useStoreDispatch = typedHooks.useStoreDispatch;
-var useTStoreState = typedHooks.useStoreState;
-var useStore = typedHooks.useStore;
-// const typedHooksTableSize = createTypedHooks<VTStoreTableSize>();
-// export const useTableSizeStoreActions = typedHooksTableSize.useStoreActions;
-// export const useTableSizeStoreDispatch = typedHooksTableSize.useStoreDispatch;
-// export const useTableSizeStoreState = typedHooksTableSize.useStoreState;
-// export const useTableSizeStore = typedHooksTableSize.useStore;
 
 function calcTableHeght(hasToolbar, toolbarHeight, pagination, height) {
     if (!hasToolbar && !pagination)
@@ -11105,7 +10943,6 @@ function getWidthNumber(width) {
 }
 
 var COMPLETE_ROW_SIZE = ROW_MIN_WIDTH + RESIZE_HANDLE_WIDTH;
-var TableRefContext = createContext({});
 var AddStickyContext = createContext({});
 function AddStickyProvider(_a) {
     var children = _a.children;
@@ -11144,24 +10981,6 @@ function AddStickyProvider(_a) {
         }, 200);
     }, []);
     return (React__default.createElement(AddStickyContext.Provider, { value: onAddSticky }, children));
-}
-function TableRefProvider(_a) {
-    var children = _a.children, width = _a.width;
-    var mainTableRef = useTableResizer();
-    var stickyTableRef = useStickyTableResizer(width);
-    return (React__default.createElement(TableRefContext.Provider, { value: { mainTableRef: mainTableRef, stickyTableRef: stickyTableRef } }, children));
-}
-function TableStickyProvider(_a) {
-    var children = _a.children, width = _a.width;
-    return (React__default.createElement(TableRefProvider, { width: width },
-        React__default.createElement(AddStickyProvider, null, children)));
-}
-function useTableRef() {
-    var refs = useContext(TableRefContext);
-    if (!refs) {
-        throw Error("use state inside provider");
-    }
-    return refs;
 }
 function useAddSticky() {
     var onAddSticky = useContext(AddStickyContext);
@@ -11202,21 +11021,18 @@ function useTableRowAction() {
 
 var TableStoreProvider = function (_a) {
     var _b;
-    var children = _a.children, width = _a.width;
+    var children = _a.children, direction = _a.direction, language = _a.language, theme = _a.theme;
     var easyPeasyStore = easyPeasy.useStore();
     var isWrapepdWithCTProvider = (_b = easyPeasyStore === null || easyPeasyStore === void 0 ? void 0 : easyPeasyStore.getState()) === null || _b === void 0 ? void 0 : _b.VTVersion;
     if (isWrapepdWithCTProvider) {
         return React__default.createElement(React__default.Fragment, null, children);
     }
-    return (React__default.createElement(TableRowProvider, null,
-        React__default.createElement(easyPeasy.StoreProvider, { store: store },
-            React__default.createElement(TableSizeProvider, null,
-                React__default.createElement(TableStickyProvider, { width: width }, children)))));
-};
-var Provider = function (_a) {
-    var children = _a.children, direction = _a.direction, language = _a.language, theme = _a.theme;
     return (React__default.createElement(HesabaStyleProvider, { language: language, direction: direction, theme: theme },
-        React__default.createElement(ThemeMaker, null, children)));
+        React__default.createElement(ThemeMaker, null,
+            React__default.createElement(easyPeasy.StoreProvider, { store: store },
+                React__default.createElement(TableSizeProvider, null,
+                    React__default.createElement(TableRowProvider, null,
+                        React__default.createElement(AddStickyProvider, null, children)))))));
 };
 
 var common$1 = {
@@ -47000,6 +46816,168 @@ var VirtualTableStickyHeader = function (_a) {
             React__default.createElement(HeadCell, __assign$2({}, props, rest, { colKey: props.key, classes: classes === null || classes === void 0 ? void 0 : classes.cell })))); })));
 };
 
+function useResizer(ref, onMouseMoveCB, width) {
+    var direction = useLanguageState().direction;
+    //   const ref = useRef<HTMLDivElement | undefined>();
+    var headerElments = useRef();
+    var rowElements = useRef();
+    var resizedDataField = useRef();
+    var resizedElement = useRef();
+    var dirRef = useRef(direction);
+    var newColumnWidth = useRef(MIN_TABLE_WIDTH);
+    // const tableWidth = useRef<TotalWidth>(0);
+    var totalWidth = useRef(0);
+    var widthRef = useRef(width);
+    var setSizes = useTableSizeAction().setSizes;
+    var init = useCallback$1(function () {
+        var _a, _b;
+        headerElments.current = (_a = ref.current) === null || _a === void 0 ? void 0 : _a.querySelectorAll("." + HESABA_TABLE_HEADER_CLASS);
+        rowElements.current = (_b = ref.current) === null || _b === void 0 ? void 0 : _b.querySelectorAll("." + HESABA_TABLE_ROW_CLASS);
+    }, []);
+    var onMouseDown = useCallback$1(function (e) {
+        var _a;
+        init();
+        var div = e.target;
+        if (!div.classList.contains(DRAG_CLASS))
+            return;
+        var parent = div.previousElementSibling;
+        if (!parent)
+            return;
+        resizedDataField.current = parent.getAttribute(DATA_FIELD);
+        //   columnElements.current = el as HTMLElement;
+        window.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("mouseup", onMouseUp);
+        resizedElement.current = (_a = ref.current) === null || _a === void 0 ? void 0 : _a.querySelectorAll("[" + DATA_FIELD + "=\"" + resizedDataField.current + "\"]");
+    }, []);
+    var onMouseMove = useCallback$1(function (e) {
+        if (!resizedElement.current ||
+            resizedElement.current.length === 0 ||
+            !headerElments.current ||
+            headerElments.current.length === 0 ||
+            !ref ||
+            !rowElements.current)
+            return;
+        if (dirRef.current === "rtl") {
+            var right = resizedElement.current[0].getBoundingClientRect().right;
+            newColumnWidth.current = Math.max(-e.clientX + right, MIN_TABLE_WIDTH);
+        }
+        else {
+            var left = resizedElement.current[0].getBoundingClientRect().left;
+            newColumnWidth.current = Math.max(e.clientX - left, MIN_TABLE_WIDTH);
+        }
+        var headerWidth = -RESIZE_HANDLE_WIDTH;
+        headerElments.current.forEach(function (el) {
+            return (headerWidth += el.getBoundingClientRect().width + RESIZE_HANDLE_WIDTH);
+        });
+        totalWidth.current = headerWidth;
+        onMouseMoveCB(headerWidth, widthRef.current);
+        resizedElement.current.forEach(function (el, index) {
+            if (index === 0) {
+                el.style.width = newColumnWidth.current + "px";
+                el.style.minWidth = newColumnWidth.current + "px";
+                el.style.maxWidth = newColumnWidth.current + "px";
+            }
+            else {
+                el.style.width = newColumnWidth.current + RESIZE_HANDLE_WIDTH + "px";
+                el.style.minWidth = newColumnWidth.current + RESIZE_HANDLE_WIDTH + "px";
+                el.style.maxWidth = newColumnWidth.current + RESIZE_HANDLE_WIDTH + "px";
+            }
+        });
+    }, []);
+    var onMouseUp = useCallback$1(function () {
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseup", onMouseUp);
+        if (!resizedDataField.current ||
+            !resizedElement.current ||
+            resizedElement.current.length === 0)
+            return;
+        setSizes({
+            totalWidth: totalWidth.current,
+            widthKey: resizedDataField.current,
+            currentWidth: newColumnWidth.current,
+        });
+    }, []);
+    useEffect(function () {
+        dirRef.current = direction;
+        widthRef.current = width;
+    }, [direction]);
+    return {
+        onMouseDown: onMouseDown,
+        onMouseMove: onMouseMove,
+        onMouseUp: onMouseUp,
+    };
+}
+var useTableResizer = function () {
+    var direction = useLanguageState().direction;
+    var dirRef = useRef(direction);
+    var ref = useRef();
+    var onMouseMoveCB = useCallback$1(function () { }, []);
+    var onMouseDown = useResizer(ref, onMouseMoveCB, 0).onMouseDown;
+    var _a = useMemo$1(function () {
+        var removeMouseDown = function (table) {
+            table.removeEventListener("mousedown", onMouseDown);
+        };
+        var addMouseDownListerner = function (table) {
+            table.addEventListener("mousedown", onMouseDown);
+        };
+        var setTableRef = function (nodeRef) {
+            if (nodeRef) {
+                ref.current = nodeRef;
+                addMouseDownListerner(nodeRef);
+            }
+        };
+        return [setTableRef, removeMouseDown];
+    }, []), setRef = _a[0], removeMouseDownListerner = _a[1];
+    useEffect(function () {
+        return function () {
+            ref.current && removeMouseDownListerner(ref.current);
+        };
+    }, [removeMouseDownListerner]);
+    useEffect(function () {
+        dirRef.current = direction;
+    }, [direction]);
+    return { setRef: setRef, ref: ref.current };
+};
+var useStickyTableResizer = function (width) {
+    var ref = useRef();
+    var mainRef = useRef();
+    var onMouseMoveCB = useCallback$1(function (headerWidth, wholeWidth) {
+        if (ref.current && mainRef.current) {
+            ref.current.style.width = headerWidth + "px";
+            mainRef.current.style.width = wholeWidth - headerWidth + "px";
+        }
+    }, []);
+    var onMouseDown = useResizer(ref, onMouseMoveCB, width).onMouseDown;
+    var _a = useMemo$1(function () {
+        var removeMouseDown = function (table) {
+            table.removeEventListener("mousedown", onMouseDown);
+        };
+        var addMouseDownListerner = function (table) {
+            table.addEventListener("mousedown", onMouseDown);
+        };
+        var setStickyTableRef = function (nodeRef) {
+            if (nodeRef) {
+                ref.current = nodeRef;
+                addMouseDownListerner(nodeRef);
+                var interval_1 = setInterval(function () {
+                    var el = document.getElementById(MAIN_LIST_ID);
+                    if (el) {
+                        clearInterval(interval_1);
+                        mainRef.current = el;
+                    }
+                }, 100);
+            }
+        };
+        return [setStickyTableRef, removeMouseDown];
+    }, []), setRef = _a[0], removeMouseDownListerner = _a[1];
+    useEffect(function () {
+        return function () {
+            ref.current && removeMouseDownListerner(ref.current);
+        };
+    }, [removeMouseDownListerner]);
+    return { setRef: setRef, ref: ref.current };
+};
+
 var useStyles$1 = makeStyles$2(function () { return ({
     root: {},
     stickyTable: {
@@ -47021,7 +46999,7 @@ var VirtualList = memo(forwardRef(function (_a, ref) {
     var _b;
     var height = _a.height, width = _a.width, classes = _a.classes, onScroll = _a.onScroll, _c = _a.itemSize, itemSize = _c === void 0 ? 50 : _c, resizable = _a.resizable, sortable = _a.sortable, withSticky = _a.withSticky, selectable = _a.selectable, VTCommonTableElProps = _a.VTCommonTableElProps, VTRowProps = _a.VTRowProps, VTFilterProps = _a.VTFilterProps, VTHeaderProps = _a.VTHeaderProps;
     var direction = useLanguageState().direction;
-    var setRef = useTableRef().mainTableRef.setRef;
+    var setRef = useTableResizer().setRef;
     var visibleColumns = useTStoreState(function (state) { return state.visibleColumns; });
     var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
     var tableClasses = useStyles$1();
@@ -47059,9 +47037,9 @@ var VirtualList = memo(forwardRef(function (_a, ref) {
 }));
 var StickyVirtualList = memo(forwardRef(function (_a, ref) {
     var _b;
-    var height = _a.height, width = _a.width, classes = _a.classes, onScroll = _a.onScroll, _c = _a.selectable, selectable = _c === void 0 ? false : _c, _d = _a.itemSize, itemSize = _d === void 0 ? 50 : _d, resizable = _a.resizable, sortable = _a.sortable, VTCommonTableElProps = _a.VTCommonTableElProps, VTRowProps = _a.VTRowProps, VTFilterProps = _a.VTFilterProps, VTHeaderProps = _a.VTHeaderProps;
+    var height = _a.height, width = _a.width, tableWidth = _a.tableWidth, classes = _a.classes, onScroll = _a.onScroll, _c = _a.selectable, selectable = _c === void 0 ? false : _c, _d = _a.itemSize, itemSize = _d === void 0 ? 50 : _d, resizable = _a.resizable, sortable = _a.sortable, VTCommonTableElProps = _a.VTCommonTableElProps, VTRowProps = _a.VTRowProps, VTFilterProps = _a.VTFilterProps, VTHeaderProps = _a.VTHeaderProps;
     var direction = useLanguageState().direction;
-    var setRef = useTableRef().stickyTableRef.setRef;
+    var setRef = useStickyTableResizer(tableWidth).setRef;
     var stickyColumns = useTStoreState(function (state) { return state.stickyColumns; });
     var visibleRows = useTStoreState(function (state) { return state.visibleRows; });
     var tableClasses = useStyles$1();
@@ -47310,7 +47288,7 @@ var VirtualizaTable = memo(function (_a) {
             React__default.createElement(TableToolbar, __assign$2({ onSearchTextChange: onSearchTextChange, onFilterChange: onFilterChange, title: title, operationOnRows: operationOnRows, classes: classes === null || classes === void 0 ? void 0 : classes.toolbar, hasFilter: hasFilter, searchable: searchable }, VTToolbarProps)))),
         React__default.createElement("div", { role: "table", className: (_b = classes === null || classes === void 0 ? void 0 : classes.table) === null || _b === void 0 ? void 0 : _b.container, style: { display: "flex" } },
             React__default.createElement(Overlay, null),
-            rest.withSticky && (React__default.createElement(StickyVirtualList, __assign$2({ ref: staticGrid, width: CHECKBOX_WIDTH, onScroll: onStickyScroll, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) - scrollHeight }, rest))),
+            rest.withSticky && (React__default.createElement(StickyVirtualList, __assign$2({ ref: staticGrid, width: CHECKBOX_WIDTH, tableWidth: width, onScroll: onStickyScroll, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) - scrollHeight }, rest))),
             React__default.createElement(VirtualList, __assign$2({ ref: mainList, width: width, onScroll: onScroll, classes: classes, height: calcTableHeght(hasToolbar, VTToolbarProps === null || VTToolbarProps === void 0 ? void 0 : VTToolbarProps.height, pagination, height) }, rest)),
             React__default.createElement(Overlay, null)),
         pagination && (React__default.createElement(TablePagination, __assign$2({}, pagination, { classes: classes === null || classes === void 0 ? void 0 : classes.footer, width: width })))));
@@ -47321,9 +47299,8 @@ var VirtualizaTable = memo(function (_a) {
  */
 var HesabaVirtualTable = function (_a) {
     var direction = _a.direction, language = _a.language, theme = _a.theme, props = __rest$2(_a, ["direction", "language", "theme"]);
-    return (React__default.createElement(Provider, { direction: direction, language: language, theme: theme },
-        React__default.createElement(TableStoreProvider, { width: props.width },
-            React__default.createElement(VirtualizaTable, __assign$2({}, props)))));
+    return (React__default.createElement(TableStoreProvider, { direction: direction, language: language, theme: theme },
+        React__default.createElement(VirtualizaTable, __assign$2({}, props))));
 };
 
 /**
@@ -47743,5 +47720,5 @@ var AutoSizer = function (_a) {
     return (React__default.createElement(AutoSizer$1, { className: className, disableWidth: disableWidth, disableHeight: disableHeight, onResize: onResize }, children));
 };
 
-export { AutoSizer, HesabaVirtualTable, MAIN_LIST_ID, MAIN_STICKY_LIST_ID, Provider, TableRowProvider, TableSizeProvider, TableStoreProvider, TableToolbar, ToolbarMoreVert, ToolbarOperation, VirtualTableContainer, createEnhancedColumns, createEnhancedRows, parseTableData, useStore, useStoreDispatch, useTStoreActions, useTStoreState, useTableRowAction, useTableRowState, useTableSizeAction, useTableSizeState };
+export { AddStickyProvider, AutoSizer, HesabaVirtualTable, MAIN_LIST_ID, MAIN_STICKY_LIST_ID, TableRowProvider, TableSizeProvider, TableStoreProvider, TableToolbar, ToolbarMoreVert, ToolbarOperation, VirtualTableContainer, createEnhancedColumns, createEnhancedRows, parseTableData, useAddSticky, useStore, useStoreDispatch, useTStoreActions, useTStoreState, useTableRowAction, useTableRowState, useTableSizeAction, useTableSizeState };
 //# sourceMappingURL=index.es.js.map

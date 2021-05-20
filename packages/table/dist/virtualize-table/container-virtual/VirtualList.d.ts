@@ -32,4 +32,6 @@ export declare const StickyVirtualList: React.MemoExoticComponent<React.ForwardR
     VTRowProps?: import("../../types").VTPublicRowProps | undefined;
     VTFilterProps?: import("../../types/Filter").PublicFilterProps | undefined;
     VTCommonTableElProps?: import("../../types").CommonTableRowProps | undefined;
+} & {
+    tableWidth: number;
 } & React.RefAttributes<unknown>>>;

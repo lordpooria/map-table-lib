@@ -93,19 +93,6 @@ const PanelMap: FC<HesabaTimeDimensionProps> = ({
   const [tableWidth, setTableWidth] = useState(0);
   const [map, setMap] = useState<Map>();
 
-  // function setElementSizes(sizes: Array<number>) {
-  //   if (!hesabaTable.current) {
-  //     hesabaTable.current = document.querySelector(
-  //       "#hesaba-table"
-  //     ) as HTMLDivElement;
-  //     hesabaMap.current = document.querySelector(
-  //       "#hesaba-map"
-  //     ) as HTMLDivElement;
-  //   } else if (hesabaTable.current && hesabaMap.current) {
-  //     hesabaTable.current.style.width = `${sizes[1]}px`;
-  //     hesabaMap.current.style.width = `${sizes[0]}px`;
-  //   }
-  // }
   const rootClass = classes?.tdRoot || tdClasses.tdRootWithTable;
   const mapClass = classes?.map || tdClasses.mapRootWithTable;
   return (
@@ -124,20 +111,11 @@ const PanelMap: FC<HesabaTimeDimensionProps> = ({
             }}
             minSizes={[100, 100]}
             hooks={{
-              // onChange: (sizes) => {
-              //   // setElementSizes(sizes);
-              // },
-              // onCollapse: (sizes) => {
-              //   // setElementSizes(sizes as any);
-              // },
               onSaveSizes: (sizes) => {
                 map?.invalidateSize();
                 setTableWidth(sizes[1]);
               },
             }}
-
-            // collapsedSizes={[toolbar.maxHeight, null]}
-            // minSizes={[100, 500]}
           >
             <MapContainer
               whenCreated={setMap}

@@ -10,8 +10,8 @@ import { HESABA_TABLE_ROW_CLASS } from "../../utils/constants";
 import { CompleteRowProps } from "../../types/tableElements";
 import useCommonStyles from "../../styles/commonStyles";
 import { chooseClass, useCalcTableWidth } from "../../utils/helper";
-import { useTableRowState } from "../../container/TableRowProvider";
 import { TableColumn, TableRows } from "../../types";
+import { useTableRowState } from "../../container/TableRowProvider";
 
 type RowWrapperProps = CompleteRowProps & {
   visibleRows: TableRows;
@@ -103,6 +103,7 @@ const RowWrapper = memo(
     const rowClasses = useStyles();
 
     const { activeRow } = useTableRowState();
+    
     const onRowSelect = useCallback(() => {
       onRowClick && onRowClick(rowIndex);
     }, [onRowClick]);

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import Clock, { ClockValue } from "react-clock";
+import Clock, { ClockValue } from "@heasaba/clock";
 import { TimeProps } from "./TimeComponent.types";
 
 interface Props {

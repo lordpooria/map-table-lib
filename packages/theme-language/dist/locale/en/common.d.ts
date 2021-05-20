@@ -10,6 +10,8 @@ export declare const en: {
     sortDsc: string;
     menu: string;
     close: string;
+    search: string;
+    type: string;
     filter: {
         op: string;
         column: string;

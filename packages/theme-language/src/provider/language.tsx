@@ -36,7 +36,6 @@ export function LanguageProvider({
   }, []);
 
   useEffect(() => {
-    
     if (
       langSettingRef.current.direction !== direction &&
       langSettingRef.current.language !== language
@@ -73,4 +72,11 @@ export function useLanguageAction() {
   }
 
   return changeLanguage;
+}
+export function useIsStyleProvided() {
+  const { langSetting } = useContext(LangContext);
+  if (!langSetting) {
+    return false;
+  }
+  return true;
 }

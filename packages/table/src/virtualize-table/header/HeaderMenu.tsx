@@ -64,7 +64,7 @@ const HeaderMenu = ({
   };
   const sortTable = useTStoreActions((actions) => actions.sortTable);
   // const filterAdd = useTStoreActions((actions) => actions.filterAdd);
-  const onAddSticky = useAddSticky();
+  const onAddSticky  = useAddSticky();
 
   const toggleVisibleColumns = useTStoreActions(
     (actions) => actions.toggleVisibleColumns

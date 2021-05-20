@@ -18,23 +18,26 @@ export default function TDGeojsonLayer({
         <Fragment
           key={`${f?.properties?.id || f?.properties?.username}-${index}`}
         >
-          {(f.geometry as any).geometries.map((g: any) =>
-            g.type === "Point" ? (
-              <TDCircleMarker
-                coordinates={g.coordinates}
-                pathOptions={{ color: f?.properties?.color, ...pathOptions }}
-                circleProps={circleProps}
-                ToolTipComponent={ToolTipComponent}
-                properties={f.properties}
-              />
-            ) : (
-              <TDPolyline
-                coordinates={g.coordinates}
-                pathOptions={{ color: f?.properties?.color, ...pathOptions }}
-                polylineProps={polylineProps}
-              />
-            )
-          )}
+          {(f.geometry as any).geometries.map((g: any, idx: number) => (
+            <Fragment key={`${idx}`}>
+              {g.type === "Point" ? (
+                <TDCircleMarker
+                  coordinates={g.coordinates}
+                  pathOptions={{ color: f?.properties?.color, ...pathOptions }}
+                  circleProps={circleProps}
+                  ToolTipComponent={ToolTipComponent}
+                  properties={f.properties}
+                />
+              ) : (
+                <TDPolyline
+                  coordinates={g.coordinates}
+                  pathOptions={{ color: f?.properties?.color, ...pathOptions }}
+                  polylineProps={polylineProps}
+                />
+              )}
+              )
+            </Fragment>
+          ))}
         </Fragment>
       ))}
     </>

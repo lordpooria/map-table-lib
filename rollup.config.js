@@ -14,7 +14,7 @@ const isProd = process.env.NODE_ENV === "production";
 const processEnv = isProd ? "production" : "development";
 const INPUT_FILE = path.join(PACKAGE_ROOT_PATH, "src/index.ts");
 const OUTPUT_DIR = path.join(PACKAGE_ROOT_PATH, "dist");
-const ALL_MODULES = ['@hesaba/theme-language','@hesaba/table','@hesaba/map']
+const ALL_MODULES = ['@hesaba/assets','@hesaba/theme-language','@hesaba/table','@hesaba/map']
 
 // findLernaPackages.sync(process.cwd()).map(pkg => {
 //   console.log(pkg.name, pkg.location);
@@ -30,7 +30,7 @@ const LOCAL_EXTERNALS = ["react", "react-dom"];
 const mirror = (array) =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
 const IS_BROWSER_BUNDLE = true
-const formats = IS_BROWSER_BUNDLE ? ["es", "cjs","umd"] : ["es", "cjs"];
+const formats = IS_BROWSER_BUNDLE ? ["es"] : ["es", "cjs"];
 
 export default formats.map((format) => ({
   plugins: [

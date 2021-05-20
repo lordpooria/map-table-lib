@@ -1,5 +1,5 @@
 import React from "react";
-import { ClockValue } from "react-clock";
+import { ClockValue } from "@heasaba/clock";
 import { TimeProps } from "./TimeComponent.types";
 interface Props {
     displayTime: ClockValue;

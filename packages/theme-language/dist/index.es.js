@@ -93,6 +93,13 @@ function useLanguageAction() {
     }
     return changeLanguage;
 }
+function useIsStyleProvided() {
+    var langSetting = useContext(LangContext).langSetting;
+    if (!langSetting) {
+        return false;
+    }
+    return true;
+}
 
 var common = {
   black: '#000',
@@ -17007,6 +17014,8 @@ var en = {
     sortDsc: "Sort Descending",
     menu: "Menu",
     close: "Close",
+    search: "Search a word",
+    type: "Type a word...",
     filter: {
         op: "Operation",
         column: "Column",
@@ -17051,6 +17060,8 @@ var fa = {
     sortDsc: "مرتب سازی نزولی",
     menu: "منو",
     close: "بستن",
+    search: "جستجو کنید",
+    type: "یک کلمه را جستجو کنید",
     filter: {
         op: "عملیات",
         column: "ستون",
@@ -17149,10 +17160,9 @@ function ButtonTooltip(_a) {
 
 function HesabaStyleProvider(_a) {
     var children = _a.children, theme = _a.theme, language = _a.language, _b = _a.direction, direction = _b === void 0 ? "rtl" : _b;
-    return (React__default.createElement(StylesProvider, { injectFirst: true },
-        React__default.createElement(LanguageProvider, { direction: direction, language: language },
-            React__default.createElement(ThemeProvider, { rawTheme: theme }, children))));
+    return (React__default.createElement(LanguageProvider, { direction: direction, language: language },
+        React__default.createElement(ThemeProvider, { rawTheme: theme }, children)));
 }
 
-export { ButtonTooltip, HesabaStyleProvider, LanguageProvider, ThemeProvider, WithFontTypography, defaultTheme, jss, useLanguageAction, useLanguageState, useThemeCreator, useThemeObject, useTranslation };
+export { ButtonTooltip, HesabaStyleProvider, LanguageProvider, ThemeProvider, WithFontTypography, defaultTheme, jss, useIsStyleProvided, useLanguageAction, useLanguageState, useThemeCreator, useThemeObject, useTranslation };
 //# sourceMappingURL=index.es.js.map

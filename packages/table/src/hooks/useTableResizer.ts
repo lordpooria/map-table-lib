@@ -126,7 +126,6 @@ export function useResizer(ref: any, onMouseMoveCB: any, width: number) {
   };
 }
 
-
 export const useTableResizer = () => {
   const { direction } = useLanguageState();
 
@@ -167,7 +166,6 @@ export const useTableResizer = () => {
 
   return { setRef, ref: ref.current };
 };
-
 
 export const useStickyTableResizer = (width: number) => {
   const ref = useRef<HTMLDivElement | undefined>();

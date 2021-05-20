@@ -79,6 +79,7 @@ const VirtualizaTable: FC<VirtualTableProps> = memo(
             <StickyVirtualList
               ref={staticGrid}
               width={CHECKBOX_WIDTH}
+              tableWidth={width}
               onScroll={onStickyScroll}
               height={
                 calcTableHeght(

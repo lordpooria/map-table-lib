@@ -1,19 +1,21 @@
 import { Action } from "easy-peasy";
 import { CurrentWidths, TotalWidth } from "../types";
-export interface VTStoreTableSize {
+export declare type States = {
     currentWidths: CurrentWidths;
     totalWidth: TotalWidth;
-    setSizes: Action<VTStoreTableSize, {
+};
+export interface VTTableSizeStore extends States {
+    setSizes: Action<VTTableSizeStore, {
         widthKey: string;
         currentWidth: number;
         totalWidth: TotalWidth;
     }>;
-    setCurrentWidth: Action<VTStoreTableSize, {
+    setCurrentWidth: Action<VTTableSizeStore, {
         currentWidths: CurrentWidths;
     }>;
-    setTotalWidth: Action<VTStoreTableSize, {
+    setTotalWidth: Action<VTTableSizeStore, {
         totalWidth: TotalWidth;
     }>;
 }
-export declare const vtStoreTableSize: VTStoreTableSize;
-export default vtStoreTableSize;
+export declare const vtOtherStoreTable: VTTableSizeStore;
+export default vtOtherStoreTable;

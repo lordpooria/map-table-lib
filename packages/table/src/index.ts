@@ -1,7 +1,8 @@
 export { default as HesabaVirtualTable } from "./HesabaVirtualTable";
 export * from "./container/Wrapper";
-export * from "./container/TableRowProvider";
 export * from "./container/TableSizeProvider";
+export * from "./container/TableRowProvider";
+export * from "./container/TableStickyProvider";
 // export { default as HesabaDataGrid } from "./HesabaDataGrid";
 
 export * from "./virtualize-table/container-virtual";

@@ -2,20 +2,22 @@ import { action, Action } from "easy-peasy";
 
 import { CurrentWidths, TotalWidth } from "../types";
 
-export interface VTStoreTableSize {
+export type States = {
   currentWidths: CurrentWidths;
   totalWidth: TotalWidth;
+};
 
+export interface VTTableSizeStore extends States {
   setSizes: Action<
-    VTStoreTableSize,
+    VTTableSizeStore,
     { widthKey: string; currentWidth: number; totalWidth: TotalWidth }
   >;
 
-  setCurrentWidth: Action<VTStoreTableSize, { currentWidths: CurrentWidths }>;
-  setTotalWidth: Action<VTStoreTableSize, { totalWidth: TotalWidth }>;
+  setCurrentWidth: Action<VTTableSizeStore, { currentWidths: CurrentWidths }>;
+  setTotalWidth: Action<VTTableSizeStore, { totalWidth: TotalWidth }>;
 }
 
-export const vtStoreTableSize: VTStoreTableSize = {
+export const vtOtherStoreTable: VTTableSizeStore = {
   currentWidths: {},
 
   totalWidth: 0,
@@ -35,4 +37,4 @@ export const vtStoreTableSize: VTStoreTableSize = {
 // const nodeEnv: string = (typeof process?.__ENV__ !== 'undefined' && __ENV__) as string;
 // const store = createStore(vtStoreTableSize);
 
-export default vtStoreTableSize;
+export default vtOtherStoreTable;
