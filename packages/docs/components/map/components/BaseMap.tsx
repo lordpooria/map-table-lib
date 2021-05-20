@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   map: { width: "100%", height: "100%" },
 });
 
- function MapComponent(props: any) {
+function MapComponent(props: any) {
   const classes = useStyles();
   return (
     <HesabaTimeDimension
@@ -22,4 +22,4 @@ const useStyles = makeStyles({
     />
   );
 }
-export default MapComponent
+export default MapComponent;

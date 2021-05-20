@@ -18,7 +18,7 @@ export default function AppThemeProvider({ children }: Props) {
   const theme = responsiveFontSizes(createMuiTheme(localRawThemeObj));
 
   return (
-    <StylesProvider injectFirst>
+    <StylesProvider >
       <CssBaseline />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </StylesProvider>

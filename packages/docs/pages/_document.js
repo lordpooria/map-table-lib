@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={(theme?.palette?.primary).main} />
+          <link rel="stylesheet" type="text/css" href="/css/all.css" />
         </Head>
         <body>
           <Main />
@@ -19,7 +20,6 @@ export default class MyDocument extends Document {
     );
   }
 }
-
 MyDocument.getInitialProps = async (ctx) => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
@@ -33,7 +33,6 @@ MyDocument.getInitialProps = async (ctx) => {
 
   return {
     ...initialProps,
-
     styles: [
       ...React.Children.toArray(initialProps.styles),
       sheets.getStyleElement(),
