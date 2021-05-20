@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  createGenerateClassName,
   createMuiTheme,
   CssBaseline,
   responsiveFontSizes,StylesProvider,ThemeProvider
@@ -11,6 +12,9 @@ import rawThemeObject from "../styles/theme";
 interface Props {
   children: React.ReactNode;
 }
+const generateClassName = createGenerateClassName({
+  productionPrefix: "Hesaba-docs",
+});
 
 export default function AppThemeProvider({ children }: Props) {
   const localRawThemeObj = JSON.parse(JSON.stringify(rawThemeObject));
@@ -18,7 +22,7 @@ export default function AppThemeProvider({ children }: Props) {
   const theme = responsiveFontSizes(createMuiTheme(localRawThemeObj));
 
   return (
-    <StylesProvider >
+    <StylesProvider generateClassName={generateClassName}>
       <CssBaseline />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </StylesProvider>

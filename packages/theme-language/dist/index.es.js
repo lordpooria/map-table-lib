@@ -6775,12 +6775,12 @@ var jss$1 = create$1(jssPreset()); // Use a singleton or the provided one by the
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
 
-var generateClassName = createGenerateClassName(); // Exported for test purposes
+var generateClassName$1 = createGenerateClassName(); // Exported for test purposes
 
 var sheetsManager = new Map();
 var defaultOptions = {
   disableGeneration: false,
-  generateClassName: generateClassName,
+  generateClassName: generateClassName$1,
   jss: jss$1,
   sheetsCache: null,
   sheetsManager: sheetsManager,
@@ -17158,10 +17158,14 @@ function ButtonTooltip(_a) {
                 _b)) }))));
 }
 
+var generateClassName = createGenerateClassName({
+    productionPrefix: "Hesaba-theme",
+});
 function HesabaStyleProvider(_a) {
     var children = _a.children, theme = _a.theme, language = _a.language, _b = _a.direction, direction = _b === void 0 ? "rtl" : _b;
-    return (React__default.createElement(LanguageProvider, { direction: direction, language: language },
-        React__default.createElement(ThemeProvider, { rawTheme: theme }, children)));
+    return (React__default.createElement(StylesProvider, { injectFirst: true, generateClassName: generateClassName },
+        React__default.createElement(LanguageProvider, { direction: direction, language: language },
+            React__default.createElement(ThemeProvider, { rawTheme: theme }, children))));
 }
 
 export { ButtonTooltip, HesabaStyleProvider, LanguageProvider, ThemeProvider, WithFontTypography, defaultTheme, jss, useIsStyleProvided, useLanguageAction, useLanguageState, useThemeCreator, useThemeObject, useTranslation };

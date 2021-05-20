@@ -1,47 +1,59 @@
-در این پروژه هدف توسعه کامپوننت هایی به منظور استفاده در داشبوردهای با فن آوری ری اکت است. این کامپوننت ها کاملا مستقل از یکدیگر هستند. قابلیت استفاده در هر اپلیکیشن ری اکت را دارا هستند. این کامپوننت ها باید دارای `props` های مناسبی برای ورود و خروج داده و 
-نحوه عملکرد باشند. 
-این کامپوننت ها تا حد امکان عام (‍‍‍‍‍‍‍‍`generic`) تعریف می‌شوند.
+# Time Dimension Map 
+### _Base on [Leaflet Time Dimension Package][leafletTD]_
 
-دسته بندی کلی کامپوننت های مورد نیاز در زیر می‌آید. جزییات هر کامپوننت در ایشیوی مربوط به آن کامپوننت توصیف می‌شود.
+[![Hesaba](https://media-exp1.licdn.com/dms/image/C4D0BAQFpFqusD97GPg/company-logo_200_200/0/1595658944730?e=1625702400&v=beta&t=Hqlv_aVfdPIDQkSkkS36oT0-np77npvdzUX63RgH77c)](http://www.hesaba.co)
 
-
-# امکانات اولیه
-
-1. صفحه پیش نمایش
-
-2. صفحه ورود
-
-3. صفحه بارگذاری
-
-4. ویژگی چندزبانه بودن
-
-5. صفحه یا زبانه تنظیمات
-
-6. صفحه مدیریت کاربران
-
-7. امکان تور `tour`
-
-8. امکان انیمیشن
-
-9. نوتیفیکیشن ها و پیام رسانی
+This Package is build based on leaflet time dimension with some major changes, One limitation is that we only support geojson type of data but it has a better performance for large scale data.  
 
 
-# کامپوننت های توصیف داده
+![HesabaTimeDimension](./docs/resources/simple-timedimension.png)
 
-1. نمودارهای تعاملی
+## Get Started
 
-2. نقشه
+Right now, because this package is in private repository, we couldn't use npm or yarn to install it directly, So we should point to the it's repository in package.json file. Go to your project root package.json and under dependencies add this line:
 
-3. جدول
+```js
+"dependencies": {
+    ...
+    "@hesaba": "git+https://gitlab.hesaba.co/visualization-infrastructure/react-dashboard-infra",
+    ...
+}
+```
 
-4. بارگذاری فایل
 
-5. مشاهده `pdf`
+Then on root directory of projcet run ```yarn install``` or ```npm install```
 
-6. ویرایشگر عکس
 
-7. ویرایشگر فیلم
+leaflet and react-leaflet are peer dependencies to this library so before you could use this lib you should run ```yarn install leaflet react-leaflet``` or ```npm install leaflet react-leaflet```
 
-هر یک از موارد بالا در یک `UI framework` توصیف می‌شود. یعنی با مشخص کردن فریم وورک های مختلفی مانند `material ui` میتوان 
-هر یک از موارد بالا را بازطراحی کرد. 
+## Basic Usage
 
+This repository you installed containes two seprate packages, One for virtual table and another is Map Time Dimension. Basic useage of time dimension: 
+```js
+import React from 'react';
+import HesabaTimeDimension from "@hesaba/packages/map";
+import data from "./small_data.json";
+
+export function BasicMap(){
+    return(
+     <HesabaTimeDimension
+        data={data as any}
+        mapProps={{
+          zoom: 13,
+          center: [35.76498031616211, 51.33673858642578] as any,
+          zoomControl: false,
+        } as any}
+        layerProps={{
+          updateTimeDimensionMode: "replace",
+          duration: "PT2M",
+          updateTimeDimension: true,
+        }}
+      />)
+}
+```
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [leafletTD]: <https://github.com/socib/Leaflet.TimeDimension>
+   [linkedin]: <https://www.linkedin.com/company/hesaba/>
+   

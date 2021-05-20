@@ -4386,8 +4386,8 @@ React__default.useDebugValue(theme);}return theme;}var jss$2$1=create$3$1(jssPre
 //
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
-var generateClassName$2=createGenerateClassName$2();// Exported for test purposes
-var sheetsManager$2=new Map();var defaultOptions$2={disableGeneration:false,generateClassName:generateClassName$2,jss:jss$2$1,sheetsCache:null,sheetsManager:sheetsManager$2,sheetsRegistry:null};var StylesContext$2=/*#__PURE__*/React__default.createContext(defaultOptions$2);if(process.env.NODE_ENV!=='production'){StylesContext$2.displayName='StylesContext';}var injectFirstNode$2;function StylesProvider$2(props){var children=props.children,_props$injectFirst=props.injectFirst,injectFirst=_props$injectFirst===void 0?false:_props$injectFirst,_props$disableGenerat=props.disableGeneration,disableGeneration=_props$disableGenerat===void 0?false:_props$disableGenerat,localOptions=_objectWithoutProperties$3(props,["children","injectFirst","disableGeneration"]);var outerOptions=React__default.useContext(StylesContext$2);var context=_extends$5$1({},outerOptions,{disableGeneration:disableGeneration},localOptions);if(process.env.NODE_ENV!=='production'){if(typeof window==='undefined'&&!context.sheetsManager){console.error('Material-UI: You need to use the ServerStyleSheets API when rendering on the server.');}}if(process.env.NODE_ENV!=='production'){if(context.jss.options.insertionPoint&&injectFirst){console.error('Material-UI: You cannot use a custom insertionPoint and <StylesContext injectFirst> at the same time.');}}if(process.env.NODE_ENV!=='production'){if(injectFirst&&localOptions.jss){console.error('Material-UI: You cannot use the jss and injectFirst props at the same time.');}}if(!context.jss.options.insertionPoint&&injectFirst&&typeof window!=='undefined'){if(!injectFirstNode$2){var head=document.head;injectFirstNode$2=document.createComment('mui-inject-first');head.insertBefore(injectFirstNode$2,head.firstChild);}context.jss=create$3$1({plugins:jssPreset$2().plugins,insertionPoint:injectFirstNode$2});}return/*#__PURE__*/React__default.createElement(StylesContext$2.Provider,{value:context},children);}process.env.NODE_ENV!=="production"?StylesProvider$2.propTypes={/**
+var generateClassName$2$1=createGenerateClassName$2();// Exported for test purposes
+var sheetsManager$2=new Map();var defaultOptions$2={disableGeneration:false,generateClassName:generateClassName$2$1,jss:jss$2$1,sheetsCache:null,sheetsManager:sheetsManager$2,sheetsRegistry:null};var StylesContext$2=/*#__PURE__*/React__default.createContext(defaultOptions$2);if(process.env.NODE_ENV!=='production'){StylesContext$2.displayName='StylesContext';}var injectFirstNode$2;function StylesProvider$2(props){var children=props.children,_props$injectFirst=props.injectFirst,injectFirst=_props$injectFirst===void 0?false:_props$injectFirst,_props$disableGenerat=props.disableGeneration,disableGeneration=_props$disableGenerat===void 0?false:_props$disableGenerat,localOptions=_objectWithoutProperties$3(props,["children","injectFirst","disableGeneration"]);var outerOptions=React__default.useContext(StylesContext$2);var context=_extends$5$1({},outerOptions,{disableGeneration:disableGeneration},localOptions);if(process.env.NODE_ENV!=='production'){if(typeof window==='undefined'&&!context.sheetsManager){console.error('Material-UI: You need to use the ServerStyleSheets API when rendering on the server.');}}if(process.env.NODE_ENV!=='production'){if(context.jss.options.insertionPoint&&injectFirst){console.error('Material-UI: You cannot use a custom insertionPoint and <StylesContext injectFirst> at the same time.');}}if(process.env.NODE_ENV!=='production'){if(injectFirst&&localOptions.jss){console.error('Material-UI: You cannot use the jss and injectFirst props at the same time.');}}if(!context.jss.options.insertionPoint&&injectFirst&&typeof window!=='undefined'){if(!injectFirstNode$2){var head=document.head;injectFirstNode$2=document.createComment('mui-inject-first');head.insertBefore(injectFirstNode$2,head.firstChild);}context.jss=create$3$1({plugins:jssPreset$2().plugins,insertionPoint:injectFirstNode$2});}return/*#__PURE__*/React__default.createElement(StylesContext$2.Provider,{value:context},children);}process.env.NODE_ENV!=="production"?StylesProvider$2.propTypes={/**
    * Your component tree.
    */children:propTypes$3.node.isRequired,/**
    * You can disable the generation of the styles with this option.
@@ -23444,12 +23444,12 @@ var jss$3 = create$3(jssPreset$1()); // Use a singleton or the provided one by t
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
 
-var generateClassName$1 = createGenerateClassName$1(); // Exported for test purposes
+var generateClassName$2 = createGenerateClassName$1(); // Exported for test purposes
 
 var sheetsManager$1 = new Map();
 var defaultOptions$1 = {
   disableGeneration: false,
-  generateClassName: generateClassName$1,
+  generateClassName: generateClassName$2,
   jss: jss$3,
   sheetsCache: null,
   sheetsManager: sheetsManager$1,
@@ -62778,12 +62778,12 @@ var jss = create(jssPreset()); // Use a singleton or the provided one by the con
 // The counter-based approach doesn't tolerate any mistake.
 // It's much safer to use the same counter everywhere.
 
-var generateClassName = createGenerateClassName(); // Exported for test purposes
+var generateClassName$1 = createGenerateClassName(); // Exported for test purposes
 
 var sheetsManager = new Map();
 var defaultOptions = {
   disableGeneration: false,
-  generateClassName: generateClassName,
+  generateClassName: generateClassName$1,
   jss: jss,
   sheetsCache: null,
   sheetsManager: sheetsManager,
@@ -64328,10 +64328,13 @@ var Operations = memo(function (_a) {
     return (React__default.createElement(React__default.Fragment, null, numRowsSelected && operationOnRows && (React__default.createElement("div", null, operationOnRows.map(function (Component, index) { return (React__default.createElement(Component, { index: index })); })))));
 });
 
+var generateClassName = createGenerateClassName$1({
+    productionPrefix: "Hesaba-map",
+});
 var ThemeMaker = function (_a) {
     var children = _a.children;
     var theme = useThemeObject$1();
-    return (React__default.createElement(StylesProvider$1, { injectFirst /*jss={jss}*/: true },
+    return (React__default.createElement(StylesProvider$1, { injectFirst: true, generateClassName: generateClassName },
         React__default.createElement(ThemeProvider, { theme: theme }, children)));
 };
 

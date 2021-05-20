@@ -1,3 +1,4 @@
+import { createGenerateClassName, StylesProvider } from "@material-ui/styles";
 import React from "react";
 
 import { LanguageProvider } from "./provider/language";
@@ -11,6 +12,10 @@ interface Props {
   theme?: any;
 }
 
+const generateClassName = createGenerateClassName({
+  productionPrefix: "Hesaba-theme",
+});
+
 function HesabaStyleProvider({
   children,
   theme,
@@ -18,9 +23,11 @@ function HesabaStyleProvider({
   direction = "rtl",
 }: Props) {
   return (
-    <LanguageProvider direction={direction} language={language}>
-      <ThemeProvider rawTheme={theme}>{children}</ThemeProvider>
-    </LanguageProvider>
+    <StylesProvider injectFirst generateClassName={generateClassName}>
+      <LanguageProvider direction={direction} language={language}>
+        <ThemeProvider rawTheme={theme}>{children}</ThemeProvider>
+      </LanguageProvider>
+    </StylesProvider>
   );
 }
 

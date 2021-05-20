@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core";
 import { commonMapProps } from "../utils/constants";
 
 const useStyles = makeStyles({
-  root: { width: "70vw", height: "70vh" },
+  root2: { width: "70vw", height: "70vh" },
   map: { width: "100%", height: "100%" },
 });
 
@@ -16,7 +16,7 @@ function MapComponent(props: any) {
         ...commonMapProps,
         className: classes.map,
       }}
-      classes={{ tdRoot: classes.root }}
+      classes={{ tdRoot: classes.root2 }}
       data={data as any}
       {...props}
     />

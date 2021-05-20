@@ -1,12 +1,23 @@
 import React from "react";
 
-import { ThemeProvider, StylesProvider } from "@material-ui/styles";
+import {
+  ThemeProvider,
+  StylesProvider,
+  createGenerateClassName,
+} from "@material-ui/styles";
 import { useThemeObject } from "@hesaba/theme-language";
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: "Hesaba-table",
+});
 
 const ThemeMaker = ({ children }: { children: any }) => {
   const theme = useThemeObject();
   return (
-    <StylesProvider injectFirst /*jss={jss}*/>
+    <StylesProvider
+      injectFirst
+      generateClassName={generateClassName} /*jss={jss}*/
+    >
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </StylesProvider>
   );
