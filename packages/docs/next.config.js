@@ -22,5 +22,5 @@ module.exports = withMDX({
     return config;
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  distDir: isProd ? `build` : ".next",
+  // distDir: isProd ? `build` : ".next",
 });
