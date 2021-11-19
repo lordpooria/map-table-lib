@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "postinstall": "lerna bootstrap",
     "prebuild": "BABEL_ENV=prod  NODE_ENV=production",
     "build": "yarn prebuild -- BABEL_ENV=prod lerna exec --ignore @hesaba/docs -- rollup -c=../../rollup.config.js",
     "build:single": "yarn prebuild -- lerna exec --scope $npm_config_package  -- rollup -c=../../rollup.config.js",
